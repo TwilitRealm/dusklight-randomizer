@@ -4,7 +4,7 @@
 #include <iterator>
 #include <vector>
 
-namespace tphdr::utility::container
+namespace randomizer::utility::container
 {
     template<typename Container, typename T>
     int GetIndex(const Container& container, const T& element)
@@ -68,4 +68,4 @@ namespace tphdr::utility::container
             }
         }
     }
-} // namespace tphdr::utility::container
+} // namespace randomizer::utility::container

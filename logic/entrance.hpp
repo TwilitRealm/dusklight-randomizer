@@ -7,17 +7,17 @@
 #include <string>
 
 // Forward Declarations
-namespace tphdr::logic::area
+namespace randomizer::logic::area
 {
     class Area;
 }
 
-namespace tphdr::logic::world
+namespace randomizer::logic::world
 {
     class World;
 }
 
-namespace tphdr::logic::entrance
+namespace randomizer::logic::entrance
 {
     enum Type
     {
@@ -67,10 +67,10 @@ namespace tphdr::logic::entrance
     class Entrance
     {
        public:
-        Entrance(tphdr::logic::area::Area* parentArea,
-                 tphdr::logic::area::Area* connectedArea,
-                 const tphdr::logic::requirement::Requirement& req,
-                 tphdr::logic::world::World* world);
+        Entrance(randomizer::logic::area::Area* parentArea,
+                 randomizer::logic::area::Area* connectedArea,
+                 const randomizer::logic::requirement::Requirement& req,
+                 randomizer::logic::world::World* world);
 
         void SetID(const int& id);
         int GetID() const;
@@ -80,17 +80,17 @@ namespace tphdr::logic::entrance
          * @brief Removes cardinal/direction specifiers from the entrance's name (North, South, East, West, Left, Right)
          */
         void GeneralizeOriginalName();
-        tphdr::logic::area::Area* GetParentArea() const;
-        tphdr::logic::area::Area* GetConnectedArea() const;
-        tphdr::logic::area::Area* GetOriginalConnectedArea() const;
+        randomizer::logic::area::Area* GetParentArea() const;
+        randomizer::logic::area::Area* GetConnectedArea() const;
+        randomizer::logic::area::Area* GetOriginalConnectedArea() const;
         void SetType(const Type& type);
         Type GetType() const;
         Type GetOriginalType() const;
-        void SetRequirement(const tphdr::logic::requirement::Requirement& req);
-        const tphdr::logic::requirement::Requirement& GetRequirement();
-        void SetComputedRequirement(const tphdr::logic::requirement::Requirement& computedRequirement);
-        tphdr::logic::requirement::Requirement GetComputedRequirement();
-        tphdr::logic::world::World* GetWorld() const;
+        void SetRequirement(const randomizer::logic::requirement::Requirement& req);
+        const randomizer::logic::requirement::Requirement& GetRequirement();
+        void SetComputedRequirement(const randomizer::logic::requirement::Requirement& computedRequirement);
+        randomizer::logic::requirement::Requirement GetComputedRequirement();
+        randomizer::logic::world::World* GetWorld() const;
         bool CanStartAt() const;
         void SetShuffled(const bool& shuffled);
         bool IsShuffled() const;
@@ -115,7 +115,7 @@ namespace tphdr::logic::entrance
          *
          * @param newConnectedArea The area to connect this entrance to
          */
-        void Connect(tphdr::logic::area::Area* newConnectedArea);
+        void Connect(randomizer::logic::area::Area* newConnectedArea);
 
         /**
          * @brief Disconnect this entrance from the area it leads to. Will also remove this entrance from it's connected area's
@@ -123,7 +123,7 @@ namespace tphdr::logic::entrance
          *
          * @return The area this entrance was previously connected to
          */
-        tphdr::logic::area::Area* Disconnect();
+        randomizer::logic::area::Area* Disconnect();
 
         /**
          * @brief Links two entrances by setting them as each others' reverse entrance
@@ -144,24 +144,24 @@ namespace tphdr::logic::entrance
 
        private:
         int _id = -1;
-        tphdr::logic::area::Area* _parentArea = nullptr;
-        tphdr::logic::area::Area* _connectedArea = nullptr;
-        tphdr::logic::area::Area* _originalConnectedArea = nullptr;
+        randomizer::logic::area::Area* _parentArea = nullptr;
+        randomizer::logic::area::Area* _connectedArea = nullptr;
+        randomizer::logic::area::Area* _originalConnectedArea = nullptr;
         Type _type = Type::INVALID;
         Type _originalType = Type::INVALID;
         std::string _originalName = "";
-        tphdr::logic::world::World* _world = nullptr;
+        randomizer::logic::world::World* _world = nullptr;
 
         /**
          * @brief The local requirement for this entrance assuming we have access to its parent area.
          */
-        tphdr::logic::requirement::Requirement _req;
+        randomizer::logic::requirement::Requirement _req;
 
         /**
          * @brief The flattened requirement which includes everything necessary to reach this entrance from the root of the
          * world graph.
          */
-        tphdr::logic::requirement::Requirement _computedRequirement;
+        randomizer::logic::requirement::Requirement _computedRequirement;
 
         // Variables used for entrance shuffling
         bool _canStartAt = false;
@@ -201,4 +201,4 @@ namespace tphdr::logic::entrance
     using EntrancePools = std::map<Type, EntrancePool>;
 
     std::tuple<std::string, std::string> GetParentAndConnectedAreaNames(const std::string& originalName);
-} // namespace tphdr::logic::entrance
+} // namespace randomizer::logic::entrance

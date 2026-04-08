@@ -16,7 +16,7 @@
     #error UNKNOWN PLATFORM 
 #endif
 
-namespace tphdr::utility::platform
+namespace randomizer::utility::platform
 {
     void Log(const std::string& str);
 

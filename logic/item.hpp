@@ -4,12 +4,12 @@
 #include <list>
 #include <memory>
 
-namespace tphdr::logic::world
+namespace randomizer::logic::world
 {
     class World;
 };
 class Location;
-namespace tphdr::logic::item
+namespace randomizer::logic::item
 {
     enum Importance
     {
@@ -27,7 +27,7 @@ namespace tphdr::logic::item
         Item() = default;
         Item(const int& id,
              const std::string& name,
-             tphdr::logic::world::World* world,
+             randomizer::logic::world::World* world,
              const Importance& importance,
              const bool& gameWinningItem,
              const bool& dungeonSmallKey,
@@ -37,7 +37,7 @@ namespace tphdr::logic::item
 
         int GetID() const;
         std::string GetName() const;
-        tphdr::logic::world::World* GetWorld() const;
+        randomizer::logic::world::World* GetWorld() const;
         Importance GetImportance() const;
         bool IsMajor() const;
         bool IsMinor() const;
@@ -59,7 +59,7 @@ namespace tphdr::logic::item
        private:
         int _id = -1;
         std::string _name;
-        tphdr::logic::world::World* _world = nullptr;
+        randomizer::logic::world::World* _world = nullptr;
         Importance _importance = INVALID;
         bool _gameWinningItem = false;
         std::list<Location*> _chainLocations;
@@ -75,4 +75,4 @@ namespace tphdr::logic::item
     };
 
     extern std::unique_ptr<Item> Nothing;
-} // namespace tphdr::logic::item
+} // namespace randomizer::logic::item

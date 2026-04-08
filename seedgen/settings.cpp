@@ -13,7 +13,7 @@
 #include <iostream>
 #include <memory>
 
-namespace tphdr::seedgen::settings
+namespace randomizer::seedgen::settings
 {
 
     Type TypeFromStr(const std::string& str)
@@ -55,7 +55,7 @@ namespace tphdr::seedgen::settings
         // and removes apostraphes and parenthesis
         auto logicName = name;
         std::replace(logicName.begin(), logicName.end(), ' ', '_');
-        tphdr::utility::str::Erase(logicName, "'", ")", "(");
+        randomizer::utility::str::Erase(logicName, "'", ")", "(");
         this->_logicName = logicName;
 
         // Same for logic expressions of options for this setting
@@ -63,7 +63,7 @@ namespace tphdr::seedgen::settings
         {
             auto logicOption = option;
             std::replace(logicOption.begin(), logicOption.end(), ' ', '_');
-            tphdr::utility::str::Erase(logicOption, "'", ")", "(");
+            randomizer::utility::str::Erase(logicOption, "'", ")", "(");
             this->_logicOptions.push_back(logicOption);
         }
     }
@@ -75,7 +75,7 @@ namespace tphdr::seedgen::settings
 
     int SettingInfo::GetIndexOfOption(const std::string& option) const
     {
-        return tphdr::utility::container::GetIndex(this->_options, option);
+        return randomizer::utility::container::GetIndex(this->_options, option);
     }
 
     std::string SettingInfo::GetRandomOption() const
@@ -120,7 +120,7 @@ namespace tphdr::seedgen::settings
         {
             this->_isUsingRandomOption = true;
             auto randomOption =
-                tphdr::utility::random::Random(this->GetInfo()->GetRandomLow(), this->GetInfo()->GetRandomHigh());
+                randomizer::utility::random::Random(this->GetInfo()->GetRandomLow(), this->GetInfo()->GetRandomHigh());
             this->SetCurrentOption(randomOption);
             LOG_TO_DEBUG("Chose \"" + this->GetInfo()->GetOptions()[randomOption] + " as random option for setting \"" +
                          this->GetInfo()->GetName());
@@ -233,10 +233,10 @@ namespace tphdr::seedgen::settings
                     const auto& description = optionNode.second.as<std::string>();
 
                     // If we're specifying a range, then include all numbers in the range
-                    if (tphdr::utility::str::Contains(option, "-"))
+                    if (randomizer::utility::str::Contains(option, "-"))
                     {
                         // Fill in all the options between the lower and upper bounds
-                        auto ops = tphdr::utility::str::Split(option, '-');
+                        auto ops = randomizer::utility::str::Split(option, '-');
                         int lowerBound = std::stoi(ops[0]);
                         int upperBound = std::stoi(ops[1]);
                         for (auto i = lowerBound; i <= upperBound; i++)
@@ -254,7 +254,7 @@ namespace tphdr::seedgen::settings
             }
 
             // Calculate default option index
-            auto defaultOptionIndex = tphdr::utility::container::GetIndex(options, defaultOption);
+            auto defaultOptionIndex = randomizer::utility::container::GetIndex(options, defaultOption);
             if (defaultOptionIndex == -1)
             {
                 throw std::runtime_error(std::string("Default Option \"") + defaultOption + "\" is not defined for setting \"" +
@@ -280,7 +280,7 @@ namespace tphdr::seedgen::settings
             if (settingNode["Random Low"])
             {
                 auto randomLowStr = settingNode["Random Low"].as<std::string>();
-                randomLow = tphdr::utility::container::GetIndex(options, randomLowStr);
+                randomLow = randomizer::utility::container::GetIndex(options, randomLowStr);
                 if (randomLow == -1)
                 {
                     throw std::runtime_error(std::string("Random Low Option \"") + randomLowStr +
@@ -290,7 +290,7 @@ namespace tphdr::seedgen::settings
             if (settingNode["Random high"])
             {
                 auto randomHighStr = settingNode["Random High"].as<std::string>();
-                randomHigh = tphdr::utility::container::GetIndex(options, randomHighStr);
+                randomHigh = randomizer::utility::container::GetIndex(options, randomHighStr);
                 if (randomHigh == -1)
                 {
                     throw std::runtime_error(std::string("Random High Option \"") + randomHighStr +
@@ -299,13 +299,13 @@ namespace tphdr::seedgen::settings
             }
 
             // Generate the random option if it's not already there
-            if (hasRandomOption && tphdr::utility::container::GetIndex(options, randomAlias) != -1)
+            if (hasRandomOption && randomizer::utility::container::GetIndex(options, randomAlias) != -1)
             {
                 options.push_back(randomAlias);
                 descriptions.push_back("A random option will be chosen");
             }
 
-            int randomOptionIndex = tphdr::utility::container::GetIndex(options, randomAlias);
+            int randomOptionIndex = randomizer::utility::container::GetIndex(options, randomAlias);
 
             // Insert the data for the setting
             auto info = std::make_unique<SettingInfo>(settingIdCounter++,
@@ -325,4 +325,4 @@ namespace tphdr::seedgen::settings
         return std::move(settingInfoMap);
     }
 
-}; // namespace tphdr::seedgen::settings
+}; // namespace randomizer::seedgen::settings

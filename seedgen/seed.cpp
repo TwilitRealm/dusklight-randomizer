@@ -5,7 +5,7 @@
 #include <vector>
 #include <string>
 
-namespace tphdr::seedgen::seed
+namespace randomizer::seedgen::seed
 {
     static const std::vector<std::string> nouns = {
         "Aeralfos",  "Agitha",    "Ant",        "Argorok",    "Armos",      "Ashei",      "Auru",     "BackSlice", "Bari",
@@ -104,10 +104,10 @@ namespace tphdr::seedgen::seed
     std::string GenerateHash()
     {
         std::string noun1, noun2, noun3;
-        noun1 = tphdr::utility::random::RandomElement(nouns);
-        noun2 = tphdr::utility::random::RandomElement(nouns);
-        noun3 = tphdr::utility::random::RandomElement(nouns);
+        noun1 = randomizer::utility::random::RandomElement(nouns);
+        noun2 = randomizer::utility::random::RandomElement(nouns);
+        noun3 = randomizer::utility::random::RandomElement(nouns);
 
         return noun1 + " " + noun2 + " " + noun3;
     }
-} // namespace tphdr::seedgen::seed
+} // namespace randomizer::seedgen::seed

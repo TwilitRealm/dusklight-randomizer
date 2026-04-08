@@ -10,7 +10,7 @@
 // removes any possible path -> string oddities or the need to open the file manually
 inline YAML::Node LoadYAML(const fspath& path, const bool& resourceFile = false) {
     std::string file;
-    if (tphdr::utility::file::GetContents(path, file, resourceFile) != 0) {
+    if (randomizer::utility::file::GetContents(path, file, resourceFile) != 0) {
         throw YAML::BadFile(
             path.string());  // exception is bad (unhandled) but it matches the old behavior
     }

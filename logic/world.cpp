@@ -15,7 +15,7 @@
 #include <unordered_set>
 #include <filesystem>
 
-namespace tphdr::logic::world
+namespace randomizer::logic::world
 {
     int World::_eventIdCounter = 0;
 
@@ -28,11 +28,11 @@ namespace tphdr::logic::world
     {
         return this->_id;
     }
-    void World::SetSettings(const tphdr::seedgen::settings::Settings& settings)
+    void World::SetSettings(const randomizer::seedgen::settings::Settings& settings)
     {
         _settings = settings;
     }
-    const tphdr::seedgen::settings::Settings& World::GetSettings() const
+    const randomizer::seedgen::settings::Settings& World::GetSettings() const
     {
         return this->_settings;
     }
@@ -74,7 +74,7 @@ namespace tphdr::logic::world
 
     void World::Build()
     {
-        tphdr::utility::platform::Log(std::string("Building World ") + std::to_string(this->GetID()));
+        randomizer::utility::platform::Log(std::string("Building World ") + std::to_string(this->GetID()));
         this->BuildItemTable();
         this->BuildLocationTable();
         this->LoadLogicMacros();
@@ -88,7 +88,7 @@ namespace tphdr::logic::world
         LOG_TO_DEBUG("Building Item Table for World " + std::to_string(this->GetID()));
         // Check if we can open the file before parsing
         auto filepath = DATA_PATH "items.yaml";
-        tphdr::utility::file::Verify(filepath);
+        randomizer::utility::file::Verify(filepath);
 
         auto itemDataTree = LoadYAML(filepath);
         // Process all nodes of the yaml file. Each node contains one item
@@ -101,8 +101,8 @@ namespace tphdr::logic::world
             auto id = itemNode["Id"].as<int>();
             auto name = itemNode["Name"].as<std::string>();
             auto importanceStr = itemNode["Importance"].as<std::string>();
-            auto importance = tphdr::logic::item::ImportanceFromStr(importanceStr);
-            if (importance == tphdr::logic::item::Importance::INVALID)
+            auto importance = randomizer::logic::item::ImportanceFromStr(importanceStr);
+            if (importance == randomizer::logic::item::Importance::INVALID)
             {
                 throw std::runtime_error(std::string("Unknown importance \"") + importanceStr + "\" from item node:\n" +
                                          YAML::Dump(itemNode));
@@ -118,7 +118,7 @@ namespace tphdr::logic::world
             auto dungeonMap = itemNode["Dungeon Map"].as<std::string>("");
 
             // Make the item and insert it into the item table
-            auto item = std::make_unique<tphdr::logic::item::Item>(id,
+            auto item = std::make_unique<randomizer::logic::item::Item>(id,
                                                                    name,
                                                                    this,
                                                                    importance,
@@ -156,7 +156,7 @@ namespace tphdr::logic::world
         LOG_TO_DEBUG("Building Location Table for World " + std::to_string(this->GetID()));
         // check if we can open the file before parsing because exceptions won't work on console
         auto filepath = DATA_PATH "locations.yaml";
-        tphdr::utility::file::Verify(filepath);
+        randomizer::utility::file::Verify(filepath);
 
         auto locationDataTree = LoadYAML(filepath);
         // Process all nodes of the yaml file. Each node contains one location
@@ -196,7 +196,7 @@ namespace tphdr::logic::world
             auto goalLocation = locationNode["Goal Location"].as<bool>(false);
             auto hintPriority = locationNode["Hint Priority"].as<std::string>("Never");
 
-            auto location = std::make_unique<tphdr::logic::location::Location>(locationIdCounter++,
+            auto location = std::make_unique<randomizer::logic::location::Location>(locationIdCounter++,
                                                                                name,
                                                                                categories,
                                                                                this,
@@ -218,7 +218,7 @@ namespace tphdr::logic::world
         LOG_TO_DEBUG("Loading Macros for World " + std::to_string(this->GetID()));
         // check if we can open the file before parsing
         auto filepath = DATA_PATH "macros.yaml";
-        tphdr::utility::file::Verify(filepath);
+        randomizer::utility::file::Verify(filepath);
 
         auto macrosDataTree = LoadYAML(filepath);
 
@@ -230,7 +230,7 @@ namespace tphdr::logic::world
             auto macroReqStr = macroNode.second.as<std::string>();
 
             // Process the macro
-            this->_macros[macroIdCounter] = tphdr::logic::requirement::ParseRequirementString(macroReqStr,
+            this->_macros[macroIdCounter] = randomizer::logic::requirement::ParseRequirementString(macroReqStr,
                                                                                               this,
                                                                                               /*forceLogic = */ true);
 
@@ -273,7 +273,7 @@ namespace tphdr::logic::world
         for (const auto& file : files)
         {
             auto filepath = folder + file;
-            tphdr::utility::file::Verify(filepath);
+            randomizer::utility::file::Verify(filepath);
 
             auto worldDataTree = LoadYAML(filepath);
             for (const auto& areaNode : worldDataTree)
@@ -379,19 +379,19 @@ namespace tphdr::logic::world
                 }
 
                 // Lists of events, locations, and exits that we pass along to the area object
-                std::list<std::unique_ptr<tphdr::logic::area::EventAccess>> events = {};
-                std::list<std::unique_ptr<tphdr::logic::area::LocationAccess>> locations = {};
-                std::list<std::unique_ptr<tphdr::logic::entrance::Entrance>> exits = {};
+                std::list<std::unique_ptr<randomizer::logic::area::EventAccess>> events = {};
+                std::list<std::unique_ptr<randomizer::logic::area::LocationAccess>> locations = {};
+                std::list<std::unique_ptr<randomizer::logic::entrance::Entrance>> exits = {};
 
                 // Process events
                 for (const auto& [eventName, eventReqStr] : eventNodes)
                 {
                     // Parse the requirement string
-                    auto eventReq = tphdr::logic::requirement::ParseRequirementString(eventReqStr, this);
+                    auto eventReq = randomizer::logic::requirement::ParseRequirementString(eventReqStr, this);
 
                     // Create the EventAccess wrapper and put it into the list of events for this area
                     auto eventIndex = this->GetEventIndex(eventName);
-                    auto event = std::make_unique<tphdr::logic::area::EventAccess>(eventReq, area, eventIndex);
+                    auto event = std::make_unique<randomizer::logic::area::EventAccess>(eventReq, area, eventIndex);
                     events.emplace_back(std::move(event));
                     definedEvents.emplace(eventIndex);
                 }
@@ -422,11 +422,11 @@ namespace tphdr::logic::world
                         }
 
                         // Parse the requirement string
-                        auto locationReq = tphdr::logic::requirement::ParseRequirementString(locationReqStr, this);
+                        auto locationReq = randomizer::logic::requirement::ParseRequirementString(locationReqStr, this);
 
                         // Create the LocationAccess wrapper and put it into the list of locations for this area
 
-                        auto locationAccess = std::make_unique<tphdr::logic::area::LocationAccess>(location, locationReq, area);
+                        auto locationAccess = std::make_unique<randomizer::logic::area::LocationAccess>(location, locationReq, area);
                         locations.emplace_back(std::move(locationAccess));
 
                         // Also add this LocationAccess to the locations list of access points
@@ -445,11 +445,11 @@ namespace tphdr::logic::world
                         auto connectedArea = this->GetArea(connectedAreaName, /*createIfNotFound = */ true);
 
                         // Parse the requirement string
-                        auto entranceReq = tphdr::logic::requirement::ParseRequirementString(entranceReqStr, this);
+                        auto entranceReq = randomizer::logic::requirement::ParseRequirementString(entranceReqStr, this);
 
                         // Create the Entrance object and put it into the list of exits for this area
                         auto entrance =
-                            std::make_unique<tphdr::logic::entrance::Entrance>(area, connectedArea, entranceReq, this);
+                            std::make_unique<randomizer::logic::entrance::Entrance>(area, connectedArea, entranceReq, this);
                         exits.emplace_back(std::move(entrance));
                     }
                 }
@@ -491,8 +491,8 @@ namespace tphdr::logic::world
     void World::GenerateItemPools()
     {
         LOG_TO_DEBUG("Now building item pools");
-        tphdr::logic::item_pool::GenerateItemPool(this);
-        tphdr::logic::item_pool::GenerateStartingItemPool(this);
+        randomizer::logic::item_pool::GenerateItemPool(this);
+        randomizer::logic::item_pool::GenerateStartingItemPool(this);
 
         LOG_TO_DEBUG("Item Pool for world " + std::to_string(this->GetID()) + ":");
         for (const auto& item : this->_itemPool)
@@ -527,7 +527,7 @@ namespace tphdr::logic::world
             // Vanilla Small Keys
             if ((this->Setting("Small Keys") == "Vanilla" &&
                  (originalItem->IsDungeonSmallKey() ||
-                  tphdr::utility::str::Contains(originalItemName, "Ordon Pumpkin", "Ordon Cheese"))) ||
+                  randomizer::utility::str::Contains(originalItemName, "Ordon Pumpkin", "Ordon Cheese"))) ||
                 // Vanilla Big Keys
                 (this->Setting("Big Keys") == "Vanilla" && originalItem->IsBigKey()) ||
                 // Vanilla Maps and Compasses
@@ -551,7 +551,7 @@ namespace tphdr::logic::world
                 // North Faron Woods Gate Key
                 (this->Setting("Skip Prologue") == "Off" && locationName == "Faron Mist Cave Open Chest") ||
                 // Some locations which will always be vanilla for the time being
-                (tphdr::utility::str::Contains(locationName,
+                (randomizer::utility::str::Contains(locationName,
                                                "Renados Letter",
                                                "Telma Invoice",
                                                "Wooden Statue",
@@ -577,7 +577,7 @@ namespace tphdr::logic::world
 
                 location->SetCurrentItem(originalItem);
                 location->SetKnownVanillaItem(true);
-                tphdr::utility::container::Erase(this->_itemPool, originalItem);
+                randomizer::utility::container::Erase(this->_itemPool, originalItem);
             }
         }
     }
@@ -593,7 +593,7 @@ namespace tphdr::logic::world
                                          "\" already exists there.");
             }
             location->SetCurrentItem(item);
-            tphdr::utility::container::Erase(this->_itemPool, item);
+            randomizer::utility::container::Erase(this->_itemPool, item);
         }
     }
 
@@ -628,7 +628,7 @@ namespace tphdr::logic::world
                  location->HasCategories("Sky Book")) ||
                 // We're starting with a shop item, but shop items aren't randomized
                 (this->Setting("Shop Items") == "Off" && location->HasCategories("Shop") &&
-                 tphdr::utility::container::ElementInContainer(this->_startingItemPool, originalItem)))
+                 randomizer::utility::container::ElementInContainer(this->_startingItemPool, originalItem)))
             {
                 location->RemoveCurrentItem();
                 location->SetKnownVanillaItem(false);
@@ -674,7 +674,7 @@ namespace tphdr::logic::world
 
     void World::AssignGoalLocations()
     {
-        std::unordered_map<std::string, tphdr::logic::location::LocationPool> dungeonGoalLocations = {};
+        std::unordered_map<std::string, randomizer::logic::location::LocationPool> dungeonGoalLocations = {};
         for (const auto& [dungeonName, dungeon] : this->_dungeons)
         {
             dungeonGoalLocations[dungeonName] = {};
@@ -706,7 +706,7 @@ namespace tphdr::logic::world
             // assigned a goal location. Dungeons without a goal location cannot be chosen as required dungeons.
             if (!possibleGoalLocations.empty())
             {
-                dungeon->SetGoalLocation(tphdr::utility::random::RandomElement(possibleGoalLocations));
+                dungeon->SetGoalLocation(randomizer::utility::random::RandomElement(possibleGoalLocations));
             }
             else
             {
@@ -722,16 +722,16 @@ namespace tphdr::logic::world
         {
             // Gather all boss locations (heart container and dungeon reward checks)
             auto bossLocations = this->GetAllLocations();
-            tphdr::utility::container::FilterAndEraseFromVector(
+            randomizer::utility::container::FilterAndEraseFromVector(
                 bossLocations,
                 [](const auto& location)
-                { return !tphdr::utility::str::Contains(location->GetName(), "Heart Container", "Dungeon Reward"); });
+                { return !randomizer::utility::str::Contains(location->GetName(), "Heart Container", "Dungeon Reward"); });
 
             // Gather all small key items
-            tphdr::logic::item_pool::ItemPool smallKeys = {};
+            randomizer::logic::item_pool::ItemPool smallKeys = {};
             for (const auto& [itemName, item] : this->_itemTable)
             {
-                if (item->IsDungeonSmallKey() || tphdr::utility::general::IsAnyOf(itemName,
+                if (item->IsDungeonSmallKey() || randomizer::utility::general::IsAnyOf(itemName,
                                                                                   "Ordon Pumpkin",
                                                                                   "Ordon Cheese",
                                                                                   "North Faron Woods Gate Key",
@@ -773,8 +773,8 @@ namespace tphdr::logic::world
 
             // Check if the game is beatable, set dungeon as required if so. If the dungeon is not required and barren
             // unrequired dungeons is on, then set all the locations in the unrequired dungeon as nonprogress.
-            auto completeItemPool = tphdr::logic::item_pool::GetCompleteItemPool(*(this->_worlds));
-            if (!tphdr::logic::search::GameBeatable(this->_worlds, completeItemPool))
+            auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(*(this->_worlds));
+            if (!randomizer::logic::search::GameBeatable(this->_worlds, completeItemPool))
             {
                 dungeon->SetRequired(true);
             }
@@ -796,7 +796,7 @@ namespace tphdr::logic::world
 
     void World::SanitizeItemPool()
     {
-        auto junkPool = tphdr::logic::item_pool::GetInitialJunkPool();
+        auto junkPool = randomizer::logic::item_pool::GetInitialJunkPool();
 
         // Depending on the Trap item Frequency setting, add some amount of ice traps to the pool
         if (this->Setting("Trap Item Frequency") == "Few")
@@ -818,7 +818,7 @@ namespace tphdr::logic::world
         }
 
         // Create an actual item pool from the junk items
-        tphdr::logic::item_pool::ItemPool mainJunkPool = {};
+        randomizer::logic::item_pool::ItemPool mainJunkPool = {};
         for (const auto& [itemName, count] : junkPool)
         {
             auto item = this->GetItem(itemName);
@@ -840,14 +840,14 @@ namespace tphdr::logic::world
         // Add items until the pool's size matches the number of empty locations
         while (this->_itemPool.size() < numEmptyLocations)
         {
-            tphdr::logic::item::Item* randomJunkItem;
+            randomizer::logic::item::Item* randomJunkItem;
             if (!mainJunkPool.empty())
             {
-                randomJunkItem = tphdr::utility::random::PopRandomElement(mainJunkPool);
+                randomJunkItem = randomizer::utility::random::PopRandomElement(mainJunkPool);
             }
             else
             {
-                randomJunkItem = tphdr::utility::random::RandomElement(mainJunkPoolCopy);
+                randomJunkItem = randomizer::utility::random::RandomElement(mainJunkPoolCopy);
             }
             this->_itemPool.emplace_back(randomJunkItem);
             LOG_TO_DEBUG("Added junk item \"" + randomJunkItem->GetName() + "\" to item pool for world " +
@@ -855,11 +855,11 @@ namespace tphdr::logic::world
         }
     }
 
-    void World::SetSearchStartingProperties(tphdr::logic::search::Search* search) const
+    void World::SetSearchStartingProperties(randomizer::logic::search::Search* search) const
     {
         // Set the root area to have all player forms and times of day (necessary for entrance rando validation)
         auto root = this->GetRootArea();
-        search->_areaFormTime[root] = tphdr::logic::requirement::FormTime::ALL;
+        search->_areaFormTime[root] = randomizer::logic::requirement::FormTime::ALL;
     }
 
     void World::PerformPostFillTasks()
@@ -874,7 +874,7 @@ namespace tphdr::logic::world
         auto bottleWithHalfMilk = this->GetItem("Bottle with Half Milk");
         auto bottleWithLanternOil = this->GetItem("Bottle with Lantern Oil");
         auto emptyBottle = this->GetItem("Empty Bottle");
-        tphdr::logic::item_pool::ItemPool bottlePool = {bottleWithGreatFairiesTears,
+        randomizer::logic::item_pool::ItemPool bottlePool = {bottleWithGreatFairiesTears,
                                                         bottleWithHalfMilk,
                                                         bottleWithLanternOil,
                                                         emptyBottle};
@@ -895,7 +895,7 @@ namespace tphdr::logic::world
         else
         {
             // Gather the bottle locations
-            tphdr::logic::location::LocationPool bottleLocations = {};
+            randomizer::logic::location::LocationPool bottleLocations = {};
             for (auto& [locationName, location] : this->_locationTable)
             {
                 auto originalItem = location->GetCurrentItem();
@@ -906,15 +906,15 @@ namespace tphdr::logic::world
             }
 
             // Place the new bottle items
-            tphdr::utility::random::ShufflePool(bottleLocations);
+            randomizer::utility::random::ShufflePool(bottleLocations);
             for (auto& bottleLocation : bottleLocations)
             {
-                bottleLocation->SetCurrentItem(tphdr::utility::random::PopRandomElement(bottlePool));
+                bottleLocation->SetCurrentItem(randomizer::utility::random::PopRandomElement(bottlePool));
             }
         }
     }
 
-    void World::AddPlandomizedLocation(tphdr::logic::location::Location* location, tphdr::logic::item::Item* item)
+    void World::AddPlandomizedLocation(randomizer::logic::location::Location* location, randomizer::logic::item::Item* item)
     {
         if (this->_plandomizerLocations.contains(location))
         {
@@ -924,7 +924,7 @@ namespace tphdr::logic::world
         this->_plandomizerLocations[location] = item;
     }
 
-    void World::AddPlandomizedEntrance(tphdr::logic::entrance::Entrance* entrance, tphdr::logic::entrance::Entrance* target)
+    void World::AddPlandomizedEntrance(randomizer::logic::entrance::Entrance* entrance, randomizer::logic::entrance::Entrance* target)
     {
         for (const auto& [plandoEntrance, plandoTarget] : this->_plandomizerEntrances)
         {
@@ -942,31 +942,31 @@ namespace tphdr::logic::world
         this->_plandomizerEntrances[entrance] = target;
     }
 
-    std::unordered_map<tphdr::logic::entrance::Entrance*, tphdr::logic::entrance::Entrance*> World::GetPlandomizerEntrances()
+    std::unordered_map<randomizer::logic::entrance::Entrance*, randomizer::logic::entrance::Entrance*> World::GetPlandomizerEntrances()
     {
         return this->_plandomizerEntrances;
     }
 
-    tphdr::logic::dungeon::Dungeon* World::GetDungeon(const std::string& name)
+    randomizer::logic::dungeon::Dungeon* World::GetDungeon(const std::string& name)
     {
         if (!this->_dungeons.contains(name))
         {
-            this->_dungeons.emplace(name, std::make_unique<tphdr::logic::dungeon::Dungeon>(name, this));
+            this->_dungeons.emplace(name, std::make_unique<randomizer::logic::dungeon::Dungeon>(name, this));
             LOG_TO_DEBUG("Added new dungeon \"" + name + "\" to world " + std::to_string(this->_id));
         }
         return this->_dungeons.at(name).get();
     }
 
-    const std::map<std::string, std::unique_ptr<tphdr::logic::dungeon::Dungeon>>& World::GetDungeonTable() const
+    const std::map<std::string, std::unique_ptr<randomizer::logic::dungeon::Dungeon>>& World::GetDungeonTable() const
     {
         return this->_dungeons;
     }
 
-    tphdr::logic::item::Item* World::GetItem(const std::string& name, const bool& ignoreError /*= false*/)
+    randomizer::logic::item::Item* World::GetItem(const std::string& name, const bool& ignoreError /*= false*/)
     {
         if (name == "Nothing")
         {
-            return tphdr::logic::item::Nothing.get();
+            return randomizer::logic::item::Nothing.get();
         }
 
         if (!this->_itemTable.contains(name))
@@ -980,27 +980,27 @@ namespace tphdr::logic::world
         return this->_itemTable.at(name).get();
     }
 
-    tphdr::logic::item::Item* World::GetGameWinningItem() const
+    randomizer::logic::item::Item* World::GetGameWinningItem() const
     {
         return this->_itemTable.at("Game Beatable").get();
     }
 
-    tphdr::logic::item::Item* World::GetShadowCrystal()
+    randomizer::logic::item::Item* World::GetShadowCrystal()
     {
         return this->_itemTable.at("Shadow Crystal").get();
     }
 
-    tphdr::logic::item_pool::ItemPool& World::GetItemPool()
+    randomizer::logic::item_pool::ItemPool& World::GetItemPool()
     {
         return this->_itemPool;
     }
 
-    tphdr::logic::item_pool::ItemPool& World::GetStartingItemPool()
+    randomizer::logic::item_pool::ItemPool& World::GetStartingItemPool()
     {
         return this->_startingItemPool;
     }
 
-    tphdr::logic::location::Location* World::GetLocation(const std::string& name)
+    randomizer::logic::location::Location* World::GetLocation(const std::string& name)
     {
         if (!this->_locationTable.contains(name))
         {
@@ -1009,9 +1009,9 @@ namespace tphdr::logic::world
         return this->_locationTable.at(name).get();
     }
 
-    tphdr::logic::location::LocationPool World::GetAllLocations(const bool& includeNonItemLocations /* = false */)
+    randomizer::logic::location::LocationPool World::GetAllLocations(const bool& includeNonItemLocations /* = false */)
     {
-        tphdr::logic::location::LocationPool locationPool = {};
+        randomizer::logic::location::LocationPool locationPool = {};
         for (const auto& [locationName, location] : this->_locationTable)
         {
             if (includeNonItemLocations || !location->HasCategories("Non-Item Location"))
@@ -1022,13 +1022,13 @@ namespace tphdr::logic::world
         return locationPool;
     }
 
-    tphdr::logic::area::Area* World::GetArea(const std::string& name, const bool& createIfNotFound /* = false */)
+    randomizer::logic::area::Area* World::GetArea(const std::string& name, const bool& createIfNotFound /* = false */)
     {
         if (!this->_areaTable.contains(name))
         {
             if (createIfNotFound)
             {
-                this->_areaTable.emplace(name, std::make_unique<tphdr::logic::area::Area>(name, this));
+                this->_areaTable.emplace(name, std::make_unique<randomizer::logic::area::Area>(name, this));
             }
             else
             {
@@ -1038,19 +1038,19 @@ namespace tphdr::logic::world
         return this->_areaTable.at(name).get();
     }
 
-    tphdr::logic::area::Area* World::GetRootArea() const
+    randomizer::logic::area::Area* World::GetRootArea() const
     {
         return this->_areaTable.at("Root").get();
     }
 
-    const std::map<std::string, std::unique_ptr<tphdr::logic::area::Area>>& World::GetAreaTable() const
+    const std::map<std::string, std::unique_ptr<randomizer::logic::area::Area>>& World::GetAreaTable() const
     {
         return this->_areaTable;
     }
 
-    tphdr::logic::entrance::Entrance* World::GetEntrance(const std::string& originalName)
+    randomizer::logic::entrance::Entrance* World::GetEntrance(const std::string& originalName)
     {
-        auto [parentAreaName, connectedAreaName] = tphdr::logic::entrance::GetParentAndConnectedAreaNames(originalName);
+        auto [parentAreaName, connectedAreaName] = randomizer::logic::entrance::GetParentAndConnectedAreaNames(originalName);
         auto parentArea = this->GetArea(parentAreaName);
         auto connectedArea = this->GetArea(connectedAreaName);
         for (const auto& exit : parentArea->GetExits())
@@ -1069,16 +1069,16 @@ namespace tphdr::logic::world
         return this->_entranceIdCounter++;
     }
 
-    tphdr::logic::entrance::EntrancePool World::GetShuffleableEntrances(const tphdr::logic::entrance::Type& type,
+    randomizer::logic::entrance::EntrancePool World::GetShuffleableEntrances(const randomizer::logic::entrance::Type& type,
                                                                         const bool& onlyPrimary /* = false */)
     {
-        tphdr::logic::entrance::EntrancePool shuffleableEntrances = {};
+        randomizer::logic::entrance::EntrancePool shuffleableEntrances = {};
         for (const auto& [areaName, area] : this->GetAreaTable())
         {
             for (const auto& exit : area->GetExits())
             {
-                if ((type == exit->GetType() || type == tphdr::logic::entrance::Type::ALL) &&
-                    (!onlyPrimary || exit->IsPrimary()) && exit->GetType() != tphdr::logic::entrance::Type::INVALID)
+                if ((type == exit->GetType() || type == randomizer::logic::entrance::Type::ALL) &&
+                    (!onlyPrimary || exit->IsPrimary()) && exit->GetType() != randomizer::logic::entrance::Type::INVALID)
                 {
                     shuffleableEntrances.push_back(exit);
                 }
@@ -1087,19 +1087,19 @@ namespace tphdr::logic::world
         return shuffleableEntrances;
     }
 
-    tphdr::logic::entrance::EntrancePool World::GetShuffledEntrances(
-        const tphdr::logic::entrance::Type& type /* = tphdr::logic::entrance::Type::ALL */,
+    randomizer::logic::entrance::EntrancePool World::GetShuffledEntrances(
+        const randomizer::logic::entrance::Type& type /* = randomizer::logic::entrance::Type::ALL */,
         const bool& onlyPrimary /* = false */)
     {
         auto entrances = this->GetShuffleableEntrances(type, onlyPrimary);
 
         // Remove any entrances which aren't shuffled
-        tphdr::utility::container::FilterAndEraseFromVector(entrances, [](const auto& e) { return !e->IsShuffled(); });
+        randomizer::utility::container::FilterAndEraseFromVector(entrances, [](const auto& e) { return !e->IsShuffled(); });
 
         return entrances;
     }
 
-    std::unordered_map<tphdr::logic::entrance::Entrance*, int>& World::GetExitTimeFormCache()
+    std::unordered_map<randomizer::logic::entrance::Entrance*, int>& World::GetExitTimeFormCache()
     {
         return this->_exitTimeFormCache;
     }
@@ -1113,7 +1113,7 @@ namespace tphdr::logic::world
         return -1;
     }
 
-    const tphdr::logic::requirement::Requirement& World::GetMacro(const int& macroIndex)
+    const randomizer::logic::requirement::Requirement& World::GetMacro(const int& macroIndex)
     {
         return this->_macros.at(macroIndex);
     }
@@ -1141,7 +1141,7 @@ namespace tphdr::logic::world
         return this->_eventNames.at(eventIndex);
     }
 
-    tphdr::seedgen::settings::Setting& World::Setting(const std::string& settingName)
+    randomizer::seedgen::settings::Setting& World::Setting(const std::string& settingName)
     {
         auto& settings = this->_settings;
         // Check to make sure the setting exists
@@ -1152,23 +1152,23 @@ namespace tphdr::logic::world
         return settings.GetMap().at(settingName);
     }
 
-    void World::SetPlaythroughSpheres(const std::list<std::list<tphdr::logic::location::Location*>>& playthroughSpheres)
+    void World::SetPlaythroughSpheres(const std::list<std::list<randomizer::logic::location::Location*>>& playthroughSpheres)
     {
         this->_playthroughSpheres = playthroughSpheres;
     }
 
-    std::list<std::list<tphdr::logic::location::Location*>> World::GetPlaythroughSpheres() const
+    std::list<std::list<randomizer::logic::location::Location*>> World::GetPlaythroughSpheres() const
     {
         return this->_playthroughSpheres;
     }
 
-    void World::SetEntranceSpheres(const std::list<std::list<tphdr::logic::entrance::Entrance*>>& entranceSpheres)
+    void World::SetEntranceSpheres(const std::list<std::list<randomizer::logic::entrance::Entrance*>>& entranceSpheres)
     {
         this->_entranceSpheres = entranceSpheres;
     }
 
-    std::list<std::list<tphdr::logic::entrance::Entrance*>> World::GetEntranceSpheres() const
+    std::list<std::list<randomizer::logic::entrance::Entrance*>> World::GetEntranceSpheres() const
     {
         return this->_entranceSpheres;
     }
-} // namespace tphdr::logic::world
+} // namespace randomizer::logic::world

@@ -9,9 +9,9 @@
 #include <iostream>
 #include <algorithm>
 
-namespace tphdr::logic::fill
+namespace randomizer::logic::fill
 {
-    void FillWorlds(tphdr::logic::world::WorldPool& worlds)
+    void FillWorlds(randomizer::logic::world::WorldPool& worlds)
     {
         // Place each world's restricted items first
         for (auto& world : worlds)
@@ -19,8 +19,8 @@ namespace tphdr::logic::fill
             PlaceRestrictedItems(world, worlds);
         }
 
-        tphdr::logic::item_pool::ItemPool itemPool = {};
-        tphdr::logic::location::LocationPool locationPool = {};
+        randomizer::logic::item_pool::ItemPool itemPool = {};
+        randomizer::logic::location::LocationPool locationPool = {};
 
         // Combine all worlds' item pools and location pools
         for (const auto& world : worlds)
@@ -37,15 +37,15 @@ namespace tphdr::logic::fill
 
         // Place remaining major items in progress locations
         auto majorItems =
-            tphdr::utility::container::FilterAndEraseFromVector(itemPool, [](const auto& item) { return item->IsMajor(); });
+            randomizer::utility::container::FilterAndEraseFromVector(itemPool, [](const auto& item) { return item->IsMajor(); });
         auto progressLocations =
-            tphdr::utility::container::FilterFromVector(locationPool,
+            randomizer::utility::container::FilterFromVector(locationPool,
                                                         [](const auto& location) { return location->IsProgression(); });
         AssumedFill(worlds, majorItems, itemPool, progressLocations);
 
         // Place Minor items in progression locations if possible
         auto minorItems =
-            tphdr::utility::container::FilterAndEraseFromVector(itemPool, [](const auto& item) { return item->IsMinor(); });
+            randomizer::utility::container::FilterAndEraseFromVector(itemPool, [](const auto& item) { return item->IsMinor(); });
         FastFill(minorItems, progressLocations);
 
         // If there are still minor items left, add them back to the main item pool
@@ -58,17 +58,17 @@ namespace tphdr::logic::fill
         FastFill(itemPool, locationPool);
 
         // Verify that all logic is satisfied
-        auto verifyLogicError = tphdr::logic::search::VerifyLogic(&worlds);
+        auto verifyLogicError = randomizer::logic::search::VerifyLogic(&worlds);
         if (verifyLogicError.has_value())
         {
             throw std::runtime_error("Not all logic satisfied! Reason:\n" + verifyLogicError.value());
         }
     }
 
-    void AssumedFill(tphdr::logic::world::WorldPool& worlds,
-                     tphdr::logic::item_pool::ItemPool& itemsToPlacePool,
-                     const tphdr::logic::item_pool::ItemPool& itemsNotYetPlaced,
-                     tphdr::logic::location::LocationPool allowedLocations,
+    void AssumedFill(randomizer::logic::world::WorldPool& worlds,
+                     randomizer::logic::item_pool::ItemPool& itemsToPlacePool,
+                     const randomizer::logic::item_pool::ItemPool& itemsNotYetPlaced,
+                     randomizer::logic::location::LocationPool allowedLocations,
                      const int& worldToFill /* = -1 */)
     {
         // Assumed Fill may sometimes place items in such a way that accidentally locks out being able to place specific items
@@ -99,9 +99,9 @@ namespace tphdr::logic::fill
             retries -= 1;
             unsuccessfulPlacement = false;
 
-            tphdr::utility::random::ShufflePool(itemsToPlacePool);
+            randomizer::utility::random::ShufflePool(itemsToPlacePool);
             auto itemsToPlace = itemsToPlacePool;
-            tphdr::logic::location::LocationPool rollbacks = {};
+            randomizer::logic::location::LocationPool rollbacks = {};
 
             while (!itemsToPlace.empty())
             {
@@ -109,13 +109,13 @@ namespace tphdr::logic::fill
                 auto itemToPlace = itemsToPlace.back();
                 itemsToPlace.pop_back();
 
-                tphdr::utility::random::ShufflePool(allowedLocations);
-                tphdr::logic::location::Location* spotToFill = nullptr;
+                randomizer::utility::random::ShufflePool(allowedLocations);
+                randomizer::logic::location::Location* spotToFill = nullptr;
 
                 // Assume we have all the items which haven't been played yet, except the one we're about to place
                 auto assumedItems = itemsNotYetPlaced;
                 assumedItems.insert(assumedItems.end(), itemsToPlace.begin(), itemsToPlace.end());
-                auto search = tphdr::logic::search::Search::Accessible(&worlds, assumedItems, worldToFill);
+                auto search = randomizer::logic::search::Search::Accessible(&worlds, assumedItems, worldToFill);
                 search.SearchWorlds();
                 // search.DumpWorldGraph();
                 // return 1;
@@ -130,7 +130,7 @@ namespace tphdr::logic::fill
                 for (const auto& location : allowedLocations)
                 {
                     // Get all reachable LocationAccess spots for this location
-                    std::list<tphdr::logic::area::LocationAccess*> locAccList;
+                    std::list<randomizer::logic::area::LocationAccess*> locAccList;
                     for (const auto& locAcc : location->GetAccessList())
                     {
                         if (canChooseAnyLocation || search._visitedAreas.contains(locAcc->GetArea()))
@@ -152,8 +152,8 @@ namespace tphdr::logic::fill
                                     [&](const auto& la)
                                     {
                                         return canChooseAnyLocation ||
-                                               tphdr::logic::requirement::EvaluateLocationRequirement(&search, la) ==
-                                                   tphdr::logic::requirement::EvalSuccess::COMPLETE;
+                                               randomizer::logic::requirement::EvaluateLocationRequirement(&search, la) ==
+                                                   randomizer::logic::requirement::EvalSuccess::COMPLETE;
                                     }))
                     {
                         spotToFill = location;
@@ -188,10 +188,10 @@ namespace tphdr::logic::fill
         }
     }
 
-    void FastFill(tphdr::logic::item_pool::ItemPool& itemsToPlace, tphdr::logic::location::LocationPool allowedLocations)
+    void FastFill(randomizer::logic::item_pool::ItemPool& itemsToPlace, randomizer::logic::location::LocationPool allowedLocations)
     {
         auto emptyLocations =
-            tphdr::utility::container::FilterFromVector(allowedLocations,
+            randomizer::utility::container::FilterFromVector(allowedLocations,
                                                         [](const auto& location) { return location->IsEmpty(); });
 
         if (itemsToPlace.size() > emptyLocations.size())
@@ -200,18 +200,18 @@ namespace tphdr::logic::fill
                       << " Locations: " << emptyLocations.size() << std::endl;
         }
 
-        tphdr::utility::random::ShufflePool(emptyLocations);
+        randomizer::utility::random::ShufflePool(emptyLocations);
         for (auto& location : emptyLocations)
         {
             if (itemsToPlace.empty())
             {
                 break;
             }
-            location->SetCurrentItem(tphdr::utility::random::PopRandomElement(itemsToPlace));
+            location->SetCurrentItem(randomizer::utility::random::PopRandomElement(itemsToPlace));
         }
     }
 
-    void PlaceRestrictedItems(std::unique_ptr<tphdr::logic::world::World>& world, tphdr::logic::world::WorldPool& worlds)
+    void PlaceRestrictedItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
     {
         PlacePrologueItems(world, worlds);
         PlaceGoalLocationItems(world, worlds);
@@ -225,7 +225,7 @@ namespace tphdr::logic::fill
         PlaceOverworldItems(world, worlds);
     }
 
-    void PlacePrologueItems(std::unique_ptr<tphdr::logic::world::World>& world, tphdr::logic::world::WorldPool& worlds)
+    void PlacePrologueItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
     {
         if (world->Setting("Skip Prologue") == "Off")
         {
@@ -233,7 +233,7 @@ namespace tphdr::logic::fill
             // pool of locations and have to be found in the intro. We also include the lantern, shadow crystal, and progressive
             // fishing rod because those items can lock prologue locations also.
             auto& itemPool = world->GetItemPool();
-            auto prologueItems = tphdr::utility::container::FilterAndEraseFromVector(
+            auto prologueItems = randomizer::utility::container::FilterAndEraseFromVector(
                 itemPool,
                 [](const auto& item)
                 {
@@ -241,12 +241,12 @@ namespace tphdr::logic::fill
                            item->GetName() == "Lantern" || item->GetName() == "Progressive Fishing Rod" ||
                            item->IsShadowCrystal();
                 });
-            auto completeItemPool = tphdr::logic::item_pool::GetCompleteItemPool(worlds);
+            auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
             AssumedFill(worlds, prologueItems, completeItemPool, world->GetAllLocations());
         }
     }
 
-    void PlaceGoalLocationItems(std::unique_ptr<tphdr::logic::world::World>& world, tphdr::logic::world::WorldPool& worlds)
+    void PlaceGoalLocationItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
     {
         // If dungeon rewards can be anywhere, then return early and place them later
         if (world->Setting("Dungeon Rewards Can Be Anywhere") == "On")
@@ -255,17 +255,17 @@ namespace tphdr::logic::fill
         }
 
         auto allLocations = world->GetAllLocations();
-        tphdr::logic::location::LocationPool goalLocations = {};
+        randomizer::logic::location::LocationPool goalLocations = {};
 
         // Filter out goal locations
-        goalLocations = tphdr::utility::container::FilterFromVector(
+        goalLocations = randomizer::utility::container::FilterFromVector(
             allLocations,
             [](const auto& location) { return location->IsGoalLocation() && location->IsEmpty(); });
 
         // Filter out goal items
         std::set<std::string> goalItemNames = {"Progressive Mirror Shard", "Progressive Fused Shadow"};
 
-        auto goalItems = tphdr::utility::container::FilterAndEraseFromVector(
+        auto goalItems = randomizer::utility::container::FilterAndEraseFromVector(
             world->GetItemPool(),
             [&](const auto& item) { return goalItemNames.contains(item->GetName()); });
 
@@ -276,17 +276,17 @@ namespace tphdr::logic::fill
         }
 
         // Place goal items at goal locations
-        auto completeItemPool = tphdr::logic::item_pool::GetCompleteItemPool(worlds);
+        auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
         AssumedFill(worlds, goalItems, completeItemPool, goalLocations);
     }
 
-    void PlaceOwnDungeonItems(std::unique_ptr<tphdr::logic::world::World>& world, tphdr::logic::world::WorldPool& worlds)
+    void PlaceOwnDungeonItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
     {
         for (const auto& [dungeonName, dungeon] : world->GetDungeonTable())
         {
             // Filter hint signs out of dungeon locations
             auto dungeonLocations = dungeon->GetLocations();
-            tphdr::utility::container::FilterAndEraseFromVector(dungeonLocations,
+            randomizer::utility::container::FilterAndEraseFromVector(dungeonLocations,
                                                                 [](const auto& location)
                                                                 { return location->HasCategories("Hint Sign"); });
 
@@ -298,7 +298,7 @@ namespace tphdr::logic::fill
             // Small Keys
             if (world->Setting("Small Keys") == "Own Dungeon")
             {
-                auto smallKeys = tphdr::utility::container::FilterAndEraseFromVector(
+                auto smallKeys = randomizer::utility::container::FilterAndEraseFromVector(
                     world->GetItemPool(),
                     [&](const auto& item)
                     {
@@ -306,33 +306,33 @@ namespace tphdr::logic::fill
                                (dungeonName_ == "Snowpeak Ruins" &&
                                 (item->GetName() == "Ordon Pumpkin" || item->GetName() == "Ordon Cheese"));
                     });
-                auto completeItemPool = tphdr::logic::item_pool::GetCompleteItemPool(worlds);
+                auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
                 AssumedFill(worlds, smallKeys, completeItemPool, dungeonLocations);
             }
 
             // Big Keys
             if (world->Setting("Big Keys") == "Own Dungeon")
             {
-                auto bigKeys = tphdr::utility::container::FilterAndEraseFromVector(world->GetItemPool(),
+                auto bigKeys = randomizer::utility::container::FilterAndEraseFromVector(world->GetItemPool(),
                                                                                    [&](const auto& item)
                                                                                    { return item == dungeon_->GetBigKey(); });
-                auto completeItemPool = tphdr::logic::item_pool::GetCompleteItemPool(worlds);
+                auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
                 AssumedFill(worlds, bigKeys, completeItemPool, dungeonLocations);
             }
 
             // Place maps and compasses last with fast fill since they're junk items
             if (world->Setting("Maps and Compasses") == "Own Dungeon")
             {
-                auto mapsCompasses = tphdr::utility::container::FilterAndEraseFromVector(
+                auto mapsCompasses = randomizer::utility::container::FilterAndEraseFromVector(
                     world->GetItemPool(),
                     [&](const auto& item) { return item == dungeon_->GetCompass() || item == dungeon_->GetDungeonMap(); });
-                auto completeItemPool = tphdr::logic::item_pool::GetCompleteItemPool(worlds);
+                auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
                 FastFill(mapsCompasses, dungeonLocations);
             }
         }
     }
 
-    void PlaceAnywhereDungeonRewards(std::unique_ptr<tphdr::logic::world::World>& world, tphdr::logic::world::WorldPool& worlds)
+    void PlaceAnywhereDungeonRewards(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
     {
         // If dungeon rewards can't be anywhere, then return early as we placed them earlier
         if (world->Setting("Dungeon Rewards Can Be Anywhere") == "Off")
@@ -345,25 +345,25 @@ namespace tphdr::logic::fill
         // Filter out goal items
         std::set<std::string> goalItemNames = {"Progressive Mirror Shard", "Progressive Fused Shadow"};
 
-        auto goalItems = tphdr::utility::container::FilterAndEraseFromVector(
+        auto goalItems = randomizer::utility::container::FilterAndEraseFromVector(
             world->GetItemPool(),
             [&](const auto& item) { return goalItemNames.contains(item->GetName()); });
 
         // Place the items
-        auto completeItemPool = tphdr::logic::item_pool::GetCompleteItemPool(worlds);
+        auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
         AssumedFill(worlds, goalItems, completeItemPool, allLocations);
     }
 
-    void PlaceAnyDungeonItems(std::unique_ptr<tphdr::logic::world::World>& world, tphdr::logic::world::WorldPool& worlds)
+    void PlaceAnyDungeonItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
     {
-        tphdr::logic::item_pool::ItemPool anyDungeonItems = {};
-        tphdr::logic::location::LocationPool anyDungeonLocations = {};
+        randomizer::logic::item_pool::ItemPool anyDungeonItems = {};
+        randomizer::logic::location::LocationPool anyDungeonLocations = {};
 
         // Split the placement of any dungeon items into two pools. Dungeon items from dungeons which should be barren
         // will only be distributed among barren dungeons, where as items from nonbarren dungeons will be distributed
         // among nonbarren dungeons
-        std::list<tphdr::logic::dungeon::Dungeon*> nonBarrenDungeons = {};
-        std::list<tphdr::logic::dungeon::Dungeon*> barrenDungeons = {};
+        std::list<randomizer::logic::dungeon::Dungeon*> nonBarrenDungeons = {};
+        std::list<randomizer::logic::dungeon::Dungeon*> barrenDungeons = {};
         for (const auto& [dungeonName, dungeon] : world->GetDungeonTable())
         {
             if (dungeon->ShouldBeBarren())
@@ -390,7 +390,7 @@ namespace tphdr::logic::fill
                 // Add small keys to the pool if small keys are any dungeon
                 if (world->Setting("Small Keys") == "Any Dungeon")
                 {
-                    auto smallKeys = tphdr::utility::container::FilterAndEraseFromVector(
+                    auto smallKeys = randomizer::utility::container::FilterAndEraseFromVector(
                         world->GetItemPool(),
                         [&](const auto& item)
                         {
@@ -404,7 +404,7 @@ namespace tphdr::logic::fill
                 // Add big keys to the pool if big keys are any dungeon
                 if (world->Setting("Big Keys") == "Any Dungeon")
                 {
-                    auto bigKeys = tphdr::utility::container::FilterAndEraseFromVector(
+                    auto bigKeys = randomizer::utility::container::FilterAndEraseFromVector(
                         world->GetItemPool(),
                         [&](const auto& item) { return item == dungeon_->GetBigKey(); });
                     std::copy(bigKeys.begin(), bigKeys.end(), std::back_inserter(anyDungeonItems));
@@ -413,7 +413,7 @@ namespace tphdr::logic::fill
                 // Add maps and compasses to the pool if maps and compasses are any dungeon
                 if (world->Setting("Maps and Compasses") == "Any Dungeon")
                 {
-                    auto mapsCompasses = tphdr::utility::container::FilterAndEraseFromVector(
+                    auto mapsCompasses = randomizer::utility::container::FilterAndEraseFromVector(
                         world->GetItemPool(),
                         [&](const auto& item) { return item == dungeon_->GetCompass() || item == dungeon_->GetDungeonMap(); });
                     std::copy(mapsCompasses.begin(), mapsCompasses.end(), std::back_inserter(anyDungeonItems));
@@ -429,17 +429,17 @@ namespace tphdr::logic::fill
             }
 
             // Place the dungeon items in the appropriate dungeon locations
-            auto completeItemPool = tphdr::logic::item_pool::GetCompleteItemPool(worlds);
+            auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
             AssumedFill(worlds, anyDungeonItems, completeItemPool, anyDungeonLocations);
         }
     }
 
-    void PlaceOverworldItems(std::unique_ptr<tphdr::logic::world::World>& world, tphdr::logic::world::WorldPool& worlds)
+    void PlaceOverworldItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
     {
-        tphdr::logic::item_pool::ItemPool overworldItems = {};
-        tphdr::logic::location::LocationPool overworldLocations = world->GetAllLocations();
+        randomizer::logic::item_pool::ItemPool overworldItems = {};
+        randomizer::logic::location::LocationPool overworldLocations = world->GetAllLocations();
         // Filter out any nonprogress locations
-        tphdr::utility::container::FilterAndEraseFromVector(overworldLocations,
+        randomizer::utility::container::FilterAndEraseFromVector(overworldLocations,
                                                             [](const auto& location) { return !location->IsProgression(); });
 
         for (const auto& [dungeonName, dungeon] : world->GetDungeonTable())
@@ -452,7 +452,7 @@ namespace tphdr::logic::fill
             // Add small keys to the pool if small keys are overworld
             if (world->Setting("Small Keys") == "Overworld")
             {
-                auto smallKeys = tphdr::utility::container::FilterAndEraseFromVector(
+                auto smallKeys = randomizer::utility::container::FilterAndEraseFromVector(
                     world->GetItemPool(),
                     [&](const auto& item)
                     {
@@ -466,7 +466,7 @@ namespace tphdr::logic::fill
             // Add big keys to the pool if big keys are overworld
             if (world->Setting("Big Keys") == "Overworld")
             {
-                auto bigKeys = tphdr::utility::container::FilterAndEraseFromVector(world->GetItemPool(),
+                auto bigKeys = randomizer::utility::container::FilterAndEraseFromVector(world->GetItemPool(),
                                                                                    [&](const auto& item)
                                                                                    { return item == dungeon_->GetBigKey(); });
                 std::copy(bigKeys.begin(), bigKeys.end(), std::back_inserter(overworldItems));
@@ -475,28 +475,28 @@ namespace tphdr::logic::fill
             // Add maps and compasses to the pool if maps and compasses are overworld
             if (world->Setting("Maps and Compasses") == "Overworld")
             {
-                auto mapsCompasses = tphdr::utility::container::FilterAndEraseFromVector(
+                auto mapsCompasses = randomizer::utility::container::FilterAndEraseFromVector(
                     world->GetItemPool(),
                     [&](const auto& item) { return item == dungeon_->GetCompass() || item == dungeon_->GetDungeonMap(); });
                 std::copy(mapsCompasses.begin(), mapsCompasses.end(), std::back_inserter(overworldItems));
             }
 
             // Remove this dungeon's locations from the overworldLocations pool
-            overworldLocations = tphdr::utility::container::FilterFromVector(
+            overworldLocations = randomizer::utility::container::FilterFromVector(
                 overworldLocations,
                 [&](const auto& location)
-                { return !tphdr::utility::container::ElementInContainer(dungeon_->GetLocations(), location); });
+                { return !randomizer::utility::container::ElementInContainer(dungeon_->GetLocations(), location); });
         }
 
         // Place the dungeon items in the overworld locations
-        auto completeItemPool = tphdr::logic::item_pool::GetCompleteItemPool(worlds);
+        auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
         AssumedFill(worlds, overworldItems, completeItemPool, overworldLocations);
     }
 
-    void CacheExitTimeForms(tphdr::logic::world::WorldPool& worlds)
+    void CacheExitTimeForms(randomizer::logic::world::WorldPool& worlds)
     {
-        auto completeItemPool = tphdr::logic::item_pool::GetCompleteItemPool(worlds);
-        auto searchWithItems = tphdr::logic::search::Search::AllLocationsReachable(&worlds, completeItemPool);
+        auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
+        auto searchWithItems = randomizer::logic::search::Search::AllLocationsReachable(&worlds, completeItemPool);
         searchWithItems.SearchWorlds();
 
         for (auto& world : worlds)
@@ -510,11 +510,11 @@ namespace tphdr::logic::fill
                 for (const auto& exit : area->GetExits())
                 {
                     auto req = exit->GetRequirement();
-                    exitTimeFormCache[exit] = tphdr::logic::requirement::FormTime::NONE;
-                    for (const auto& formTime : tphdr::logic::requirement::FormTime::ALL_FORM_TIMES)
+                    exitTimeFormCache[exit] = randomizer::logic::requirement::FormTime::NONE;
+                    for (const auto& formTime : randomizer::logic::requirement::FormTime::ALL_FORM_TIMES)
                     {
                         if (formTime & areaFormTimes &&
-                            tphdr::logic::requirement::EvaluateRequirementAtFormTime(req,
+                            randomizer::logic::requirement::EvaluateRequirementAtFormTime(req,
                                                                                      &searchWithItems,
                                                                                      formTime,
                                                                                      world.get()))
@@ -526,4 +526,4 @@ namespace tphdr::logic::fill
             }
         }
     }
-} // namespace tphdr::logic::fill
+} // namespace randomizer::logic::fill

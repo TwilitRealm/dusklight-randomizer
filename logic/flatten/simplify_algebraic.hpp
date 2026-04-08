@@ -30,9 +30,9 @@ struct FoundKernel
     BitVector coKernel;
 };
 
-tphdr::logic::requirement::Requirement DNFToExpr(BitIndex& bitIndex, DNF dnf);
+randomizer::logic::requirement::Requirement DNFToExpr(BitIndex& bitIndex, DNF dnf);
 
-tphdr::logic::requirement::Requirement createAnd(std::vector<tphdr::logic::requirement::Requirement> terms);
+randomizer::logic::requirement::Requirement createAnd(std::vector<randomizer::logic::requirement::Requirement> terms);
 
 // Generates all prime rectangles in this matrix. A rectangle is a set of columns and rows
 // such that for every row and column, matrix[row][colum] is not zero. A prime rectangle
@@ -175,9 +175,9 @@ std::pair<std::vector<BitVector>, std::vector<BitVector>> algebraicDivision(cons
                                                                             const std::vector<BitVector>& divisor);
 
 template<typename Container>
-std::vector<tphdr::logic::requirement::Requirement> lookupRequirements(BitIndex& bitIndex, Container r)
+std::vector<randomizer::logic::requirement::Requirement> lookupRequirements(BitIndex& bitIndex, Container r)
 {
-    std::vector<tphdr::logic::requirement::Requirement> reqs;
+    std::vector<randomizer::logic::requirement::Requirement> reqs;
     for (auto& bit : r)
     {
         reqs.push_back(bitIndex.reverseIndex[bit]);

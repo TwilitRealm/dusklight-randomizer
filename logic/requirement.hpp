@@ -6,33 +6,33 @@
 #include <vector>
 
 // Forward declarations
-namespace tphdr::logic::item
+namespace randomizer::logic::item
 {
     class Item;
 }
 
-namespace tphdr::logic::entrance
+namespace randomizer::logic::entrance
 {
     class Entrance;
 }
 
-namespace tphdr::logic::area
+namespace randomizer::logic::area
 {
     class EventAccess;
     class LocationAccess;
-} // namespace tphdr::logic::area
+} // namespace randomizer::logic::area
 
-namespace tphdr::logic::world
+namespace randomizer::logic::world
 {
     class World;
 }
 
-namespace tphdr::logic::search
+namespace randomizer::logic::search
 {
     class Search;
 }
 
-namespace tphdr::logic::requirement
+namespace randomizer::logic::requirement
 {
     enum class Type
     {
@@ -90,7 +90,7 @@ namespace tphdr::logic::requirement
     struct Requirement;
     struct Requirement
     {
-        using Argument = std::variant<int, Requirement, tphdr::logic::item::Item*>;
+        using Argument = std::variant<int, Requirement, randomizer::logic::item::Item*>;
         Type _type = Type::INVALID;
         std::vector<Argument> _args;
 
@@ -98,18 +98,18 @@ namespace tphdr::logic::requirement
     };
 
     Requirement ParseRequirementString(const std::string& reqStr,
-                                       tphdr::logic::world::World* world,
+                                       randomizer::logic::world::World* world,
                                        const bool& forceLogic = false);
 
-    bool EvaluateRequirementAtFormTime(const tphdr::logic::requirement::Requirement& req,
-                                       tphdr::logic::search::Search* search,
+    bool EvaluateRequirementAtFormTime(const randomizer::logic::requirement::Requirement& req,
+                                       randomizer::logic::search::Search* search,
                                        const int& formTime,
-                                       tphdr::logic::world::World*);
-    EvalSuccess EvaluateEventRequirement(tphdr::logic::search::Search* search, tphdr::logic::area::EventAccess* event);
-    EvalSuccess EvaluateExitRequirement(tphdr::logic::search::Search* search, tphdr::logic::entrance::Entrance* exit);
-    EvalSuccess EvaluateLocationRequirement(tphdr::logic::search::Search* search,
-                                            tphdr::logic::area::LocationAccess* locAccess);
+                                       randomizer::logic::world::World*);
+    EvalSuccess EvaluateEventRequirement(randomizer::logic::search::Search* search, randomizer::logic::area::EventAccess* event);
+    EvalSuccess EvaluateExitRequirement(randomizer::logic::search::Search* search, randomizer::logic::entrance::Entrance* exit);
+    EvalSuccess EvaluateLocationRequirement(randomizer::logic::search::Search* search,
+                                            randomizer::logic::area::LocationAccess* locAccess);
 
     const extern Requirement NO_REQUIREMENT;
     const extern Requirement IMPOSSIBLE_REQUIREMENT;
-} // namespace tphdr::logic::requirement
+} // namespace randomizer::logic::requirement

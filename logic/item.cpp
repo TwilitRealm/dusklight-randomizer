@@ -2,7 +2,7 @@
 
 #include "world.hpp"
 
-namespace tphdr::logic::item
+namespace randomizer::logic::item
 {
 
     Importance ImportanceFromStr(const std::string& str)
@@ -21,7 +21,7 @@ namespace tphdr::logic::item
 
     Item::Item(const int& id,
                const std::string& name,
-               tphdr::logic::world::World* world,
+               randomizer::logic::world::World* world,
                const Importance& importance,
                const bool& gameWinningItem,
                const bool& dungeonSmallKey,
@@ -66,7 +66,7 @@ namespace tphdr::logic::item
         return this->_name;
     }
 
-    tphdr::logic::world::World* Item::GetWorld() const
+    randomizer::logic::world::World* Item::GetWorld() const
     {
         return this->_world;
     }
@@ -154,4 +154,4 @@ namespace tphdr::logic::item
 
     std::unique_ptr<Item> Nothing =
         std::make_unique<Item>(-1, "Nothing", nullptr, Importance::JUNK, false, false, false, false, false);
-} // namespace tphdr::logic::item
+} // namespace randomizer::logic::item

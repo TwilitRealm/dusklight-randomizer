@@ -13,7 +13,7 @@
 #include <QFile>
 #endif
 
-namespace tphdr::utility::file
+namespace randomizer::utility::file
 {
     bool isRoot(const fspath& fsPath)
     {
@@ -44,7 +44,7 @@ namespace tphdr::utility::file
 
     bool copy_file(const fspath& from, const fspath& to)
     {
-        tphdr::utility::platform::Log("Copying " + Utility::toUtf8String(to));
+        randomizer::utility::platform::Log("Copying " + Utility::toUtf8String(to));
 #ifdef DEVKITPRO
         // use a buffer to speed up file copying
 
@@ -90,7 +90,7 @@ namespace tphdr::utility::file
             return false;
         }
 
-        tphdr::utility::file::create_directories(to);
+        randomizer::utility::file::create_directories(to);
 
         // Loop over directory contents
         struct dirent* dirEntry;
@@ -207,4 +207,4 @@ namespace tphdr::utility::file
         }
         file.close();
     }
-} // namespace tphdr::utility::file
+} // namespace randomizer::utility::file

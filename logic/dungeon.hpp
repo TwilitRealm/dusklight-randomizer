@@ -5,26 +5,26 @@
 #include <unordered_set>
 
 // Forward declarations
-namespace tphdr::logic::item
+namespace randomizer::logic::item
 {
     class Item;
 }
 
-namespace tphdr::logic::area
+namespace randomizer::logic::area
 {
     class Area;
 }
 
-namespace tphdr::logic::entrance
+namespace randomizer::logic::entrance
 {
     class Entrance;
 }
-namespace tphdr::logic::world
+namespace randomizer::logic::world
 {
     class World;
 }
 
-namespace tphdr::logic::dungeon
+namespace randomizer::logic::dungeon
 {
     /**
      *  @brief Holds dungeon specific data
@@ -32,25 +32,25 @@ namespace tphdr::logic::dungeon
     class Dungeon
     {
        public:
-        Dungeon(const std::string& name, tphdr::logic::world::World* world);
+        Dungeon(const std::string& name, randomizer::logic::world::World* world);
 
         std::string GetName() const;
-        void SetSmallKey(tphdr::logic::item::Item* item);
-        tphdr::logic::item::Item* GetSmallKey() const;
-        void SetBigKey(tphdr::logic::item::Item* item);
-        tphdr::logic::item::Item* GetBigKey() const;
-        void SetCompass(tphdr::logic::item::Item* item);
-        tphdr::logic::item::Item* GetCompass() const;
-        void SetDungeonMap(tphdr::logic::item::Item* item);
-        tphdr::logic::item::Item* GetDungeonMap() const;
-        void SetStartingArea(tphdr::logic::area::Area* startingArea);
-        tphdr::logic::area::Area* GetStartingAreas();
-        void AddStartingEntrance(tphdr::logic::entrance::Entrance* startingEntrance);
-        std::unordered_set<tphdr::logic::entrance::Entrance*> GetStartingEntrances() const;
-        void AddLocation(tphdr::logic::location::Location* location);
-        tphdr::logic::location::LocationPool GetLocations();
-        void SetGoalLocation(tphdr::logic::location::Location* goalLocation);
-        tphdr::logic::location::Location* GetGoalLocation();
+        void SetSmallKey(randomizer::logic::item::Item* item);
+        randomizer::logic::item::Item* GetSmallKey() const;
+        void SetBigKey(randomizer::logic::item::Item* item);
+        randomizer::logic::item::Item* GetBigKey() const;
+        void SetCompass(randomizer::logic::item::Item* item);
+        randomizer::logic::item::Item* GetCompass() const;
+        void SetDungeonMap(randomizer::logic::item::Item* item);
+        randomizer::logic::item::Item* GetDungeonMap() const;
+        void SetStartingArea(randomizer::logic::area::Area* startingArea);
+        randomizer::logic::area::Area* GetStartingAreas();
+        void AddStartingEntrance(randomizer::logic::entrance::Entrance* startingEntrance);
+        std::unordered_set<randomizer::logic::entrance::Entrance*> GetStartingEntrances() const;
+        void AddLocation(randomizer::logic::location::Location* location);
+        randomizer::logic::location::LocationPool GetLocations();
+        void SetGoalLocation(randomizer::logic::location::Location* goalLocation);
+        randomizer::logic::location::Location* GetGoalLocation();
         void SetRequired(const bool& required);
         bool IsRequired() const;
 
@@ -62,15 +62,15 @@ namespace tphdr::logic::dungeon
 
        private:
         std::string _name = "";
-        tphdr::logic::world::World* _world;
-        tphdr::logic::item::Item* _smallKey;
-        tphdr::logic::item::Item* _bigKey;
-        tphdr::logic::item::Item* _compass;
-        tphdr::logic::item::Item* _dungeonMap;
-        tphdr::logic::area::Area* _startingArea;
-        std::unordered_set<tphdr::logic::entrance::Entrance*> _startingEntrances;
-        tphdr::logic::location::Location* _goalLocation;
-        tphdr::logic::location::LocationPool _locations = {};
+        randomizer::logic::world::World* _world;
+        randomizer::logic::item::Item* _smallKey;
+        randomizer::logic::item::Item* _bigKey;
+        randomizer::logic::item::Item* _compass;
+        randomizer::logic::item::Item* _dungeonMap;
+        randomizer::logic::area::Area* _startingArea;
+        std::unordered_set<randomizer::logic::entrance::Entrance*> _startingEntrances;
+        randomizer::logic::location::Location* _goalLocation;
+        randomizer::logic::location::LocationPool _locations = {};
         bool _required = false;
     };
-} // namespace tphdr::logic::dungeon
+} // namespace randomizer::logic::dungeon

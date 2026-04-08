@@ -6,7 +6,7 @@
 #include <iostream>
 #include <cstdarg>
 
-namespace tphdr::utility::str {
+namespace randomizer::utility::str {
     //can't use codecvt on Wii U, deprecated in c++17 and g++ hates it
     //Borrowed from https://docs.microsoft.com/en-us/cpp/standard-library/codecvt-class?view=msvc-170#out
     std::string toUTF8(const std::u16string& str) {

@@ -3,13 +3,13 @@
 #include "world.hpp"
 #include "../utility/log.hpp"
 
-namespace tphdr::logic::location
+namespace randomizer::logic::location
 {
     Location::Location(const int& id,
                        const std::string& name,
                        std::unordered_set<std::string> categories,
-                       tphdr::logic::world::World* world,
-                       tphdr::logic::item::Item* originalItem,
+                       randomizer::logic::world::World* world,
+                       randomizer::logic::item::Item* originalItem,
                        const bool& goalLocation,
                        const std::string& hintPriority):
         _id(id),
@@ -20,7 +20,7 @@ namespace tphdr::logic::location
         _goalLocation(goalLocation),
         _hintPriority(hintPriority)
     {
-        this->_computedRequirement._type = tphdr::logic::requirement::Type::IMPOSSIBLE;
+        this->_computedRequirement._type = randomizer::logic::requirement::Type::IMPOSSIBLE;
     }
 
     int Location::GetID() const
@@ -33,7 +33,7 @@ namespace tphdr::logic::location
         return this->_name;
     }
 
-    tphdr::logic::world::World* Location::GetWorld() const
+    randomizer::logic::world::World* Location::GetWorld() const
     {
         return this->_world;
     }
@@ -43,13 +43,13 @@ namespace tphdr::logic::location
         return this->_goalLocation;
     }
 
-    void Location::SetCurrentItem(tphdr::logic::item::Item* item)
+    void Location::SetCurrentItem(randomizer::logic::item::Item* item)
     {
         LOG_TO_DEBUG("Placed " + item->GetName() + " at " + this->GetName());
         this->_currentItem = item;
     }
 
-    tphdr::logic::item::Item* Location::GetCurrentItem() const
+    randomizer::logic::item::Item* Location::GetCurrentItem() const
     {
         return this->_currentItem;
     }
@@ -57,20 +57,20 @@ namespace tphdr::logic::location
     void Location::RemoveCurrentItem()
     {
         LOG_TO_DEBUG("Removed " + this->GetCurrentItem()->GetName() + " at " + this->GetName());
-        this->_currentItem = tphdr::logic::item::Nothing.get();
+        this->_currentItem = randomizer::logic::item::Nothing.get();
     }
 
     bool Location::IsEmpty() const
     {
-        return this->_currentItem == tphdr::logic::item::Nothing.get();
+        return this->_currentItem == randomizer::logic::item::Nothing.get();
     }
 
-    tphdr::logic::item::Item* Location::GetOriginalItem() const
+    randomizer::logic::item::Item* Location::GetOriginalItem() const
     {
         return this->_originalItem;
     }
 
-    tphdr::logic::item::Item* Location::GetTrackedItem() const
+    randomizer::logic::item::Item* Location::GetTrackedItem() const
     {
         return this->_trackedItem;
     }
@@ -106,33 +106,33 @@ namespace tphdr::logic::location
         return this->_hinted;
     }
 
-    void Location::AddLocationAccess(tphdr::logic::area::LocationAccess* locAcc)
+    void Location::AddLocationAccess(randomizer::logic::area::LocationAccess* locAcc)
     {
         this->_locationAccessList.push_back(locAcc);
     }
 
-    std::list<tphdr::logic::area::LocationAccess*> Location::GetAccessList() const
+    std::list<randomizer::logic::area::LocationAccess*> Location::GetAccessList() const
     {
         return this->_locationAccessList;
     }
 
-    void Location::AddForbiddenItem(tphdr::logic::item::Item* forbiddenItem)
+    void Location::AddForbiddenItem(randomizer::logic::item::Item* forbiddenItem)
     {
         this->_forbiddenItems.insert(forbiddenItem);
         LOG_TO_DEBUG(forbiddenItem->GetName() + " is forbidden from being placed at " + this->GetName());
     }
 
-    const std::unordered_set<tphdr::logic::item::Item*>& Location::GetForbiddenItems()
+    const std::unordered_set<randomizer::logic::item::Item*>& Location::GetForbiddenItems()
     {
         return this->_forbiddenItems;
     }
 
-    void Location::SetComputedRequirement(const tphdr::logic::requirement::Requirement& computedRequirement)
+    void Location::SetComputedRequirement(const randomizer::logic::requirement::Requirement& computedRequirement)
     {
         this->_computedRequirement = computedRequirement;
     }
 
-    tphdr::logic::requirement::Requirement Location::GetComputedRequirement()
+    randomizer::logic::requirement::Requirement Location::GetComputedRequirement()
     {
         return this->_computedRequirement;
     }
@@ -141,4 +141,4 @@ namespace tphdr::logic::location
     {
         this->_registeredLocationCategories = registeredLocationCategories;
     }
-} // namespace tphdr::logic::location
+} // namespace randomizer::logic::location

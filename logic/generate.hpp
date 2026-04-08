@@ -3,7 +3,7 @@
 #include "world.hpp"
 #include "../seedgen/config.hpp"
 
-namespace tphdr::logic::generate
+namespace randomizer::logic::generate
 {
     /**
      *  @brief Generates a complete randomizer seed
@@ -11,7 +11,7 @@ namespace tphdr::logic::generate
      *  @param worlds The list of worlds for the generated randomizer seed
      *  @return the worldpool which was generated
      */
-    tphdr::logic::world::WorldPool GenerateWorlds();
+    randomizer::logic::world::WorldPool GenerateWorlds();
 
     /**
      *  @brief Generates a complete randomizer seed with the provided config
@@ -20,5 +20,5 @@ namespace tphdr::logic::generate
      *  @param worlds The list of worlds for the generated randomizer seed
      *  @return 0 if no errors. 1 if there were errors
      */
-    void GenerateRandomizer(tphdr::seedgen::config::Config& config, tphdr::logic::world::WorldPool& worlds);
-} // namespace tphdr::logic::generate
+    void GenerateRandomizer(randomizer::seedgen::config::Config& config, randomizer::logic::world::WorldPool& worlds);
+} // namespace randomizer::logic::generate

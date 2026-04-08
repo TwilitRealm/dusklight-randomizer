@@ -4,7 +4,7 @@
 
 #include <map>
 
-namespace tphdr::logic::item_pool
+namespace randomizer::logic::item_pool
 {
 
     std::map<std::string, int> minimalItemPool = {
@@ -210,7 +210,7 @@ namespace tphdr::logic::item_pool
         {"Purple Rupee", 12},
     };
 
-    void GenerateItemPool(tphdr::logic::world::World* world)
+    void GenerateItemPool(randomizer::logic::world::World* world)
     {
         auto itemPool = minimalItemPool;
 
@@ -311,7 +311,7 @@ namespace tphdr::logic::item_pool
         }
     }
 
-    void GenerateStartingItemPool(tphdr::logic::world::World* world)
+    void GenerateStartingItemPool(randomizer::logic::world::World* world)
     {
         const auto& startingItems = world->GetSettings().GetStartingInventory();
         auto& startingItemPool = world->GetStartingItemPool();
@@ -325,7 +325,7 @@ namespace tphdr::logic::item_pool
             {
                 startingItemPool.push_back(item);
             }
-            tphdr::utility::container::Erase(itemPool, item, count);
+            randomizer::utility::container::Erase(itemPool, item, count);
         }
     }
 
@@ -334,7 +334,7 @@ namespace tphdr::logic::item_pool
         return initialJunkPool;
     }
 
-    ItemPool GetCompleteItemPool(tphdr::logic::world::WorldPool& worlds)
+    ItemPool GetCompleteItemPool(randomizer::logic::world::WorldPool& worlds)
     {
         ItemPool completeItemPool = {};
         for (const auto& world : worlds)
@@ -345,4 +345,4 @@ namespace tphdr::logic::item_pool
 
         return completeItemPool;
     }
-} // namespace tphdr::logic::item_pool
+} // namespace randomizer::logic::item_pool

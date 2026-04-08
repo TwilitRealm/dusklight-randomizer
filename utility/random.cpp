@@ -1,6 +1,6 @@
 #include "../utility/random.hpp"
 
-namespace tphdr::utility::random
+namespace randomizer::utility::random
 {
     static bool init = false;
     static std::mt19937_64 generator;
@@ -37,4 +37,4 @@ namespace tphdr::utility::random
     {
         return generator;
     }
-} // namespace tphdr::utility::random
+} // namespace randomizer::utility::random

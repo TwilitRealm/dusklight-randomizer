@@ -3,7 +3,7 @@
 using namespace std::chrono;
 using namespace std::literals::chrono_literals;
 
-namespace tphdr::utility::time
+namespace randomizer::utility::time
 {
     ProgramTime::ProgramTime(): openTime(Clock_t::now()) {}
 
@@ -22,10 +22,10 @@ namespace tphdr::utility::time
     {
         return Clock_t::now() - getOpenedTime();
     }
-} // namespace tphdr::utility::time
+} // namespace randomizer::utility::time
 #if __has_include(<format>) && !defined(__APPLE__)
 #include <format>
-namespace tphdr::utility::time
+namespace randomizer::utility::time
 {
     std::string ProgramTime::getDateStr()
     {
@@ -36,11 +36,11 @@ namespace tphdr::utility::time
     {
         return std::format("{:%T}", round<milliseconds>(getElapsedTime()));
     }
-} // namespace tphdr::utility::time
+} // namespace randomizer::utility::time
 #else
 #include <sstream>
 #include <mutex>
-namespace tphdr::utility::time
+namespace randomizer::utility::time
 {
     std::string ProgramTime::getDateStr()
     {
@@ -71,9 +71,9 @@ namespace tphdr::utility::time
 
         return ret.str();
     }
-} // namespace tphdr::utility::time
+} // namespace randomizer::utility::time
 #endif
-namespace tphdr::utility::time
+namespace randomizer::utility::time
 {
     static const ProgramTime& temp = ProgramTime::getInstance(); // inaccessible global to create instance when program starts
-}; // namespace tphdr::utility::time
+}; // namespace randomizer::utility::time

@@ -5,12 +5,12 @@
 #include "../utility/string.hpp"
 #include "../utility/platform.hpp"
 
-namespace tphdr::utility::time
+namespace randomizer::utility::time
 {
     template<typename T>
     concept DurationType = std::same_as<T, std::chrono::duration<typename T::rep, typename T::period>>;
 
-    template<tphdr::utility::str::StringLiteral Message = "Process took ",
+    template<randomizer::utility::str::StringLiteral Message = "Process took ",
              typename Units = std::chrono::seconds,
              typename Clock = std::chrono::high_resolution_clock>
         requires DurationType<Units>
@@ -40,7 +40,7 @@ namespace tphdr::utility::time
             std::stringstream message;
             message << stem << (stem.back() == ' ' ? "" : " ") << std::chrono::duration_cast<Units>(duration);
 
-            tphdr::utility::platform::Log(message.str());
+            randomizer::utility::platform::Log(message.str());
             LOG_TO_DEBUG(message.str() + '\n');
         }
 
@@ -50,7 +50,7 @@ namespace tphdr::utility::time
         static constexpr std::string_view stem = Message;
     };
 
-    template<tphdr::utility::str::StringLiteral Message = "Process took ",
+    template<randomizer::utility::str::StringLiteral Message = "Process took ",
              typename Units = std::chrono::seconds,
              typename Clock = std::chrono::high_resolution_clock>
         requires DurationType<Units>
@@ -89,4 +89,4 @@ namespace tphdr::utility::time
         static std::string getDateStr();
     };
 
-} // namespace tphdr::utility::time
+} // namespace randomizer::utility::time

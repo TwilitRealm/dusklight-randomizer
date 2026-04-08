@@ -5,7 +5,7 @@
 #include "../utility/log.hpp"
 #include "../utility/string.hpp"
 
-namespace tphdr::logic::entrance
+namespace randomizer::logic::entrance
 {
     std::unordered_set<Type> NON_ASSUMED_TYPES = {Type::SPAWN, Type::WARP_PORTAL};
 
@@ -85,10 +85,10 @@ namespace tphdr::logic::entrance
         return reverse.at(type);
     }
 
-    Entrance::Entrance(tphdr::logic::area::Area* parentArea,
-                       tphdr::logic::area::Area* connectedArea,
-                       const tphdr::logic::requirement::Requirement& req,
-                       tphdr::logic::world::World* world):
+    Entrance::Entrance(randomizer::logic::area::Area* parentArea,
+                       randomizer::logic::area::Area* connectedArea,
+                       const randomizer::logic::requirement::Requirement& req,
+                       randomizer::logic::world::World* world):
         _parentArea(parentArea),
         _connectedArea(connectedArea),
         _originalConnectedArea(connectedArea),
@@ -96,7 +96,7 @@ namespace tphdr::logic::entrance
         _world(world)
     {
         this->_originalName = this->GetCurrentName();
-        this->_computedRequirement._type = tphdr::logic::requirement::Type::IMPOSSIBLE;
+        this->_computedRequirement._type = randomizer::logic::requirement::Type::IMPOSSIBLE;
     }
 
     void Entrance::SetID(const int& id)
@@ -123,20 +123,20 @@ namespace tphdr::logic::entrance
 
     void Entrance::GeneralizeOriginalName()
     {
-        tphdr::utility::str::Erase(this->_originalName, " North", " South", " East", " West", " Right", " Left");
+        randomizer::utility::str::Erase(this->_originalName, " North", " South", " East", " West", " Right", " Left");
     }
 
-    tphdr::logic::area::Area* Entrance::GetParentArea() const
+    randomizer::logic::area::Area* Entrance::GetParentArea() const
     {
         return this->_parentArea;
     }
 
-    tphdr::logic::area::Area* Entrance::GetConnectedArea() const
+    randomizer::logic::area::Area* Entrance::GetConnectedArea() const
     {
         return this->_connectedArea;
     }
 
-    tphdr::logic::area::Area* Entrance::GetOriginalConnectedArea() const
+    randomizer::logic::area::Area* Entrance::GetOriginalConnectedArea() const
     {
         return this->_originalConnectedArea;
     }
@@ -160,27 +160,27 @@ namespace tphdr::logic::entrance
         return this->_originalType;
     }
 
-    void Entrance::SetRequirement(const tphdr::logic::requirement::Requirement& req)
+    void Entrance::SetRequirement(const randomizer::logic::requirement::Requirement& req)
     {
         this->_req = req;
     }
 
-    const tphdr::logic::requirement::Requirement& Entrance::GetRequirement()
+    const randomizer::logic::requirement::Requirement& Entrance::GetRequirement()
     {
         return this->_req;
     }
 
-    void Entrance::SetComputedRequirement(const tphdr::logic::requirement::Requirement& computedRequirement)
+    void Entrance::SetComputedRequirement(const randomizer::logic::requirement::Requirement& computedRequirement)
     {
         this->_computedRequirement = computedRequirement;
     }
 
-    tphdr::logic::requirement::Requirement Entrance::GetComputedRequirement()
+    randomizer::logic::requirement::Requirement Entrance::GetComputedRequirement()
     {
         return this->_computedRequirement;
     }
 
-    tphdr::logic::world::World* Entrance::GetWorld() const
+    randomizer::logic::world::World* Entrance::GetWorld() const
     {
         return this->_world;
     }
@@ -267,13 +267,13 @@ namespace tphdr::logic::entrance
         return this->_assumed;
     }
 
-    void Entrance::Connect(tphdr::logic::area::Area* newConnectedArea)
+    void Entrance::Connect(randomizer::logic::area::Area* newConnectedArea)
     {
         this->_connectedArea = newConnectedArea;
         newConnectedArea->AddEntrance(this);
     }
 
-    tphdr::logic::area::Area* Entrance::Disconnect()
+    randomizer::logic::area::Area* Entrance::Disconnect()
     {
         this->_connectedArea->RemoveEntrance(this);
         auto previouslyConnected = this->_connectedArea;
@@ -291,7 +291,7 @@ namespace tphdr::logic::entrance
     {
         auto root = this->_world->GetRootArea();
         auto targetEntrance =
-            std::make_unique<Entrance>(root, nullptr, tphdr::logic::requirement::NO_REQUIREMENT, this->_world);
+            std::make_unique<Entrance>(root, nullptr, randomizer::logic::requirement::NO_REQUIREMENT, this->_world);
         auto target = targetEntrance.get();
         root->AddExit(targetEntrance); // This moves the variable, so we have to use the pointer for the rest of the function
         target->Connect(this->_connectedArea);
@@ -314,13 +314,13 @@ namespace tphdr::logic::entrance
     {
         std::string parentAreaName;
         std::string connectedAreaName;
-        if (tphdr::utility::str::Contains(originalName, " -> "))
+        if (randomizer::utility::str::Contains(originalName, " -> "))
         {
             auto separatorIndex = originalName.find(" -> ");
             parentAreaName = originalName.substr(0, separatorIndex);
             connectedAreaName = originalName.substr(separatorIndex + 4);
         }
-        else if (tphdr::utility::str::Contains(originalName, " from "))
+        else if (randomizer::utility::str::Contains(originalName, " from "))
         {
             auto separatorIndex = originalName.find(" from ");
             connectedAreaName = originalName.substr(0, separatorIndex);
@@ -334,4 +334,4 @@ namespace tphdr::logic::entrance
 
         return {parentAreaName, connectedAreaName};
     }
-} // namespace tphdr::logic::entrance
+} // namespace randomizer::logic::entrance

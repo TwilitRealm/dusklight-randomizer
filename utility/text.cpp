@@ -131,7 +131,7 @@
 
 //     std::string pad_str_4_lines(const std::string& string)
 //     {
-//         std::vector<std::string> lines = tphdr::utility::str::Split(string, '\n');
+//         std::vector<std::string> lines = randomizer::utility::str::Split(string, '\n');
 
 //         unsigned int padding_lines_needed = (4 - lines.size() % 4) % 4;
 //         for (unsigned int i = 0; i < padding_lines_needed; i++)
@@ -139,12 +139,12 @@
 //             lines.push_back("");
 //         }
 
-//         return tphdr::utility::str::Merge(lines, '\n');
+//         return randomizer::utility::str::Merge(lines, '\n');
 //     }
 
 //     std::u16string pad_str_4_lines(const std::u16string& string)
 //     {
-//         std::vector<std::u16string> lines = tphdr::utility::str::Split(string, u'\n');
+//         std::vector<std::u16string> lines = randomizer::utility::str::Split(string, u'\n');
 
 //         unsigned int padding_lines_needed = (4 - lines.size() % 4) % 4;
 //         for (unsigned int i = 0; i < padding_lines_needed; i++)
@@ -152,7 +152,7 @@
 //             lines.push_back(u"");
 //         }
 
-//         return tphdr::utility::str::erge(lines, u'\n');
+//         return randomizer::utility::str::erge(lines, u'\n');
 //     }
 
 //     Gender string_to_gender(const std::string& str)

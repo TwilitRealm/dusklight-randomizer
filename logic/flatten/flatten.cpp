@@ -1,7 +1,7 @@
 #include "flatten.hpp"
 #include "../world.hpp"
 
-FlattenSearch::FlattenSearch(tphdr::logic::world::World* world_)
+FlattenSearch::FlattenSearch(randomizer::logic::world::World* world_)
 {
     world = world_;
 
@@ -22,8 +22,8 @@ FlattenSearch::FlattenSearch(tphdr::logic::world::World* world_)
 
     auto root = world->GetRootArea();
     // Start with all formtimes at the root, false for everything else
-    auto formTimes = tphdr::logic::requirement::FormTime::ALL_FORM_AND_DAY_TIMES;
-    formTimes.push_back(tphdr::logic::requirement::FormTime::TWILIGHT);
+    auto formTimes = randomizer::logic::requirement::FormTime::ALL_FORM_AND_DAY_TIMES;
+    formTimes.push_back(randomizer::logic::requirement::FormTime::TWILIGHT);
     for (const auto& [areaName, area] : world->GetAreaTable())
     {
         for (const auto& formTime : formTimes)
@@ -72,7 +72,7 @@ void FlattenSearch::doSearch()
         tryTimeFormExpansion();
     }
 
-    std::unordered_map<std::string, std::list<tphdr::logic::area::LocationAccess*>> itemLocations = {};
+    std::unordered_map<std::string, std::list<randomizer::logic::area::LocationAccess*>> itemLocations = {};
     for (auto& [name, area] : world->GetAreaTable())
     {
         for (auto& locAccess : area->GetLocations())
@@ -92,8 +92,8 @@ void FlattenSearch::doSearch()
 
     // Step 2: for every location, OR all the ways to access it
 
-    auto formTimes = tphdr::logic::requirement::FormTime::ALL_FORM_AND_DAY_TIMES;
-    formTimes.push_back(tphdr::logic::requirement::FormTime::TWILIGHT);
+    auto formTimes = randomizer::logic::requirement::FormTime::ALL_FORM_AND_DAY_TIMES;
+    formTimes.push_back(randomizer::logic::requirement::FormTime::TWILIGHT);
     for (auto& [locName, accessList] : itemLocations)
     {
         auto expr = DNF::False();
@@ -121,7 +121,7 @@ void FlattenSearch::doSearch()
             {
                 auto expr = DNF::False();
                 auto& validFormTimes = exit->GetWorld()->GetExitTimeFormCache()[exit];
-                for (const auto& formTime : tphdr::logic::requirement::FormTime::ALL_FORM_TIMES)
+                for (const auto& formTime : randomizer::logic::requirement::FormTime::ALL_FORM_TIMES)
                 {
                     if (formTime & validFormTimes)
                     {
@@ -136,7 +136,7 @@ void FlattenSearch::doSearch()
 
 // Check for a thing in area whether its logical dependencies
 // have recently been updated.
-bool FlattenSearch::wasUpdated(tphdr::logic::area::Area* area, void* thing)
+bool FlattenSearch::wasUpdated(randomizer::logic::area::Area* area, void* thing)
 {
     if (recentlyUpdatedAreas.contains(area))
     {
@@ -154,7 +154,7 @@ bool FlattenSearch::wasUpdated(tphdr::logic::area::Area* area, void* thing)
     // auto& remoteAreaReqs = remoteAreaRequirements[thing];
     // for (auto& areaStr : remoteAreaReqs)
     // {
-    //     tphdr::logic::area::Area* area2;
+    //     randomizer::logic::area::Area* area2;
     //     world->GetArea(areaStr, area2);
     //     if (recentlyUpdatedAreas.contains(area2))
     //     {
@@ -167,7 +167,7 @@ bool FlattenSearch::wasUpdated(tphdr::logic::area::Area* area, void* thing)
 
 void FlattenSearch::tryExits()
 {
-    using namespace tphdr::logic::requirement;
+    using namespace randomizer::logic::requirement;
     auto exits = exitsToTry;
     for (auto& exit : exits)
     {
@@ -255,7 +255,7 @@ void FlattenSearch::tryEvents()
 
         auto& oldExpr = eventExprs[event->GetEventIndex()];
         auto newPartial = DNF::False();
-        for (const auto& formTime : tphdr::logic::requirement::FormTime::ALL_FORM_AND_DAY_TIMES)
+        for (const auto& formTime : randomizer::logic::requirement::FormTime::ALL_FORM_AND_DAY_TIMES)
         {
             newPartial = newPartial.or_(tryEventAtFormTime(event, formTime));
         }
@@ -271,7 +271,7 @@ void FlattenSearch::tryEvents()
 
 void FlattenSearch::tryTimeFormExpansion()
 {
-    using namespace tphdr::logic::requirement;
+    using namespace randomizer::logic::requirement;
     for (auto& area : areasToTry)
     {
         if (!recentlyUpdatedAreas.contains(area))
@@ -352,9 +352,9 @@ void FlattenSearch::tryTimeFormExpansion()
     }
 }
 
-void FlattenSearch::andAreaFormTimes(tphdr::logic::area::Area* area)
+void FlattenSearch::andAreaFormTimes(randomizer::logic::area::Area* area)
 {
-    using namespace tphdr::logic::requirement;
+    using namespace randomizer::logic::requirement;
 
     auto& areaHumanDay = this->areaExprs[FormTime::HUMAN_DAY][area];
     auto& areaWolfDay = this->areaExprs[FormTime::WOLF_DAY][area];
@@ -365,26 +365,26 @@ void FlattenSearch::andAreaFormTimes(tphdr::logic::area::Area* area)
     this->areaExprs[FormTime::NIGHT][area] = areaHumanNight.and_(areaWolfNight);
 }
 
-DNF FlattenSearch::tryEventAtFormTime(tphdr::logic::area::EventAccess* event, const int& formTime)
+DNF FlattenSearch::tryEventAtFormTime(randomizer::logic::area::EventAccess* event, const int& formTime)
 {
     return areaExprs[formTime][event->GetArea()].and_(
         evaluatePartialRequirement(bitIndex, event->GetRequirement(), this, formTime));
 }
 
-DNF FlattenSearch::tryLocationAtFormTime(tphdr::logic::area::LocationAccess* location, const int& formTime)
+DNF FlattenSearch::tryLocationAtFormTime(randomizer::logic::area::LocationAccess* location, const int& formTime)
 {
     return areaExprs[formTime][location->GetArea()].and_(
         evaluatePartialRequirement(bitIndex, location->GetRequirement(), this, formTime));
 }
 
-DNF FlattenSearch::tryExitAtFormTime(tphdr::logic::entrance::Entrance* exit, const int& formTime)
+DNF FlattenSearch::tryExitAtFormTime(randomizer::logic::entrance::Entrance* exit, const int& formTime)
 {
     return areaExprs[formTime][exit->GetParentArea()].and_(
         evaluatePartialRequirement(bitIndex, exit->GetRequirement(), this, formTime));
 }
 
 DNF evaluatePartialRequirement(BitIndex& bitIndex,
-                               const tphdr::logic::requirement::Requirement& req,
+                               const randomizer::logic::requirement::Requirement& req,
                                FlattenSearch* search,
                                const int& formTime)
 {
@@ -392,93 +392,93 @@ DNF evaluatePartialRequirement(BitIndex& bitIndex,
     uint32_t expectedHearts = 0;
     uint32_t totalHearts = 0;
     std::bitset<512> bits = 0;
-    tphdr::logic::item::Item* item;
+    randomizer::logic::item::Item* item;
     int event;
     DNF d = DNF();
-    tphdr::logic::area::Area* area;
+    randomizer::logic::area::Area* area;
 
     switch (req._type)
     {
-        case tphdr::logic::requirement::Type::NOTHING:
+        case randomizer::logic::requirement::Type::NOTHING:
             return DNF::True();
 
-        case tphdr::logic::requirement::Type::IMPOSSIBLE:
+        case randomizer::logic::requirement::Type::IMPOSSIBLE:
             return DNF::False();
 
-        case tphdr::logic::requirement::Type::OR:
+        case randomizer::logic::requirement::Type::OR:
             d = DNF::False();
             for (auto& arg : req._args)
             {
                 d = d.or_(evaluatePartialRequirement(bitIndex,
-                                                     std::get<tphdr::logic::requirement::Requirement>(arg),
+                                                     std::get<randomizer::logic::requirement::Requirement>(arg),
                                                      search,
                                                      formTime));
             }
             return d;
 
-        case tphdr::logic::requirement::Type::AND:
+        case randomizer::logic::requirement::Type::AND:
             d = DNF::True();
             for (auto& arg : req._args)
             {
                 d = d.and_(evaluatePartialRequirement(bitIndex,
-                                                      std::get<tphdr::logic::requirement::Requirement>(arg),
+                                                      std::get<randomizer::logic::requirement::Requirement>(arg),
                                                       search,
                                                       formTime));
             }
             return d;
 
-        case tphdr::logic::requirement::Type::GOLDEN_BUGS:
+        case randomizer::logic::requirement::Type::GOLDEN_BUGS:
             [[fallthrough]];
-        case tphdr::logic::requirement::Type::ITEM:
+        case randomizer::logic::requirement::Type::ITEM:
             // [[fallthrough]];
-            // case tphdr::logic::requirement::Type::HEALTH:
+            // case randomizer::logic::requirement::Type::HEALTH:
             bits[bitIndex.reqBit(req)] = 1;
             return DNF({bits});
 
-        case tphdr::logic::requirement::Type::EVENT:
+        case randomizer::logic::requirement::Type::EVENT:
             event = std::get<int>(req._args[0]);
             return search->eventExprs[event];
 
-        case tphdr::logic::requirement::Type::MACRO:
+        case randomizer::logic::requirement::Type::MACRO:
             return evaluatePartialRequirement(bitIndex, search->world->GetMacro(std::get<int>(req._args[0])), search, formTime);
 
         // count requirements frequently have to unify with weaker terms,
         // so a count requirement always requires all lesser item counts too.
         // this ensures redundant terms can be eliminated
-        case tphdr::logic::requirement::Type::COUNT:
+        case randomizer::logic::requirement::Type::COUNT:
             expectedCount = std::get<int>(req._args[0]);
-            item = std::get<tphdr::logic::item::Item*>(req._args[1]);
+            item = std::get<randomizer::logic::item::Item*>(req._args[1]);
             for (auto i = 1; i <= expectedCount; i++)
             {
-                tphdr::logic::requirement::Requirement newReq;
+                randomizer::logic::requirement::Requirement newReq;
                 if (i == 1)
                 {
-                    newReq = tphdr::logic::requirement::Requirement {tphdr::logic::requirement::Type::ITEM, {item}};
+                    newReq = randomizer::logic::requirement::Requirement {randomizer::logic::requirement::Type::ITEM, {item}};
                 }
                 else
                 {
-                    newReq = tphdr::logic::requirement::Requirement {tphdr::logic::requirement::Type::COUNT, {i, item}};
+                    newReq = randomizer::logic::requirement::Requirement {randomizer::logic::requirement::Type::COUNT, {i, item}};
                 }
                 bits[bitIndex.reqBit(newReq)] = 1;
             }
             return DNF({bits});
 
-        case tphdr::logic::requirement::Type::DAY:
-            return (formTime & tphdr::logic::requirement::FormTime::DAY) ? DNF::True() : DNF::False();
+        case randomizer::logic::requirement::Type::DAY:
+            return (formTime & randomizer::logic::requirement::FormTime::DAY) ? DNF::True() : DNF::False();
 
-        case tphdr::logic::requirement::Type::NIGHT:
-            return (formTime & tphdr::logic::requirement::FormTime::NIGHT) ? DNF::True() : DNF::False();
+        case randomizer::logic::requirement::Type::NIGHT:
+            return (formTime & randomizer::logic::requirement::FormTime::NIGHT) ? DNF::True() : DNF::False();
 
-        case tphdr::logic::requirement::Type::HUMAN_LINK:
-            return (formTime & tphdr::logic::requirement::FormTime::HUMAN) ? DNF::True() : DNF::False();
+        case randomizer::logic::requirement::Type::HUMAN_LINK:
+            return (formTime & randomizer::logic::requirement::FormTime::HUMAN) ? DNF::True() : DNF::False();
 
-        case tphdr::logic::requirement::Type::WOLF_LINK:
-            return (formTime & tphdr::logic::requirement::FormTime::WOLF) ? DNF::True() : DNF::False();
+        case randomizer::logic::requirement::Type::WOLF_LINK:
+            return (formTime & randomizer::logic::requirement::FormTime::WOLF) ? DNF::True() : DNF::False();
 
-        case tphdr::logic::requirement::Type::TWILIGHT:
-            return (formTime & tphdr::logic::requirement::FormTime::TWILIGHT) ? DNF::True() : DNF::False();
+        case randomizer::logic::requirement::Type::TWILIGHT:
+            return (formTime & randomizer::logic::requirement::FormTime::TWILIGHT) ? DNF::True() : DNF::False();
 
-        case tphdr::logic::requirement::Type::INVALID:
+        case randomizer::logic::requirement::Type::INVALID:
         default:
             // actually needs to be some error state?
             return DNF::False();
@@ -486,19 +486,19 @@ DNF evaluatePartialRequirement(BitIndex& bitIndex,
     return DNF::False();
 }
 
-void visitReq(const tphdr::logic::requirement::Requirement& req,
-              std::function<void(const tphdr::logic::requirement::Requirement& req)> f,
-              tphdr::logic::world::World* world)
+void visitReq(const randomizer::logic::requirement::Requirement& req,
+              std::function<void(const randomizer::logic::requirement::Requirement& req)> f,
+              randomizer::logic::world::World* world)
 {
     f(req);
-    if (req._type == tphdr::logic::requirement::Type::AND || req._type == tphdr::logic::requirement::Type::OR)
+    if (req._type == randomizer::logic::requirement::Type::AND || req._type == randomizer::logic::requirement::Type::OR)
     {
         for (auto& arg : req._args)
         {
-            visitReq(std::get<tphdr::logic::requirement::Requirement>(arg), f, world);
+            visitReq(std::get<randomizer::logic::requirement::Requirement>(arg), f, world);
         }
     }
-    else if (req._type == tphdr::logic::requirement::Type::MACRO)
+    else if (req._type == randomizer::logic::requirement::Type::MACRO)
     {
         visitReq(world->GetMacro(std::get<int>(req._args[0])), f, world);
     }

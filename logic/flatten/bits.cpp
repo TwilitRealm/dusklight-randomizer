@@ -208,16 +208,16 @@ int BitIndex::bump()
     return c;
 }
 
-int BitIndex::reqBit(const tphdr::logic::requirement::Requirement& req)
+int BitIndex::reqBit(const randomizer::logic::requirement::Requirement& req)
 {
     uint32_t expectedCount;
-    tphdr::logic::item::Item* item;
+    randomizer::logic::item::Item* item;
     std::string key;
 
     switch (req._type)
     {
-        case tphdr::logic::requirement::Type::ITEM:
-            item = std::get<tphdr::logic::item::Item*>(req._args[0]);
+        case randomizer::logic::requirement::Type::ITEM:
+            item = std::get<randomizer::logic::item::Item*>(req._args[0]);
             key = item->GetName() + "::1";
             if (itemBits.contains(key))
             {
@@ -229,9 +229,9 @@ int BitIndex::reqBit(const tphdr::logic::requirement::Requirement& req)
                 reverseIndex.push_back(req);
                 return bump();
             }
-        case tphdr::logic::requirement::Type::COUNT:
+        case randomizer::logic::requirement::Type::COUNT:
             expectedCount = std::get<int>(req._args[0]);
-            item = std::get<tphdr::logic::item::Item*>(req._args[1]);
+            item = std::get<randomizer::logic::item::Item*>(req._args[1]);
             key = item->GetName() + "::" + std::to_string(expectedCount);
             if (itemBits.contains(key))
             {
@@ -243,7 +243,7 @@ int BitIndex::reqBit(const tphdr::logic::requirement::Requirement& req)
                 reverseIndex.push_back(req);
                 return bump();
             }
-        // case tphdr::logic::requirement::Type::HEALTH:
+        // case randomizer::logic::requirement::Type::HEALTH:
         //     key = std::to_string(std::get<int>(req._args[0]));
         //     if (heartCount.contains(key))
         //     {
@@ -255,7 +255,7 @@ int BitIndex::reqBit(const tphdr::logic::requirement::Requirement& req)
         //         reverseIndex.push_back(req);
         //         return bump();
         //     }
-        case tphdr::logic::requirement::Type::GOLDEN_BUGS:
+        case randomizer::logic::requirement::Type::GOLDEN_BUGS:
             key = std::to_string(std::get<int>(req._args[0]));
             if (goldenBugCount.contains(key))
             {

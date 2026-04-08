@@ -10,7 +10,7 @@
 #include <ranges>
 #include <iostream>
 
-namespace tphdr::logic::requirement
+namespace randomizer::logic::requirement
 {
     namespace FormTime
     {
@@ -41,7 +41,7 @@ namespace tphdr::logic::requirement
     std::string Requirement::to_string() const
     {
         std::string reqStr = "";
-        tphdr::logic::item::Item* item;
+        randomizer::logic::item::Item* item;
         Requirement nestedReq;
         int count;
         int eventIndex;
@@ -101,12 +101,12 @@ namespace tphdr::logic::requirement
                 return reqStr;
 
             case Type::ITEM:
-                item = std::get<tphdr::logic::item::Item*>(this->_args[0]);
+                item = std::get<randomizer::logic::item::Item*>(this->_args[0]);
                 return item->GetName();
 
             case Type::COUNT:
                 count = std::get<int>(this->_args[0]);
-                item = std::get<tphdr::logic::item::Item*>(this->_args[1]);
+                item = std::get<randomizer::logic::item::Item*>(this->_args[1]);
                 return "count(" + item->GetName() + ", " + std::to_string(count) + ")";
 
             case Type::EVENT:
@@ -142,7 +142,7 @@ namespace tphdr::logic::requirement
     }
 
     Requirement ParseRequirementString(const std::string& reqStr,
-                                       tphdr::logic::world::World* world,
+                                       randomizer::logic::world::World* world,
                                        const bool& forceLogic /* = false */)
     {
         Requirement req;
@@ -213,35 +213,35 @@ namespace tphdr::logic::requirement
             // First, see if we have nothing
             if (argStr == "Nothing")
             {
-                req._type = tphdr::logic::requirement::Type::NOTHING;
+                req._type = randomizer::logic::requirement::Type::NOTHING;
                 return req;
             }
 
             // Then Human Link...
             if (argStr == "Human Link")
             {
-                req._type = tphdr::logic::requirement::Type::HUMAN_LINK;
+                req._type = randomizer::logic::requirement::Type::HUMAN_LINK;
                 return req;
             }
 
             // Then Wolf Link...
             if (argStr == "Wolf Link")
             {
-                req._type = tphdr::logic::requirement::Type::WOLF_LINK;
+                req._type = randomizer::logic::requirement::Type::WOLF_LINK;
                 return req;
             }
 
             // Then Twilight...
             if (argStr == "Twilight")
             {
-                req._type = tphdr::logic::requirement::Type::TWILIGHT;
+                req._type = randomizer::logic::requirement::Type::TWILIGHT;
                 return req;
             }
 
             // Then an event...
             if (argStr[0] == '\'')
             {
-                req._type = tphdr::logic::requirement::Type::EVENT;
+                req._type = randomizer::logic::requirement::Type::EVENT;
                 std::string eventName(argStr.begin() + 1, argStr.end() - 1); // Remove quotes
                 int eventId = world->GetEventIndex(eventName);
 
@@ -255,7 +255,7 @@ namespace tphdr::logic::requirement
             // Then a macro...
             if (world->GetMacroIndex(argStr) != -1)
             {
-                req._type = tphdr::logic::requirement::Type::MACRO;
+                req._type = randomizer::logic::requirement::Type::MACRO;
                 req._args.emplace_back(world->GetMacroIndex(argStr));
                 return req;
             }
@@ -264,16 +264,16 @@ namespace tphdr::logic::requirement
             if (world->GetItem(argStr, true) != nullptr)
             {
                 auto item = world->GetItem(argStr);
-                req._type = tphdr::logic::requirement::Type::ITEM;
+                req._type = randomizer::logic::requirement::Type::ITEM;
                 req._args.emplace_back(item);
                 return req;
             }
 
             // Then a setting...
-            else if (tphdr::utility::str::Contains(argStr, "!=", "=="))
+            else if (randomizer::utility::str::Contains(argStr, "!=", "=="))
             {
-                bool equalComparison = tphdr::utility::str::Contains(argStr, "==");
-                bool notEqualComparison = tphdr::utility::str::Contains(argStr, "!=");
+                bool equalComparison = randomizer::utility::str::Contains(argStr, "==");
+                bool notEqualComparison = randomizer::utility::str::Contains(argStr, "!=");
 
                 // Split up the comparison using the second comparison character (which will always be '=')
                 auto compPos = argStr.rfind('=');
@@ -293,18 +293,18 @@ namespace tphdr::logic::requirement
 
                 if (result == true)
                 {
-                    req._type = tphdr::logic::requirement::Type::NOTHING;
+                    req._type = randomizer::logic::requirement::Type::NOTHING;
                 }
                 else
                 {
-                    req._type = tphdr::logic::requirement::Type::IMPOSSIBLE;
+                    req._type = randomizer::logic::requirement::Type::IMPOSSIBLE;
                 }
                 return req;
             }
             // Then a count...
             else if (argStr.find("count") != std::string::npos)
             {
-                req._type = tphdr::logic::requirement::Type::COUNT;
+                req._type = randomizer::logic::requirement::Type::COUNT;
                 // Since a count has two arguments (a number and an item), we have
                 // to split up the string in the parenthesis into those arguments.
 
@@ -335,21 +335,21 @@ namespace tphdr::logic::requirement
             // Then Day...
             if (argStr == "Day")
             {
-                req._type = tphdr::logic::requirement::Type::DAY;
+                req._type = randomizer::logic::requirement::Type::DAY;
                 return req;
             }
 
             // Then Night...
             if (argStr == "Night")
             {
-                req._type = tphdr::logic::requirement::Type::NIGHT;
+                req._type = randomizer::logic::requirement::Type::NIGHT;
                 return req;
             }
 
             // And finally a health check
             // else if (argStr.find("health") != std::string::npos)
             // {
-            //     req._type = tphdr::logic::requirement::Type::HEALTH;
+            //     req._type = randomizer::logic::requirement::Type::HEALTH;
             //     std::string numHeartsStr(argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
             //     int numHearts = std::stoi(numHeartsStr);
             //     req._args.emplace_back(numHearts);
@@ -359,14 +359,14 @@ namespace tphdr::logic::requirement
             // Check Impossible down here since it's very unlikely
             else if (argStr == "Impossible")
             {
-                req._type = tphdr::logic::requirement::Type::IMPOSSIBLE;
+                req._type = randomizer::logic::requirement::Type::IMPOSSIBLE;
                 return req;
             }
 
             // Check golden bugs last since it's least likely
             else if (argStr.find("golden bugs") != std::string::npos)
             {
-                req._type = tphdr::logic::requirement::Type::GOLDEN_BUGS;
+                req._type = randomizer::logic::requirement::Type::GOLDEN_BUGS;
                 // Get rid of parenthesis
                 std::string countArg(argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
                 int count = std::stoi(countArg);
@@ -385,8 +385,8 @@ namespace tphdr::logic::requirement
 
         // If we have more than two parts to our expression, then we have either "and"
         // or "or".
-        bool andType = tphdr::utility::container::ElementInContainer(splitLogicStr, "and");
-        bool orType = tphdr::utility::container::ElementInContainer(splitLogicStr, "or");
+        bool andType = randomizer::utility::container::ElementInContainer(splitLogicStr, "and");
+        bool orType = randomizer::utility::container::ElementInContainer(splitLogicStr, "or");
 
         // If we have both of them, there's a problem with the logic expression
         if (andType && orType)
@@ -399,16 +399,16 @@ namespace tphdr::logic::requirement
             // Set the appropriate type
             if (andType)
             {
-                req._type = tphdr::logic::requirement::Type::AND;
+                req._type = randomizer::logic::requirement::Type::AND;
             }
             else
             {
-                req._type = tphdr::logic::requirement::Type::OR;
+                req._type = randomizer::logic::requirement::Type::OR;
             }
 
             // Once we know the type, we can erase the "and"s or "or"s and are left with just the deeper
             // expressions to be logically operated on.
-            tphdr::utility::container::FilterAndEraseFromVector(splitLogicStr,
+            randomizer::utility::container::FilterAndEraseFromVector(splitLogicStr,
                                                                 [](const std::string& arg)
                                                                 { return arg == "and" || arg == "or"; });
 
@@ -425,7 +425,7 @@ namespace tphdr::logic::requirement
             }
         }
 
-        if (req._type != tphdr::logic::requirement::Type::INVALID)
+        if (req._type != randomizer::logic::requirement::Type::INVALID)
         {
             return req;
         }
@@ -434,12 +434,12 @@ namespace tphdr::logic::requirement
         return req;
     }
 
-    bool EvaluateRequirementAtFormTime(const tphdr::logic::requirement::Requirement& req,
-                                       tphdr::logic::search::Search* search,
+    bool EvaluateRequirementAtFormTime(const randomizer::logic::requirement::Requirement& req,
+                                       randomizer::logic::search::Search* search,
                                        const int& formTime,
-                                       tphdr::logic::world::World* world)
+                                       randomizer::logic::world::World* world)
     {
-        tphdr::logic::item::Item* item;
+        randomizer::logic::item::Item* item;
         int count;
         int eventIndex;
         int macroIndex;
@@ -466,12 +466,12 @@ namespace tphdr::logic::requirement
                     { return EvaluateRequirementAtFormTime(std::get<Requirement>(arg), search, formTime, world); });
 
             case Type::ITEM:
-                item = std::get<tphdr::logic::item::Item*>(req._args[0]);
+                item = std::get<randomizer::logic::item::Item*>(req._args[0]);
                 return search->_ownedItems.contains(item);
 
             case Type::COUNT:
                 count = std::get<int>(req._args[0]);
-                item = std::get<tphdr::logic::item::Item*>(req._args[1]);
+                item = std::get<randomizer::logic::item::Item*>(req._args[1]);
                 return search->_ownedItems.count(item) >= count;
 
             case Type::EVENT:
@@ -508,7 +508,7 @@ namespace tphdr::logic::requirement
         return false;
     }
 
-    EvalSuccess EvaluateEventRequirement(tphdr::logic::search::Search* search, tphdr::logic::area::EventAccess* event)
+    EvalSuccess EvaluateEventRequirement(randomizer::logic::search::Search* search, randomizer::logic::area::EventAccess* event)
     {
         auto& formTime = search->_areaFormTime[event->GetArea()];
         if (EvaluateRequirementAtFormTime(event->GetRequirement(), search, formTime, event->GetArea()->GetWorld()))
@@ -518,7 +518,7 @@ namespace tphdr::logic::requirement
         return EvalSuccess::NONE;
     }
 
-    EvalSuccess EvaluateExitRequirement(tphdr::logic::search::Search* search, tphdr::logic::entrance::Entrance* exit)
+    EvalSuccess EvaluateExitRequirement(randomizer::logic::search::Search* search, randomizer::logic::entrance::Entrance* exit)
     {
         // Some exits in the middle of entrance shuffling will not have a connected area. Ignore these
         if (exit->GetConnectedArea() == nullptr)
@@ -610,7 +610,7 @@ namespace tphdr::logic::requirement
         return evalSuccess;
     }
 
-    EvalSuccess EvaluateLocationRequirement(tphdr::logic::search::Search* search, tphdr::logic::area::LocationAccess* locAccess)
+    EvalSuccess EvaluateLocationRequirement(randomizer::logic::search::Search* search, randomizer::logic::area::LocationAccess* locAccess)
     {
         auto& formTime = search->_areaFormTime[locAccess->GetArea()];
         if (EvaluateRequirementAtFormTime(locAccess->GetRequirement(), search, formTime, locAccess->GetArea()->GetWorld()))
@@ -619,4 +619,4 @@ namespace tphdr::logic::requirement
         }
         return EvalSuccess::NONE;
     }
-} // namespace tphdr::logic::requirement
+} // namespace randomizer::logic::requirement

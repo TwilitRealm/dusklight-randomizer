@@ -3,16 +3,16 @@
 
 // Turns a bit-based DNF (a two-level sum-of-products) back into
 // a readable multi-level requirement.
-tphdr::logic::requirement::Requirement DNFToExpr(BitIndex& bitIndex, DNF dnf)
+randomizer::logic::requirement::Requirement DNFToExpr(BitIndex& bitIndex, DNF dnf)
 {
     if (dnf.isTriviallyFalse())
     {
-        return tphdr::logic::requirement::Requirement {tphdr::logic::requirement::Type::IMPOSSIBLE, {}};
+        return randomizer::logic::requirement::Requirement {randomizer::logic::requirement::Type::IMPOSSIBLE, {}};
     }
 
     if (dnf.isTriviallyTrue())
     {
-        return tphdr::logic::requirement::Requirement {tphdr::logic::requirement::Type::NOTHING, {}};
+        return randomizer::logic::requirement::Requirement {randomizer::logic::requirement::Type::NOTHING, {}};
     }
 
     // really make sure no dupes exist, not sure if needed
@@ -47,14 +47,14 @@ tphdr::logic::requirement::Requirement DNFToExpr(BitIndex& bitIndex, DNF dnf)
         for (const auto& bit : term.ints())
         {
             auto& req = bitIndex.reverseIndex[bit];
-            if (req._type == tphdr::logic::requirement::Type::COUNT)
+            if (req._type == randomizer::logic::requirement::Type::COUNT)
             {
                 auto count = std::get<int>(req._args[0]);
-                auto item = std::get<tphdr::logic::item::Item*>(req._args[1]);
+                auto item = std::get<randomizer::logic::item::Item*>(req._args[1]);
                 for (int i = 1; i < count; i++)
                 {
                     auto lesserBit = bitIndex.reqBit(
-                        tphdr::logic::requirement::Requirement {tphdr::logic::requirement::Type::COUNT, {i, item}});
+                        randomizer::logic::requirement::Requirement {randomizer::logic::requirement::Type::COUNT, {i, item}});
                     term.clear(lesserBit);
                 }
             }
@@ -97,7 +97,7 @@ tphdr::logic::requirement::Requirement DNFToExpr(BitIndex& bitIndex, DNF dnf)
 
     std::vector<BitVector> seen = {};
     auto kernels = findKernels(expr, variables, BitVector(), seen);
-    kernels = tphdr::utility::container::FilterFromVector(kernels, [](const auto& k) { return !k.coKernel.isEmpty(); });
+    kernels = randomizer::utility::container::FilterFromVector(kernels, [](const auto& k) { return !k.coKernel.isEmpty(); });
 
     // columns are unique cubes in all kernels
     std::vector<BitVector> columns = {};
@@ -211,8 +211,8 @@ tphdr::logic::requirement::Requirement DNFToExpr(BitIndex& bitIndex, DNF dnf)
 
             // and re-assemble a Requirement that sort of looks like
             // common_factors * (quotient * divisor + remainder)
-            auto product = tphdr::logic::requirement::Requirement();
-            product._type = tphdr::logic::requirement::Type::AND;
+            auto product = randomizer::logic::requirement::Requirement();
+            product._type = randomizer::logic::requirement::Type::AND;
             std::vector<std::bitset<512>> quotBits;
             std::vector<std::bitset<512>> divisorBits;
             for (const auto& c : quot)
@@ -226,7 +226,7 @@ tphdr::logic::requirement::Requirement DNFToExpr(BitIndex& bitIndex, DNF dnf)
             product._args.push_back(DNFToExpr(bitIndex, DNF(quotBits)));
             product._args.push_back(DNFToExpr(bitIndex, DNF(divisorBits)));
 
-            auto sum = tphdr::logic::requirement::Requirement();
+            auto sum = randomizer::logic::requirement::Requirement();
             if (!remainder.empty())
             {
                 std::vector<std::bitset<512>> remainderBits;
@@ -234,7 +234,7 @@ tphdr::logic::requirement::Requirement DNFToExpr(BitIndex& bitIndex, DNF dnf)
                 {
                     remainderBits.push_back(c.bitset);
                 }
-                sum._type = tphdr::logic::requirement::Type::OR;
+                sum._type = randomizer::logic::requirement::Type::OR;
                 sum._args.push_back(product);
                 sum._args.push_back(DNFToExpr(bitIndex, DNF(remainderBits)));
             }
@@ -250,8 +250,8 @@ tphdr::logic::requirement::Requirement DNFToExpr(BitIndex& bitIndex, DNF dnf)
 
     // here we didn't do our complicated rectangle extraction, so just extract
     // the common factors
-    auto terms = tphdr::logic::requirement::Requirement();
-    terms._type = tphdr::logic::requirement::Type::OR;
+    auto terms = randomizer::logic::requirement::Requirement();
+    terms._type = randomizer::logic::requirement::Type::OR;
     for (const auto& c : expr)
     {
         terms._args.push_back(createAnd(lookupRequirements(bitIndex, c.ints())));
@@ -263,12 +263,12 @@ tphdr::logic::requirement::Requirement DNFToExpr(BitIndex& bitIndex, DNF dnf)
     return createAnd(finalTerms);
 }
 
-tphdr::logic::requirement::Requirement createAnd(std::vector<tphdr::logic::requirement::Requirement> terms)
+randomizer::logic::requirement::Requirement createAnd(std::vector<randomizer::logic::requirement::Requirement> terms)
 {
     if (terms.size() > 1)
     {
-        tphdr::logic::requirement::Requirement req;
-        req._type = tphdr::logic::requirement::Type::AND;
+        randomizer::logic::requirement::Requirement req;
+        req._type = randomizer::logic::requirement::Type::AND;
         for (auto& term : terms)
         {
             req._args.push_back(term);

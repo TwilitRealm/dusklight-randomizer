@@ -9,9 +9,9 @@
 #include <iostream>
 #include <fstream>
 
-namespace tphdr::logic::spoiler_log
+namespace randomizer::logic::spoiler_log
 {
-    std::string SpoilerFormatLocation(tphdr::logic::location::Location* location, const size_t& longestNameLength)
+    std::string SpoilerFormatLocation(randomizer::logic::location::Location* location, const size_t& longestNameLength)
     {
         auto numSpaces = longestNameLength - location->GetName().length();
         std::string spaces(numSpaces, ' ');
@@ -19,7 +19,7 @@ namespace tphdr::logic::spoiler_log
         return location->GetName() + ": " + spaces + location->GetCurrentItem()->GetName();
     }
 
-    std::string SpoilerFormatEntrance(tphdr::logic::entrance::Entrance* entrance, const size_t& longestNameLength)
+    std::string SpoilerFormatEntrance(randomizer::logic::entrance::Entrance* entrance, const size_t& longestNameLength)
     {
         auto numSpaces = longestNameLength - entrance->GetOriginalName().length();
         std::string spaces(numSpaces, ' ');
@@ -30,7 +30,7 @@ namespace tphdr::logic::spoiler_log
         return entrance->GetOriginalName() + ": " + spaces + connected + " from " + parent;
     }
 
-    void LogBasicInfo(std::ofstream& log, tphdr::seedgen::config::Config& config, tphdr::logic::world::WorldPool& worlds)
+    void LogBasicInfo(std::ofstream& log, randomizer::seedgen::config::Config& config, randomizer::logic::world::WorldPool& worlds)
     {
         log << "Twilight Princess HD Randomizer Version: " << "1.0.0" << std::endl;
         log << "Seed: " << config.GetSeed() << std::endl;
@@ -40,20 +40,20 @@ namespace tphdr::logic::spoiler_log
         log << "Hash: " << config.GetHash() << std::endl;
     }
 
-    void LogSettings(std::ofstream& log, tphdr::seedgen::config::Config& config, tphdr::logic::world::WorldPool& worlds)
+    void LogSettings(std::ofstream& log, randomizer::seedgen::config::Config& config, randomizer::logic::world::WorldPool& worlds)
     {
         log << std::endl << "# Settings" << std::endl;
         log << YAML::Dump(config.SettingsToYaml()) << std::endl;
     }
 
-    void GenerateSpoilerLog(tphdr::logic::world::WorldPool& worlds, tphdr::seedgen::config::Config& config)
+    void GenerateSpoilerLog(randomizer::logic::world::WorldPool& worlds, randomizer::seedgen::config::Config& config)
     {
-        tphdr::utility::platform::Log("Generating Spoiler Log");
+        randomizer::utility::platform::Log("Generating Spoiler Log");
 
         // Create logs folder if it doesn't exist
-        if (!tphdr::utility::file::dirExists(LOGS_PATH))
+        if (!randomizer::utility::file::dirExists(LOGS_PATH))
         {
-            tphdr::utility::file::create_directories(LOGS_PATH);
+            randomizer::utility::file::create_directories(LOGS_PATH);
         }
 
         std::string filepath = std::string(LOGS_PATH) + config.GetHash() + " Spoiler Log.txt";
@@ -63,7 +63,7 @@ namespace tphdr::logic::spoiler_log
         LogBasicInfo(spoilerLog, config, worlds);
 
         // Gather worlds with starting inventories
-        std::list<tphdr::logic::world::World*> worldswithStartingInventories = {};
+        std::list<randomizer::logic::world::World*> worldswithStartingInventories = {};
         for (const auto& world : worlds)
         {
             if (!world->GetStartingItemPool().empty())
@@ -184,11 +184,11 @@ namespace tphdr::logic::spoiler_log
             {
                 spoilerLog << "    World " << world->GetID() << ":" << std::endl;
                 // Create entrance pools to easily separate the entrances by type
-                auto entrancePools = tphdr::logic::entrance_shuffle::CreateEntrancePools(world.get());
+                auto entrancePools = randomizer::logic::entrance_shuffle::CreateEntrancePools(world.get());
                 auto mixedPools = world->GetSettings().GetMixedEntrancePools();
                 for (auto& [entranceType, entrancePool] : entrancePools)
                 {
-                    auto typeStr = tphdr::logic::entrance::TypeToStr(entranceType);
+                    auto typeStr = randomizer::logic::entrance::TypeToStr(entranceType);
                     // If this is a mixed pool, display the types it mixed
                     if (typeStr.starts_with("Mixed Pool"))
                     {
@@ -209,7 +209,7 @@ namespace tphdr::logic::spoiler_log
                     for (const auto& entrance : entrancePool)
                     {
                         // Ignore entrances that are impossible
-                        if (entrance->GetRequirement()._type == tphdr::logic::requirement::Type::IMPOSSIBLE)
+                        if (entrance->GetRequirement()._type == randomizer::logic::requirement::Type::IMPOSSIBLE)
                         {
                             continue;
                         }
@@ -226,15 +226,15 @@ namespace tphdr::logic::spoiler_log
 
         spoilerLog.close();
 
-        tphdr::utility::platform::Log("Wrote spoiler log to " + filepath);
+        randomizer::utility::platform::Log("Wrote spoiler log to " + filepath);
     }
 
-    void GenerateAntiSpoilerLog(tphdr::logic::world::WorldPool& worlds, tphdr::seedgen::config::Config& config)
+    void GenerateAntiSpoilerLog(randomizer::logic::world::WorldPool& worlds, randomizer::seedgen::config::Config& config)
     {
         // Create logs folder if it doesn't exist
-        if (!tphdr::utility::file::dirExists(LOGS_PATH))
+        if (!randomizer::utility::file::dirExists(LOGS_PATH))
         {
-            tphdr::utility::file::create_directories(LOGS_PATH);
+            randomizer::utility::file::create_directories(LOGS_PATH);
         }
 
         std::string filepath = std::string(LOGS_PATH) + config.GetHash() + " Anti-Spoiler Log.txt";
@@ -244,4 +244,4 @@ namespace tphdr::logic::spoiler_log
         LogBasicInfo(antiSpoilerLog, config, worlds);
         LogSettings(antiSpoilerLog, config, worlds);
     }
-} // namespace tphdr::logic::spoiler_log
+} // namespace randomizer::logic::spoiler_log

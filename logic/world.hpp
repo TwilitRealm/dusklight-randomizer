@@ -19,12 +19,12 @@
 #include <iostream>
 
 // Forward Declarations
-namespace tphdr::logic::search
+namespace randomizer::logic::search
 {
     class Search;
 }
 
-namespace tphdr::logic::world
+namespace randomizer::logic::world
 {
     class World;
     using WorldPool = std::vector<std::unique_ptr<World>>;
@@ -35,8 +35,8 @@ namespace tphdr::logic::world
         World(const int& id);
 
         int GetID() const;
-        void SetSettings(const tphdr::seedgen::settings::Settings& settings);
-        const tphdr::seedgen::settings::Settings& GetSettings() const;
+        void SetSettings(const randomizer::seedgen::settings::Settings& settings);
+        const randomizer::seedgen::settings::Settings& GetSettings() const;
         void SetWorlds(WorldPool* worlds);
 
         /**
@@ -99,44 +99,44 @@ namespace tphdr::logic::world
          * currently empty locations.
          */
         void SanitizeItemPool();
-        void SetSearchStartingProperties(tphdr::logic::search::Search* search) const;
+        void SetSearchStartingProperties(randomizer::logic::search::Search* search) const;
         void PerformPostFillTasks();
         void FinalizeBottleContents();
-        void AddPlandomizedLocation(tphdr::logic::location::Location* location, tphdr::logic::item::Item* item);
-        void AddPlandomizedEntrance(tphdr::logic::entrance::Entrance* entrance, tphdr::logic::entrance::Entrance* target);
-        std::unordered_map<tphdr::logic::entrance::Entrance*, tphdr::logic::entrance::Entrance*> GetPlandomizerEntrances();
+        void AddPlandomizedLocation(randomizer::logic::location::Location* location, randomizer::logic::item::Item* item);
+        void AddPlandomizedEntrance(randomizer::logic::entrance::Entrance* entrance, randomizer::logic::entrance::Entrance* target);
+        std::unordered_map<randomizer::logic::entrance::Entrance*, randomizer::logic::entrance::Entrance*> GetPlandomizerEntrances();
 
-        tphdr::logic::dungeon::Dungeon* GetDungeon(const std::string& name);
-        const std::map<std::string, std::unique_ptr<tphdr::logic::dungeon::Dungeon>>& GetDungeonTable() const;
-        tphdr::logic::item::Item* GetItem(const std::string& name, const bool& ignoreError = false);
-        tphdr::logic::item::Item* GetShadowCrystal();
-        tphdr::logic::item::Item* GetGameWinningItem() const;
-        tphdr::logic::item_pool::ItemPool& GetItemPool();
-        tphdr::logic::item_pool::ItemPool& GetStartingItemPool();
-        tphdr::logic::location::Location* GetLocation(const std::string& name);
-        tphdr::logic::location::LocationPool GetAllLocations(const bool& includeNonItemLocations = false);
-        tphdr::logic::area::Area* GetArea(const std::string& name, const bool& createIfNotFound = false);
-        tphdr::logic::area::Area* GetRootArea() const;
-        const std::map<std::string, std::unique_ptr<tphdr::logic::area::Area>>& GetAreaTable() const;
-        tphdr::logic::entrance::Entrance* GetEntrance(const std::string& originalName);
+        randomizer::logic::dungeon::Dungeon* GetDungeon(const std::string& name);
+        const std::map<std::string, std::unique_ptr<randomizer::logic::dungeon::Dungeon>>& GetDungeonTable() const;
+        randomizer::logic::item::Item* GetItem(const std::string& name, const bool& ignoreError = false);
+        randomizer::logic::item::Item* GetShadowCrystal();
+        randomizer::logic::item::Item* GetGameWinningItem() const;
+        randomizer::logic::item_pool::ItemPool& GetItemPool();
+        randomizer::logic::item_pool::ItemPool& GetStartingItemPool();
+        randomizer::logic::location::Location* GetLocation(const std::string& name);
+        randomizer::logic::location::LocationPool GetAllLocations(const bool& includeNonItemLocations = false);
+        randomizer::logic::area::Area* GetArea(const std::string& name, const bool& createIfNotFound = false);
+        randomizer::logic::area::Area* GetRootArea() const;
+        const std::map<std::string, std::unique_ptr<randomizer::logic::area::Area>>& GetAreaTable() const;
+        randomizer::logic::entrance::Entrance* GetEntrance(const std::string& originalName);
         int GetNewEntranceID();
-        tphdr::logic::entrance::EntrancePool GetShuffleableEntrances(const tphdr::logic::entrance::Type& type,
+        randomizer::logic::entrance::EntrancePool GetShuffleableEntrances(const randomizer::logic::entrance::Type& type,
                                                                      const bool& onlyPrimary = false);
-        tphdr::logic::entrance::EntrancePool GetShuffledEntrances(
-            const tphdr::logic::entrance::Type& type = tphdr::logic::entrance::Type::ALL,
+        randomizer::logic::entrance::EntrancePool GetShuffledEntrances(
+            const randomizer::logic::entrance::Type& type = randomizer::logic::entrance::Type::ALL,
             const bool& onlyPrimary = false);
-        std::unordered_map<tphdr::logic::entrance::Entrance*, int>& GetExitTimeFormCache();
+        std::unordered_map<randomizer::logic::entrance::Entrance*, int>& GetExitTimeFormCache();
 
         int GetMacroIndex(const std::string& macroName) const;
-        const tphdr::logic::requirement::Requirement& GetMacro(const int& macroIndex);
+        const randomizer::logic::requirement::Requirement& GetMacro(const int& macroIndex);
         int GetEventIndex(const std::string& eventName);
         std::string GetEventName(const int& eventIndex);
 
-        tphdr::seedgen::settings::Setting& Setting(const std::string& settingName);
-        void SetPlaythroughSpheres(const std::list<std::list<tphdr::logic::location::Location*>>& playthroughSpheres);
-        std::list<std::list<tphdr::logic::location::Location*>> GetPlaythroughSpheres() const;
-        void SetEntranceSpheres(const std::list<std::list<tphdr::logic::entrance::Entrance*>>& entranceSpheres);
-        std::list<std::list<tphdr::logic::entrance::Entrance*>> GetEntranceSpheres() const;
+        randomizer::seedgen::settings::Setting& Setting(const std::string& settingName);
+        void SetPlaythroughSpheres(const std::list<std::list<randomizer::logic::location::Location*>>& playthroughSpheres);
+        std::list<std::list<randomizer::logic::location::Location*>> GetPlaythroughSpheres() const;
+        void SetEntranceSpheres(const std::list<std::list<randomizer::logic::entrance::Entrance*>>& entranceSpheres);
+        std::list<std::list<randomizer::logic::entrance::Entrance*>> GetEntranceSpheres() const;
 
        private:
         int _id = -1;
@@ -144,29 +144,29 @@ namespace tphdr::logic::world
         static int _eventIdCounter; // Needs to be shared for events across all worlds
         int _entranceIdCounter = 0; // Specific for this world
 
-        tphdr::seedgen::settings::Settings _settings;
-        std::map<std::string, std::unique_ptr<tphdr::logic::item::Item>> _itemTable = {};
-        std::map<std::string, std::unique_ptr<tphdr::logic::location::Location>> _locationTable = {};
+        randomizer::seedgen::settings::Settings _settings;
+        std::map<std::string, std::unique_ptr<randomizer::logic::item::Item>> _itemTable = {};
+        std::map<std::string, std::unique_ptr<randomizer::logic::location::Location>> _locationTable = {};
         std::unordered_set<std::string> _intentionallyRemovedLocations = {};
         std::unordered_set<std::string> _registeredLocationCategories = {};
-        std::map<std::string, std::unique_ptr<tphdr::logic::area::Area>> _areaTable = {};
-        std::map<std::string, std::unique_ptr<tphdr::logic::dungeon::Dungeon>> _dungeons = {};
-        std::map<int, tphdr::logic::requirement::Requirement> _macros = {};
+        std::map<std::string, std::unique_ptr<randomizer::logic::area::Area>> _areaTable = {};
+        std::map<std::string, std::unique_ptr<randomizer::logic::dungeon::Dungeon>> _dungeons = {};
+        std::map<int, randomizer::logic::requirement::Requirement> _macros = {};
         std::unordered_map<std::string, int> _macroIndexes = {};
         std::unordered_map<std::string, int> _eventIndexes = {};
         std::unordered_map<int, std::string> _eventNames = {};
-        tphdr::logic::item_pool::ItemPool _itemPool = {};
-        tphdr::logic::item_pool::ItemPool _startingItemPool = {};
-        std::unordered_map<tphdr::logic::entrance::Entrance*, int> _exitTimeFormCache = {};
+        randomizer::logic::item_pool::ItemPool _itemPool = {};
+        randomizer::logic::item_pool::ItemPool _startingItemPool = {};
+        std::unordered_map<randomizer::logic::entrance::Entrance*, int> _exitTimeFormCache = {};
 
         // Playthroughs will be stored in world 0 for convenience
-        std::list<std::list<tphdr::logic::location::Location*>> _playthroughSpheres = {};
-        std::list<std::list<tphdr::logic::entrance::Entrance*>> _entranceSpheres = {};
+        std::list<std::list<randomizer::logic::location::Location*>> _playthroughSpheres = {};
+        std::list<std::list<randomizer::logic::entrance::Entrance*>> _entranceSpheres = {};
 
         // Plandomizer Data
-        std::unordered_map<tphdr::logic::location::Location*, tphdr::logic::item::Item*> _plandomizerLocations = {};
-        std::unordered_map<tphdr::logic::entrance::Entrance*, tphdr::logic::entrance::Entrance*> _plandomizerEntrances = {};
+        std::unordered_map<randomizer::logic::location::Location*, randomizer::logic::item::Item*> _plandomizerLocations = {};
+        std::unordered_map<randomizer::logic::entrance::Entrance*, randomizer::logic::entrance::Entrance*> _plandomizerEntrances = {};
 
         WorldPool* _worlds = nullptr;
     };
-} // namespace tphdr::logic::world
+} // namespace randomizer::logic::world

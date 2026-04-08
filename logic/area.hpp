@@ -7,31 +7,31 @@
 #include <list>
 
 // Forward Declarations
-namespace tphdr::logic::location
+namespace randomizer::logic::location
 {
     class Location;
 }
 
-namespace tphdr::logic::search
+namespace randomizer::logic::search
 {
     class Search;
 }
 
-namespace tphdr::logic::world
+namespace randomizer::logic::world
 {
     class World;
 }
 
-namespace tphdr::logic::area
+namespace randomizer::logic::area
 {
     class Area;
     class LocationAccess
     {
        public:
-        LocationAccess(tphdr::logic::location::Location* loc, const tphdr::logic::requirement::Requirement& req, Area* area);
+        LocationAccess(randomizer::logic::location::Location* loc, const randomizer::logic::requirement::Requirement& req, Area* area);
 
-        tphdr::logic::location::Location* GetLocation() const;
-        const tphdr::logic::requirement::Requirement& GetRequirement();
+        randomizer::logic::location::Location* GetLocation() const;
+        const randomizer::logic::requirement::Requirement& GetRequirement();
         Area* GetArea() const;
         int GetID() const;
 
@@ -39,23 +39,23 @@ namespace tphdr::logic::area
         static int _idCounter;
 
         int _id = -1;
-        tphdr::logic::location::Location* _loc = nullptr;
-        tphdr::logic::requirement::Requirement _req;
+        randomizer::logic::location::Location* _loc = nullptr;
+        randomizer::logic::requirement::Requirement _req;
         Area* _area = nullptr;
     };
 
     class EventAccess
     {
        public:
-        EventAccess(const tphdr::logic::requirement::Requirement& req, Area* area, const int& eventIndex);
+        EventAccess(const randomizer::logic::requirement::Requirement& req, Area* area, const int& eventIndex);
 
-        const tphdr::logic::requirement::Requirement& GetRequirement();
+        const randomizer::logic::requirement::Requirement& GetRequirement();
         Area* GetArea() const;
         int GetEventIndex() const;
         std::string GetName() const;
 
        private:
-        tphdr::logic::requirement::Requirement _req;
+        randomizer::logic::requirement::Requirement _req;
         Area* _area = nullptr;
         int _eventIndex = -1;
     };
@@ -63,7 +63,7 @@ namespace tphdr::logic::area
     class Area
     {
        public:
-        Area(const std::string& name, tphdr::logic::world::World* world);
+        Area(const std::string& name, randomizer::logic::world::World* world);
 
         std::string GetName() const;
         void SetHardAssignedRegion(const std::string& _hardAssignedRegion);
@@ -72,14 +72,14 @@ namespace tphdr::logic::area
         std::list<EventAccess*> GetEvents() const;
         void SetLocations(std::list<std::unique_ptr<LocationAccess>>& locations);
         std::list<LocationAccess*> GetLocations() const;
-        void SetExits(std::list<std::unique_ptr<tphdr::logic::entrance::Entrance>>& exits);
-        std::list<tphdr::logic::entrance::Entrance*> GetExits() const;
-        void AddExit(std::unique_ptr<tphdr::logic::entrance::Entrance>& exit);
-        void RemoveExit(tphdr::logic::entrance::Entrance* exit);
-        void AddEntrance(tphdr::logic::entrance::Entrance* entrance);
-        void RemoveEntrance(tphdr::logic::entrance::Entrance* entrance);
-        std::list<tphdr::logic::entrance::Entrance*> GetEntrances() const;
-        tphdr::logic::world::World* GetWorld() const;
+        void SetExits(std::list<std::unique_ptr<randomizer::logic::entrance::Entrance>>& exits);
+        std::list<randomizer::logic::entrance::Entrance*> GetExits() const;
+        void AddExit(std::unique_ptr<randomizer::logic::entrance::Entrance>& exit);
+        void RemoveExit(randomizer::logic::entrance::Entrance* exit);
+        void AddEntrance(randomizer::logic::entrance::Entrance* entrance);
+        void RemoveEntrance(randomizer::logic::entrance::Entrance* entrance);
+        std::list<randomizer::logic::entrance::Entrance*> GetEntrances() const;
+        randomizer::logic::world::World* GetWorld() const;
         void SetCanChangeTime(const bool& canChangeTime);
         bool CanChangeTime() const;
         void SetCanTransform(const bool& canTransform);
@@ -88,7 +88,7 @@ namespace tphdr::logic::area
         std::set<std::string> GetHintRegions();
         void SetTwilightCompletedMacroIndex(const int& macroIndex);
         int GetTwilightCompletedMacroIndex() const;
-        bool TwilightCleared(tphdr::logic::search::Search* search) const;
+        bool TwilightCleared(randomizer::logic::search::Search* search) const;
 
         /**
          *  @brief Assigns this area's hint regions(s) as well as assigns any locations within the area to a dungeon if the
@@ -105,12 +105,12 @@ namespace tphdr::logic::area
         std::set<std::string> _hintRegions = {};
         std::list<std::unique_ptr<EventAccess>> _events = {};
         std::list<std::unique_ptr<LocationAccess>> _locations = {};
-        std::list<std::unique_ptr<tphdr::logic::entrance::Entrance>> _exits = {};
-        std::list<tphdr::logic::entrance::Entrance*> _entrances = {};
-        tphdr::logic::world::World* _world;
+        std::list<std::unique_ptr<randomizer::logic::entrance::Entrance>> _exits = {};
+        std::list<randomizer::logic::entrance::Entrance*> _entrances = {};
+        randomizer::logic::world::World* _world;
         bool _canChangeTime = false;
         bool _canTransform = false;
         int _twilightCompletedMacroIndex = -1;
     };
 
-} // namespace tphdr::logic::area
+} // namespace randomizer::logic::area

@@ -48,7 +48,7 @@ static bool flushVolume(const std::string& vol)
 
 bool initMocha()
 {
-    tphdr::utility::platform::Log("Starting libmocha...");
+    randomizer::utility::platform::Log("Starting libmocha...");
 
     if (const MochaUtilsStatus status = Mocha_InitLibrary(); status != MOCHA_RESULT_SUCCESS)
     {
@@ -56,7 +56,7 @@ bool initMocha()
         return false;
     }
 
-    tphdr::utility::platform::Log("Mocha initialized");
+    randomizer::utility::platform::Log("Mocha initialized");
     return true;
 }
 
@@ -113,7 +113,7 @@ namespace utility
         {
             if (!MLCMounted)
             {
-                tphdr::utility::platform::Log("Attempting to mount MLC");
+                randomizer::utility::platform::Log("Attempting to mount MLC");
                 if (const MochaUtilsStatus status = Mocha_MountFS("storage_mlc01", nullptr, "/vol/storage_mlc01");
                     status != MOCHA_RESULT_SUCCESS)
                 {
@@ -128,7 +128,7 @@ namespace utility
         {
             if (!USBMounted)
             {
-                tphdr::utility::platform::Log("Attempting to mount USB");
+                randomizer::utility::platform::Log("Attempting to mount USB");
                 if (const MochaUtilsStatus status = Mocha_MountFS("storage_usb01", nullptr, "/vol/storage_usb01");
                     status != MOCHA_RESULT_SUCCESS)
                 {
@@ -143,7 +143,7 @@ namespace utility
         {
             if (!DiscMounted)
             {
-                tphdr::utility::platform::Log("Attempting to mount disc");
+                randomizer::utility::platform::Log("Attempting to mount disc");
                 if (const MochaUtilsStatus status = Mocha_MountFS("storage_odd03", "/dev/odd03", "/vol/storage_odd_content");
                     status != MOCHA_RESULT_SUCCESS)
                 {
@@ -178,7 +178,7 @@ namespace utility
 } // namespace utility
 #endif
 
-namespace tphdr::utility::platform
+namespace randomizer::utility::platform
 {
     void Log(const std::string& str)
     {
@@ -260,4 +260,4 @@ namespace tphdr::utility::platform
         waitForPlatformStop();
 #endif
     }
-} // namespace tphdr::utility::platform
+} // namespace randomizer::utility::platform

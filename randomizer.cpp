@@ -12,10 +12,10 @@ int randomizerMain()
     try
     {
 #ifdef LOGIC_TESTS
-        tphdr::test::test::RunTests();
+        randomizer::test::test::RunTests();
         return 0;
 #else
-        auto worlds = tphdr::logic::generate::GenerateWorlds();
+        auto worlds = randomizer::logic::generate::GenerateWorlds();
 #endif
     }
     catch(const std::exception& e)

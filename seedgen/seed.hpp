@@ -2,7 +2,7 @@
 
 #include "config.hpp"
 
-namespace tphdr::seedgen::seed
+namespace randomizer::seedgen::seed
 {
     /**
      *  @brief Generates a random sequence of 3 words to be used as a seed.
@@ -18,5 +18,5 @@ namespace tphdr::seedgen::seed
      */
     std::string GenerateHash();
 
-    std::string HashForConfig(const tphdr::seedgen::config::Config& config);
-} // namespace tphdr::seedgen::seed
+    std::string HashForConfig(const randomizer::seedgen::config::Config& config);
+} // namespace randomizer::seedgen::seed

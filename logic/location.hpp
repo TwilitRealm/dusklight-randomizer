@@ -7,17 +7,17 @@
 #include <unordered_set>
 #include <vector>
 
-namespace tphdr::logic::world
+namespace randomizer::logic::world
 {
     class World;
 }
 
-namespace tphdr::logic::area
+namespace randomizer::logic::area
 {
     class LocationAccess;
 }
 
-namespace tphdr::logic::location
+namespace randomizer::logic::location
 {
     class Location
     {
@@ -25,33 +25,33 @@ namespace tphdr::logic::location
         Location(const int& id,
                  const std::string& name,
                  std::unordered_set<std::string> categories,
-                 tphdr::logic::world::World* world,
-                 tphdr::logic::item::Item* originalItem,
+                 randomizer::logic::world::World* world,
+                 randomizer::logic::item::Item* originalItem,
                  const bool& goalLocation,
                  const std::string& hintPriority);
 
         int GetID() const;
         std::string GetName() const;
-        tphdr::logic::world::World* GetWorld() const;
+        randomizer::logic::world::World* GetWorld() const;
         bool IsGoalLocation() const;
-        void SetCurrentItem(tphdr::logic::item::Item* currentItem);
-        tphdr::logic::item::Item* GetCurrentItem() const;
+        void SetCurrentItem(randomizer::logic::item::Item* currentItem);
+        randomizer::logic::item::Item* GetCurrentItem() const;
         void RemoveCurrentItem();
         bool IsEmpty() const;
-        tphdr::logic::item::Item* GetOriginalItem() const;
-        tphdr::logic::item::Item* GetTrackedItem() const;
+        randomizer::logic::item::Item* GetOriginalItem() const;
+        randomizer::logic::item::Item* GetTrackedItem() const;
         void SetKnownVanillaItem(const bool& hasKnownVanillaItem);
         bool HasKnownVanillaItem() const;
         void SetProgression(const bool& progression);
         bool IsProgression() const;
         void SetHinted(const bool& hinted);
         bool IsHinted() const;
-        void AddLocationAccess(tphdr::logic::area::LocationAccess* locAcc);
-        std::list<tphdr::logic::area::LocationAccess*> GetAccessList() const;
-        void AddForbiddenItem(tphdr::logic::item::Item* forbiddenItem);
-        const std::unordered_set<tphdr::logic::item::Item*>& GetForbiddenItems();
-        void SetComputedRequirement(const tphdr::logic::requirement::Requirement& computedRequirement);
-        tphdr::logic::requirement::Requirement GetComputedRequirement();
+        void AddLocationAccess(randomizer::logic::area::LocationAccess* locAcc);
+        std::list<randomizer::logic::area::LocationAccess*> GetAccessList() const;
+        void AddForbiddenItem(randomizer::logic::item::Item* forbiddenItem);
+        const std::unordered_set<randomizer::logic::item::Item*>& GetForbiddenItems();
+        void SetComputedRequirement(const randomizer::logic::requirement::Requirement& computedRequirement);
+        randomizer::logic::requirement::Requirement GetComputedRequirement();
         void SetRegisteredLocationCategories(std::unordered_set<std::string>* registeredLocationCategories);
 
         /**
@@ -83,17 +83,17 @@ namespace tphdr::logic::location
         int _id = -1;
         std::string _name = "";
         std::unordered_set<std::string> _categories = {};
-        tphdr::logic::world::World* _world;
-        tphdr::logic::item::Item* _originalItem = tphdr::logic::item::Nothing.get();
+        randomizer::logic::world::World* _world;
+        randomizer::logic::item::Item* _originalItem = randomizer::logic::item::Nothing.get();
         bool _goalLocation = false;
-        tphdr::logic::item::Item* _currentItem = tphdr::logic::item::Nothing.get();
+        randomizer::logic::item::Item* _currentItem = randomizer::logic::item::Nothing.get();
         bool _hasKnownVanillaItem = false;
-        std::list<tphdr::logic::area::LocationAccess*> _locationAccessList = {};
+        std::list<randomizer::logic::area::LocationAccess*> _locationAccessList = {};
         bool _progression = true; // Set as false later if applicable
         bool _hinted = false;
         std::string _hintPriority = "Never";
-        std::unordered_set<tphdr::logic::item::Item*> _forbiddenItems = {};
-        tphdr::logic::requirement::Requirement _computedRequirement;
+        std::unordered_set<randomizer::logic::item::Item*> _forbiddenItems = {};
+        randomizer::logic::requirement::Requirement _computedRequirement;
         /**
          *  @brief _registeredLocationCategories is the set of all categories that are processed after reading locations.yaml.
          * This structure is held in the World class and every location in that world has a pointer to it.
@@ -102,8 +102,8 @@ namespace tphdr::logic::location
         std::unordered_set<std::string>* _registeredLocationCategories = nullptr;
 
         // Potential tracker stuff
-        tphdr::logic::item::Item* _trackedItem = tphdr::logic::item::Nothing.get();
+        randomizer::logic::item::Item* _trackedItem = randomizer::logic::item::Nothing.get();
     };
 
     using LocationPool = std::vector<Location*>;
-} // namespace tphdr::logic::location
+} // namespace randomizer::logic::location

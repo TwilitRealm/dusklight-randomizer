@@ -10,7 +10,7 @@
 #include <algorithm>
 #include <cstring>
 
-namespace tphdr::utility::str {
+namespace randomizer::utility::str {
     std::string toUTF8(const std::u16string& str);
 
     std::u16string toUTF16(const std::string& str);
@@ -107,7 +107,7 @@ namespace tphdr::utility::str {
     {
         for (const auto& token : {tokens...})
         {
-            while (tphdr::utility::str::Contains(s, token))
+            while (randomizer::utility::str::Contains(s, token))
             {
                 s.erase(s.find(token), strlen(token));
             }

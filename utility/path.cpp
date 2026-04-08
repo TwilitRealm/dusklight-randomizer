@@ -40,7 +40,7 @@ namespace Utility {
         
         if (!std::filesystem::is_directory(path))
         {
-            tphdr::utility::file::create_directories(path);
+            randomizer::utility::file::create_directories(path);
         }
 
         return path;
@@ -51,7 +51,7 @@ namespace Utility {
 
         if (!std::filesystem::is_directory(path))
         {
-            tphdr::utility::file::create_directories(path);
+            randomizer::utility::file::create_directories(path);
         }
 
         return path;
@@ -63,7 +63,7 @@ namespace Utility {
 
         if (!std::filesystem::is_directory(path))
         {
-            tphdr::utility::file::create_directories(path);
+            randomizer::utility::file::create_directories(path);
         }
 
         return path;

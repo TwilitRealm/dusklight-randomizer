@@ -1,6 +1,6 @@
 #pragma once
 
-namespace tphdr::test::test
+namespace randomizer::test::test
 {
     void RunTests();
-} // namespace tphdr::test::test
+} // namespace randomizer::test::test

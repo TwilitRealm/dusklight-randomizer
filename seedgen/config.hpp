@@ -11,7 +11,7 @@ namespace YAML
     class Node;
 }
 
-namespace tphdr::seedgen::config
+namespace randomizer::seedgen::config
 {
     enum struct [[nodiscard]] ConfigError
     {
@@ -85,7 +85,7 @@ namespace tphdr::seedgen::config
 
         std::string _seed;
         std::string _hash;
-        std::list<tphdr::seedgen::settings::Settings> _settingsList;
+        std::list<randomizer::seedgen::settings::Settings> _settingsList;
         bool _isUsingPlandomizer = false;
         bool _isGeneratingSpoilerLog = true;
 
@@ -101,4 +101,4 @@ namespace tphdr::seedgen::config
     std::string PermalinkErrorGetName(ConfigError err);
 
     int SeedRNG(Config& config, const bool& resolvePreferenceRandom = false, const bool& ignoreInvalidPlandomizer = true);
-} // namespace tphdr::seedgen::config
+} // namespace randomizer::seedgen::config

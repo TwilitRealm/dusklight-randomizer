@@ -7,13 +7,13 @@
 using fspath = std::filesystem::path;
 
 // Forward Declarations
-namespace tphdr::logic::world
+namespace randomizer::logic::world
 {
     class World;
     using WorldPool = std::vector<std::unique_ptr<World>>;
-} // namespace tphdr::logic::world
+} // namespace randomizer::logic::world
 
-namespace tphdr::logic::plandomizer
+namespace randomizer::logic::plandomizer
 {
-    void LoadPlandomizerData(tphdr::logic::world::WorldPool& worlds, const fspath& filepath, const bool& ignoreErrors = false);
+    void LoadPlandomizerData(randomizer::logic::world::WorldPool& worlds, const fspath& filepath, const bool& ignoreErrors = false);
 }

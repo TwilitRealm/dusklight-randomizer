@@ -7,11 +7,11 @@
 #include "../utility/random.hpp"
 #include "../utility/yaml.hpp"
 
-using namespace tphdr::logic::entrance;
+using namespace randomizer::logic::entrance;
 
-namespace tphdr::logic::entrance_shuffle
+namespace randomizer::logic::entrance_shuffle
 {
-    void ShuffleWorldEntrances(tphdr::logic::world::World* world, tphdr::logic::world::WorldPool& worlds)
+    void ShuffleWorldEntrances(randomizer::logic::world::World* world, randomizer::logic::world::WorldPool& worlds)
     {
         SetAllEntrancesData(world);
 
@@ -31,17 +31,17 @@ namespace tphdr::logic::entrance_shuffle
         }
 
         // Validate the world one last time to ensure everything worked
-        auto completeItemPool = tphdr::logic::item_pool::GetCompleteItemPool(worlds);
+        auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
         ValidateWorld(world, worlds, nullptr, completeItemPool);
     }
 
-    void SetAllEntrancesData(tphdr::logic::world::World* world)
+    void SetAllEntrancesData(randomizer::logic::world::World* world)
     {
         auto filepath = DATA_PATH "entrance_shuffle_data.yaml";
-        tphdr::utility::file::Verify(filepath);
+        randomizer::utility::file::Verify(filepath);
 
         // Keep track of which double door entrances are together
-        std::unordered_map<std::string, std::list<tphdr::logic::entrance::Entrance*>> coupledDoors = {};
+        std::unordered_map<std::string, std::list<randomizer::logic::entrance::Entrance*>> coupledDoors = {};
 
         auto entranceDataTree = LoadYAML(filepath);
         for (const auto& entranceDataNode : entranceDataTree)
@@ -50,8 +50,8 @@ namespace tphdr::logic::entrance_shuffle
             YAMLVerifyFields(entranceDataNode, "Type", "Forward");
 
             auto typeStr = entranceDataNode["Type"].as<std::string>();
-            auto type = tphdr::logic::entrance::TypeFromStr(typeStr);
-            if (type == tphdr::logic::entrance::Type::INVALID)
+            auto type = randomizer::logic::entrance::TypeFromStr(typeStr);
+            if (type == randomizer::logic::entrance::Type::INVALID)
             {
                 throw std::runtime_error("Unknown entrance type \"" + typeStr + "\" in entrance shuffle node:\n" +
                                          YAML::Dump(entranceDataNode));
@@ -123,7 +123,7 @@ namespace tphdr::logic::entrance_shuffle
         }
     }
 
-    EntrancePools CreateEntrancePools(tphdr::logic::world::World* world)
+    EntrancePools CreateEntrancePools(randomizer::logic::world::World* world)
     {
         EntrancePools entrancePools = {};
 
@@ -215,7 +215,7 @@ namespace tphdr::logic::entrance_shuffle
                     mixedPools.begin(),
                     mixedPools.end(),
                     [](const auto& pool)
-                    { return tphdr::utility::container::ElementInContainer(pool, "Overworld"); }); /*Overworld in a mixed pool*/
+                    { return randomizer::utility::container::ElementInContainer(pool, "Overworld"); }); /*Overworld in a mixed pool*/
             entrancePools[Type::OVERWORLD] =
                 world->GetShuffleableEntrances(Type::OVERWORLD, /*onlyPrimary = */ excludeOverworldReverse);
         }
@@ -317,7 +317,7 @@ namespace tphdr::logic::entrance_shuffle
 
                         // Don't assume we have access to random spawn targets. We're only connecting to one of them
                         // so assuming we have access to all of them would be erroneous.
-                        newTarget->SetRequirement(tphdr::logic::requirement::IMPOSSIBLE_REQUIREMENT);
+                        newTarget->SetRequirement(randomizer::logic::requirement::IMPOSSIBLE_REQUIREMENT);
                     }
                 }
                 targetEntrancePools[type] = spawnPool;
@@ -350,13 +350,13 @@ namespace tphdr::logic::entrance_shuffle
         return assumedPool;
     }
 
-    void SetPlandomizedEntrances(tphdr::logic::world::World* world,
-                                 tphdr::logic::world::WorldPool& worlds,
+    void SetPlandomizedEntrances(randomizer::logic::world::World* world,
+                                 randomizer::logic::world::WorldPool& worlds,
                                  EntrancePools& entrancePools,
                                  EntrancePools& targetEntrancePools)
     {
         LOG_TO_DEBUG("Now placing plandomizer entrances");
-        auto itemPool = tphdr::logic::item_pool::GetCompleteItemPool(worlds);
+        auto itemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
 
         for (auto& [plandoEntrance, plandoTarget] : world->GetPlandomizerEntrances())
         {
@@ -390,13 +390,13 @@ namespace tphdr::logic::entrance_shuffle
             // If entrances are coupled, but the user tries to plandomize a non-primary connection, get the primary connection
             // instead
             if (world->Setting("Decouple Entrances") == "Off" &&
-                tphdr::utility::container::ElementInContainer(entrancePool, entranceToConnect->GetReverse()))
+                randomizer::utility::container::ElementInContainer(entrancePool, entranceToConnect->GetReverse()))
             {
                 entranceToConnect = entranceToConnect->GetReverse();
                 targetToConnect = targetToConnect->GetReverse();
             }
 
-            if (tphdr::utility::container::ElementInContainer(entrancePool, entranceToConnect))
+            if (randomizer::utility::container::ElementInContainer(entrancePool, entranceToConnect))
             {
                 bool validTargetFound = false;
                 for (auto& target : targetPool)
@@ -432,8 +432,8 @@ namespace tphdr::logic::entrance_shuffle
                 // If we found our target, delete the entrance and it's now connected target from their respective pools
                 if (validTargetFound)
                 {
-                    tphdr::utility::container::Erase(entrancePool, entranceToConnect);
-                    tphdr::utility::container::Erase(targetPool, targetToConnect->GetAssumed());
+                    randomizer::utility::container::Erase(entrancePool, entranceToConnect);
+                    randomizer::utility::container::Erase(targetPool, targetToConnect->GetAssumed());
                 }
                 // Otherwise, the target is invalid
                 else
@@ -452,12 +452,12 @@ namespace tphdr::logic::entrance_shuffle
         LOG_TO_DEBUG("All plandomized entrances have been placed.");
     }
 
-    void ShuffleNonAssumedEntrancesPools(tphdr::logic::world::World* world,
-                                         tphdr::logic::world::WorldPool& worlds,
+    void ShuffleNonAssumedEntrancesPools(randomizer::logic::world::World* world,
+                                         randomizer::logic::world::WorldPool& worlds,
                                          EntrancePools& entrancePools,
                                          EntrancePools& targetEntrancePools)
     {
-        auto completeItemPool = tphdr::logic::item_pool::GetCompleteItemPool(worlds);
+        auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
 
         // The idea here is we want to try shuffling all the non-assumed entrances
         // at the same time since we can't validate the world after each one individually
@@ -478,7 +478,7 @@ namespace tphdr::logic::entrance_shuffle
                     auto& targetEntrancePool = targetEntrancePools.at(entranceType);
                     for (auto& entrance : entrancePool)
                     {
-                        tphdr::utility::random::ShufflePool(targetEntrancePool);
+                        randomizer::utility::random::ShufflePool(targetEntrancePool);
 
                         // Loop through and find a valid target entrance to connect to
                         for (auto& target : targetEntrancePool)
@@ -508,7 +508,7 @@ namespace tphdr::logic::entrance_shuffle
                 for (auto& [entrance, target] : rollbacks)
                 {
                     ConfirmReplacement(entrance, target);
-                    tphdr::utility::container::Erase(targetEntrancePools[entrance->GetType()], target);
+                    randomizer::utility::container::Erase(targetEntrancePools[entrance->GetType()], target);
                 }
                 // Once we've made a valid world, delete all other targets that didn't get used
                 for (auto& [entranceType, targetPool] : targetEntrancePools)
@@ -547,8 +547,8 @@ namespace tphdr::logic::entrance_shuffle
         }
     }
 
-    void ShuffleEntrancePool(tphdr::logic::world::World* world,
-                             tphdr::logic::world::WorldPool& worlds,
+    void ShuffleEntrancePool(randomizer::logic::world::World* world,
+                             randomizer::logic::world::WorldPool& worlds,
                              EntrancePool& entrancePool,
                              EntrancePool& targetEntrancePool,
                              int retries /* = 20*/)
@@ -583,13 +583,13 @@ namespace tphdr::logic::entrance_shuffle
             "generate successfully.");
     }
 
-    void ShuffleEntrances(tphdr::logic::world::WorldPool& worlds,
+    void ShuffleEntrances(randomizer::logic::world::WorldPool& worlds,
                           EntrancePool& entrancePool,
                           EntrancePool& targetEntrancePool,
                           std::unordered_map<Entrance*, Entrance*>& rollbacks)
     {
-        auto completeItemPool = tphdr::logic::item_pool::GetCompleteItemPool(worlds);
-        tphdr::utility::random::ShufflePool(entrancePool);
+        auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
+        randomizer::utility::random::ShufflePool(entrancePool);
 
         for (auto& entrance : entrancePool)
         {
@@ -598,7 +598,7 @@ namespace tphdr::logic::entrance_shuffle
             {
                 continue;
             }
-            tphdr::utility::random::ShufflePool(targetEntrancePool);
+            randomizer::utility::random::ShufflePool(targetEntrancePool);
 
             // Loop through and find a valid target entrance to connect to
             for (auto& target : targetEntrancePool)
@@ -638,11 +638,11 @@ namespace tphdr::logic::entrance_shuffle
         }
     }
 
-    bool ReplaceEntrance(tphdr::logic::world::WorldPool& worlds,
+    bool ReplaceEntrance(randomizer::logic::world::WorldPool& worlds,
                          Entrance* entrance,
                          Entrance* target,
                          std::unordered_map<Entrance*, Entrance*>& rollbacks,
-                         const tphdr::logic::item_pool::ItemPool& completeItemPool)
+                         const randomizer::logic::item_pool::ItemPool& completeItemPool)
     {
         try
         {
@@ -723,20 +723,20 @@ namespace tphdr::logic::entrance_shuffle
         }
     }
 
-    void ValidateWorld(tphdr::logic::world::World* world,
-                       tphdr::logic::world::WorldPool& worlds,
+    void ValidateWorld(randomizer::logic::world::World* world,
+                       randomizer::logic::world::WorldPool& worlds,
                        Entrance* entrance,
-                       const tphdr::logic::item_pool::ItemPool& completeItemPool)
+                       const randomizer::logic::item_pool::ItemPool& completeItemPool)
     {
         // Validate that all logic is still satisfied
-        auto verifyLogicError = tphdr::logic::search::VerifyLogic(&worlds, completeItemPool);
+        auto verifyLogicError = randomizer::logic::search::VerifyLogic(&worlds, completeItemPool);
         if (verifyLogicError.has_value())
         {
             throw EntranceShuffleError("Not all logic is satisfied! Reason:\n" + verifyLogicError.value());
         }
 
         // Check to make sure there's at least 1 sphere zero location available
-        auto sphereZeroSearch = tphdr::logic::search::Search::SphereZero(&worlds);
+        auto sphereZeroSearch = randomizer::logic::search::Search::SphereZero(&worlds);
         sphereZeroSearch.SearchWorlds();
         const auto& foundLocations = sphereZeroSearch._visitedLocations;
         auto numSphereZeroLocations = std::count_if(foundLocations.begin(),
@@ -777,4 +777,4 @@ namespace tphdr::logic::entrance_shuffle
         }
         return reverseEntrances;
     }
-} // namespace tphdr::logic::entrance_shuffle
+} // namespace randomizer::logic::entrance_shuffle

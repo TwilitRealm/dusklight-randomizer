@@ -7,7 +7,7 @@
 #include <array>
 #include <random>
 
-namespace tphdr::utility::random
+namespace randomizer::utility::random
 {
     void RandomInit(size_t seed);
     uint32_t Random(int min, int max);
@@ -57,4 +57,4 @@ namespace tphdr::utility::random
             std::swap(arr[i], arr[Random(i, arr.size())]);
         }
     }
-} // namespace tphdr::utility::random
+} // namespace randomizer::utility::random

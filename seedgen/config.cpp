@@ -9,7 +9,7 @@
 
 #include <iostream>
 
-namespace tphdr::seedgen::config
+namespace randomizer::seedgen::config
 {
 
     void Config::LoadFromFile(const fspath& settingsPath,
@@ -48,11 +48,11 @@ namespace tphdr::seedgen::config
         preferencesFile.close();
 
         this->_settingsList.clear();
-        this->_settingsList.push_front(tphdr::seedgen::settings::Settings());
+        this->_settingsList.push_front(randomizer::seedgen::settings::Settings());
         auto& settings = this->_settingsList.front();
 
         // Load settings info
-        auto settingInfoMap = tphdr::seedgen::settings::GetAllSettingsInfo();
+        auto settingInfoMap = randomizer::seedgen::settings::GetAllSettingsInfo();
 
         // Read in settings and preferences. If we have to change anything,
         // rewrite the appropriate file if allowed.
@@ -72,14 +72,14 @@ namespace tphdr::seedgen::config
                 // If the option doesn't exist, revert to default and rewrite later if necessary
                 if (settingInfo->GetIndexOfOption(settingOption) == -1)
                 {
-                    tphdr::utility::platform::Log(std::string("Setting \"") + settingName + "\" has no option \"" +
+                    randomizer::utility::platform::Log(std::string("Setting \"") + settingName + "\" has no option \"" +
                                                   settingOption + "\". Reverting to default \"" +
                                                   settingInfo->GetDefaultOption() + "\"");
                     settingOption = settingInfo->GetDefaultOption();
                     rewriteSettings = true;
                 }
 
-                settings.InsertSetting(settingName, tphdr::seedgen::settings::Setting(settingInfo.get(), settingOption));
+                settings.InsertSetting(settingName, randomizer::seedgen::settings::Setting(settingInfo.get(), settingOption));
             }
             // Special handling for starting inventory
             else if (settingName == "Starting Inventory")
@@ -122,7 +122,7 @@ namespace tphdr::seedgen::config
                 // If seed is empty string, generate a new one
                 if (this->_seed.empty())
                 {
-                    this->_seed = tphdr::seedgen::seed::GenerateSeed();
+                    this->_seed = randomizer::seedgen::seed::GenerateSeed();
                 }
             }
             // Special handling for Plandomizer
@@ -148,7 +148,7 @@ namespace tphdr::seedgen::config
                 // If the option doesn't exist, revert to default and rewrite later if necessary
                 if (preferenceInfo->GetIndexOfOption(preferenceOption) == -1)
                 {
-                    tphdr::utility::platform::Log(std::string("Preference \"") + preferenceName + " has no option \"" +
+                    randomizer::utility::platform::Log(std::string("Preference \"") + preferenceName + " has no option \"" +
                                                   preferenceOption + "\". Reverting to default \"" +
                                                   preferenceInfo->GetDefaultOption() + "\"");
                     preferenceOption = preferenceInfo->GetDefaultOption();
@@ -156,7 +156,7 @@ namespace tphdr::seedgen::config
                 }
 
                 settings.InsertSetting(preferenceName,
-                                       tphdr::seedgen::settings::Setting(preferenceInfo.get(), preferenceOption));
+                                       randomizer::seedgen::settings::Setting(preferenceInfo.get(), preferenceOption));
             }
             else if (preferenceName == "Game Base Path")
             {
@@ -181,13 +181,13 @@ namespace tphdr::seedgen::config
             if (!settings.GetMap().contains(settingName))
             {
                 settings.InsertSetting(settingName,
-                                       tphdr::seedgen::settings::Setting(settingInfo.get(), settingInfo->GetDefaultOption()));
-                tphdr::utility::platform::Log(std::string("Added missing setting \"") + settingName + "\"");
-                if (settingInfo->GetType() == tphdr::seedgen::settings::Type::STANDARD)
+                                       randomizer::seedgen::settings::Setting(settingInfo.get(), settingInfo->GetDefaultOption()));
+                randomizer::utility::platform::Log(std::string("Added missing setting \"") + settingName + "\"");
+                if (settingInfo->GetType() == randomizer::seedgen::settings::Type::STANDARD)
                 {
                     rewriteSettings = true;
                 }
-                else if (settingInfo->GetType() == tphdr::seedgen::settings::Type::PREFERENCE)
+                else if (settingInfo->GetType() == randomizer::seedgen::settings::Type::PREFERENCE)
                 {
                     rewritePreferences = true;
                 }
@@ -195,8 +195,8 @@ namespace tphdr::seedgen::config
         }
         if (!settingsTree["Seed"])
         {
-            this->_seed = tphdr::seedgen::seed::GenerateSeed();
-            tphdr::utility::platform::Log("Seed is missing. Generated new seed.");
+            this->_seed = randomizer::seedgen::seed::GenerateSeed();
+            randomizer::utility::platform::Log("Seed is missing. Generated new seed.");
             rewriteSettings = true;
         }
         if (!settingsTree["Plandomizer"] || !settingsTree["Generate Spoiler Log"] || !settingsTree["Starting Inventory"] ||
@@ -212,12 +212,12 @@ namespace tphdr::seedgen::config
         // Rewrite files if deemed necessary
         if (allowRewrite && rewriteSettings)
         {
-            tphdr::utility::platform::Log(std::string("Rewriting ") + settingsPath.generic_string());
+            randomizer::utility::platform::Log(std::string("Rewriting ") + settingsPath.generic_string());
             this->WriteSettingsToFile(settingsPath);
         }
         if (allowRewrite && rewritePreferences)
         {
-            tphdr::utility::platform::Log(std::string("Rewriting ") + preferencesPath.generic_string());
+            randomizer::utility::platform::Log(std::string("Rewriting ") + preferencesPath.generic_string());
             this->WritePreferencesToFile(preferencesPath);
         }
     }
@@ -244,7 +244,7 @@ namespace tphdr::seedgen::config
             for (const auto& settingName : sortedNames)
             {
                 auto& setting = settings.GetMap().at(settingName);
-                if (setting.GetInfo()->GetType() == tphdr::seedgen::settings::Type::STANDARD)
+                if (setting.GetInfo()->GetType() == randomizer::seedgen::settings::Type::STANDARD)
                 {
                     out[settingName] = setting.GetCurrentOption();
                 }
@@ -288,7 +288,7 @@ namespace tphdr::seedgen::config
             out["Plandomizer Path"] = this->_plandomizerPath.generic_string();
             for (auto& [settingName, setting] : settings.GetMap())
             {
-                if (setting.GetInfo()->GetType() == tphdr::seedgen::settings::Type::PREFERENCE)
+                if (setting.GetInfo()->GetType() == randomizer::seedgen::settings::Type::PREFERENCE)
                 {
                     out[settingName] = setting.GetCurrentOption();
                 }
@@ -327,7 +327,7 @@ namespace tphdr::seedgen::config
     {
         if (this->_hash.empty())
         {
-            this->_hash = tphdr::seedgen::seed::GenerateHash();
+            this->_hash = randomizer::seedgen::seed::GenerateHash();
         }
 
         return this->_hash;
@@ -335,7 +335,7 @@ namespace tphdr::seedgen::config
 
     int WriteDefaultSettings(const fspath& settingsPath)
     {
-        tphdr::utility::platform::Log("Creating Default Settings");
+        randomizer::utility::platform::Log("Creating Default Settings");
         std::ofstream settingsFile(settingsPath);
         if (settingsFile.is_open() == false)
         {
@@ -343,16 +343,16 @@ namespace tphdr::seedgen::config
             return 1;
         }
 
-        auto settingInfoMap = tphdr::seedgen::settings::GetAllSettingsInfo();
+        auto settingInfoMap = randomizer::seedgen::settings::GetAllSettingsInfo();
 
         YAML::Node root;
-        root["Seed"] = tphdr::seedgen::seed::GenerateSeed();
+        root["Seed"] = randomizer::seedgen::seed::GenerateSeed();
         root["Plandomizer"] = false;
         root["Generate Spoiler Log"] = true;
-        // TODO: root["Permalink"] = tphdr::seedgen::permalink::GeneratePermalink();
+        // TODO: root["Permalink"] = randomizer::seedgen::permalink::GeneratePermalink();
         for (const auto& [name, info] : *settingInfoMap)
         {
-            if (info->GetType() == tphdr::seedgen::settings::Type::STANDARD)
+            if (info->GetType() == randomizer::seedgen::settings::Type::STANDARD)
             {
                 root[name] = info->GetDefaultOption();
             }
@@ -369,7 +369,7 @@ namespace tphdr::seedgen::config
 
     int WriteDefaultPreferences(const fspath& preferencesPath)
     {
-        tphdr::utility::platform::Log("Creating Default Preferences");
+        randomizer::utility::platform::Log("Creating Default Preferences");
         std::ofstream preferencesFile(preferencesPath);
         if (preferencesFile.is_open() == false)
         {
@@ -377,7 +377,7 @@ namespace tphdr::seedgen::config
             return 1;
         }
 
-        auto settingInfoMap = tphdr::seedgen::settings::GetAllSettingsInfo();
+        auto settingInfoMap = randomizer::seedgen::settings::GetAllSettingsInfo();
 
         YAML::Node root;
         root["Game Base Path"] = "";
@@ -385,7 +385,7 @@ namespace tphdr::seedgen::config
         root["Plandomizer Path"] = "";
         for (const auto& [name, info] : *settingInfoMap)
         {
-            if (info->GetType() == tphdr::seedgen::settings::Type::PREFERENCE)
+            if (info->GetType() == randomizer::seedgen::settings::Type::PREFERENCE)
             {
                 root[name] = info->GetDefaultOption();
             }
@@ -402,7 +402,7 @@ namespace tphdr::seedgen::config
     {
         // Seed with system time incase we have to choose random preferences during seeding
         auto seed = static_cast<uint32_t>(std::random_device {}());
-        tphdr::utility::random::RandomInit(seed);
+        randomizer::utility::random::RandomInit(seed);
 
         // Seed the rng using a combination of the seed and standard settings
         std::string hashStr = config.GetSeed();
@@ -410,7 +410,7 @@ namespace tphdr::seedgen::config
         {
             for (auto& [settingName, setting] : settings.GetMap())
             {
-                if (setting.GetInfo()->GetType() == tphdr::seedgen::settings::Type::STANDARD)
+                if (setting.GetInfo()->GetType() == randomizer::seedgen::settings::Type::STANDARD)
                 {
                     hashStr += settingName + setting.GetCurrentOption();
                 }
@@ -444,7 +444,7 @@ namespace tphdr::seedgen::config
         if (config.IsUsingPlandomizer())
         {
             std::string plandomizerContents;
-            auto retVal = tphdr::utility::file::GetContents(config.GetPlandomizerPath(), plandomizerContents);
+            auto retVal = randomizer::utility::file::GetContents(config.GetPlandomizerPath(), plandomizerContents);
             if (!ignoreInvalidPlandomizer && retVal != 0)
             {
                 LOG_TO_ERROR("Could not read plandomizer file at \"" + config.GetPlandomizerPath().generic_string() + "\"");
@@ -460,8 +460,8 @@ namespace tphdr::seedgen::config
         }
 
         const size_t integerSeed = zng_crc32(0L, reinterpret_cast<const uint8_t*>(hashStr.data()), hashStr.length());
-        tphdr::utility::random::RandomInit(integerSeed);
+        randomizer::utility::random::RandomInit(integerSeed);
 
         return 0;
     }
-} // namespace tphdr::seedgen::config
+} // namespace randomizer::seedgen::config

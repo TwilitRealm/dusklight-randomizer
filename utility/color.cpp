@@ -152,7 +152,7 @@ std::string RGBToHexColorStr(const RGBA<double>& color) {
     c |= int(color.G * 255) << 8;
     c |= int(color.B * 255);
 
-    return tphdr::utility::str::intToHex(c, 6, false);
+    return randomizer::utility::str::intToHex(c, 6, false);
 }
 
 bool isValidHexColor(const std::string& hexColor) {

@@ -11,7 +11,7 @@
 #include <memory>
 #include <stdexcept>
 
-namespace tphdr::seedgen::settings
+namespace randomizer::seedgen::settings
 {
     class SettingInfo;
     using SettingInfoMap_t = std::unordered_map<std::string, std::unique_ptr<SettingInfo>>;
@@ -149,7 +149,7 @@ namespace tphdr::seedgen::settings
             // Check to make sure all listed options exist
             for (const auto& optionName : {optionNames...})
             {
-                if (!tphdr::utility::container::ElementInContainer(this->GetInfo()->GetOptions(), optionName))
+                if (!randomizer::utility::container::ElementInContainer(this->GetInfo()->GetOptions(), optionName))
                 {
                     throw std::runtime_error("\"" + std::string(optionName) + "\" is not a known option for setting \"" +
                                              this->GetInfo()->GetName() + "\"");
@@ -210,4 +210,4 @@ namespace tphdr::seedgen::settings
      */
     std::unique_ptr<SettingInfoMap_t> LoadAllSettingsInfo();
 
-}; // namespace tphdr::seedgen::settings
+}; // namespace randomizer::seedgen::settings

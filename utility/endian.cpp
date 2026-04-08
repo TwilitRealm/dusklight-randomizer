@@ -23,8 +23,8 @@ namespace Utility::Endian
                 return Type::Little;
             }
             else {
-                tphdr::utility::platform::Log("Warning: Could not determine endianness!");
-                tphdr::utility::platform::Log("Using little endian as default");
+                randomizer::utility::platform::Log("Warning: Could not determine endianness!");
+                randomizer::utility::platform::Log("Using little endian as default");
                 return Type::Little;
             }
         }

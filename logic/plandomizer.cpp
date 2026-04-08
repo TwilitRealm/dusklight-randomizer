@@ -6,13 +6,13 @@
 #include "../utility/file.hpp"
 #include "../utility/log.hpp"
 
-namespace tphdr::logic::plandomizer
+namespace randomizer::logic::plandomizer
 {
-    void LoadPlandomizerData(tphdr::logic::world::WorldPool& worlds, const fspath& filepath, const bool& ignoreErrors /*false*/)
+    void LoadPlandomizerData(randomizer::logic::world::WorldPool& worlds, const fspath& filepath, const bool& ignoreErrors /*false*/)
     {
         // Verify the file exists before trying to open it
         // TODO: TRY CATCH HERE
-        tphdr::utility::file::Verify(filepath);
+        randomizer::utility::file::Verify(filepath);
 
         auto plandoTree = LoadYAML(filepath);
 
@@ -110,4 +110,4 @@ namespace tphdr::logic::plandomizer
             }
         }
     }
-} // namespace tphdr::logic::plandomizer
+} // namespace randomizer::logic::plandomizer

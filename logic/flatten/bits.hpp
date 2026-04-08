@@ -61,11 +61,11 @@ class BitIndex
     BitIndex() = default;
 
     int bump();
-    int reqBit(const tphdr::logic::requirement::Requirement& req);
+    int reqBit(const randomizer::logic::requirement::Requirement& req);
 
     std::unordered_map<std::string, int> itemBits = {};
     // std::unordered_map<std::string, int> heartCount = {};
     std::unordered_map<std::string, int> goldenBugCount = {};
-    std::vector<tphdr::logic::requirement::Requirement> reverseIndex = {};
+    std::vector<randomizer::logic::requirement::Requirement> reverseIndex = {};
     int counter = 0;
 };

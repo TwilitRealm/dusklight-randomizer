@@ -12,7 +12,7 @@
     #include <dirent.h>
 #endif
 
-namespace tphdr::utility::file
+namespace randomizer::utility::file
 {
     //std::filesystem is partially broken on Wii U, these are cross-platform replacements
 

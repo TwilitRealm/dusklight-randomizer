@@ -11,12 +11,12 @@
 #define TOSTRING(x) STRINGIFY(x)
 #define __FILENAME__ (&__FILE__[SOURCE_PATH_SIZE])
 
-namespace tphdr::utility::log
+namespace randomizer::utility::log
 {
     class LogInfo
     {
        private:
-        tphdr::seedgen::config::Config config;
+        randomizer::seedgen::config::Config config;
         std::string seedHash;
 
         LogInfo();
@@ -28,9 +28,9 @@ namespace tphdr::utility::log
         LogInfo(const LogInfo&) = delete;
         LogInfo& operator=(const LogInfo&) = delete;
 
-        static void setConfig(const tphdr::seedgen::config::Config& config_) { getInstance().config = config_; }
+        static void setConfig(const randomizer::seedgen::config::Config& config_) { getInstance().config = config_; }
         static void setSeedHash(const std::string& seedHash_) { getInstance().seedHash = seedHash_; }
-        static const tphdr::seedgen::config::Config& getConfig();
+        static const randomizer::seedgen::config::Config& getConfig();
         static const std::string& getSeedHash();
     };
 
@@ -104,16 +104,16 @@ namespace tphdr::utility::log
         static DebugLog& getInstance();
         void log(const std::string& msg, const bool& timestamp = true);
     };
-} // namespace tphdr::utility::log
+} // namespace randomizer::utility::log
 
 #ifdef RANDO_DEBUG
 #define LOG_TO_DEBUG(message)                                                                                    \
-    tphdr::utility::log::DebugLog::getInstance().log(std::string("Message on line " TOSTRING(__LINE__) " of ") + \
+    randomizer::utility::log::DebugLog::getInstance().log(std::string("Message on line " TOSTRING(__LINE__) " of ") + \
                                                      __FILENAME__ + std::string(": " + std::string(message)));
 #else
 #define LOG_TO_DEBUG(message)
 #endif
 
 #define LOG_TO_ERROR(message)                                                                                    \
-    tphdr::utility::log::ErrorLog::getInstance().log(std::string("Message on line " TOSTRING(__LINE__) " of ") + \
+    randomizer::utility::log::ErrorLog::getInstance().log(std::string("Message on line " TOSTRING(__LINE__) " of ") + \
                                                      __FILENAME__ + std::string(": " + std::string(message)));

@@ -3,7 +3,7 @@
 
 #define RANDOMIZER_VERSION "1.0.0"
 
-namespace tphdr::utility::log
+namespace randomizer::utility::log
 {
     LogInfo::LogInfo() {}
 
@@ -15,7 +15,7 @@ namespace tphdr::utility::log
         return s_Instance;
     }
 
-    const tphdr::seedgen::config::Config& LogInfo::getConfig()
+    const randomizer::seedgen::config::Config& LogInfo::getConfig()
     {
         return getInstance().config;
     }
@@ -29,7 +29,7 @@ namespace tphdr::utility::log
     {
 #ifdef WRITE_ERROR_LOG
         output.open(LOG_PATH);
-        output << "Program opened " << tphdr::utility::time::ProgramTime::getDateStr(); // time string ends with \n
+        output << "Program opened " << randomizer::utility::time::ProgramTime::getDateStr(); // time string ends with \n
         output << "Twilight Princess HD Randomizer Version " << RANDOMIZER_VERSION << std::endl;
         output << std::endl << std::endl;
 #endif
@@ -52,7 +52,7 @@ namespace tphdr::utility::log
     {
 #ifdef WRITE_ERROR_LOG
         if (timestamp)
-            output << "[" << tphdr::utility::time::ProgramTime::getTimeStr() << "] ";
+            output << "[" << randomizer::utility::time::ProgramTime::getTimeStr() << "] ";
         output << msg << std::endl;
 #endif
         lastErrors.push_front(msg);
@@ -76,7 +76,7 @@ namespace tphdr::utility::log
     DebugLog::DebugLog()
     {
         output.open(LOG_PATH);
-        output << "Program opened " << tphdr::utility::time::ProgramTime::getDateStr(); // time string ends with \n
+        output << "Program opened " << randomizer::utility::time::ProgramTime::getDateStr(); // time string ends with \n
         output << "Twilight Princess HD Randomizer Version " << RANDOMIZER_VERSION << std::endl;
         output << std::endl << std::endl;
     }
@@ -95,7 +95,7 @@ namespace tphdr::utility::log
     void DebugLog::log(const std::string& msg, const bool& timestamp)
     {
         if (timestamp)
-            output << "[" << tphdr::utility::time::ProgramTime::getTimeStr() << "] ";
+            output << "[" << randomizer::utility::time::ProgramTime::getTimeStr() << "] ";
         output << msg << std::endl;
     }
-} // namespace tphdr::utility::log
+} // namespace randomizer::utility::log

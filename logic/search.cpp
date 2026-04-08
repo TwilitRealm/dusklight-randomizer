@@ -6,11 +6,11 @@
 
 #include <fstream>
 
-namespace tphdr::logic::search
+namespace randomizer::logic::search
 {
     Search::Search(const SearchMode& searchMode,
-                   tphdr::logic::world::WorldPool* worlds,
-                   const tphdr::logic::item_pool::ItemPool& items /* = {} */,
+                   randomizer::logic::world::WorldPool* worlds,
+                   const randomizer::logic::item_pool::ItemPool& items /* = {} */,
                    const int& worldToSearch /* = -1 */):
         _searchMode(searchMode), _worlds(worlds)
     {
@@ -49,7 +49,7 @@ namespace tphdr::logic::search
     void Search::SearchWorlds()
     {
         // Get all locations which fit criteria to test on each iteration
-        std::list<tphdr::logic::area::LocationAccess*> itemLocations = {};
+        std::list<randomizer::logic::area::LocationAccess*> itemLocations = {};
         for (const auto& world : *(this->_worlds))
         {
             for (const auto& [areaName, area] : world->GetAreaTable())
@@ -58,7 +58,7 @@ namespace tphdr::logic::search
                 {
                     // Only add locations that aren't empty, unless we're searching with one of the modes below
                     if (!locAccess->GetLocation()->IsEmpty() ||
-                        tphdr::utility::general::IsAnyOf(this->_searchMode,
+                        randomizer::utility::general::IsAnyOf(this->_searchMode,
                                                          SearchMode::ACCESSIBLE_LOCATIONS,
                                                          SearchMode::ALL_LOCATIONS_REACHABLE,
                                                          SearchMode::SPHERE_ZERO,
@@ -77,14 +77,14 @@ namespace tphdr::logic::search
         while (
             this->_newThingsFound &&
             !(this->_isBeatable &&
-              tphdr::utility::general::IsAnyOf(this->_searchMode, SearchMode::GENERATE_PLAYTHROUGH, SearchMode::GAME_BEATABLE)))
+              randomizer::utility::general::IsAnyOf(this->_searchMode, SearchMode::GENERATE_PLAYTHROUGH, SearchMode::GAME_BEATABLE)))
         {
             // Keep track of making logical progress. We want to keep iterating as long as we're finding new things on each
             // iteration
             this->_newThingsFound = false;
 
             // Add an empty sphere if we're generating the playthrough or tracker spheres
-            if (tphdr::utility::general::IsAnyOf(this->_searchMode,
+            if (randomizer::utility::general::IsAnyOf(this->_searchMode,
                                                  SearchMode::GENERATE_PLAYTHROUGH,
                                                  SearchMode::TRACKER_SPHERES))
             {
@@ -99,7 +99,7 @@ namespace tphdr::logic::search
                 this->_newThingsFound = false;
                 this->ProcessEvents();
                 this->ProcessExits();
-            } while (this->_newThingsFound && tphdr::utility::general::IsAnyOf(this->_searchMode,
+            } while (this->_newThingsFound && randomizer::utility::general::IsAnyOf(this->_searchMode,
                                                                                SearchMode::GENERATE_PLAYTHROUGH,
                                                                                SearchMode::TRACKER_SPHERES));
 
@@ -119,8 +119,8 @@ namespace tphdr::logic::search
                 continue;
             }
 
-            if (tphdr::logic::requirement::EvaluateEventRequirement(this, event) ==
-                tphdr::logic::requirement::EvalSuccess::COMPLETE)
+            if (randomizer::logic::requirement::EvaluateEventRequirement(this, event) ==
+                randomizer::logic::requirement::EvalSuccess::COMPLETE)
             {
                 this->_newThingsFound = true;
                 this->_ownedEvents.insert(event->GetEventIndex());
@@ -140,17 +140,17 @@ namespace tphdr::logic::search
             }
 
             // If the exit is unnecessary, we'll just consider it successful and move on
-            auto evalSuccess = tphdr::logic::requirement::EvaluateExitRequirement(this, exit);
-            if (evalSuccess == tphdr::logic::requirement::EvalSuccess::UNNECESSARY)
+            auto evalSuccess = randomizer::logic::requirement::EvaluateExitRequirement(this, exit);
+            if (evalSuccess == randomizer::logic::requirement::EvalSuccess::UNNECESSARY)
             {
                 this->_successfulExits.insert(exit);
             }
-            else if (tphdr::utility::general::IsAnyOf(evalSuccess,
-                                                      tphdr::logic::requirement::EvalSuccess::COMPLETE,
-                                                      tphdr::logic::requirement::EvalSuccess::PARTIAL))
+            else if (randomizer::utility::general::IsAnyOf(evalSuccess,
+                                                      randomizer::logic::requirement::EvalSuccess::COMPLETE,
+                                                      randomizer::logic::requirement::EvalSuccess::PARTIAL))
             {
                 this->AddExitToEntranceSpheres(exit);
-                if (evalSuccess == tphdr::logic::requirement::EvalSuccess::COMPLETE)
+                if (evalSuccess == randomizer::logic::requirement::EvalSuccess::COMPLETE)
                 {
                     this->_successfulExits.insert(exit);
                 }
@@ -166,9 +166,9 @@ namespace tphdr::logic::search
         }
     }
 
-    void Search::ProcessLocations(std::list<tphdr::logic::area::LocationAccess*>& itemLocations)
+    void Search::ProcessLocations(std::list<randomizer::logic::area::LocationAccess*>& itemLocations)
     {
-        std::list<tphdr::logic::location::Location*> accessibleThisIteration = {};
+        std::list<randomizer::logic::location::Location*> accessibleThisIteration = {};
         // Loop through all possible item locations for this search
         for (const auto& locAccess : itemLocations)
         {
@@ -184,14 +184,14 @@ namespace tphdr::logic::search
             }
 
             // If the location's requirement is met
-            if (tphdr::logic::requirement::EvaluateLocationRequirement(this, locAccess) ==
-                tphdr::logic::requirement::EvalSuccess::COMPLETE)
+            if (randomizer::logic::requirement::EvaluateLocationRequirement(this, locAccess) ==
+                randomizer::logic::requirement::EvalSuccess::COMPLETE)
             {
                 this->_visitedLocations.insert(location);
                 this->_newThingsFound = true;
                 // If we're calculating spheres, then process this location later for accurate sphere calculation. Otherwise
                 // process it now for slightly faster searching
-                if (tphdr::utility::general::IsAnyOf(this->_searchMode,
+                if (randomizer::utility::general::IsAnyOf(this->_searchMode,
                                                      SearchMode::GENERATE_PLAYTHROUGH,
                                                      SearchMode::TRACKER_SPHERES))
                 {
@@ -214,7 +214,7 @@ namespace tphdr::logic::search
         }
     }
 
-    void Search::ProcessLocation(tphdr::logic::location::Location* location)
+    void Search::ProcessLocation(randomizer::logic::location::Location* location)
     {
         // Don't return if we aren't collecting items
         if (!this->_collectItems)
@@ -254,7 +254,7 @@ namespace tphdr::logic::search
 
         // If we're generating the playthrough or just checking for beatability, then we can stop searching early if we've
         // found all world's game winning items
-        if (tphdr::utility::general::IsAnyOf(this->_searchMode, SearchMode::GENERATE_PLAYTHROUGH, SearchMode::GAME_BEATABLE) &&
+        if (randomizer::utility::general::IsAnyOf(this->_searchMode, SearchMode::GENERATE_PLAYTHROUGH, SearchMode::GAME_BEATABLE) &&
             location->GetCurrentItem()->IsGameWinningItem())
         {
             if (std::count_if(this->_ownedItems.begin(),
@@ -275,7 +275,7 @@ namespace tphdr::logic::search
         }
     }
 
-    void Search::Explore(tphdr::logic::area::Area* area)
+    void Search::Explore(randomizer::logic::area::Area* area)
     {
         for (const auto& event : area->GetEvents())
         {
@@ -284,10 +284,10 @@ namespace tphdr::logic::search
 
         for (const auto& exit : area->GetExits())
         {
-            auto evalSuccess = tphdr::logic::requirement::EvaluateExitRequirement(this, exit);
+            auto evalSuccess = randomizer::logic::requirement::EvaluateExitRequirement(this, exit);
             switch (evalSuccess)
             {
-                case tphdr::logic::requirement::EvalSuccess::COMPLETE:
+                case randomizer::logic::requirement::EvalSuccess::COMPLETE:
                     this->_successfulExits.insert(exit);
                     this->AddExitToEntranceSpheres(exit);
                     if (!this->_visitedAreas.contains(exit->GetConnectedArea()))
@@ -295,7 +295,7 @@ namespace tphdr::logic::search
                         this->_visitedAreas.insert(exit->GetConnectedArea());
                         this->Explore(exit->GetConnectedArea());
                     }
-                case tphdr::logic::requirement::EvalSuccess::PARTIAL:
+                case randomizer::logic::requirement::EvalSuccess::PARTIAL:
                     this->_exitsToTry.push_back(exit);
                     this->AddExitToEntranceSpheres(exit);
                     if (!this->_visitedAreas.contains(exit->GetConnectedArea()))
@@ -303,17 +303,17 @@ namespace tphdr::logic::search
                         this->_visitedAreas.insert(exit->GetConnectedArea());
                         this->Explore(exit->GetConnectedArea());
                     }
-                case tphdr::logic::requirement::EvalSuccess::NONE:
+                case randomizer::logic::requirement::EvalSuccess::NONE:
                     this->_exitsToTry.push_back(exit);
-                case tphdr::logic::requirement::EvalSuccess::UNNECESSARY:
+                case randomizer::logic::requirement::EvalSuccess::UNNECESSARY:
                     this->_foundDisconnectedExit = true;
             }
         }
     }
 
-    void Search::ExpandFormTimes(tphdr::logic::area::Area* area)
+    void Search::ExpandFormTimes(randomizer::logic::area::Area* area)
     {
-        using namespace tphdr::logic::requirement;
+        using namespace randomizer::logic::requirement;
 
         auto& areaFormTime = this->_areaFormTime[area];
         auto twilightCleared = area->TwilightCleared(this);
@@ -356,9 +356,9 @@ namespace tphdr::logic::search
         }
     }
 
-    void Search::AddExitToEntranceSpheres(tphdr::logic::entrance::Entrance* exit)
+    void Search::AddExitToEntranceSpheres(randomizer::logic::entrance::Entrance* exit)
     {
-        if (tphdr::utility::general::IsAnyOf(this->_searchMode,
+        if (randomizer::utility::general::IsAnyOf(this->_searchMode,
                                              SearchMode::GENERATE_PLAYTHROUGH,
                                              SearchMode::TRACKER_SPHERES) &&
             exit->IsShuffled())
@@ -411,23 +411,23 @@ namespace tphdr::logic::search
             auto color = this->_visitedAreas.contains(area.get()) ? "black" : "red";
             std::string formTimeStr = ":<br/>";
             auto& areaFormTime = this->_areaFormTime[area.get()];
-            if (areaFormTime & tphdr::logic::requirement::FormTime::HUMAN)
+            if (areaFormTime & randomizer::logic::requirement::FormTime::HUMAN)
             {
                 formTimeStr += " Human";
             }
-            if (areaFormTime & tphdr::logic::requirement::FormTime::WOLF)
+            if (areaFormTime & randomizer::logic::requirement::FormTime::WOLF)
             {
                 formTimeStr += " Wolf";
             }
-            if (areaFormTime & tphdr::logic::requirement::FormTime::DAY)
+            if (areaFormTime & randomizer::logic::requirement::FormTime::DAY)
             {
                 formTimeStr += " Day";
             }
-            if (areaFormTime & tphdr::logic::requirement::FormTime::NIGHT)
+            if (areaFormTime & randomizer::logic::requirement::FormTime::NIGHT)
             {
                 formTimeStr += " Night";
             }
-            if (areaFormTime & tphdr::logic::requirement::FormTime::TWILIGHT)
+            if (areaFormTime & randomizer::logic::requirement::FormTime::TWILIGHT)
             {
                 formTimeStr += " Twilight";
             }
@@ -472,8 +472,8 @@ namespace tphdr::logic::search
         worldGraph.close();
     }
 
-    std::optional<std::string> VerifyLogic(tphdr::logic::world::WorldPool* worlds,
-                                           const tphdr::logic::item_pool::ItemPool& items /* = {} */)
+    std::optional<std::string> VerifyLogic(randomizer::logic::world::WorldPool* worlds,
+                                           const randomizer::logic::item_pool::ItemPool& items /* = {} */)
     {
         // Run an all locations reachable search
         auto search = Search::AllLocationsReachable(worlds, items);
@@ -494,7 +494,7 @@ namespace tphdr::logic::search
                 {
                     std::string errorMsg = "Not all locations reachable! Missing locations:\n";
                     // Gather all the missing locations
-                    std::vector<tphdr::logic::location::Location*> unreachedLocations = {};
+                    std::vector<randomizer::logic::location::Location*> unreachedLocations = {};
                     for (const auto& location : allLocations)
                     {
                         if (!search._visitedLocations.contains(location))
@@ -520,7 +520,7 @@ namespace tphdr::logic::search
         return std::nullopt;
     }
 
-    void GeneratePlaythrough(tphdr::logic::world::WorldPool* worlds)
+    void GeneratePlaythrough(randomizer::logic::world::WorldPool* worlds)
     {
         LOG_TO_DEBUG("Generating Playthrough");
         // Generate Initial Playthrough
@@ -530,9 +530,9 @@ namespace tphdr::logic::search
         auto& playthroughSpheres = playthroughSearch._playthroughSpheres;
 
         // Keep track of all locations we temporaily take items away from so we can give them back after playthrough calculation
-        std::unordered_map<tphdr::logic::location::Location*, tphdr::logic::item::Item*> tempEmptyLocations = {};
+        std::unordered_map<randomizer::logic::location::Location*, randomizer::logic::item::Item*> tempEmptyLocations = {};
         // Keep track of all the locations that appear in the playthrough
-        std::unordered_set<tphdr::logic::location::Location*> playthroughLocationsSet = {};
+        std::unordered_set<randomizer::logic::location::Location*> playthroughLocationsSet = {};
         for (const auto& sphere : playthroughSpheres)
         {
             for (const auto& location : sphere)
@@ -554,7 +554,7 @@ namespace tphdr::logic::search
             }
         }
 
-        tphdr::utility::platform::Log("Paring down playthrough");
+        randomizer::utility::platform::Log("Paring down playthrough");
         // Pare down the playthrough in reverse order so we're paring it down from highest to lowest sphere.
         // This way, lower sphere items will be prioritized for the playthrough
         playthroughSpheres.reverse();
@@ -586,7 +586,7 @@ namespace tphdr::logic::search
 
         // Now do the same process for entrances to pare down the entrance playthrough
         auto& entranceSpheres = newSearch._entranceSpheres;
-        std::unordered_map<tphdr::logic::entrance::Entrance*, tphdr::logic::area::Area*> nonRequiredEntrances = {};
+        std::unordered_map<randomizer::logic::entrance::Entrance*, randomizer::logic::area::Area*> nonRequiredEntrances = {};
 
         for (auto& sphere : entranceSpheres)
         {
@@ -640,11 +640,11 @@ namespace tphdr::logic::search
         worlds->at(0)->SetEntranceSpheres(newSearch._entranceSpheres);
     }
 
-    bool GameBeatable(tphdr::logic::world::WorldPool* worlds, const tphdr::logic::item_pool::ItemPool& items /* = {} */)
+    bool GameBeatable(randomizer::logic::world::WorldPool* worlds, const randomizer::logic::item_pool::ItemPool& items /* = {} */)
     {
         auto search = Search::Beatable(worlds, items);
         search.SearchWorlds();
         return search._isBeatable;
     }
 
-} // namespace tphdr::logic::search
+} // namespace randomizer::logic::search

@@ -21,18 +21,16 @@ namespace randomizer::logic::spoiler_log
 
     std::string SpoilerFormatEntrance(randomizer::logic::entrance::Entrance* entrance, const size_t& longestNameLength)
     {
-        auto numSpaces = longestNameLength - entrance->GetOriginalName().length();
+        auto numSpaces = longestNameLength - entrance->GetAlias().length();
         std::string spaces(numSpaces, ' ');
         auto replacement = entrance->GetReplaces();
-        auto parent = replacement->GetParentArea()->GetName();
-        auto connected = replacement->GetOriginalConnectedArea()->GetName();
 
-        return entrance->GetOriginalName() + ": " + spaces + connected + " from " + parent;
+        return entrance->GetAlias() + ": " + spaces + replacement->GetAliasFrom();
     }
 
     void LogBasicInfo(std::ofstream& log, randomizer::seedgen::config::Config& config, randomizer::logic::world::WorldPool& worlds)
     {
-        log << "Twilight Princess HD Randomizer Version: " << "1.0.0" << std::endl;
+        log << "Dusk Randomizer Version: " << "1.0.0" << std::endl;
         log << "Seed: " << config.GetSeed() << std::endl;
 
         // TODO: Setting string
@@ -117,7 +115,7 @@ namespace randomizer::logic::spoiler_log
         {
             for (const auto& entrance : sphere)
             {
-                longestNameLength = std::max(entrance->GetOriginalName().length(), longestNameLength);
+                longestNameLength = std::max(entrance->GetAlias().length(), longestNameLength);
             }
         }
 
@@ -169,7 +167,7 @@ namespace randomizer::logic::spoiler_log
         {
             for (const auto& entrance : world->GetShuffledEntrances())
             {
-                longestNameLength = std::max(entrance->GetOriginalName().length(), longestNameLength);
+                longestNameLength = std::max(entrance->GetAlias().length(), longestNameLength);
             }
         }
         // Print all randomized entrances

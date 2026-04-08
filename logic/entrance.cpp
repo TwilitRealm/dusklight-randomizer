@@ -121,9 +121,32 @@ namespace randomizer::logic::entrance
         return this->_originalName;
     }
 
-    void Entrance::GeneralizeOriginalName()
+    void Entrance::SetAlias(const std::string& alias)
+    {
+        this->_alias = alias;
+        // If there's no alias, just use the original name
+        if (this->_alias.empty())
+        {
+            this->_alias = this->_originalName;
+        }
+    }
+
+    std::string Entrance::GetAlias() const
+    {
+        return this->_alias;
+    }
+
+    std::string Entrance::GetAliasFrom()
+    {
+        std::string parentAreaAlias = this->_alias.substr(0, this->_alias.find(" -> "));
+        std::string connectedAreaAlias = this->_alias.substr(this->_alias.find(" -> ") + 4);
+        return connectedAreaAlias + " from " + parentAreaAlias;
+    }
+
+    void Entrance::GeneralizeName()
     {
         randomizer::utility::str::Erase(this->_originalName, " North", " South", " East", " West", " Right", " Left");
+        randomizer::utility::str::Erase(this->_alias, " North", " South", " East", " West", " Right", " Left");
     }
 
     randomizer::logic::area::Area* Entrance::GetParentArea() const

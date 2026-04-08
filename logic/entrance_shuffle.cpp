@@ -66,6 +66,8 @@ namespace randomizer::logic::entrance_shuffle
             // TODO: Set actual entrance data
             forwardEntrance->SetID(world->GetNewEntranceID());
             forwardEntrance->SetPrimary(true);
+            forwardEntrance->SetAlias(
+                forwardEntry["Alias"] ? forwardEntry["Alias"].as<std::string>() : "");
 
             if (entranceDataNode["Return"])
             {
@@ -76,6 +78,8 @@ namespace randomizer::logic::entrance_shuffle
                 returnEntrance->SetType(type);
                 // TODO: Set actual entrance data
                 returnEntrance->SetID(world->GetNewEntranceID());
+                returnEntrance->SetAlias(
+                    returnEntry["Alias"] ? returnEntry["Alias"].as<std::string>() : "");
                 forwardEntrance->BindTwoWay(returnEntrance);
 
                 // Add double door entrances to their respective tag group
@@ -117,7 +121,7 @@ namespace randomizer::logic::entrance_shuffle
                     coupledDoor->GetParentArea()->RemoveExit(coupledDoor);
 
                     // Change the main door's name to be more general
-                    mainDoor->GeneralizeOriginalName();
+                    mainDoor->GeneralizeName();
                 }
             }
         }

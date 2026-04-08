@@ -76,10 +76,16 @@ namespace randomizer::logic::entrance
         int GetID() const;
         std::string GetCurrentName() const;
         std::string GetOriginalName() const;
+        void SetAlias(const std::string& alias);
+        std::string GetAlias() const;
+        /*
+        * @brief Gets the alias in the "connected area from parent area" format
+        */
+        std::string GetAliasFrom();
         /**
-         * @brief Removes cardinal/direction specifiers from the entrance's name (North, South, East, West, Left, Right)
+         * @brief Removes cardinal/direction specifiers from the entrance's name/alias (North, South, East, West, Left, Right)
          */
-        void GeneralizeOriginalName();
+        void GeneralizeName();
         randomizer::logic::area::Area* GetParentArea() const;
         randomizer::logic::area::Area* GetConnectedArea() const;
         randomizer::logic::area::Area* GetOriginalConnectedArea() const;
@@ -150,6 +156,7 @@ namespace randomizer::logic::entrance
         Type _type = Type::INVALID;
         Type _originalType = Type::INVALID;
         std::string _originalName = "";
+        std::string _alias = "";
         randomizer::logic::world::World* _world = nullptr;
 
         /**

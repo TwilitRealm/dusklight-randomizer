@@ -1,0 +1,660 @@
+# NOTE: Initially copied from SSHDR. Some commented out settings may reference skyward sword
+
+######################
+##  Logic Settings  ##
+######################
+
+- Name: Logic Rules
+  Default Option: All Locations Reachable
+  Options:
+    - All Locations Reachable: "Logic is considered when placing items. Tricks and Glitches can be enabled for consideration below."
+    - Beatable Only: "Logic is considered when placing items only until the world is beatable. Remaining items are placed without logic consideration. Tricks and Glitches can be enabled for consideration below."
+    - No Logic: "Maximize randomization, logic is not considered when placing items. MAY BE IMPOSSIBLE TO BEAT."
+    # - Vanilla:                         "Items are placed in their vanilla locations."
+
+######################
+##  Access Options  ##
+######################
+
+- Name: Hyrule Castle Requirements
+  Default Option: Vanilla
+  Options:
+    - Open: "The barrier around Hyrule Castle is dispelled from the beginning."
+    - Fused Shadows: "The player must collect all 3 Fused Shadows."
+    - Mirror Shards: "The player must collect all 4 Mirror Shards."
+    - All Dungeons: "The player must complete all dungeons."
+    - Vanilla: "The player must complete Palace of Twilight."
+
+- Name: Palace of Twilight Requirements
+  Default Option: Vanilla
+  Options:
+    - Open: "The barrier around Hyrule Castle is dispelled from the beginning."
+    - Fused Shadows: "The player must collect all 3 Fused Shadows."
+    - Mirror Shards: "The player must collect all 4 Mirror Shards."
+    - Vanilla: "The player must complete City in the Sky."
+
+- Name: Faron Woods Logic
+  Default Option: Closed
+  Options:
+    - Closed: "Midna will block the player from leaving Faron Woods until Forest Temple is completed."
+    - Open: "Midna will not prevent the player from leaving Faron Woods."
+
+######################
+##    Item Pool     ##
+######################
+
+- Name: Golden Bugs
+  Default Option: "Off"
+  Options:
+    - "Off": "The Golden Bug locations across Hyrule will not be randomized."
+    - "On": "The Golden Bug locations across Hyrule will be randomized."
+
+- Name: Sky Characters
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Gifts From NPCs
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Shop Items
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Hidden Skills
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Poe Souls
+  Default Option: Vanilla
+  Options:
+    - Vanilla: description
+    - Overworld: description
+    - Dungeon: description
+    - All: description
+
+- Name: Item Scarcity
+  Default Option: Vanilla
+  Options:
+    - Vanilla: "No changes to the item pool."
+    - Minimal: "Removes unrequired items such as Heart Containers and Pieces, Hawkeye, etc. Has as few items as possible for Bomb Bags, Bows, Hidden Skills, and Wallets. No Magic Armor and 1 Hidden Skill if Glitchless logic."
+    - Plentiful: "One extra copy of major items. There are 17 Heart Containers but no Pieces of Heart. Extra keys if `Keysanity` or `Any Dungeon`."
+
+######################
+##   Dungeon Items  ##
+######################
+
+- Name: Small Keys
+  Tracker Important: True
+  Default Option: Vanilla
+  Random Low: Own Dungeon
+  Random High: Anywhere
+  Options:
+    - Vanilla: "Small Keys will appear in their vanilla locations."
+    - Own Dungeon: "Small Keys will appear inside their respective dungeon."
+    - Any Dungeon: "Small Keys can appear inside any dungeon."
+    # - Own Region: "Small Keys will appear in their dungeon's region."
+    - Overworld: "Small Keys will only appear in the overworld."
+    - Anywhere: "Small Keys can appear anywhere."
+    - Keysy: "Small Keys will not appear anywhere in the world and their locks will start opened."
+
+- Name: Big Keys
+  Tracker Important: True
+  Default Option: Vanilla
+  Options:
+    - Vanilla: "Big Keys will appear in their vanilla locations."
+    - Own Dungeon: "Big Keys will appear inside their respective dungeon."
+    - Any Dungeon: "Big Keys can appear inside any dungeon."
+    # - Own Region: "Big Keys appear in their dungeon's region."
+    - Overworld: "Big Keys will only appear in the overworld."
+    - Anywhere: "Big Keys can appear anywhere."
+    - Keysy: "Big Keys will not appear anywhere in the world and boss doors will start opened."
+
+- Name: Maps and Compasses
+  Default Option: Vanilla
+  Options:
+    - Vanilla: "Maps and Compasses will appear in their vanilla locations."
+    - Own Dungeon: "Maps and Compasses can appear anywhere inside their respective dungeon."
+    - Any Dungeon: "Maps and Compasses can appear inside any dungeon."
+    # - Own Region: "Maps and Compasses will appear in their dungeon's region."
+    - Overworld: "Maps and Compasses will only appear in the overworld."
+    - Anywhere: "Maps and Compasses can appear anywhere."
+    - Start With: "The player starts with all Maps and Compasses."
+
+- Name: Dungeon Rewards Can Be Anywhere
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: No Small Keys on Bosses
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+# - Name: required_dungeons
+#   Default Option: 2
+#   Pretty Name: Required Dungeons
+#   Pretty Options:
+#     - 0-7
+#   Options:
+#     - 0-7: "Choose how many dungeons will have required items on their dungeon completion checks. Triforces, then swords, then other progress items are chosen, in this order."
+
+- Name: Unrequired Dungeons Are Barren
+  Tracker Important: True
+  Default Option: "On"
+  Options:
+    - "Off": "Unrequired dungeons may contain items needed to beat the game."
+    - "On": "Unrequired dungeons will be barren."
+
+######################
+##    Timesavers    ##
+######################
+
+- Name: Skip Prologue
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Faron Twilight Cleared
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Eldin Twilight Cleared
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Lanayru Twilight Cleared
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Skip Midna's Desparate Hour
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Skip Minor Cutscenes
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Skip Major Cutscenes
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Fast Iron Boots
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Quick Transform
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Instant Message Text
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Unlock Map Regions
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Increase Spinner Speed
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Open Door of Time
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+######################
+# Additional Settings#
+######################
+
+- Name: Starting Form
+  Tracker Important: True
+  Default Option: Human
+  Options:
+    - Human: Start as Human Link
+    - Wolf: Start as Wolf Link
+
+- Name: Transform Anywhere
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Increase Wallet Capacity
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Shops Display The Replaced Item
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Bonks Do Damage
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Trap Item Frequency
+  Default Option: None
+  Options:
+    - None: "All items in the game will be genuine."
+    - Few: "Approximately 12.5% of non-major items will be replaced with 'traps' that don't give the item they appear to be."
+    - Many: "Approximately 39.1% of non-major items will be replaced with 'traps' that don't give the item they appear to be."
+    - Mayhem: "Approximately 62.7% of non-major items will be replaced with 'traps' that don't give the item they appear to be."
+    - Nightmare: "All of the non-major items will be replaced with 'traps' that don't give the item they appear to be."
+
+- Name: Damage Multiplier
+  Default Option: Vanilla
+  Options:
+    - Vanilla: description
+    - Double: description
+    - Triple: description
+    - Quadruple: description
+    - OHKO: Any damage taken will kill link
+
+- Name: Starting Time of Day
+  Default Option: Noon
+  Options:
+    - Morning: description
+    - Noon: description
+    - Evening: description
+    - Night: description
+
+#############################
+# Dungeon Entrance Settings #
+#############################
+
+- Name: Lakebed Does Not Require Water Bombs
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Arbiters Does Not Require Bulblin Camp
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Snowpeak Does Not Require Reekfish Scent
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Sacred Grove Does Not Require Skull Kid
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: City Does Not Require Filled Skybook
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Goron Mines Entrance
+  Tracker Important: True
+  Default Option: Closed
+  Options:
+    - Closed: description
+    - No Wrestling: description
+    - Open: description
+
+- Name: Temple of Time Sword Requirement
+  Tracker Important: True
+  Default Option: None
+  Options:
+    - None: description
+    - Wooden Sword: description
+    - Ordon Sword: description
+    - Master Sword: description
+    - Light Sword: description
+
+# - Name: chest_type_matches_contents
+#   Default Option: "Off"
+#   Pretty Name: Chest Type Matches Contents
+#   Pretty Options:
+#     - "Off"
+#     - "Only Dungeon Items"
+#     - "All Contents"
+#   Options:
+#     - "Off": "Each chest will have the same type as it would in the vanilla game."
+#     - "only_dungeon_items": "Each chest will have the same type as it would in the vanilla game, unless it contains a dungeon item. If a chest contains a Boss Key, it will appear as a fancy chest. If it contains a Small Key, it will appear as a big blue chest. If it contains a Map, it will appear as a brown, wooden chest."
+#     - "all_contents": "Each chest will have a different type based on the item inside. Important items will appear in big blue chests. Big Keys will appear in fancy chests. Other items will appear in brown, wooden chests."
+
+# - Name: small_keys_in_fancy_chests
+#   Default Option: "Off"
+#   Pretty Name: Small Keys in Fancy Chests
+#   Pretty Options:
+#     - "Off"
+#     - "On"
+#   Options:
+#     - "Off": "When Chest Type Matches Contents is not off, Small Keys will appear in big blue chests."
+#     - "On": "When Chest Type Matches Contents is not off, Small Keys will appear in fancy chests."
+
+# - Name: Path Hints
+#   Default Option: 3
+#   Options:
+#     - 0-7: "Select the number of path hints you would like to generate."
+
+# - Name: barren_hints
+#   Default Option: 2
+#   Pretty Name: Barren Hints
+#   Pretty Options:
+#     - 0-7
+#   Options:
+#     - 0-7: "Select the number of barren hints you would like to generate."
+
+# - Name: location_hints
+#   Default Option: 7 # assumes always_hints is on
+#   Pretty Name: Location Hints
+#   Pretty Options:
+#     - 0-7
+#   Options:
+#     - 0-7: "Select the number of location hints you would like to generate."
+
+# - Name: item_hints
+#   Default Option: 3
+#   Pretty Name: Item Hints
+#   Pretty Options:
+#     - 0-7
+#   Options:
+#     - 0-7: "Select the number of item hints you would like to generate."
+
+# - Name: gossip_stone_hints
+#   Default Option: "Off"
+#   Pretty Name: Gossip Stone Hints
+#   Pretty Options:
+#     - "Off"
+#     - "On"
+#   Options:
+#     - "Off": "Hints will not be placed on Gossip Stones."
+#     - "On": "Hints will be placed on Gossip Stones and can be seen by talking to them."
+
+# - Name: cryptic_hint_text
+#   Default Option: "Off"
+#   Pretty Name: Cryptic Hint Text
+#   Pretty Options:
+#     - "Off"
+#     - "On"
+#   Options:
+#     - "Off": "Item and location hints will use the normal, clear Names for their items and locations."
+#     - "On": "Item and location hints will use cryptic text for their items and locations."
+
+# - Name: always_hints
+#   Default Option: "On"
+#   Pretty Name: Prioritize Remote Location Hints
+#   Pretty Options:
+#     - "Off"
+#     - "On"
+#   Options:
+#     - "Off": "All locations will be treated equally for location hints."
+#     - "On": "Certain locations which are time-consuming to check will be given priority for location hints."
+
+- Name: Randomize Starting Spawn
+  Default Option: "Off"
+  Options:
+    - "Off": "Link will start outside his house."
+    - "On": "Link will start in a random area."
+
+- Name: Randomize Dungeon Entrances
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": "Entering a dungeon will lead to the vanilla dungeon."
+    - "On": "Entering a dungeon will lead to a random dungeon."
+    - "On + Hyrule Castle": "Entering a dungeon will lead to a random dungeon. Hyrule Castle's entrance will be shuffled as well."
+
+- Name: Randomize Boss Entrances
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": "Entering a boss door will lead to the intended boss."
+    - "On": "Entering a boss door will lead to a random boss."
+
+- Name: Randomize Grotto Entrances
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": "Entering a grotto will lead to the intended grotto."
+    - "On": "Entering a grotto will lead to a random grotto."
+
+- Name: Randomize Cave Entrances
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": "Entering a door or loadzone that leads to a cave area will lead to the intended cave."
+    - "On": "Entering a door or loadzone that leads to a cave area will lead to a random cave."
+
+- Name: Randomize Interior Entrances
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": "Entering a door or loadzone that leads to an interior area will lead to the intended area."
+    - "On": "Entering a door or loadzone that leads to an interior area will lead to a random intended area."
+
+- Name: Randomize Overworld Entrances
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": "Entering a loadzone that leads to an overworld area will lead to the intended area."
+    - "On": "Entering a loadzone that leads to an overworld area will lead to a random area."
+
+- Name: Decouple Double Door Entrances
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": "Entering a left door will lead to the same location as the corresponding right door."
+    - "On": "Entering a left door may lead somewhere different than the corresponding right door (only if the door's type is randomized)."
+
+- Name: Decouple Entrances
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": "Entering a location and taking the entrance behind you will take you back to where you came from."
+    - "On": "Entering a location and taking the entrance behind you will take you to a random location."
+
+
+
+# - Name: random_bottle_contents
+#   Default Option: "Off"
+#   Pretty Name: Random Bottle Contents
+#   Pretty Options:
+#     - "Off"
+#     - "On"
+#   Options:
+#     - "Off": "There will be 3 Empty Bottles, 1 Revitalizing Potion, and 1 Bottle of Mushroom Spores in the item pool."
+#     - "On": "There will be 5 Bottles in the item pool - each with random contents (e.g. Heart Potion, Hot Pumpkin Soup, Sacred Water, etc...)."
+
+
+
+# - Name: trappable_items
+#   Default Option: "major_items"
+#   Pretty Name: Trappable Items
+#   Pretty Options:
+#     - "Major Items"
+#     - "Non Major Items"
+#     - "Any Items"
+#   Options:
+#     - "major_items": "Traps can mimic any major item that could be necessary to beat the game."
+#     - "non_major_items": "Traps can only mimic non-major items that cannot be necessary to beat the game."
+#     - "any_items": "Traps can mimic any item."
+
+
+
+########################
+## Preference Options ##
+########################
+
+# - Name: language
+#   type: Preference
+#   Default Option: english_us
+#   Pretty Name: In-Game Language
+#   Pretty Options:
+#     # - Chinese
+#     - Dutch
+#     - English (GB)
+#     - English (US)
+#     - French (FR)
+#     - French (US)
+#     - German
+#     - Italian
+#     # - Japanese
+#     # - Korean
+#     # - Russian
+#     - Spanish (ES)
+#     - Spanish (US)
+#     # - Taiwanese
+#   Options:
+#     # - chinese: "Status: Broken. The randomized game will use the Chinese language files."
+#     - dutch: "Status: Incomplete. The randomized game will use the Dutch language files."
+#     - english_gb: "Status: Complete. The randomized game will use the British English language files."
+#     - english_us: "Status: Complete. The randomized game will use the American English language files."
+#     - french_fr: "Status: Incomplete. The randomized game will use the French language files."
+#     - french_us: "Status: Incomplete. The randomized game will use the French language files."
+#     - german: "Status: Incomplete. The randomized game will use the German language files."
+#     - italian: "Status: Incomplete. The randomized game will use the Italian language files."
+#     # - japanese: "Status: Broken. The randomized game will use the Japanese language files."
+#     # - korean: "Status: Broken. The randomized game will use the Korean language files."
+#     # - russian: "Status: Broken. The randomized game will use the Russian language files."
+#     - spanish_es: "Status: Incomplete. The randomized game will use the Spanish language files."
+#     - spanish_us: "Status: Incomplete. The randomized game will use the Spanish language files."
+#     # - taiwanese: "Status: Broken. The randomized game will use the Taiwanese language files."
+
+# - Name: tunic_swap
+#   type: Preference
+#   Default Option: "Off"
+#   Pretty Name: Tunic Swap
+#   Pretty Options:
+#     - "Off"
+#     - "On"
+#   Options:
+#     - "Off": "Link will be dressed in his green knight's uniform."
+#     - "On": "Link will be dressed in his Skyloft outfit seen at the start of the vanilla game."
+
+- Name: Remove Enemy Music
+  Type: Preference
+  Default Option: "Off"
+  Options:
+    - "Off": "The background music will be interrupted by enemy drums when you get near to an enemy. Additionally, the intense music when Scaldera and Tentalus are vulnerable will play as normal."
+    - "On": "The background music will continue to play when you get near to enemies. Additionally, the intense music when Scaldera and Tentalus are vulnerable will not play and the background music will continue uninterrupted."
+
+# - Name: low_health_beeping_speed
+#   type: Preference
+#   Default Option: normal
+#   Pretty Name: Low Health Beeping Speed
+#   Pretty Options:
+#     - Very Fast
+#     - Fast
+#     - Normal
+#     - Slow
+#     - Very Slow
+#     - No Beeping
+#     - No Beeping or Flashing
+#   Options:
+#     - very_fast: "The game will play the low health beep sound every time Link flashes red."
+#     - fast: "The game will play the low health beep sound every other time Link flashes red."
+#     - normal: "The game will play the low health beep sound every 3rd time Link flashes red."
+#     - slow: "The game will play the low health beep sound every 6th time Link flashes red."
+#     - very_slow: "The game will play the low health beep sound every 12th time Link flashes red."
+#     - no_beeping: "The game will not play the low health beep sound. Link will still flash red."
+#     - no_beeping_or_flashing: "The game will not play the low health beep sound. Link will not flash red either."
+
+###############
+## Shortcuts ##
+###############
+
+
+
+#############################
+## Logic settings (tricks) ##
+#############################
+
+- Name: Back Slice as Sword
+  Default Option: "Off"
+  Options:
+    - "Off": "Back Slicing without a sword can be logically required to do damage."
+    - "On": "Back Slicing without a sword can be logically required to do damage."
+    
+- Name: Ball and Chain Webs
+  Default Option: "Off"
+  Options:
+    - "Off": "Ball and Chain will not be required to break webs."
+    - "On": "Ball and Chain may be required to break webs."
+
+#######################################
+## Extra Starting Inventory Settings ##
+#######################################
+
+# - Name: Random Starting Item Count
+#   Default Option: 0
+#   Options:
+#     - 0-7: "Select the number of randomly chosen items you would like to start with. Only a selection of the most useful items are able to be chosen to maximize the benefit of this setting."
+
+# - Name: Starting Hearts
+#   Default Option: 3
+#   Options:
+#     - 3-20: "Select the number of hearts you want to start with."

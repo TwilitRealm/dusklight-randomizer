@@ -1,0 +1,791 @@
+# TODO: Add relevant item data
+
+# Item Importance: 
+# 1. Major - Item can potentially unlock locations. Will be placed in a non-excluded location
+# 2. Minor - Item does not unlock locations, but has gameplay utility. Will be placed 
+#            in a non-excluded location if any are empty.
+# 3. Junk  - Item is expendible. Will be placed completely randomly.
+
+# WARNING: ITEM IDS ARE CURRENTLY NOT CORRECT. FIX BEFORE USING FOR ACTUAL GAME PATCHING
+- Name: Green Rupee
+  Importance: Junk
+  Id: 0x00
+
+- Name: Blue Rupee
+  Importance: Junk
+  Id: 0x01
+
+- Name: Yellow Rupee
+  Importance: Junk
+  Id: 0x02
+
+- Name: Red Rupee
+  Importance: Junk
+  Id: 0x03
+
+- Name: Purple Rupee
+  Importance: Junk
+  Id: 0x04
+
+- Name: Orange Rupee
+  Importance: Junk
+  Id: 0x05
+
+- Name: Silver Rupee
+  Importance: Junk
+  Id: 0x06
+
+- Name: Purple Rupee Links House
+  Importance: Junk
+  Id: 0x07
+
+- Name: Bombs 5
+  Importance: Junk
+  Id: 0x08
+
+- Name: Bombs 10
+  Importance: Junk
+  Id: 0x09
+
+- Name: Bombs 20
+  Importance: Junk
+  Id: 0x0A
+
+- Name: Bombs 30
+  Importance: Junk
+  Id: 0x0B
+
+- Name: Arrows 10
+  Importance: Junk
+  Id: 0x0C
+
+- Name: Arrows 20
+  Importance: Junk
+  Id: 0x0D
+
+- Name: Arrows 30
+  Importance: Junk
+  Id: 0x0E
+
+- Name: Seeds 50
+  Importance: Junk
+  Id: 0x0F
+
+- Name: Water Bombs 5
+  Importance: Junk
+  Id: 0x10
+
+- Name: Water Bombs 10
+  Importance: Junk
+  Id: 0x11
+
+- Name: Water Bombs 15
+  Importance: Junk
+  Id: 0xAE
+
+- Name: Water Bombs 20
+  Importance: Junk
+  Id: 0x12
+
+- Name: Water Bombs 30
+  Importance: Junk
+  Id: 0x13
+
+- Name: Bomblings 5
+  Importance: Junk
+  Id: 0x14
+
+- Name: Bomblings 10
+  Importance: Junk
+  Id: 0x15
+
+- Name: Shadow Crystal
+  Importance: Major
+  Id: 0x16
+
+- Name: Progressive Sword
+  Importance: Major
+  Id: 0x17
+
+- Name: Asheis Sketch
+  Importance: Major
+  Id: 0x18
+
+- Name: Aurus Memo
+  Importance: Major
+  Id: 0x19
+
+- Name: Ball and Chain
+  Importance: Major
+  Id: 0x1A
+
+- Name: Gale Boomerang
+  Importance: Major
+  Id: 0x1B
+
+- Name: Bomb Bag
+  Importance: Major
+  Id: 0x1C
+
+- Name: Iron Boots
+  Importance: Major
+  Id: 0x1D
+
+- Name: Lantern
+  Importance: Major
+  Id: 0x1E
+
+- Name: Progressive Bow
+  Importance: Major
+  Id: 0x1F
+
+- Name: Progressive Clawshot
+  Importance: Major
+  Id: 0x20
+
+- Name: Progressive Dominion Rod
+  Importance: Major
+  Id: 0x21
+
+- Name: Progressive Fishing Rod
+  Importance: Major
+  Id: 0x22
+
+- Name: Progressive Sky Book
+  Importance: Major
+  Id: 0x23
+
+- Name: Slingshot
+  Importance: Major
+  Id: 0x24
+
+- Name: Spinner
+  Importance: Major
+  Id: 0x25
+
+- Name: Zora Armor
+  Importance: Major
+  Id: 0x26
+
+- Name: Progressive Fused Shadow
+  Importance: Major
+  Id: 0x27
+
+- Name: Progressive Mirror Shard
+  Importance: Major
+  Id: 0x28
+
+- Name: Forest Temple Small Key
+  Importance: Major
+  Id: 0x29
+  Dungeon Small Key: Forest Temple
+
+- Name: Goron Mines Small Key
+  Importance: Major
+  Id: 0x2A
+  Dungeon Small Key: Goron Mines
+
+- Name: Lakebed Temple Small Key
+  Importance: Major
+  Id: 0x2B
+  Dungeon Small Key: Lakebed Temple
+
+- Name: Arbiters Grounds Small Key
+  Importance: Major
+  Id: 0x2C
+  Dungeon Small Key: Arbiters Grounds
+
+- Name: Snowpeak Ruins Small Key
+  Importance: Major
+  Id: 0x2D
+  Dungeon Small Key: Snowpeak Ruins
+
+- Name: Ordon Pumpkin
+  Importance: Major
+  Id: 0x2E
+
+- Name: Ordon Cheese
+  Importance: Major
+  Id: 0x2F
+
+- Name: Temple of Time Small Key
+  Importance: Major
+  Id: 0x30
+  Dungeon Small Key: Temple of Time
+
+- Name: City in the Sky Small Key
+  Importance: Major
+  Id: 0x31
+  Dungeon Small Key: City in the Sky
+
+- Name: Palace of Twilight Small Key
+  Importance: Major
+  Id: 0x32
+  Dungeon Small Key: Palace of Twilight
+
+- Name: Hyrule Castle Small Key
+  Importance: Major
+  Id: 0x33
+  Dungeon Small Key: Hyrule Castle
+
+- Name: North Faron Woods Gate Key
+  Importance: Major
+  Id: 0x34
+
+- Name: Gate Keys
+  Importance: Major
+  Id: 0x35
+
+- Name: Gerudo Desert Bulblin Camp Key
+  Importance: Major
+  Id: 0x36
+
+- Name: Forest Temple Big Key
+  Importance: Major
+  Id: 0x37
+  Dungeon Big Key: Forest Temple
+
+- Name: Goron Mines Key Shard
+  Importance: Major
+  Id: 0x38
+  Dungeon Big Key: Goron Mines
+
+- Name: Lakebed Temple Big Key
+  Importance: Major
+  Id: 0x39
+  Dungeon Big Key: Lakebed Temple
+
+- Name: Arbiters Grounds Big Key
+  Importance: Major
+  Id: 0x3A
+  Dungeon Big Key: Arbiters Grounds
+
+- Name: Snowpeak Ruins Bedroom Key
+  Importance: Major
+  Id: 0x3B
+  Dungeon Big Key: Snowpeak Ruins
+
+- Name: Temple of Time Big Key
+  Importance: Major
+  Id: 0x3C
+  Dungeon Big Key: Temple of Time
+
+- Name: City in the Sky Big Key
+  Importance: Major
+  Id: 0x3D
+  Dungeon Big Key: City in the Sky
+
+- Name: Palace of Twilight Big Key
+  Importance: Major
+  Id: 0xA9
+  Dungeon Big Key: Palace of Twilight
+
+- Name: Hyrule Castle Big Key
+  Importance: Major
+  Id: 0x3E
+  Dungeon Big Key: Hyrule Castle
+
+- Name: Forest Temple Compass
+  Importance: Junk
+  Id: 0x3F
+  Dungeon Compass: Forest Temple
+
+- Name: Goron Mines Compass
+  Importance: Junk
+  Id: 0x40
+  Dungeon Compass: Goron Mines
+
+- Name: Lakebed Temple Compass
+  Importance: Junk
+  Id: 0x41
+  Dungeon Compass: Lakebed Temple
+
+- Name: Arbiters Grounds Compass
+  Importance: Junk
+  Id: 0x42
+  Dungeon Compass: Arbiters Grounds
+
+- Name: Snowpeak Ruins Compass
+  Importance: Junk
+  Id: 0x43
+  Dungeon Compass: Snowpeak Ruins
+
+- Name: Temple of Time Compass
+  Importance: Junk
+  Id: 0x44
+  Dungeon Compass: Temple of Time
+
+- Name: City in the Sky Compass
+  Importance: Junk
+  Id: 0x45
+  Dungeon Compass: City in the Sky
+
+- Name: Palace of Twilight Compass
+  Importance: Junk
+  Id: 0xAA
+  Dungeon Compass: Palace of Twilight
+
+- Name: Hyrule Castle Compass
+  Importance: Junk
+  Id: 0x46
+  Dungeon Compass: Hyrule Castle
+
+- Name: Forest Temple Dungeon Map
+  Importance: Junk
+  Id: 0x47
+  Dungeon Map: Forest Temple
+
+- Name: Goron Mines Dungeon Map
+  Importance: Junk
+  Id: 0x48
+  Dungeon Map: Goron Mines
+
+- Name: Lakebed Temple Dungeon Map
+  Importance: Junk
+  Id: 0x49
+  Dungeon Map: Lakebed Temple
+
+- Name: Arbiters Grounds Dungeon Map
+  Importance: Junk
+  Id: 0x4A
+  Dungeon Map: Arbiters Grounds
+
+- Name: Snowpeak Ruins Dungeon Map
+  Importance: Junk
+  Id: 0x4B
+  Dungeon Map: Snowpeak Ruins
+
+- Name: Temple of Time Dungeon Map
+  Importance: Junk
+  Id: 0x4C
+  Dungeon Map: Temple of Time
+
+- Name: City in the Sky Dungeon Map
+  Importance: Junk
+  Id: 0x4D
+  Dungeon Map: City in the Sky
+
+- Name: Palace of Twilight Dungeon Map
+  Importance: Junk
+  Id: 0xAB
+  Dungeon Map: Palace of Twilight 
+
+- Name: Hyrule Castle Dungeon Map
+  Importance: Junk
+  Id: 0x4E
+  Dungeon Compass: Hyrule Castle
+
+- Name: Male Beetle
+  Importance: Major
+  Id: 0x4F
+
+- Name: Female Beetle
+  Importance: Major
+  Id: 0x50
+
+- Name: Male Butterfly
+  Importance: Major
+  Id: 0x51
+
+- Name: Female Butterfly
+  Importance: Major
+  Id: 0x52
+
+- Name: Male Stag Beetle
+  Importance: Major
+  Id: 0x53
+
+- Name: Female Stag Beetle
+  Importance: Major
+  Id: 0x54
+
+- Name: Male Grasshopper
+  Importance: Major
+  Id: 0x55
+
+- Name: Female Grasshopper
+  Importance: Major
+  Id: 0x56
+
+- Name: Male Phasmid
+  Importance: Major
+  Id: 0x57
+
+- Name: Female Phasmid
+  Importance: Major
+  Id: 0x58
+
+- Name: Male Pill Bug
+  Importance: Major
+  Id: 0x59
+
+- Name: Female Pill Bug
+  Importance: Major
+  Id: 0x5A
+
+- Name: Male Mantis
+  Importance: Major
+  Id: 0x5B
+
+- Name: Female Mantis
+  Importance: Major
+  Id: 0x5C
+
+- Name: Male Ladybug
+  Importance: Major
+  Id: 0x5D
+
+- Name: Female Ladybug
+  Importance: Major
+  Id: 0x5E
+
+- Name: Male Snail
+  Importance: Major
+  Id: 0x5F
+
+- Name: Female Snail
+  Importance: Major
+  Id: 0x60
+
+- Name: Male Dragonfly
+  Importance: Major
+  Id: 0x61
+
+- Name: Female Dragonfly
+  Importance: Major
+  Id: 0x62
+
+- Name: Male Ant
+  Importance: Major
+  Id: 0x63
+
+- Name: Female Ant
+  Importance: Major
+  Id: 0x64
+
+- Name: Male Dayfly
+  Importance: Major
+  Id: 0x65
+
+- Name: Female Dayfly
+  Importance: Major
+  Id: 0x66
+
+- Name: Ordon Shield
+  Importance: Major
+  Id: 0x67
+
+- Name: Wooden Shield
+  Importance: Junk
+  Id: 0x68
+
+- Name: Hylian Shield
+  Importance: Major
+  Id: 0x69
+
+- Name: Magic Armor
+  Importance: Major
+  Id: 0x6A
+
+- Name: Poe Soul
+  Importance: Major
+  Id: 0x6B
+
+- Name: Piece of Heart
+  Importance: Junk
+  Id: 0x6C
+
+- Name: Heart Container
+  Importance: Junk
+  Id: 0x6D
+
+- Name: Progressive Hidden Skill
+  Importance: Major
+  Id: 0x6E
+
+- Name: Progressive Wallet
+  Importance: Major
+  Id: 0x6F
+
+- Name: Giant Bomb Bag
+  Importance: Minor
+  Id: 0x70
+
+- Name: Empty Bottle
+  Importance: Major
+  Id: 0x71
+
+- Name: Bottle with Lantern Oil
+  Importance: Major
+  Id: 0x72
+
+- Name: Bottle with Half Milk
+  Importance: Major
+  Id: 0x73
+
+- Name: Bottle with Great Fairies Tears
+  Importance: Major
+  Id: 0x74
+
+- Name: Hawkeye
+  Importance: Minor
+  Id: 0x75
+
+- Name: Horse Call
+  Importance: Minor
+  Id: 0x76
+
+# - Name: Ghost Lantern
+#   Importance: Minor
+#   Id: 0xAF
+
+- Name: Foolish Item
+  Importance: Junk
+  Id: 0x77
+
+# - Name: Stamp (A)
+#   Importance: Junk
+#   Id: 0x78
+
+# - Name: Stamp (B)
+#   Importance: Junk
+#   Id: 0x79
+
+# - Name: Stamp (C)
+#   Importance: Junk
+#   Id: 0x7A
+
+# - Name: Stamp (D)
+#   Importance: Junk
+#   Id: 0x7B
+
+# - Name: Stamp (E)
+#   Importance: Junk
+#   Id: 0x7C
+
+# - Name: Stamp (F)
+#   Importance: Junk
+#   Id: 0x7D
+
+# - Name: Stamp (G)
+#   Importance: Junk
+#   Id: 0x7E
+
+# - Name: Stamp (H)
+#   Importance: Junk
+#   Id: 0x7F
+
+# - Name: Stamp (I)
+#   Importance: Junk
+#   Id: 0x80
+
+# - Name: Stamp (J)
+#   Importance: Junk
+#   Id: 0x81
+
+# - Name: Stamp (K)
+#   Importance: Junk
+#   Id: 0x82
+
+# - Name: Stamp (L)
+#   Importance: Junk
+#   Id: 0x83
+
+# - Name: Stamp (M)
+#   Importance: Junk
+#   Id: 0x84
+
+# - Name: Stamp (N)
+#   Importance: Junk
+#   Id: 0x85
+
+# - Name: Stamp (O)
+#   Importance: Junk
+#   Id: 0x86
+
+# - Name: Stamp (P)
+#   Importance: Junk
+#   Id: 0x87
+
+# - Name: Stamp (Q)
+#   Importance: Junk
+#   Id: 0x88
+
+# - Name: Stamp (R)
+#   Importance: Junk
+#   Id: 0x89
+
+# - Name: Stamp (S)
+#   Importance: Junk
+#   Id: 0x8A
+
+# - Name: Stamp (T)
+#   Importance: Junk
+#   Id: 0x8B
+
+# - Name: Stamp (U)
+#   Importance: Junk
+#   Id: 0x8C
+
+# - Name: Stamp (V)
+#   Importance: Junk
+#   Id: 0x8D
+
+# - Name: Stamp (W)
+#   Importance: Junk
+#   Id: 0x8E
+
+# - Name: Stamp (X)
+#   Importance: Junk
+#   Id: 0x8F
+
+# - Name: Stamp (Y)
+#   Importance: Junk
+#   Id: 0x90
+
+# - Name: Stamp (Z)
+#   Importance: Junk
+#   Id: 0x91
+
+# - Name: Stamp (Rupee)
+#   Importance: Junk
+#   Id: 0x92
+
+# - Name: Stamp (Treasure Chest)
+#   Importance: Junk
+#   Id: 0x93
+
+# - Name: Stamp (Piece of Heart)
+#   Importance: Junk
+#   Id: 0x94
+
+# - Name: Stamp (Heart Container)
+#   Importance: Junk
+#   Id: 0x95
+
+# - Name: Stamp (Happy Link)
+#   Importance: Junk
+#   Id: 0x96
+
+# - Name: Stamp (Angry Link)
+#   Importance: Junk
+#   Id: 0x97
+
+# - Name: Stamp (Sad Link)
+#   Importance: Junk
+#   Id: 0x98
+
+# - Name: Stamp (Surprised Link)
+#   Importance: Junk
+#   Id: 0x99
+
+# - Name: Stamp (Wolf Link)
+#   Importance: Junk
+#   Id: 0x9A
+
+# - Name: Stamp (Happy Midna)
+#   Importance: Junk
+#   Id: 0x9B
+
+# - Name: Stamp (Angry Midna)
+#   Importance: Junk
+#   Id: 0x9C
+
+# - Name: Stamp (Sad Midna)
+#   Importance: Junk
+#   Id: 0xAD
+
+# - Name: Stamp (Surprised Midna)
+#   Importance: Junk
+#   Id: 0x9D
+
+# - Name: Stamp (Ooccoo)
+#   Importance: Junk
+#   Id: 0x9E
+
+# - Name: Stamp (Happy Zelda)
+#   Importance: Junk
+#   Id: 0x9F
+
+# - Name: Stamp (Angry Zelda)
+#   Importance: Junk
+#   Id: 0xA0
+
+# - Name: Stamp (Sad Zelda)
+#   Importance: Junk
+#   Id: 0xA1
+
+# - Name: Stamp (Surprised Zelda)
+#   Importance: Junk
+#   Id: 0xA2
+
+# - Name: Stamp (Zant)
+#   Importance: Junk
+#   Id: 0xA3
+
+# - Name: Stamp (Agitha)
+#   Importance: Junk
+#   Id: 0xA4
+
+# - Name: Stamp (Malo Mart)
+#   Importance: Junk
+#   Id: 0xA5
+
+# - Name: Stamp (Cucco)
+#   Importance: Junk
+#   Id: 0xA6
+
+# - Name: Stamp (Fairy)
+#   Importance: Junk
+#   Id: 0xA7
+
+# - Name: Stamp (True Midna)
+#   Importance: Junk
+#   Id: 0xA8
+
+- Name: Renados Letter
+  Importance: Major
+  Id: 0xA9
+
+- Name: Ilias Charm
+  Importance: Major
+  Id: 0xAA
+
+- Name: Invoice
+  Importance: Major
+  Id: 0xAB
+
+- Name: Wooden Statue
+  Importance: Major
+  Id: 0xAC
+
+# Dummy Items that are used to represent other logical states (for now)
+
+- Name: Game Beatable
+  Importance: Major
+  Id: 0x101
+  Game Winning Item: True
+
+- Name: Hint
+  Importance: Junk
+  Id: 0x102
+
+- Name: Faron Twilight Tear
+  Importance: Major
+  Id: 0x103
+
+- Name: Eldin Twilight Tear
+  Importance: Major
+  Id: 0x104
+
+- Name: Lanayru Twilight Tear
+  Importance: Major
+  Id: 0x105
+
+- Name: Red Potion Shop
+  Importance: Junk
+  Id: 0x106
+
+- Name: Fairy Tears
+  Importance: Junk
+  Id: 0x107

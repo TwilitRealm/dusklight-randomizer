@@ -87,7 +87,7 @@ namespace randomizer::logic::world
     {
         LOG_TO_DEBUG("Building Item Table for World " + std::to_string(this->GetID()));
         // Check if we can open the file before parsing
-        auto filepath = DATA_PATH "items.yaml";
+        auto filepath = RANDO_DATA_PATH "items.yaml";
         randomizer::utility::file::Verify(filepath);
 
         auto itemDataTree = LoadYAML(filepath);
@@ -155,7 +155,7 @@ namespace randomizer::logic::world
     {
         LOG_TO_DEBUG("Building Location Table for World " + std::to_string(this->GetID()));
         // check if we can open the file before parsing because exceptions won't work on console
-        auto filepath = DATA_PATH "locations.yaml";
+        auto filepath = RANDO_DATA_PATH "locations.yaml";
         randomizer::utility::file::Verify(filepath);
 
         auto locationDataTree = LoadYAML(filepath);
@@ -217,7 +217,7 @@ namespace randomizer::logic::world
     {
         LOG_TO_DEBUG("Loading Macros for World " + std::to_string(this->GetID()));
         // check if we can open the file before parsing
-        auto filepath = DATA_PATH "macros.yaml";
+        auto filepath = RANDO_DATA_PATH "macros.yaml";
         randomizer::utility::file::Verify(filepath);
 
         auto macrosDataTree = LoadYAML(filepath);
@@ -249,7 +249,7 @@ namespace randomizer::logic::world
         std::unordered_set<std::string> definedAreas = {};
 
         // I don't know if directory iterator works on console so all logic files are manually specified here for now
-        std::string folder = DATA_PATH "world/";
+        std::string folder = RANDO_DATA_PATH "world/";
         std::list<std::string> files = {
             "Root.yaml",
             "overworld/Ordona Province.yaml",

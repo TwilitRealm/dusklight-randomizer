@@ -11,7 +11,7 @@ namespace randomizer::test::test
 {
     void RunTests()
     {
-        for (const auto& entry : std::filesystem::recursive_directory_iterator(DATA_PATH "tests/logic"))
+        for (const auto& entry : std::filesystem::recursive_directory_iterator(RANDO_DATA_PATH "tests/logic"))
         {
             if (entry.path().generic_string().ends_with("settings.yaml"))
             {

@@ -37,7 +37,7 @@ namespace randomizer::logic::entrance_shuffle
 
     void SetAllEntrancesData(randomizer::logic::world::World* world)
     {
-        auto filepath = DATA_PATH "entrance_shuffle_data.yaml";
+        auto filepath = RANDO_DATA_PATH "entrance_shuffle_data.yaml";
         randomizer::utility::file::Verify(filepath);
 
         // Keep track of which double door entrances are together

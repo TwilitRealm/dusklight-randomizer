@@ -1,27 +1,15 @@
 cmake_minimum_required(VERSION 3.16)
 
 set(RANDOMIZER_ONLY "0" CACHE STRING "Runs only the randomizer generator")
-set(RANDO_SAVE_PATH "${CMAKE_BINARY_DIR}/randomizer/")
+set(RANDO_SAVE_PATH "${CMAKE_BINARY_DIR}/randomizer")
 
 set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} RANDO_SAVE_PATH="${RANDO_SAVE_PATH}" 
-                        LOGS_PATH="${RANDO_SAVE_PATH}logs/" 
-                        DATA_PATH="${RANDO_SAVE_PATH}data/")
+                        LOGS_PATH="${RANDO_SAVE_PATH}/logs/" 
+                        RANDO_DATA_PATH="${CMAKE_SOURCE_DIR}/src/dusk/randomizer/data/")
 
 if(RANDO_ERROR_LOG)
   message("Error Log will be saved")
   set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} RANDO_ERROR_LOG)
-endif()
-
-if(ENABLE_TIMING)
-  message("Some events will be timed")
-
-  set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} ENABLE_TIMING)
-endif()
-
-if(DRY_RUN)
-  message("Game patching will be skipped")
-
-  set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} DRY_RUN)
 endif()
 
 if(RANDO_DEBUG)
@@ -37,9 +25,9 @@ if(LOGIC_TESTS)
     message("Test Count: " ${TEST_COUNT})
     set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} TEST_COUNT=${TEST_COUNT})
   endif()
-  set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} SETTINGS_PATH="${RANDO_SAVE_PATH}randomizer_settings.yaml.test" PREFERENCES_PATH="${RANDO_SAVE_PATH}randomizer_preferences.yaml.test")
+  set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} SETTINGS_PATH="${RANDO_SAVE_PATH}/randomizer_settings.yaml.test" PREFERENCES_PATH="${RANDO_SAVE_PATH}/randomizer_preferences.yaml.test")
 else()
-  set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} SETTINGS_PATH="${RANDO_SAVE_PATH}randomizer_settings.yaml" PREFERENCES_PATH="${RANDO_SAVE_PATH}randomizer_preferences.yaml")
+  set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} SETTINGS_PATH="${RANDO_SAVE_PATH}/randomizer_settings.yaml" PREFERENCES_PATH="${RANDO_SAVE_PATH}/randomizer_preferences.yaml")
 endif()
 
 message(STATUS "randomizer: Fetching yaml-cpp")
@@ -66,12 +54,9 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(zlib-ng)
 
-
 string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
 set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} SOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})
 set(GAME_LIBS ${GAME_LIBS} yaml-cpp::yaml-cpp zlib base64pp)
 
 # Put data files together for easier manipulation
-file(COPY "${CMAKE_SOURCE_DIR}/src/dusk/randomizer/data/" DESTINATION "${CMAKE_BINARY_DIR}/randomizer/data/" REGEX "^.*example.*$" EXCLUDE) # World, macros, and location info
-
-
+# file(COPY "${CMAKE_SOURCE_DIR}/src/dusk/randomizer/data/" DESTINATION "${CMAKE_BINARY_DIR}/randomizer/data/" REGEX "^.*example.*$" EXCLUDE) # World, macros, and location info

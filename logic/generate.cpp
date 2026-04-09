@@ -17,9 +17,7 @@ namespace randomizer::logic::generate
 {
     randomizer::logic::world::WorldPool GenerateWorlds()
     {
-#ifdef ENABLE_TIMING
         randomizer::utility::time::ScopedTimer<"Seed generation took ", std::chrono::milliseconds> timer;
-#endif
         randomizer::seedgen::config::Config config;
         config.LoadFromFile(SETTINGS_PATH, PREFERENCES_PATH);
 

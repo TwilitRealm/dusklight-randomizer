@@ -27,7 +27,7 @@ namespace randomizer::utility::log
 
     ErrorLog::ErrorLog()
     {
-#ifdef WRITE_ERROR_LOG
+#ifdef RANDO_ERROR_LOG
         output.open(LOG_PATH);
         output << "Program opened " << randomizer::utility::time::ProgramTime::getDateStr(); // time string ends with \n
         output << "Twilight Princess HD Randomizer Version " << RANDOMIZER_VERSION << std::endl;
@@ -37,7 +37,7 @@ namespace randomizer::utility::log
 
     ErrorLog::~ErrorLog()
     {
-#ifdef WRITE_ERROR_LOG
+#ifdef RANDO_ERROR_LOG
         output.close();
 #endif
     }
@@ -50,7 +50,7 @@ namespace randomizer::utility::log
 
     void ErrorLog::log(const std::string& msg, const bool& timestamp)
     {
-#ifdef WRITE_ERROR_LOG
+#ifdef RANDO_ERROR_LOG
         if (timestamp)
             output << "[" << randomizer::utility::time::ProgramTime::getTimeStr() << "] ";
         output << msg << std::endl;

@@ -13,6 +13,7 @@
     Coro Bottle: Can_Complete_Prologue
     South Faron Woods Twilit Insect in Tunnel 1: Can_Defeat_Faron_Twilit_Insect
     South Faron Woods Twilit Insect in Tunnel 2: Can_Defeat_Faron_Twilit_Insect
+    South Faron Woods Coros House Exterior Twilit Insect: Can_Defeat_Faron_Twilit_Insect
     South Faron Woods Hint Sign: Nothing
   Exits:
     South Faron Woods Coros Ledge: Can_Midna_Jump or Twilight
@@ -41,8 +42,8 @@
 - Name: Faron Woods Coros House Lower
   Twilight: Faron
   Locations:
-    Faron Woods Coros House Twilit Insect 1: Can_Defeat_Faron_Twilit_Insect
-    Faron Woods Coros House Twilit Insect 2: Can_Defeat_Faron_Twilit_Insect
+    Faron Woods Coros House Interior Twilit Insect 1: Can_Defeat_Faron_Twilit_Insect
+    Faron Woods Coros House Interior Twilit Insect 2: Can_Defeat_Faron_Twilit_Insect
   Exits:
     Faron Woods Coros House Upper: Wolf_Link # Only wolf link can climb the ledge
     South Faron Woods: Can_Open_Doors
@@ -78,7 +79,8 @@
   Can Warp: True
   Can Change Time: True
   Locations:
-    South Faron Woods Twilit Insect Behind Gate: Can_Defeat_Faron_Twilit_Insect
+    South Faron Woods Twilit Insect Behind Gate 1: Can_Defeat_Faron_Twilit_Insect
+    South Faron Woods Twilit Insect Behind Gate 2: Can_Defeat_Faron_Twilit_Insect
   Exits:
     Faron Woods Cave South: Nothing
     South Faron Woods: Can_Dig or Can_Clear_Forest or 'Can_Access_South_Faron_Woods'
@@ -114,7 +116,8 @@
   Can Warp: True
   Can Change Time: True
   Locations:
-    Faron Mist Twilit Insect on Wall: Can_Defeat_Faron_Twilit_Insect
+    Faron Mist Twilit Insect on Wall 1: Can_Defeat_Faron_Twilit_Insect
+    Faron Mist Twilit Insect on Wall 2: Can_Defeat_Faron_Twilit_Insect
   Exits:
     Mist Area Inside Mist: Lantern
     Mist Area Under Owl Statue Chest: Can_Midna_Jump or Twilight
@@ -168,6 +171,7 @@
     Faron Mist Poe: Can_Use_Senses and Can_Complete_Prologue
     Faron Mist Twilit Insect on Center Stump 1: Can_Defeat_Faron_Twilit_Insect
     Faron Mist Twilit Insect on Center Stump 2: Can_Defeat_Faron_Twilit_Insect
+    Faron Mist Twilit Insect on Center Stump 3: Can_Defeat_Faron_Twilit_Insect
   Exits:
     Mist Area Inside Mist: Lantern
     Mist Area Near North Faron Woods: Can_Midna_Jump or Twilight

@@ -220,9 +220,9 @@ Has Sword For Temple of Time: Temple_of_Time_Sword_Requirement == None or
                               (Temple_of_Time_Sword_Requirement == Master_Sword and Master_Sword) or
                               (Temple_of_Time_Sword_Requirement == Light_Sword and Light_Sword)
 
-Can Complete Faron Twilight: Faron_Twilight_Cleared == On or count(Faron_Twilight_Tear, 12)
-Can Complete Eldin Twilight: Eldin_Twilight_Cleared == On or count(Eldin_Twilight_Tear, 12)
-Can Complete Lanayru Twilight: Lanayru_Twilight_Cleared == On or count(Lanayru_Twilight_Tear, 12)
+Can Complete Faron Twilight: Faron_Twilight_Cleared == On or count(Faron_Twilight_Tear, 16)
+Can Complete Eldin Twilight: Eldin_Twilight_Cleared == On or count(Eldin_Twilight_Tear, 16)
+Can Complete Lanayru Twilight: Lanayru_Twilight_Cleared == On or count(Lanayru_Twilight_Tear, 16)
 Can Complete All Twilight: Can_Complete_Faron_Twilight and Can_Complete_Eldin_Twilight and Can_Complete_Lanayru_Twilight
 
 Can Defeat Faron Twilit Insect: Twilight

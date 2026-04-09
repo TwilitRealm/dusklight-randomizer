@@ -486,17 +486,19 @@
   Events:
     Can Farm Lots of Rupees: Nothing
   Locations:
-    Lake Hylia Twilit Insect Between Bridges: Can_Defeat_Lanayru_Twilit_Insect
-    Lake Hylia Burrowing Twilit Insect: Can_Defeat_Lanayru_Twilit_Insect
-    Lake Hylia Twilit Insect on Docks: Can_Defeat_Lanayru_Twilit_Insect
-    Lake Hylia Twilit Bloat: count(Lanayru_Twilight_Tear, 11) and Can_Defeat_Lanayru_Twilit_Insect
-    Zora's River Twilit Insect 1: Can_Defeat_Lanayru_Twilit_Insect
-    Zora's River Twilit Insect 2: Can_Defeat_Lanayru_Twilit_Insect
-    Zora's River Twilit Insect 3: Can_Defeat_Lanayru_Twilit_Insect
     Lake Hylia Underwater Chest: Iron_Boots
     Lake Hylia Alcove Poe: Night and Can_Use_Senses
     Lake Hylia Dock Poe: Night and Can_Use_Senses
     Plumm Fruit Balloon Minigame: Can_Howl
+    Lake Hylia Twilit Insect Between Bridges: Can_Defeat_Lanayru_Twilit_Insect
+    Lake Hylia Burrowing Twilit Insect: Can_Defeat_Lanayru_Twilit_Insect
+    Lake Hylia Twilit Insect Behind Canon: Can_Defeat_Lanayru_Twilit_Insect
+    Lake Hylia Twilit Insect on Docks: Can_Defeat_Lanayru_Twilit_Insect
+    Lake Hylia Twilit Bloat: count(Lanayru_Twilight_Tear, 15) and Can_Defeat_Lanayru_Twilit_Insect
+    Zoras River Twilit Insect 1: Can_Defeat_Lanayru_Twilit_Insect
+    Zoras River Twilit Insect 2: Can_Defeat_Lanayru_Twilit_Insect
+    Zoras River Twilit Insect 3: Can_Defeat_Lanayru_Twilit_Insect
+    Zoras River Twilit Insect 4: Can_Defeat_Lanayru_Twilit_Insect
   Exits:
     Lake Hylia Upper Area: Can_Climb_Ladders
     Flight by Fowl: Can_Talk_to_Humans
@@ -679,13 +681,14 @@
   Events:
     Reekfish Scent: Coral_Earring
   Locations:
-    Zoras Domain Twilit Insect near Lilypads: Can_Defeat_Lanayru_Twilit_Insect
-    Zoras Domain Burrowing Twilit Insect: Can_Defeat_Lanayru_Twilit_Insect  
     Zoras Domain Chest By Mother and Child Isles: Nothing
     Zoras Domain Chest Behind Waterfall: Can_Midna_Jump
     Zoras Domain Male Dragonfly: Nothing
     Zoras Domain Mother and Child Isle Poe: Can_Use_Senses
     Zoras Domain Waterfall Poe: Can_Midna_Jump and Can_Use_Senses
+    Zoras Domain Twilit Insect near Lilypads 1: Can_Defeat_Lanayru_Twilit_Insect
+    Zoras Domain Twilit Insect near Lilypads 2: Can_Defeat_Lanayru_Twilit_Insect
+    Zoras Domain Burrowing Twilit Insect: Can_Defeat_Lanayru_Twilit_Insect  
   Exits:
     Zoras Domain West Ledge: Clawshot or Can_Midna_Jump or Twilight
     Zoras Domain Top of Waterfall: Clawshot or Can_Midna_Jump or Twilight
@@ -698,6 +701,7 @@
   Twilight: Lanayru
   Can Warp: True
   Locations:
+    Zoras Domain Twilit Insect on West Ledge: Can_Defeat_Lanayru_Twilit_Insect
     Zoras Domain Hint Sign: Nothing
   Exits:
     Zoras Domain Top of Waterfall: Can_Smash

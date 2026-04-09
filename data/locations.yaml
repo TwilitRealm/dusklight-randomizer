@@ -101,28 +101,49 @@
   - Faron Woods
   - Twilit Insect
 
-- Name: Faron Woods Coros House Twilit Insect 1
+- Name: Faron Woods Coros House Interior Twilit Insect 1
   Original Item: Faron Twilight Tear
   Categories:
   - Overworld
   - Faron Woods
   - Twilit Insect
 
-- Name: Faron Woods Coros House Twilit Insect 2
+- Name: Faron Woods Coros House Interior Twilit Insect 2
   Original Item: Faron Twilight Tear
   Categories:
   - Overworld
   - Faron Woods
   - Twilit Insect
 
-- Name: South Faron Woods Twilit Insect Behind Gate
+- Name: South Faron Woods Coros House Exterior Twilit Insect
   Original Item: Faron Twilight Tear
   Categories:
   - Overworld
   - Faron Woods
   - Twilit Insect
 
-- Name: Faron Mist Twilit Insect on Wall
+- Name: South Faron Woods Twilit Insect Behind Gate 1
+  Original Item: Faron Twilight Tear
+  Categories:
+  - Overworld
+  - Faron Woods
+  - Twilit Insect
+
+- Name: South Faron Woods Twilit Insect Behind Gate 2
+  Original Item: Faron Twilight Tear
+  Categories:
+  - Overworld
+  - Faron Woods
+  - Twilit Insect
+
+- Name: Faron Mist Twilit Insect on Wall 1
+  Original Item: Faron Twilight Tear
+  Categories:
+  - Overworld
+  - Faron Woods
+  - Twilit Insect
+
+- Name: Faron Mist Twilit Insect on Wall 2
   Original Item: Faron Twilight Tear
   Categories:
   - Overworld
@@ -137,6 +158,13 @@
   - Twilit Insect
 
 - Name: Faron Mist Twilit Insect on Center Stump 2
+  Original Item: Faron Twilight Tear
+  Categories:
+  - Overworld
+  - Faron Woods
+  - Twilit Insect
+
+- Name: Faron Mist Twilit Insect on Center Stump 3
   Original Item: Faron Twilight Tear
   Categories:
   - Overworld
@@ -450,7 +478,28 @@
   - Eldin Province
   - Twilit Insect
 
-- Name: Kakariko Inn Twilit Insect
+- Name: Kakariko Graveyard Twilit Insect
+  Original Item: Eldin Twilight Tear
+  Categories:
+  - Overworld
+  - Eldin Province
+  - Twilit Insect
+
+- Name: Kakariko Malo Mart Twilit Insect
+  Original Item: Eldin Twilight Tear
+  Categories:
+  - Overworld
+  - Eldin Province
+  - Twilit Insect
+
+- Name: Kakariko Inn Pipe Twilit Insect
+  Original Item: Eldin Twilight Tear
+  Categories:
+  - Overworld
+  - Eldin Province
+  - Twilit Insect
+
+- Name: Kakariko Inn Bedroom Twilit Insect
   Original Item: Eldin Twilight Tear
   Categories:
   - Overworld
@@ -486,6 +535,13 @@
   - Twilit Insect
 
 - Name: Kakariko Destroyed Building Twilit Insect 3
+  Original Item: Eldin Twilight Tear
+  Categories:
+  - Overworld
+  - Eldin Province
+  - Twilit Insect
+
+- Name: Kakariko Watchtower Twilit Insect
   Original Item: Eldin Twilight Tear
   Categories:
   - Overworld
@@ -985,6 +1041,13 @@
   - Lanayru Province
   - Twilit Insect
 
+- Name: Lake Hylia Twilit Insect Behind Canon
+  Original Item: Lanayru Twilight Tear
+  Categories:
+  - Overworld
+  - Lanayru Province
+  - Twilit Insect
+
 - Name: Lake Hylia Twilit Insect on Docks
   Original Item: Lanayru Twilight Tear
   Categories:
@@ -999,21 +1062,28 @@
   - Lanayru Province
   - Twilit Insect
 
-- Name: Zora's River Twilit Insect 1
+- Name: Zoras River Twilit Insect 1
   Original Item: Lanayru Twilight Tear
   Categories:
   - Overworld
   - Lanayru Province
   - Twilit Insect
 
-- Name: Zora's River Twilit Insect 2
+- Name: Zoras River Twilit Insect 2
   Original Item: Lanayru Twilight Tear
   Categories:
   - Overworld
   - Lanayru Province
   - Twilit Insect
 
-- Name: Zora's River Twilit Insect 3
+- Name: Zoras River Twilit Insect 3
+  Original Item: Lanayru Twilight Tear
+  Categories:
+  - Overworld
+  - Lanayru Province
+  - Twilit Insect
+
+- Name: Zoras River Twilit Insect 4
   Original Item: Lanayru Twilight Tear
   Categories:
   - Overworld
@@ -1027,7 +1097,14 @@
   - Lanayru Province
   - Twilit Insect
 
-- Name: Zoras Domain Twilit Insect near Lilypads
+- Name: Zoras Domain Twilit Insect near Lilypads 1
+  Original Item: Lanayru Twilight Tear
+  Categories:
+  - Overworld
+  - Lanayru Province
+  - Twilit Insect
+
+- Name: Zoras Domain Twilit Insect near Lilypads 2
   Original Item: Lanayru Twilight Tear
   Categories:
   - Overworld
@@ -1035,6 +1112,13 @@
   - Twilit Insect
 
 - Name: Zoras Domain Burrowing Twilit Insect
+  Original Item: Lanayru Twilight Tear
+  Categories:
+  - Overworld
+  - Lanayru Province
+  - Twilit Insect
+
+- Name: Zoras Domain Twilit Insect on West Ledge
   Original Item: Lanayru Twilight Tear
   Categories:
   - Overworld

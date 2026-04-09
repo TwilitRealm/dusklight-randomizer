@@ -177,6 +177,7 @@
     Kakariko Graveyard Grave Poe: Can_Use_Senses and Night
     Kakariko Graveyard Open Poe: Can_Use_Senses and Night
     Kakariko Graveyard Golden Wolf: "'Howl_at_Snowpeak_Mountain_Howling_Stone'"
+    Kakariko Graveyard Twilit Insect: Can_Defeat_Eldin_Twilit_Insect
   Exits:
     Kakariko Graveyard Pond: "'Can_Follow_Rutella'"
     Lower Kakariko Village: Nothing
@@ -205,6 +206,7 @@
     Kakariko Village Malo Mart Hawkeye: "'Can_Farm_Lots_of_Rupees'"
     Kakariko Village Malo Mart Red Potion: "'Can_Farm_Lots_of_Rupees'"
     Kakariko Village Malo Mart Wooden Shield: "'Can_Farm_Lots_of_Rupees'"
+    Kakariko Malo Mart Twilit Insect: Can_Defeat_Eldin_Twilit_Insect
   Exits:
     Lower Kakariko Village: Nothing
 
@@ -240,7 +242,8 @@
   Twilight: Eldin
   Locations:
     Kakariko Inn Chest: Nothing
-    Kakariko Inn Twilit Insect: Can_Defeat_Eldin_Twilit_Insect
+    Kakariko Inn Pipe Twilit Insect: Can_Defeat_Eldin_Twilit_Insect
+    Kakariko Inn Bedroom Twilit Insect: Can_Defeat_Eldin_Twilit_Insect
   Exits:
     Elde Inn North Door Interior: Nothing
     Elde Inn South Door Interior: Nothing
@@ -322,6 +325,8 @@
 
 - Name: Kakariko Watchtower Lower Interior
   Twilight: Eldin
+  Locations:
+    Kakariko Watchtower Twilit Insect: Can_Defeat_Eldin_Twilit_Insect
   Exits:
     Kakariko Watchtower Upper Interior: Can_Climb_Ladders
     Kakariko Watchtower Lower Door: Can_Open_Doors

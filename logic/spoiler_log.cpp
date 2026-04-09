@@ -1,6 +1,7 @@
 #include "spoiler_log.hpp"
 
 #include "entrance_shuffle.hpp"
+#include "../randomizer.hpp"
 #include "../utility/file.hpp"
 #include "../utility/platform.hpp"
 #include "../utility/yaml.hpp"
@@ -28,23 +29,23 @@ namespace randomizer::logic::spoiler_log
         return entrance->GetAlias() + ": " + spaces + replacement->GetAliasFrom();
     }
 
-    void LogBasicInfo(std::ofstream& log, randomizer::seedgen::config::Config& config, randomizer::logic::world::WorldPool& worlds)
+    void LogBasicInfo(std::ofstream& log, randomizer::Randomizer* randomizer)
     {
         log << "Dusk Randomizer Version: " << "1.0.0" << std::endl;
-        log << "Seed: " << config.GetSeed() << std::endl;
+        log << "Seed: " << randomizer->GetConfig().GetSeed() << std::endl;
 
         // TODO: Setting string
 
-        log << "Hash: " << config.GetHash() << std::endl;
+        log << "Hash: " << randomizer->GetConfig().GetHash() << std::endl;
     }
 
-    void LogSettings(std::ofstream& log, randomizer::seedgen::config::Config& config, randomizer::logic::world::WorldPool& worlds)
+    void LogSettings(std::ofstream& log, randomizer::Randomizer* randomizer)
     {
         log << std::endl << "# Settings" << std::endl;
-        log << YAML::Dump(config.SettingsToYaml()) << std::endl;
+        log << YAML::Dump(randomizer->GetConfig().SettingsToYaml()) << std::endl;
     }
 
-    void GenerateSpoilerLog(randomizer::logic::world::WorldPool& worlds, randomizer::seedgen::config::Config& config)
+    void GenerateSpoilerLog(randomizer::Randomizer* randomizer)
     {
         randomizer::utility::platform::Log("Generating Spoiler Log");
 
@@ -54,11 +55,14 @@ namespace randomizer::logic::spoiler_log
             randomizer::utility::file::create_directories(LOGS_PATH);
         }
 
+        auto& config = randomizer->GetConfig();
+        auto& worlds = randomizer->GetWorlds();
+
         std::string filepath = std::string(LOGS_PATH) + config.GetHash() + " Spoiler Log.txt";
         std::ofstream spoilerLog;
         spoilerLog.open(filepath);
 
-        LogBasicInfo(spoilerLog, config, worlds);
+        LogBasicInfo(spoilerLog, randomizer);
 
         // Gather worlds with starting inventories
         std::list<randomizer::logic::world::World*> worldswithStartingInventories = {};
@@ -87,7 +91,7 @@ namespace randomizer::logic::spoiler_log
 
         // Get name lengths for pretty formatting
         size_t longestNameLength = 0;
-        for (const auto& sphere : worlds.at(0)->GetPlaythroughSpheres())
+        for (const auto& sphere : randomizer->GetPlaythroughSpheres())
         {
             for (const auto& location : sphere)
             {
@@ -98,7 +102,7 @@ namespace randomizer::logic::spoiler_log
         // Print playthrough
         int sphereNum = 0;
         spoilerLog << std::endl << "Playthrough:" << std::endl;
-        for (auto& sphere : worlds.at(0)->GetPlaythroughSpheres())
+        for (auto& sphere : randomizer->GetPlaythroughSpheres())
         {
             sphereNum += 1;
             spoilerLog << "    Sphere " << sphereNum << ":" << std::endl;
@@ -111,7 +115,7 @@ namespace randomizer::logic::spoiler_log
 
         // Get name lengths for pretty formatting
         longestNameLength = 0;
-        for (const auto& sphere : worlds.at(0)->GetEntranceSpheres())
+        for (const auto& sphere : randomizer->GetEntranceSpheres())
         {
             for (const auto& entrance : sphere)
             {
@@ -125,7 +129,7 @@ namespace randomizer::logic::spoiler_log
         {
             spoilerLog << std::endl << "Entrance Playthrough:" << std::endl;
         }
-        for (auto& sphere : worlds.at(0)->GetEntranceSpheres())
+        for (auto& sphere : randomizer->GetEntranceSpheres())
         {
             sphereNum += 1;
             if (sphere.empty())
@@ -220,14 +224,14 @@ namespace randomizer::logic::spoiler_log
         // TODO: Hints
 
         // Log Settings
-        LogSettings(spoilerLog, config, worlds);
+        LogSettings(spoilerLog, randomizer);
 
         spoilerLog.close();
 
         randomizer::utility::platform::Log("Wrote spoiler log to " + filepath);
     }
 
-    void GenerateAntiSpoilerLog(randomizer::logic::world::WorldPool& worlds, randomizer::seedgen::config::Config& config)
+    void GenerateAntiSpoilerLog(randomizer::Randomizer* randomizer)
     {
         // Create logs folder if it doesn't exist
         if (!randomizer::utility::file::dirExists(LOGS_PATH))
@@ -235,11 +239,11 @@ namespace randomizer::logic::spoiler_log
             randomizer::utility::file::create_directories(LOGS_PATH);
         }
 
-        std::string filepath = std::string(LOGS_PATH) + config.GetHash() + " Anti-Spoiler Log.txt";
+        std::string filepath = std::string(LOGS_PATH) + randomizer->GetConfig().GetHash() + " Anti-Spoiler Log.txt";
         std::ofstream antiSpoilerLog;
         antiSpoilerLog.open(filepath);
 
-        LogBasicInfo(antiSpoilerLog, config, worlds);
-        LogSettings(antiSpoilerLog, config, worlds);
+        LogBasicInfo(antiSpoilerLog, randomizer);
+        LogSettings(antiSpoilerLog, randomizer);
     }
 } // namespace randomizer::logic::spoiler_log

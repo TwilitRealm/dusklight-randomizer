@@ -2,6 +2,7 @@
 
 #include "search.hpp"
 #include "world.hpp"
+#include "../randomizer.hpp"
 
 #include <algorithm>
 #include <iostream>
@@ -10,15 +11,12 @@
 namespace randomizer::logic::area
 {
 
-    int LocationAccess::_idCounter = 0;
-    int Area::_idCounter = 0;
-
     LocationAccess::LocationAccess(randomizer::logic::location::Location* loc,
                                    const randomizer::logic::requirement::Requirement& req,
                                    Area* area):
         _loc(loc), _req(std::move(req)), _area(area)
     {
-        this->_id = this->_idCounter++;
+        this->_id = area->GetWorld()->GetRandomizer()->GetNewLocAccID();
     }
 
     randomizer::logic::location::Location* LocationAccess::GetLocation() const
@@ -63,7 +61,7 @@ namespace randomizer::logic::area
 
     Area::Area(const std::string& name, randomizer::logic::world::World* world): _name(name), _world(world)
     {
-        this->_id = this->_idCounter++;
+        this->_id = world->GetRandomizer()->GetNewAreaID();
     }
 
     std::string Area::GetName() const

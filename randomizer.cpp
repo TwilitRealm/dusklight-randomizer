@@ -1,29 +1,116 @@
 #include "randomizer.hpp"
 
-#include "logic/generate.hpp"
+#include "logic/entrance_shuffle.hpp"
+#include "logic/fill.hpp"
+#include "logic/flatten/flatten.hpp"
+#include "logic/plandomizer.hpp"
+#include "logic/search.hpp"
+#include "logic/spoiler_log.hpp"
 #include "logic/world.hpp"
 #include "test/test.hpp"
+#include "seedgen/config.hpp"
+#include "seedgen/settings.hpp"
 #include "utility/log.hpp"
+#include "utility/time.hpp"
 
 #include <iostream>
 
-int randomizerMain()
+namespace randomizer
 {
-    try
+    int Randomizer::Generate()
     {
-#ifdef LOGIC_TESTS
-        randomizer::test::test::RunTests();
+        try
+        {
+            GenerateWorlds();
+        }
+        catch(const std::exception& e)
+        {
+            std::cout << "============================================================" << std::endl;
+            std::cout << "The following exception occured: " << e.what() << std::endl;
+            return 1;
+        }
+
         return 0;
-#else
-        auto worlds = randomizer::logic::generate::GenerateWorlds();
-#endif
-    }
-    catch(const std::exception& e)
-    {
-        std::cout << "============================================================" << std::endl;
-        std::cout << "The following exception occured: " << e.what() << std::endl;
-        return 1;
     }
 
-    return 0;
-}
+    void Randomizer::GenerateWorlds()
+    {
+        utility::time::ScopedTimer<"Seed generation took ", std::chrono::milliseconds> timer;
+        this->_worlds.clear();
+        this->_config.LoadFromFile(SETTINGS_PATH, PREFERENCES_PATH);
+
+        utility::platform::Log(std::string("Seed: ") + this->_config.GetSeed());
+
+        seedgen::config::SeedRNG(this->_config, true, false);
+        // Set the hash now before anything else random is decided. This allows us to show the hash for a seed
+        // before generating it later
+        auto hash = this->_config.GetHash();
+        utility::platform::Log(std::string("Hash: ") + hash);
+
+        // Build all worlds
+        int worldId = 1;
+        for (const auto& settings : this->_config.GetSettingsList())
+        {
+            std::unique_ptr<logic::world::World> world = std::make_unique<logic::world::World>(worldId++, this);
+            world->SetSettings(settings);
+            world->ResolveRandomSettings();
+            world->ResolveConflictingSettings();
+            world->Build();
+            this->_worlds.emplace_back(std::move(world));
+        }
+
+        // Process Plando Data for all worlds
+        if (this->_config.IsUsingPlandomizer())
+        {
+            logic::plandomizer::LoadPlandomizerData(this->_worlds, this->_config.GetPlandomizerPath());
+        }
+
+        // Pre Entrance Shuffle Tasks
+        for (auto& world : this->_worlds)
+        {
+            world->PerformPreEntranceShuffleTasks();
+        }
+
+        utility::platform::Log("Shuffling Entrances...");
+        for (auto& world : this->_worlds)
+        {
+            logic::entrance_shuffle::ShuffleWorldEntrances(world.get(), this->_worlds);
+        }
+
+        // Post Entrance Shuffle Tasks
+        for (auto& world : this->_worlds)
+        {
+            world->PerformPostEntranceShuffleTasks();
+        }
+        logic::fill::CacheExitTimeForms(this->_worlds);
+
+        // Flattening isn't used for anything yet, but flattens down the requirements for
+        // each location and entrance into a single statement. This will be useful for hints and could potentially
+        // be used to speed up the fill algorithm (but the fill algorithm is already pretty fast, so we'd only gain maybe like
+        // 0.2 seconds back or something)
+        utility::platform::Log("Flattening...");
+        FlattenSearch search = FlattenSearch(this->_worlds.at(0).get());
+        search.doSearch();
+
+        utility::platform::Log("Filling Worlds...");
+        logic::fill::FillWorlds(this->_worlds);
+
+        // Post Fill Tasks
+        for (auto& world : this->_worlds)
+        {
+            world->PerformPostFillTasks();
+        }
+
+        // Generate Playthrough
+        logic::search::GeneratePlaythrough(this);
+
+        // TODO: Generate Hints
+
+        // Write Logs
+        if (this->_config.IsGeneratingSpoilerLog())
+        {
+            logic::spoiler_log::GenerateSpoilerLog(this);
+        }
+        logic::spoiler_log::GenerateAntiSpoilerLog(this);
+    }
+} // namespace randomizer

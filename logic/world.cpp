@@ -2,6 +2,7 @@
 
 
 #include "search.hpp"
+#include "../randomizer.hpp"
 #include "../utility/exception.hpp"
 #include "../utility/file.hpp"
 #include "../utility/general.hpp"
@@ -17,12 +18,9 @@
 
 namespace randomizer::logic::world
 {
-    int World::_eventIdCounter = 0;
-
-    World::World(const int& id)
-    {
-        this->_id = id;
-    }
+    World::World(const int& id, randomizer::Randomizer* randomizer) : 
+        _id(id), _randomizer(randomizer)
+    {}
 
     int World::GetID() const
     {
@@ -36,9 +34,13 @@ namespace randomizer::logic::world
     {
         return this->_settings;
     }
-    void World::SetWorlds(WorldPool* worlds)
+    void World::SetRandomizer(Randomizer* randomizer)
     {
-        _worlds = worlds;
+        this->_randomizer = randomizer;
+    }
+    Randomizer* World::GetRandomizer() const
+    {
+        return this->_randomizer;
     }
 
     void World::ResolveRandomSettings()
@@ -773,8 +775,8 @@ namespace randomizer::logic::world
 
             // Check if the game is beatable, set dungeon as required if so. If the dungeon is not required and barren
             // unrequired dungeons is on, then set all the locations in the unrequired dungeon as nonprogress.
-            auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(*(this->_worlds));
-            if (!randomizer::logic::search::GameBeatable(this->_worlds, completeItemPool))
+            auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(this->_randomizer->GetWorlds());
+            if (!randomizer::logic::search::GameBeatable(&(this->_randomizer->GetWorlds()), completeItemPool))
             {
                 dungeon->SetRequired(true);
             }
@@ -1123,7 +1125,7 @@ namespace randomizer::logic::world
         // Add the event if it doesn't exist yet
         if (!this->_eventIndexes.contains(eventName))
         {
-            auto index = this->_eventIdCounter++;
+            auto index = this->_randomizer->GetNewEventID();
             this->_eventIndexes.emplace(eventName, index);
             this->_eventNames.emplace(index, eventName);
             LOG_TO_DEBUG("Event \"" + eventName + "\" was assigned eventIndex " + std::to_string(index));
@@ -1150,25 +1152,5 @@ namespace randomizer::logic::world
             throw std::runtime_error("Setting \"" + settingName + "\" is not a known setting");
         }
         return settings.GetMap().at(settingName);
-    }
-
-    void World::SetPlaythroughSpheres(const std::list<std::list<randomizer::logic::location::Location*>>& playthroughSpheres)
-    {
-        this->_playthroughSpheres = playthroughSpheres;
-    }
-
-    std::list<std::list<randomizer::logic::location::Location*>> World::GetPlaythroughSpheres() const
-    {
-        return this->_playthroughSpheres;
-    }
-
-    void World::SetEntranceSpheres(const std::list<std::list<randomizer::logic::entrance::Entrance*>>& entranceSpheres)
-    {
-        this->_entranceSpheres = entranceSpheres;
-    }
-
-    std::list<std::list<randomizer::logic::entrance::Entrance*>> World::GetEntranceSpheres() const
-    {
-        return this->_entranceSpheres;
     }
 } // namespace randomizer::logic::world

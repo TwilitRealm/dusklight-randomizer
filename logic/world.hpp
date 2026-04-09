@@ -19,6 +19,11 @@
 #include <iostream>
 
 // Forward Declarations
+namespace randomizer
+{
+    class Randomizer;
+}
+
 namespace randomizer::logic::search
 {
     class Search;
@@ -32,12 +37,13 @@ namespace randomizer::logic::world
     class World
     {
        public:
-        World(const int& id);
+        World(const int& id, randomizer::Randomizer* randomizer);
 
         int GetID() const;
         void SetSettings(const randomizer::seedgen::settings::Settings& settings);
         const randomizer::seedgen::settings::Settings& GetSettings() const;
-        void SetWorlds(WorldPool* worlds);
+        void SetRandomizer(Randomizer* randomizer);
+        Randomizer* GetRandomizer() const;
 
         /**
          * @brief Resolves all remaining random settings within a specific world
@@ -133,16 +139,10 @@ namespace randomizer::logic::world
         std::string GetEventName(const int& eventIndex);
 
         randomizer::seedgen::settings::Setting& Setting(const std::string& settingName);
-        void SetPlaythroughSpheres(const std::list<std::list<randomizer::logic::location::Location*>>& playthroughSpheres);
-        std::list<std::list<randomizer::logic::location::Location*>> GetPlaythroughSpheres() const;
-        void SetEntranceSpheres(const std::list<std::list<randomizer::logic::entrance::Entrance*>>& entranceSpheres);
-        std::list<std::list<randomizer::logic::entrance::Entrance*>> GetEntranceSpheres() const;
 
        private:
         int _id = -1;
-
-        static int _eventIdCounter; // Needs to be shared for events across all worlds
-        int _entranceIdCounter = 0; // Specific for this world
+        int _entranceIdCounter = 0;
 
         randomizer::seedgen::settings::Settings _settings;
         std::map<std::string, std::unique_ptr<randomizer::logic::item::Item>> _itemTable = {};
@@ -159,14 +159,10 @@ namespace randomizer::logic::world
         randomizer::logic::item_pool::ItemPool _startingItemPool = {};
         std::unordered_map<randomizer::logic::entrance::Entrance*, int> _exitTimeFormCache = {};
 
-        // Playthroughs will be stored in world 0 for convenience
-        std::list<std::list<randomizer::logic::location::Location*>> _playthroughSpheres = {};
-        std::list<std::list<randomizer::logic::entrance::Entrance*>> _entranceSpheres = {};
-
         // Plandomizer Data
         std::unordered_map<randomizer::logic::location::Location*, randomizer::logic::item::Item*> _plandomizerLocations = {};
         std::unordered_map<randomizer::logic::entrance::Entrance*, randomizer::logic::entrance::Entrance*> _plandomizerEntrances = {};
 
-        WorldPool* _worlds = nullptr;
+        Randomizer* _randomizer = nullptr;
     };
 } // namespace randomizer::logic::world

@@ -1,6 +1,7 @@
 #include "search.hpp"
 
 #include "world.hpp"
+#include "../randomizer.hpp"
 #include "../utility/general.hpp"
 #include "../utility/platform.hpp"
 
@@ -520,11 +521,12 @@ namespace randomizer::logic::search
         return std::nullopt;
     }
 
-    void GeneratePlaythrough(randomizer::logic::world::WorldPool* worlds)
+    void GeneratePlaythrough(randomizer::Randomizer* randomizer)
     {
+        auto& worlds = randomizer->GetWorlds();
         LOG_TO_DEBUG("Generating Playthrough");
         // Generate Initial Playthrough
-        auto playthroughSearch = Search::Playthrough(worlds);
+        auto playthroughSearch = Search::Playthrough(&worlds);
         playthroughSearch.SearchWorlds();
 
         auto& playthroughSpheres = playthroughSearch._playthroughSpheres;
@@ -542,7 +544,7 @@ namespace randomizer::logic::search
         }
 
         // Remove all items from locations that are not part of the playthrough set
-        for (const auto& world : *worlds)
+        for (const auto& world : worlds)
         {
             for (const auto& location : world->GetAllLocations())
             {
@@ -567,7 +569,7 @@ namespace randomizer::logic::search
 
                 // If the game is beatable, temporarily take this item away and erase the location from the playthrough
                 // locations
-                if (GameBeatable(worlds))
+                if (GameBeatable(&worlds))
                 {
                     tempEmptyLocations[location] = itemAtLocation;
                     playthroughLocationsSet.erase(location);
@@ -581,7 +583,7 @@ namespace randomizer::logic::search
 
         // Generate a new playthrough search incase some spheres were flattened by the previous generation having access
         // to extra items
-        auto newSearch = Search::Playthrough(worlds);
+        auto newSearch = Search::Playthrough(&worlds);
         newSearch.SearchWorlds();
 
         // Now do the same process for entrances to pare down the entrance playthrough
@@ -594,7 +596,7 @@ namespace randomizer::logic::search
             for (const auto& entrance : sphereCopy)
             {
                 auto connectedArea = entrance->Disconnect();
-                if (GameBeatable(worlds))
+                if (GameBeatable(&worlds))
                 {
                     // If the game is still beatable then this entrance is not required
                     sphere.erase(std::remove(sphere.begin(), sphere.end(), entrance), sphere.end());
@@ -636,8 +638,8 @@ namespace randomizer::logic::search
         // Remove any empty spheres
         newSearch.RemoveEmptySpheres();
 
-        worlds->at(0)->SetPlaythroughSpheres(newSearch._playthroughSpheres);
-        worlds->at(0)->SetEntranceSpheres(newSearch._entranceSpheres);
+        randomizer->GetPlaythroughSpheres() = newSearch._playthroughSpheres;
+        randomizer->GetEntranceSpheres() = newSearch._entranceSpheres;
     }
 
     bool GameBeatable(randomizer::logic::world::WorldPool* worlds, const randomizer::logic::item_pool::ItemPool& items /* = {} */)

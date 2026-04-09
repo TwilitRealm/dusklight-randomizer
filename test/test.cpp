@@ -1,7 +1,6 @@
 #include "test.hpp"
 
-#include "../logic/generate.hpp"
-#include "../logic/world.hpp"
+#include "../randomizer.hpp"
 #include "../utility/string.hpp"
 
 #include <filesystem>
@@ -23,11 +22,12 @@ namespace randomizer::test::test
                 std::cout << "Testing " << testName << std::endl;
 
                 try {
-                    randomizer::logic::generate::GenerateWorlds();
+                    randomizer::Randomizer r{};
+                    r.GenerateWorlds();
                 }
                 catch(const std::exception& e) {
                     std::cout << "Test \"" << testName << "\" failed! Failed settings saved to " << SETTINGS_PATH << std::endl;
-                    std::cout << "Error Message:" << std::endl;
+                    std::cout << "Error Message: " << std::endl;
                     throw e;
                 }
 

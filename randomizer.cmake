@@ -58,5 +58,6 @@ string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
 set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} SOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})
 set(GAME_LIBS ${GAME_LIBS} yaml-cpp::yaml-cpp zlib base64pp)
 
+make_directory("${CMAKE_BINARY_DIR}/randomizer")
 # Put data files together for easier manipulation
 # file(COPY "${CMAKE_SOURCE_DIR}/src/dusk/randomizer/data/" DESTINATION "${CMAKE_BINARY_DIR}/randomizer/data/" REGEX "^.*example.*$" EXCLUDE) # World, macros, and location info

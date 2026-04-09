@@ -36,8 +36,6 @@ namespace randomizer::logic::area
         int GetID() const;
 
        private:
-        static int _idCounter;
-
         int _id = -1;
         randomizer::logic::location::Location* _loc = nullptr;
         randomizer::logic::requirement::Requirement _req;
@@ -97,8 +95,6 @@ namespace randomizer::logic::area
         void AssignHintRegionsAndDungeonLocations();
 
        private:
-        static int _idCounter;
-
         int _id = -1;
         std::string _name = "";
         std::string _hardAssignedRegion = "";

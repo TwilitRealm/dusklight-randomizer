@@ -12,6 +12,11 @@
 #include <optional>
 
 // Forward Declarations (we have a lot here)
+namespace randomizer
+{
+    class Randomizer;
+}
+
 namespace randomizer::logic::world
 {
     class World;
@@ -156,6 +161,6 @@ namespace randomizer::logic::search
      */
     std::optional<std::string> VerifyLogic(randomizer::logic::world::WorldPool* worlds,
                                            const randomizer::logic::item_pool::ItemPool& items = {});
-    void GeneratePlaythrough(randomizer::logic::world::WorldPool* worlds);
+    void GeneratePlaythrough(randomizer::Randomizer* randomizer);
     bool GameBeatable(randomizer::logic::world::WorldPool* worlds, const randomizer::logic::item_pool::ItemPool& items = {});
 } // namespace randomizer::logic::search

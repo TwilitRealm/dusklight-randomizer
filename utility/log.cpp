@@ -30,7 +30,7 @@ namespace randomizer::utility::log
 #ifdef RANDO_ERROR_LOG
         output.open(LOG_PATH);
         output << "Program opened " << randomizer::utility::time::ProgramTime::getDateStr(); // time string ends with \n
-        output << "Twilight Princess HD Randomizer Version " << RANDOMIZER_VERSION << std::endl;
+        output << "Dusk Randomizer Version " << RANDOMIZER_VERSION << std::endl;
         output << std::endl << std::endl;
 #endif
     }
@@ -77,7 +77,7 @@ namespace randomizer::utility::log
     {
         output.open(LOG_PATH);
         output << "Program opened " << randomizer::utility::time::ProgramTime::getDateStr(); // time string ends with \n
-        output << "Twilight Princess HD Randomizer Version " << RANDOMIZER_VERSION << std::endl;
+        output << "Dusk Randomizer Version " << RANDOMIZER_VERSION << std::endl;
         output << std::endl << std::endl;
     }
 

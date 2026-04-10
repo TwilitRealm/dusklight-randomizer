@@ -3,7 +3,9 @@ cmake_minimum_required(VERSION 3.16)
 set(RANDOMIZER_ONLY "0" CACHE STRING "Runs only the randomizer generator")
 set(RANDO_SAVE_PATH "${CMAKE_BINARY_DIR}/randomizer")
 
-set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} RANDO_SAVE_PATH="${RANDO_SAVE_PATH}" 
+set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} 
+                        RANDOMIZER_ONLY=${RANDOMIZER_ONLY}
+                        RANDO_SAVE_PATH="${RANDO_SAVE_PATH}" 
                         LOGS_PATH="${RANDO_SAVE_PATH}/logs/" 
                         RANDO_DATA_PATH="${CMAKE_SOURCE_DIR}/src/dusk/randomizer/data/")
 

@@ -313,9 +313,39 @@ namespace randomizer::logic::item_pool
 
     void GenerateStartingItemPool(randomizer::logic::world::World* world)
     {
-        const auto& startingItems = world->GetSettings().GetStartingInventory();
+        auto startingItems = world->GetSettings().GetStartingInventory();
         auto& startingItemPool = world->GetStartingItemPool();
         auto& itemPool = world->GetItemPool();
+
+        // Add Maps and Compasses to starting items if we start with them
+        if (world->Setting("Maps and Compasses") == "Start With")
+        {
+            std::list<std::string> mapsAndCompasses = {
+                {"Forest Temple Compass"},
+                {"Goron Mines Compass"},
+                {"Lakebed Temple Compass"},
+                {"Arbiters Grounds Compass"},
+                {"Snowpeak Ruins Compass"},
+                {"Temple of Time Compass"},
+                {"City in the Sky Compass"},
+                {"Palace of Twilight Compass"},
+                {"Hyrule Castle Compass"},
+                {"Forest Temple Dungeon Map"},
+                {"Goron Mines Dungeon Map"},
+                {"Lakebed Temple Dungeon Map"},
+                {"Arbiters Grounds Dungeon Map"},
+                {"Snowpeak Ruins Dungeon Map"},
+                {"Temple of Time Dungeon Map"},
+                {"City in the Sky Dungeon Map"},
+                {"Palace of Twilight Dungeon Map"},
+                {"Hyrule Castle Dungeon Map"},
+            };
+
+            for (const auto& itemName : mapsAndCompasses)
+            {
+                startingItems[itemName] = 1;
+            }
+        }
 
         // Add each item to the world's _startingItemPool and erase it from the regular _itemPool
         for (const auto& [itemName, count] : startingItems)

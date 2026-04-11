@@ -64,20 +64,20 @@
   Locations:
     Ordon Rupee Under Tall Tree 1: Nothing
     Ordon Rupee Under Tall Tree 2: Nothing
-    Ordon Tree Long Branch Rupee: Nothing
-    Ordon Tree Short Branch Rupee: Nothing
-    Ordon Bo Cliff Rupee: Nothing
-    Ordon Bo Roof Rupee: Nothing
-    Ordon Bo Window Rupee 1: Nothing
-    Ordon Bo Window Rupee 2: Nothing
+    Ordon Tree Long Branch Rupee: Can_Climb_Vines
+    Ordon Tree Short Branch Rupee: Can_Climb_Vines
+    Ordon Bo Cliff Rupee: Can_Climb_Ladders and Can_Summon_Hawk
+    Ordon Bo Roof Rupee: Can_Climb_Ladders
+    Ordon Bo Window Rupee 1: Can_Climb_Ladders
+    Ordon Bo Window Rupee 2: Can_Climb_Ladders
     Ordon Rupee In Grass By Bo: Nothing
-    Ordon Rusl House Roof Rupee 1: Nothing
-    Ordon Rusl House Roof Rupee 2: Nothing
+    Ordon Rusl House Roof Rupee 1: Human_Link
+    Ordon Rusl House Roof Rupee 2: Human_Link
     Ordon Hidden Rusl House Rupee: Gale_Boomerang or Clawshot
     Ordon Rupee In River 1: Nothing
     Ordon Rupee In River 2: Nothing
     Ordon Rupee Under Bridge: Nothing
-    Ordon Shield House Ledge Grass Rupee: Gale_Boomerang or Clawshot
+    Ordon Shield House Ledge Grass Rupee: Night and (Gale_Boomerang or Clawshot)
     Uli Cradle Delivery: Day and Human_Link
   Exits:
     Ordon Seras Shop: Day and Can_Open_Doors

@@ -214,8 +214,8 @@ namespace randomizer::logic::fill
     void PlaceRestrictedItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
     {
         PlaceGoalLocationItems(world, worlds);
-        PlacePrologueItems(world, worlds);
         PlaceOwnDungeonItems(world, worlds);
+        PlacePrologueItems(world, worlds);
         PlaceAnywhereDungeonRewards(world, worlds);
 
         // Determine required dungeons now so that we can place "any dungeon" items appropriately

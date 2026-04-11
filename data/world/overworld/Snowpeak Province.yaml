@@ -50,7 +50,30 @@
   Map Sector: Snowpeak Province
   Region: Snowpeak Mountain
   Can Warp: True
+  Events:
+    Snowboarding Rupees: "(Snowpeak_Warp_Portal or Can_Defeat_Shadow_Beast)
+                           and ((Bonks_Do_Damage == Off or (Bonks_Do_Damage == On
+                            and (Damage_Multiplier != OHKO or Can_Use_Bottled_Fairy))) or 'Can_Complete_Snowpeak_Ruins')"
   Locations:
+    Snowboarding Bridge Ledge Bottom Rupee: "'Snowboarding_Rupees'"
+    Snowboarding Bridge Ledge Middle Rupee: "'Snowboarding_Rupees'"
+    Snowboarding Bridge Ledge Upper Rupee: "'Snowboarding_Rupees'"
+    Snowboarding Shortcut Rupee 1: "'Snowboarding_Rupees'"
+    Snowboarding Shortcut Rupee 2: "'Snowboarding_Rupees'"
+    Snowboarding Shortcut Rupee 3: "'Snowboarding_Rupees'"
+    Snowboarding Shortcut Rupee 4: "'Snowboarding_Rupees'"
+    Snowboarding Shortcut Rupee 5: "'Snowboarding_Rupees'"
+    Snowboarding Shortcut Rupee 6: "'Snowboarding_Rupees'"
+    Snowboarding Shortcut Rupee 7: "'Snowboarding_Rupees'"
+    Snowboarding Shortcut Rupee 8: "'Snowboarding_Rupees'"
+    Snowboarding Shortcut Rupee 9: "'Snowboarding_Rupees'"
+    Snowboarding Shortcut Rupee 10: "'Snowboarding_Rupees'"
+    Snowboarding Shortcut Rupee 11: "'Snowboarding_Rupees'"
+    Snowboarding Snowy Tree Top Rupee 1: "'Snowboarding_Rupees'"
+    Snowboarding Snowy Tree Top Rupee 2: "'Snowboarding_Rupees'"
+    Snowboarding Snowy Tree Top Rupee 3: "'Snowboarding_Rupees'"
+    Snowboarding Top Left Rupee: "'Snowboarding_Rupees'"
+    Snowboarding Top Right Rupee: "'Snowboarding_Rupees'"
     Snowboard Racing Prize: Can_Defeat_Shadow_Beast and 'Can_Complete_Snowpeak_Ruins'
   Exits:
     Snowpeak Summit Lower: Can_Defeat_Shadow_Beast and Can_Survive_One_Bonk

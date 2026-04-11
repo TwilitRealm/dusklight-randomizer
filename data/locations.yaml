@@ -61,6 +61,118 @@
   - Ordona Province
   - ARC
 
+- Name: Ordon Bo Cliff Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
+- Name: Ordon Bo Roof Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
+- Name: Ordon Bo Window Rupee 1
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
+- Name: Ordon Bo Window Rupee 2
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
+- Name: Ordon Hidden Rusl House Rupee
+  Original Item: Orange Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
+- Name: Ordon Rupee In Grass By Bo
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
+- Name: Ordon Rupee In River 1
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
+- Name: Ordon Rupee In River 2
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
+- Name: Ordon Rupee Under Bridge
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
+- Name: Ordon Rupee Under Tall Tree 1
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
+- Name: Ordon Rupee Under Tall Tree 2
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
+- Name: Ordon Rusl House Roof Rupee 1
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
+- Name: Ordon Rusl House Roof Rupee 2
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
+- Name: Ordon Shield House Ledge Grass Rupee
+  Original Item: Purple Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
+- Name: Ordon Tree Long Branch Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
+- Name: Ordon Tree Short Branch Rupee
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Ordona Province
+  - Rupee - Freestanding
+
 - Name: Herding Goats Reward
   Original Item: Piece of Heart
   Categories:
@@ -206,6 +318,34 @@
   - Npc
   - Faron Woods
   - ARC
+
+- Name: Faron Woods Coro Boulder Rupee 1
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Faron Woods
+  - Rupee - Hidden
+
+- Name: Faron Woods Coro Boulder Rupee 2
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Faron Woods
+  - Rupee - Hidden
+
+- Name: Faron Woods Coro Boulder Rupee 3
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Faron Woods
+  - Rupee - Hidden
+
+- Name: Faron Woods Coro Boulder Rupee 4
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Faron Woods
+  - Rupee - Hidden
 
 - Name: South Faron Cave Chest
   Original Item: Yellow Rupee
@@ -601,6 +741,13 @@
   - Hyrule Field - Eldin Province
   - Sky Book
 
+- Name: Kakariko Gorge Owl Statue Boulder Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Hyrule Field - Eldin
+  - Rupee - Hidden
+
 - Name: Kakariko Gorge Poe
   Original Item: Poe Soul
   Categories:
@@ -622,6 +769,13 @@
   - Chest
   - Hyrule Field - Eldin Province
   - ARC
+
+- Name: Kakariko Gorge Spire Boulder Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Hyrule Field - Eldin
+  - Rupee - Hidden
 
 - Name: Eldin Lantern Cave First Chest
   Original Item: Red Rupee
@@ -663,6 +817,13 @@
   - Kakariko Village
   - ARC
 
+- Name: Eldin Spring Underwater Boulder Rupee
+  Original Item: Orange Rupee
+  Categories:
+  - Overworld
+  - Kakariko Village
+  - Rupee - Hidden
+
 - Name: Kakariko Village Bomb Rock Spire Heart Piece
   Original Item: Piece of Heart
   Categories:
@@ -670,6 +831,34 @@
   - Chest
   - Kakariko Village
   - DZX
+
+- Name: Kakariko Village Bell Rupee
+  Original Item: Silver Rupee
+  Categories:
+  - Overworld
+  - Kakariko Village
+  - Rupee - Hidden
+
+- Name: Kakariko Village Hot Spring Ledge Box Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Kakariko Village
+  - Rupee - Hidden
+
+- Name: Kakariko Village Spring Shortcut Box Rupee 1
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Kakariko Village
+  - Rupee - Hidden
+
+- Name: Kakariko Village Spring Shortcut Box Rupee 2
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Kakariko Village
+  - Rupee - Hidden
 
 - Name: Kakariko Village Malo Mart Hawkeye
   Original Item: Hawkeye
@@ -718,6 +907,13 @@
   - Golden Bug
   - Kakariko Village
   - DZX
+
+- Name: Kakariko Village Ant House Ledge Box Rupee
+  Original Item: Red Rupee
+  Categories:
+  - Overworld
+  - Kakariko Village
+  - Rupee - Hidden
 
 - Name: Barnes Bomb Bag
   Original Item: Bomb Bag
@@ -813,6 +1009,13 @@
   - Kakariko Graveyard
   - DZX
 
+- Name: Kakariko Graveyard Underwater Boulder Rupee
+  Original Item: Red Rupee
+  Categories:
+  - Overworld
+  - Kakariko Graveyard
+  - Rupee - Hidden
+
 - Name: Kakariko Graveyard Golden Wolf
   Original Item: Progressive Hidden Skill
   Categories:
@@ -841,6 +1044,34 @@
   - Chest
   - Death Mountain
   - ARC
+
+- Name: Death Mountain Volcano Ledge Rupee 1
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Death Mountain
+  - Rupee - Freestanding
+
+- Name: Death Mountain Volcano Ledge Rupee 2
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Death Mountain
+  - Rupee - Freestanding
+
+- Name: Death Mountain Volcano Ledge Rupee 3
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Death Mountain
+  - Rupee - Freestanding
+
+- Name: Death Mountain Volcano Pipe Ledge Rock Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Death Mountain
+  - Rupee - Hidden
 
 - Name: Death Mountain Trail Poe
   Original Item: Poe Soul
@@ -937,6 +1168,13 @@
   - Overworld
   - Hyrule Field - Eldin Province
   - Sky Book
+
+- Name: Bridge of Eldin Boulder Rupee
+  Original Item: Red Rupee
+  Categories:
+  - Overworld
+  - Hyrule Field - Eldin
+  - Rupee - Hidden
 
 - Name: Eldin Stockcave Upper Chest
   Original Item: Red Rupee
@@ -1141,6 +1379,27 @@
   - Hyrule Field - Lanayru Province
   - ARC
 
+- Name: Lanayru Field North Underwater Boulder Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Hyrule Field - Lanayru
+  - Rupee - Hidden
+
+- Name: Lanayru Field South Underwater Boulder Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Hyrule Field - Lanayru
+  - Rupee - Hidden
+
+- Name: Lanayru Field Tree Boulder Rupee
+  Original Item: Purple Rupee
+  Categories:
+  - Overworld
+  - Hyrule Field - Lanayru
+  - Rupee - Hidden
+
 - Name: Lanayru Field Bridge Poe
   Original Item: Poe Soul
   Categories:
@@ -1212,6 +1471,20 @@
   - Hyrule Field - Lanayru Province
   - ARC
 
+- Name: Lanayru Field North Spinner Track Boulder Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Hyrule Field - Lanayru
+  - Rupee - Hidden
+
+- Name: Lanayru Field South Spinner Track Boulder Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Hyrule Field - Lanayru
+  - Rupee - Hidden
+
 - Name: West Hyrule Field Female Butterfly
   Original Item: Female Butterfly
   Categories:
@@ -1227,6 +1500,20 @@
   - Golden Bug
   - Hyrule Field - Lanayru Province
   - DZX
+
+- Name: West Hyrule Field Northern Boulder Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Hyrule Field - Lanayru
+  - Rupee - Hidden
+
+- Name: West Hyrule Field Southern Boulder Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Hyrule Field - Lanayru
+  - Rupee - Hidden
 
 - Name: West Hyrule Field Helmasaur Grotto Chest
   Original Item: Orange Rupee
@@ -1636,6 +1923,13 @@
   - Hyrule Field - Lanayru Province
   - ARC
 
+- Name: Outside South Castle Town Boulder Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Hyrule Field - Lanayru
+  - Rupee - Hidden
+
 - Name: Wooden Statue
   Original Item: Wooden Statue
   Categories:
@@ -1658,6 +1952,13 @@
   - Overworld
   - Hyrule Field - Lanayru Province
   - Sky Book
+
+- Name: Lake Hylia Bridge Owl Statue Boulder Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Hyrule Field - Lanayru
+  - Rupee - Hidden
 
 - Name: Lake Hylia Bridge Vines Chest
   Original Item: Orange Rupee
@@ -1706,6 +2007,13 @@
   - Chest
   - Hyrule Field - Lanayru Province
   - DZX
+
+- Name: Lake Hylia Bridge Faron Boulder Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Hyrule Field - Lanayru
+  - Rupee - Hidden
 
 - Name: Auru Gift To Fyer
   Original Item: Aurus Memo
@@ -1883,6 +2191,34 @@
   - Lake Hylia
   - DZX
 
+- Name: Lake Hylia Left Underwater Boulder Rupee
+  Original Item: Purple Rupee
+  Categories:
+  - Overworld
+  - Lake Hylia
+  - Rupee - Hidden
+
+- Name: Lake Hylia Left Underwater Pillar Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Lake Hylia
+  - Rupee - Freestanding
+
+- Name: Lake Hylia Right Underwater Boulder Rupee
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Lake Hylia
+  - Rupee - Hidden
+
+- Name: Lake Hylia Right Underwater Pillar Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Lake Hylia
+  - Rupee - Freestanding
+
 - Name: Lake Hylia Alcove Poe
   Original Item: Poe Soul
   Categories:
@@ -1930,7 +2266,6 @@
   - Chest
   - Lake Hylia
   - DZX
-
 
 - Name: Isle of Riches Poe
   Original Item: Poe Soul
@@ -2033,6 +2368,20 @@
   - Lake Hylia
   - ARC
 
+- Name: Lanayru Spring Lower Underwater Boulder Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Lake Hylia
+  - Rupee - Hidden
+
+- Name: Lanayru Spring Upper Underwater Boulder Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Lake Hylia
+  - Rupee - Hidden
+
 - Name: Plumm Fruit Balloon Minigame
   Original Item: Piece of Heart
   Categories:
@@ -2048,6 +2397,34 @@
   - Golden Bug
   - Upper Zoras River
   - DZX
+
+- Name: Upper Zoras River Central Underwater Boulder Rupee
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Upper Zoras River
+  - Rupee - Hidden
+
+- Name: Upper Zoras River East Underwater Boulder Rupee
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Upper Zoras River
+  - Rupee - Hidden
+
+- Name: Upper Zoras River Ledge Boulder Rupee
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Upper Zoras River
+  - Rupee - Hidden
+
+- Name: Upper Zoras River West Underwater Boulder Rupee
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Upper Zoras River
+  - Rupee - Hidden
 
 - Name: Upper Zoras River Poe
   Original Item: Poe Soul
@@ -2126,6 +2503,69 @@
   - Poe
   - Zoras Domain
 
+- Name: Zoras Domain Behind Waterfall Rupee
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Zoras Domain
+  - Rupee - Freestanding
+
+- Name: Zoras Domain Central Underwater Boulder Rupee
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Zoras Domain
+  - Rupee - Hidden
+
+- Name: Zoras Domain North Underwater Boulder Rupee
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Zoras Domain
+  - Rupee - Hidden
+
+- Name: Zoras Domain Shortcut Ledge Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Zoras Domain
+  - Rupee - Freestanding
+
+- Name: Zoras Domain Shortcut Lower Boulder Rupee
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Zoras Domain
+  - Rupee - Hidden
+
+- Name: Zoras Domain Shortcut Upper Boulder Rupee
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Zoras Domain
+  - Rupee - Hidden
+
+- Name: Zoras Domain Top Ledge Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Zoras Domain
+  - Rupee - Freestanding
+
+- Name: Zoras Domain Vine Ledge Rupee
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Zoras Domain
+  - Rupee - Freestanding
+
+- Name: Zoras Domain Waterfall Ledge Rupee
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Zoras Domain
+  - Rupee - Freestanding
+
 - Name: Zoras Domain Extinguish All Torches Chest
   Original Item: Purple Rupee
   Categories:
@@ -2149,6 +2589,48 @@
   - Npc
   - Zoras Domain
   - ARC
+
+- Name: Zoras Domain Throne East Gate Underwater Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Zoras Domain
+  - Rupee - Freestanding
+
+- Name: Zoras Domain Throne East Underwater Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Zoras Domain
+  - Rupee - Freestanding
+
+- Name: Zoras Domain Throne Northwest Underwater Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Zoras Domain
+  - Rupee - Freestanding
+
+- Name: Zoras Domain Throne South Underwater Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Zoras Domain
+  - Rupee - Freestanding
+
+- Name: Zoras Domain Throne West Gate Underwater Rupee
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Zoras Domain
+  - Rupee - Freestanding
+
+- Name: Zoras Domain Throne West Underwater Rupee
+  Original Item: Yellow Rupee
+  Categories:
+  - Overworld
+  - Zoras Domain
+  - Rupee - Freestanding
 
 # SNOWPEAK PROVINCE
 
@@ -2218,6 +2700,139 @@
   - Npc
   - Snowpeak Province
   - ARC
+
+- Name: Snowboarding Bridge Ledge Bottom Rupee
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Bridge Ledge Middle Rupee
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Bridge Ledge Upper Rupee
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Shortcut Rupee 1
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Shortcut Rupee 2
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Shortcut Rupee 3
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Shortcut Rupee 4
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Shortcut Rupee 5
+  Original Item: Red Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Shortcut Rupee 6
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Shortcut Rupee 7
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Shortcut Rupee 8
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Shortcut Rupee 9
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Shortcut Rupee 10
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Shortcut Rupee 11
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Snowy Tree Top Rupee 1
+  Original Item: Blue Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Snowy Tree Top Rupee 2
+  Original Item: Red Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Snowy Tree Top Rupee 3
+  Original Item: Purple Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Top Left Rupee
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
+
+- Name: Snowboarding Top Right Rupee
+  Original Item: Green Rupee
+  Categories:
+  - Overworld
+  - Snowpeak
+  - Rupee - Freestanding
 
 # DESERT PROVINCE
 

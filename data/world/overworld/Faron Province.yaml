@@ -10,6 +10,10 @@
   Events:
     Can Refill Lantern Oil: "'Can_Farm_Rupees'"
   Locations:
+    Faron Woods Coro Boulder Rupee 1: Can_Smash
+    Faron Woods Coro Boulder Rupee 2: Can_Smash
+    Faron Woods Coro Boulder Rupee 3: Can_Smash
+    Faron Woods Coro Boulder Rupee 4: Can_Smash
     Coro Bottle: Can_Complete_Prologue
     South Faron Woods Twilit Insect in Tunnel 1: Can_Defeat_Faron_Twilit_Insect
     South Faron Woods Twilit Insect in Tunnel 2: Can_Defeat_Faron_Twilit_Insect

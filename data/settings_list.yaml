@@ -73,6 +73,18 @@
     - "Off": description
     - "On": description
 
+- Name: Hidden Rupees
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Freestanding Rupees
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
 - Name: Poe Souls
   Default Option: Vanilla
   Options:

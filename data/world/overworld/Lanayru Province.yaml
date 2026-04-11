@@ -8,6 +8,9 @@
   Can Warp: True
   Locations:
     Lanayru Field Behind Gate Underwater Chest: Iron_Boots
+    Lanayru Field Tree Boulder Rupee: Can_Smash
+    Lanayru Field North Underwater Boulder Rupee: Iron_Boots and Water_Bombs
+    Lanayru Field South Underwater Boulder Rupee: Iron_Boots and Water_Bombs
     Lanayru Field Male Stag Beetle: Clawshot or Gale_Boomerang
     Lanayru Field Female Stag Beetle: Clawshot or Gale_Boomerang
     Lanayru Field Bridge Poe: Night and Can_Use_Senses and Can_Complete_MDH and Can_Complete_All_Twilight
@@ -73,6 +76,8 @@
   Can Warp: True
   Locations:
     Lanayru Field Spinner Track Chest: Spinner
+    Lanayru Field North Spinner Track Boulder Rupee: Can_Smash
+    Lanayru Field South Spinner Track Boulder Rupee: Can_Smash
   Exits:
     Lake Hylia Bridge: Can_Smash
     Lanayru Field: Can_Smash
@@ -87,6 +92,8 @@
   Locations:
     Hyrule Field Amphitheater Owl Statue Chest: Restored_Dominion_Rod
     Hyrule Field Amphitheater Owl Statue Sky Character: Restored_Dominion_Rod
+    West Hyrule Field Northern Boulder Rupee: Can_Smash
+    West Hyrule Field Southern Boulder Rupee: Can_Smash
     West Hyrule Field Male Butterfly: Nothing
     West Hyrule Field Female Butterfly: Gale_Boomerang
     Hyrule Field Amphitheater Poe: Can_Use_Senses and Night
@@ -399,6 +406,7 @@
     Outside South Castle Town Tightrope Chest: Clawshot and Can_Use_Tightrope
     Outside South Castle Town Fountain Chest: Spinner and Clawshot
     Outside South Castle Town Double Clawshot Chasm Chest: Double_Clawshots
+    Outside South Castle Town Boulder Rupee: Can_Smash
     Outside South Castle Town Male Ladybug: Nothing
     Outside South Castle Town Female Ladybug: Nothing
     Outside South Castle Town Poe: Night and Can_Use_Senses
@@ -446,6 +454,8 @@
   Locations:
     Lake Hylia Bridge Vines Chest: Clawshot
     Lake Hylia Bridge Owl Statue Chest: Clawshot and Restored_Dominion_Rod
+    Lake Hylia Bridge Faron Boulder Rupee: Can_Smash
+    Lake Hylia Bridge Owl Statue Boulder Rupee: Can_Smash
     Lake Hylia Bridge Owl Statue Sky Character: Clawshot and Restored_Dominion_Rod
     Lake Hylia Bridge Male Mantis: Clawshot or Gale_Boomerang
     Lake Hylia Bridge Female Mantis: Clawshot or Gale_Boomerang
@@ -487,6 +497,10 @@
     Can Farm Lots of Rupees: Nothing
   Locations:
     Lake Hylia Underwater Chest: Iron_Boots
+    Lake Hylia Left Underwater Boulder Rupee: Zora_Armor and Iron_Boots and Water_Bombs and Can_Complete_Lanayru_Twilight
+    Lake Hylia Left Underwater Pillar Rupee: Zora_Armor and Can_Complete_Lanayru_Twilight
+    Lake Hylia Right Underwater Boulder Rupee: Zora_Armor and Iron_Boots and Water_Bombs and Can_Complete_Lanayru_Twilight
+    Lake Hylia Right Underwater Pillar Rupee: Zora_Armor and Can_Complete_Lanayru_Twilight
     Lake Hylia Alcove Poe: Night and Can_Use_Senses
     Lake Hylia Dock Poe: Night and Can_Use_Senses
     Plumm Fruit Balloon Minigame: Can_Howl
@@ -613,6 +627,8 @@
     Lanayru Spring Back Room Lantern Chest: Clawshot and Lantern
     Lanayru Spring East Double Clawshot Chest: Double_Clawshots
     Lanayru Spring West Double Clawshot Chest: Double_Clawshots
+    Lanayru Spring Lower Underwater Boulder Rupee: Iron_Boots and Water_Bombs
+    Lanayru Spring Upper Underwater Boulder Rupee: Iron_Boots and Water_Bombs
     Lanayru Spring Hint Sign: Iron_Boots or (Can_Do_Niche_Stuff and Magic_Armor)
   Exits:
     Lake Hylia: Nothing
@@ -636,9 +652,13 @@
   Events:
     Howl at Upper Zoras River Howling Stone: Can_Howl
   Locations:
-    Upper Zoras River Twilit Insect: Can_Defeat_Lanayru_Twilit_Insect
+    Upper Zoras River Ledge Boulder Rupee: Can_Smash
+    Upper Zoras River East Underwater Boulder Rupee: Iron_Boots and Water_Bombs
+    Upper Zoras River West Underwater Boulder Rupee: Iron_Boots and Water_Bombs
+    Upper Zoras River Central Underwater Boulder Rupee: Iron_Boots and Water_Bombs
     Upper Zoras River Female Dragonfly: Nothing
     Upper Zoras River Poe: Can_Use_Senses
+    Upper Zoras River Twilit Insect: Can_Defeat_Lanayru_Twilit_Insect
   Exits:
     Upper Zoras River Izas House: Can_Open_Doors and Upper_Zoras_River_Warp_Portal
     Fishing Hole: Can_Open_Doors
@@ -683,6 +703,8 @@
   Locations:
     Zoras Domain Chest By Mother and Child Isles: Nothing
     Zoras Domain Chest Behind Waterfall: Can_Midna_Jump
+    Zoras Domain Central Underwater Boulder Rupee: Can_Complete_Lanayru_Twilight and Iron_Boots and Water_Bombs
+    Zoras Domain North Underwater Boulder Rupee: Can_Complete_Lanayru_Twilight and Iron_Boots and Water_Bombs
     Zoras Domain Male Dragonfly: Nothing
     Zoras Domain Mother and Child Isle Poe: Can_Use_Senses
     Zoras Domain Waterfall Poe: Can_Midna_Jump and Can_Use_Senses
@@ -713,6 +735,14 @@
   Region: Zoras Domain
   Twilight: Lanayru
   Can Warp: True
+  Locations:
+    Zoras Domain Behind Waterfall Rupee: Can_Complete_Lanayru_Twilight
+    Zoras Domain Top Ledge Rupee: Can_Complete_Lanayru_Twilight
+    Zoras Domain Vine Ledge Rupee: Can_Complete_Lanayru_Twilight
+    Zoras Domain Waterfall Ledge Rupee: Can_Complete_Lanayru_Twilight
+    Zoras Domain Shortcut Ledge Rupee: Can_Complete_Lanayru_Twilight
+    Zoras Domain Shortcut Lower Boulder Rupee: Can_Smash
+    Zoras Domain Shortcut Upper Boulder Rupee: Can_Smash
   Exits:
     Zoras Throne Room: Nothing
     Zoras Domain West Ledge: Can_Smash
@@ -724,9 +754,15 @@
   Twilight: Lanayru
   Can Warp: True
   Locations:
-    Zoras Domain Throne Room Twilit Insect: Can_Defeat_Lanayru_Twilit_Insect
     Zoras Domain Light All Torches Chest: Can_Light_Torches and Iron_Boots
     Zoras Domain Extinguish All Torches Chest: Can_Extinguish_Torches and Iron_Boots
+    Zoras Domain Throne East Gate Underwater Rupee: Can_Complete_Lanayru_Twilight and Iron_Boots
+    Zoras Domain Throne East Underwater Rupee: Can_Complete_Lanayru_Twilight and (Iron_Boots or Zora_Armor)
+    Zoras Domain Throne Northwest Underwater Rupee: Can_Complete_Lanayru_Twilight and (Iron_Boots or Zora_Armor)
+    Zoras Domain Throne South Underwater Rupee: Can_Complete_Lanayru_Twilight and (Iron_Boots or Zora_Armor)
+    Zoras Domain Throne West Gate Underwater Rupee: Can_Complete_Lanayru_Twilight and Iron_Boots
+    Zoras Domain Throne West Underwater Rupee: Can_Complete_Lanayru_Twilight and (Iron_Boots or Zora_Armor)
     Zoras Domain Underwater Goron: Water_Bombs and Iron_Boots and Zora_Armor
+    Zoras Domain Throne Room Twilit Insect: Can_Defeat_Lanayru_Twilit_Insect
   Exits:
     Zoras Domain Top of Waterfall: Nothing

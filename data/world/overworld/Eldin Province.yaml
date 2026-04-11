@@ -10,6 +10,8 @@
     Kakariko Gorge Owl Statue Chest: Restored_Dominion_Rod
     Kakariko Gorge Double Clawshot Chest: Double_Clawshots
     Kakariko Gorge Spire Heart Piece: Clawshot or Gale_Boomerang
+    Kakariko Gorge Owl Statue Boulder Rupee: Can_Smash
+    Kakariko Gorge Spire Boulder Rupee: Can_Smash
     Kakariko Gorge Owl Statue Sky Character: Restored_Dominion_Rod
     Kakariko Gorge Male Pill Bug: Nothing
     Kakariko Gorge Female Pill Bug: Nothing
@@ -61,8 +63,14 @@
   Events:
     Can Start Springwater Rush: Can_Talk_to_Springwater_Goron
   Locations:
-    Eldin Spring Underwater Chest: Can_Smash
+    Eldin Spring Underwater Chest: Can_Smash and Iron_Boots
+    Eldin Spring Underwater Boulder Rupee: Water_Bombs and (Iron_Boots or Zora_Armor) and Can_Complete_Eldin_Twilight
     Kakariko Village Bomb Rock Spire Heart Piece: Bombs and Gale_Boomerang
+    Kakariko Village Bell Rupee: Shadow_Crystal and Can_Launch_Bombs and Can_Complete_Eldin_Twilight
+    Kakariko Village Hot Spring Ledge Box Rupee: (Shadow_Crystal or Gale_Boomerang) and Can_Complete_Eldin_Twilight
+    Kakariko Village Spring Shortcut Box Rupee 1: Can_Smash and Can_Complete_Eldin_Twilight
+    Kakariko Village Spring Shortcut Box Rupee 2: Can_Smash and Can_Complete_Eldin_Twilight
+    Kakariko Village Ant House Ledge Box Rupee: Gale_Boomerang and Can_Complete_Eldin_Twilight
     Kakariko Village Hint Sign: Nothing
   Exits:
     Renados Sanctuary Front West Door Exterior: Nothing
@@ -188,6 +196,7 @@
   Twilight: Eldin
   Can Warp: True
   Locations: 
+    Kakariko Graveyard Underwater Boulder Rupee: (Iron_Boots or Zora_Armor) and Water_Bombs
     Rutelas Blessing: "'Can_Follow_Rutella'"
     Gift From Ralis: Asheis_Sketch and 'Can_Follow_Rutella'
     Kakariko Graveyard Hint Sign: Nothing
@@ -391,11 +400,12 @@
   Twilight: Eldin
   Can Warp: True
   Locations:
+    Death Mountain Volcano Pipe Ledge Rock Rupee: Can_Complete_Eldin_Twilight and (Can_Defeat_Goron or 'Can_Complete_Goron_Mines') 
     Death Mountain Trail Twilit Insect on Wall: Can_Defeat_Eldin_Twilit_Insect
     Death Mountain Trail Twilit Insect in Hot Spring: Can_Defeat_Eldin_Twilit_Insect
   Exits:
     Death Mountain Lower Elevator: Goron_Mines_Entrance == Open or 'Can_Access_Death_Mountain_Lower_Elevator'
-    Death Mountain Outside Sumo Hall: Iron_Boots and (Can_Defeat_Goron or 'Can_Complete_Goron_Mines')
+    Death Mountain Outside Sumo Hall: Iron_Boots and (Can_Defeat_Goron or 'Can_Complete_Goron_Mines') and Can_Complete_Eldin_Twilight
     Death Mountain Trail: Nothing
   
 - Name: Death Mountain Lower Elevator
@@ -412,6 +422,10 @@
   Region: Death Mountain
   Twilight: Eldin
   Can Warp: True
+  Locations:
+    Death Mountain Volcano Ledge Rupee 1: Can_Complete_Eldin_Twilight and (Can_Defeat_Goron or 'Can_Complete_Goron_Mines')
+    Death Mountain Volcano Ledge Rupee 2: Can_Complete_Eldin_Twilight and (Can_Defeat_Goron or 'Can_Complete_Goron_Mines')
+    Death Mountain Volcano Ledge Rupee 3: Can_Complete_Eldin_Twilight and (Can_Defeat_Goron or 'Can_Complete_Goron_Mines')
   Exits:
     Death Mountain Sumo Hall: Nothing
     Death Mountain Volcano: Nothing
@@ -495,6 +509,7 @@
   Twilight: Eldin
   Can Warp: True
   Locations:
+    Bridge of Eldin Boulder Rupee: Can_Smash
     Bridge of Eldin Owl Statue Sky Character: Restored_Dominion_Rod
     Bridge of Eldin Female Phasmid: Clawshot or Gale_Boomerang
   Exits:

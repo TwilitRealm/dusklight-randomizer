@@ -560,6 +560,10 @@ namespace randomizer::logic::world
                 (this->Setting("Shop Items") == "Off" && location->HasCategories("Shop")) ||
                 // Hidden Skills
                 (this->Setting("Hidden Skills") == "Off" && location->HasCategories("Hidden Skill")) ||
+                // Hidden Rupees
+                (this->Setting("Hidden Rupees") == "Off" && location->HasCategories("Rupee - Hidden")) ||
+                // Freestanding Rupees
+                (this->Setting("Freestanding Rupees") == "Off" && location->HasCategories("Rupee - Freestanding")) ||
                 // North Faron Woods Gate Key
                 (this->Setting("Skip Prologue") == "Off" && locationName == "Faron Mist Cave Open Chest") ||
                 // Some locations which will always be vanilla for the time being

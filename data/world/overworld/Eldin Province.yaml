@@ -199,13 +199,13 @@
   Twilight: Eldin
   Can Transform: If Transform Anywhere
   Events:
-    Can Buy Wooden Shield: "'Can_Farm_Lots_of_Rupees'"
-    Can Fund Malo Mart: "'Can_Farm_Lots_of_Rupees'"
+    Can Buy Wooden Shield: Not_Twilight and 'Can_Farm_Lots_of_Rupees'
+    Can Fund Malo Mart: Not_Twilight and Can_Complete_Lanayru_Twilight and 'Can_Farm_Lots_of_Rupees'
   Locations:
-    Kakariko Village Malo Mart Hylian Shield: "'Can_Farm_Lots_of_Rupees'"
-    Kakariko Village Malo Mart Hawkeye: "'Can_Farm_Lots_of_Rupees'"
-    Kakariko Village Malo Mart Red Potion: "'Can_Farm_Lots_of_Rupees'"
-    Kakariko Village Malo Mart Wooden Shield: "'Can_Farm_Lots_of_Rupees'"
+    Kakariko Village Malo Mart Hylian Shield: Not_Twilight and 'Can_Farm_Lots_of_Rupees'
+    Kakariko Village Malo Mart Hawkeye: Not_Twilight and 'Can_Farm_Lots_of_Rupees'
+    Kakariko Village Malo Mart Red Potion: Not_Twilight and 'Can_Farm_Lots_of_Rupees'
+    Kakariko Village Malo Mart Wooden Shield: Not_Twilight and 'Can_Farm_Lots_of_Rupees'
     Kakariko Malo Mart Twilit Insect: Can_Defeat_Eldin_Twilit_Insect
   Exits:
     Lower Kakariko Village: Nothing
@@ -447,7 +447,7 @@
   Twilight: Eldin
   Can Warp: True
   Events:
-    Can Finish Goron Springwater Rush: "'Can_Start_Springwater_Rush' and 'Can_Fund_Malo_Mart'"
+    Can Finish Goron Springwater Rush: "'Can_Start_Springwater_Rush' and (Skip_Bridge_Donation == On or 'Can_Fund_Malo_Mart')"
   Locations:
     Eldin Field Bomb Rock Chest: Can_Smash
     Bridge of Eldin Owl Statue Chest: Restored_Dominion_Rod
@@ -457,8 +457,8 @@
     Bridge of Eldin Male Phasmid: Clawshot or Gale_Boomerang
     Eldin Field Hint Sign: Nothing
   Exits:
-    # Only allow logical access to the other side if we've already been there
-    Eldin Field Near Castle Town: "'Can_Access_Eldin_Field_Near_Castle_Town'"
+    # Only allow logical access to the other side if we've already been there or the bridge donation is skipped
+    Eldin Field Near Castle Town: Skip_Bridge_Donation == On or 'Can_Access_Eldin_Field_Near_Castle_Town'
     Eldin Field Bomskit Grotto: Can_Dig
     Eldin Field Water Bomb Fish Grotto: Can_Dig
     Eldin Field North of Bridge: Nothing
@@ -472,7 +472,7 @@
   Can Warp: True
   Exits:
     Outside Castle Town East: Nothing
-    Eldin Field: "'Can_Fund_Malo_Mart'"
+    Eldin Field: Skip_Bridge_Donation == On or 'Can_Fund_Malo_Mart'
 
 - Name: Eldin Field Bomskit Grotto
   Locations:

@@ -81,6 +81,15 @@
     - Dungeon: description
     - All: description
 
+- Name: Ilia Memory Quest
+  Default Option: Vanilla
+  Options:
+    - Vanilla: description
+    - Letter: description
+    - Invoice: description
+    - Statue: description
+    - Charm: description
+
 - Name: Item Scarcity
   Default Option: Vanilla
   Options:
@@ -245,6 +254,27 @@
     - "On": description
 
 - Name: Open Door of Time
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Active Goron Mines Magnets
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Lower Hyrule Castle Chandelier
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": description
+    - "On": description
+
+- Name: Skip Bridge Donation
   Tracker Important: True
   Default Option: "Off"
   Options:

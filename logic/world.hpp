@@ -60,6 +60,7 @@ namespace randomizer::logic::world
         void BuildLocationTable();
         void LoadLogicMacros();
         void LoadWorldGraph();
+        bool EvaluateSettingCondition(const std::string& condition);
 
         /**
          * @brief Generate the main item pool and starting item pool for this world.

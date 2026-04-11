@@ -32,7 +32,7 @@
     Goron Mines Main Magnet Room Bottom Chest: Nothing
   Exits:
     Goron Mines Magnet Ceiling Room Lower: Goron_Mines_Small_Key or Small_Keys == Keysy
-    Goron Mines Central Magnet Room Center Tower: "'Can_Activate_Central_Tower_Magnet'"
+    Goron Mines Central Magnet Room Center Tower: (Active_Goron_Mines_Magnets == On and Iron_Boots) or 'Can_Activate_Central_Tower_Magnet'
     Goron Mines Entrance Room Near Central Magnet Room: Nothing
 
 - Name: Goron Mines Central Magnet Room Center Tower

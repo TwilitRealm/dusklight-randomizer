@@ -190,7 +190,8 @@ namespace randomizer::logic::requirement
             // and the three components individually
             auto& chBefore = logicStr[pos - 1];
             auto& chAfter = logicStr[pos + 1];
-            if (chBefore != '!' && chAfter != '!' && chBefore != '=' && chAfter != '=')
+            if (chBefore != '!' && chAfter != '!' && chBefore != '=' && chAfter != '=' &&
+                chBefore != '>' && chAfter != '>' && chBefore != '<' && chAfter != '<')
             {
                 splitLogicStr.push_back(logicStr.substr(0, pos));
                 logicStr.erase(0, pos + 1);
@@ -270,10 +271,12 @@ namespace randomizer::logic::requirement
             }
 
             // Then a setting...
-            else if (randomizer::utility::str::Contains(argStr, "!=", "=="))
+            else if (randomizer::utility::str::Contains(argStr, "!=", "==", ">=", "<="))
             {
                 bool equalComparison = randomizer::utility::str::Contains(argStr, "==");
                 bool notEqualComparison = randomizer::utility::str::Contains(argStr, "!=");
+                bool gteComparison = randomizer::utility::str::Contains(argStr, ">=");
+                bool lteComparison = randomizer::utility::str::Contains(argStr, "<=");
 
                 // Split up the comparison using the second comparison character (which will always be '=')
                 auto compPos = argStr.rfind('=');
@@ -289,6 +292,14 @@ namespace randomizer::logic::requirement
                 else if (notEqualComparison)
                 {
                     result = world->Setting(settingName) != optionName.c_str();
+                } 
+                else if (gteComparison)
+                {
+                    result = world->Setting(settingName) >= optionName.c_str();
+                }
+                else if (lteComparison)
+                {
+                    result = world->Setting(settingName) <= optionName.c_str();
                 }
 
                 if (result == true)

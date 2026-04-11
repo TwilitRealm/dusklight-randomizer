@@ -490,6 +490,16 @@ namespace randomizer::logic::world
         }
     }
 
+    bool World::EvaluateSettingCondition(const std::string& condition)
+    {
+        auto req = randomizer::logic::requirement::ParseRequirementString(condition, this, true);
+        if (req._type == requirement::Type::NOTHING)
+        {
+            return true;
+        }
+        return false;
+    }
+
     void World::GenerateItemPools()
     {
         LOG_TO_DEBUG("Now building item pools");

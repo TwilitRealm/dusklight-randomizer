@@ -38,28 +38,25 @@ FetchContent_Declare(
   GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
   GIT_TAG yaml-cpp-0.9.0
 )
-FetchContent_MakeAvailable(yaml-cpp)
-
 message(STATUS "randomizer: Fetching base64pp")
 FetchContent_Declare(
-  base64pp
-  GIT_REPOSITORY https://github.com/matheusgomes28/base64pp.git
-  GIT_TAG v0.2.0-rc0
+        base64pp
+        GIT_REPOSITORY https://github.com/matheusgomes28/base64pp.git
+        GIT_TAG v0.2.0-rc0
 )
-FetchContent_MakeAvailable(base64pp)
-
 message(STATUS "randomizer: Fetching zlib-ng")
 FetchContent_Declare(
-  zlib-ng
-  GIT_REPOSITORY https://github.com/zlib-ng/zlib-ng.git
-  GIT_TAG 2.3.3
+        zlib-ng
+        GIT_REPOSITORY https://github.com/zlib-ng/zlib-ng.git
+        GIT_TAG 2.3.3
 )
-FetchContent_MakeAvailable(zlib-ng)
+
+FetchContent_MakeAvailable(yaml-cpp base64pp zlib-ng)
 
 string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
 set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} SOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})
 set(GAME_LIBS ${GAME_LIBS} yaml-cpp::yaml-cpp zlib base64pp)
 
-make_directory("${CMAKE_BINARY_DIR}/randomizer")
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/randomizer")
 # Put data files together for easier manipulation
 # file(COPY "${CMAKE_SOURCE_DIR}/src/dusk/randomizer/data/" DESTINATION "${CMAKE_BINARY_DIR}/randomizer/data/" REGEX "^.*example.*$" EXCLUDE) # World, macros, and location info

@@ -76,6 +76,7 @@
   Exits:
     Hyrule Castle Main Hall Near Entrance: Can_Defeat_Bokoblin and Can_Defeat_Lizalfos
     Hyrule Castle Main Hall Near First Darknut Room: Double_Clawshots
+    Hyrule Castle Main Hall Near Double Dinalfos Room: Double_Clawshots and Lower_Hyrule_Castle_Chandelier == On
 
 - Name: Hyrule Castle Main Hall Near First Darknut Room
   Region: Hyrule Castle

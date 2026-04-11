@@ -213,8 +213,8 @@ namespace randomizer::logic::fill
 
     void PlaceRestrictedItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
     {
-        PlacePrologueItems(world, worlds);
         PlaceGoalLocationItems(world, worlds);
+        PlacePrologueItems(world, worlds);
         PlaceOwnDungeonItems(world, worlds);
         PlaceAnywhereDungeonRewards(world, worlds);
 

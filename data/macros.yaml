@@ -236,11 +236,20 @@ Can Complete All Dungeons: "'Can_Complete_Forest_Temple' and 'Can_Complete_Goron
                             'Can_Complete_Arbiters_Grounds' and 'Can_Complete_Snowpeak_Ruins' and 'Can_Complete_Temple_of_Time' and
                             'Can_Complete_City_in_the_Sky' and 'Can_Complete_Palace_of_Twilight'"
 
-Can Break Hyrule Castle Barrier: Hyrule_Castle_Requirements == Open or 
-                                (Hyrule_Castle_Requirements == Vanilla and 'Can_Complete_Palace_of_Twilight') or
-                                (Hyrule_Castle_Requirements == Fused_Shadows and count(Progressive_Fused_Shadow, 3)) or
-                                (Hyrule_Castle_Requirements == Mirror_Shards and count(Progressive_Mirror_Shard, 4)) or
-                                (Hyrule_Castle_Requirements == All_Dungeons and Can_Complete_All_Dungeons)
+Can Break Hyrule Castle Barrier: Hyrule_Barrier_Requirements == Open or 
+                                (Hyrule_Barrier_Requirements == Vanilla and 'Can_Complete_Palace_of_Twilight') or
+                                (Hyrule_Barrier_Requirements == Fused_Shadows and count(Progressive_Fused_Shadow, Hyrule_Barrier_Fused_Shadows)) or
+                                (Hyrule_Barrier_Requirements == Mirror_Shards and count(Progressive_Mirror_Shard, Hyrule_Barrier_Mirror_Shards)) or
+                                (Hyrule_Barrier_Requirements == Dungeons and dungeons_completed(Hyrule_Barrier_Dungeons)) or
+                                (Hyrule_Barrier_Requirements == Poe_Souls and count(Poe_Soul, Hyrule_Barrier_Poe_Souls)) or
+                                (Hyrule_Barrier_Requirements == Hearts and hearts(Hyrule_Barrier_Hearts))
+
+Can Open Hyrule Castle Big Key Gate: Hyrule_Castle_Big_Key_Requirements == None or
+                                     (Hyrule_Castle_Big_Key_Requirements == Fused_Shadows and count(Progressive_Fused_Shadow, Hyrule_Castle_Big_Key_Fused_Shadows)) or
+                                     (Hyrule_Castle_Big_Key_Requirements == Mirror_Shards and count(Progressive_Fused_Shadow, Hyrule_Castle_Big_Key_Mirror_Shards)) or
+                                     (Hyrule_Castle_Big_Key_Requirements == Dungeons and dungeons_completed(Hyrule_Castle_Big_Key_Dungeons)) or
+                                     (Hyrule_Castle_Big_Key_Requirements == Poe_Souls and count(Poe_Soul, Hyrule_Castle_Big_Key_Poe_Souls)) or
+                                     (Hyrule_Castle_Big_Key_Requirements == Hearts and hearts(Hyrule_Castle_Big_Key_Hearts))
 
 # WARP PORTALS
 

@@ -140,13 +140,9 @@ namespace randomizer::logic::search
                 continue;
             }
 
-            // If the exit is unnecessary, we'll just consider it successful and move on
+            // If the exit is successful
             auto evalSuccess = randomizer::logic::requirement::EvaluateExitRequirement(this, exit);
-            if (evalSuccess == randomizer::logic::requirement::EvalSuccess::UNNECESSARY)
-            {
-                this->_successfulExits.insert(exit);
-            }
-            else if (randomizer::utility::general::IsAnyOf(evalSuccess,
+            if (randomizer::utility::general::IsAnyOf(evalSuccess,
                                                       randomizer::logic::requirement::EvalSuccess::COMPLETE,
                                                       randomizer::logic::requirement::EvalSuccess::PARTIAL))
             {
@@ -305,9 +301,9 @@ namespace randomizer::logic::search
                         this->Explore(exit->GetConnectedArea());
                     }
                 case randomizer::logic::requirement::EvalSuccess::NONE:
+                    [[fallthrough]];
+                case randomizer::logic::requirement::EvalSuccess::DISCONNECTED:
                     this->_exitsToTry.push_back(exit);
-                case randomizer::logic::requirement::EvalSuccess::UNNECESSARY:
-                    this->_foundDisconnectedExit = true;
             }
         }
     }
@@ -374,6 +370,19 @@ namespace randomizer::logic::search
                 }
             }
         }
+    }
+
+    bool Search::HasAccessibleDisconnectedExit()
+    {
+        for (const auto& exit : this->_exitsToTry)
+        {
+            if (exit->GetConnectedArea() == nullptr && 
+                randomizer::logic::requirement::EvaluateDisconnectedExitRequiremrnt(this, exit) != requirement::EvalSuccess::NONE)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     void Search::RemoveEmptySpheres()

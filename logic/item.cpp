@@ -54,6 +54,13 @@ namespace randomizer::logic::item
         {
             this->_stamp = true;
         }
+        // Make hearts major items if they're required for anything
+        else if ((name == "Piece of Heart" || name == "Heart Container") &&
+                 ((world->Setting("Hyrule Barrier Requirements") == "Hearts") ||
+                  (world->Setting("Hyrule Castle Big Key Requirements") == "Hearts")))
+        {
+            this->_importance = Importance::MAJOR;
+        }
     }
 
     int Item::GetID() const

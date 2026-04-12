@@ -291,8 +291,13 @@ namespace randomizer::logic::item_pool
                 {"Temple of Time Big Key"},
                 {"City in the Sky Big Key"},
                 {"Palace of Twilight Big Key"},
-                {"Hyrule Castle Big Key"},
             };
+
+            if (world->Setting("Hyrule Castle Big Key Requirements") == "None")
+            {
+                bigKeys.emplace_back("Hyrule Castle Big Key");
+            }
+
             for (const auto& key : bigKeys)
             {
                 itemPool.at(key) = 0;

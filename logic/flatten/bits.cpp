@@ -243,18 +243,6 @@ int BitIndex::reqBit(const randomizer::logic::requirement::Requirement& req)
                 reverseIndex.push_back(req);
                 return bump();
             }
-        // case randomizer::logic::requirement::Type::HEALTH:
-        //     key = std::to_string(std::get<int>(req._args[0]));
-        //     if (heartCount.contains(key))
-        //     {
-        //         return heartCount[key];
-        //     }
-        //     else
-        //     {
-        //         heartCount[key] = counter;
-        //         reverseIndex.push_back(req);
-        //         return bump();
-        //     }
         case randomizer::logic::requirement::Type::GOLDEN_BUGS:
             key = std::to_string(std::get<int>(req._args[0]));
             if (goldenBugCount.contains(key))
@@ -264,6 +252,30 @@ int BitIndex::reqBit(const randomizer::logic::requirement::Requirement& req)
             else
             {
                 goldenBugCount[key] = counter;
+                reverseIndex.push_back(req);
+                return bump();
+            }
+        case randomizer::logic::requirement::Type::HEARTS:
+            key = std::to_string(std::get<int>(req._args[0]));
+            if (heartCount.contains(key))
+            {
+                return heartCount[key];
+            }
+            else
+            {
+                heartCount[key] = counter;
+                reverseIndex.push_back(req);
+                return bump();
+            }
+        case randomizer::logic::requirement::Type::DUNGEONS_COMPLETED:
+            key = std::to_string(std::get<int>(req._args[0]));
+            if (dungeonCompletedCount.contains(key))
+            {
+                return dungeonCompletedCount[key];
+            }
+            else
+            {
+                dungeonCompletedCount[key] = counter;
                 reverseIndex.push_back(req);
                 return bump();
             }

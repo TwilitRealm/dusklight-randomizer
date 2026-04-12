@@ -161,7 +161,7 @@
   Region: Hyrule Castle
   Locations:
     Hyrule Castle Southeast Balcony Tower Chest: Can_Defeat_Aerolfos
-    Hyrule Castle Big Key Chest: Nothing
+    Hyrule Castle Big Key Chest: Can_Open_Hyrule_Castle_Big_Key_Gate
   Exits:
     Hyrule Castle Final Climb Near Outside Balcony: Can_Open_Doors and (count(Hyrule_Castle_Small_Key, 2) or Small_Keys == Keysy)
     Hyrule Castle Double Darknut Room: Can_Open_Doors and 'Can_Defeat_Hyrule_Castle_Double_Darknuts'

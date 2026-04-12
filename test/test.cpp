@@ -27,7 +27,7 @@ namespace randomizer::test::test
                 }
                 catch(const std::exception& e) {
                     std::cout << "Test \"" << testName << "\" failed! Failed settings saved to " << SETTINGS_PATH << std::endl;
-                    std::cout << "Error Message: " << std::endl;
+                    std::cout << "Error Message: " << e.what() << std::endl;
                     throw e;
                 }
 

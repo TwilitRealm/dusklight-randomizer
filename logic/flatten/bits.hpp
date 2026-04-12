@@ -64,8 +64,9 @@ class BitIndex
     int reqBit(const randomizer::logic::requirement::Requirement& req);
 
     std::unordered_map<std::string, int> itemBits = {};
-    // std::unordered_map<std::string, int> heartCount = {};
+    std::unordered_map<std::string, int> heartCount = {};
     std::unordered_map<std::string, int> goldenBugCount = {};
+    std::unordered_map<std::string, int> dungeonCompletedCount = {};
     std::vector<randomizer::logic::requirement::Requirement> reverseIndex = {};
     int counter = 0;
 };

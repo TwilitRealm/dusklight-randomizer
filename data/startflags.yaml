@@ -85,7 +85,7 @@ EventFlags:
     - 0x0003 # Yeto put pumpkin and cheese in soup.
     - 0x1460 # Snowpeak Ruins North and West doors unlocked.
     - 0x0120 # Told Yeta about cheese
-  - Hyrule_Castle_Requirements == Open:
+  - Hyrule_Barrier_Requirements == Open:
     - 0x4208 # Remove Castle Barrier
   - Palace_of_Twilight_Requirements == Open:
     - 0x2B08 # Mirror of Twilight Repaired.
@@ -592,6 +592,9 @@ RegionFlags:
         - 0x93 # Unlock door outside 3F.
         - 0xB0 # Unlock treasure room door.
         - 0xA3 # Unlock door in south garden.
+      - Big_Keys == Keysy and Hyrule_Castle_Big_Key_Requirements == None:
+        - 0xA1 # Unlocked Hyrule Castle Boss Door.
+        - 0xED # Got Hyrule Castle Big Key.
       - Maps_and_Compasses == Start_With:
         - 0xEE # Got Hyrule Castle Compass.
         - 0xEF # Got Hyrule Castle Dungeon Map.
@@ -601,4 +604,5 @@ RegionFlags:
         - 0x85 # watched focus on lowered chandelier cs
         - 0x9D # lower the main hall chandelier
         - 0xAF # defeated double Dinalfos (opens gates both sides)
-    
+      - Hyrule_Castle_Big_Key_Requirements == None:
+        - 0x94 # Open HC BK gate

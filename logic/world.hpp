@@ -136,7 +136,7 @@ namespace randomizer::logic::world
 
         int GetMacroIndex(const std::string& macroName) const;
         const randomizer::logic::requirement::Requirement& GetMacro(const int& macroIndex);
-        int GetEventIndex(const std::string& eventName);
+        int GetEventIndex(const std::string& eventName, bool addIfNone = true);
         std::string GetEventName(const int& eventIndex);
 
         randomizer::seedgen::settings::Setting& Setting(const std::string& settingName);

@@ -115,6 +115,7 @@ namespace randomizer::logic::search
         void ExpandFormTimes(randomizer::logic::area::Area* area);
 
         void AddExitToEntranceSpheres(randomizer::logic::entrance::Entrance*);
+        bool HasAccessibleDisconnectedExit();
         void RemoveEmptySpheres();
 
         /**
@@ -143,7 +144,6 @@ namespace randomizer::logic::search
         std::unordered_set<randomizer::logic::area::Area*> _visitedAreas;
         std::unordered_set<randomizer::logic::entrance::Entrance*> _successfulExits;
         std::unordered_set<randomizer::logic::entrance::Entrance*> _playthroughEntrances;
-        bool _foundDisconnectedExit = false;
 
         std::list<std::list<randomizer::logic::location::Location*>> _playthroughSpheres;
         std::list<std::list<randomizer::logic::entrance::Entrance*>> _entranceSpheres;

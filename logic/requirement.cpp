@@ -3,6 +3,7 @@
 #include "search.hpp"
 #include "world.hpp"
 #include "../utility/container.hpp"
+#include "../utility/general.hpp"
 #include "../utility/log.hpp"
 #include "../utility/string.hpp"
 
@@ -135,6 +136,15 @@ namespace randomizer::logic::requirement
             case Type::GOLDEN_BUGS:
                 count = std::get<int>(this->_args[0]);
                 return "golden_bugs(" + std::to_string(count) + ")";
+
+            case Type::HEARTS:
+                count = std::get<int>(this->_args[0]);
+                return "hearts(" + std::to_string(count) + ")";
+
+            case Type::DUNGEONS_COMPLETED:
+                count = std::get<int>(this->_args[0]);
+                return "dungeons_completed(" + std::to_string(count) + ")";
+
             default:
                 return reqStr;
         }
@@ -334,9 +344,16 @@ namespace randomizer::logic::requirement
                 }
                 splitLogicStr.push_back(countArgs);
 
+                // For the count, if a setting is passed in, use the setting's value instead
+                auto& countStr = splitLogicStr[1];
+                if (seedgen::settings::GetAllSettingsInfo()->contains(countStr))
+                {
+                    countStr = world->Setting(countStr).GetCurrentOption();
+                }
+
                 // Get the arguments
                 auto& itemName = splitLogicStr[0];
-                int count = std::stoi(splitLogicStr[1]);
+                int count = std::stoi(countStr);
                 auto item = world->GetItem(itemName);
                 req._args.emplace_back(count);
                 req._args.emplace_back(item);
@@ -357,30 +374,55 @@ namespace randomizer::logic::requirement
                 return req;
             }
 
-            // And finally a health check
-            // else if (argStr.find("health") != std::string::npos)
-            // {
-            //     req._type = randomizer::logic::requirement::Type::HEALTH;
-            //     std::string numHeartsStr(argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
-            //     int numHearts = std::stoi(numHeartsStr);
-            //     req._args.emplace_back(numHearts);
-            //     return req;
-            // }
+            // Then health
+            else if (argStr.find("hearts") != std::string::npos)
+            {
+                req._type = randomizer::logic::requirement::Type::HEARTS;
+                std::string numHeartsStr(argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
+                
+                // If the string for the count is a setting, use the settings current option instead
+                if (seedgen::settings::GetAllSettingsInfo()->contains(numHeartsStr))
+                {
+                    numHeartsStr = world->Setting(numHeartsStr).GetCurrentOption();
+                }
 
-            // Check Impossible down here since it's very unlikely
+                int numHearts = std::stoi(numHeartsStr);
+                req._args.emplace_back(numHearts);
+                return req;
+            }
+
+            // Then Impossible...
             else if (argStr == "Impossible")
             {
                 req._type = randomizer::logic::requirement::Type::IMPOSSIBLE;
                 return req;
             }
 
-            // Check golden bugs last since it's least likely
+            // Then golden bugs...
             else if (argStr.find("golden bugs") != std::string::npos)
             {
                 req._type = randomizer::logic::requirement::Type::GOLDEN_BUGS;
                 // Get rid of parenthesis
                 std::string countArg(argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
                 int count = std::stoi(countArg);
+                req._args.emplace_back(count);
+                return req;
+            }
+
+            // Then dungeons completed
+            else if (argStr.find("dungeons completed") != std::string::npos)
+            {
+                req._type = Type::DUNGEONS_COMPLETED;
+                // Get rid of parenthesis
+                std::string countStr(argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
+
+                // For the count, if a setting is passed in, use the setting's value instead
+                if (seedgen::settings::GetAllSettingsInfo()->contains(countStr))
+                {
+                    countStr = world->Setting(countStr).GetCurrentOption();
+                }
+
+                int count = std::stoi(countStr);
                 req._args.emplace_back(count);
                 return req;
             }
@@ -445,12 +487,73 @@ namespace randomizer::logic::requirement
         return req;
     }
 
+    bool EvaluateSimpleRequirement(const randomizer::logic::requirement::Requirement& req, randomizer::logic::world::World* world)
+    {
+        randomizer::logic::item::Item* item;
+        randomizer::logic::item::Item* heartPiece;
+        randomizer::logic::item::Item* heartContainer;
+        int count;
+        int macroIndex;
+        switch (req._type)
+        {
+            case Type::NOTHING:
+                return true;
+
+            case Type::IMPOSSIBLE:
+                return false;
+
+            case Type::OR:
+                return std::any_of(
+                    req._args.begin(),
+                    req._args.end(),
+                    [&](const auto& arg)
+                    { return EvaluateSimpleRequirement(std::get<Requirement>(arg), world); });
+
+            case Type::AND:
+                return std::all_of(
+                    req._args.begin(),
+                    req._args.end(),
+                    [&](const auto& arg)
+                    { return EvaluateSimpleRequirement(std::get<Requirement>(arg), world); });
+
+            case Type::ITEM:
+                item = std::get<randomizer::logic::item::Item*>(req._args[0]);
+                return randomizer::utility::container::ElementInContainer(world->GetStartingItemPool(), item);
+
+            case Type::COUNT:
+                count = std::get<int>(req._args[0]);
+                item = std::get<randomizer::logic::item::Item*>(req._args[1]);
+                return std::ranges::count(world->GetStartingItemPool(), item) >= count;
+
+            case Type::MACRO:
+                macroIndex = std::get<int>(req._args[0]);
+                return EvaluateSimpleRequirement(world->GetMacro(macroIndex), world);
+
+            case Type::GOLDEN_BUGS:
+                count = std::get<int>(req._args[0]);
+                return std::ranges::count_if(world->GetStartingItemPool(),
+                                     [](const auto& item) { return item->IsGoldenBug(); }) >= count;
+
+            case Type::HEARTS:
+                count = std::get<int>(req._args[0]);
+                heartPiece = world->GetItem("Piece of Heart");
+                heartContainer = world->GetItem("Heart Container");
+                return std::ranges::count(world->GetStartingItemPool(), heartPiece) + 
+                       std::ranges::count(world->GetStartingItemPool(), heartContainer) * 5 >= count * 5;
+            default:
+                return false;
+        }
+        return false;
+    }
+
     bool EvaluateRequirementAtFormTime(const randomizer::logic::requirement::Requirement& req,
                                        randomizer::logic::search::Search* search,
                                        const int& formTime,
                                        randomizer::logic::world::World* world)
     {
         randomizer::logic::item::Item* item;
+        randomizer::logic::item::Item* heartPiece;
+        randomizer::logic::item::Item* heartContainer;
         int count;
         int eventIndex;
         int macroIndex;
@@ -513,6 +616,37 @@ namespace randomizer::logic::requirement
                 return std::count_if(search->_ownedItems.begin(),
                                      search->_ownedItems.end(),
                                      [](const auto& item) { return item->IsGoldenBug(); }) >= count;
+            
+            case Type::HEARTS:
+                count = std::get<int>(req._args[0]);
+                heartPiece = world->GetItem("Piece of Heart");
+                heartContainer = world->GetItem("Heart Container");
+                return search->_ownedItems.count(heartPiece) + 
+                       (search->_ownedItems.count(heartContainer) + 3) * 5 >= count * 5;
+
+            case Type::DUNGEONS_COMPLETED:
+                count = std::get<int>(req._args[0]);
+                return std::ranges::count_if(search->_ownedEvents, [&](int eventId){
+                    std::list<std::string> dungeonCompletionEvents = {
+                        "Can Complete Forest Temple",
+                        "Can Complete Goron Mines",
+                        "Can Complete Lakebed Temple",
+                        "Can Complete Arbiters Grounds",
+                        "Can Complete Snowpeak Ruins",
+                        "Can Complete Temple of Time",
+                        "Can Complete City in the Sky",
+                        "Can Complete Palace of Twilight"  
+                    };
+                    for (const auto& eventName : dungeonCompletionEvents)
+                    {
+                        if (world->GetEventIndex(eventName) == eventId)
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+                }) >= count;
+
             default:
                 return false;
         }
@@ -534,7 +668,7 @@ namespace randomizer::logic::requirement
         // Some exits in the middle of entrance shuffling will not have a connected area. Ignore these
         if (exit->GetConnectedArea() == nullptr)
         {
-            return EvalSuccess::UNNECESSARY;
+            return EvalSuccess::DISCONNECTED;
         }
 
         // If the exit is currently disabled, don't try it
@@ -619,6 +753,36 @@ namespace randomizer::logic::requirement
         }
 
         return evalSuccess;
+    }
+
+    EvalSuccess EvaluateDisconnectedExitRequiremrnt(randomizer::logic::search::Search* search, randomizer::logic::entrance::Entrance* exit)
+    {
+        // If the exit is currently disabled, don't try it
+        if (exit->IsDisabled())
+        {
+            return EvalSuccess::NONE;
+        }
+
+        auto& exitFormTimeCache = exit->GetWorld()->GetExitTimeFormCache();
+        auto parentArea = exit->GetParentArea();
+        auto parentAreaFormTime = search->_areaFormTime[parentArea];
+
+        // Check each form time individually and spread the ones which succeed. If any of them pass, set the evaluation success
+        // to partial.
+        auto evalSuccess = EvalSuccess::NONE;
+        const auto& formTimes = FormTime::ALL_FORM_TIMES;
+        for (const auto& formTime : formTimes)
+        {
+            if (formTime & parentAreaFormTime)
+            {
+                if (EvaluateRequirementAtFormTime(exit->GetRequirement(), search, formTime, exit->GetWorld()))
+                {
+                    return EvalSuccess::PARTIAL;
+                }
+            }
+        }
+
+        return EvalSuccess::NONE;
     }
 
     EvalSuccess EvaluateLocationRequirement(randomizer::logic::search::Search* search, randomizer::logic::area::LocationAccess* locAccess)

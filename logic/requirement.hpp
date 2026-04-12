@@ -51,6 +51,8 @@ namespace randomizer::logic::requirement
         WOLF_LINK,
         TWILIGHT,
         GOLDEN_BUGS,
+        HEARTS,
+        DUNGEONS_COMPLETED,
     };
 
     enum class EvalSuccess
@@ -58,7 +60,7 @@ namespace randomizer::logic::requirement
         NONE,
         PARTIAL,
         COMPLETE,
-        UNNECESSARY,
+        DISCONNECTED,
     };
 
     // FormTime is a set of flags that cover all the possible cases of human-wolf/day-night combinations that are needed
@@ -101,12 +103,22 @@ namespace randomizer::logic::requirement
                                        randomizer::logic::world::World* world,
                                        const bool& forceLogic = false);
 
+    /**
+     * @brief Evaluates a requirement assuming it meets a simplistic criteria. This is used
+     * for checking settings when reading them in from, for example, startflags.yaml
+     *
+     * @param req - The simple requirement
+     * @return true if the requirment holds, false otherwise
+     */
+    bool EvaluateSimpleRequirement(const randomizer::logic::requirement::Requirement& req, randomizer::logic::world::World* world);
+
     bool EvaluateRequirementAtFormTime(const randomizer::logic::requirement::Requirement& req,
                                        randomizer::logic::search::Search* search,
                                        const int& formTime,
                                        randomizer::logic::world::World*);
     EvalSuccess EvaluateEventRequirement(randomizer::logic::search::Search* search, randomizer::logic::area::EventAccess* event);
     EvalSuccess EvaluateExitRequirement(randomizer::logic::search::Search* search, randomizer::logic::entrance::Entrance* exit);
+    EvalSuccess EvaluateDisconnectedExitRequiremrnt(randomizer::logic::search::Search* search, randomizer::logic::entrance::Entrance* exit);
     EvalSuccess EvaluateLocationRequirement(randomizer::logic::search::Search* search,
                                             randomizer::logic::area::LocationAccess* locAccess);
 

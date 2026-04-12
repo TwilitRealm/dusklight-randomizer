@@ -426,12 +426,14 @@ DNF evaluatePartialRequirement(BitIndex& bitIndex,
                                                       formTime));
             }
             return d;
-
+        
+        case randomizer::logic::requirement::Type::ITEM:
+            [[fallthrough]];
         case randomizer::logic::requirement::Type::GOLDEN_BUGS:
             [[fallthrough]];
-        case randomizer::logic::requirement::Type::ITEM:
-            // [[fallthrough]];
-            // case randomizer::logic::requirement::Type::HEALTH:
+        case randomizer::logic::requirement::Type::HEARTS:
+            [[fallthrough]];
+        case randomizer::logic::requirement::Type::DUNGEONS_COMPLETED:
             bits[bitIndex.reqBit(req)] = 1;
             return DNF({bits});
 

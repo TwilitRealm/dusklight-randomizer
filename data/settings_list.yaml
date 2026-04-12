@@ -16,14 +16,46 @@
 ##  Access Options  ##
 ######################
 
-- Name: Hyrule Castle Requirements
+- Name: Hyrule Barrier Requirements
   Default Option: Vanilla
   Options:
     - Open: "The barrier around Hyrule Castle is dispelled from the beginning."
-    - Fused Shadows: "The player must collect all 3 Fused Shadows."
-    - Mirror Shards: "The player must collect all 4 Mirror Shards."
-    - All Dungeons: "The player must complete all dungeons."
-    - Vanilla: "The player must complete Palace of Twilight."
+    - Vanilla: "The barrier will be dispelled once Palace of Twilight is cleared."
+    - Fused Shadows: "The barrier will be dispelled once the required number of Fused Shadows have been collected."
+    - Mirror Shards: "The barrier will be dispelled once the required number of Mirror Shards have been collected."
+    - Dungeons: "The barrier will be dispelled once the required number of Dungeons have been cleared."
+    - Poe Souls: "The barrier will be dispelled once the required number of Poe Souls have been collected."
+    - Hearts: "The barrier will be dispelled once the required number of Hearts have been reached."
+
+- Name: Hyrule Barrier Fused Shadows
+  Tracker Important: True
+  Default Option: 1
+  Options:
+    - 1-3: description
+
+- Name: Hyrule Barrier Mirror Shards
+  Tracker Important: True
+  Default Option: 1
+  Options:
+    - 1-4: description
+
+- Name: Hyrule Barrier Dungeons
+  Tracker Important: True
+  Default Option: 1
+  Options:
+    - 1-8: description
+
+- Name: Hyrule Barrier Poe Souls
+  Tracker Important: True
+  Default Option: 1
+  Options:
+    - 1-60: description
+
+- Name: Hyrule Barrier Hearts
+  Tracker Important: True
+  Default Option: 4
+  Options:
+    - 4-20: description # Hehe 420
 
 - Name: Palace of Twilight Requirements
   Default Option: Vanilla
@@ -149,6 +181,47 @@
     - Overworld: "Maps and Compasses will only appear in the overworld."
     - Anywhere: "Maps and Compasses can appear anywhere."
     - Start With: "The player starts with all Maps and Compasses."
+
+- Name: Hyrule Castle Big Key Requirements
+  Tracker Important: True
+  Default Option: None
+  Options:
+    - None: "The gate is opened and the key is randomized according to the respective Big Key settings."
+    - Fused Shadows: "The gate will open once the required number of Fused Shadows have been collected."
+    - Mirror Shards: "The gate will open once the required number of Mirror Shards have been collected."
+    - Dungeons: "The gate will open once the required number of Dungeons have been cleared."
+    - Poe Souls: "The gate will open once the required number of Poe Souls have been collected."
+    - Hearts: "The gate will open once the required number of Hearts have been reached."
+
+- Name: Hyrule Castle Big Key Fused Shadows
+  Tracker Important: True
+  Default Option: 1
+  Options:
+    - 1-3: description
+
+- Name: Hyrule Castle Big Key Mirror Shards
+  Tracker Important: True
+  Default Option: 1
+  Options:
+    - 1-4: description
+
+- Name: Hyrule Castle Big Key Dungeons
+  Tracker Important: True
+  Default Option: 1
+  Options:
+    - 1-8: description
+
+- Name: Hyrule Castle Big Key Poe Souls
+  Tracker Important: True
+  Default Option: 1
+  Options:
+    - 1-60: description
+
+- Name: Hyrule Castle Big Key Hearts
+  Tracker Important: True
+  Default Option: 4
+  Options:
+    - 4-20: description # Hehe 420
 
 - Name: Dungeon Rewards Can Be Anywhere
   Default Option: "Off"

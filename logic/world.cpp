@@ -493,11 +493,7 @@ namespace randomizer::logic::world
     bool World::EvaluateSettingCondition(const std::string& condition)
     {
         auto req = randomizer::logic::requirement::ParseRequirementString(condition, this, true);
-        if (req._type == requirement::Type::NOTHING)
-        {
-            return true;
-        }
-        return false;
+        return requirement::EvaluateSimpleRequirement(req, this);
     }
 
     void World::GenerateItemPools()
@@ -540,11 +536,14 @@ namespace randomizer::logic::world
             if ((this->Setting("Small Keys") == "Vanilla" &&
                  (originalItem->IsDungeonSmallKey() ||
                   randomizer::utility::str::Contains(originalItemName, "Ordon Pumpkin", "Ordon Cheese"))) ||
-                // Vanilla Big Keys
-                (this->Setting("Big Keys") == "Vanilla" && originalItem->IsBigKey()) ||
+                // Vanilla Big Keys (only include Hyrule Castle Big Key if it has no requirements)
+                (this->Setting("Big Keys") == "Vanilla" && originalItem->IsBigKey() && 
+                 (originalItemName != "Hyrule Castle Big Key" || this->Setting("Hyrule Castle Big Key Requirements") == "None")) ||
                 // Vanilla Maps and Compasses
                 (this->Setting("Maps and Compasses") == "Vanilla" &&
                  (originalItem->IsDungeonMap() || originalItem->IsCompass())) ||
+                // Hyrule Castle Big Key
+                (originalItemName == "Hyrule Castle Big Key" && this->Setting("Hyrule Castle Big Key Requirements") != "None") ||
                 // Vanilla Poe Souls
                 (originalItemName == "Poe Soul" &&
                  (this->Setting("Poe Souls") == "Vanilla" ||
@@ -1134,15 +1133,22 @@ namespace randomizer::logic::world
         return this->_macros.at(macroIndex);
     }
 
-    int World::GetEventIndex(const std::string& eventName)
+    int World::GetEventIndex(const std::string& eventName, bool addIfNone /*= true*/)
     {
-        // Add the event if it doesn't exist yet
+        // If the event doesn't exist
         if (!this->_eventIndexes.contains(eventName))
         {
-            auto index = this->_randomizer->GetNewEventID();
-            this->_eventIndexes.emplace(eventName, index);
-            this->_eventNames.emplace(index, eventName);
-            LOG_TO_DEBUG("Event \"" + eventName + "\" was assigned eventIndex " + std::to_string(index));
+            if (addIfNone)
+            {
+                auto index = this->_randomizer->GetNewEventID();
+                this->_eventIndexes.emplace(eventName, index);
+                this->_eventNames.emplace(index, eventName);
+                LOG_TO_DEBUG("Event \"" + eventName + "\" was assigned eventIndex " + std::to_string(index));
+            }
+            else
+            {
+                throw std::runtime_error("Event \"" + eventName + "\" does not exist");
+            }
         }
 
         return this->_eventIndexes.at(eventName);

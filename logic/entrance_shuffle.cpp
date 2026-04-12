@@ -747,11 +747,11 @@ namespace randomizer::logic::entrance_shuffle
                                                     foundLocations.end(),
                                                     [](const auto& location) { return location->IsProgression(); });
 
-        // If there are no sphere zero locations available and we didn't find a disconnected exit, then this world will not
-        // be valid. Often times when many entrances are randomized we won't find any locations, but will find disconnected
+        // If there are no sphere zero locations available and we didn't find an accessible disconnected exit, then this world will not
+        // be valid. Often times when many entrances are randomized we won't find any locations, but will find accessible disconnected
         // exits that haven't been shuffled yet. In this case we can usually wait until these exits are connected and more often
         // than not this will lead us to sphere zero locations.
-        if (numSphereZeroLocations == 0 && !sphereZeroSearch._foundDisconnectedExit)
+        if (numSphereZeroLocations == 0 && !sphereZeroSearch.HasAccessibleDisconnectedExit())
         {
             throw EntranceShuffleError("No sphere 0 locations reachable at the start!");
         }

@@ -18,7 +18,7 @@
 
 namespace randomizer::logic::world
 {
-    World::World(const int& id, randomizer::Randomizer* randomizer) : 
+    World::World(const int& id, Randomizer* randomizer) :
         _id(id), _randomizer(randomizer)
     {}
 
@@ -26,11 +26,11 @@ namespace randomizer::logic::world
     {
         return this->_id;
     }
-    void World::SetSettings(const randomizer::seedgen::settings::Settings& settings)
+    void World::SetSettings(const seedgen::settings::Settings& settings)
     {
         _settings = settings;
     }
-    const randomizer::seedgen::settings::Settings& World::GetSettings() const
+    const seedgen::settings::Settings& World::GetSettings() const
     {
         return this->_settings;
     }
@@ -103,8 +103,8 @@ namespace randomizer::logic::world
             auto id = itemNode["Id"].as<int>();
             auto name = itemNode["Name"].as<std::string>();
             auto importanceStr = itemNode["Importance"].as<std::string>();
-            auto importance = randomizer::logic::item::ImportanceFromStr(importanceStr);
-            if (importance == randomizer::logic::item::Importance::INVALID)
+            auto importance = item::ImportanceFromStr(importanceStr);
+            if (importance == item::Importance::INVALID)
             {
                 throw std::runtime_error(std::string("Unknown importance \"") + importanceStr + "\" from item node:\n" +
                                          YAML::Dump(itemNode));
@@ -120,7 +120,7 @@ namespace randomizer::logic::world
             auto dungeonMap = itemNode["Dungeon Map"].as<std::string>("");
 
             // Make the item and insert it into the item table
-            auto item = std::make_unique<randomizer::logic::item::Item>(id,
+            auto item = std::make_unique<item::Item>(id,
                                                                    name,
                                                                    this,
                                                                    importance,
@@ -198,7 +198,7 @@ namespace randomizer::logic::world
             auto goalLocation = locationNode["Goal Location"].as<bool>(false);
             auto hintPriority = locationNode["Hint Priority"].as<std::string>("Never");
 
-            auto location = std::make_unique<randomizer::logic::location::Location>(locationIdCounter++,
+            auto location = std::make_unique<location::Location>(locationIdCounter++,
                                                                                name,
                                                                                categories,
                                                                                this,
@@ -232,7 +232,7 @@ namespace randomizer::logic::world
             auto macroReqStr = macroNode.second.as<std::string>();
 
             // Process the macro
-            this->_macros[macroIdCounter] = randomizer::logic::requirement::ParseRequirementString(macroReqStr,
+            this->_macros[macroIdCounter] = requirement::ParseRequirementString(macroReqStr,
                                                                                               this,
                                                                                               /*forceLogic = */ true);
 
@@ -381,19 +381,19 @@ namespace randomizer::logic::world
                 }
 
                 // Lists of events, locations, and exits that we pass along to the area object
-                std::list<std::unique_ptr<randomizer::logic::area::EventAccess>> events = {};
-                std::list<std::unique_ptr<randomizer::logic::area::LocationAccess>> locations = {};
-                std::list<std::unique_ptr<randomizer::logic::entrance::Entrance>> exits = {};
+                std::list<std::unique_ptr<area::EventAccess>> events = {};
+                std::list<std::unique_ptr<area::LocationAccess>> locations = {};
+                std::list<std::unique_ptr<entrance::Entrance>> exits = {};
 
                 // Process events
                 for (const auto& [eventName, eventReqStr] : eventNodes)
                 {
                     // Parse the requirement string
-                    auto eventReq = randomizer::logic::requirement::ParseRequirementString(eventReqStr, this);
+                    auto eventReq = requirement::ParseRequirementString(eventReqStr, this);
 
                     // Create the EventAccess wrapper and put it into the list of events for this area
                     auto eventIndex = this->GetEventIndex(eventName);
-                    auto event = std::make_unique<randomizer::logic::area::EventAccess>(eventReq, area, eventIndex);
+                    auto event = std::make_unique<area::EventAccess>(eventReq, area, eventIndex);
                     events.emplace_back(std::move(event));
                     definedEvents.emplace(eventIndex);
                 }
@@ -424,11 +424,11 @@ namespace randomizer::logic::world
                         }
 
                         // Parse the requirement string
-                        auto locationReq = randomizer::logic::requirement::ParseRequirementString(locationReqStr, this);
+                        auto locationReq = requirement::ParseRequirementString(locationReqStr, this);
 
                         // Create the LocationAccess wrapper and put it into the list of locations for this area
 
-                        auto locationAccess = std::make_unique<randomizer::logic::area::LocationAccess>(location, locationReq, area);
+                        auto locationAccess = std::make_unique<area::LocationAccess>(location, locationReq, area);
                         locations.emplace_back(std::move(locationAccess));
 
                         // Also add this LocationAccess to the locations list of access points
@@ -447,11 +447,11 @@ namespace randomizer::logic::world
                         auto connectedArea = this->GetArea(connectedAreaName, /*createIfNotFound = */ true);
 
                         // Parse the requirement string
-                        auto entranceReq = randomizer::logic::requirement::ParseRequirementString(entranceReqStr, this);
+                        auto entranceReq = requirement::ParseRequirementString(entranceReqStr, this);
 
                         // Create the Entrance object and put it into the list of exits for this area
                         auto entrance =
-                            std::make_unique<randomizer::logic::entrance::Entrance>(area, connectedArea, entranceReq, this);
+                            std::make_unique<entrance::Entrance>(area, connectedArea, entranceReq, this);
                         exits.emplace_back(std::move(entrance));
                     }
                 }
@@ -492,15 +492,15 @@ namespace randomizer::logic::world
 
     bool World::EvaluateSettingCondition(const std::string& condition)
     {
-        auto req = randomizer::logic::requirement::ParseRequirementString(condition, this, true);
+        auto req = requirement::ParseRequirementString(condition, this, true);
         return requirement::EvaluateSimpleRequirement(req, this);
     }
 
     void World::GenerateItemPools()
     {
         LOG_TO_DEBUG("Now building item pools");
-        randomizer::logic::item_pool::GenerateItemPool(this);
-        randomizer::logic::item_pool::GenerateStartingItemPool(this);
+        item_pool::GenerateItemPool(this);
+        item_pool::GenerateStartingItemPool(this);
 
         LOG_TO_DEBUG("Item Pool for world " + std::to_string(this->GetID()) + ":");
         for (const auto& item : this->_itemPool)
@@ -689,7 +689,7 @@ namespace randomizer::logic::world
 
     void World::AssignGoalLocations()
     {
-        std::unordered_map<std::string, randomizer::logic::location::LocationPool> dungeonGoalLocations = {};
+        std::unordered_map<std::string, location::LocationPool> dungeonGoalLocations = {};
         for (const auto& [dungeonName, dungeon] : this->_dungeons)
         {
             dungeonGoalLocations[dungeonName] = {};
@@ -743,7 +743,7 @@ namespace randomizer::logic::world
                 { return !randomizer::utility::str::Contains(location->GetName(), "Heart Container", "Dungeon Reward"); });
 
             // Gather all small key items
-            randomizer::logic::item_pool::ItemPool smallKeys = {};
+            item_pool::ItemPool smallKeys = {};
             for (const auto& [itemName, item] : this->_itemTable)
             {
                 if (item->IsDungeonSmallKey() || randomizer::utility::general::IsAnyOf(itemName,
@@ -788,8 +788,8 @@ namespace randomizer::logic::world
 
             // Check if the game is beatable, set dungeon as required if so. If the dungeon is not required and barren
             // unrequired dungeons is on, then set all the locations in the unrequired dungeon as nonprogress.
-            auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(this->_randomizer->GetWorlds());
-            if (!randomizer::logic::search::GameBeatable(&(this->_randomizer->GetWorlds()), completeItemPool))
+            auto completeItemPool = item_pool::GetCompleteItemPool(this->_randomizer->GetWorlds());
+            if (!search::GameBeatable(&(this->_randomizer->GetWorlds()), completeItemPool))
             {
                 dungeon->SetRequired(true);
             }
@@ -811,7 +811,7 @@ namespace randomizer::logic::world
 
     void World::SanitizeItemPool()
     {
-        auto junkPool = randomizer::logic::item_pool::GetInitialJunkPool();
+        auto junkPool = item_pool::GetInitialJunkPool();
 
         // Depending on the Trap item Frequency setting, add some amount of ice traps to the pool
         if (this->Setting("Trap Item Frequency") == "Few")
@@ -833,7 +833,7 @@ namespace randomizer::logic::world
         }
 
         // Create an actual item pool from the junk items
-        randomizer::logic::item_pool::ItemPool mainJunkPool = {};
+        item_pool::ItemPool mainJunkPool = {};
         for (const auto& [itemName, count] : junkPool)
         {
             auto item = this->GetItem(itemName);
@@ -855,7 +855,7 @@ namespace randomizer::logic::world
         // Add items until the pool's size matches the number of empty locations
         while (this->_itemPool.size() < numEmptyLocations)
         {
-            randomizer::logic::item::Item* randomJunkItem;
+            item::Item* randomJunkItem;
             if (!mainJunkPool.empty())
             {
                 randomJunkItem = randomizer::utility::random::PopRandomElement(mainJunkPool);
@@ -870,11 +870,11 @@ namespace randomizer::logic::world
         }
     }
 
-    void World::SetSearchStartingProperties(randomizer::logic::search::Search* search) const
+    void World::SetSearchStartingProperties(search::Search* search) const
     {
         // Set the root area to have all player forms and times of day (necessary for entrance rando validation)
         auto root = this->GetRootArea();
-        search->_areaFormTime[root] = randomizer::logic::requirement::FormTime::ALL;
+        search->_areaFormTime[root] = requirement::FormTime::ALL;
     }
 
     void World::PerformPostFillTasks()
@@ -889,7 +889,7 @@ namespace randomizer::logic::world
         auto bottleWithHalfMilk = this->GetItem("Bottle with Half Milk");
         auto bottleWithLanternOil = this->GetItem("Bottle with Lantern Oil");
         auto emptyBottle = this->GetItem("Empty Bottle");
-        randomizer::logic::item_pool::ItemPool bottlePool = {bottleWithGreatFairiesTears,
+        item_pool::ItemPool bottlePool = {bottleWithGreatFairiesTears,
                                                         bottleWithHalfMilk,
                                                         bottleWithLanternOil,
                                                         emptyBottle};
@@ -910,7 +910,7 @@ namespace randomizer::logic::world
         else
         {
             // Gather the bottle locations
-            randomizer::logic::location::LocationPool bottleLocations = {};
+            location::LocationPool bottleLocations = {};
             for (auto& [locationName, location] : this->_locationTable)
             {
                 auto originalItem = location->GetCurrentItem();
@@ -929,7 +929,7 @@ namespace randomizer::logic::world
         }
     }
 
-    void World::AddPlandomizedLocation(randomizer::logic::location::Location* location, randomizer::logic::item::Item* item)
+    void World::AddPlandomizedLocation(location::Location* location, item::Item* item)
     {
         if (this->_plandomizerLocations.contains(location))
         {
@@ -939,7 +939,7 @@ namespace randomizer::logic::world
         this->_plandomizerLocations[location] = item;
     }
 
-    void World::AddPlandomizedEntrance(randomizer::logic::entrance::Entrance* entrance, randomizer::logic::entrance::Entrance* target)
+    void World::AddPlandomizedEntrance(entrance::Entrance* entrance, entrance::Entrance* target)
     {
         for (const auto& [plandoEntrance, plandoTarget] : this->_plandomizerEntrances)
         {
@@ -957,31 +957,31 @@ namespace randomizer::logic::world
         this->_plandomizerEntrances[entrance] = target;
     }
 
-    std::unordered_map<randomizer::logic::entrance::Entrance*, randomizer::logic::entrance::Entrance*> World::GetPlandomizerEntrances()
+    std::unordered_map<entrance::Entrance*, entrance::Entrance*> World::GetPlandomizerEntrances()
     {
         return this->_plandomizerEntrances;
     }
 
-    randomizer::logic::dungeon::Dungeon* World::GetDungeon(const std::string& name)
+    dungeon::Dungeon* World::GetDungeon(const std::string& name)
     {
         if (!this->_dungeons.contains(name))
         {
-            this->_dungeons.emplace(name, std::make_unique<randomizer::logic::dungeon::Dungeon>(name, this));
+            this->_dungeons.emplace(name, std::make_unique<dungeon::Dungeon>(name, this));
             LOG_TO_DEBUG("Added new dungeon \"" + name + "\" to world " + std::to_string(this->_id));
         }
         return this->_dungeons.at(name).get();
     }
 
-    const std::map<std::string, std::unique_ptr<randomizer::logic::dungeon::Dungeon>>& World::GetDungeonTable() const
+    const std::map<std::string, std::unique_ptr<dungeon::Dungeon>>& World::GetDungeonTable() const
     {
         return this->_dungeons;
     }
 
-    randomizer::logic::item::Item* World::GetItem(const std::string& name, const bool& ignoreError /*= false*/)
+    item::Item* World::GetItem(const std::string& name, const bool& ignoreError /*= false*/)
     {
         if (name == "Nothing")
         {
-            return randomizer::logic::item::Nothing.get();
+            return item::Nothing.get();
         }
 
         if (!this->_itemTable.contains(name))
@@ -995,27 +995,27 @@ namespace randomizer::logic::world
         return this->_itemTable.at(name).get();
     }
 
-    randomizer::logic::item::Item* World::GetGameWinningItem() const
+    item::Item* World::GetGameWinningItem() const
     {
         return this->_itemTable.at("Game Beatable").get();
     }
 
-    randomizer::logic::item::Item* World::GetShadowCrystal()
+    item::Item* World::GetShadowCrystal()
     {
         return this->_itemTable.at("Shadow Crystal").get();
     }
 
-    randomizer::logic::item_pool::ItemPool& World::GetItemPool()
+    item_pool::ItemPool& World::GetItemPool()
     {
         return this->_itemPool;
     }
 
-    randomizer::logic::item_pool::ItemPool& World::GetStartingItemPool()
+    item_pool::ItemPool& World::GetStartingItemPool()
     {
         return this->_startingItemPool;
     }
 
-    randomizer::logic::location::Location* World::GetLocation(const std::string& name)
+    location::Location* World::GetLocation(const std::string& name)
     {
         if (!this->_locationTable.contains(name))
         {
@@ -1024,9 +1024,9 @@ namespace randomizer::logic::world
         return this->_locationTable.at(name).get();
     }
 
-    randomizer::logic::location::LocationPool World::GetAllLocations(const bool& includeNonItemLocations /* = false */)
+    location::LocationPool World::GetAllLocations(const bool& includeNonItemLocations /* = false */)
     {
-        randomizer::logic::location::LocationPool locationPool = {};
+        location::LocationPool locationPool = {};
         for (const auto& [locationName, location] : this->_locationTable)
         {
             if (includeNonItemLocations || !location->HasCategories("Non-Item Location"))
@@ -1037,13 +1037,13 @@ namespace randomizer::logic::world
         return locationPool;
     }
 
-    randomizer::logic::area::Area* World::GetArea(const std::string& name, const bool& createIfNotFound /* = false */)
+    area::Area* World::GetArea(const std::string& name, const bool& createIfNotFound /* = false */)
     {
         if (!this->_areaTable.contains(name))
         {
             if (createIfNotFound)
             {
-                this->_areaTable.emplace(name, std::make_unique<randomizer::logic::area::Area>(name, this));
+                this->_areaTable.emplace(name, std::make_unique<area::Area>(name, this));
             }
             else
             {
@@ -1053,19 +1053,19 @@ namespace randomizer::logic::world
         return this->_areaTable.at(name).get();
     }
 
-    randomizer::logic::area::Area* World::GetRootArea() const
+    area::Area* World::GetRootArea() const
     {
         return this->_areaTable.at("Root").get();
     }
 
-    const std::map<std::string, std::unique_ptr<randomizer::logic::area::Area>>& World::GetAreaTable() const
+    const std::map<std::string, std::unique_ptr<area::Area>>& World::GetAreaTable() const
     {
         return this->_areaTable;
     }
 
-    randomizer::logic::entrance::Entrance* World::GetEntrance(const std::string& originalName)
+    entrance::Entrance* World::GetEntrance(const std::string& originalName)
     {
-        auto [parentAreaName, connectedAreaName] = randomizer::logic::entrance::GetParentAndConnectedAreaNames(originalName);
+        auto [parentAreaName, connectedAreaName] = entrance::GetParentAndConnectedAreaNames(originalName);
         auto parentArea = this->GetArea(parentAreaName);
         auto connectedArea = this->GetArea(connectedAreaName);
         for (const auto& exit : parentArea->GetExits())
@@ -1084,16 +1084,16 @@ namespace randomizer::logic::world
         return this->_entranceIdCounter++;
     }
 
-    randomizer::logic::entrance::EntrancePool World::GetShuffleableEntrances(const randomizer::logic::entrance::Type& type,
+    entrance::EntrancePool World::GetShuffleableEntrances(const entrance::Type& type,
                                                                         const bool& onlyPrimary /* = false */)
     {
-        randomizer::logic::entrance::EntrancePool shuffleableEntrances = {};
+        entrance::EntrancePool shuffleableEntrances = {};
         for (const auto& [areaName, area] : this->GetAreaTable())
         {
             for (const auto& exit : area->GetExits())
             {
-                if ((type == exit->GetType() || type == randomizer::logic::entrance::Type::ALL) &&
-                    (!onlyPrimary || exit->IsPrimary()) && exit->GetType() != randomizer::logic::entrance::Type::INVALID)
+                if ((type == exit->GetType() || type == entrance::Type::ALL) &&
+                    (!onlyPrimary || exit->IsPrimary()) && exit->GetType() != entrance::Type::INVALID)
                 {
                     shuffleableEntrances.push_back(exit);
                 }
@@ -1102,8 +1102,8 @@ namespace randomizer::logic::world
         return shuffleableEntrances;
     }
 
-    randomizer::logic::entrance::EntrancePool World::GetShuffledEntrances(
-        const randomizer::logic::entrance::Type& type /* = randomizer::logic::entrance::Type::ALL */,
+    entrance::EntrancePool World::GetShuffledEntrances(
+        const entrance::Type& type /* = entrance::Type::ALL */,
         const bool& onlyPrimary /* = false */)
     {
         auto entrances = this->GetShuffleableEntrances(type, onlyPrimary);
@@ -1114,7 +1114,7 @@ namespace randomizer::logic::world
         return entrances;
     }
 
-    std::unordered_map<randomizer::logic::entrance::Entrance*, int>& World::GetExitTimeFormCache()
+    std::unordered_map<entrance::Entrance*, int>& World::GetExitTimeFormCache()
     {
         return this->_exitTimeFormCache;
     }
@@ -1128,7 +1128,7 @@ namespace randomizer::logic::world
         return -1;
     }
 
-    const randomizer::logic::requirement::Requirement& World::GetMacro(const int& macroIndex)
+    const requirement::Requirement& World::GetMacro(const int& macroIndex)
     {
         return this->_macros.at(macroIndex);
     }

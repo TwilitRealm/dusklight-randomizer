@@ -92,7 +92,7 @@ namespace randomizer::logic::requirement
     struct Requirement;
     struct Requirement
     {
-        using Argument = std::variant<int, Requirement, randomizer::logic::item::Item*>;
+        using Argument = std::variant<int, Requirement, item::Item*>;
         Type _type = Type::INVALID;
         std::vector<Argument> _args;
 
@@ -100,7 +100,7 @@ namespace randomizer::logic::requirement
     };
 
     Requirement ParseRequirementString(const std::string& reqStr,
-                                       randomizer::logic::world::World* world,
+                                       world::World* world,
                                        const bool& forceLogic = false);
 
     /**
@@ -110,17 +110,17 @@ namespace randomizer::logic::requirement
      * @param req - The simple requirement
      * @return true if the requirment holds, false otherwise
      */
-    bool EvaluateSimpleRequirement(const randomizer::logic::requirement::Requirement& req, randomizer::logic::world::World* world);
+    bool EvaluateSimpleRequirement(const Requirement& req, world::World* world);
 
-    bool EvaluateRequirementAtFormTime(const randomizer::logic::requirement::Requirement& req,
-                                       randomizer::logic::search::Search* search,
+    bool EvaluateRequirementAtFormTime(const Requirement& req,
+                                       search::Search* search,
                                        const int& formTime,
-                                       randomizer::logic::world::World*);
-    EvalSuccess EvaluateEventRequirement(randomizer::logic::search::Search* search, randomizer::logic::area::EventAccess* event);
-    EvalSuccess EvaluateExitRequirement(randomizer::logic::search::Search* search, randomizer::logic::entrance::Entrance* exit);
-    EvalSuccess EvaluateDisconnectedExitRequiremrnt(randomizer::logic::search::Search* search, randomizer::logic::entrance::Entrance* exit);
-    EvalSuccess EvaluateLocationRequirement(randomizer::logic::search::Search* search,
-                                            randomizer::logic::area::LocationAccess* locAccess);
+                                       world::World*);
+    EvalSuccess EvaluateEventRequirement(search::Search* search, area::EventAccess* event);
+    EvalSuccess EvaluateExitRequirement(search::Search* search, entrance::Entrance* exit);
+    EvalSuccess EvaluateDisconnectedExitRequiremrnt(search::Search* search, entrance::Entrance* exit);
+    EvalSuccess EvaluateLocationRequirement(search::Search* search,
+                                            area::LocationAccess* locAccess);
 
     const extern Requirement NO_REQUIREMENT;
     const extern Requirement IMPOSSIBLE_REQUIREMENT;

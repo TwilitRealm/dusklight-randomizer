@@ -61,40 +61,40 @@ namespace randomizer::logic::search
     {
        public:
         Search(const SearchMode& searchMode,
-               randomizer::logic::world::WorldPool* worlds,
-               const randomizer::logic::item_pool::ItemPool& items = {},
+               world::WorldPool* worlds,
+               const item_pool::ItemPool& items = {},
                const int& worldToSearch = -1);
 
-        static auto Accessible(randomizer::logic::world::WorldPool* worlds,
-                               const randomizer::logic::item_pool::ItemPool& items = {},
+        static auto Accessible(world::WorldPool* worlds,
+                               const item_pool::ItemPool& items = {},
                                const int& worldToSearch = -1)
         {
             return Search(SearchMode::ACCESSIBLE_LOCATIONS, worlds, items, worldToSearch);
         }
 
-        static auto AllLocationsReachable(randomizer::logic::world::WorldPool* worlds,
-                                          const randomizer::logic::item_pool::ItemPool& items = {},
+        static auto AllLocationsReachable(world::WorldPool* worlds,
+                                          const item_pool::ItemPool& items = {},
                                           const int& worldToSearch = -1)
         {
             return Search(SearchMode::ALL_LOCATIONS_REACHABLE, worlds, items, worldToSearch);
         }
 
-        static auto Playthrough(randomizer::logic::world::WorldPool* worlds,
-                                const randomizer::logic::item_pool::ItemPool& items = {},
+        static auto Playthrough(world::WorldPool* worlds,
+                                const item_pool::ItemPool& items = {},
                                 const int& worldToSearch = -1)
         {
             return Search(SearchMode::GENERATE_PLAYTHROUGH, worlds, items, worldToSearch);
         }
 
-        static auto Beatable(randomizer::logic::world::WorldPool* worlds,
-                             const randomizer::logic::item_pool::ItemPool& items = {},
+        static auto Beatable(world::WorldPool* worlds,
+                             const item_pool::ItemPool& items = {},
                              const int& worldToSearch = -1)
         {
             return Search(SearchMode::GAME_BEATABLE, worlds, items, worldToSearch);
         }
 
-        static auto SphereZero(randomizer::logic::world::WorldPool* worlds,
-                             const randomizer::logic::item_pool::ItemPool& items = {},
+        static auto SphereZero(world::WorldPool* worlds,
+                             const item_pool::ItemPool& items = {},
                              const int& worldToSearch = -1)
         {
             return Search(SearchMode::SPHERE_ZERO, worlds, items, worldToSearch);
@@ -109,12 +109,12 @@ namespace randomizer::logic::search
          */
         void ProcessEvents();
         void ProcessExits();
-        void ProcessLocations(std::list<randomizer::logic::area::LocationAccess*>& itemLocations);
-        void ProcessLocation(randomizer::logic::location::Location* location);
-        void Explore(randomizer::logic::area::Area* area);
-        void ExpandFormTimes(randomizer::logic::area::Area* area);
+        void ProcessLocations(std::list<area::LocationAccess*>& itemLocations);
+        void ProcessLocation(location::Location* location);
+        void Explore(area::Area* area);
+        void ExpandFormTimes(area::Area* area);
 
-        void AddExitToEntranceSpheres(randomizer::logic::entrance::Entrance*);
+        void AddExitToEntranceSpheres(entrance::Entrance*);
         bool HasAccessibleDisconnectedExit();
         void RemoveEmptySpheres();
 
@@ -127,7 +127,7 @@ namespace randomizer::logic::search
         void DumpWorldGraph(const int& world = 0);
 
         SearchMode _searchMode;
-        randomizer::logic::world::WorldPool* _worlds;
+        world::WorldPool* _worlds;
         int _worldToSearch = -1;
 
         // Search variables
@@ -136,19 +136,19 @@ namespace randomizer::logic::search
         bool _isBeatable = false;
         bool _collectItems = true;
         std::unordered_set<int> _ownedEvents;
-        std::unordered_multiset<randomizer::logic::item::Item*> _ownedItems;
+        std::unordered_multiset<item::Item*> _ownedItems;
 
-        std::list<randomizer::logic::area::EventAccess*> _eventsToTry;
-        std::list<randomizer::logic::entrance::Entrance*> _exitsToTry;
-        std::unordered_set<randomizer::logic::location::Location*> _visitedLocations;
-        std::unordered_set<randomizer::logic::area::Area*> _visitedAreas;
-        std::unordered_set<randomizer::logic::entrance::Entrance*> _successfulExits;
-        std::unordered_set<randomizer::logic::entrance::Entrance*> _playthroughEntrances;
+        std::list<area::EventAccess*> _eventsToTry;
+        std::list<entrance::Entrance*> _exitsToTry;
+        std::unordered_set<location::Location*> _visitedLocations;
+        std::unordered_set<area::Area*> _visitedAreas;
+        std::unordered_set<entrance::Entrance*> _successfulExits;
+        std::unordered_set<entrance::Entrance*> _playthroughEntrances;
 
-        std::list<std::list<randomizer::logic::location::Location*>> _playthroughSpheres;
-        std::list<std::list<randomizer::logic::entrance::Entrance*>> _entranceSpheres;
+        std::list<std::list<location::Location*>> _playthroughSpheres;
+        std::list<std::list<entrance::Entrance*>> _entranceSpheres;
 
-        std::unordered_map<randomizer::logic::area::Area*, int> _areaFormTime;
+        std::unordered_map<area::Area*, int> _areaFormTime;
     };
 
     /**
@@ -159,8 +159,8 @@ namespace randomizer::logic::search
      * 
      * @return An optional value that holds a string explaining why the logic was not satisfied if validation failed
      */
-    std::optional<std::string> VerifyLogic(randomizer::logic::world::WorldPool* worlds,
-                                           const randomizer::logic::item_pool::ItemPool& items = {});
+    std::optional<std::string> VerifyLogic(world::WorldPool* worlds,
+                                           const item_pool::ItemPool& items = {});
     void GeneratePlaythrough(randomizer::Randomizer* randomizer);
-    bool GameBeatable(randomizer::logic::world::WorldPool* worlds, const randomizer::logic::item_pool::ItemPool& items = {});
+    bool GameBeatable(world::WorldPool* worlds, const item_pool::ItemPool& items = {});
 } // namespace randomizer::logic::search

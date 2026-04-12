@@ -8,11 +8,11 @@
 
 namespace randomizer::logic::plandomizer
 {
-    void LoadPlandomizerData(randomizer::logic::world::WorldPool& worlds, const fspath& filepath, const bool& ignoreErrors /*false*/)
+    void LoadPlandomizerData(world::WorldPool& worlds, const fspath& filepath, const bool& ignoreErrors /*false*/)
     {
         // Verify the file exists before trying to open it
         // TODO: TRY CATCH HERE
-        randomizer::utility::file::Verify(filepath);
+        utility::file::Verify(filepath);
 
         auto plandoTree = LoadYAML(filepath);
 

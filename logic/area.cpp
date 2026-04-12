@@ -11,19 +11,19 @@
 namespace randomizer::logic::area
 {
 
-    LocationAccess::LocationAccess(randomizer::logic::location::Location* loc,
-                                   const randomizer::logic::requirement::Requirement& req,
+    LocationAccess::LocationAccess(location::Location* loc,
+                                   const requirement::Requirement& req,
                                    Area* area):
         _loc(loc), _req(std::move(req)), _area(area)
     {
         this->_id = area->GetWorld()->GetRandomizer()->GetNewLocAccID();
     }
 
-    randomizer::logic::location::Location* LocationAccess::GetLocation() const
+    location::Location* LocationAccess::GetLocation() const
     {
         return this->_loc;
     }
-    const randomizer::logic::requirement::Requirement& LocationAccess::GetRequirement()
+    const requirement::Requirement& LocationAccess::GetRequirement()
     {
         return this->_req;
     }
@@ -36,12 +36,12 @@ namespace randomizer::logic::area
         return this->_id;
     }
 
-    EventAccess::EventAccess(const randomizer::logic::requirement::Requirement& req, Area* area, const int& eventIndex):
+    EventAccess::EventAccess(const requirement::Requirement& req, Area* area, const int& eventIndex):
         _req(std::move(req)), _area(area), _eventIndex(eventIndex)
     {
     }
 
-    const randomizer::logic::requirement::Requirement& EventAccess::GetRequirement()
+    const requirement::Requirement& EventAccess::GetRequirement()
     {
         return this->_req;
     }
@@ -59,7 +59,7 @@ namespace randomizer::logic::area
         return this->_area->GetWorld()->GetEventName(this->_eventIndex);
     }
 
-    Area::Area(const std::string& name, randomizer::logic::world::World* world): _name(name), _world(world)
+    Area::Area(const std::string& name, world::World* world): _name(name), _world(world)
     {
         this->_id = world->GetRandomizer()->GetNewAreaID();
     }
@@ -106,14 +106,14 @@ namespace randomizer::logic::area
         return locations;
     }
 
-    void Area::SetExits(std::list<std::unique_ptr<randomizer::logic::entrance::Entrance>>& exits)
+    void Area::SetExits(std::list<std::unique_ptr<entrance::Entrance>>& exits)
     {
         this->_exits = std::move(exits);
     }
 
-    std::list<randomizer::logic::entrance::Entrance*> Area::GetExits() const
+    std::list<entrance::Entrance*> Area::GetExits() const
     {
-        std::list<randomizer::logic::entrance::Entrance*> exits;
+        std::list<entrance::Entrance*> exits;
         for (const auto& exit : this->_exits)
         {
             exits.emplace_back(exit.get());
@@ -121,33 +121,33 @@ namespace randomizer::logic::area
         return exits;
     }
 
-    void Area::AddExit(std::unique_ptr<randomizer::logic::entrance::Entrance>& exit)
+    void Area::AddExit(std::unique_ptr<entrance::Entrance>& exit)
     {
         this->_exits.push_back(std::move(exit));
     }
 
-    void Area::RemoveExit(randomizer::logic::entrance::Entrance* exit)
+    void Area::RemoveExit(entrance::Entrance* exit)
     {
         auto removed = std::remove_if(this->_exits.begin(), this->_exits.end(), [&](const auto& e) { return e.get() == exit; });
         this->_exits.erase(removed, this->_exits.end());
     }
 
-    void Area::AddEntrance(randomizer::logic::entrance::Entrance* entrance)
+    void Area::AddEntrance(entrance::Entrance* entrance)
     {
         this->_entrances.emplace_back(entrance);
     }
 
-    void Area::RemoveEntrance(randomizer::logic::entrance::Entrance* entrance)
+    void Area::RemoveEntrance(entrance::Entrance* entrance)
     {
         auto removed = std::remove(this->_entrances.begin(), this->_entrances.end(), entrance);
         this->_entrances.erase(removed, this->_entrances.end());
     }
 
-    std::list<randomizer::logic::entrance::Entrance*> Area::GetEntrances() const
+    std::list<entrance::Entrance*> Area::GetEntrances() const
     {
         return this->_entrances;
     }
-    randomizer::logic::world::World* Area::GetWorld() const
+    world::World* Area::GetWorld() const
     {
         return this->_world;
     }
@@ -184,12 +184,12 @@ namespace randomizer::logic::area
         return this->_twilightCompletedMacroIndex;
     }
 
-    bool Area::TwilightCleared(randomizer::logic::search::Search* search) const
+    bool Area::TwilightCleared(search::Search* search) const
     {
-        return this->_twilightCompletedMacroIndex == -1 || randomizer::logic::requirement::EvaluateRequirementAtFormTime(
+        return this->_twilightCompletedMacroIndex == -1 || requirement::EvaluateRequirementAtFormTime(
                                                                this->GetWorld()->GetMacro(this->_twilightCompletedMacroIndex),
                                                                search,
-                                                               randomizer::logic::requirement::FormTime::ALL,
+                                                               requirement::FormTime::ALL,
                                                                this->GetWorld());
     }
 

@@ -11,7 +11,7 @@
 
 namespace randomizer::logic::fill
 {
-    void FillWorlds(randomizer::logic::world::WorldPool& worlds)
+    void FillWorlds(world::WorldPool& worlds)
     {
         // Place each world's restricted items first
         for (auto& world : worlds)
@@ -19,8 +19,8 @@ namespace randomizer::logic::fill
             PlaceRestrictedItems(world, worlds);
         }
 
-        randomizer::logic::item_pool::ItemPool itemPool = {};
-        randomizer::logic::location::LocationPool locationPool = {};
+        item_pool::ItemPool itemPool = {};
+        location::LocationPool locationPool = {};
 
         // Combine all worlds' item pools and location pools
         for (const auto& world : worlds)
@@ -58,17 +58,17 @@ namespace randomizer::logic::fill
         FastFill(itemPool, locationPool);
 
         // Verify that all logic is satisfied
-        auto verifyLogicError = randomizer::logic::search::VerifyLogic(&worlds);
+        auto verifyLogicError = search::VerifyLogic(&worlds);
         if (verifyLogicError.has_value())
         {
             throw std::runtime_error("Not all logic satisfied! Reason:\n" + verifyLogicError.value());
         }
     }
 
-    void AssumedFill(randomizer::logic::world::WorldPool& worlds,
-                     randomizer::logic::item_pool::ItemPool& itemsToPlacePool,
-                     const randomizer::logic::item_pool::ItemPool& itemsNotYetPlaced,
-                     randomizer::logic::location::LocationPool allowedLocations,
+    void AssumedFill(world::WorldPool& worlds,
+                     item_pool::ItemPool& itemsToPlacePool,
+                     const item_pool::ItemPool& itemsNotYetPlaced,
+                     location::LocationPool allowedLocations,
                      const int& worldToFill /* = -1 */)
     {
         // Assumed Fill may sometimes place items in such a way that accidentally locks out being able to place specific items
@@ -101,7 +101,7 @@ namespace randomizer::logic::fill
 
             randomizer::utility::random::ShufflePool(itemsToPlacePool);
             auto itemsToPlace = itemsToPlacePool;
-            randomizer::logic::location::LocationPool rollbacks = {};
+            location::LocationPool rollbacks = {};
 
             while (!itemsToPlace.empty())
             {
@@ -110,12 +110,12 @@ namespace randomizer::logic::fill
                 itemsToPlace.pop_back();
 
                 randomizer::utility::random::ShufflePool(allowedLocations);
-                randomizer::logic::location::Location* spotToFill = nullptr;
+                location::Location* spotToFill = nullptr;
 
                 // Assume we have all the items which haven't been played yet, except the one we're about to place
                 auto assumedItems = itemsNotYetPlaced;
                 assumedItems.insert(assumedItems.end(), itemsToPlace.begin(), itemsToPlace.end());
-                auto search = randomizer::logic::search::Search::Accessible(&worlds, assumedItems, worldToFill);
+                auto search = search::Search::Accessible(&worlds, assumedItems, worldToFill);
                 search.SearchWorlds();
                 // search.DumpWorldGraph();
                 // return 1;
@@ -130,7 +130,7 @@ namespace randomizer::logic::fill
                 for (const auto& location : allowedLocations)
                 {
                     // Get all reachable LocationAccess spots for this location
-                    std::list<randomizer::logic::area::LocationAccess*> locAccList;
+                    std::list<area::LocationAccess*> locAccList;
                     for (const auto& locAcc : location->GetAccessList())
                     {
                         if (canChooseAnyLocation || search._visitedAreas.contains(locAcc->GetArea()))
@@ -152,8 +152,8 @@ namespace randomizer::logic::fill
                                     [&](const auto& la)
                                     {
                                         return canChooseAnyLocation ||
-                                               randomizer::logic::requirement::EvaluateLocationRequirement(&search, la) ==
-                                                   randomizer::logic::requirement::EvalSuccess::COMPLETE;
+                                               requirement::EvaluateLocationRequirement(&search, la) ==
+                                                   requirement::EvalSuccess::COMPLETE;
                                     }))
                     {
                         spotToFill = location;
@@ -188,7 +188,7 @@ namespace randomizer::logic::fill
         }
     }
 
-    void FastFill(randomizer::logic::item_pool::ItemPool& itemsToPlace, randomizer::logic::location::LocationPool allowedLocations)
+    void FastFill(item_pool::ItemPool& itemsToPlace, location::LocationPool allowedLocations)
     {
         auto emptyLocations =
             randomizer::utility::container::FilterFromVector(allowedLocations,
@@ -211,7 +211,7 @@ namespace randomizer::logic::fill
         }
     }
 
-    void PlaceRestrictedItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
+    void PlaceRestrictedItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds)
     {
         PlaceGoalLocationItems(world, worlds);
         PlaceOwnDungeonItems(world, worlds);
@@ -225,7 +225,7 @@ namespace randomizer::logic::fill
         PlaceOverworldItems(world, worlds);
     }
 
-    void PlacePrologueItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
+    void PlacePrologueItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds)
     {
         if (world->Setting("Skip Prologue") == "Off")
         {
@@ -241,12 +241,12 @@ namespace randomizer::logic::fill
                            item->GetName() == "Lantern" || item->GetName() == "Progressive Fishing Rod" ||
                            item->IsShadowCrystal();
                 });
-            auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
+            auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
             AssumedFill(worlds, prologueItems, completeItemPool, world->GetAllLocations());
         }
     }
 
-    void PlaceGoalLocationItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
+    void PlaceGoalLocationItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds)
     {
         // If dungeon rewards can be anywhere, then return early and place them later
         if (world->Setting("Dungeon Rewards Can Be Anywhere") == "On")
@@ -255,7 +255,7 @@ namespace randomizer::logic::fill
         }
 
         auto allLocations = world->GetAllLocations();
-        randomizer::logic::location::LocationPool goalLocations = {};
+        location::LocationPool goalLocations = {};
 
         // Filter out goal locations
         goalLocations = randomizer::utility::container::FilterFromVector(
@@ -276,11 +276,11 @@ namespace randomizer::logic::fill
         }
 
         // Place goal items at goal locations
-        auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
+        auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
         AssumedFill(worlds, goalItems, completeItemPool, goalLocations);
     }
 
-    void PlaceOwnDungeonItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
+    void PlaceOwnDungeonItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds)
     {
         for (const auto& [dungeonName, dungeon] : world->GetDungeonTable())
         {
@@ -306,7 +306,7 @@ namespace randomizer::logic::fill
                                (dungeonName_ == "Snowpeak Ruins" &&
                                 (item->GetName() == "Ordon Pumpkin" || item->GetName() == "Ordon Cheese"));
                     });
-                auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
+                auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
                 AssumedFill(worlds, smallKeys, completeItemPool, dungeonLocations);
             }
 
@@ -316,7 +316,7 @@ namespace randomizer::logic::fill
                 auto bigKeys = randomizer::utility::container::FilterAndEraseFromVector(world->GetItemPool(),
                                                                                    [&](const auto& item)
                                                                                    { return item == dungeon_->GetBigKey(); });
-                auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
+                auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
                 AssumedFill(worlds, bigKeys, completeItemPool, dungeonLocations);
             }
 
@@ -326,13 +326,13 @@ namespace randomizer::logic::fill
                 auto mapsCompasses = randomizer::utility::container::FilterAndEraseFromVector(
                     world->GetItemPool(),
                     [&](const auto& item) { return item == dungeon_->GetCompass() || item == dungeon_->GetDungeonMap(); });
-                auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
+                auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
                 FastFill(mapsCompasses, dungeonLocations);
             }
         }
     }
 
-    void PlaceAnywhereDungeonRewards(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
+    void PlaceAnywhereDungeonRewards(std::unique_ptr<world::World>& world, world::WorldPool& worlds)
     {
         // If dungeon rewards can't be anywhere, then return early as we placed them earlier
         if (world->Setting("Dungeon Rewards Can Be Anywhere") == "Off")
@@ -350,20 +350,20 @@ namespace randomizer::logic::fill
             [&](const auto& item) { return goalItemNames.contains(item->GetName()); });
 
         // Place the items
-        auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
+        auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
         AssumedFill(worlds, goalItems, completeItemPool, allLocations);
     }
 
-    void PlaceAnyDungeonItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
+    void PlaceAnyDungeonItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds)
     {
-        randomizer::logic::item_pool::ItemPool anyDungeonItems = {};
-        randomizer::logic::location::LocationPool anyDungeonLocations = {};
+        item_pool::ItemPool anyDungeonItems = {};
+        location::LocationPool anyDungeonLocations = {};
 
         // Split the placement of any dungeon items into two pools. Dungeon items from dungeons which should be barren
         // will only be distributed among barren dungeons, where as items from nonbarren dungeons will be distributed
         // among nonbarren dungeons
-        std::list<randomizer::logic::dungeon::Dungeon*> nonBarrenDungeons = {};
-        std::list<randomizer::logic::dungeon::Dungeon*> barrenDungeons = {};
+        std::list<dungeon::Dungeon*> nonBarrenDungeons = {};
+        std::list<dungeon::Dungeon*> barrenDungeons = {};
         for (const auto& [dungeonName, dungeon] : world->GetDungeonTable())
         {
             if (dungeon->ShouldBeBarren())
@@ -429,15 +429,15 @@ namespace randomizer::logic::fill
             }
 
             // Place the dungeon items in the appropriate dungeon locations
-            auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
+            auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
             AssumedFill(worlds, anyDungeonItems, completeItemPool, anyDungeonLocations);
         }
     }
 
-    void PlaceOverworldItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds)
+    void PlaceOverworldItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds)
     {
-        randomizer::logic::item_pool::ItemPool overworldItems = {};
-        randomizer::logic::location::LocationPool overworldLocations = world->GetAllLocations();
+        item_pool::ItemPool overworldItems = {};
+        location::LocationPool overworldLocations = world->GetAllLocations();
         // Filter out any nonprogress locations
         randomizer::utility::container::FilterAndEraseFromVector(overworldLocations,
                                                             [](const auto& location) { return !location->IsProgression(); });
@@ -489,14 +489,14 @@ namespace randomizer::logic::fill
         }
 
         // Place the dungeon items in the overworld locations
-        auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
+        auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
         AssumedFill(worlds, overworldItems, completeItemPool, overworldLocations);
     }
 
-    void CacheExitTimeForms(randomizer::logic::world::WorldPool& worlds)
+    void CacheExitTimeForms(world::WorldPool& worlds)
     {
-        auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
-        auto searchWithItems = randomizer::logic::search::Search::AllLocationsReachable(&worlds, completeItemPool);
+        auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
+        auto searchWithItems = search::Search::AllLocationsReachable(&worlds, completeItemPool);
         searchWithItems.SearchWorlds();
 
         for (auto& world : worlds)
@@ -510,11 +510,11 @@ namespace randomizer::logic::fill
                 for (const auto& exit : area->GetExits())
                 {
                     auto req = exit->GetRequirement();
-                    exitTimeFormCache[exit] = randomizer::logic::requirement::FormTime::NONE;
-                    for (const auto& formTime : randomizer::logic::requirement::FormTime::ALL_FORM_TIMES)
+                    exitTimeFormCache[exit] = requirement::FormTime::NONE;
+                    for (const auto& formTime : requirement::FormTime::ALL_FORM_TIMES)
                     {
                         if (formTime & areaFormTimes &&
-                            randomizer::logic::requirement::EvaluateRequirementAtFormTime(req,
+                            requirement::EvaluateRequirementAtFormTime(req,
                                                                                      &searchWithItems,
                                                                                      formTime,
                                                                                      world.get()))

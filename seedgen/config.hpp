@@ -85,7 +85,7 @@ namespace randomizer::seedgen::config
 
         std::string _seed;
         std::string _hash;
-        std::list<randomizer::seedgen::settings::Settings> _settingsList;
+        std::list<settings::Settings> _settingsList;
         bool _isUsingPlandomizer = false;
         bool _isGeneratingSpoilerLog = true;
 

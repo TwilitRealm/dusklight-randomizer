@@ -28,32 +28,32 @@ namespace randomizer::logic::area
     class LocationAccess
     {
        public:
-        LocationAccess(randomizer::logic::location::Location* loc, const randomizer::logic::requirement::Requirement& req, Area* area);
+        LocationAccess(location::Location* loc, const requirement::Requirement& req, Area* area);
 
-        randomizer::logic::location::Location* GetLocation() const;
-        const randomizer::logic::requirement::Requirement& GetRequirement();
+        location::Location* GetLocation() const;
+        const requirement::Requirement& GetRequirement();
         Area* GetArea() const;
         int GetID() const;
 
        private:
         int _id = -1;
-        randomizer::logic::location::Location* _loc = nullptr;
-        randomizer::logic::requirement::Requirement _req;
+        location::Location* _loc = nullptr;
+        requirement::Requirement _req;
         Area* _area = nullptr;
     };
 
     class EventAccess
     {
        public:
-        EventAccess(const randomizer::logic::requirement::Requirement& req, Area* area, const int& eventIndex);
+        EventAccess(const requirement::Requirement& req, Area* area, const int& eventIndex);
 
-        const randomizer::logic::requirement::Requirement& GetRequirement();
+        const requirement::Requirement& GetRequirement();
         Area* GetArea() const;
         int GetEventIndex() const;
         std::string GetName() const;
 
        private:
-        randomizer::logic::requirement::Requirement _req;
+        requirement::Requirement _req;
         Area* _area = nullptr;
         int _eventIndex = -1;
     };
@@ -61,7 +61,7 @@ namespace randomizer::logic::area
     class Area
     {
        public:
-        Area(const std::string& name, randomizer::logic::world::World* world);
+        Area(const std::string& name, world::World* world);
 
         std::string GetName() const;
         void SetHardAssignedRegion(const std::string& _hardAssignedRegion);
@@ -70,14 +70,14 @@ namespace randomizer::logic::area
         std::list<EventAccess*> GetEvents() const;
         void SetLocations(std::list<std::unique_ptr<LocationAccess>>& locations);
         std::list<LocationAccess*> GetLocations() const;
-        void SetExits(std::list<std::unique_ptr<randomizer::logic::entrance::Entrance>>& exits);
-        std::list<randomizer::logic::entrance::Entrance*> GetExits() const;
-        void AddExit(std::unique_ptr<randomizer::logic::entrance::Entrance>& exit);
-        void RemoveExit(randomizer::logic::entrance::Entrance* exit);
-        void AddEntrance(randomizer::logic::entrance::Entrance* entrance);
-        void RemoveEntrance(randomizer::logic::entrance::Entrance* entrance);
-        std::list<randomizer::logic::entrance::Entrance*> GetEntrances() const;
-        randomizer::logic::world::World* GetWorld() const;
+        void SetExits(std::list<std::unique_ptr<entrance::Entrance>>& exits);
+        std::list<entrance::Entrance*> GetExits() const;
+        void AddExit(std::unique_ptr<entrance::Entrance>& exit);
+        void RemoveExit(entrance::Entrance* exit);
+        void AddEntrance(entrance::Entrance* entrance);
+        void RemoveEntrance(entrance::Entrance* entrance);
+        std::list<entrance::Entrance*> GetEntrances() const;
+        world::World* GetWorld() const;
         void SetCanChangeTime(const bool& canChangeTime);
         bool CanChangeTime() const;
         void SetCanTransform(const bool& canTransform);
@@ -86,7 +86,7 @@ namespace randomizer::logic::area
         std::set<std::string> GetHintRegions();
         void SetTwilightCompletedMacroIndex(const int& macroIndex);
         int GetTwilightCompletedMacroIndex() const;
-        bool TwilightCleared(randomizer::logic::search::Search* search) const;
+        bool TwilightCleared(search::Search* search) const;
 
         /**
          *  @brief Assigns this area's hint regions(s) as well as assigns any locations within the area to a dungeon if the
@@ -101,9 +101,9 @@ namespace randomizer::logic::area
         std::set<std::string> _hintRegions = {};
         std::list<std::unique_ptr<EventAccess>> _events = {};
         std::list<std::unique_ptr<LocationAccess>> _locations = {};
-        std::list<std::unique_ptr<randomizer::logic::entrance::Entrance>> _exits = {};
-        std::list<randomizer::logic::entrance::Entrance*> _entrances = {};
-        randomizer::logic::world::World* _world;
+        std::list<std::unique_ptr<entrance::Entrance>> _exits = {};
+        std::list<entrance::Entrance*> _entrances = {};
+        world::World* _world;
         bool _canChangeTime = false;
         bool _canTransform = false;
         int _twilightCompletedMacroIndex = -1;

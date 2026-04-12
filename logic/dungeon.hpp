@@ -32,25 +32,25 @@ namespace randomizer::logic::dungeon
     class Dungeon
     {
        public:
-        Dungeon(const std::string& name, randomizer::logic::world::World* world);
+        Dungeon(const std::string& name, world::World* world);
 
         std::string GetName() const;
-        void SetSmallKey(randomizer::logic::item::Item* item);
-        randomizer::logic::item::Item* GetSmallKey() const;
-        void SetBigKey(randomizer::logic::item::Item* item);
-        randomizer::logic::item::Item* GetBigKey() const;
-        void SetCompass(randomizer::logic::item::Item* item);
-        randomizer::logic::item::Item* GetCompass() const;
-        void SetDungeonMap(randomizer::logic::item::Item* item);
-        randomizer::logic::item::Item* GetDungeonMap() const;
-        void SetStartingArea(randomizer::logic::area::Area* startingArea);
-        randomizer::logic::area::Area* GetStartingAreas();
-        void AddStartingEntrance(randomizer::logic::entrance::Entrance* startingEntrance);
-        std::unordered_set<randomizer::logic::entrance::Entrance*> GetStartingEntrances() const;
-        void AddLocation(randomizer::logic::location::Location* location);
-        randomizer::logic::location::LocationPool GetLocations();
-        void SetGoalLocation(randomizer::logic::location::Location* goalLocation);
-        randomizer::logic::location::Location* GetGoalLocation();
+        void SetSmallKey(item::Item* item);
+        item::Item* GetSmallKey() const;
+        void SetBigKey(item::Item* item);
+        item::Item* GetBigKey() const;
+        void SetCompass(item::Item* item);
+        item::Item* GetCompass() const;
+        void SetDungeonMap(item::Item* item);
+        item::Item* GetDungeonMap() const;
+        void SetStartingArea(area::Area* startingArea);
+        area::Area* GetStartingAreas();
+        void AddStartingEntrance(entrance::Entrance* startingEntrance);
+        std::unordered_set<entrance::Entrance*> GetStartingEntrances() const;
+        void AddLocation(location::Location* location);
+        location::LocationPool GetLocations();
+        void SetGoalLocation(location::Location* goalLocation);
+        location::Location* GetGoalLocation();
         void SetRequired(const bool& required);
         bool IsRequired() const;
 
@@ -62,15 +62,15 @@ namespace randomizer::logic::dungeon
 
        private:
         std::string _name = "";
-        randomizer::logic::world::World* _world;
-        randomizer::logic::item::Item* _smallKey;
-        randomizer::logic::item::Item* _bigKey;
-        randomizer::logic::item::Item* _compass;
-        randomizer::logic::item::Item* _dungeonMap;
-        randomizer::logic::area::Area* _startingArea;
-        std::unordered_set<randomizer::logic::entrance::Entrance*> _startingEntrances;
-        randomizer::logic::location::Location* _goalLocation;
-        randomizer::logic::location::LocationPool _locations = {};
+        world::World* _world;
+        item::Item* _smallKey;
+        item::Item* _bigKey;
+        item::Item* _compass;
+        item::Item* _dungeonMap;
+        area::Area* _startingArea;
+        std::unordered_set<entrance::Entrance*> _startingEntrances;
+        location::Location* _goalLocation;
+        location::LocationPool _locations = {};
         bool _required = false;
     };
 } // namespace randomizer::logic::dungeon

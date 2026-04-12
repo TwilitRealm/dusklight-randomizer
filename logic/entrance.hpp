@@ -67,10 +67,10 @@ namespace randomizer::logic::entrance
     class Entrance
     {
        public:
-        Entrance(randomizer::logic::area::Area* parentArea,
-                 randomizer::logic::area::Area* connectedArea,
-                 const randomizer::logic::requirement::Requirement& req,
-                 randomizer::logic::world::World* world);
+        Entrance(area::Area* parentArea,
+                 area::Area* connectedArea,
+                 const requirement::Requirement& req,
+                 world::World* world);
 
         void SetID(const int& id);
         int GetID() const;
@@ -86,17 +86,17 @@ namespace randomizer::logic::entrance
          * @brief Removes cardinal/direction specifiers from the entrance's name/alias (North, South, East, West, Left, Right)
          */
         void GeneralizeName();
-        randomizer::logic::area::Area* GetParentArea() const;
-        randomizer::logic::area::Area* GetConnectedArea() const;
-        randomizer::logic::area::Area* GetOriginalConnectedArea() const;
+        area::Area* GetParentArea() const;
+        area::Area* GetConnectedArea() const;
+        area::Area* GetOriginalConnectedArea() const;
         void SetType(const Type& type);
         Type GetType() const;
         Type GetOriginalType() const;
-        void SetRequirement(const randomizer::logic::requirement::Requirement& req);
-        const randomizer::logic::requirement::Requirement& GetRequirement();
-        void SetComputedRequirement(const randomizer::logic::requirement::Requirement& computedRequirement);
-        randomizer::logic::requirement::Requirement GetComputedRequirement();
-        randomizer::logic::world::World* GetWorld() const;
+        void SetRequirement(const requirement::Requirement& req);
+        const requirement::Requirement& GetRequirement();
+        void SetComputedRequirement(const requirement::Requirement& computedRequirement);
+        requirement::Requirement GetComputedRequirement();
+        world::World* GetWorld() const;
         bool CanStartAt() const;
         void SetShuffled(const bool& shuffled);
         bool IsShuffled() const;
@@ -121,7 +121,7 @@ namespace randomizer::logic::entrance
          *
          * @param newConnectedArea The area to connect this entrance to
          */
-        void Connect(randomizer::logic::area::Area* newConnectedArea);
+        void Connect(area::Area* newConnectedArea);
 
         /**
          * @brief Disconnect this entrance from the area it leads to. Will also remove this entrance from it's connected area's
@@ -129,7 +129,7 @@ namespace randomizer::logic::entrance
          *
          * @return The area this entrance was previously connected to
          */
-        randomizer::logic::area::Area* Disconnect();
+        area::Area* Disconnect();
 
         /**
          * @brief Links two entrances by setting them as each others' reverse entrance
@@ -150,25 +150,25 @@ namespace randomizer::logic::entrance
 
        private:
         int _id = -1;
-        randomizer::logic::area::Area* _parentArea = nullptr;
-        randomizer::logic::area::Area* _connectedArea = nullptr;
-        randomizer::logic::area::Area* _originalConnectedArea = nullptr;
+        area::Area* _parentArea = nullptr;
+        area::Area* _connectedArea = nullptr;
+        area::Area* _originalConnectedArea = nullptr;
         Type _type = Type::INVALID;
         Type _originalType = Type::INVALID;
         std::string _originalName = "";
         std::string _alias = "";
-        randomizer::logic::world::World* _world = nullptr;
+        world::World* _world = nullptr;
 
         /**
          * @brief The local requirement for this entrance assuming we have access to its parent area.
          */
-        randomizer::logic::requirement::Requirement _req;
+        requirement::Requirement _req;
 
         /**
          * @brief The flattened requirement which includes everything necessary to reach this entrance from the root of the
          * world graph.
          */
-        randomizer::logic::requirement::Requirement _computedRequirement;
+        requirement::Requirement _computedRequirement;
 
         // Variables used for entrance shuffling
         bool _canStartAt = false;

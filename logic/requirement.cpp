@@ -42,7 +42,7 @@ namespace randomizer::logic::requirement
     std::string Requirement::to_string() const
     {
         std::string reqStr = "";
-        randomizer::logic::item::Item* item;
+        item::Item* item;
         Requirement nestedReq;
         int count;
         int eventIndex;
@@ -102,12 +102,12 @@ namespace randomizer::logic::requirement
                 return reqStr;
 
             case Type::ITEM:
-                item = std::get<randomizer::logic::item::Item*>(this->_args[0]);
+                item = std::get<item::Item*>(this->_args[0]);
                 return item->GetName();
 
             case Type::COUNT:
                 count = std::get<int>(this->_args[0]);
-                item = std::get<randomizer::logic::item::Item*>(this->_args[1]);
+                item = std::get<item::Item*>(this->_args[1]);
                 return "count(" + item->GetName() + ", " + std::to_string(count) + ")";
 
             case Type::EVENT:
@@ -152,7 +152,7 @@ namespace randomizer::logic::requirement
     }
 
     Requirement ParseRequirementString(const std::string& reqStr,
-                                       randomizer::logic::world::World* world,
+                                       world::World* world,
                                        const bool& forceLogic /* = false */)
     {
         Requirement req;
@@ -224,35 +224,35 @@ namespace randomizer::logic::requirement
             // First, see if we have nothing
             if (argStr == "Nothing")
             {
-                req._type = randomizer::logic::requirement::Type::NOTHING;
+                req._type = Type::NOTHING;
                 return req;
             }
 
             // Then Human Link...
             if (argStr == "Human Link")
             {
-                req._type = randomizer::logic::requirement::Type::HUMAN_LINK;
+                req._type = Type::HUMAN_LINK;
                 return req;
             }
 
             // Then Wolf Link...
             if (argStr == "Wolf Link")
             {
-                req._type = randomizer::logic::requirement::Type::WOLF_LINK;
+                req._type = Type::WOLF_LINK;
                 return req;
             }
 
             // Then Twilight...
             if (argStr == "Twilight")
             {
-                req._type = randomizer::logic::requirement::Type::TWILIGHT;
+                req._type = Type::TWILIGHT;
                 return req;
             }
 
             // Then an event...
             if (argStr[0] == '\'')
             {
-                req._type = randomizer::logic::requirement::Type::EVENT;
+                req._type = Type::EVENT;
                 std::string eventName(argStr.begin() + 1, argStr.end() - 1); // Remove quotes
                 int eventId = world->GetEventIndex(eventName);
 
@@ -266,7 +266,7 @@ namespace randomizer::logic::requirement
             // Then a macro...
             if (world->GetMacroIndex(argStr) != -1)
             {
-                req._type = randomizer::logic::requirement::Type::MACRO;
+                req._type = Type::MACRO;
                 req._args.emplace_back(world->GetMacroIndex(argStr));
                 return req;
             }
@@ -275,18 +275,18 @@ namespace randomizer::logic::requirement
             if (world->GetItem(argStr, true) != nullptr)
             {
                 auto item = world->GetItem(argStr);
-                req._type = randomizer::logic::requirement::Type::ITEM;
+                req._type = Type::ITEM;
                 req._args.emplace_back(item);
                 return req;
             }
 
             // Then a setting...
-            else if (randomizer::utility::str::Contains(argStr, "!=", "==", ">=", "<="))
+            else if (utility::str::Contains(argStr, "!=", "==", ">=", "<="))
             {
-                bool equalComparison = randomizer::utility::str::Contains(argStr, "==");
-                bool notEqualComparison = randomizer::utility::str::Contains(argStr, "!=");
-                bool gteComparison = randomizer::utility::str::Contains(argStr, ">=");
-                bool lteComparison = randomizer::utility::str::Contains(argStr, "<=");
+                bool equalComparison = utility::str::Contains(argStr, "==");
+                bool notEqualComparison = utility::str::Contains(argStr, "!=");
+                bool gteComparison = utility::str::Contains(argStr, ">=");
+                bool lteComparison = utility::str::Contains(argStr, "<=");
 
                 // Split up the comparison using the second comparison character (which will always be '=')
                 auto compPos = argStr.rfind('=');
@@ -314,18 +314,18 @@ namespace randomizer::logic::requirement
 
                 if (result == true)
                 {
-                    req._type = randomizer::logic::requirement::Type::NOTHING;
+                    req._type = Type::NOTHING;
                 }
                 else
                 {
-                    req._type = randomizer::logic::requirement::Type::IMPOSSIBLE;
+                    req._type = Type::IMPOSSIBLE;
                 }
                 return req;
             }
             // Then a count...
             else if (argStr.find("count") != std::string::npos)
             {
-                req._type = randomizer::logic::requirement::Type::COUNT;
+                req._type = Type::COUNT;
                 // Since a count has two arguments (a number and an item), we have
                 // to split up the string in the parenthesis into those arguments.
 
@@ -363,21 +363,21 @@ namespace randomizer::logic::requirement
             // Then Day...
             if (argStr == "Day")
             {
-                req._type = randomizer::logic::requirement::Type::DAY;
+                req._type = Type::DAY;
                 return req;
             }
 
             // Then Night...
             if (argStr == "Night")
             {
-                req._type = randomizer::logic::requirement::Type::NIGHT;
+                req._type = Type::NIGHT;
                 return req;
             }
 
             // Then health
             else if (argStr.find("hearts") != std::string::npos)
             {
-                req._type = randomizer::logic::requirement::Type::HEARTS;
+                req._type = Type::HEARTS;
                 std::string numHeartsStr(argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
                 
                 // If the string for the count is a setting, use the settings current option instead
@@ -394,14 +394,14 @@ namespace randomizer::logic::requirement
             // Then Impossible...
             else if (argStr == "Impossible")
             {
-                req._type = randomizer::logic::requirement::Type::IMPOSSIBLE;
+                req._type = Type::IMPOSSIBLE;
                 return req;
             }
 
             // Then golden bugs...
             else if (argStr.find("golden bugs") != std::string::npos)
             {
-                req._type = randomizer::logic::requirement::Type::GOLDEN_BUGS;
+                req._type = Type::GOLDEN_BUGS;
                 // Get rid of parenthesis
                 std::string countArg(argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
                 int count = std::stoi(countArg);
@@ -452,11 +452,11 @@ namespace randomizer::logic::requirement
             // Set the appropriate type
             if (andType)
             {
-                req._type = randomizer::logic::requirement::Type::AND;
+                req._type = Type::AND;
             }
             else
             {
-                req._type = randomizer::logic::requirement::Type::OR;
+                req._type = Type::OR;
             }
 
             // Once we know the type, we can erase the "and"s or "or"s and are left with just the deeper
@@ -478,7 +478,7 @@ namespace randomizer::logic::requirement
             }
         }
 
-        if (req._type != randomizer::logic::requirement::Type::INVALID)
+        if (req._type != Type::INVALID)
         {
             return req;
         }
@@ -487,11 +487,11 @@ namespace randomizer::logic::requirement
         return req;
     }
 
-    bool EvaluateSimpleRequirement(const randomizer::logic::requirement::Requirement& req, randomizer::logic::world::World* world)
+    bool EvaluateSimpleRequirement(const Requirement& req, world::World* world)
     {
-        randomizer::logic::item::Item* item;
-        randomizer::logic::item::Item* heartPiece;
-        randomizer::logic::item::Item* heartContainer;
+        item::Item* item;
+        item::Item* heartPiece;
+        item::Item* heartContainer;
         int count;
         int macroIndex;
         switch (req._type)
@@ -517,12 +517,12 @@ namespace randomizer::logic::requirement
                     { return EvaluateSimpleRequirement(std::get<Requirement>(arg), world); });
 
             case Type::ITEM:
-                item = std::get<randomizer::logic::item::Item*>(req._args[0]);
+                item = std::get<item::Item*>(req._args[0]);
                 return randomizer::utility::container::ElementInContainer(world->GetStartingItemPool(), item);
 
             case Type::COUNT:
                 count = std::get<int>(req._args[0]);
-                item = std::get<randomizer::logic::item::Item*>(req._args[1]);
+                item = std::get<item::Item*>(req._args[1]);
                 return std::ranges::count(world->GetStartingItemPool(), item) >= count;
 
             case Type::MACRO:
@@ -546,14 +546,14 @@ namespace randomizer::logic::requirement
         return false;
     }
 
-    bool EvaluateRequirementAtFormTime(const randomizer::logic::requirement::Requirement& req,
-                                       randomizer::logic::search::Search* search,
+    bool EvaluateRequirementAtFormTime(const Requirement& req,
+                                       search::Search* search,
                                        const int& formTime,
-                                       randomizer::logic::world::World* world)
+                                       world::World* world)
     {
-        randomizer::logic::item::Item* item;
-        randomizer::logic::item::Item* heartPiece;
-        randomizer::logic::item::Item* heartContainer;
+        item::Item* item;
+        item::Item* heartPiece;
+        item::Item* heartContainer;
         int count;
         int eventIndex;
         int macroIndex;
@@ -580,12 +580,12 @@ namespace randomizer::logic::requirement
                     { return EvaluateRequirementAtFormTime(std::get<Requirement>(arg), search, formTime, world); });
 
             case Type::ITEM:
-                item = std::get<randomizer::logic::item::Item*>(req._args[0]);
+                item = std::get<item::Item*>(req._args[0]);
                 return search->_ownedItems.contains(item);
 
             case Type::COUNT:
                 count = std::get<int>(req._args[0]);
-                item = std::get<randomizer::logic::item::Item*>(req._args[1]);
+                item = std::get<item::Item*>(req._args[1]);
                 return search->_ownedItems.count(item) >= count;
 
             case Type::EVENT:
@@ -653,7 +653,7 @@ namespace randomizer::logic::requirement
         return false;
     }
 
-    EvalSuccess EvaluateEventRequirement(randomizer::logic::search::Search* search, randomizer::logic::area::EventAccess* event)
+    EvalSuccess EvaluateEventRequirement(search::Search* search, area::EventAccess* event)
     {
         auto& formTime = search->_areaFormTime[event->GetArea()];
         if (EvaluateRequirementAtFormTime(event->GetRequirement(), search, formTime, event->GetArea()->GetWorld()))
@@ -663,7 +663,7 @@ namespace randomizer::logic::requirement
         return EvalSuccess::NONE;
     }
 
-    EvalSuccess EvaluateExitRequirement(randomizer::logic::search::Search* search, randomizer::logic::entrance::Entrance* exit)
+    EvalSuccess EvaluateExitRequirement(search::Search* search, entrance::Entrance* exit)
     {
         // Some exits in the middle of entrance shuffling will not have a connected area. Ignore these
         if (exit->GetConnectedArea() == nullptr)
@@ -755,7 +755,7 @@ namespace randomizer::logic::requirement
         return evalSuccess;
     }
 
-    EvalSuccess EvaluateDisconnectedExitRequiremrnt(randomizer::logic::search::Search* search, randomizer::logic::entrance::Entrance* exit)
+    EvalSuccess EvaluateDisconnectedExitRequiremrnt(search::Search* search, entrance::Entrance* exit)
     {
         // If the exit is currently disabled, don't try it
         if (exit->IsDisabled())
@@ -785,7 +785,7 @@ namespace randomizer::logic::requirement
         return EvalSuccess::NONE;
     }
 
-    EvalSuccess EvaluateLocationRequirement(randomizer::logic::search::Search* search, randomizer::logic::area::LocationAccess* locAccess)
+    EvalSuccess EvaluateLocationRequirement(search::Search* search, area::LocationAccess* locAccess)
     {
         auto& formTime = search->_areaFormTime[locAccess->GetArea()];
         if (EvaluateRequirementAtFormTime(locAccess->GetRequirement(), search, formTime, locAccess->GetArea()->GetWorld()))

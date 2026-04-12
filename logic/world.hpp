@@ -37,11 +37,11 @@ namespace randomizer::logic::world
     class World
     {
        public:
-        World(const int& id, randomizer::Randomizer* randomizer);
+        World(const int& id, Randomizer* randomizer);
 
         int GetID() const;
-        void SetSettings(const randomizer::seedgen::settings::Settings& settings);
-        const randomizer::seedgen::settings::Settings& GetSettings() const;
+        void SetSettings(const seedgen::settings::Settings& settings);
+        const seedgen::settings::Settings& GetSettings() const;
         void SetRandomizer(Randomizer* randomizer);
         Randomizer* GetRandomizer() const;
 
@@ -106,63 +106,63 @@ namespace randomizer::logic::world
          * currently empty locations.
          */
         void SanitizeItemPool();
-        void SetSearchStartingProperties(randomizer::logic::search::Search* search) const;
+        void SetSearchStartingProperties(search::Search* search) const;
         void PerformPostFillTasks();
         void FinalizeBottleContents();
-        void AddPlandomizedLocation(randomizer::logic::location::Location* location, randomizer::logic::item::Item* item);
-        void AddPlandomizedEntrance(randomizer::logic::entrance::Entrance* entrance, randomizer::logic::entrance::Entrance* target);
-        std::unordered_map<randomizer::logic::entrance::Entrance*, randomizer::logic::entrance::Entrance*> GetPlandomizerEntrances();
+        void AddPlandomizedLocation(location::Location* location, item::Item* item);
+        void AddPlandomizedEntrance(entrance::Entrance* entrance, entrance::Entrance* target);
+        std::unordered_map<entrance::Entrance*, entrance::Entrance*> GetPlandomizerEntrances();
 
-        randomizer::logic::dungeon::Dungeon* GetDungeon(const std::string& name);
-        const std::map<std::string, std::unique_ptr<randomizer::logic::dungeon::Dungeon>>& GetDungeonTable() const;
-        randomizer::logic::item::Item* GetItem(const std::string& name, const bool& ignoreError = false);
-        randomizer::logic::item::Item* GetShadowCrystal();
-        randomizer::logic::item::Item* GetGameWinningItem() const;
-        randomizer::logic::item_pool::ItemPool& GetItemPool();
-        randomizer::logic::item_pool::ItemPool& GetStartingItemPool();
-        randomizer::logic::location::Location* GetLocation(const std::string& name);
-        randomizer::logic::location::LocationPool GetAllLocations(const bool& includeNonItemLocations = false);
-        randomizer::logic::area::Area* GetArea(const std::string& name, const bool& createIfNotFound = false);
-        randomizer::logic::area::Area* GetRootArea() const;
-        const std::map<std::string, std::unique_ptr<randomizer::logic::area::Area>>& GetAreaTable() const;
-        randomizer::logic::entrance::Entrance* GetEntrance(const std::string& originalName);
+        dungeon::Dungeon* GetDungeon(const std::string& name);
+        const std::map<std::string, std::unique_ptr<dungeon::Dungeon>>& GetDungeonTable() const;
+        item::Item* GetItem(const std::string& name, const bool& ignoreError = false);
+        item::Item* GetShadowCrystal();
+        item::Item* GetGameWinningItem() const;
+        item_pool::ItemPool& GetItemPool();
+        item_pool::ItemPool& GetStartingItemPool();
+        location::Location* GetLocation(const std::string& name);
+        location::LocationPool GetAllLocations(const bool& includeNonItemLocations = false);
+        area::Area* GetArea(const std::string& name, const bool& createIfNotFound = false);
+        area::Area* GetRootArea() const;
+        const std::map<std::string, std::unique_ptr<area::Area>>& GetAreaTable() const;
+        entrance::Entrance* GetEntrance(const std::string& originalName);
         int GetNewEntranceID();
-        randomizer::logic::entrance::EntrancePool GetShuffleableEntrances(const randomizer::logic::entrance::Type& type,
+        entrance::EntrancePool GetShuffleableEntrances(const entrance::Type& type,
                                                                      const bool& onlyPrimary = false);
-        randomizer::logic::entrance::EntrancePool GetShuffledEntrances(
-            const randomizer::logic::entrance::Type& type = randomizer::logic::entrance::Type::ALL,
+        entrance::EntrancePool GetShuffledEntrances(
+            const entrance::Type& type = entrance::Type::ALL,
             const bool& onlyPrimary = false);
-        std::unordered_map<randomizer::logic::entrance::Entrance*, int>& GetExitTimeFormCache();
+        std::unordered_map<entrance::Entrance*, int>& GetExitTimeFormCache();
 
         int GetMacroIndex(const std::string& macroName) const;
-        const randomizer::logic::requirement::Requirement& GetMacro(const int& macroIndex);
+        const requirement::Requirement& GetMacro(const int& macroIndex);
         int GetEventIndex(const std::string& eventName, bool addIfNone = true);
         std::string GetEventName(const int& eventIndex);
 
-        randomizer::seedgen::settings::Setting& Setting(const std::string& settingName);
+        seedgen::settings::Setting& Setting(const std::string& settingName);
 
        private:
         int _id = -1;
         int _entranceIdCounter = 0;
 
-        randomizer::seedgen::settings::Settings _settings;
-        std::map<std::string, std::unique_ptr<randomizer::logic::item::Item>> _itemTable = {};
-        std::map<std::string, std::unique_ptr<randomizer::logic::location::Location>> _locationTable = {};
+        seedgen::settings::Settings _settings;
+        std::map<std::string, std::unique_ptr<item::Item>> _itemTable = {};
+        std::map<std::string, std::unique_ptr<location::Location>> _locationTable = {};
         std::unordered_set<std::string> _intentionallyRemovedLocations = {};
         std::unordered_set<std::string> _registeredLocationCategories = {};
-        std::map<std::string, std::unique_ptr<randomizer::logic::area::Area>> _areaTable = {};
-        std::map<std::string, std::unique_ptr<randomizer::logic::dungeon::Dungeon>> _dungeons = {};
-        std::map<int, randomizer::logic::requirement::Requirement> _macros = {};
+        std::map<std::string, std::unique_ptr<area::Area>> _areaTable = {};
+        std::map<std::string, std::unique_ptr<dungeon::Dungeon>> _dungeons = {};
+        std::map<int, requirement::Requirement> _macros = {};
         std::unordered_map<std::string, int> _macroIndexes = {};
         std::unordered_map<std::string, int> _eventIndexes = {};
         std::unordered_map<int, std::string> _eventNames = {};
-        randomizer::logic::item_pool::ItemPool _itemPool = {};
-        randomizer::logic::item_pool::ItemPool _startingItemPool = {};
-        std::unordered_map<randomizer::logic::entrance::Entrance*, int> _exitTimeFormCache = {};
+        item_pool::ItemPool _itemPool = {};
+        item_pool::ItemPool _startingItemPool = {};
+        std::unordered_map<entrance::Entrance*, int> _exitTimeFormCache = {};
 
         // Plandomizer Data
-        std::unordered_map<randomizer::logic::location::Location*, randomizer::logic::item::Item*> _plandomizerLocations = {};
-        std::unordered_map<randomizer::logic::entrance::Entrance*, randomizer::logic::entrance::Entrance*> _plandomizerEntrances = {};
+        std::unordered_map<location::Location*, item::Item*> _plandomizerLocations = {};
+        std::unordered_map<entrance::Entrance*, entrance::Entrance*> _plandomizerEntrances = {};
 
         Randomizer* _randomizer = nullptr;
     };

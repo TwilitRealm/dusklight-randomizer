@@ -27,7 +27,7 @@ namespace randomizer::logic::item
         Item() = default;
         Item(const int& id,
              const std::string& name,
-             randomizer::logic::world::World* world,
+             world::World* world,
              const Importance& importance,
              const bool& gameWinningItem,
              const bool& dungeonSmallKey,
@@ -37,7 +37,7 @@ namespace randomizer::logic::item
 
         int GetID() const;
         std::string GetName() const;
-        randomizer::logic::world::World* GetWorld() const;
+        world::World* GetWorld() const;
         Importance GetImportance() const;
         bool IsMajor() const;
         bool IsMinor() const;
@@ -59,7 +59,7 @@ namespace randomizer::logic::item
        private:
         int _id = -1;
         std::string _name;
-        randomizer::logic::world::World* _world = nullptr;
+        world::World* _world = nullptr;
         Importance _importance = INVALID;
         bool _gameWinningItem = false;
         std::list<Location*> _chainLocations;

@@ -85,10 +85,10 @@ namespace randomizer::logic::entrance
         return reverse.at(type);
     }
 
-    Entrance::Entrance(randomizer::logic::area::Area* parentArea,
-                       randomizer::logic::area::Area* connectedArea,
-                       const randomizer::logic::requirement::Requirement& req,
-                       randomizer::logic::world::World* world):
+    Entrance::Entrance(area::Area* parentArea,
+                       area::Area* connectedArea,
+                       const requirement::Requirement& req,
+                       world::World* world):
         _parentArea(parentArea),
         _connectedArea(connectedArea),
         _originalConnectedArea(connectedArea),
@@ -96,7 +96,7 @@ namespace randomizer::logic::entrance
         _world(world)
     {
         this->_originalName = this->GetCurrentName();
-        this->_computedRequirement._type = randomizer::logic::requirement::Type::IMPOSSIBLE;
+        this->_computedRequirement._type = requirement::Type::IMPOSSIBLE;
     }
 
     void Entrance::SetID(const int& id)
@@ -149,17 +149,17 @@ namespace randomizer::logic::entrance
         randomizer::utility::str::Erase(this->_alias, " North", " South", " East", " West", " Right", " Left");
     }
 
-    randomizer::logic::area::Area* Entrance::GetParentArea() const
+    area::Area* Entrance::GetParentArea() const
     {
         return this->_parentArea;
     }
 
-    randomizer::logic::area::Area* Entrance::GetConnectedArea() const
+    area::Area* Entrance::GetConnectedArea() const
     {
         return this->_connectedArea;
     }
 
-    randomizer::logic::area::Area* Entrance::GetOriginalConnectedArea() const
+    area::Area* Entrance::GetOriginalConnectedArea() const
     {
         return this->_originalConnectedArea;
     }
@@ -183,27 +183,27 @@ namespace randomizer::logic::entrance
         return this->_originalType;
     }
 
-    void Entrance::SetRequirement(const randomizer::logic::requirement::Requirement& req)
+    void Entrance::SetRequirement(const requirement::Requirement& req)
     {
         this->_req = req;
     }
 
-    const randomizer::logic::requirement::Requirement& Entrance::GetRequirement()
+    const requirement::Requirement& Entrance::GetRequirement()
     {
         return this->_req;
     }
 
-    void Entrance::SetComputedRequirement(const randomizer::logic::requirement::Requirement& computedRequirement)
+    void Entrance::SetComputedRequirement(const requirement::Requirement& computedRequirement)
     {
         this->_computedRequirement = computedRequirement;
     }
 
-    randomizer::logic::requirement::Requirement Entrance::GetComputedRequirement()
+    requirement::Requirement Entrance::GetComputedRequirement()
     {
         return this->_computedRequirement;
     }
 
-    randomizer::logic::world::World* Entrance::GetWorld() const
+    world::World* Entrance::GetWorld() const
     {
         return this->_world;
     }
@@ -290,13 +290,13 @@ namespace randomizer::logic::entrance
         return this->_assumed;
     }
 
-    void Entrance::Connect(randomizer::logic::area::Area* newConnectedArea)
+    void Entrance::Connect(area::Area* newConnectedArea)
     {
         this->_connectedArea = newConnectedArea;
         newConnectedArea->AddEntrance(this);
     }
 
-    randomizer::logic::area::Area* Entrance::Disconnect()
+    area::Area* Entrance::Disconnect()
     {
         this->_connectedArea->RemoveEntrance(this);
         auto previouslyConnected = this->_connectedArea;
@@ -314,7 +314,7 @@ namespace randomizer::logic::entrance
     {
         auto root = this->_world->GetRootArea();
         auto targetEntrance =
-            std::make_unique<Entrance>(root, nullptr, randomizer::logic::requirement::NO_REQUIREMENT, this->_world);
+            std::make_unique<Entrance>(root, nullptr, requirement::NO_REQUIREMENT, this->_world);
         auto target = targetEntrance.get();
         root->AddExit(targetEntrance); // This moves the variable, so we have to use the pointer for the rest of the function
         target->Connect(this->_connectedArea);

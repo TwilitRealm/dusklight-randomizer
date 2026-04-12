@@ -11,7 +11,7 @@ using namespace randomizer::logic::entrance;
 
 namespace randomizer::logic::entrance_shuffle
 {
-    void ShuffleWorldEntrances(randomizer::logic::world::World* world, randomizer::logic::world::WorldPool& worlds)
+    void ShuffleWorldEntrances(world::World* world, world::WorldPool& worlds)
     {
         SetAllEntrancesData(world);
 
@@ -31,17 +31,17 @@ namespace randomizer::logic::entrance_shuffle
         }
 
         // Validate the world one last time to ensure everything worked
-        auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
+        auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
         ValidateWorld(world, worlds, nullptr, completeItemPool);
     }
 
-    void SetAllEntrancesData(randomizer::logic::world::World* world)
+    void SetAllEntrancesData(world::World* world)
     {
         auto filepath = RANDO_DATA_PATH "entrance_shuffle_data.yaml";
-        randomizer::utility::file::Verify(filepath);
+        utility::file::Verify(filepath);
 
         // Keep track of which double door entrances are together
-        std::unordered_map<std::string, std::list<randomizer::logic::entrance::Entrance*>> coupledDoors = {};
+        std::unordered_map<std::string, std::list<entrance::Entrance*>> coupledDoors = {};
 
         auto entranceDataTree = LoadYAML(filepath);
         for (const auto& entranceDataNode : entranceDataTree)
@@ -50,8 +50,8 @@ namespace randomizer::logic::entrance_shuffle
             YAMLVerifyFields(entranceDataNode, "Type", "Forward");
 
             auto typeStr = entranceDataNode["Type"].as<std::string>();
-            auto type = randomizer::logic::entrance::TypeFromStr(typeStr);
-            if (type == randomizer::logic::entrance::Type::INVALID)
+            auto type = entrance::TypeFromStr(typeStr);
+            if (type == entrance::Type::INVALID)
             {
                 throw std::runtime_error("Unknown entrance type \"" + typeStr + "\" in entrance shuffle node:\n" +
                                          YAML::Dump(entranceDataNode));
@@ -127,7 +127,7 @@ namespace randomizer::logic::entrance_shuffle
         }
     }
 
-    EntrancePools CreateEntrancePools(randomizer::logic::world::World* world)
+    EntrancePools CreateEntrancePools(world::World* world)
     {
         EntrancePools entrancePools = {};
 
@@ -321,7 +321,7 @@ namespace randomizer::logic::entrance_shuffle
 
                         // Don't assume we have access to random spawn targets. We're only connecting to one of them
                         // so assuming we have access to all of them would be erroneous.
-                        newTarget->SetRequirement(randomizer::logic::requirement::IMPOSSIBLE_REQUIREMENT);
+                        newTarget->SetRequirement(requirement::IMPOSSIBLE_REQUIREMENT);
                     }
                 }
                 targetEntrancePools[type] = spawnPool;
@@ -354,13 +354,13 @@ namespace randomizer::logic::entrance_shuffle
         return assumedPool;
     }
 
-    void SetPlandomizedEntrances(randomizer::logic::world::World* world,
-                                 randomizer::logic::world::WorldPool& worlds,
+    void SetPlandomizedEntrances(world::World* world,
+                                 world::WorldPool& worlds,
                                  EntrancePools& entrancePools,
                                  EntrancePools& targetEntrancePools)
     {
         LOG_TO_DEBUG("Now placing plandomizer entrances");
-        auto itemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
+        auto itemPool = item_pool::GetCompleteItemPool(worlds);
 
         for (auto& [plandoEntrance, plandoTarget] : world->GetPlandomizerEntrances())
         {
@@ -456,12 +456,12 @@ namespace randomizer::logic::entrance_shuffle
         LOG_TO_DEBUG("All plandomized entrances have been placed.");
     }
 
-    void ShuffleNonAssumedEntrancesPools(randomizer::logic::world::World* world,
-                                         randomizer::logic::world::WorldPool& worlds,
+    void ShuffleNonAssumedEntrancesPools(world::World* world,
+                                         world::WorldPool& worlds,
                                          EntrancePools& entrancePools,
                                          EntrancePools& targetEntrancePools)
     {
-        auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
+        auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
 
         // The idea here is we want to try shuffling all the non-assumed entrances
         // at the same time since we can't validate the world after each one individually
@@ -551,8 +551,8 @@ namespace randomizer::logic::entrance_shuffle
         }
     }
 
-    void ShuffleEntrancePool(randomizer::logic::world::World* world,
-                             randomizer::logic::world::WorldPool& worlds,
+    void ShuffleEntrancePool(world::World* world,
+                             world::WorldPool& worlds,
                              EntrancePool& entrancePool,
                              EntrancePool& targetEntrancePool,
                              int retries /* = 20*/)
@@ -587,12 +587,12 @@ namespace randomizer::logic::entrance_shuffle
             "generate successfully.");
     }
 
-    void ShuffleEntrances(randomizer::logic::world::WorldPool& worlds,
+    void ShuffleEntrances(world::WorldPool& worlds,
                           EntrancePool& entrancePool,
                           EntrancePool& targetEntrancePool,
                           std::unordered_map<Entrance*, Entrance*>& rollbacks)
     {
-        auto completeItemPool = randomizer::logic::item_pool::GetCompleteItemPool(worlds);
+        auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
         randomizer::utility::random::ShufflePool(entrancePool);
 
         for (auto& entrance : entrancePool)
@@ -642,11 +642,11 @@ namespace randomizer::logic::entrance_shuffle
         }
     }
 
-    bool ReplaceEntrance(randomizer::logic::world::WorldPool& worlds,
+    bool ReplaceEntrance(world::WorldPool& worlds,
                          Entrance* entrance,
                          Entrance* target,
                          std::unordered_map<Entrance*, Entrance*>& rollbacks,
-                         const randomizer::logic::item_pool::ItemPool& completeItemPool)
+                         const item_pool::ItemPool& completeItemPool)
     {
         try
         {
@@ -727,20 +727,20 @@ namespace randomizer::logic::entrance_shuffle
         }
     }
 
-    void ValidateWorld(randomizer::logic::world::World* world,
-                       randomizer::logic::world::WorldPool& worlds,
+    void ValidateWorld(world::World* world,
+                       world::WorldPool& worlds,
                        Entrance* entrance,
-                       const randomizer::logic::item_pool::ItemPool& completeItemPool)
+                       const item_pool::ItemPool& completeItemPool)
     {
         // Validate that all logic is still satisfied
-        auto verifyLogicError = randomizer::logic::search::VerifyLogic(&worlds, completeItemPool);
+        auto verifyLogicError = search::VerifyLogic(&worlds, completeItemPool);
         if (verifyLogicError.has_value())
         {
             throw EntranceShuffleError("Not all logic is satisfied! Reason:\n" + verifyLogicError.value());
         }
 
         // Check to make sure there's at least 1 sphere zero location available
-        auto sphereZeroSearch = randomizer::logic::search::Search::SphereZero(&worlds);
+        auto sphereZeroSearch = search::Search::SphereZero(&worlds);
         sphereZeroSearch.SearchWorlds();
         const auto& foundLocations = sphereZeroSearch._visitedLocations;
         auto numSphereZeroLocations = std::count_if(foundLocations.begin(),

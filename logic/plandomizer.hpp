@@ -15,5 +15,5 @@ namespace randomizer::logic::world
 
 namespace randomizer::logic::plandomizer
 {
-    void LoadPlandomizerData(randomizer::logic::world::WorldPool& worlds, const fspath& filepath, const bool& ignoreErrors = false);
+    void LoadPlandomizerData(world::WorldPool& worlds, const fspath& filepath, const bool& ignoreErrors = false);
 }

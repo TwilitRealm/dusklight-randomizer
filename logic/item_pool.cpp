@@ -210,7 +210,7 @@ namespace randomizer::logic::item_pool
         {"Purple Rupee", 12},
     };
 
-    void GenerateItemPool(randomizer::logic::world::World* world)
+    void GenerateItemPool(world::World* world)
     {
         auto itemPool = minimalItemPool;
 
@@ -316,7 +316,7 @@ namespace randomizer::logic::item_pool
         }
     }
 
-    void GenerateStartingItemPool(randomizer::logic::world::World* world)
+    void GenerateStartingItemPool(world::World* world)
     {
         auto startingItems = world->GetSettings().GetStartingInventory();
         auto& startingItemPool = world->GetStartingItemPool();
@@ -369,7 +369,7 @@ namespace randomizer::logic::item_pool
         return initialJunkPool;
     }
 
-    ItemPool GetCompleteItemPool(randomizer::logic::world::WorldPool& worlds)
+    ItemPool GetCompleteItemPool(world::WorldPool& worlds)
     {
         ItemPool completeItemPool = {};
         for (const auto& world : worlds)

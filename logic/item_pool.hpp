@@ -19,14 +19,14 @@ namespace randomizer::logic::item
 
 namespace randomizer::logic::item_pool
 {
-    using ItemPool = std::vector<randomizer::logic::item::Item*>;
+    using ItemPool = std::vector<item::Item*>;
 
     /**
      *  @brief Generates and sets the item pool of randomized items for a single world.
      *
      *  @param world The world to generate the item pool for
      */
-    void GenerateItemPool(randomizer::logic::world::World* world);
+    void GenerateItemPool(world::World* world);
 
     /**
      *  @brief Generates and sets the starting item pool for a single world. Starting items will be
@@ -34,9 +34,9 @@ namespace randomizer::logic::item_pool
      *
      *  @param world The world to generate the starting item pool for
      */
-    void GenerateStartingItemPool(randomizer::logic::world::World* world);
+    void GenerateStartingItemPool(world::World* world);
 
     std::map<std::string, int> GetInitialJunkPool();
 
-    ItemPool GetCompleteItemPool(randomizer::logic::world::WorldPool& worlds);
+    ItemPool GetCompleteItemPool(world::WorldPool& worlds);
 } // namespace randomizer::logic::item_pool

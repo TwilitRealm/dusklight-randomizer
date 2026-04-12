@@ -48,11 +48,11 @@ namespace randomizer::seedgen::config
         preferencesFile.close();
 
         this->_settingsList.clear();
-        this->_settingsList.push_front(randomizer::seedgen::settings::Settings());
+        this->_settingsList.push_front(settings::Settings());
         auto& settings = this->_settingsList.front();
 
         // Load settings info
-        auto settingInfoMap = randomizer::seedgen::settings::GetAllSettingsInfo();
+        auto settingInfoMap = settings::GetAllSettingsInfo();
 
         // Read in settings and preferences. If we have to change anything,
         // rewrite the appropriate file if allowed.
@@ -79,7 +79,7 @@ namespace randomizer::seedgen::config
                     rewriteSettings = true;
                 }
 
-                settings.InsertSetting(settingName, randomizer::seedgen::settings::Setting(settingInfo.get(), settingOption));
+                settings.InsertSetting(settingName, settings::Setting(settingInfo.get(), settingOption));
             }
             // Special handling for starting inventory
             else if (settingName == "Starting Inventory")
@@ -122,7 +122,7 @@ namespace randomizer::seedgen::config
                 // If seed is empty string, generate a new one
                 if (this->_seed.empty())
                 {
-                    this->_seed = randomizer::seedgen::seed::GenerateSeed();
+                    this->_seed = seed::GenerateSeed();
                 }
             }
             // Special handling for Plandomizer
@@ -156,7 +156,7 @@ namespace randomizer::seedgen::config
                 }
 
                 settings.InsertSetting(preferenceName,
-                                       randomizer::seedgen::settings::Setting(preferenceInfo.get(), preferenceOption));
+                                       settings::Setting(preferenceInfo.get(), preferenceOption));
             }
             else if (preferenceName == "Game Base Path")
             {
@@ -181,13 +181,13 @@ namespace randomizer::seedgen::config
             if (!settings.GetMap().contains(settingName))
             {
                 settings.InsertSetting(settingName,
-                                       randomizer::seedgen::settings::Setting(settingInfo.get(), settingInfo->GetDefaultOption()));
+                                       settings::Setting(settingInfo.get(), settingInfo->GetDefaultOption()));
                 randomizer::utility::platform::Log(std::string("Added missing setting \"") + settingName + "\"");
-                if (settingInfo->GetType() == randomizer::seedgen::settings::Type::STANDARD)
+                if (settingInfo->GetType() == settings::Type::STANDARD)
                 {
                     rewriteSettings = true;
                 }
-                else if (settingInfo->GetType() == randomizer::seedgen::settings::Type::PREFERENCE)
+                else if (settingInfo->GetType() == settings::Type::PREFERENCE)
                 {
                     rewritePreferences = true;
                 }
@@ -195,7 +195,7 @@ namespace randomizer::seedgen::config
         }
         if (!settingsTree["Seed"])
         {
-            this->_seed = randomizer::seedgen::seed::GenerateSeed();
+            this->_seed = seed::GenerateSeed();
             randomizer::utility::platform::Log("Seed is missing. Generated new seed.");
             rewriteSettings = true;
         }
@@ -244,7 +244,7 @@ namespace randomizer::seedgen::config
             for (const auto& settingName : sortedNames)
             {
                 auto& setting = settings.GetMap().at(settingName);
-                if (setting.GetInfo()->GetType() == randomizer::seedgen::settings::Type::STANDARD)
+                if (setting.GetInfo()->GetType() == settings::Type::STANDARD)
                 {
                     out[settingName] = setting.GetCurrentOption();
                 }
@@ -288,7 +288,7 @@ namespace randomizer::seedgen::config
             out["Plandomizer Path"] = this->_plandomizerPath.generic_string();
             for (auto& [settingName, setting] : settings.GetMap())
             {
-                if (setting.GetInfo()->GetType() == randomizer::seedgen::settings::Type::PREFERENCE)
+                if (setting.GetInfo()->GetType() == settings::Type::PREFERENCE)
                 {
                     out[settingName] = setting.GetCurrentOption();
                 }
@@ -327,7 +327,7 @@ namespace randomizer::seedgen::config
     {
         if (this->_hash.empty())
         {
-            this->_hash = randomizer::seedgen::seed::GenerateHash();
+            this->_hash = seed::GenerateHash();
         }
 
         return this->_hash;
@@ -343,16 +343,16 @@ namespace randomizer::seedgen::config
             return 1;
         }
 
-        auto settingInfoMap = randomizer::seedgen::settings::GetAllSettingsInfo();
+        auto settingInfoMap = settings::GetAllSettingsInfo();
 
         YAML::Node root;
-        root["Seed"] = randomizer::seedgen::seed::GenerateSeed();
+        root["Seed"] = seed::GenerateSeed();
         root["Plandomizer"] = false;
         root["Generate Spoiler Log"] = true;
-        // TODO: root["Permalink"] = randomizer::seedgen::permalink::GeneratePermalink();
+        // TODO: root["Permalink"] = permalink::GeneratePermalink();
         for (const auto& [name, info] : *settingInfoMap)
         {
-            if (info->GetType() == randomizer::seedgen::settings::Type::STANDARD)
+            if (info->GetType() == settings::Type::STANDARD)
             {
                 root[name] = info->GetDefaultOption();
             }
@@ -377,7 +377,7 @@ namespace randomizer::seedgen::config
             return 1;
         }
 
-        auto settingInfoMap = randomizer::seedgen::settings::GetAllSettingsInfo();
+        auto settingInfoMap = settings::GetAllSettingsInfo();
 
         YAML::Node root;
         root["Game Base Path"] = "";
@@ -385,7 +385,7 @@ namespace randomizer::seedgen::config
         root["Plandomizer Path"] = "";
         for (const auto& [name, info] : *settingInfoMap)
         {
-            if (info->GetType() == randomizer::seedgen::settings::Type::PREFERENCE)
+            if (info->GetType() == settings::Type::PREFERENCE)
             {
                 root[name] = info->GetDefaultOption();
             }
@@ -410,7 +410,7 @@ namespace randomizer::seedgen::config
         {
             for (auto& [settingName, setting] : settings.GetMap())
             {
-                if (setting.GetInfo()->GetType() == randomizer::seedgen::settings::Type::STANDARD)
+                if (setting.GetInfo()->GetType() == settings::Type::STANDARD)
                 {
                     hashStr += settingName + setting.GetCurrentOption();
                 }

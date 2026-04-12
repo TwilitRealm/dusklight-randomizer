@@ -12,7 +12,7 @@
 
 namespace randomizer::logic::spoiler_log
 {
-    std::string SpoilerFormatLocation(randomizer::logic::location::Location* location, const size_t& longestNameLength)
+    std::string SpoilerFormatLocation(location::Location* location, const size_t& longestNameLength)
     {
         auto numSpaces = longestNameLength - location->GetName().length();
         std::string spaces(numSpaces, ' ');
@@ -20,7 +20,7 @@ namespace randomizer::logic::spoiler_log
         return location->GetName() + ": " + spaces + location->GetCurrentItem()->GetName();
     }
 
-    std::string SpoilerFormatEntrance(randomizer::logic::entrance::Entrance* entrance, const size_t& longestNameLength)
+    std::string SpoilerFormatEntrance(entrance::Entrance* entrance, const size_t& longestNameLength)
     {
         auto numSpaces = longestNameLength - entrance->GetAlias().length();
         std::string spaces(numSpaces, ' ');
@@ -29,7 +29,7 @@ namespace randomizer::logic::spoiler_log
         return entrance->GetAlias() + ": " + spaces + replacement->GetAliasFrom();
     }
 
-    void LogBasicInfo(std::ofstream& log, randomizer::Randomizer* randomizer)
+    void LogBasicInfo(std::ofstream& log, Randomizer* randomizer)
     {
         log << "Dusk Randomizer Version: " << "1.0.0" << std::endl;
         log << "Seed: " << randomizer->GetConfig().GetSeed() << std::endl;
@@ -39,7 +39,7 @@ namespace randomizer::logic::spoiler_log
         log << "Hash: " << randomizer->GetConfig().GetHash() << std::endl;
     }
 
-    void LogSettings(std::ofstream& log, randomizer::Randomizer* randomizer)
+    void LogSettings(std::ofstream& log, Randomizer* randomizer)
     {
         log << std::endl << "# Settings" << std::endl;
         log << YAML::Dump(randomizer->GetConfig().SettingsToYaml()) << std::endl;
@@ -65,7 +65,7 @@ namespace randomizer::logic::spoiler_log
         LogBasicInfo(spoilerLog, randomizer);
 
         // Gather worlds with starting inventories
-        std::list<randomizer::logic::world::World*> worldswithStartingInventories = {};
+        std::list<world::World*> worldswithStartingInventories = {};
         for (const auto& world : worlds)
         {
             if (!world->GetStartingItemPool().empty())
@@ -186,11 +186,11 @@ namespace randomizer::logic::spoiler_log
             {
                 spoilerLog << "    World " << world->GetID() << ":" << std::endl;
                 // Create entrance pools to easily separate the entrances by type
-                auto entrancePools = randomizer::logic::entrance_shuffle::CreateEntrancePools(world.get());
+                auto entrancePools = entrance_shuffle::CreateEntrancePools(world.get());
                 auto mixedPools = world->GetSettings().GetMixedEntrancePools();
                 for (auto& [entranceType, entrancePool] : entrancePools)
                 {
-                    auto typeStr = randomizer::logic::entrance::TypeToStr(entranceType);
+                    auto typeStr = entrance::TypeToStr(entranceType);
                     // If this is a mixed pool, display the types it mixed
                     if (typeStr.starts_with("Mixed Pool"))
                     {
@@ -211,7 +211,7 @@ namespace randomizer::logic::spoiler_log
                     for (const auto& entrance : entrancePool)
                     {
                         // Ignore entrances that are impossible
-                        if (entrance->GetRequirement()._type == randomizer::logic::requirement::Type::IMPOSSIBLE)
+                        if (entrance->GetRequirement()._type == requirement::Type::IMPOSSIBLE)
                         {
                             continue;
                         }

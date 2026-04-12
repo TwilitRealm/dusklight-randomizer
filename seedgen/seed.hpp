@@ -18,5 +18,5 @@ namespace randomizer::seedgen::seed
      */
     std::string GenerateHash();
 
-    std::string HashForConfig(const randomizer::seedgen::config::Config& config);
+    std::string HashForConfig(const config::Config& config);
 } // namespace randomizer::seedgen::seed

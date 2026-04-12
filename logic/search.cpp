@@ -10,8 +10,8 @@
 namespace randomizer::logic::search
 {
     Search::Search(const SearchMode& searchMode,
-                   randomizer::logic::world::WorldPool* worlds,
-                   const randomizer::logic::item_pool::ItemPool& items /* = {} */,
+                   world::WorldPool* worlds,
+                   const item_pool::ItemPool& items /* = {} */,
                    const int& worldToSearch /* = -1 */):
         _searchMode(searchMode), _worlds(worlds)
     {
@@ -50,7 +50,7 @@ namespace randomizer::logic::search
     void Search::SearchWorlds()
     {
         // Get all locations which fit criteria to test on each iteration
-        std::list<randomizer::logic::area::LocationAccess*> itemLocations = {};
+        std::list<area::LocationAccess*> itemLocations = {};
         for (const auto& world : *(this->_worlds))
         {
             for (const auto& [areaName, area] : world->GetAreaTable())
@@ -59,7 +59,7 @@ namespace randomizer::logic::search
                 {
                     // Only add locations that aren't empty, unless we're searching with one of the modes below
                     if (!locAccess->GetLocation()->IsEmpty() ||
-                        randomizer::utility::general::IsAnyOf(this->_searchMode,
+                        utility::general::IsAnyOf(this->_searchMode,
                                                          SearchMode::ACCESSIBLE_LOCATIONS,
                                                          SearchMode::ALL_LOCATIONS_REACHABLE,
                                                          SearchMode::SPHERE_ZERO,
@@ -78,7 +78,7 @@ namespace randomizer::logic::search
         while (
             this->_newThingsFound &&
             !(this->_isBeatable &&
-              randomizer::utility::general::IsAnyOf(this->_searchMode, SearchMode::GENERATE_PLAYTHROUGH, SearchMode::GAME_BEATABLE)))
+              utility::general::IsAnyOf(this->_searchMode, SearchMode::GENERATE_PLAYTHROUGH, SearchMode::GAME_BEATABLE)))
         {
             // Keep track of making logical progress. We want to keep iterating as long as we're finding new things on each
             // iteration
@@ -120,8 +120,8 @@ namespace randomizer::logic::search
                 continue;
             }
 
-            if (randomizer::logic::requirement::EvaluateEventRequirement(this, event) ==
-                randomizer::logic::requirement::EvalSuccess::COMPLETE)
+            if (requirement::EvaluateEventRequirement(this, event) ==
+                requirement::EvalSuccess::COMPLETE)
             {
                 this->_newThingsFound = true;
                 this->_ownedEvents.insert(event->GetEventIndex());
@@ -141,13 +141,13 @@ namespace randomizer::logic::search
             }
 
             // If the exit is successful
-            auto evalSuccess = randomizer::logic::requirement::EvaluateExitRequirement(this, exit);
+            auto evalSuccess = requirement::EvaluateExitRequirement(this, exit);
             if (randomizer::utility::general::IsAnyOf(evalSuccess,
-                                                      randomizer::logic::requirement::EvalSuccess::COMPLETE,
-                                                      randomizer::logic::requirement::EvalSuccess::PARTIAL))
+                                                      requirement::EvalSuccess::COMPLETE,
+                                                      requirement::EvalSuccess::PARTIAL))
             {
                 this->AddExitToEntranceSpheres(exit);
-                if (evalSuccess == randomizer::logic::requirement::EvalSuccess::COMPLETE)
+                if (evalSuccess == requirement::EvalSuccess::COMPLETE)
                 {
                     this->_successfulExits.insert(exit);
                 }
@@ -163,9 +163,9 @@ namespace randomizer::logic::search
         }
     }
 
-    void Search::ProcessLocations(std::list<randomizer::logic::area::LocationAccess*>& itemLocations)
+    void Search::ProcessLocations(std::list<area::LocationAccess*>& itemLocations)
     {
-        std::list<randomizer::logic::location::Location*> accessibleThisIteration = {};
+        std::list<location::Location*> accessibleThisIteration = {};
         // Loop through all possible item locations for this search
         for (const auto& locAccess : itemLocations)
         {
@@ -181,8 +181,8 @@ namespace randomizer::logic::search
             }
 
             // If the location's requirement is met
-            if (randomizer::logic::requirement::EvaluateLocationRequirement(this, locAccess) ==
-                randomizer::logic::requirement::EvalSuccess::COMPLETE)
+            if (requirement::EvaluateLocationRequirement(this, locAccess) ==
+                requirement::EvalSuccess::COMPLETE)
             {
                 this->_visitedLocations.insert(location);
                 this->_newThingsFound = true;
@@ -211,7 +211,7 @@ namespace randomizer::logic::search
         }
     }
 
-    void Search::ProcessLocation(randomizer::logic::location::Location* location)
+    void Search::ProcessLocation(location::Location* location)
     {
         // Don't return if we aren't collecting items
         if (!this->_collectItems)
@@ -272,7 +272,7 @@ namespace randomizer::logic::search
         }
     }
 
-    void Search::Explore(randomizer::logic::area::Area* area)
+    void Search::Explore(area::Area* area)
     {
         for (const auto& event : area->GetEvents())
         {
@@ -281,10 +281,10 @@ namespace randomizer::logic::search
 
         for (const auto& exit : area->GetExits())
         {
-            auto evalSuccess = randomizer::logic::requirement::EvaluateExitRequirement(this, exit);
+            auto evalSuccess = requirement::EvaluateExitRequirement(this, exit);
             switch (evalSuccess)
             {
-                case randomizer::logic::requirement::EvalSuccess::COMPLETE:
+                case requirement::EvalSuccess::COMPLETE:
                     this->_successfulExits.insert(exit);
                     this->AddExitToEntranceSpheres(exit);
                     if (!this->_visitedAreas.contains(exit->GetConnectedArea()))
@@ -292,7 +292,7 @@ namespace randomizer::logic::search
                         this->_visitedAreas.insert(exit->GetConnectedArea());
                         this->Explore(exit->GetConnectedArea());
                     }
-                case randomizer::logic::requirement::EvalSuccess::PARTIAL:
+                case requirement::EvalSuccess::PARTIAL:
                     this->_exitsToTry.push_back(exit);
                     this->AddExitToEntranceSpheres(exit);
                     if (!this->_visitedAreas.contains(exit->GetConnectedArea()))
@@ -300,17 +300,17 @@ namespace randomizer::logic::search
                         this->_visitedAreas.insert(exit->GetConnectedArea());
                         this->Explore(exit->GetConnectedArea());
                     }
-                case randomizer::logic::requirement::EvalSuccess::NONE:
+                case requirement::EvalSuccess::NONE:
                     [[fallthrough]];
-                case randomizer::logic::requirement::EvalSuccess::DISCONNECTED:
+                case requirement::EvalSuccess::DISCONNECTED:
                     this->_exitsToTry.push_back(exit);
             }
         }
     }
 
-    void Search::ExpandFormTimes(randomizer::logic::area::Area* area)
+    void Search::ExpandFormTimes(area::Area* area)
     {
-        using namespace randomizer::logic::requirement;
+        using namespace requirement;
 
         auto& areaFormTime = this->_areaFormTime[area];
         auto twilightCleared = area->TwilightCleared(this);
@@ -353,7 +353,7 @@ namespace randomizer::logic::search
         }
     }
 
-    void Search::AddExitToEntranceSpheres(randomizer::logic::entrance::Entrance* exit)
+    void Search::AddExitToEntranceSpheres(entrance::Entrance* exit)
     {
         if (randomizer::utility::general::IsAnyOf(this->_searchMode,
                                              SearchMode::GENERATE_PLAYTHROUGH,
@@ -377,7 +377,7 @@ namespace randomizer::logic::search
         for (const auto& exit : this->_exitsToTry)
         {
             if (exit->GetConnectedArea() == nullptr && 
-                randomizer::logic::requirement::EvaluateDisconnectedExitRequiremrnt(this, exit) != requirement::EvalSuccess::NONE)
+                requirement::EvaluateDisconnectedExitRequiremrnt(this, exit) != requirement::EvalSuccess::NONE)
             {
                 return true;
             }
@@ -421,23 +421,23 @@ namespace randomizer::logic::search
             auto color = this->_visitedAreas.contains(area.get()) ? "black" : "red";
             std::string formTimeStr = ":<br/>";
             auto& areaFormTime = this->_areaFormTime[area.get()];
-            if (areaFormTime & randomizer::logic::requirement::FormTime::HUMAN)
+            if (areaFormTime & requirement::FormTime::HUMAN)
             {
                 formTimeStr += " Human";
             }
-            if (areaFormTime & randomizer::logic::requirement::FormTime::WOLF)
+            if (areaFormTime & requirement::FormTime::WOLF)
             {
                 formTimeStr += " Wolf";
             }
-            if (areaFormTime & randomizer::logic::requirement::FormTime::DAY)
+            if (areaFormTime & requirement::FormTime::DAY)
             {
                 formTimeStr += " Day";
             }
-            if (areaFormTime & randomizer::logic::requirement::FormTime::NIGHT)
+            if (areaFormTime & requirement::FormTime::NIGHT)
             {
                 formTimeStr += " Night";
             }
-            if (areaFormTime & randomizer::logic::requirement::FormTime::TWILIGHT)
+            if (areaFormTime & requirement::FormTime::TWILIGHT)
             {
                 formTimeStr += " Twilight";
             }
@@ -482,8 +482,8 @@ namespace randomizer::logic::search
         worldGraph.close();
     }
 
-    std::optional<std::string> VerifyLogic(randomizer::logic::world::WorldPool* worlds,
-                                           const randomizer::logic::item_pool::ItemPool& items /* = {} */)
+    std::optional<std::string> VerifyLogic(world::WorldPool* worlds,
+                                           const item_pool::ItemPool& items /* = {} */)
     {
         // Run an all locations reachable search
         auto search = Search::AllLocationsReachable(worlds, items);
@@ -504,7 +504,7 @@ namespace randomizer::logic::search
                 {
                     std::string errorMsg = "Not all locations reachable! Missing locations:\n";
                     // Gather all the missing locations
-                    std::vector<randomizer::logic::location::Location*> unreachedLocations = {};
+                    std::vector<location::Location*> unreachedLocations = {};
                     for (const auto& location : allLocations)
                     {
                         if (!search._visitedLocations.contains(location))
@@ -541,9 +541,9 @@ namespace randomizer::logic::search
         auto& playthroughSpheres = playthroughSearch._playthroughSpheres;
 
         // Keep track of all locations we temporaily take items away from so we can give them back after playthrough calculation
-        std::unordered_map<randomizer::logic::location::Location*, randomizer::logic::item::Item*> tempEmptyLocations = {};
+        std::unordered_map<location::Location*, item::Item*> tempEmptyLocations = {};
         // Keep track of all the locations that appear in the playthrough
-        std::unordered_set<randomizer::logic::location::Location*> playthroughLocationsSet = {};
+        std::unordered_set<location::Location*> playthroughLocationsSet = {};
         for (const auto& sphere : playthroughSpheres)
         {
             for (const auto& location : sphere)
@@ -597,7 +597,7 @@ namespace randomizer::logic::search
 
         // Now do the same process for entrances to pare down the entrance playthrough
         auto& entranceSpheres = newSearch._entranceSpheres;
-        std::unordered_map<randomizer::logic::entrance::Entrance*, randomizer::logic::area::Area*> nonRequiredEntrances = {};
+        std::unordered_map<entrance::Entrance*, area::Area*> nonRequiredEntrances = {};
 
         for (auto& sphere : entranceSpheres)
         {
@@ -651,7 +651,7 @@ namespace randomizer::logic::search
         randomizer->GetEntranceSpheres() = newSearch._entranceSpheres;
     }
 
-    bool GameBeatable(randomizer::logic::world::WorldPool* worlds, const randomizer::logic::item_pool::ItemPool& items /* = {} */)
+    bool GameBeatable(world::WorldPool* worlds, const item_pool::ItemPool& items /* = {} */)
     {
         auto search = Search::Beatable(worlds, items);
         search.SearchWorlds();

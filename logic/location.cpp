@@ -8,8 +8,8 @@ namespace randomizer::logic::location
     Location::Location(const int& id,
                        const std::string& name,
                        std::unordered_set<std::string> categories,
-                       randomizer::logic::world::World* world,
-                       randomizer::logic::item::Item* originalItem,
+                       world::World* world,
+                       item::Item* originalItem,
                        const bool& goalLocation,
                        const std::string& hintPriority):
         _id(id),
@@ -20,7 +20,7 @@ namespace randomizer::logic::location
         _goalLocation(goalLocation),
         _hintPriority(hintPriority)
     {
-        this->_computedRequirement._type = randomizer::logic::requirement::Type::IMPOSSIBLE;
+        this->_computedRequirement._type = requirement::Type::IMPOSSIBLE;
     }
 
     int Location::GetID() const
@@ -33,7 +33,7 @@ namespace randomizer::logic::location
         return this->_name;
     }
 
-    randomizer::logic::world::World* Location::GetWorld() const
+    world::World* Location::GetWorld() const
     {
         return this->_world;
     }
@@ -43,13 +43,13 @@ namespace randomizer::logic::location
         return this->_goalLocation;
     }
 
-    void Location::SetCurrentItem(randomizer::logic::item::Item* item)
+    void Location::SetCurrentItem(item::Item* item)
     {
         LOG_TO_DEBUG("Placed " + item->GetName() + " at " + this->GetName());
         this->_currentItem = item;
     }
 
-    randomizer::logic::item::Item* Location::GetCurrentItem() const
+    item::Item* Location::GetCurrentItem() const
     {
         return this->_currentItem;
     }
@@ -57,20 +57,20 @@ namespace randomizer::logic::location
     void Location::RemoveCurrentItem()
     {
         LOG_TO_DEBUG("Removed " + this->GetCurrentItem()->GetName() + " at " + this->GetName());
-        this->_currentItem = randomizer::logic::item::Nothing.get();
+        this->_currentItem = item::Nothing.get();
     }
 
     bool Location::IsEmpty() const
     {
-        return this->_currentItem == randomizer::logic::item::Nothing.get();
+        return this->_currentItem == item::Nothing.get();
     }
 
-    randomizer::logic::item::Item* Location::GetOriginalItem() const
+    item::Item* Location::GetOriginalItem() const
     {
         return this->_originalItem;
     }
 
-    randomizer::logic::item::Item* Location::GetTrackedItem() const
+    item::Item* Location::GetTrackedItem() const
     {
         return this->_trackedItem;
     }
@@ -106,33 +106,33 @@ namespace randomizer::logic::location
         return this->_hinted;
     }
 
-    void Location::AddLocationAccess(randomizer::logic::area::LocationAccess* locAcc)
+    void Location::AddLocationAccess(area::LocationAccess* locAcc)
     {
         this->_locationAccessList.push_back(locAcc);
     }
 
-    std::list<randomizer::logic::area::LocationAccess*> Location::GetAccessList() const
+    std::list<area::LocationAccess*> Location::GetAccessList() const
     {
         return this->_locationAccessList;
     }
 
-    void Location::AddForbiddenItem(randomizer::logic::item::Item* forbiddenItem)
+    void Location::AddForbiddenItem(item::Item* forbiddenItem)
     {
         this->_forbiddenItems.insert(forbiddenItem);
         LOG_TO_DEBUG(forbiddenItem->GetName() + " is forbidden from being placed at " + this->GetName());
     }
 
-    const std::unordered_set<randomizer::logic::item::Item*>& Location::GetForbiddenItems()
+    const std::unordered_set<item::Item*>& Location::GetForbiddenItems()
     {
         return this->_forbiddenItems;
     }
 
-    void Location::SetComputedRequirement(const randomizer::logic::requirement::Requirement& computedRequirement)
+    void Location::SetComputedRequirement(const requirement::Requirement& computedRequirement)
     {
         this->_computedRequirement = computedRequirement;
     }
 
-    randomizer::logic::requirement::Requirement Location::GetComputedRequirement()
+    requirement::Requirement Location::GetComputedRequirement()
     {
         return this->_computedRequirement;
     }

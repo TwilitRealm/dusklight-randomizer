@@ -25,33 +25,33 @@ namespace randomizer::logic::location
         Location(const int& id,
                  const std::string& name,
                  std::unordered_set<std::string> categories,
-                 randomizer::logic::world::World* world,
-                 randomizer::logic::item::Item* originalItem,
+                 world::World* world,
+                 item::Item* originalItem,
                  const bool& goalLocation,
                  const std::string& hintPriority);
 
         int GetID() const;
         std::string GetName() const;
-        randomizer::logic::world::World* GetWorld() const;
+        world::World* GetWorld() const;
         bool IsGoalLocation() const;
-        void SetCurrentItem(randomizer::logic::item::Item* currentItem);
-        randomizer::logic::item::Item* GetCurrentItem() const;
+        void SetCurrentItem(item::Item* currentItem);
+        item::Item* GetCurrentItem() const;
         void RemoveCurrentItem();
         bool IsEmpty() const;
-        randomizer::logic::item::Item* GetOriginalItem() const;
-        randomizer::logic::item::Item* GetTrackedItem() const;
+        item::Item* GetOriginalItem() const;
+        item::Item* GetTrackedItem() const;
         void SetKnownVanillaItem(const bool& hasKnownVanillaItem);
         bool HasKnownVanillaItem() const;
         void SetProgression(const bool& progression);
         bool IsProgression() const;
         void SetHinted(const bool& hinted);
         bool IsHinted() const;
-        void AddLocationAccess(randomizer::logic::area::LocationAccess* locAcc);
-        std::list<randomizer::logic::area::LocationAccess*> GetAccessList() const;
-        void AddForbiddenItem(randomizer::logic::item::Item* forbiddenItem);
-        const std::unordered_set<randomizer::logic::item::Item*>& GetForbiddenItems();
-        void SetComputedRequirement(const randomizer::logic::requirement::Requirement& computedRequirement);
-        randomizer::logic::requirement::Requirement GetComputedRequirement();
+        void AddLocationAccess(area::LocationAccess* locAcc);
+        std::list<area::LocationAccess*> GetAccessList() const;
+        void AddForbiddenItem(item::Item* forbiddenItem);
+        const std::unordered_set<item::Item*>& GetForbiddenItems();
+        void SetComputedRequirement(const requirement::Requirement& computedRequirement);
+        requirement::Requirement GetComputedRequirement();
         void SetRegisteredLocationCategories(std::unordered_set<std::string>* registeredLocationCategories);
 
         /**
@@ -83,17 +83,17 @@ namespace randomizer::logic::location
         int _id = -1;
         std::string _name = "";
         std::unordered_set<std::string> _categories = {};
-        randomizer::logic::world::World* _world;
-        randomizer::logic::item::Item* _originalItem = randomizer::logic::item::Nothing.get();
+        world::World* _world;
+        item::Item* _originalItem = item::Nothing.get();
         bool _goalLocation = false;
-        randomizer::logic::item::Item* _currentItem = randomizer::logic::item::Nothing.get();
+        item::Item* _currentItem = item::Nothing.get();
         bool _hasKnownVanillaItem = false;
-        std::list<randomizer::logic::area::LocationAccess*> _locationAccessList = {};
+        std::list<area::LocationAccess*> _locationAccessList = {};
         bool _progression = true; // Set as false later if applicable
         bool _hinted = false;
         std::string _hintPriority = "Never";
-        std::unordered_set<randomizer::logic::item::Item*> _forbiddenItems = {};
-        randomizer::logic::requirement::Requirement _computedRequirement;
+        std::unordered_set<item::Item*> _forbiddenItems = {};
+        requirement::Requirement _computedRequirement;
         /**
          *  @brief _registeredLocationCategories is the set of all categories that are processed after reading locations.yaml.
          * This structure is held in the World class and every location in that world has a pointer to it.
@@ -102,7 +102,7 @@ namespace randomizer::logic::location
         std::unordered_set<std::string>* _registeredLocationCategories = nullptr;
 
         // Potential tracker stuff
-        randomizer::logic::item::Item* _trackedItem = randomizer::logic::item::Nothing.get();
+        item::Item* _trackedItem = item::Nothing.get();
     };
 
     using LocationPool = std::vector<Location*>;

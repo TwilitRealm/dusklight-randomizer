@@ -6,7 +6,7 @@
 namespace randomizer::logic::fill
 {
 
-    void FillWorlds(randomizer::logic::world::WorldPool& worlds);
+    void FillWorlds(world::WorldPool& worlds);
 
     /**
      *  @brief Assumed fill is an algorithm which statistically places items more
@@ -22,10 +22,10 @@ namespace randomizer::logic::fill
      * fill algorithm since we need to assume we have these items.
      *  @param allowedLocations Locations where items in itemsToPlacePool are allowed to be filled.
      */
-    void AssumedFill(randomizer::logic::world::WorldPool& worlds,
-                     randomizer::logic::item_pool::ItemPool& itemsToPlacePool,
-                     const randomizer::logic::item_pool::ItemPool& itemsNotYetPlaced,
-                     randomizer::logic::location::LocationPool allowedLocations,
+    void AssumedFill(world::WorldPool& worlds,
+                     item_pool::ItemPool& itemsToPlacePool,
+                     const item_pool::ItemPool& itemsNotYetPlaced,
+                     location::LocationPool allowedLocations,
                      const int& worldToFill = -1);
 
     /**
@@ -34,9 +34,9 @@ namespace randomizer::logic::fill
      *  @param itemsToPlace The pool of items to place
      *  @param allowedLocations The locations where the items can be placed
      */
-    void FastFill(randomizer::logic::item_pool::ItemPool& itemsToPlace, randomizer::logic::location::LocationPool allowedLocations);
+    void FastFill(item_pool::ItemPool& itemsToPlace, location::LocationPool allowedLocations);
 
-    void PlaceRestrictedItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds);
+    void PlaceRestrictedItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds);
 
     /**
      *  @brief If the prologue is not being skipped, place the sword and slingshot early on to prevent possible placement
@@ -45,23 +45,23 @@ namespace randomizer::logic::fill
      *  @param world The world to place the prologue items in
      *  @param worlds All the worlds being generated
      */
-    void PlacePrologueItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds);
+    void PlacePrologueItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds);
 
-    void PlaceGoalLocationItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds);
+    void PlaceGoalLocationItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds);
 
-    void PlaceOwnDungeonItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds);
+    void PlaceOwnDungeonItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds);
 
-    void PlaceAnywhereDungeonRewards(std::unique_ptr<randomizer::logic::world::World>& world,
-                                     randomizer::logic::world::WorldPool& worlds);
+    void PlaceAnywhereDungeonRewards(std::unique_ptr<world::World>& world,
+                                     world::WorldPool& worlds);
 
-    void PlaceAnyDungeonItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds);
+    void PlaceAnyDungeonItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds);
 
-    void PlaceOverworldItems(std::unique_ptr<randomizer::logic::world::World>& world, randomizer::logic::world::WorldPool& worlds);
+    void PlaceOverworldItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds);
 
     /**
      *  @brief Cache all the possible timeforms for each exit. This way, the search algorithm doesn't end up testing for
      * timeforms that we know ahead of time wouldn't be possible anyway
      *  @param worlds The worlds to calculate and cache the possible timeforms for
      */
-    void CacheExitTimeForms(randomizer::logic::world::WorldPool& worlds);
+    void CacheExitTimeForms(world::WorldPool& worlds);
 } // namespace randomizer::logic::fill

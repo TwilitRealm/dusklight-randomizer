@@ -5,46 +5,46 @@
 
 namespace randomizer::logic::entrance_shuffle
 {
-    void ShuffleWorldEntrances(randomizer::logic::world::World* world, randomizer::logic::world::WorldPool& worlds);
-    void SetAllEntrancesData(randomizer::logic::world::World* world);
-    randomizer::logic::entrance::EntrancePools CreateEntrancePools(randomizer::logic::world::World* world);
-    randomizer::logic::entrance::EntrancePools CreateTargetPools(randomizer::logic::entrance::EntrancePools& entrancePools);
-    randomizer::logic::entrance::EntrancePool AssumeEntrancePool(randomizer::logic::entrance::EntrancePool& entrancePool);
-    void SetPlandomizedEntrances(randomizer::logic::world::World* world,
-                                 randomizer::logic::world::WorldPool& worlds,
-                                 randomizer::logic::entrance::EntrancePools& entrancePools,
-                                 randomizer::logic::entrance::EntrancePools& targetEntrancePools);
-    void ShuffleNonAssumedEntrancesPools(randomizer::logic::world::World* world,
-                                         randomizer::logic::world::WorldPool& worlds,
-                                         randomizer::logic::entrance::EntrancePools& entrancePools,
-                                         randomizer::logic::entrance::EntrancePools& targetEntrancePools);
-    void ShuffleEntrancePool(randomizer::logic::world::World* world,
-                             randomizer::logic::world::WorldPool& worlds,
-                             randomizer::logic::entrance::EntrancePool& entrancePool,
-                             randomizer::logic::entrance::EntrancePool& targetEntrancePool,
+    void ShuffleWorldEntrances(world::World* world, world::WorldPool& worlds);
+    void SetAllEntrancesData(world::World* world);
+    entrance::EntrancePools CreateEntrancePools(world::World* world);
+    entrance::EntrancePools CreateTargetPools(entrance::EntrancePools& entrancePools);
+    entrance::EntrancePool AssumeEntrancePool(entrance::EntrancePool& entrancePool);
+    void SetPlandomizedEntrances(world::World* world,
+                                 world::WorldPool& worlds,
+                                 entrance::EntrancePools& entrancePools,
+                                 entrance::EntrancePools& targetEntrancePools);
+    void ShuffleNonAssumedEntrancesPools(world::World* world,
+                                         world::WorldPool& worlds,
+                                         entrance::EntrancePools& entrancePools,
+                                         entrance::EntrancePools& targetEntrancePools);
+    void ShuffleEntrancePool(world::World* world,
+                             world::WorldPool& worlds,
+                             entrance::EntrancePool& entrancePool,
+                             entrance::EntrancePool& targetEntrancePool,
                              int retries = 20);
-    void ShuffleEntrances(randomizer::logic::world::WorldPool& worlds,
-                          randomizer::logic::entrance::EntrancePool& entrancePool,
-                          randomizer::logic::entrance::EntrancePool& targetEntrancePool,
-                          std::unordered_map<randomizer::logic::entrance::Entrance*, randomizer::logic::entrance::Entrance*>& rollbacks);
-    bool ReplaceEntrance(randomizer::logic::world::WorldPool& worlds,
-                         randomizer::logic::entrance::Entrance* entrance,
-                         randomizer::logic::entrance::Entrance* target,
-                         std::unordered_map<randomizer::logic::entrance::Entrance*, randomizer::logic::entrance::Entrance*>& rollbacks,
-                         const randomizer::logic::item_pool::ItemPool& completeItemPool);
+    void ShuffleEntrances(world::WorldPool& worlds,
+                          entrance::EntrancePool& entrancePool,
+                          entrance::EntrancePool& targetEntrancePool,
+                          std::unordered_map<entrance::Entrance*, entrance::Entrance*>& rollbacks);
+    bool ReplaceEntrance(world::WorldPool& worlds,
+                         entrance::Entrance* entrance,
+                         entrance::Entrance* target,
+                         std::unordered_map<entrance::Entrance*, entrance::Entrance*>& rollbacks,
+                         const item_pool::ItemPool& completeItemPool);
 
-    void CheckEntrancesCompatibility(randomizer::logic::entrance::Entrance* entrance, randomizer::logic::entrance::Entrance* target);
-    void ChangeConnections(randomizer::logic::entrance::Entrance* entrance, randomizer::logic::entrance::Entrance* target);
-    void RestoreConnections(randomizer::logic::entrance::Entrance* entrance, randomizer::logic::entrance::Entrance* target);
-    void ConfirmReplacement(randomizer::logic::entrance::Entrance* entrance, randomizer::logic::entrance::Entrance* target);
-    void DeleteTargetEntrance(randomizer::logic::entrance::Entrance* target);
-    void ValidateWorld(randomizer::logic::world::World* world,
-                       randomizer::logic::world::WorldPool& worlds,
-                       randomizer::logic::entrance::Entrance* entrance,
-                       const randomizer::logic::item_pool::ItemPool& completeItemPool);
+    void CheckEntrancesCompatibility(entrance::Entrance* entrance, entrance::Entrance* target);
+    void ChangeConnections(entrance::Entrance* entrance, entrance::Entrance* target);
+    void RestoreConnections(entrance::Entrance* entrance, entrance::Entrance* target);
+    void ConfirmReplacement(entrance::Entrance* entrance, entrance::Entrance* target);
+    void DeleteTargetEntrance(entrance::Entrance* target);
+    void ValidateWorld(world::World* world,
+                       world::WorldPool& worlds,
+                       entrance::Entrance* entrance,
+                       const item_pool::ItemPool& completeItemPool);
 
-    void SetShuffledEntrances(randomizer::logic::entrance::EntrancePools& entrancePools);
-    randomizer::logic::entrance::EntrancePool GetReverseEntrances(const randomizer::logic::entrance::EntrancePool& entrances);
+    void SetShuffledEntrances(entrance::EntrancePools& entrancePools);
+    entrance::EntrancePool GetReverseEntrances(const entrance::EntrancePool& entrances);
 
     class EntranceShuffleError: public std::runtime_error
     {

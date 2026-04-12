@@ -8,6 +8,6 @@ namespace randomizer
 
 namespace randomizer::logic::spoiler_log
 {
-    void GenerateSpoilerLog(randomizer::Randomizer* randomizer);
-    void GenerateAntiSpoilerLog(randomizer::Randomizer* randomizer);
+    void GenerateSpoilerLog(Randomizer* randomizer);
+    void GenerateAntiSpoilerLog(Randomizer* randomizer);
 } // namespace randomizer::logic::spoiler_log

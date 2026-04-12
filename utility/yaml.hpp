@@ -3,7 +3,6 @@
 #include "yaml-cpp/yaml.h"
 
 #include "../utility/file.hpp"
-#include "../utility/log.hpp"
 #include "../utility/path.hpp"
 
 // this wrapper is here to avoid path encoding issues

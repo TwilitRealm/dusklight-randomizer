@@ -16,7 +16,7 @@ namespace randomizer::utility::log
     class LogInfo
     {
        private:
-        randomizer::seedgen::config::Config config;
+        seedgen::config::Config config;
         std::string seedHash;
 
         LogInfo();
@@ -28,9 +28,9 @@ namespace randomizer::utility::log
         LogInfo(const LogInfo&) = delete;
         LogInfo& operator=(const LogInfo&) = delete;
 
-        static void setConfig(const randomizer::seedgen::config::Config& config_) { getInstance().config = config_; }
+        static void setConfig(const seedgen::config::Config& config_) { getInstance().config = config_; }
         static void setSeedHash(const std::string& seedHash_) { getInstance().seedHash = seedHash_; }
-        static const randomizer::seedgen::config::Config& getConfig();
+        static const seedgen::config::Config& getConfig();
         static const std::string& getSeedHash();
     };
 

@@ -21,7 +21,7 @@ namespace randomizer::logic::item
 
     Item::Item(const int& id,
                const std::string& name,
-               randomizer::logic::world::World* world,
+               world::World* world,
                const Importance& importance,
                const bool& gameWinningItem,
                const bool& dungeonSmallKey,
@@ -73,7 +73,7 @@ namespace randomizer::logic::item
         return this->_name;
     }
 
-    randomizer::logic::world::World* Item::GetWorld() const
+    world::World* Item::GetWorld() const
     {
         return this->_world;
     }

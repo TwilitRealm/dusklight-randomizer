@@ -136,7 +136,7 @@ namespace randomizer::seedgen::settings
         const bool& IsUsingRandomOption() const { return this->_isUsingRandomOption; }
         SettingInfo* GetInfo() const { return this->_info; }
         const std::string& GetCustomOption() const { return this->_customOption; }
-        void SetCustomOption(const std::string& newCustomOption);
+        // void SetCustomOption(const std::string& newCustomOption);
         void ResolveIfRandom();
 
         bool operator==(const char* optionName) const;

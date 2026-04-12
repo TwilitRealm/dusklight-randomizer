@@ -56,20 +56,20 @@ namespace randomizer::seedgen::config
         bool IsUsingPlandomizer() const { return this->_isUsingPlandomizer; }
         bool IsGeneratingSpoilerLog() const { return this->_isGeneratingSpoilerLog; }
 
-        void resetDefaultSettings();
-        void resetDefaultPreferences(const bool& paths = false);
-        void LoadFromFile(const fspath& filePath,
+        // void resetDefaultSettings();
+        // void resetDefaultPreferences(const bool& paths = false);
+        void LoadFromFile(const fspath& settingsPath,
                           const fspath& preferencesPath,
-                          const bool& createNewIfNotFound = true,
+                          const bool& createIfNotFound = true,
                           const bool& allowRewrite = true);
         YAML::Node SettingsToYaml();
         YAML::Node PreferencesToYaml();
         void WriteSettingsToFile(const fspath& filePath);
         void WritePreferencesToFile(const fspath& preferencesPath);
-        void WriteToFile(const fspath& filePath, const fspath& preferencesPath) const;
+        // void WriteToFile(const fspath& filePath, const fspath& preferencesPath) const;
 
-        PermalinkError loadPermalink(std::string b64permalink);
-        std::string getPermalink(const bool& internal = false) const;
+        // PermalinkError loadPermalink(std::string b64permalink);
+        // std::string getPermalink(const bool& internal = false) const;
 
         /**
          *  @brief Returns the hash for the config. If the hash is an empty string, then a new one will be generated.

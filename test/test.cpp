@@ -14,7 +14,7 @@ namespace randomizer::test::test
         {
             if (entry.path().generic_string().ends_with("settings.yaml"))
             {
-                auto pathFolders = randomizer::utility::str::Split(entry.path().generic_string(), '/');
+                auto pathFolders = utility::str::Split(entry.path().generic_string(), '/');
                 auto& testName = pathFolders[pathFolders.size() - 2];
                 std::filesystem::remove(SETTINGS_PATH);
                 std::filesystem::copy_file(entry, SETTINGS_PATH);
@@ -22,13 +22,13 @@ namespace randomizer::test::test
                 std::cout << "Testing " << testName << std::endl;
 
                 try {
-                    randomizer::Randomizer r{};
+                    Randomizer r{};
                     r.GenerateWorlds();
                 }
                 catch(const std::exception& e) {
                     std::cout << "Test \"" << testName << "\" failed! Failed settings saved to " << SETTINGS_PATH << std::endl;
                     std::cout << "Error Message: " << e.what() << std::endl;
-                    throw e;
+                    throw;
                 }
 
                 std::filesystem::remove(SETTINGS_PATH);

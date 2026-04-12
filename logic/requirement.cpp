@@ -3,13 +3,11 @@
 #include "search.hpp"
 #include "world.hpp"
 #include "../utility/container.hpp"
-#include "../utility/general.hpp"
 #include "../utility/log.hpp"
 #include "../utility/string.hpp"
 
 #include <algorithm>
 #include <ranges>
-#include <iostream>
 
 namespace randomizer::logic::requirement
 {
@@ -467,14 +465,14 @@ namespace randomizer::logic::requirement
 
             // For each deeper expression, parse it and add it as an argument to the
             // Requirement
-            for (auto& reqStr : splitLogicStr)
+            for (auto& newReqStr : splitLogicStr)
             {
                 // Get rid of parenthesis surrounding each deeper expression
-                if (reqStr[0] == '(')
+                if (newReqStr[0] == '(')
                 {
-                    reqStr = reqStr.substr(1, reqStr.length() - 2);
+                    newReqStr = newReqStr.substr(1, newReqStr.length() - 2);
                 }
-                req._args.push_back(ParseRequirementString(reqStr, world, forceLogic));
+                req._args.push_back(ParseRequirementString(newReqStr, world, forceLogic));
             }
         }
 
@@ -484,7 +482,6 @@ namespace randomizer::logic::requirement
         }
         // If we've reached req point, we weren't able to determine a logical operator within the expression
         throw std::runtime_error("Could not determine logical operator type from expression: \"" + reqStr + "\"");
-        return req;
     }
 
     bool EvaluateSimpleRequirement(const Requirement& req, world::World* world)
@@ -503,16 +500,14 @@ namespace randomizer::logic::requirement
                 return false;
 
             case Type::OR:
-                return std::any_of(
-                    req._args.begin(),
-                    req._args.end(),
+                return std::ranges::any_of(
+                    req._args,
                     [&](const auto& arg)
                     { return EvaluateSimpleRequirement(std::get<Requirement>(arg), world); });
 
             case Type::AND:
-                return std::all_of(
-                    req._args.begin(),
-                    req._args.end(),
+                return std::ranges::all_of(
+                    req._args,
                     [&](const auto& arg)
                     { return EvaluateSimpleRequirement(std::get<Requirement>(arg), world); });
 
@@ -543,7 +538,6 @@ namespace randomizer::logic::requirement
             default:
                 return false;
         }
-        return false;
     }
 
     bool EvaluateRequirementAtFormTime(const Requirement& req,
@@ -566,16 +560,14 @@ namespace randomizer::logic::requirement
                 return false;
 
             case Type::OR:
-                return std::any_of(
-                    req._args.begin(),
-                    req._args.end(),
+                return std::ranges::any_of(
+                    req._args,
                     [&](const auto& arg)
                     { return EvaluateRequirementAtFormTime(std::get<Requirement>(arg), search, formTime, world); });
 
             case Type::AND:
-                return std::all_of(
-                    req._args.begin(),
-                    req._args.end(),
+                return std::ranges::all_of(
+                    req._args,
                     [&](const auto& arg)
                     { return EvaluateRequirementAtFormTime(std::get<Requirement>(arg), search, formTime, world); });
 
@@ -613,9 +605,8 @@ namespace randomizer::logic::requirement
 
             case Type::GOLDEN_BUGS:
                 count = std::get<int>(req._args[0]);
-                return std::count_if(search->_ownedItems.begin(),
-                                     search->_ownedItems.end(),
-                                     [](const auto& item) { return item->IsGoldenBug(); }) >= count;
+                return std::ranges::count_if(search->_ownedItems,
+                                     [](const auto& ownedItem) { return ownedItem->IsGoldenBug(); }) >= count;
             
             case Type::HEARTS:
                 count = std::get<int>(req._args[0]);
@@ -626,8 +617,8 @@ namespace randomizer::logic::requirement
 
             case Type::DUNGEONS_COMPLETED:
                 count = std::get<int>(req._args[0]);
-                return std::ranges::count_if(search->_ownedEvents, [&](int eventId){
-                    std::list<std::string> dungeonCompletionEvents = {
+                return std::ranges::count_if(search->_ownedEvents, [&](const int eventId) {
+                    const std::list<std::string> dungeonCompletionEvents = {
                         "Can Complete Forest Temple",
                         "Can Complete Goron Mines",
                         "Can Complete Lakebed Temple",
@@ -763,15 +754,12 @@ namespace randomizer::logic::requirement
             return EvalSuccess::NONE;
         }
 
-        auto& exitFormTimeCache = exit->GetWorld()->GetExitTimeFormCache();
-        auto parentArea = exit->GetParentArea();
-        auto parentAreaFormTime = search->_areaFormTime[parentArea];
+        const auto parentArea = exit->GetParentArea();
+        const auto parentAreaFormTime = search->_areaFormTime[parentArea];
 
         // Check each form time individually and spread the ones which succeed. If any of them pass, set the evaluation success
         // to partial.
-        auto evalSuccess = EvalSuccess::NONE;
-        const auto& formTimes = FormTime::ALL_FORM_TIMES;
-        for (const auto& formTime : formTimes)
+        for (const auto& formTime : FormTime::ALL_FORM_TIMES)
         {
             if (formTime & parentAreaFormTime)
             {
@@ -781,7 +769,6 @@ namespace randomizer::logic::requirement
                 }
             }
         }
-
         return EvalSuccess::NONE;
     }
 

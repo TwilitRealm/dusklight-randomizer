@@ -7,10 +7,8 @@
 #include "logic/search.hpp"
 #include "logic/spoiler_log.hpp"
 #include "logic/world.hpp"
-#include "test/test.hpp"
 #include "seedgen/config.hpp"
 #include "seedgen/settings.hpp"
-#include "utility/log.hpp"
 #include "utility/time.hpp"
 
 #include <iostream>

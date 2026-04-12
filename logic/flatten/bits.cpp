@@ -5,7 +5,7 @@
 
 #include <iterator>
 
-BitVector::BitVector(std::list<int> bits)
+BitVector::BitVector(const std::list<int>& bits)
 {
     for (auto& i : bits)
     {

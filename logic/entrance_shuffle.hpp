@@ -33,7 +33,8 @@ namespace randomizer::logic::entrance_shuffle
                          std::unordered_map<entrance::Entrance*, entrance::Entrance*>& rollbacks,
                          const item_pool::ItemPool& completeItemPool);
 
-    void CheckEntrancesCompatibility(entrance::Entrance* entrance, entrance::Entrance* target);
+    void CheckEntrancesCompatibility(const entrance::Entrance* entrance,
+                                     const entrance::Entrance* target);
     void ChangeConnections(entrance::Entrance* entrance, entrance::Entrance* target);
     void RestoreConnections(entrance::Entrance* entrance, entrance::Entrance* target);
     void ConfirmReplacement(entrance::Entrance* entrance, entrance::Entrance* target);

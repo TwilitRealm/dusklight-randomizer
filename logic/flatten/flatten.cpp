@@ -1,30 +1,33 @@
 #include "flatten.hpp"
+
+#include <ranges>
+
 #include "../world.hpp"
 
 FlattenSearch::FlattenSearch(randomizer::logic::world::World* world_)
 {
     world = world_;
 
-    for (auto& [name, area] : world->GetAreaTable())
+    for (const auto& area : world->GetAreaTable() | std::views::values)
     {
-        for (auto& exit : area->GetExits())
+        for (const auto& exit : area->GetExits())
         {
             auto visit = visitor(exit, this);
             visitReq(exit->GetRequirement(), visit, world);
         }
 
-        for (auto& event : area->GetEvents())
+        for (const auto& event : area->GetEvents())
         {
             auto visit = visitor(event, this);
             visitReq(event->GetRequirement(), visit, world);
         }
     }
 
-    auto root = world->GetRootArea();
+    const auto root = world->GetRootArea();
     // Start with all formtimes at the root, false for everything else
     auto formTimes = randomizer::logic::requirement::FormTime::ALL_FORM_AND_DAY_TIMES;
     formTimes.push_back(randomizer::logic::requirement::FormTime::TWILIGHT);
-    for (const auto& [areaName, area] : world->GetAreaTable())
+    for (const auto& area : world->GetAreaTable() | std::views::values)
     {
         for (const auto& formTime : formTimes)
         {
@@ -73,7 +76,7 @@ void FlattenSearch::doSearch()
     }
 
     std::unordered_map<std::string, std::list<randomizer::logic::area::LocationAccess*>> itemLocations = {};
-    for (auto& [name, area] : world->GetAreaTable())
+    for (const auto& area : world->GetAreaTable() | std::views::values)
     {
         for (auto& locAccess : area->GetLocations())
         {
@@ -97,7 +100,7 @@ void FlattenSearch::doSearch()
     for (auto& [locName, accessList] : itemLocations)
     {
         auto expr = DNF::False();
-        for (auto& locAcc : accessList)
+        for (const auto& locAcc : accessList)
         {
             for (const auto& formTime : formTimes)
             {

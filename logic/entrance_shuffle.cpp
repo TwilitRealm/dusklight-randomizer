@@ -108,8 +108,7 @@ namespace randomizer::logic::entrance_shuffle
                     doors.pop_back();
 
                     auto coupledDoorItr =
-                        std::find_if(doors.begin(),
-                                     doors.end(),
+                        std::ranges::find_if(doors,
                                      [&](const auto& door) { return door->IsPrimary() == mainDoor->IsPrimary(); });
                     auto coupledDoor = *coupledDoorItr;
 
@@ -145,13 +144,9 @@ namespace randomizer::logic::entrance_shuffle
             // Remove Hyrule Castle if it's not being shuffled
             if (world->Setting("Randomize Dungeon Entrances") != "On + Hyrule Castle")
             {
-                auto& dungeonPool = entrancePools[Type::DUNGEON];
-                auto removed = std::remove_if(
-                    dungeonPool.begin(),
-                    dungeonPool.end(),
-                    [](const auto& entrance)
-                    { return entrance->GetOriginalName() == "Castle Town North Inside Barrier -> Hyrule Castle Entrance"; });
-                dungeonPool.erase(removed, dungeonPool.end());
+                std::erase_if(entrancePools[Type::DUNGEON], [](const auto& entrance) {
+                    return entrance->GetOriginalName() == "Castle Town North Inside Barrier -> Hyrule Castle Entrance";
+                });
             }
 
             if (world->Setting("Decouple Entrances") == "On")
@@ -215,11 +210,9 @@ namespace randomizer::logic::entrance_shuffle
             const auto& mixedPools = world->GetSettings().GetMixedEntrancePools();
             bool excludeOverworldReverse =
                  world->Setting("Decouple Entrances") == "Off" &&
-                 std::any_of(
-                    mixedPools.begin(),
-                    mixedPools.end(),
-                    [](const auto& pool)
-                    { return randomizer::utility::container::ElementInContainer(pool, "Overworld"); }); /*Overworld in a mixed pool*/
+                 std::ranges::any_of(mixedPools, [](const auto& pool) {
+                     return randomizer::utility::container::ElementInContainer(pool, "Overworld");
+                 }); /*Overworld in a mixed pool*/
             entrancePools[Type::OVERWORLD] =
                 world->GetShuffleableEntrances(Type::OVERWORLD, /*onlyPrimary = */ excludeOverworldReverse);
         }
@@ -311,10 +304,9 @@ namespace randomizer::logic::entrance_shuffle
                 EntrancePool spawnPool = {};
                 auto world = entrancePool[0]->GetWorld();
                 // Get all the entrances of these types to use as spawn targets
-                for (const auto& type : {Type::SPAWN, Type::INTERIOR, Type::CAVE, Type::OVERWORLD, Type::GROTTO})
+                for (const auto& typeForSpawn : {Type::SPAWN, Type::INTERIOR, Type::CAVE, Type::OVERWORLD, Type::GROTTO})
                 {
-                    auto entrances = world->GetShuffleableEntrances(type);
-                    for (const auto& entrance : entrances)
+                    for (const auto& entrance : world->GetShuffleableEntrances(typeForSpawn))
                     {
                         auto newTarget = entrance->GetNewTarget();
                         spawnPool.push_back(newTarget);
@@ -669,7 +661,7 @@ namespace randomizer::logic::entrance_shuffle
         return false;
     }
 
-    void CheckEntrancesCompatibility(Entrance* entrance, Entrance* target)
+    void CheckEntrancesCompatibility(const Entrance* entrance, const Entrance* target)
     {
         if (entrance->GetReverse() && entrance->GetReverse() == target->GetReplaces())
         {
@@ -743,9 +735,9 @@ namespace randomizer::logic::entrance_shuffle
         auto sphereZeroSearch = search::Search::SphereZero(&worlds);
         sphereZeroSearch.SearchWorlds();
         const auto& foundLocations = sphereZeroSearch._visitedLocations;
-        auto numSphereZeroLocations = std::count_if(foundLocations.begin(),
-                                                    foundLocations.end(),
-                                                    [](const auto& location) { return location->IsProgression(); });
+        const auto numSphereZeroLocations = std::ranges::count_if(foundLocations, [](const auto& location) {
+            return location->IsProgression();
+        });
 
         // If there are no sphere zero locations available and we didn't find an accessible disconnected exit, then this world will not
         // be valid. Often times when many entrances are randomized we won't find any locations, but will find accessible disconnected

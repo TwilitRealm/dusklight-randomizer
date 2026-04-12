@@ -7,7 +7,7 @@ namespace randomizer::logic::location
 {
     Location::Location(const int& id,
                        const std::string& name,
-                       std::unordered_set<std::string> categories,
+                       const std::unordered_set<std::string>& categories,
                        world::World* world,
                        item::Item* originalItem,
                        const bool& goalLocation,

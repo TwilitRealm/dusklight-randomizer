@@ -369,13 +369,13 @@ namespace randomizer::logic::item_pool
         return initialJunkPool;
     }
 
-    ItemPool GetCompleteItemPool(world::WorldPool& worlds)
+    ItemPool GetCompleteItemPool(const world::WorldPool& worlds)
     {
         ItemPool completeItemPool = {};
         for (const auto& world : worlds)
         {
             auto& worldItemPool = world->GetItemPool();
-            std::copy(worldItemPool.begin(), worldItemPool.end(), std::back_inserter(completeItemPool));
+            std::ranges::copy(worldItemPool, std::back_inserter(completeItemPool));
         }
 
         return completeItemPool;

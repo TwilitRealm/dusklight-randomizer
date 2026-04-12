@@ -12,19 +12,19 @@
 
 namespace randomizer::logic::spoiler_log
 {
-    std::string SpoilerFormatLocation(location::Location* location, const size_t& longestNameLength)
+    std::string SpoilerFormatLocation(const location::Location* location, const size_t& longestNameLength)
     {
-        auto numSpaces = longestNameLength - location->GetName().length();
-        std::string spaces(numSpaces, ' ');
+        const auto numSpaces = longestNameLength - location->GetName().length();
+        const std::string spaces(numSpaces, ' ');
 
         return location->GetName() + ": " + spaces + location->GetCurrentItem()->GetName();
     }
 
-    std::string SpoilerFormatEntrance(entrance::Entrance* entrance, const size_t& longestNameLength)
+    std::string SpoilerFormatEntrance(const entrance::Entrance* entrance, const size_t& longestNameLength)
     {
-        auto numSpaces = longestNameLength - entrance->GetAlias().length();
-        std::string spaces(numSpaces, ' ');
-        auto replacement = entrance->GetReplaces();
+        const auto numSpaces = longestNameLength - entrance->GetAlias().length();
+        const std::string spaces(numSpaces, ' ');
+        const auto replacement = entrance->GetReplaces();
 
         return entrance->GetAlias() + ": " + spaces + replacement->GetAliasFrom();
     }
@@ -205,9 +205,9 @@ namespace randomizer::logic::spoiler_log
                         mixedPools.pop_front();
                     }
                     spoilerLog << "        " << typeStr << ":" << std::endl;
-                    std::sort(entrancePool.begin(),
-                              entrancePool.end(),
-                              [](auto& e1, auto& e2) { return e1->GetID() < e2->GetID(); });
+                    std::ranges::sort(entrancePool, [](auto& e1, auto& e2) {
+                        return e1->GetID() < e2->GetID();
+                    });
                     for (const auto& entrance : entrancePool)
                     {
                         // Ignore entrances that are impossible

@@ -1,7 +1,6 @@
 #include "settings.hpp"
 
 #include "../utility/log.hpp"
-#include "../utility/platform.hpp"
 #include "../utility/container.hpp"
 #include "../utility/file.hpp"
 #include "../utility/random.hpp"
@@ -10,7 +9,6 @@
 
 #include <unordered_map>
 #include <algorithm>
-#include <iostream>
 #include <memory>
 
 namespace randomizer::seedgen::settings
@@ -54,16 +52,16 @@ namespace randomizer::seedgen::settings
         // The logic expression of a setting replaces spaces with underscores,
         // and removes apostraphes and parenthesis
         auto logicName = name;
-        std::replace(logicName.begin(), logicName.end(), ' ', '_');
-        randomizer::utility::str::Erase(logicName, "'", ")", "(");
+        std::ranges::replace(logicName, ' ', '_');
+        utility::str::Erase(logicName, "'", ")", "(");
         this->_logicName = logicName;
 
         // Same for logic expressions of options for this setting
         for (const auto& option : options)
         {
             auto logicOption = option;
-            std::replace(logicOption.begin(), logicOption.end(), ' ', '_');
-            randomizer::utility::str::Erase(logicOption, "'", ")", "(");
+            std::ranges::replace(logicOption, ' ', '_');
+            utility::str::Erase(logicOption, "'", ")", "(");
             this->_logicOptions.push_back(logicOption);
         }
     }

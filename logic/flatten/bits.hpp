@@ -12,7 +12,7 @@ class BitVector
 {
    public:
     BitVector() = default;
-    BitVector(std::list<int>);
+    explicit BitVector(const std::list<int>& bits);
 
     bool isEmpty() const;
     std::set<int> ints() const;

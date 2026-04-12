@@ -844,9 +844,9 @@ namespace randomizer::logic::world
         }
 
         auto allItemLocations = this->GetAllLocations();
-        int numEmptyLocations = std::count_if(allItemLocations.begin(),
-                                              allItemLocations.end(),
-                                              [](const auto& location) { return location->IsEmpty(); });
+        const auto numEmptyLocations = std::ranges::count_if(allItemLocations, [](const auto& location) {
+            return location->IsEmpty();
+        });
 
         // Create a copy of the real pool we just made. When adding junk items we want to add all the items from the junk pool
         // once if possible, then if there's more space left pick randomly from the full pool
@@ -873,7 +873,7 @@ namespace randomizer::logic::world
     void World::SetSearchStartingProperties(search::Search* search) const
     {
         // Set the root area to have all player forms and times of day (necessary for entrance rando validation)
-        auto root = this->GetRootArea();
+        const auto root = this->GetRootArea();
         search->_areaFormTime[root] = requirement::FormTime::ALL;
     }
 
@@ -885,10 +885,10 @@ namespace randomizer::logic::world
     void World::FinalizeBottleContents()
     {
         // Replace 3 bottles with other bottle contents we currently use.
-        auto bottleWithGreatFairiesTears = this->GetItem("Bottle with Great Fairies Tears");
-        auto bottleWithHalfMilk = this->GetItem("Bottle with Half Milk");
-        auto bottleWithLanternOil = this->GetItem("Bottle with Lantern Oil");
-        auto emptyBottle = this->GetItem("Empty Bottle");
+        const auto bottleWithGreatFairiesTears = this->GetItem("Bottle with Great Fairies Tears");
+        const auto bottleWithHalfMilk = this->GetItem("Bottle with Half Milk");
+        const auto bottleWithLanternOil = this->GetItem("Bottle with Lantern Oil");
+        const auto emptyBottle = this->GetItem("Empty Bottle");
         item_pool::ItemPool bottlePool = {bottleWithGreatFairiesTears,
                                                         bottleWithHalfMilk,
                                                         bottleWithLanternOil,

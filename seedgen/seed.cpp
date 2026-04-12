@@ -92,21 +92,18 @@ namespace randomizer::seedgen::seed
 
     std::string GenerateSeed()
     {
-        std::string adjective1, adjective2, noun;
-
-        adjective1 = adjectives[rand() % adjectives.size()];
-        adjective2 = adjectives[rand() % adjectives.size()];
-        noun = nouns[rand() % nouns.size()];
+        const std::string adjective1 = adjectives[rand() % adjectives.size()];
+        const std::string adjective2 = adjectives[rand() % adjectives.size()];
+        const std::string noun = nouns[rand() % nouns.size()];
 
         return adjective1 + adjective2 + noun;
     }
 
     std::string GenerateHash()
     {
-        std::string noun1, noun2, noun3;
-        noun1 = randomizer::utility::random::RandomElement(nouns);
-        noun2 = randomizer::utility::random::RandomElement(nouns);
-        noun3 = randomizer::utility::random::RandomElement(nouns);
+        const std::string noun1 = utility::random::RandomElement(nouns);
+        const std::string noun2 = utility::random::RandomElement(nouns);
+        const std::string noun3 = utility::random::RandomElement(nouns);
 
         return noun1 + " " + noun2 + " " + noun3;
     }

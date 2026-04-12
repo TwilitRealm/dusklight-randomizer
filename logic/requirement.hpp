@@ -1,6 +1,5 @@
 #pragma once
 
-#include <memory>
 #include <string>
 #include <variant>
 #include <vector>
@@ -108,6 +107,7 @@ namespace randomizer::logic::requirement
      * for checking settings when reading them in from, for example, startflags.yaml
      *
      * @param req - The simple requirement
+     * @param world - The world this requirement is for
      * @return true if the requirment holds, false otherwise
      */
     bool EvaluateSimpleRequirement(const Requirement& req, world::World* world);

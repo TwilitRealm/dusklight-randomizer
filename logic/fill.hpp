@@ -18,9 +18,10 @@ namespace randomizer::logic::fill
      *
      *  @param worlds The worlds to fill with items
      *  @param itemsToPlacePool The pool of items which we want to place
-     *  @param itemsNotYetPlaced The pool of items which aren't placed yet, but will be later. This is important for the assumed
-     * fill algorithm since we need to assume we have these items.
+     *  @param itemsNotYetPlaced The pool of items which aren't placed yet, but will be later.
+     *  This is important for the assumed fill algorithm since we need to assume we have these items.
      *  @param allowedLocations Locations where items in itemsToPlacePool are allowed to be filled.
+     *  @param worldToFill A specific world to fill. If -1 (default), then all worlds are considered
      */
     void AssumedFill(world::WorldPool& worlds,
                      item_pool::ItemPool& itemsToPlacePool,

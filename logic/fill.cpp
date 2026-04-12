@@ -37,15 +37,15 @@ namespace randomizer::logic::fill
 
         // Place remaining major items in progress locations
         auto majorItems =
-            randomizer::utility::container::FilterAndEraseFromVector(itemPool, [](const auto& item) { return item->IsMajor(); });
+            utility::container::FilterAndEraseFromVector(itemPool, [](const auto& item) { return item->IsMajor(); });
         auto progressLocations =
-            randomizer::utility::container::FilterFromVector(locationPool,
+            utility::container::FilterFromVector(locationPool,
                                                         [](const auto& location) { return location->IsProgression(); });
         AssumedFill(worlds, majorItems, itemPool, progressLocations);
 
         // Place Minor items in progression locations if possible
         auto minorItems =
-            randomizer::utility::container::FilterAndEraseFromVector(itemPool, [](const auto& item) { return item->IsMinor(); });
+            utility::container::FilterAndEraseFromVector(itemPool, [](const auto& item) { return item->IsMinor(); });
         FastFill(minorItems, progressLocations);
 
         // If there are still minor items left, add them back to the main item pool
@@ -80,11 +80,11 @@ namespace randomizer::logic::fill
             if (retries <= 0)
             {
                 std::string errorMsg = "Ran out of retries while attempting to place the following items:\n";
-                int count = itemsToPlacePool.size() > 5 ? 5 : itemsToPlacePool.size();
+                const auto count = itemsToPlacePool.size() > 5 ? 5 : itemsToPlacePool.size();
 
                 for (int i = 0; i < count; i++)
                 {
-                    auto& item = itemsToPlacePool[i];
+                    const auto& item = itemsToPlacePool[i];
                     errorMsg += "- " + item->GetName() + "\n";
                 }
 
@@ -99,7 +99,7 @@ namespace randomizer::logic::fill
             retries -= 1;
             unsuccessfulPlacement = false;
 
-            randomizer::utility::random::ShufflePool(itemsToPlacePool);
+            utility::random::ShufflePool(itemsToPlacePool);
             auto itemsToPlace = itemsToPlacePool;
             location::LocationPool rollbacks = {};
 
@@ -109,7 +109,7 @@ namespace randomizer::logic::fill
                 auto itemToPlace = itemsToPlace.back();
                 itemsToPlace.pop_back();
 
-                randomizer::utility::random::ShufflePool(allowedLocations);
+                utility::random::ShufflePool(allowedLocations);
                 location::Location* spotToFill = nullptr;
 
                 // Assume we have all the items which haven't been played yet, except the one we're about to place
@@ -147,14 +147,10 @@ namespace randomizer::logic::fill
                     }
 
                     // If any of the LocationAccess spots evaluate to complete, then we can place an item here
-                    if (std::any_of(locAccList.begin(),
-                                    locAccList.end(),
-                                    [&](const auto& la)
-                                    {
-                                        return canChooseAnyLocation ||
-                                               requirement::EvaluateLocationRequirement(&search, la) ==
-                                                   requirement::EvalSuccess::COMPLETE;
-                                    }))
+                    if (std::ranges::any_of(locAccList, [&](const auto& la) {
+                        return canChooseAnyLocation ||
+                               requirement::EvaluateLocationRequirement(&search, la) == requirement::EvalSuccess::COMPLETE;
+                    }))
                     {
                         spotToFill = location;
                         break;
@@ -191,7 +187,7 @@ namespace randomizer::logic::fill
     void FastFill(item_pool::ItemPool& itemsToPlace, location::LocationPool allowedLocations)
     {
         auto emptyLocations =
-            randomizer::utility::container::FilterFromVector(allowedLocations,
+            utility::container::FilterFromVector(allowedLocations,
                                                         [](const auto& location) { return location->IsEmpty(); });
 
         if (itemsToPlace.size() > emptyLocations.size())
@@ -200,14 +196,14 @@ namespace randomizer::logic::fill
                       << " Locations: " << emptyLocations.size() << std::endl;
         }
 
-        randomizer::utility::random::ShufflePool(emptyLocations);
+        utility::random::ShufflePool(emptyLocations);
         for (auto& location : emptyLocations)
         {
             if (itemsToPlace.empty())
             {
                 break;
             }
-            location->SetCurrentItem(randomizer::utility::random::PopRandomElement(itemsToPlace));
+            location->SetCurrentItem(utility::random::PopRandomElement(itemsToPlace));
         }
     }
 
@@ -233,7 +229,7 @@ namespace randomizer::logic::fill
             // pool of locations and have to be found in the intro. We also include the lantern, shadow crystal, and progressive
             // fishing rod because those items can lock prologue locations also.
             auto& itemPool = world->GetItemPool();
-            auto prologueItems = randomizer::utility::container::FilterAndEraseFromVector(
+            auto prologueItems = utility::container::FilterAndEraseFromVector(
                 itemPool,
                 [](const auto& item)
                 {
@@ -258,14 +254,14 @@ namespace randomizer::logic::fill
         location::LocationPool goalLocations = {};
 
         // Filter out goal locations
-        goalLocations = randomizer::utility::container::FilterFromVector(
+        goalLocations = utility::container::FilterFromVector(
             allLocations,
             [](const auto& location) { return location->IsGoalLocation() && location->IsEmpty(); });
 
         // Filter out goal items
         std::set<std::string> goalItemNames = {"Progressive Mirror Shard", "Progressive Fused Shadow"};
 
-        auto goalItems = randomizer::utility::container::FilterAndEraseFromVector(
+        auto goalItems = utility::container::FilterAndEraseFromVector(
             world->GetItemPool(),
             [&](const auto& item) { return goalItemNames.contains(item->GetName()); });
 
@@ -286,7 +282,7 @@ namespace randomizer::logic::fill
         {
             // Filter hint signs out of dungeon locations
             auto dungeonLocations = dungeon->GetLocations();
-            randomizer::utility::container::FilterAndEraseFromVector(dungeonLocations,
+            utility::container::FilterAndEraseFromVector(dungeonLocations,
                                                                 [](const auto& location)
                                                                 { return location->HasCategories("Hint Sign"); });
 
@@ -298,7 +294,7 @@ namespace randomizer::logic::fill
             // Small Keys
             if (world->Setting("Small Keys") == "Own Dungeon")
             {
-                auto smallKeys = randomizer::utility::container::FilterAndEraseFromVector(
+                auto smallKeys = utility::container::FilterAndEraseFromVector(
                     world->GetItemPool(),
                     [&](const auto& item)
                     {
@@ -313,7 +309,7 @@ namespace randomizer::logic::fill
             // Big Keys
             if (world->Setting("Big Keys") == "Own Dungeon")
             {
-                auto bigKeys = randomizer::utility::container::FilterAndEraseFromVector(world->GetItemPool(),
+                auto bigKeys = utility::container::FilterAndEraseFromVector(world->GetItemPool(),
                                                                                    [&](const auto& item)
                                                                                    { return item == dungeon_->GetBigKey(); });
                 auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
@@ -323,7 +319,7 @@ namespace randomizer::logic::fill
             // Place maps and compasses last with fast fill since they're junk items
             if (world->Setting("Maps and Compasses") == "Own Dungeon")
             {
-                auto mapsCompasses = randomizer::utility::container::FilterAndEraseFromVector(
+                auto mapsCompasses = utility::container::FilterAndEraseFromVector(
                     world->GetItemPool(),
                     [&](const auto& item) { return item == dungeon_->GetCompass() || item == dungeon_->GetDungeonMap(); });
                 auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
@@ -345,7 +341,7 @@ namespace randomizer::logic::fill
         // Filter out goal items
         std::set<std::string> goalItemNames = {"Progressive Mirror Shard", "Progressive Fused Shadow"};
 
-        auto goalItems = randomizer::utility::container::FilterAndEraseFromVector(
+        auto goalItems = utility::container::FilterAndEraseFromVector(
             world->GetItemPool(),
             [&](const auto& item) { return goalItemNames.contains(item->GetName()); });
 
@@ -390,7 +386,7 @@ namespace randomizer::logic::fill
                 // Add small keys to the pool if small keys are any dungeon
                 if (world->Setting("Small Keys") == "Any Dungeon")
                 {
-                    auto smallKeys = randomizer::utility::container::FilterAndEraseFromVector(
+                    auto smallKeys = utility::container::FilterAndEraseFromVector(
                         world->GetItemPool(),
                         [&](const auto& item)
                         {
@@ -398,32 +394,31 @@ namespace randomizer::logic::fill
                                    (dungeon_->GetName() == "Snowpeak Ruins" &&
                                     (item->GetName() == "Ordon Pumpkin" || item->GetName() == "Ordon Cheese"));
                         });
-                    std::copy(smallKeys.begin(), smallKeys.end(), std::back_inserter(anyDungeonItems));
+                    std::ranges::copy(smallKeys, std::back_inserter(anyDungeonItems));
                 }
 
                 // Add big keys to the pool if big keys are any dungeon
                 if (world->Setting("Big Keys") == "Any Dungeon")
                 {
-                    auto bigKeys = randomizer::utility::container::FilterAndEraseFromVector(
+                    auto bigKeys = utility::container::FilterAndEraseFromVector(
                         world->GetItemPool(),
                         [&](const auto& item) { return item == dungeon_->GetBigKey(); });
-                    std::copy(bigKeys.begin(), bigKeys.end(), std::back_inserter(anyDungeonItems));
+                    std::ranges::copy(bigKeys, std::back_inserter(anyDungeonItems));
                 }
 
                 // Add maps and compasses to the pool if maps and compasses are any dungeon
                 if (world->Setting("Maps and Compasses") == "Any Dungeon")
                 {
-                    auto mapsCompasses = randomizer::utility::container::FilterAndEraseFromVector(
+                    auto mapsCompasses = utility::container::FilterAndEraseFromVector(
                         world->GetItemPool(),
                         [&](const auto& item) { return item == dungeon_->GetCompass() || item == dungeon_->GetDungeonMap(); });
-                    std::copy(mapsCompasses.begin(), mapsCompasses.end(), std::back_inserter(anyDungeonItems));
+                    std::ranges::copy(mapsCompasses, std::back_inserter(anyDungeonItems));
                 }
 
                 // Add this dungeon's locations to the anyDungeonLocations pool. If this is a nonbarren dungeon, only include
                 // locations which are still progression. If it's a barren dungeon, include all the locations
                 auto dungeonLocations = dungeon->GetLocations();
-                std::copy_if(dungeonLocations.begin(),
-                             dungeonLocations.end(),
+                std::ranges::copy_if(dungeonLocations,
                              std::back_inserter(anyDungeonLocations),
                              [&](const auto& location) { return dungeon->ShouldBeBarren() || location->IsProgression(); });
             }
@@ -439,7 +434,7 @@ namespace randomizer::logic::fill
         item_pool::ItemPool overworldItems = {};
         location::LocationPool overworldLocations = world->GetAllLocations();
         // Filter out any nonprogress locations
-        randomizer::utility::container::FilterAndEraseFromVector(overworldLocations,
+        utility::container::FilterAndEraseFromVector(overworldLocations,
                                                             [](const auto& location) { return !location->IsProgression(); });
 
         for (const auto& [dungeonName, dungeon] : world->GetDungeonTable())
@@ -452,7 +447,7 @@ namespace randomizer::logic::fill
             // Add small keys to the pool if small keys are overworld
             if (world->Setting("Small Keys") == "Overworld")
             {
-                auto smallKeys = randomizer::utility::container::FilterAndEraseFromVector(
+                auto smallKeys = utility::container::FilterAndEraseFromVector(
                     world->GetItemPool(),
                     [&](const auto& item)
                     {
@@ -460,32 +455,32 @@ namespace randomizer::logic::fill
                                (dungeonName_ == "Snowpeak Ruins" &&
                                 (item->GetName() == "Ordon Pumpkin" || item->GetName() == "Ordon Cheese"));
                     });
-                std::copy(smallKeys.begin(), smallKeys.end(), std::back_inserter(overworldItems));
+                std::ranges::copy(smallKeys, std::back_inserter(overworldItems));
             }
 
             // Add big keys to the pool if big keys are overworld
             if (world->Setting("Big Keys") == "Overworld")
             {
-                auto bigKeys = randomizer::utility::container::FilterAndEraseFromVector(world->GetItemPool(),
+                auto bigKeys = utility::container::FilterAndEraseFromVector(world->GetItemPool(),
                                                                                    [&](const auto& item)
                                                                                    { return item == dungeon_->GetBigKey(); });
-                std::copy(bigKeys.begin(), bigKeys.end(), std::back_inserter(overworldItems));
+                std::ranges::copy(bigKeys, std::back_inserter(overworldItems));
             }
 
             // Add maps and compasses to the pool if maps and compasses are overworld
             if (world->Setting("Maps and Compasses") == "Overworld")
             {
-                auto mapsCompasses = randomizer::utility::container::FilterAndEraseFromVector(
+                auto mapsCompasses = utility::container::FilterAndEraseFromVector(
                     world->GetItemPool(),
                     [&](const auto& item) { return item == dungeon_->GetCompass() || item == dungeon_->GetDungeonMap(); });
-                std::copy(mapsCompasses.begin(), mapsCompasses.end(), std::back_inserter(overworldItems));
+                std::ranges::copy(mapsCompasses, std::back_inserter(overworldItems));
             }
 
             // Remove this dungeon's locations from the overworldLocations pool
-            overworldLocations = randomizer::utility::container::FilterFromVector(
+            overworldLocations = utility::container::FilterFromVector(
                 overworldLocations,
                 [&](const auto& location)
-                { return !randomizer::utility::container::ElementInContainer(dungeon_->GetLocations(), location); });
+                { return !utility::container::ElementInContainer(dungeon_->GetLocations(), location); });
         }
 
         // Place the dungeon items in the overworld locations

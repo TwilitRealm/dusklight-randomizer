@@ -5,7 +5,6 @@
 #include "../randomizer.hpp"
 
 #include <algorithm>
-#include <iostream>
 #include <unordered_set>
 
 namespace randomizer::logic::area
@@ -128,8 +127,7 @@ namespace randomizer::logic::area
 
     void Area::RemoveExit(entrance::Entrance* exit)
     {
-        auto removed = std::remove_if(this->_exits.begin(), this->_exits.end(), [&](const auto& e) { return e.get() == exit; });
-        this->_exits.erase(removed, this->_exits.end());
+        std::erase_if(this->_exits, [&](const auto& e) { return e.get() == exit; });
     }
 
     void Area::AddEntrance(entrance::Entrance* entrance)
@@ -139,8 +137,7 @@ namespace randomizer::logic::area
 
     void Area::RemoveEntrance(entrance::Entrance* entrance)
     {
-        auto removed = std::remove(this->_entrances.begin(), this->_entrances.end(), entrance);
-        this->_entrances.erase(removed, this->_entrances.end());
+        std::erase(this->_entrances, entrance);
     }
 
     std::list<entrance::Entrance*> Area::GetEntrances() const
@@ -234,8 +231,7 @@ namespace randomizer::logic::area
         // hint regions, filter out the dungeon ones.
         const auto& dungeons = this->GetWorld()->GetDungeonTable();
         std::set<std::string> dungeonRegions = {};
-        std::copy_if(hintRegions.begin(),
-                     hintRegions.end(),
+        std::ranges::copy_if(hintRegions,
                      std::inserter(dungeonRegions, dungeonRegions.begin()),
                      [&](const auto& hintRegion) { return dungeons.contains(hintRegion); });
         // If we have less dungeons than total hint regions, we have at least one overworld hint region

@@ -3,6 +3,7 @@
 #include "entrance.hpp"
 #include "requirement.hpp"
 
+#include <memory>
 #include <set>
 #include <list>
 

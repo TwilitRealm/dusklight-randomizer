@@ -6,6 +6,7 @@
 #include "../utility/platform.hpp"
 
 #include <fstream>
+#include <iostream>
 
 namespace randomizer::logic::search
 {
@@ -85,7 +86,7 @@ namespace randomizer::logic::search
             this->_newThingsFound = false;
 
             // Add an empty sphere if we're generating the playthrough or tracker spheres
-            if (randomizer::utility::general::IsAnyOf(this->_searchMode,
+            if (utility::general::IsAnyOf(this->_searchMode,
                                                  SearchMode::GENERATE_PLAYTHROUGH,
                                                  SearchMode::TRACKER_SPHERES))
             {
@@ -100,7 +101,7 @@ namespace randomizer::logic::search
                 this->_newThingsFound = false;
                 this->ProcessEvents();
                 this->ProcessExits();
-            } while (this->_newThingsFound && randomizer::utility::general::IsAnyOf(this->_searchMode,
+            } while (this->_newThingsFound && utility::general::IsAnyOf(this->_searchMode,
                                                                                SearchMode::GENERATE_PLAYTHROUGH,
                                                                                SearchMode::TRACKER_SPHERES));
 
@@ -142,7 +143,7 @@ namespace randomizer::logic::search
 
             // If the exit is successful
             auto evalSuccess = requirement::EvaluateExitRequirement(this, exit);
-            if (randomizer::utility::general::IsAnyOf(evalSuccess,
+            if (utility::general::IsAnyOf(evalSuccess,
                                                       requirement::EvalSuccess::COMPLETE,
                                                       requirement::EvalSuccess::PARTIAL))
             {
@@ -188,7 +189,7 @@ namespace randomizer::logic::search
                 this->_newThingsFound = true;
                 // If we're calculating spheres, then process this location later for accurate sphere calculation. Otherwise
                 // process it now for slightly faster searching
-                if (randomizer::utility::general::IsAnyOf(this->_searchMode,
+                if (utility::general::IsAnyOf(this->_searchMode,
                                                      SearchMode::GENERATE_PLAYTHROUGH,
                                                      SearchMode::TRACKER_SPHERES))
                 {
@@ -251,21 +252,17 @@ namespace randomizer::logic::search
 
         // If we're generating the playthrough or just checking for beatability, then we can stop searching early if we've
         // found all world's game winning items
-        if (randomizer::utility::general::IsAnyOf(this->_searchMode, SearchMode::GENERATE_PLAYTHROUGH, SearchMode::GAME_BEATABLE) &&
+        if (utility::general::IsAnyOf(this->_searchMode, SearchMode::GENERATE_PLAYTHROUGH, SearchMode::GAME_BEATABLE) &&
             location->GetCurrentItem()->IsGameWinningItem())
         {
-            if (std::count_if(this->_ownedItems.begin(),
-                              this->_ownedItems.end(),
-                              [](const auto& item) { return item->IsGameWinningItem(); }) == this->_worlds->size())
+            if (std::ranges::count_if(this->_ownedItems, [](const auto& item) {
+                return item->IsGameWinningItem();
+            }) == this->_worlds->size())
             {
                 if (this->_searchMode == SearchMode::GENERATE_PLAYTHROUGH)
                 {
                     auto& lastSphere = this->_playthroughSpheres.back();
-                    lastSphere.erase(
-                        std::remove_if(lastSphere.begin(),
-                                       lastSphere.end(),
-                                       [](const auto& location) { return !location->GetCurrentItem()->IsGameWinningItem(); }),
-                        lastSphere.end());
+                    std::erase_if(lastSphere,[](const auto& loc) { return !loc->GetCurrentItem()->IsGameWinningItem(); });
                 }
                 this->_isBeatable = true;
             }
@@ -355,7 +352,7 @@ namespace randomizer::logic::search
 
     void Search::AddExitToEntranceSpheres(entrance::Entrance* exit)
     {
-        if (randomizer::utility::general::IsAnyOf(this->_searchMode,
+        if (utility::general::IsAnyOf(this->_searchMode,
                                              SearchMode::GENERATE_PLAYTHROUGH,
                                              SearchMode::TRACKER_SPHERES) &&
             exit->IsShuffled())
@@ -402,8 +399,8 @@ namespace randomizer::logic::search
             }
             else
             {
-                itemItr++; // Only incremement if we don't erase
-                entranceItr++;
+                ++itemItr; // Only incremement if we don't erase
+                ++entranceItr;
             }
         }
     }
@@ -448,7 +445,7 @@ namespace randomizer::logic::search
             // Make edge connections defined by events
             for (const auto& event : area->GetEvents())
             {
-                auto color = this->_ownedEvents.contains(event->GetEventIndex()) ? "blue" : "red";
+                color = this->_ownedEvents.contains(event->GetEventIndex()) ? "blue" : "red";
                 auto eventName = world->GetEventName(event->GetEventIndex());
                 worldGraph << "\t\"" << eventName << "\"[label=<" << eventName << "> shape=\"plain\" fontcolor=\"" << color
                            << "\"];";
@@ -460,7 +457,7 @@ namespace randomizer::logic::search
             {
                 if (exit->GetConnectedArea())
                 {
-                    auto color = this->_successfulExits.contains(exit) ? "black" : "red";
+                    color = this->_successfulExits.contains(exit) ? "black" : "red";
                     worldGraph << "\t\"" << areaName << "\" -> \"" << exit->GetConnectedArea()->GetName()
                                << "\"[dir=forward color=\"" << color << "\"]";
                 }
@@ -470,7 +467,7 @@ namespace randomizer::logic::search
             for (const auto& locAccess : area->GetLocations())
             {
                 auto location = locAccess->GetLocation();
-                auto color = this->_visitedLocations.contains(location) ? "black" : "red";
+                color = this->_visitedLocations.contains(location) ? "black" : "red";
                 worldGraph << "\t\"" << location->GetName() << "\"[label=<" << location->GetName() << ":<br/>"
                            << location->GetCurrentItem()->GetName() << "> shape=\"plain\" fontcolor=\"" << color << "\"];";
                 worldGraph << "\t\"" << areaName << "\" -> \"" << location->GetName() << "\"[dir=forward color=\"" << color
@@ -495,9 +492,9 @@ namespace randomizer::logic::search
             if (world->Setting("Logic Rules") == "All Locations Reachable")
             {
                 auto numlocationsReached =
-                    std::count_if(search._visitedLocations.begin(),
-                                  search._visitedLocations.end(),
-                                  [&](const auto& location) { return location->GetWorld() == world.get(); });
+                    std::ranges::count_if(search._visitedLocations, [&](const auto& location) {
+                        return location->GetWorld() == world.get();
+                    });
                 auto allLocations = world->GetAllLocations(/*includeNonItemLocations = */ true);
 
                 if (numlocationsReached != allLocations.size())
@@ -530,7 +527,7 @@ namespace randomizer::logic::search
         return std::nullopt;
     }
 
-    void GeneratePlaythrough(randomizer::Randomizer* randomizer)
+    void GeneratePlaythrough(Randomizer* randomizer)
     {
         auto& worlds = randomizer->GetWorlds();
         LOG_TO_DEBUG("Generating Playthrough");
@@ -565,7 +562,7 @@ namespace randomizer::logic::search
             }
         }
 
-        randomizer::utility::platform::Log("Paring down playthrough");
+        utility::platform::Log("Paring down playthrough");
         // Pare down the playthrough in reverse order so we're paring it down from highest to lowest sphere.
         // This way, lower sphere items will be prioritized for the playthrough
         playthroughSpheres.reverse();
@@ -601,6 +598,7 @@ namespace randomizer::logic::search
 
         for (auto& sphere : entranceSpheres)
         {
+            // Make a copy to avoid iterator invalidation
             auto sphereCopy = sphere;
             for (const auto& entrance : sphereCopy)
             {
@@ -608,7 +606,7 @@ namespace randomizer::logic::search
                 if (GameBeatable(&worlds))
                 {
                     // If the game is still beatable then this entrance is not required
-                    sphere.erase(std::remove(sphere.begin(), sphere.end(), entrance), sphere.end());
+                    sphere.remove(entrance);
                     nonRequiredEntrances[entrance] = connectedArea;
                 }
                 else
@@ -634,14 +632,9 @@ namespace randomizer::logic::search
         // Erase all locations not in the playthrough locations set
         for (auto& sphere : newSearch._playthroughSpheres)
         {
-            auto sphereCopy = sphere;
-            for (const auto& location : sphereCopy)
-            {
-                if (!playthroughLocationsSet.contains(location))
-                {
-                    sphere.erase(std::remove(sphere.begin(), sphere.end(), location), sphere.end());
-                }
-            }
+            sphere.remove_if([&](const auto& location) {
+                return !playthroughLocationsSet.contains(location);
+            });
         }
 
         // Remove any empty spheres

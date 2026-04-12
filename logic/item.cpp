@@ -7,9 +7,11 @@ namespace randomizer::logic::item
 
     Importance ImportanceFromStr(const std::string& str)
     {
-        std::unordered_map<std::string, Importance> importances = {{"Major", Importance::MAJOR},
-                                                                   {"Minor", Importance::MINOR},
-                                                                   {"Junk", Importance::JUNK}};
+        const std::unordered_map<std::string, Importance> importances = {
+            {"Major", Importance::MAJOR},
+            {"Minor", Importance::MINOR},
+            {"Junk", Importance::JUNK}
+        };
 
         if (!importances.contains(str))
         {

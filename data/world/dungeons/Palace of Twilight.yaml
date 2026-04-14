@@ -88,8 +88,8 @@
 - Name: Palace of Twilight East Wing First Room Bottom
   Region: Palace of Twilight
   Locations:
-    Palace of Twilight East Wing First Room East Alcove: Light_Sword or 'Can_Place_East_Sol_at_Palace_of_Twilight_Entrance'
-    Palace of Twilight East Wing First Room West Alcove: Light_Sword or 'Can_Place_East_Sol_at_Palace_of_Twilight_Entrance'
+    Palace of Twilight East Wing First Room East Alcove Chest: Light_Sword or 'Can_Place_East_Sol_at_Palace_of_Twilight_Entrance'
+    Palace of Twilight East Wing First Room West Alcove Chest: Light_Sword or 'Can_Place_East_Sol_at_Palace_of_Twilight_Entrance'
   Exits:
     Palace of Twilight East Wing First Room Near Second Room: Double_Clawshots or Light_Sword or 'Can_Place_East_Sol_at_Palace_of_Twilight_Entrance'
 

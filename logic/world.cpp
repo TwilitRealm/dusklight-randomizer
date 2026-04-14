@@ -76,7 +76,7 @@ namespace randomizer::logic::world
 
     void World::Build()
     {
-        randomizer::utility::platform::Log(std::string("Building World ") + std::to_string(this->GetID()));
+        utility::platform::Log(std::string("Building World ") + std::to_string(this->GetID()));
         this->BuildItemTable();
         this->BuildLocationTable();
         this->LoadLogicMacros();
@@ -90,7 +90,7 @@ namespace randomizer::logic::world
         LOG_TO_DEBUG("Building Item Table for World " + std::to_string(this->GetID()));
         // Check if we can open the file before parsing
         auto filepath = RANDO_DATA_PATH "items.yaml";
-        randomizer::utility::file::Verify(filepath);
+        utility::file::Verify(filepath);
 
         auto itemDataTree = LoadYAML(filepath);
         // Process all nodes of the yaml file. Each node contains one item
@@ -157,8 +157,8 @@ namespace randomizer::logic::world
     {
         LOG_TO_DEBUG("Building Location Table for World " + std::to_string(this->GetID()));
         // check if we can open the file before parsing because exceptions won't work on console
-        auto filepath = RANDO_DATA_PATH "locations.yaml";
-        randomizer::utility::file::Verify(filepath);
+        const auto filepath = RANDO_DATA_PATH "locations.yaml";
+        utility::file::Verify(filepath);
 
         auto locationDataTree = LoadYAML(filepath);
         // Process all nodes of the yaml file. Each node contains one location
@@ -197,14 +197,16 @@ namespace randomizer::logic::world
             auto originalItem = this->GetItem(originalItemName);
             auto goalLocation = locationNode["Goal Location"].as<bool>(false);
             auto hintPriority = locationNode["Hint Priority"].as<std::string>("Never");
+            auto metadata = locationNode["Metadata"];
 
             auto location = std::make_unique<location::Location>(locationIdCounter++,
-                                                                               name,
-                                                                               categories,
-                                                                               this,
-                                                                               originalItem,
-                                                                               goalLocation,
-                                                                               hintPriority);
+                                                                 name,
+                                                                 categories,
+                                                                 this,
+                                                                 originalItem,
+                                                                 goalLocation,
+                                                                 hintPriority,
+                                                                 metadata);
 
             LOG_TO_DEBUG("Processing new location " + name + "\tid: " + std::to_string(locationIdCounter - 1) +
                          "\toriginal item: " + originalItemName);
@@ -220,7 +222,7 @@ namespace randomizer::logic::world
         LOG_TO_DEBUG("Loading Macros for World " + std::to_string(this->GetID()));
         // check if we can open the file before parsing
         auto filepath = RANDO_DATA_PATH "macros.yaml";
-        randomizer::utility::file::Verify(filepath);
+        utility::file::Verify(filepath);
 
         auto macrosDataTree = LoadYAML(filepath);
 
@@ -275,7 +277,7 @@ namespace randomizer::logic::world
         for (const auto& file : files)
         {
             auto filepath = folder + file;
-            randomizer::utility::file::Verify(filepath);
+            utility::file::Verify(filepath);
 
             auto worldDataTree = LoadYAML(filepath);
             for (const auto& areaNode : worldDataTree)
@@ -535,7 +537,7 @@ namespace randomizer::logic::world
             // Vanilla Small Keys
             if ((this->Setting("Small Keys") == "Vanilla" &&
                  (originalItem->IsDungeonSmallKey() ||
-                  randomizer::utility::str::Contains(originalItemName, "Ordon Pumpkin", "Ordon Cheese"))) ||
+                  utility::str::Contains(originalItemName, "Ordon Pumpkin", "Ordon Cheese"))) ||
                 // Vanilla Big Keys (only include Hyrule Castle Big Key if it has no requirements)
                 (this->Setting("Big Keys") == "Vanilla" && originalItem->IsBigKey() && 
                  (originalItemName != "Hyrule Castle Big Key" || this->Setting("Hyrule Castle Big Key Requirements") == "None")) ||
@@ -566,7 +568,7 @@ namespace randomizer::logic::world
                 // North Faron Woods Gate Key
                 (this->Setting("Skip Prologue") == "Off" && locationName == "Faron Mist Cave Open Chest") ||
                 // Some locations which will always be vanilla for the time being
-                (randomizer::utility::str::Contains(locationName,
+                (utility::str::Contains(locationName,
                                                "Renados Letter",
                                                "Telma Invoice",
                                                "Wooden Statue",
@@ -592,7 +594,7 @@ namespace randomizer::logic::world
 
                 location->SetCurrentItem(originalItem);
                 location->SetKnownVanillaItem(true);
-                randomizer::utility::container::Erase(this->_itemPool, originalItem);
+                utility::container::Erase(this->_itemPool, originalItem);
             }
         }
     }
@@ -608,7 +610,7 @@ namespace randomizer::logic::world
                                          "\" already exists there.");
             }
             location->SetCurrentItem(item);
-            randomizer::utility::container::Erase(this->_itemPool, item);
+            utility::container::Erase(this->_itemPool, item);
         }
     }
 
@@ -643,7 +645,7 @@ namespace randomizer::logic::world
                  location->HasCategories("Sky Book")) ||
                 // We're starting with a shop item, but shop items aren't randomized
                 (this->Setting("Shop Items") == "Off" && location->HasCategories("Shop") &&
-                 randomizer::utility::container::ElementInContainer(this->_startingItemPool, originalItem)))
+                 utility::container::ElementInContainer(this->_startingItemPool, originalItem)))
             {
                 location->RemoveCurrentItem();
                 location->SetKnownVanillaItem(false);
@@ -721,7 +723,7 @@ namespace randomizer::logic::world
             // assigned a goal location. Dungeons without a goal location cannot be chosen as required dungeons.
             if (!possibleGoalLocations.empty())
             {
-                dungeon->SetGoalLocation(randomizer::utility::random::RandomElement(possibleGoalLocations));
+                dungeon->SetGoalLocation(utility::random::RandomElement(possibleGoalLocations));
             }
             else
             {
@@ -737,16 +739,16 @@ namespace randomizer::logic::world
         {
             // Gather all boss locations (heart container and dungeon reward checks)
             auto bossLocations = this->GetAllLocations();
-            randomizer::utility::container::FilterAndEraseFromVector(
+            utility::container::FilterAndEraseFromVector(
                 bossLocations,
                 [](const auto& location)
-                { return !randomizer::utility::str::Contains(location->GetName(), "Heart Container", "Dungeon Reward"); });
+                { return !utility::str::Contains(location->GetName(), "Heart Container", "Dungeon Reward"); });
 
             // Gather all small key items
             item_pool::ItemPool smallKeys = {};
             for (const auto& [itemName, item] : this->_itemTable)
             {
-                if (item->IsDungeonSmallKey() || randomizer::utility::general::IsAnyOf(itemName,
+                if (item->IsDungeonSmallKey() || utility::general::IsAnyOf(itemName,
                                                                                   "Ordon Pumpkin",
                                                                                   "Ordon Cheese",
                                                                                   "North Faron Woods Gate Key",
@@ -858,11 +860,11 @@ namespace randomizer::logic::world
             item::Item* randomJunkItem;
             if (!mainJunkPool.empty())
             {
-                randomJunkItem = randomizer::utility::random::PopRandomElement(mainJunkPool);
+                randomJunkItem = utility::random::PopRandomElement(mainJunkPool);
             }
             else
             {
-                randomJunkItem = randomizer::utility::random::RandomElement(mainJunkPoolCopy);
+                randomJunkItem = utility::random::RandomElement(mainJunkPoolCopy);
             }
             this->_itemPool.emplace_back(randomJunkItem);
             LOG_TO_DEBUG("Added junk item \"" + randomJunkItem->GetName() + "\" to item pool for world " +
@@ -921,10 +923,10 @@ namespace randomizer::logic::world
             }
 
             // Place the new bottle items
-            randomizer::utility::random::ShufflePool(bottleLocations);
+            utility::random::ShufflePool(bottleLocations);
             for (auto& bottleLocation : bottleLocations)
             {
-                bottleLocation->SetCurrentItem(randomizer::utility::random::PopRandomElement(bottlePool));
+                bottleLocation->SetCurrentItem(utility::random::PopRandomElement(bottlePool));
             }
         }
     }
@@ -1109,7 +1111,7 @@ namespace randomizer::logic::world
         auto entrances = this->GetShuffleableEntrances(type, onlyPrimary);
 
         // Remove any entrances which aren't shuffled
-        randomizer::utility::container::FilterAndEraseFromVector(entrances, [](const auto& e) { return !e->IsShuffled(); });
+        utility::container::FilterAndEraseFromVector(entrances, [](const auto& e) { return !e->IsShuffled(); });
 
         return entrances;
     }
@@ -1163,7 +1165,7 @@ namespace randomizer::logic::world
         return this->_eventNames.at(eventIndex);
     }
 
-    randomizer::seedgen::settings::Setting& World::Setting(const std::string& settingName)
+    seedgen::settings::Setting& World::Setting(const std::string& settingName)
     {
         auto& settings = this->_settings;
         // Check to make sure the setting exists

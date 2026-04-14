@@ -11,14 +11,16 @@ namespace randomizer::logic::location
                        world::World* world,
                        item::Item* originalItem,
                        const bool& goalLocation,
-                       const std::string& hintPriority):
+                       const std::string& hintPriority,
+                       const YAML::Node& metadata):
         _id(id),
         _name(name),
         _categories(categories),
         _world(world),
         _originalItem(originalItem),
         _goalLocation(goalLocation),
-        _hintPriority(hintPriority)
+        _hintPriority(hintPriority),
+        _metadata(metadata)
     {
         this->_computedRequirement._type = requirement::Type::IMPOSSIBLE;
     }
@@ -104,6 +106,11 @@ namespace randomizer::logic::location
     bool Location::IsHinted() const
     {
         return this->_hinted;
+    }
+
+    const YAML::Node& Location::GetMetadata() const
+    {
+        return this->_metadata;
     }
 
     void Location::AddLocationAccess(area::LocationAccess* locAcc)

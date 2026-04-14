@@ -2,6 +2,7 @@
 
 #include "item.hpp"
 #include "requirement.hpp"
+#include "../utility/yaml.hpp"
 
 #include <stdexcept>
 #include <unordered_set>
@@ -28,7 +29,8 @@ namespace randomizer::logic::location
                  world::World* world,
                  item::Item* originalItem,
                  const bool& goalLocation,
-                 const std::string& hintPriority);
+                 const std::string& hintPriority,
+                 const YAML::Node& metadata);
 
         int GetID() const;
         std::string GetName() const;
@@ -46,6 +48,7 @@ namespace randomizer::logic::location
         bool IsProgression() const;
         void SetHinted(const bool& hinted);
         bool IsHinted() const;
+        const YAML::Node& GetMetadata() const;
         void AddLocationAccess(area::LocationAccess* locAcc);
         std::list<area::LocationAccess*> GetAccessList() const;
         void AddForbiddenItem(item::Item* forbiddenItem);
@@ -94,6 +97,7 @@ namespace randomizer::logic::location
         std::string _hintPriority = "Never";
         std::unordered_set<item::Item*> _forbiddenItems = {};
         requirement::Requirement _computedRequirement;
+        YAML::Node _metadata{};
         /**
          *  @brief _registeredLocationCategories is the set of all categories that are processed after reading locations.yaml.
          * This structure is held in the World class and every location in that world has a pointer to it.

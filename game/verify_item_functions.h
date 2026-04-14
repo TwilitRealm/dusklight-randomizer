@@ -11,5 +11,5 @@ u32 getProgressiveKeyShard();
 u32 getProgressiveMirrorShard();
 u32 getProgressiveFusedShadow();
 u8 getWarashibeItemCount();
-u32 verifyProgressiveItem();
+u32 verifyProgressiveItem(u32 item);
 

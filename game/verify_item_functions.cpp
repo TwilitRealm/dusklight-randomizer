@@ -247,13 +247,13 @@ u32 verifyProgressiveItem(u32 item)
         case dItemNo_Randomizer_COPY_ROD_e:
         case dItemNo_Randomizer_COPY_ROD_2_e:
         {
-            if (haveItem(dItemNo_Randomizer_COPY_ROD_e))
+            if (haveItem(dItemNo_Randomizer_COPY_ROD_2_e))
             {
-                item = dItemNo_Randomizer_COPY_ROD_2_e;
+                item = dItemNo_Randomizer_COPY_ROD_e;
             }
             else
             {
-                item = dItemNo_Randomizer_COPY_ROD_e;
+                item = dItemNo_Randomizer_COPY_ROD_2_e;
             }
             break;
         }

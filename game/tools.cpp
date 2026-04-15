@@ -1,4 +1,5 @@
 #include "tools.h"
+#include "stages.h"
 #include "d/d_com_inf_game.h"
 #include "d/actor/d_a_alink.h"
 #include "d/d_item.h"
@@ -91,4 +92,18 @@ int initCreatePlayerItem(u32 item, u32 flag, const cXyz* pos, int roomNo, const 
 {
     u32 params = 0xFF0000 | ((flag & 0xFF) << 0x8) | (item & 0xFF);
     return fopAcM_create(539, params, pos, roomNo, angle, scale, -1);
+}
+
+int getStageID(const char* stage)
+{
+    int loopCount = sizeof(allStages) / sizeof(allStages[0]);
+    for (int i = 0; i < loopCount; i++)
+    {
+        if (daAlink_c::checkStageName(allStages[i]))
+        {
+            return i;
+        }
+    }
+    // Didn't find the current stage for some reason
+    return -1;
 }

@@ -546,6 +546,67 @@
   Importance: Minor
   Id: 0x84
 
+- Name: Ordon Spring Portal
+  Importance: Major
+  Id: 0x14
+
+- Name: South Faron Portal
+  Importance: Major
+  Id: 0x15
+
+- Name: North Faron Portal
+  Importance: Major
+  Id: 0x3C
+
+- Name: Sacred Grove Portal
+  Importance: Major
+  Id: 0xBF
+
+- Name: Kakariko Gorge Portal
+  Importance: Major
+  Id: 0x4D
+
+- Name: Kakariko Village Portal
+  Importance: Major
+  Id: 0x4E
+
+- Name: Death Mountain Portal
+  Importance: Major
+  Id: 0x52
+
+- Name: Bridge of Eldin Portal
+  Importance: Major
+  Id: 0xE8
+
+- Name: Castle Town Portal
+  Importance: Major
+  Id: 0xB1
+
+- Name: Upper Zoras River Portal
+  Importance: Major
+  Id: 0xF7
+
+- Name: Zoras Domain Portal
+  Importance: Major
+  Id: 0x57
+
+- Name: Lake Hylia Portal
+  Importance: Major
+  Id: 0x8F
+
+- Name: Gerudo Desert Portal
+  Importance: Major
+  Id: 0x3B
+
+- Name: Mirror Chamber Portal
+  Importance: Major
+  Id: 0xAE
+
+- Name: Snowpeak Portal
+  Importance: Major
+  Id: 0xAF
+
+
 # Dummy Items that are used to represent other logical states (for now)
 
 - Name: Game Beatable

@@ -111,6 +111,22 @@ namespace randomizer::logic::item_pool
         {"Palace of Twilight Dungeon Map", 1},
         {"Hyrule Castle Dungeon Map", 1},
 
+        // Warp Portals
+        {"Ordon Spring Portal", 1},
+        {"South Faron Portal", 1},
+        {"North Faron Portal", 1},
+        {"Kakariko Gorge Portal", 1},
+        {"Kakariko Village Portal", 1},
+        {"Death Mountain Portal", 1},
+        {"Bridge of Eldin Portal", 1},
+        {"Zoras Domain Portal", 1},
+        {"Lake Hylia Portal", 1},
+        {"Castle Town Portal", 1},
+        {"Upper Zoras River Portal", 1},
+        {"Snowpeak Portal", 1},
+        {"Gerudo Desert Portal", 1},
+        {"Mirror Chamber Portal", 1},
+
         // Junk we should always have
         {"Purple Rupee Links House", 1},
         {"Green Rupee", 2},
@@ -352,6 +368,33 @@ namespace randomizer::logic::item_pool
             }
         }
 
+        // Handle warp portals
+        startingItems["Ordon Spring Portal"] = 1;
+        if (world->Setting("Faron Twilight Cleared") == "On")
+        {
+            startingItems["South Faron Portal"] = 1;
+            startingItems["North Faron Portal"] = 1;
+        }
+
+        if (world->Setting("Eldin Twilight Cleared") == "On")
+        {
+            startingItems["Kakariko Gorge Portal"] = 1;
+            startingItems["Kakariko Village Portal"] = 1;
+            startingItems["Death Mountain Portal"] = 1;
+        }
+
+        if (world->Setting("Lanayru Twilight Cleared") == "On")
+        {
+            startingItems["Zoras Domain Portal"] = 1;
+            startingItems["Lake Hylia Portal"] = 1;
+            startingItems["Castle Town Portal"] = 1;
+        }
+
+        if (world->Setting("Snowpeak Does Not Require Reekfish Scent") == "On")
+        {
+            startingItems["Snowpeak Portal"] = 1;
+        }
+
         // Add each item to the world's _startingItemPool and erase it from the regular _itemPool
         for (const auto& [itemName, count] : startingItems)
         {
@@ -360,7 +403,7 @@ namespace randomizer::logic::item_pool
             {
                 startingItemPool.push_back(item);
             }
-            randomizer::utility::container::Erase(itemPool, item, count);
+            utility::container::Erase(itemPool, item, count);
         }
     }
 

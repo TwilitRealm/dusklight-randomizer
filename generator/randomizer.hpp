@@ -2,6 +2,8 @@
 
 #include "logic/world.hpp"
 
+#include <optional>
+
 namespace randomizer
 {
     class Randomizer
@@ -12,9 +14,9 @@ namespace randomizer
         /**
          *  @brief Generates a complete randomizer seed
          *
-         *  @return 0 if no errors. 1 if there were errors
+         *  @return a std::optional<std::string> containing a message if there was an error.
          */
-        int Generate();
+        std::optional<std::string> Generate();
         void GenerateWorlds();
 
         auto& GetConfig() { return this->_config; }
@@ -26,6 +28,10 @@ namespace randomizer
 
         auto& GetPlaythroughSpheres() { return this->_playthroughSpheres; }
         auto& GetEntranceSpheres() { return this->_entranceSpheres; }
+
+        std::string GetSeedOutputPath();
+        const std::string& GetBaseOutputPath() const { return this->_baseOutputPath; };
+        void SetBaseOutputPath(const std::string& path) { this->_baseOutputPath = path + "randomizer/"; };
     private:
         seedgen::config::Config _config{};
         logic::world::WorldPool _worlds{};
@@ -37,5 +43,7 @@ namespace randomizer
         // Playthrough data
         std::list<std::list<logic::location::Location*>> _playthroughSpheres{};
         std::list<std::list<logic::entrance::Entrance*>> _entranceSpheres{};
+
+        std::string _baseOutputPath{RANDO_SAVE_PATH};
     };
 } // namespace randomizer

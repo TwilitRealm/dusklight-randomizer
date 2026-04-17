@@ -45,20 +45,20 @@ namespace randomizer::logic::spoiler_log
         log << YAML::Dump(randomizer->GetConfig().SettingsToYaml()) << std::endl;
     }
 
-    void GenerateSpoilerLog(randomizer::Randomizer* randomizer)
+    void GenerateSpoilerLog(Randomizer* randomizer)
     {
-        randomizer::utility::platform::Log("Generating Spoiler Log");
+        utility::platform::Log("Generating Spoiler Log");
 
-        // Create logs folder if it doesn't exist
-        if (!randomizer::utility::file::dirExists(LOGS_PATH))
+        // Create folders
+        if (!utility::file::dirExists(randomizer->GetSeedOutputPath()))
         {
-            randomizer::utility::file::create_directories(LOGS_PATH);
+            utility::file::create_directories(randomizer->GetSeedOutputPath());
         }
 
         auto& config = randomizer->GetConfig();
         auto& worlds = randomizer->GetWorlds();
 
-        std::string filepath = std::string(LOGS_PATH) + config.GetHash() + " Spoiler Log.txt";
+        std::string filepath = std::string(randomizer->GetSeedOutputPath()) + config.GetHash() + " Spoiler Log.txt";
         std::ofstream spoilerLog;
         spoilerLog.open(filepath);
 
@@ -228,18 +228,18 @@ namespace randomizer::logic::spoiler_log
 
         spoilerLog.close();
 
-        randomizer::utility::platform::Log("Wrote spoiler log to " + filepath);
+        utility::platform::Log("Wrote spoiler log to " + filepath);
     }
 
-    void GenerateAntiSpoilerLog(randomizer::Randomizer* randomizer)
+    void GenerateAntiSpoilerLog(Randomizer* randomizer)
     {
         // Create logs folder if it doesn't exist
-        if (!randomizer::utility::file::dirExists(LOGS_PATH))
+        if (!utility::file::dirExists(randomizer->GetSeedOutputPath()))
         {
-            randomizer::utility::file::create_directories(LOGS_PATH);
+            utility::file::create_directories(randomizer->GetSeedOutputPath());
         }
 
-        std::string filepath = std::string(LOGS_PATH) + randomizer->GetConfig().GetHash() + " Anti-Spoiler Log.txt";
+        std::string filepath = std::string(randomizer->GetSeedOutputPath()) + randomizer->GetConfig().GetHash() + " Anti-Spoiler Log.txt";
         std::ofstream antiSpoilerLog;
         antiSpoilerLog.open(filepath);
 

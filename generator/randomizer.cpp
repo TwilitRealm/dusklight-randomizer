@@ -15,7 +15,7 @@
 
 namespace randomizer
 {
-    int Randomizer::Generate()
+    std::optional<std::string> Randomizer::Generate()
     {
         try
         {
@@ -25,17 +25,17 @@ namespace randomizer
         {
             std::cout << "============================================================" << std::endl;
             std::cout << "The following exception occured: " << e.what() << std::endl;
-            return 1;
+            return e.what();
         }
 
-        return 0;
+        return std::nullopt;
     }
 
     void Randomizer::GenerateWorlds()
     {
         utility::time::ScopedTimer<"Seed generation took ", std::chrono::milliseconds> timer;
         this->_worlds.clear();
-        this->_config.LoadFromFile(SETTINGS_PATH, PREFERENCES_PATH);
+        this->_config.LoadFromFile(this->GetBaseOutputPath() + "settings.yaml", this->GetBaseOutputPath() + "preferences.yaml");
 
         utility::platform::Log(std::string("Seed: ") + this->_config.GetSeed());
 
@@ -110,5 +110,10 @@ namespace randomizer
             logic::spoiler_log::GenerateSpoilerLog(this);
         }
         logic::spoiler_log::GenerateAntiSpoilerLog(this);
+    }
+
+    std::string Randomizer::GetSeedOutputPath()
+    {
+        return this->_baseOutputPath + "seeds/" + this->_config.GetHash() + "/";
     }
 } // namespace randomizer

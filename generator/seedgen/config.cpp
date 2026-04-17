@@ -72,7 +72,7 @@ namespace randomizer::seedgen::config
                 // If the option doesn't exist, revert to default and rewrite later if necessary
                 if (settingInfo->GetIndexOfOption(settingOption) == -1)
                 {
-                    randomizer::utility::platform::Log(std::string("Setting \"") + settingName + "\" has no option \"" +
+                    utility::platform::Log(std::string("Setting \"") + settingName + "\" has no option \"" +
                                                   settingOption + "\". Reverting to default \"" +
                                                   settingInfo->GetDefaultOption() + "\"");
                     settingOption = settingInfo->GetDefaultOption();
@@ -148,7 +148,7 @@ namespace randomizer::seedgen::config
                 // If the option doesn't exist, revert to default and rewrite later if necessary
                 if (preferenceInfo->GetIndexOfOption(preferenceOption) == -1)
                 {
-                    randomizer::utility::platform::Log(std::string("Preference \"") + preferenceName + " has no option \"" +
+                    utility::platform::Log(std::string("Preference \"") + preferenceName + " has no option \"" +
                                                   preferenceOption + "\". Reverting to default \"" +
                                                   preferenceInfo->GetDefaultOption() + "\"");
                     preferenceOption = preferenceInfo->GetDefaultOption();
@@ -182,7 +182,7 @@ namespace randomizer::seedgen::config
             {
                 settings.InsertSetting(settingName,
                                        settings::Setting(settingInfo.get(), settingInfo->GetDefaultOption()));
-                randomizer::utility::platform::Log(std::string("Added missing setting \"") + settingName + "\"");
+                utility::platform::Log(std::string("Added missing setting \"") + settingName + "\"");
                 if (settingInfo->GetType() == settings::Type::STANDARD)
                 {
                     rewriteSettings = true;
@@ -196,7 +196,7 @@ namespace randomizer::seedgen::config
         if (!settingsTree["Seed"])
         {
             this->_seed = seed::GenerateSeed();
-            randomizer::utility::platform::Log("Seed is missing. Generated new seed.");
+            utility::platform::Log("Seed is missing. Generated new seed.");
             rewriteSettings = true;
         }
         if (!settingsTree["Plandomizer"] || !settingsTree["Generate Spoiler Log"] || !settingsTree["Starting Inventory"] ||
@@ -212,12 +212,12 @@ namespace randomizer::seedgen::config
         // Rewrite files if deemed necessary
         if (allowRewrite && rewriteSettings)
         {
-            randomizer::utility::platform::Log(std::string("Rewriting ") + settingsPath.generic_string());
+            utility::platform::Log(std::string("Rewriting ") + settingsPath.generic_string());
             this->WriteSettingsToFile(settingsPath);
         }
         if (allowRewrite && rewritePreferences)
         {
-            randomizer::utility::platform::Log(std::string("Rewriting ") + preferencesPath.generic_string());
+            utility::platform::Log(std::string("Rewriting ") + preferencesPath.generic_string());
             this->WritePreferencesToFile(preferencesPath);
         }
     }
@@ -335,7 +335,7 @@ namespace randomizer::seedgen::config
 
     int WriteDefaultSettings(const fspath& settingsPath)
     {
-        randomizer::utility::platform::Log("Creating Default Settings");
+        utility::platform::Log("Creating Default Settings");
         std::ofstream settingsFile(settingsPath);
         if (settingsFile.is_open() == false)
         {
@@ -369,7 +369,7 @@ namespace randomizer::seedgen::config
 
     int WriteDefaultPreferences(const fspath& preferencesPath)
     {
-        randomizer::utility::platform::Log("Creating Default Preferences");
+        utility::platform::Log("Creating Default Preferences");
         std::ofstream preferencesFile(preferencesPath);
         if (preferencesFile.is_open() == false)
         {
@@ -402,7 +402,7 @@ namespace randomizer::seedgen::config
     {
         // Seed with system time incase we have to choose random preferences during seeding
         auto seed = static_cast<uint32_t>(std::random_device {}());
-        randomizer::utility::random::RandomInit(seed);
+        utility::random::RandomInit(seed);
 
         // Seed the rng using a combination of the seed and standard settings
         std::string hashStr = config.GetSeed();
@@ -444,7 +444,7 @@ namespace randomizer::seedgen::config
         if (config.IsUsingPlandomizer())
         {
             std::string plandomizerContents;
-            auto retVal = randomizer::utility::file::GetContents(config.GetPlandomizerPath(), plandomizerContents);
+            auto retVal = utility::file::GetContents(config.GetPlandomizerPath(), plandomizerContents);
             if (!ignoreInvalidPlandomizer && retVal != 0)
             {
                 LOG_TO_ERROR("Could not read plandomizer file at \"" + config.GetPlandomizerPath().generic_string() + "\"");
@@ -460,7 +460,7 @@ namespace randomizer::seedgen::config
         }
 
         const size_t integerSeed = zng_crc32(0L, reinterpret_cast<const uint8_t*>(hashStr.data()), hashStr.length());
-        randomizer::utility::random::RandomInit(integerSeed);
+        utility::random::RandomInit(integerSeed);
 
         return 0;
     }

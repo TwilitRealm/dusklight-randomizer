@@ -303,35 +303,7 @@
     - "Off": description
     - "On": description
 
-- Name: Fast Iron Boots
-  Tracker Important: True
-  Default Option: "Off"
-  Options:
-    - "Off": description
-    - "On": description
-
-- Name: Quick Transform
-  Tracker Important: True
-  Default Option: "Off"
-  Options:
-    - "Off": description
-    - "On": description
-
-- Name: Instant Message Text
-  Tracker Important: True
-  Default Option: "Off"
-  Options:
-    - "Off": description
-    - "On": description
-
 - Name: Unlock Map Regions
-  Tracker Important: True
-  Default Option: "Off"
-  Options:
-    - "Off": description
-    - "On": description
-
-- Name: Increase Spinner Speed
   Tracker Important: True
   Default Option: "Off"
   Options:
@@ -376,13 +348,6 @@
   Options:
     - Human: Start as Human Link
     - Wolf: Start as Wolf Link
-
-- Name: Transform Anywhere
-  Tracker Important: True
-  Default Option: "Off"
-  Options:
-    - "Off": description
-    - "On": description
 
 - Name: Increase Wallet Capacity
   Tracker Important: True
@@ -759,6 +724,12 @@
   Options:
     - "Off": "Ball and Chain will not be required to break webs."
     - "On": "Ball and Chain may be required to break webs."
+
+- Name: Logic Transform Anywhere
+  Default Option: "On"
+  Options:
+    - "Off": "You will not be expected to transform in places that you normally can't"
+    - "On": "You may be expected to trasform in places that require using the Transform Anywhere enhancement"
 
 #######################################
 ## Extra Starting Inventory Settings ##

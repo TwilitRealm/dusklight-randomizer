@@ -358,7 +358,7 @@ namespace randomizer::logic::world
                 }
 
                 auto canTransform = canTransformStr == "Always" ||
-                                    (this->Setting("Transform Anywhere") == "On" && canTransformStr == "If Transform Anywhere");
+                                    (this->Setting("Logic Transform Anywhere") == "On" && canTransformStr == "If Transform Anywhere");
 
                 area->SetCanTransform(canTransform);
 

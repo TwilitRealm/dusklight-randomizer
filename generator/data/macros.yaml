@@ -263,7 +263,7 @@ Death Mountain Warp Portal: Can_Complete_Eldin_Twilight
 Bridge of Eldin Warp Portal: Can_Defeat_Shadow_Beast and 'Can_Access_Eldin_Field_North_of_Bridge'
 Castle Town Warp Portal: Can_Complete_Lanayru_Twilight
 Lake Hylia Warp Portal: Can_Complete_Lanayru_Twilight
-Upper Zoras River Warp Portal: (Sword or (Can_Defeat_Shadow_Beast and Transform_Anywhere == On)) and 'Can_Access_Upper_Zoras_River'
+Upper Zoras River Warp Portal: (Sword or (Can_Defeat_Shadow_Beast and Logic_Transform_Anywhere == On)) and 'Can_Access_Upper_Zoras_River'
 Zoras Domain Warp Portal: Can_Complete_Lanayru_Twilight
 Snowpeak Warp Portal: Snowpeak_Does_Not_Require_Reekfish_Scent == On or (Can_Defeat_Shadow_Beast and 'Can_Access_Snowpeak_Summit_Upper')
 Gerudo Desert Warp Portal: Can_Defeat_Shadow_Beast and 'Can_Access_Gerudo_Desert_Cave_of_Ordeals_Plateau'

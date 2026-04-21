@@ -16,6 +16,8 @@ public:
     u32 mSeedID{0};
     std::string mHash{""};
 
+    std::unordered_map<std::string, std::string> mSettings{};
+
     std::list<u16> mStartEventFlags{};
     std::unordered_map<u8, std::list<u8>> mStartRegionFlags{};
     std::list<u8> mStartingInventory{};

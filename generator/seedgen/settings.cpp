@@ -36,7 +36,8 @@ namespace randomizer::seedgen::settings
                              const int& randomOptionIndex,
                              const int& randomLow,
                              const int& randomHigh,
-                             const bool& trackerImportant):
+                             const bool& trackerImportant,
+                             const bool& needInGame):
         _id(id),
         _name(name),
         _type(type),
@@ -47,7 +48,8 @@ namespace randomizer::seedgen::settings
         _randomOptionIndex(randomOptionIndex),
         _randomLow(randomLow),
         _randomHigh(randomHigh),
-        _trackerImportant(trackerImportant)
+        _trackerImportant(trackerImportant),
+        _needInGame(needInGame)
     {
         // The logic expression of a setting replaces spaces with underscores,
         // and removes apostraphes and parenthesis
@@ -280,6 +282,8 @@ namespace randomizer::seedgen::settings
 
             const auto& trackerImportant =
                 settingNode["Tracker Important"] ? settingNode["Tracker Important"].as<bool>() : false;
+            const auto& needInGame =
+                settingNode["Need In Game"] ? settingNode["Need In Game"].as<bool>() : false;
             const auto& hasRandomOption =
                 settingNode["Autogenerate Random"] ? settingNode["Autogenerate Random"].as<bool>() : true;
             const auto& randomAlias = settingNode["Random Alias"] ? settingNode["Random Alias"].as<std::string>() : "Random";
@@ -327,7 +331,8 @@ namespace randomizer::seedgen::settings
                                                       randomOptionIndex,
                                                       randomLow,
                                                       randomHigh,
-                                                      trackerImportant);
+                                                      trackerImportant,
+                                                      needInGame);
             settingInfoMap->emplace(name, std::move(info));
         }
 

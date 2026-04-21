@@ -29,6 +29,10 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
 
     YAML::Node out{};
 
+    for (const auto& [settingName, option] : this->mSettings) {
+        out["Settings"][settingName] = option;
+    }
+
     // NOTE: When dumping u8s, they must be converted to u16s (or higher), otherwise they get dumped
     // as single characters and not numbers
 
@@ -60,6 +64,13 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
     this->mHash = hash;
 
     auto in = LoadYAML(this->GetSeedDataPath());
+
+    // Necessary settings
+    for (const auto& settingNode : in["mSettings"] ) {
+        const auto& settingName = settingNode.first.as<std::string>();
+        const auto& option = settingNode.second.as<std::string>();
+        this->mSettings[settingName] = option;
+    }
 
     // Event flags
     for (const auto& flag : in["mStartEventFlags"]) {

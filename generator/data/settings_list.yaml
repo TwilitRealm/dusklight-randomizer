@@ -17,6 +17,8 @@
 ######################
 
 - Name: Hyrule Barrier Requirements
+  Need In Game: True
+  Tracker Important: True
   Default Option: Vanilla
   Options:
     - Open: "The barrier around Hyrule Castle is dispelled from the beginning."
@@ -28,36 +30,43 @@
     - Hearts: "The barrier will be dispelled once the required number of Hearts have been reached."
 
 - Name: Hyrule Barrier Fused Shadows
+  Need In Game: True
   Tracker Important: True
   Default Option: 1
   Options:
     - 1-3: description
 
 - Name: Hyrule Barrier Mirror Shards
+  Need In Game: True
   Tracker Important: True
   Default Option: 1
   Options:
     - 1-4: description
 
 - Name: Hyrule Barrier Dungeons
+  Need In Game: True
   Tracker Important: True
   Default Option: 1
   Options:
     - 1-8: description
 
 - Name: Hyrule Barrier Poe Souls
+  Need In Game: True
   Tracker Important: True
   Default Option: 1
   Options:
     - 1-60: description
 
 - Name: Hyrule Barrier Hearts
+  Need In Game: True
   Tracker Important: True
   Default Option: 4
   Options:
     - 4-20: description # Hehe 420
 
 - Name: Palace of Twilight Requirements
+  Need In Game: True
+  Tracker Important: True
   Default Option: Vanilla
   Options:
     - Open: "The barrier around Hyrule Castle is dispelled from the beginning."
@@ -66,6 +75,7 @@
     - Vanilla: "The player must complete City in the Sky."
 
 - Name: Faron Woods Logic
+  Tracker Important: True
   Default Option: Closed
   Options:
     - Closed: "Midna will block the player from leaving Faron Woods until Forest Temple is completed."
@@ -76,48 +86,56 @@
 ######################
 
 - Name: Golden Bugs
+  Tracker Important: True
   Default Option: "Off"
   Options:
     - "Off": "The Golden Bug locations across Hyrule will not be randomized."
     - "On": "The Golden Bug locations across Hyrule will be randomized."
 
 - Name: Sky Characters
+  Tracker Important: True
   Default Option: "Off"
   Options:
     - "Off": description
     - "On": description
 
 - Name: Gifts From NPCs
+  Tracker Important: True
   Default Option: "Off"
   Options:
     - "Off": description
     - "On": description
 
 - Name: Shop Items
+  Tracker Important: True
   Default Option: "Off"
   Options:
     - "Off": description
     - "On": description
 
 - Name: Hidden Skills
+  Tracker Important: True
   Default Option: "Off"
   Options:
     - "Off": description
     - "On": description
 
 - Name: Hidden Rupees
+  Tracker Important: True
   Default Option: "Off"
   Options:
     - "Off": description
     - "On": description
 
 - Name: Freestanding Rupees
+  Tracker Important: True
   Default Option: "Off"
   Options:
     - "Off": description
     - "On": description
 
 - Name: Poe Souls
+  Tracker Important: True
   Default Option: Vanilla
   Options:
     - Vanilla: description
@@ -126,6 +144,7 @@
     - All: description
 
 - Name: Ilia Memory Quest
+  Tracker Important: True
   Default Option: Vanilla
   Options:
     - Vanilla: description
@@ -183,6 +202,7 @@
     - Start With: "The player starts with all Maps and Compasses."
 
 - Name: Hyrule Castle Big Key Requirements
+  Need In Game: True
   Tracker Important: True
   Default Option: None
   Options:
@@ -194,30 +214,35 @@
     - Hearts: "The gate will open once the required number of Hearts have been reached."
 
 - Name: Hyrule Castle Big Key Fused Shadows
+  Need In Game: True
   Tracker Important: True
   Default Option: 1
   Options:
     - 1-3: description
 
 - Name: Hyrule Castle Big Key Mirror Shards
+  Need In Game: True
   Tracker Important: True
   Default Option: 1
   Options:
     - 1-4: description
 
 - Name: Hyrule Castle Big Key Dungeons
+  Need In Game: True
   Tracker Important: True
   Default Option: 1
   Options:
     - 1-8: description
 
 - Name: Hyrule Castle Big Key Poe Souls
+  Need In Game: True
   Tracker Important: True
   Default Option: 1
   Options:
     - 1-60: description
 
 - Name: Hyrule Castle Big Key Hearts
+  Need In Game: True
   Tracker Important: True
   Default Option: 4
   Options:

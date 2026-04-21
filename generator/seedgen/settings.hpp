@@ -58,7 +58,8 @@ namespace randomizer::seedgen::settings
                     const int& randomOptionIndex,
                     const int& randomLow,
                     const int& randomHigh,
-                    const bool& trackerImportant);
+                    const bool& trackerImportant,
+                    const bool& needInGame);
 
         int GetID() const { return this->_id; }
 
@@ -98,6 +99,7 @@ namespace randomizer::seedgen::settings
         int GetRandomLow() const { return this->_randomLow; }
         int GetRandomHigh() const { return this->_randomHigh; }
         bool TrackerImportant() const { return this->_trackerImportant; }
+        bool NeedInGame() const { return this->_needInGame; }
 
        private:
         int _id = -1;
@@ -111,6 +113,7 @@ namespace randomizer::seedgen::settings
         int _randomLow = 0;             // Lower bound when choosing a random option
         int _randomHigh = 0;            // Upper bound when choosing a random option
         bool _trackerImportant = false; // Whether or not this setting can affect trackers
+        bool _needInGame = false;       // Whether or not we need to read this setting during gameplay
 
         // Variables that hold the setting's name and options when being checked
         // in a logical requirement string.

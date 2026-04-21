@@ -36,9 +36,16 @@ namespace dusk {
             return;
         }
 
-        auto& world = r.GetWorlds()[0];
+        const auto& world = r.GetWorlds()[0];
 
         RandomizerContext randoData{};
+
+        for (const auto& [setting, info] : *randomizer::seedgen::settings::GetAllSettingsInfo()) {
+            if (info->NeedInGame()) {
+                randoData.mSettings[setting] = world->Setting(setting).GetCurrentOption();
+            }
+        }
+
         // Chest overrides
         for (const auto& location : world->GetAllLocations()) {
             const auto& metaData = location->GetMetadata();

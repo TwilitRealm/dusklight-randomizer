@@ -36,9 +36,8 @@
     - Overworld
     - Npc
     - Ordona Province
-    - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Ordon Cat Rescue
 
 - Name: Sera Shop Slingshot
   Original Item: Slingshot

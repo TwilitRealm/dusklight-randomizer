@@ -15,7 +15,6 @@ public:
 
     RandomizerContext() = default;
 
-    bool mActive{false};
     bool mCreatingSave{false};
     u32 mSeedID{0};
     std::string mHash{""};

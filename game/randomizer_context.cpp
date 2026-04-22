@@ -21,7 +21,7 @@ RandomizerContext& randomizer_GetContext() {
 }
 
 bool randomizer_IsActive() {
-    return dusk::IsGameLaunched && (!playerIsOnTitleScreen() || randomizer_GetContext().mCreatingSave) && randomizer_GetContext().mActive;
+    return dusk::IsGameLaunched && (!playerIsOnTitleScreen() || randomizer_GetContext().mCreatingSave) && !randomizer_GetContext().mHash.empty();
 }
 
 std::optional<std::string> RandomizerContext::WriteToFile() {

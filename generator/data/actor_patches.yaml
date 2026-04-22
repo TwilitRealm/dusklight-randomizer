@@ -4,35 +4,108 @@
 
 # Ordon Village
 F_SP103:
-  Room 0:
-    Layer 0:
-      # Bo's House left Door
-      - name: kdoor
-        parameters: 0x88000627
-        position:
-          x: 470.48294
-          y: 500.19
-          z: 5323.129
+  Room 0: # Main Village
+    # Bo's House left Door
+    - name: kdoor
+      parameters: 0x88000627
+      position:
+        x: 470.48294
+        y: 500.19
+        z: 5323.129
+      angle:
+        x: 0x0191
+        y: 0x3777
+        z: 0xFFFF
+      patch:
+        # Set angle.x to -1 so the door isn't locked
         angle:
-          x: 0x0191
-          y: 0x3777
-          z: 0xFFFF
-        patch:
-          # Set angle.x to -1 so the door isn't locked
-          angle:
-            x: 0xFFFF
-      # Bo's House right door
-      - name: kdoor
-        parameters: 0x94000627
-        position:
-          x: 500.71118
-          y: 500.19
-          z: 5172.267
+          x: 0xFFFF
+      layers:
+        - 0
+
+    # Bo's House right door
+    - name: kdoor
+      parameters: 0x94000627
+      position:
+        x: 500.71118
+        y: 500.19
+        z: 5172.267
+      angle:
+        x: 0x0191
+        y: 0xB778
+        z: 0xFFFF
+      patch:
+        # Set angle.x to -1 so the door isn't locked
         angle:
-          x: 0x0191
-          y: 0xB778
-          z: 0xFFFF
-        patch:
-          # Set angle.x to -1 so the door isn't locked
-          angle:
-            x: 0xFFFF
+          x: 0xFFFF
+      layers:
+        - 0
+
+    # Rupee on Rusl's House (they both share the same flag, this gives one a different flag)
+    - name: item
+      parameters: 0xF3FF8103
+      position:
+        x: -4739.0400390625
+        y: 1155.98303222656
+        z: 2239.53588867187
+      angle:
+        x: 0x0000
+        y: 0x3333
+        z: 0x003F
+      patch:
+        # Give this item a unique flag
+        parameters: 0xF3FF8403
+      layers:
+        - 0
+        - 5
+
+    # Rupee above Haunch's House (also flag sharing situation)
+    - name: item
+      parameters: 0xF3FF8701
+      position:
+        x: -1819.2646484375
+        y: 984.098937988281
+        z: 1665.06237792969
+      angle:
+        x: 0x0000
+        y: 0x3333
+        z: 0x003F
+      patch:
+        # Give this item a unique flag
+        parameters: 0xF3FF8501
+      layers:
+        - 0
+
+    # Rupee by Bo's Window (also flag sharing situation)
+    - name: item
+      parameters: 0xF3FF8601
+      position:
+        x: 590.097839355469
+        y: 1158.02856445312
+        z: 5215.7802734375
+      angle:
+        x: 0x0000
+        y: 0x3333
+        z: 0x003F
+      patch:
+        # Give this item a unique flag
+        parameters: 0xF3FF8A01
+      layers:
+        - 0
+
+    # Rupee in Ordon River (also flag sharing situation)
+    - name: item
+      parameters: 0x13FF9501
+      position:
+        x: -4326.0654296875
+        y: 28.7633323669434
+        z: 4208.9892578125
+      angle:
+        x: 0x0000
+        y: 0x999A
+        z: 0x003F
+      patch:
+        # Give this item a unique flag
+        parameters: 0x13FF9101
+      layers:
+        - 0

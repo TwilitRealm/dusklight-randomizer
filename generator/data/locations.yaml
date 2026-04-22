@@ -82,7 +82,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x80
 
 - Name: Ordon Bo Roof Rupee
   Original Item: Yellow Rupee
@@ -91,7 +92,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x8B
 
 - Name: Ordon Bo Window Rupee 1
   Original Item: Green Rupee
@@ -100,7 +102,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x8A
 
 - Name: Ordon Bo Window Rupee 2
   Original Item: Green Rupee
@@ -109,7 +112,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x86
 
 - Name: Ordon Hidden Rusl House Rupee
   Original Item: Orange Rupee
@@ -118,7 +122,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x88
 
 - Name: Ordon Rupee In Grass By Bo
   Original Item: Green Rupee
@@ -127,7 +132,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x96
 
 - Name: Ordon Rupee In River 1
   Original Item: Green Rupee
@@ -136,7 +142,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x95
 
 - Name: Ordon Rupee In River 2
   Original Item: Green Rupee
@@ -145,7 +152,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x91
 
 - Name: Ordon Rupee Under Bridge
   Original Item: Green Rupee
@@ -154,7 +162,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x82
 
 - Name: Ordon Rupee Under Tall Tree 1
   Original Item: Green Rupee
@@ -163,7 +172,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x87
 
 - Name: Ordon Rupee Under Tall Tree 2
   Original Item: Green Rupee
@@ -172,7 +182,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x85
 
 - Name: Ordon Rusl House Roof Rupee 1
   Original Item: Yellow Rupee
@@ -181,7 +192,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x84
 
 - Name: Ordon Rusl House Roof Rupee 2
   Original Item: Yellow Rupee
@@ -190,7 +202,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x81
 
 - Name: Ordon Shield House Ledge Grass Rupee
   Original Item: Purple Rupee
@@ -199,7 +212,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x94
 
 - Name: Ordon Tree Long Branch Rupee
   Original Item: Yellow Rupee
@@ -208,7 +222,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x97
 
 - Name: Ordon Tree Short Branch Rupee
   Original Item: Blue Rupee
@@ -217,7 +232,8 @@
     - Ordona Province
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 43
+      Flag: 0x89
 
 - Name: Herding Goats Reward
   Original Item: Piece of Heart
@@ -1365,7 +1381,8 @@
     - Death Mountain
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Death Mountain Volcano Ledge Rupee 2
   Original Item: Yellow Rupee
@@ -1374,7 +1391,8 @@
     - Death Mountain
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Death Mountain Volcano Ledge Rupee 3
   Original Item: Yellow Rupee
@@ -1383,7 +1401,8 @@
     - Death Mountain
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Death Mountain Volcano Pipe Ledge Rock Rupee
   Original Item: Yellow Rupee
@@ -2863,7 +2882,8 @@
     - Lake Hylia
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Lake Hylia Right Underwater Boulder Rupee
   Original Item: Green Rupee
@@ -2881,7 +2901,8 @@
     - Lake Hylia
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Lake Hylia Alcove Poe
   Original Item: Poe Soul
@@ -3272,7 +3293,8 @@
     - Zoras Domain
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Zoras Domain Central Underwater Boulder Rupee
   Original Item: Blue Rupee
@@ -3299,7 +3321,8 @@
     - Zoras Domain
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Zoras Domain Shortcut Lower Boulder Rupee
   Original Item: Blue Rupee
@@ -3326,7 +3349,8 @@
     - Zoras Domain
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Zoras Domain Vine Ledge Rupee
   Original Item: Blue Rupee
@@ -3335,7 +3359,8 @@
     - Zoras Domain
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Zoras Domain Waterfall Ledge Rupee
   Original Item: Blue Rupee
@@ -3344,7 +3369,8 @@
     - Zoras Domain
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Zoras Domain Extinguish All Torches Chest
   Original Item: Purple Rupee
@@ -3385,7 +3411,8 @@
     - Zoras Domain
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Zoras Domain Throne East Underwater Rupee
   Original Item: Yellow Rupee
@@ -3394,7 +3421,8 @@
     - Zoras Domain
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Zoras Domain Throne Northwest Underwater Rupee
   Original Item: Yellow Rupee
@@ -3403,7 +3431,8 @@
     - Zoras Domain
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Zoras Domain Throne South Underwater Rupee
   Original Item: Yellow Rupee
@@ -3412,7 +3441,8 @@
     - Zoras Domain
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Zoras Domain Throne West Gate Underwater Rupee
   Original Item: Blue Rupee
@@ -3421,7 +3451,8 @@
     - Zoras Domain
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Zoras Domain Throne West Underwater Rupee
   Original Item: Yellow Rupee
@@ -3429,10 +3460,11 @@
     - Overworld
     - Zoras Domain
     - Rupee - Freestanding
+  Metadata:
+    - Stage: 0xFF
+      Flag: 0xFF
 
 # SNOWPEAK PROVINCE
-  Metadata:
-    - None
 
 - Name: Ashei Sketch
   Original Item: Asheis Sketch
@@ -3533,7 +3565,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Bridge Ledge Middle Rupee
   Original Item: Green Rupee
@@ -3542,7 +3575,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Bridge Ledge Upper Rupee
   Original Item: Green Rupee
@@ -3551,7 +3585,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Shortcut Rupee 1
   Original Item: Green Rupee
@@ -3560,7 +3595,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Shortcut Rupee 2
   Original Item: Green Rupee
@@ -3569,7 +3605,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Shortcut Rupee 3
   Original Item: Green Rupee
@@ -3578,7 +3615,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Shortcut Rupee 4
   Original Item: Green Rupee
@@ -3587,7 +3625,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Shortcut Rupee 5
   Original Item: Red Rupee
@@ -3596,7 +3635,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Shortcut Rupee 6
   Original Item: Green Rupee
@@ -3605,7 +3645,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Shortcut Rupee 7
   Original Item: Green Rupee
@@ -3614,7 +3655,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Shortcut Rupee 8
   Original Item: Green Rupee
@@ -3623,7 +3665,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Shortcut Rupee 9
   Original Item: Green Rupee
@@ -3632,7 +3675,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Shortcut Rupee 10
   Original Item: Green Rupee
@@ -3641,7 +3685,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Shortcut Rupee 11
   Original Item: Green Rupee
@@ -3650,7 +3695,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Snowy Tree Top Rupee 1
   Original Item: Blue Rupee
@@ -3659,7 +3705,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Snowy Tree Top Rupee 2
   Original Item: Red Rupee
@@ -3668,7 +3715,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Snowy Tree Top Rupee 3
   Original Item: Purple Rupee
@@ -3677,7 +3725,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Top Left Rupee
   Original Item: Green Rupee
@@ -3686,7 +3735,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 - Name: Snowboarding Top Right Rupee
   Original Item: Green Rupee
@@ -3695,7 +3745,8 @@
     - Snowpeak
     - Rupee - Freestanding
   Metadata:
-    - None
+    - Stage: 0xFF
+      Flag: 0xFF
 
 # DESERT PROVINCE
 

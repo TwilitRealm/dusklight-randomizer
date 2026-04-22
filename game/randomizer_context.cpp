@@ -55,6 +55,12 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
         }
     }
 
+    for (const auto& [stageIdx, itemOverride] : this->mFreestandingItemOverrides) {
+        for (const auto& [flag, itemId] : itemOverride) {
+            out["mFreestandingItemOverrides"][static_cast<u16>(stageIdx)][static_cast<u16>(flag)] = static_cast<u16>(itemId);
+        }
+    }
+
     out["mItemLocations"] = this->mItemLocations;
 
     out["mStartHour"] = static_cast<u16>(this->mStartHour);
@@ -112,6 +118,21 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
                 auto tboxId = chestItemPair.first.as<u8>();
                 auto itemId = chestItemPair.second.as<u8>();
                 this->mTreasureChestOverrides[stageName][tboxId] = itemId;
+            }
+        }
+    }
+
+    // Freestanding overrides
+    for (const auto& stageNode : in["mFreestandingItemOverrides"]) {
+        const auto& stageIdx = stageNode.first.as<u8>();
+        // Single nodes with a zero in their key will get dumped as sequences
+        if (stageNode.second.IsSequence()) {
+            this->mFreestandingItemOverrides[stageIdx][0] = stageNode.second[0].as<u8>();
+        } else {
+            for (const auto& flagItemPair : stageNode.second) {
+                auto flag = flagItemPair.first.as<u8>();
+                auto itemId = flagItemPair.second.as<u8>();
+                this->mFreestandingItemOverrides[stageIdx][flag] = itemId;
             }
         }
     }

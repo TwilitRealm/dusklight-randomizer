@@ -6,10 +6,14 @@
 #include "dusk/logging.h"
 #include "dusk/main.h"
 #include "dusk/randomizer/game/tools.h"
+#include "dusk/randomizer/generator/utility/endian.hpp"
 
 #include "SDL3/SDL_filesystem.h"
+#include <zlib-ng.h>
 
 #include <fstream>
+
+#include "d/actor/d_a_alink.h"
 
 RandomizerContext& randomizer_GetContext() {
     static RandomizerContext instance;
@@ -53,6 +57,12 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
 
     out["mStartHour"] = static_cast<u16>(this->mStartHour);
     out["mMapBits"] = static_cast<u16>(this->mMapBits);
+
+    for (const auto& [stageRoomLayer, actorPatches] : this->mActorPatches) {
+        for (const auto& [actorCRC, actorPatch] : actorPatches) {
+            out["mActorPatches"][stageRoomLayer][actorCRC] = ContainerToHexString(actorPatch);
+        }
+    }
 
     seedData << YAML::Dump(out);
     seedData.close();
@@ -109,6 +119,17 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
     // Starting map bits
     this->mMapBits = in["mMapBits"].as<u8>();
 
+    // Actor Patches
+    for (const auto& stageRoomLayerNode: in["mActorPatches"]) {
+        u32 stageRoomLayer = stageRoomLayerNode.first.as<u32>();
+        for (const auto& actorPatchNode : stageRoomLayerNode.second) {
+            u32 actorCRC = actorPatchNode.first.as<u32>();
+            auto actorBytes = HexToBytes(actorPatchNode.second.as<std::string>());
+            auto& patchedActor = this->mActorPatches[stageRoomLayer][actorCRC];
+            std::copy_n(actorBytes.begin(), actorBytes.size(), patchedActor.begin());
+        }
+    }
+
     DuskLog.debug("Loaded Randomizer Seed {}", this->mHash);
 
     return std::nullopt;
@@ -118,3 +139,27 @@ std::string RandomizerContext::GetSeedDataPath() const {
     return std::string(SDL_GetPrefPath(dusk::OrgName, dusk::AppName)) + "randomizer/seeds/" + this->mHash + "/seed.dat";
 }
 
+std::vector<u8> HexToBytes(std::string hex) {
+    std::vector<u8> bytes;
+    // Strip "0x" if present
+    if (hex.substr(0, 2) == "0x") hex = hex.substr(2);
+
+    for (size_t i = 0; i < hex.length(); i += 2) {
+        std::string byteString = hex.substr(i, 2);
+        u8 byte = static_cast<u8>(strtol(byteString.c_str(), nullptr, 16));
+        bytes.push_back(byte);
+    }
+    return bytes;
+}
+
+u32 getActorPatchesCurrentStageKey() {
+    u32 actorPatchesStageKey{};
+    actorPatchesStageKey |= getStageID(dComIfGp_getStartStageName()) << 16;
+    actorPatchesStageKey |= dComIfGp_getStartStageRoomNo() << 8;
+    actorPatchesStageKey |= dComIfGp_getLayerNo();
+    return actorPatchesStageKey;
+}
+
+u32 getActorCRC32(stage_actor_data_class* actor) {
+    return zng_crc32(0, reinterpret_cast<u8*>(actor), RandomizerContext::ACTOR_CRC_SIZE);
+}

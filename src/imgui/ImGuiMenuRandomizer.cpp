@@ -1,9 +1,9 @@
 #include "imgui.h"
 
+#include "d/d_stage.h"
+
 #include "ImGuiConsole.hpp"
 #include "ImGuiMenuRandomizer.hpp"
-
-#include <mutex>
 
 #include "dusk/app_info.hpp"
 #include "dusk/logging.h"
@@ -13,8 +13,12 @@
 
 #include "SDL3/SDL_filesystem.h"
 
+#include <mutex>
 #include <thread>
 #include <filesystem>
+
+#include "dusk/randomizer/generator/utility/endian.hpp"
+#include "dusk/randomizer/generator/utility/string.hpp"
 
 namespace dusk {
 
@@ -125,6 +129,81 @@ namespace dusk {
             randoData.mStartHour = 18;
         else if (startTimeSetting == "Night")
             randoData.mStartHour = 24;
+
+        // Actor Patches
+        auto actorPatches = LoadYAML(RANDO_DATA_PATH "actor_patches.yaml");
+        for (const auto& stageNode : actorPatches) {
+            const auto& stageName = stageNode.first.as<std::string>();
+            for (const auto& roomNode : stageNode.second) {
+                const auto& roomStr = roomNode.first.as<std::string>();
+                u8 roomNo = roomStr.back() - '0';
+                for (const auto& layerNode : roomNode.second) {
+                    const auto& layerStr = layerNode.first.as<std::string>();
+                    u8 layerNo = layerStr.back() - '0';
+                    // Create key based off of stage index, room, and layer
+                    u32 stageRoomLayerKey{};
+                    stageRoomLayerKey |= getStageID(stageName.c_str()) << 16;
+                    stageRoomLayerKey |= roomNo << 8;
+                    stageRoomLayerKey |= layerNo;
+                    for (const auto& actorNode : layerNode.second) {
+                        using namespace Utility::Endian;
+                        // Get all the data for the actor (with endian shenanigans)
+                        stage_actor_data_class actor{};
+                        const auto& actorName = actorNode["name"].as<std::string>();
+                        strncpy(actor.name, actorName.c_str(), 8);
+                        actor.base.parameters = toPlatform(target, actorNode["parameters"].as<u32>());
+                        actor.base.position.x = toPlatform(target, actorNode["position"]["x"].as<f32>());
+                        actor.base.position.y = toPlatform(target, actorNode["position"]["y"].as<f32>());
+                        actor.base.position.z = toPlatform(target, actorNode["position"]["z"].as<f32>());
+                        // Have to retrieve as u16 and then cast as s16 because otherwise yaml-cpp
+                        // complains about values over 32767 not fitting in s16
+                        actor.base.angle.x = toPlatform(target, static_cast<s16>(actorNode["angle"]["x"].as<u16>()));
+                        actor.base.angle.y = toPlatform(target, static_cast<s16>(actorNode["angle"]["y"].as<u16>()));
+                        actor.base.angle.z = toPlatform(target, static_cast<s16>(actorNode["angle"]["z"].as<u16>()));
+
+
+                        // Create unique hash based off of actor data
+                        u32 actorCRC32 = getActorCRC32(&actor);
+
+                        // Then override the actor with whatever parts are being patched
+                        const auto& patchNode = actorNode["patch"];
+                        if (patchNode["parameters"]) {
+                            actor.base.parameters = toPlatform(target, patchNode["parameters"].as<u32>());
+                        }
+                        if (auto patchPosition = patchNode["position"]) {
+                            if (patchPosition["x"]) {
+                                actor.base.position.x = toPlatform(target, patchPosition["x"].as<f32>());
+                            }
+                            if (patchPosition["y"]) {
+                                actor.base.position.y = toPlatform(target, patchPosition["y"].as<f32>());
+                            }
+                            if (patchPosition["z"]) {
+                                actor.base.position.z = toPlatform(target, patchPosition["z"].as<f32>());
+                            }
+                        }
+                        if (auto patchAngle = patchNode["angle"]) {
+                            // Have to retrieve as u16 and then cast as s16 because otherwise yaml-cpp
+                            // complains about values over 32767 not fitting in s16
+                            if (patchAngle["x"]) {
+                                actor.base.angle.x = toPlatform(target, static_cast<s16>(patchAngle["x"].as<u16>()));
+                            }
+                            if (patchAngle["y"]) {
+                                actor.base.angle.y = toPlatform(target, static_cast<s16>(patchAngle["y"].as<u16>()));
+                            }
+                            if (patchAngle["z"]) {
+                                actor.base.angle.z = toPlatform(target, static_cast<s16>(patchAngle["z"].as<u16>()));
+                            }
+                        }
+
+                        // Insert the actor patch into the context with our crc32 as the key and the
+                        // raw actor patch data as the value
+                        std::array<u8, RandomizerContext::ACTOR_CRC_SIZE> patchedActorData{};
+                        std::memcpy(patchedActorData.data(), &actor, RandomizerContext::ACTOR_CRC_SIZE);
+                        randoData.mActorPatches[stageRoomLayerKey][actorCRC32] = patchedActorData;
+                    }
+                }
+            }
+        }
 
         randoData.mHash = r.GetConfig().GetHash();
         auto writeToFileResult = randoData.WriteToFile();

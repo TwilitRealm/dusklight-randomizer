@@ -99,8 +99,10 @@ int getStageID(const char* stage)
     int loopCount = sizeof(allStages) / sizeof(allStages[0]);
     for (int i = 0; i < loopCount; i++)
     {
-        if (daAlink_c::checkStageName(allStages[i]))
-        {
+        // If stage is NULL, check for current stage
+        if (stage == NULL) {
+            if (daAlink_c::checkStageName(allStages[i])) return i;
+        } else if (strcmp(stage, allStages[i]) == 0) {
             return i;
         }
     }

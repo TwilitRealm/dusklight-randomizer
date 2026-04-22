@@ -1,0 +1,38 @@
+# Patches for actors that already exist on a given map
+
+# NOTE: Data is expressed in little endian format
+
+# Ordon Village
+F_SP103:
+  Room 0:
+    Layer 0:
+      # Bo's House left Door
+      - name: kdoor
+        parameters: 0x88000627
+        position:
+          x: 470.48294
+          y: 500.19
+          z: 5323.129
+        angle:
+          x: 0x0191
+          y: 0x3777
+          z: 0xFFFF
+        patch:
+          # Set angle.x to -1 so the door isn't locked
+          angle:
+            x: 0xFFFF
+      # Bo's House right door
+      - name: kdoor
+        parameters: 0x94000627
+        position:
+          x: 500.71118
+          y: 500.19
+          z: 5172.267
+        angle:
+          x: 0x0191
+          y: 0xB778
+          z: 0xFFFF
+        patch:
+          # Set angle.x to -1 so the door isn't locked
+          angle:
+            x: 0xFFFF

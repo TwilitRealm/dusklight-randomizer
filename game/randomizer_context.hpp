@@ -27,6 +27,7 @@ public:
     std::list<u8> mStartingInventory{};
     std::unordered_map<std::string, std::unordered_map<u8, u8>> mTreasureChestOverrides{};
     std::unordered_map<std::string, std::unordered_map<u8, u8>> mPoeOverrides{};
+    std::unordered_map<std::string, int> mItemLocations{};
     u8 mStartHour{0};
     u8 mMapBits{};
 
@@ -40,6 +41,8 @@ public:
 RandomizerContext& randomizer_GetContext();
 
 bool randomizer_IsActive();
+
+int randomizer_getItemAtLocation(const std::string& locationName);
 
 /**
  * Helper function to convert raw bytes of a container to a hex string

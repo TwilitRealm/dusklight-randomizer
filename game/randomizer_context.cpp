@@ -55,6 +55,8 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
         }
     }
 
+    out["mItemLocations"] = this->mItemLocations;
+
     out["mStartHour"] = static_cast<u16>(this->mStartHour);
     out["mMapBits"] = static_cast<u16>(this->mMapBits);
 
@@ -114,6 +116,13 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         }
     }
 
+    // Items For Present Demos
+    for (const auto& locationNode : in["mItemLocations"]) {
+        const auto& locationName = locationNode.first.as<std::string>();
+        int itemId = locationNode.second.as<int>();
+        this->mItemLocations[locationName] = itemId;
+    }
+
     // Starting hour
     this->mStartHour = in["mStartHour"].as<u8>();
     // Starting map bits
@@ -150,6 +159,10 @@ std::vector<u8> HexToBytes(std::string hex) {
         bytes.push_back(byte);
     }
     return bytes;
+}
+
+int randomizer_getItemAtLocation(const std::string& locationName) {
+    return randomizer_GetContext().mItemLocations[locationName];
 }
 
 u32 getActorPatchesCurrentStageKey() {

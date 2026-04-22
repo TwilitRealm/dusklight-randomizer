@@ -44,20 +44,30 @@ namespace dusk {
 
         RandomizerContext randoData{};
 
+        // Settings we need to check ingame
         for (const auto& [setting, info] : *randomizer::seedgen::settings::GetAllSettingsInfo()) {
             if (info->NeedInGame()) {
                 randoData.mSettings[setting] = world->Setting(setting).GetCurrentOption();
             }
         }
 
-        // Chest overrides
+        // Set data for all locations
         for (const auto& location : world->GetAllLocations()) {
             const auto& metaData = location->GetMetadata();
+
+            // Chest Overrides
             if (location->HasCategories("Chest")) {
                 const auto& stage = metaData[0]["Stage"].as<std::string>();
                 const auto& tboxId = metaData[0]["Tbox ID"].as<u8>();
                 const auto& itemId = location->GetCurrentItem()->GetID();
                 randoData.mTreasureChestOverrides[stage][tboxId] = itemId;
+            }
+
+            // Items that we lookup just by calling their location name
+            if (location->HasCategories("Location Name Lookup")) {
+                const auto& locationName = metaData.as<std::string>();
+                const int itemId = location->GetCurrentItem()->GetID();
+                randoData.mItemLocations[locationName] = itemId;
             }
         }
 

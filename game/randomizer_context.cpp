@@ -61,6 +61,9 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
         }
     }
 
+    const std::unordered_map<u16, u16> u16BugRewardOverrides(this->mBugRewardOverrides.begin(), this->mBugRewardOverrides.end());
+    out["mBugRewardOverrides"] = u16BugRewardOverrides;
+
     out["mItemLocations"] = this->mItemLocations;
 
     out["mStartHour"] = static_cast<u16>(this->mStartHour);
@@ -137,7 +140,14 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         }
     }
 
-    // Items For Present Demos
+    // Bug Rewards
+    for (const auto& bugNode : in["mBugRewardOverrides"]) {
+        u8 bugItemId = bugNode.first.as<u8>();
+        u8 itemId = bugNode.second.as<u8>();
+        this->mBugRewardOverrides[bugItemId] = itemId;
+    }
+
+    // Items we call by location name
     for (const auto& locationNode : in["mItemLocations"]) {
         const auto& locationName = locationNode.first.as<std::string>();
         int itemId = locationNode.second.as<int>();

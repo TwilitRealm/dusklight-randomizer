@@ -27,6 +27,7 @@ public:
     std::unordered_map<std::string, std::unordered_map<u8, u8>> mTreasureChestOverrides{};
     std::unordered_map<std::string, std::unordered_map<u8, u8>> mPoeOverrides{};
     std::unordered_map<u8, std::unordered_map<u8, u8>> mFreestandingItemOverrides{};
+    std::unordered_map<u8, u8> mBugRewardOverrides{};
     std::unordered_map<std::string, int> mItemLocations{};
     u8 mStartHour{0};
     u8 mMapBits{};

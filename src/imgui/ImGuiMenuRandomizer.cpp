@@ -71,6 +71,13 @@ namespace dusk {
                 randoData.mFreestandingItemOverrides[stage][flag] = itemId;
             }
 
+            // Bug Rewards
+            if (location->HasCategories("Bug Reward")) {
+                u8 bugItemId = metaData[0]["Bug Item Id"].as<u8>();
+                u8 itemId = location->GetCurrentItem()->GetID();
+                randoData.mBugRewardOverrides[bugItemId] = itemId;
+            }
+
             // Items that we lookup just by calling their location name
             if (location->HasCategories("Location Name Lookup")) {
                 const auto& locationName = metaData.as<std::string>();

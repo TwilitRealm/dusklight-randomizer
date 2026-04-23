@@ -2170,15 +2170,15 @@
   Metadata:
     - None
 
-- Name: Agitha Female Ant Reward
-  Original Item: Purple Rupee
+- Name: Agitha Male Beetle Reward
+  Original Item: Orange Rupee
   Categories:
     - Overworld
     - Npc
     - Castle Town
     - Bug Reward
   Metadata:
-    - None
+    - Bug Item Id: 0xC0
 
 - Name: Agitha Female Beetle Reward
   Original Item: Purple Rupee
@@ -2188,127 +2188,7 @@
     - Castle Town
     - Bug Reward
   Metadata:
-    - None
-
-- Name: Agitha Female Butterfly Reward
-  Original Item: Purple Rupee
-  Categories:
-    - Overworld
-    - Npc
-    - Castle Town
-    - Bug Reward
-  Metadata:
-    - None
-
-- Name: Agitha Female Dayfly Reward
-  Original Item: Orange Rupee
-  Categories:
-    - Overworld
-    - Npc
-    - Castle Town
-    - Bug Reward
-  Metadata:
-    - None
-
-- Name: Agitha Female Dragonfly Reward
-  Original Item: Orange Rupee
-  Categories:
-    - Overworld
-    - Npc
-    - Castle Town
-    - Bug Reward
-  Metadata:
-    - None
-
-- Name: Agitha Female Grasshopper Reward
-  Original Item: Orange Rupee
-  Categories:
-    - Overworld
-    - Npc
-    - Castle Town
-    - Bug Reward
-  Metadata:
-    - None
-
-- Name: Agitha Female Ladybug Reward
-  Original Item: Orange Rupee
-  Categories:
-    - Overworld
-    - Npc
-    - Castle Town
-    - Bug Reward
-  Metadata:
-    - None
-
-- Name: Agitha Female Mantis Reward
-  Original Item: Orange Rupee
-  Categories:
-    - Overworld
-    - Npc
-    - Castle Town
-    - Bug Reward
-  Metadata:
-    - None
-
-- Name: Agitha Female Phasmid Reward
-  Original Item: Orange Rupee
-  Categories:
-    - Overworld
-    - Npc
-    - Castle Town
-    - Bug Reward
-  Metadata:
-    - None
-
-- Name: Agitha Female Pill Bug Reward
-  Original Item: Purple Rupee
-  Categories:
-    - Overworld
-    - Npc
-    - Castle Town
-    - Bug Reward
-  Metadata:
-    - None
-
-- Name: Agitha Female Snail Reward
-  Original Item: Purple Rupee
-  Categories:
-    - Overworld
-    - Npc
-    - Castle Town
-    - Bug Reward
-  Metadata:
-    - None
-
-- Name: Agitha Female Stag Beetle Reward
-  Original Item: Orange Rupee
-  Categories:
-    - Overworld
-    - Npc
-    - Castle Town
-    - Bug Reward
-  Metadata:
-    - None
-
-- Name: Agitha Male Ant Reward
-  Original Item: Orange Rupee
-  Categories:
-    - Overworld
-    - Npc
-    - Castle Town
-    - Bug Reward
-  Metadata:
-    - None
-
-- Name: Agitha Male Beetle Reward
-  Original Item: Orange Rupee
-  Categories:
-    - Overworld
-    - Npc
-    - Castle Town
-    - Bug Reward
-  Metadata:
-    - None
+    - Bug Item Id: 0xC1
 
 - Name: Agitha Male Butterfly Reward
   Original Item: Orange Rupee
@@ -2318,9 +2198,9 @@
     - Castle Town
     - Bug Reward
   Metadata:
-    - None
+    - Bug Item Id: 0xC2
 
-- Name: Agitha Male Dayfly Reward
+- Name: Agitha Female Butterfly Reward
   Original Item: Purple Rupee
   Categories:
     - Overworld
@@ -2328,9 +2208,9 @@
     - Castle Town
     - Bug Reward
   Metadata:
-    - None
+    - Bug Item Id: 0xC3
 
-- Name: Agitha Male Dragonfly Reward
+- Name: Agitha Male Stag Beetle Reward
   Original Item: Purple Rupee
   Categories:
     - Overworld
@@ -2338,7 +2218,17 @@
     - Castle Town
     - Bug Reward
   Metadata:
-    - None
+    - Bug Item Id: 0xC4
+
+- Name: Agitha Female Stag Beetle Reward
+  Original Item: Orange Rupee
+  Categories:
+    - Overworld
+    - Npc
+    - Castle Town
+    - Bug Reward
+  Metadata:
+    - Bug Item Id: 0xC5
 
 - Name: Agitha Male Grasshopper Reward
   Original Item: Progressive Wallet
@@ -2348,27 +2238,17 @@
     - Castle Town
     - Bug Reward
   Metadata:
-    - None
+    - Bug Item Id: 0xC6
 
-- Name: Agitha Male Ladybug Reward
-  Original Item: Purple Rupee
+- Name: Agitha Female Grasshopper Reward
+  Original Item: Orange Rupee
   Categories:
     - Overworld
     - Npc
     - Castle Town
     - Bug Reward
   Metadata:
-    - None
-
-- Name: Agitha Male Mantis Reward
-  Original Item: Purple Rupee
-  Categories:
-    - Overworld
-    - Npc
-    - Castle Town
-    - Bug Reward
-  Metadata:
-    - None
+    - Bug Item Id: 0xC7
 
 - Name: Agitha Male Phasmid Reward
   Original Item: Progressive Wallet
@@ -2378,7 +2258,17 @@
     - Castle Town
     - Bug Reward
   Metadata:
-    - None
+    - Bug Item Id: 0xC8
+
+- Name: Agitha Female Phasmid Reward
+  Original Item: Orange Rupee
+  Categories:
+    - Overworld
+    - Npc
+    - Castle Town
+    - Bug Reward
+  Metadata:
+    - Bug Item Id: 0xC9
 
 - Name: Agitha Male Pill Bug Reward
   Original Item: Orange Rupee
@@ -2388,7 +2278,57 @@
     - Castle Town
     - Bug Reward
   Metadata:
-    - None
+    - Bug Item Id: 0xCA
+
+- Name: Agitha Female Pill Bug Reward
+  Original Item: Purple Rupee
+  Categories:
+    - Overworld
+    - Npc
+    - Castle Town
+    - Bug Reward
+  Metadata:
+    - Bug Item Id: 0xCB
+
+- Name: Agitha Male Mantis Reward
+  Original Item: Purple Rupee
+  Categories:
+    - Overworld
+    - Npc
+    - Castle Town
+    - Bug Reward
+  Metadata:
+    - Bug Item Id: 0xCC
+
+- Name: Agitha Female Mantis Reward
+  Original Item: Orange Rupee
+  Categories:
+    - Overworld
+    - Npc
+    - Castle Town
+    - Bug Reward
+  Metadata:
+    - Bug Item Id: 0xCD
+
+- Name: Agitha Male Ladybug Reward
+  Original Item: Purple Rupee
+  Categories:
+    - Overworld
+    - Npc
+    - Castle Town
+    - Bug Reward
+  Metadata:
+    - Bug Item Id: 0xCE
+
+- Name: Agitha Female Ladybug Reward
+  Original Item: Orange Rupee
+  Categories:
+    - Overworld
+    - Npc
+    - Castle Town
+    - Bug Reward
+  Metadata:
+    - Bug Item Id: 0xCF
 
 - Name: Agitha Male Snail Reward
   Original Item: Purple Rupee
@@ -2398,15 +2338,77 @@
     - Castle Town
     - Bug Reward
   Metadata:
-    - None
+    - Bug Item Id: 0xD0
 
-- Name: Agitha Male Stag Beetle Reward
+- Name: Agitha Female Snail Reward
   Original Item: Purple Rupee
   Categories:
     - Overworld
     - Npc
     - Castle Town
     - Bug Reward
+  Metadata:
+    - Bug Item Id: 0xD1
+
+- Name: Agitha Male Dragonfly Reward
+  Original Item: Purple Rupee
+  Categories:
+    - Overworld
+    - Npc
+    - Castle Town
+    - Bug Reward
+  Metadata:
+    - Bug Item Id: 0xD2
+
+- Name: Agitha Female Dragonfly Reward
+  Original Item: Orange Rupee
+  Categories:
+    - Overworld
+    - Npc
+    - Castle Town
+    - Bug Reward
+  Metadata:
+    - Bug Item Id: 0xD3
+
+- Name: Agitha Male Ant Reward
+  Original Item: Orange Rupee
+  Categories:
+    - Overworld
+    - Npc
+    - Castle Town
+    - Bug Reward
+  Metadata:
+    - Bug Item Id: 0xD4
+
+- Name: Agitha Female Ant Reward
+  Original Item: Purple Rupee
+  Categories:
+    - Overworld
+    - Npc
+    - Castle Town
+    - Bug Reward
+  Metadata:
+    - Bug Item Id: 0xD5
+
+- Name: Agitha Male Dayfly Reward
+  Original Item: Purple Rupee
+  Categories:
+    - Overworld
+    - Npc
+    - Castle Town
+    - Bug Reward
+  Metadata:
+    - Bug Item Id: 0xD6
+
+- Name: Agitha Female Dayfly Reward
+  Original Item: Orange Rupee
+  Categories:
+    - Overworld
+    - Npc
+    - Castle Town
+    - Bug Reward
+  Metadata:
+    - Bug Item Id: 0xD7
 
 # HD Only Location
 # - Name: Agitha 12 Golden Bugs Reward

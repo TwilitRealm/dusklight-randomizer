@@ -34,7 +34,7 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
     YAML::Node out{};
 
     for (const auto& [settingName, option] : this->mSettings) {
-        out["Settings"][settingName] = option;
+        out["mSettings"][settingName] = option;
     }
 
     // NOTE: When dumping u8s, they must be converted to u16s (or higher), otherwise they get dumped

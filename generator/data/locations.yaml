@@ -634,7 +634,8 @@
     - Hyrule Field - Faron Province
     - DZX
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x9F
 
 - Name: Faron Field Male Beetle
   Original Item: Male Beetle
@@ -644,7 +645,8 @@
     - Hyrule Field - Faron Province
     - DZX
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x9E
 
 - Name: Faron Field Poe
   Original Item: Poe Soul
@@ -755,7 +757,8 @@
     - Sacred Grove
     - DZX
   Metadata:
-    - None
+    - Stage: 54
+      Flag: 0x98
 
 - Name: Sacred Grove Male Snail
   Original Item: Male Snail
@@ -765,7 +768,8 @@
     - Sacred Grove
     - DZX
   Metadata:
-    - None
+    - Stage: 54
+      Flag: 0x99
 
 - Name: Sacred Grove Past Owl Statue Chest
   Original Item: Piece of Heart
@@ -942,7 +946,8 @@
     - Hyrule Field - Eldin Province
     - DZX
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x94
 
 - Name: Kakariko Gorge Male Pill Bug
   Original Item: Male Pill Bug
@@ -952,7 +957,8 @@
     - Hyrule Field - Eldin Province
     - DZX
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x95
 
 - Name: Kakariko Gorge Owl Statue Chest
   Original Item: Orange Rupee
@@ -1191,7 +1197,8 @@
     - Kakariko Village
     - DZX
   Metadata:
-    - None
+    - Stage: 68
+      Flag: 0x90
 
 - Name: Kakariko Village Ant House Ledge Box Rupee
   Original Item: Red Rupee
@@ -1323,7 +1330,8 @@
     - Kakariko Graveyard
     - DZX
   Metadata:
-    - None
+    - Stage: 48
+      Flag: 0x91
 
 - Name: Kakariko Graveyard Underwater Boulder Rupee
   Original Item: Red Rupee
@@ -1465,7 +1473,8 @@
     - Hyrule Field - Eldin Province
     - DZX
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x98
 
 - Name: Eldin Field Male Grasshopper
   Original Item: Male Grasshopper
@@ -1475,7 +1484,8 @@
     - Hyrule Field - Eldin Province
     - DZX
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x99
 
 - Name: Goron Springwater Rush
   Original Item: Piece of Heart
@@ -1507,7 +1517,8 @@
     - Hyrule Field - Eldin Province
     - DZX
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x96
 
 - Name: Bridge of Eldin Male Phasmid
   Original Item: Male Phasmid
@@ -1517,7 +1528,8 @@
     - Hyrule Field - Eldin Province
     - DZX
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x97
 
 - Name: Bridge of Eldin Owl Statue Chest
   Original Item: Piece of Heart
@@ -1858,7 +1870,8 @@
     - Hyrule Field - Lanayru Province
     - DZX
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x9A
 
 - Name: Lanayru Field Male Stag Beetle
   Original Item: Male Stag Beetle
@@ -1867,6 +1880,9 @@
     - Golden Bug
     - Hyrule Field - Lanayru Province
     - DZX
+  Metadata:
+    - Stage: 56
+      Flag: 0x9B
 
 # HD Only location
 # - Name: Lanayru Field Chu Grotto Chest
@@ -1959,7 +1975,8 @@
     - Hyrule Field - Lanayru Province
     - DZX
   Metadata:
-    - None
+    - Stage: 57
+      Flag: 0x9C
 
 - Name: West Hyrule Field Male Butterfly
   Original Item: Male Butterfly
@@ -1969,7 +1986,8 @@
     - Hyrule Field - Lanayru Province
     - DZX
   Metadata:
-    - None
+    - Stage: 57
+      Flag: 0x9D
 
 - Name: West Hyrule Field Northern Boulder Rupee
   Original Item: Yellow Rupee
@@ -2452,7 +2470,8 @@
     - Hyrule Field - Lanayru Province
     - DZX
   Metadata:
-    - None
+    - Stage: 57
+      Flag: 0x91
 
 - Name: Outside South Castle Town Female Ladybug
   Original Item: Female Ladybug
@@ -2462,7 +2481,8 @@
     - Hyrule Field - Lanayru Province
     - DZX
   Metadata:
-    - None
+    - Stage: 57
+      Flag: 0x90
 
 - Name: Outside South Castle Town Poe
   Original Item: Poe Soul
@@ -2573,7 +2593,8 @@
     - Hyrule Field - Lanayru Province
     - DZX
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x92
 
 - Name: Lake Hylia Bridge Male Mantis
   Original Item: Male Mantis
@@ -2583,7 +2604,8 @@
     - Hyrule Field - Lanayru Province
     - DZX
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x93
 
 - Name: Lake Hylia Bridge Cliff Chest
   Original Item: Purple Rupee
@@ -3148,7 +3170,8 @@
     - Upper Zoras River
     - DZX
   Metadata:
-    - None
+    - Stage: 61
+      Flag: 0x9E
 
 - Name: Upper Zoras River Central Underwater Boulder Rupee
   Original Item: Blue Rupee
@@ -3244,7 +3267,8 @@
     - Zoras Domain
     - DZX
   Metadata:
-    - None
+    - Stage: 50
+      Flag: 0x9F
 
 - Name: Zoras Domain Mother and Child Isle Poe
   Original Item: Poe Soul
@@ -3825,7 +3849,8 @@
     - Gerudo Desert
     - DZX
   Metadata:
-    - None
+    - Stage: 59
+      Flag: 0x99
 
 - Name: Gerudo Desert Female Dayfly
   Original Item: Female Dayfly
@@ -3835,7 +3860,8 @@
     - Gerudo Desert
     - DZX
   Metadata:
-    - None
+    - Stage: 59
+      Flag: 0x98
 
 - Name: Gerudo Desert Owl Statue Chest
   Original Item: Orange Rupee

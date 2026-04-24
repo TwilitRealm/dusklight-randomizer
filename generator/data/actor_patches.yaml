@@ -4,7 +4,8 @@
 
 # Ordon Village
 F_SP103:
-  Room 0: # Main Village
+  # Room 0 - Main Village
+  0:
     # Bo's House left Door
     - name: kdoor
       parameters: 0x88000627
@@ -109,3 +110,543 @@ F_SP103:
         parameters: 0x13FF9101
       layers:
         - 0
+
+# Kakariko Graveyard
+F_SP111:
+  # Room 0 - Main graveyard
+  0:
+    # Male Ant
+    - name: I_Ari
+      parameters: 0x00000F00
+      position:
+        x: 16933.3046875
+        y: 500
+        z: -769.167724609375
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x91
+        name: item
+        parameters: 0xF1FF91D4
+      layers:
+        - 0
+        - 2
+        - 3
+
+# Zora's Domain
+F_SP113:
+  # Room 1 - Main Zora's Domain Area
+  1:
+    # Male Dragonfly
+    - name: I_Tom
+      parameters: 0x00000F00
+      position:
+        x: 3653.44995117188
+        y: -5167.66455078125
+        z: 15500.0009765625
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x9F
+        name: item
+        parameters: 0xF1FF9FD2
+        position:
+          y: -5300
+      layers:
+        - 0
+        - 2
+
+# Sacred Grove
+F_SP117:
+  # Room 1 - Pedestal of Time
+  1:
+    # Male Snail
+    - name: I_Kat
+      parameters: 0x00000F00
+      position:
+        x: 1447.40808105469
+        y: 1533.73156738281
+        z: 7053.470703125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x99
+        name: item
+        parameters: 0xF1FF99D0
+        position:
+          y: 1383
+      layers:
+        - 2
+
+  # Room 2 - Temple of Time
+  2:
+    # Female Snail
+    - name: I_Kat
+      parameters: 0x00000F10
+      position:
+        x: 405.664825439453
+        y: 1382.14660644531
+        z: 6069.1953125
+      angle:
+        x: 0x0000
+        y: 0x5D27
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x98
+        name: item
+        parameters: 0xF1FF98D1
+      layers:
+        - 2
+
+# Hyrule Field
+F_SP121:
+  # Room 0 - Eldin Field / Bridge of Eldin
+  0:
+    # Male Grasshopper
+    - name: I_Bat
+      parameters: 0x00000F00
+      position:
+        x: 19600
+        y: 648.359558105469
+        z: 13400
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x99
+        name: item
+        parameters: 0xF1FF99C2
+      layers:
+        - 0
+        - 6
+        - 8
+
+    # Female Grasshopper
+    - name: I_Bat
+      parameters: 0x00000F10
+      position:
+        x: -9950
+        y: 35.1765174865723
+        z: -8950
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x98
+        name: item
+        parameters: 0xF1FF98C3
+      layers:
+        - 0
+        - 6
+        - 8
+
+    # Male Phasmid
+    - name: I_Nan
+      parameters: 0x00001F00
+      position:
+        x: 35135
+        y: 254.385009765625
+        z: -15115.2587890625
+      angle:
+        x: 0xC000
+        y: 0x4000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x97
+        name: item
+        parameters: 0xF1FF97C8
+      layers:
+        - 0
+        - 6
+        - 8
+
+    # Female Phasmid
+    - name: I_Nan
+      parameters: 0x00001F10
+      position:
+        x: 39919.859375
+        y: 1415.41796875
+        z: -40367.38671875
+      angle:
+        x: 0xC000
+        y: 0x58E3
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x96
+        name: item
+        parameters: 0xF1FF96C9
+      layers:
+        - 0
+        - 6
+        - 8
+
+  # Room 3 - Kakariko Gorge
+  3:
+    # Male Pill Bug
+    - name: I_Dan
+      parameters: 0x00000F00
+      position:
+        x: -10000
+        y: -7200
+        z: 57450
+      angle:
+        x: 0x0000
+        y: 0x8000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x95
+        name: item
+        parameters: 0xF1FF95CA
+      layers:
+        - 0
+        - 6
+
+    # Female Pill Bug
+    - name: I_Dan
+      parameters: 0x00000F10
+      position:
+        x: 500
+        y: -6117.943359375
+        z: 61700
+      angle:
+        x: 0x0000
+        y: 0x8000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x94
+        name: item
+        parameters: 0xF1FF94CB
+      layers:
+        - 0
+        - 6
+
+  # Room 6 - Faron Field
+  6:
+    # Male Beetle
+    - name: kab_o
+      parameters: 0x00000F00
+      position:
+        x: -50200
+        y: -8810
+        z: 86400
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x9F
+        name: item
+        parameters: 0xF1FF9FC0
+        position:
+          y: -8910 # Lower by 100 so Link can reach it
+      layers:
+        - 0
+        - 6
+        - 9
+        - 10
+
+    # Female Beetle
+    - name: kab_o
+      parameters: 0x00000F10
+      position:
+        x: -36490
+        y: -8100
+        z: 74330
+      angle:
+        x: 0x0000
+        y: 0x2000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x9E
+        name: item
+        parameters: 0xF1FF9EC1
+      layers:
+        - 0
+        - 6
+        - 9
+        - 10
+
+  # Room 10 - Lanayru Field
+  10:
+    # Male Stag Beetle
+    - name: I_Kuw
+      parameters: 0x00000F00
+      position:
+        x: -62724.33203125
+        y: -882.901000976563
+        z: -33130.4140625
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x9B
+        name: item
+        parameters: 0xF1FF9BC4
+      layers:
+        - 0
+        - 6
+
+    # Female Stag Beetle
+    - name: I_Kuw
+      parameters: 0x00000F10
+      position:
+        x: -48850
+        y: 59.1445922851562
+        z: -51350
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x9A
+        name: item
+        parameters: 0xF1FF9AC5
+      layers:
+        - 0
+        - 6
+
+  # Room 13 - Great Bridge of Hylia
+  13:
+    # Male Mantis
+    - name: I_Kam
+      parameters: 0x00000F00
+      position:
+        x: -92900
+        y: -5441.38720703125
+        z: 30350
+      angle:
+        x: 0x0000
+        y: 0x4000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x93
+        name: item
+        parameters: 0xF1FF93CC
+      layers:
+        - 0
+        - 6
+
+    # Female Mantis
+    - name: I_Kam
+      parameters: 0x00000F10
+      position:
+        x: -88800
+        y: -6091.95068359375
+        z: 59050
+      angle:
+        x: 0x0000
+        y: 0xC000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x92
+        name: item
+        parameters: 0xF1FF92CD
+      layers:
+        - 0
+        - 6
+
+# Outside Castle Town Maps
+F_SP122:
+  # Room 8 - Outside West Castle Town
+  8:
+    # Male Butterfly
+    - name: I_Cho
+      parameters: 0x00000F00
+      position:
+        x: -75063.46875
+        y: -421.140930175781
+        z: 16017.3466796875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x9D
+        name: item
+        parameters: 0xF1FF9DC2
+        position:
+          y: -471
+      layers:
+        - 0
+
+    # Male Butterfly again (for some reason the one on layer 6 has a different x position)
+    - name: I_Cho
+      parameters: 0x00000F00
+      position:
+        x: -75063.0546875
+        y: -421.140930175781
+        z: 16017.3466796875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x9D
+        name: item
+        parameters: 0xF1FF9DC2
+        position:
+          y: -471
+      layers:
+        - 6
+
+    # Female Butterfly
+    - name: I_Cho
+      parameters: 0x00000F10
+      position:
+        x: -79687.9609375
+        y: -656.609985351562
+        z: 1544.75891113281
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x9C
+        name: item
+        parameters: 0xF1FF9CCD
+        position:
+          y: -706
+      layers:
+        - 0
+        - 6
+
+  # Room 16 - Outside South Castle Town
+  16:
+    # Male Ladybug
+    - name: I_Ten
+      parameters: 0x00000F00
+      position:
+        x: -45085.2734375
+        y: -5971.20849609375
+        z: 29910.453125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x91
+        name: item
+        parameters: 0xF1FF91CE
+        position:
+          y: -6081 # Lower the item so it isn't awkwardly floating
+      layers:
+        - 0
+        - 1
+        - 6
+
+    # Female Ladybug
+    - name: I_Ten
+      parameters: 0x00000F10
+      position:
+        x: -54382.18359375
+        y: -5481.6298828125
+        z: 27425.111328125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x90
+        name: item
+        parameters: 0xF1FF90CF
+      layers:
+        - 0
+        - 1
+        - 6
+
+# Gerudo Desert
+F_SP124:
+  # Room 0 - Main Desert
+  0:
+    # Male Dayfly
+    - name: I_Kag
+      parameters: 0x00000F0F
+      position:
+        x: 29089.78125
+        y: 412.155059814453
+        z: 58985.57421875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x99
+        name: item
+        parameters: 0xF1FF99D6
+      layers:
+        - 0
+
+    # Female Dayfly
+    - name: I_Kag
+      parameters: 0x00000F1F
+      position:
+        x: 11656.46484375
+        y: 141.179977416992
+        z: 55374.140625
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x98
+        name: item
+        parameters: 0xF1FF98D7
+      layers:
+        - 0
+
+# Upper Zora's River
+F_SP126:
+  # Room 0 - Main area
+  0:
+    # Female Dragonfly
+    - name: I_Tom
+      parameters: 0x00000F10
+      position:
+        x: 5849.5498046875
+        y: 80.7757110595703
+        z: -1121.2275390625
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x9E
+        name: item
+        parameters: 0xF1FF9ED3
+      layers:
+        - 0
+        - 1
+
+# Kakariko Village Interiors
+R_SP109:
+  # Room 6 - Abandoned House
+  6:
+    # Female Ant
+    - name: I_Ari
+      parameters: 0x00000F10
+      position:
+        x: 225.092803955078
+        y: 16.1963920593262
+        z: -17.4444351196289
+      angle:
+        x: 0x0000
+        y: 0x8000
+        z: 0x0000
+      patch:
+        # Turn this bug into an item actor with collectible flag 0x90
+        name: item
+        parameters: 0xF1FF90D5
+      layers:
+        - 0
+        - 1
+        - 2
+        - 3

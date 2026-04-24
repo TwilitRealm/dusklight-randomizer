@@ -63,8 +63,8 @@ namespace dusk {
                 randoData.mTreasureChestOverrides[stage][tboxId] = itemId;
             }
 
-            // Rupee Overrides
-            if (location->HasCategories("Rupee - Freestanding")) {
+            // Freestanding Overrides
+            if (location->HasCategories("Rupee - Freestanding") || location->HasCategories("Golden Bug")) {
                 u8 stage = metaData[0]["Stage"].as<u8>();
                 u8 flag = metaData[0]["Flag"].as<u8>();
                 u8 itemId = location->GetCurrentItem()->GetID();
@@ -160,8 +160,7 @@ namespace dusk {
         for (const auto& stageNode : actorPatches) {
             const auto& stageName = stageNode.first.as<std::string>();
             for (const auto& roomNode : stageNode.second) {
-                const auto& roomStr = roomNode.first.as<std::string>();
-                u8 roomNo = roomStr.back() - '0';
+                u8 roomNo = roomNode.first.as<u8>();
                 for (const auto& actorNode : roomNode.second) {
                     using namespace Utility::Endian;
                     // Get all the data for the actor (with endian shenanigans)
@@ -183,6 +182,10 @@ namespace dusk {
 
                     // Then override the actor with whatever parts are being patched
                     const auto& patchNode = actorNode["patch"];
+                    if (patchNode["name"]) {
+                        const auto& newName = patchNode["name"].as<std::string>();
+                        strncpy(actor.name, newName.c_str(), 8);
+                    }
                     if (patchNode["parameters"]) {
                         actor.base.parameters = toPlatform(target, patchNode["parameters"].as<u32>());
                     }

@@ -674,7 +674,6 @@
     - Stage: 56
       Flag: 0x9E
 
-# TODO
 - Name: Faron Field Poe
   Original Item: Poe Soul
   Categories:
@@ -696,7 +695,6 @@
     - Stage: 56
       Flag: 0x81
 
-# TODO
 - Name: Lost Woods Boulder Poe
   Original Item: Poe Soul
   Categories:
@@ -718,7 +716,6 @@
     - Tbox ID: 3
       Stage: F_SP117
 
-# TODO
 - Name: Lost Woods Waterfall Poe
   Original Item: Poe Soul
   Categories:
@@ -772,7 +769,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Sacred Grove Master Sword Poe
   Original Item: Poe Soul
   Categories:
@@ -818,7 +814,6 @@
     - Tbox ID: 1
       Stage: F_SP117
 
-# TODO
 - Name: Sacred Grove Temple of Time Owl Statue Poe
   Original Item: Poe Soul
   Categories:
@@ -1031,7 +1026,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Kakariko Gorge Poe
   Original Item: Poe Soul
   Categories:
@@ -1108,7 +1102,6 @@
     - Tbox ID: 62
       Stage: D_SB02
 
-# TODO
 - Name: Eldin Lantern Cave Poe
   Original Item: Poe Soul
   Categories:
@@ -1279,7 +1272,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Kakariko Village Bomb Shop Poe
   Original Item: Poe Soul
   Categories:
@@ -1290,7 +1282,6 @@
     - Flag: 0x5E
       Stage: 46
 
-# TODO
 - Name: Kakariko Village Watchtower Poe
   Original Item: Poe Soul
   Categories:
@@ -1420,7 +1411,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Kakariko Graveyard Open Poe
   Original Item: Poe Soul
   Categories:
@@ -1431,7 +1421,6 @@
     - Flag: 0x58
       Stage: 48
 
-# TODO
 - Name: Kakariko Graveyard Grave Poe
   Original Item: Poe Soul
   Categories:
@@ -1499,7 +1488,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Death Mountain Trail Poe
   Original Item: Poe Soul
   Categories:
@@ -1738,7 +1726,6 @@
     - Stage: 63
       Flag: 0x8B
 
-# TODO
 - Name: Hidden Village Poe
   Original Item: Poe Soul
   Categories:
@@ -1948,7 +1935,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Lanayru Field Bridge Poe
   Original Item: Poe Soul
   Categories:
@@ -1994,7 +1980,6 @@
 #   Metadata:
 #     - None
 
-# TODO
 - Name: Lanayru Field Poe Grotto Left Poe
   Original Item: Poe Soul
   Categories:
@@ -2005,7 +1990,6 @@
     - Flag: 0x0B
       Stage: 35
 
-# TODO
 - Name: Lanayru Field Poe Grotto Right Poe
   Original Item: Poe Soul
   Categories:
@@ -2157,7 +2141,6 @@
     - Stage: 57
       Room: 8
 
-# TODO
 - Name: Hyrule Field Amphitheater Poe
   Original Item: Poe Soul
   Categories:
@@ -2243,7 +2226,6 @@
     - Tbox ID: 1
       Stage: F_SP116
 
-# TODO
 - Name: East Castle Town Bridge Poe
   Original Item: Poe Soul
   Categories:
@@ -2286,7 +2268,6 @@
 #   Metadata:
 #     - None
 
-# TODO
 - Name: Jovani House Poe
   Original Item: Poe Soul
   Categories:
@@ -2606,7 +2587,6 @@
     - Stage: 57
       Flag: 0x90
 
-# TODO
 - Name: Outside South Castle Town Poe
   Original Item: Poe Soul
   Categories:
@@ -2748,7 +2728,6 @@
     - Tbox ID: 9
       Stage: F_SP121
 
-# TODO
 - Name: Lake Hylia Bridge Cliff Poe
   Original Item: Poe Soul
   Categories:
@@ -2792,7 +2771,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Lake Hylia Tower Poe
   Original Item: Poe Soul
   Categories:
@@ -2982,7 +2960,6 @@
     - Tbox ID: 3
       Stage: D_SB03
 
-# TODO
 - Name: Lake Lantern Cave First Poe
   Original Item: Poe Soul
   Categories:
@@ -2993,7 +2970,6 @@
     - Flag: 0x5E
       Stage: 33
 
-# TODO
 - Name: Lake Lantern Cave Second Poe
   Original Item: Poe Soul
   Categories:
@@ -3004,7 +2980,6 @@
     - Flag: 0x5D
       Stage: 33
 
-# TODO
 - Name: Lake Lantern Cave Final Poe
   Original Item: Poe Soul
   Categories:
@@ -3071,7 +3046,6 @@
     - Stage: 0xFF
       Flag: 0xFF
 
-# TODO
 - Name: Lake Hylia Alcove Poe
   Original Item: Poe Soul
   Categories:
@@ -3138,7 +3112,6 @@
     - Tbox ID: 7
       Stage: F_SP115
 
-# TODO
 - Name: Isle of Riches Poe
   Original Item: Poe Soul
   Categories:
@@ -3149,7 +3122,6 @@
     - Flag: 0x47
       Stage: 52
 
-# TODO
 - Name: Flight By Fowl Ledge Poe
   Original Item: Poe Soul
   Categories:
@@ -3171,7 +3143,6 @@
     - Tbox ID: 21
       Stage: D_SB09
 
-# TODO
 - Name: Lake Hylia Dock Poe
   Original Item: Poe Soul
   Categories:
@@ -3364,7 +3335,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Upper Zoras River Poe
   Original Item: Poe Soul
   Categories:
@@ -3432,7 +3402,6 @@
     - Stage: 50
       Flag: 0x9F
 
-# TODO
 - Name: Zoras Domain Mother and Child Isle Poe
   Original Item: Poe Soul
   Categories:
@@ -3465,7 +3434,6 @@
     - Tbox ID: 30
       Stage: F_SP113
 
-# TODO
 - Name: Zoras Domain Waterfall Poe
   Original Item: Poe Soul
   Categories:
@@ -3694,7 +3662,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Snowpeak Blizzard Poe
   Original Item: Poe Soul
   Categories:
@@ -3705,7 +3672,6 @@
     - Flag: 0x7D
       Stage: 51
 
-# TODO
 - Name: Snowpeak Above Freezard Grotto Poe
   Original Item: Poe Soul
   Categories:
@@ -3716,7 +3682,6 @@
     - Flag: 0x7C
       Stage: 51
 
-# TODO
 - Name: Snowpeak Poe Among Trees
   Original Item: Poe Soul
   Categories:
@@ -3749,7 +3714,6 @@
     - Tbox ID: 0
       Stage: F_SP114
 
-# TODO
 - Name: Snowpeak Cave Ice Poe
   Original Item: Poe Soul
   Categories:
@@ -3760,7 +3724,6 @@
     - Flag: 0x7F
       Stage: 51
 
-# TODO
 - Name: Snowpeak Icy Summit Poe
   Original Item: Poe Soul
   Categories:
@@ -4012,7 +3975,6 @@
 
 # DESERT PROVINCE
 
-# TODO
 - Name: Gerudo Desert East Poe
   Original Item: Poe Soul
   Categories:
@@ -4123,7 +4085,6 @@
     - Stage: 59
       Room: 0
 
-# TODO
 - Name: Gerudo Desert Poe Above Cave of Ordeals
   Original Item: Poe Soul
   Categories:
@@ -4146,7 +4107,6 @@
     - Tbox ID: 7
       Stage: F_SP124
 
-# TODO
 - Name: Gerudo Desert North Peahat Poe
   Original Item: Poe Soul
   Categories:
@@ -4157,7 +4117,6 @@
     - Flag: 0x5B
       Stage: 59
 
-# TODO
 - Name: Gerudo Desert Rock Grotto First Poe
   Original Item: Poe Soul
   Categories:
@@ -4168,7 +4127,6 @@
     - Flag: 0x0F
       Stage: 37
 
-# TODO
 - Name: Gerudo Desert Rock Grotto Second Poe
   Original Item: Poe Soul
   Categories:
@@ -4324,7 +4282,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Bulblin Camp Poe
   Original Item: Poe Soul
   Categories:
@@ -4346,7 +4303,6 @@
     - Tbox ID: 15
       Stage: F_SP118
 
-# TODO
 - Name: Outside Arbiters Grounds Poe
   Original Item: Poe Soul
   Categories:
@@ -4397,7 +4353,6 @@
 #     - Chest
 #     - Cave of Ordeals
 
-# TODO
 - Name: Cave of Ordeals Floor 17 Poe
   Original Item: Poe Soul
   Categories:
@@ -4408,7 +4363,6 @@
     - Flag: 0x45
       Stage: 31
 
-# TODO
 - Name: Cave of Ordeals Floor 33 Poe
   Original Item: Poe Soul
   Categories:
@@ -4419,7 +4373,6 @@
     - Flag: 0x46
       Stage: 31
 
-# TODO
 - Name: Cave of Ordeals Floor 44 Poe
   Original Item: Poe Soul
   Categories:
@@ -5248,7 +5201,6 @@
     - Tbox ID: 23
       Stage: D_MN10
 
-# TODO
 - Name: Arbiters Grounds Torch Room Poe
   Original Item: Poe Soul
   Categories:
@@ -5302,7 +5254,6 @@
     - Tbox ID: 6
       Stage: D_MN10
 
-# TODO
 - Name: Arbiters Grounds East Turning Room Poe
   Original Item: Poe Soul
   Categories:
@@ -5336,7 +5287,6 @@
     - Tbox ID: 5
       Stage: D_MN10
 
-# TODO
 - Name: Arbiters Grounds Hidden Wall Poe
   Original Item: Poe Soul
   Categories:
@@ -5389,7 +5339,6 @@
     - Tbox ID: 17
       Stage: D_MN10
 
-# TODO
 - Name: Arbiters Grounds West Poe
   Original Item: Poe Soul
   Categories:
@@ -5530,7 +5479,6 @@
     - Tbox ID: 22
       Stage: D_MN11
 
-# TODO
 - Name: Snowpeak Ruins Lobby Armor Poe
   Original Item: Poe Soul
   Categories:
@@ -5541,7 +5489,6 @@
     - Flag: 0x15
       Stage: 27
 
-# TODO
 - Name: Snowpeak Ruins Lobby Poe
   Original Item: Poe Soul
   Categories:
@@ -5728,7 +5675,6 @@
     - Tbox ID: 25
       Stage: D_MN11
 
-# TODO
 - Name: Snowpeak Ruins Ice Room Poe
   Original Item: Poe Soul
   Categories:
@@ -5833,7 +5779,6 @@
     - Tbox ID: 1
       Stage: D_MN06
 
-# TODO
 - Name: Temple of Time Poe Behind Gate
   Original Item: Poe Soul
   Categories:
@@ -5926,7 +5871,6 @@
     - Tbox ID: 47
       Stage: D_MN06
 
-# TODO
 - Name: Temple of Time Poe Above Scales
   Original Item: Poe Soul
   Categories:
@@ -6144,7 +6088,6 @@
     - Tbox ID: 25
       Stage: D_MN07
 
-# TODO
 - Name: City in the Sky Garden Island Poe
   Original Item: Poe Soul
   Categories:
@@ -6200,7 +6143,6 @@
     - Tbox ID: 24
       Stage: D_MN07
 
-# TODO
 - Name: City in the Sky Poe Above Central Fan
   Original Item: Poe Soul
   Categories:

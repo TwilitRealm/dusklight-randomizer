@@ -4,13 +4,11 @@
 #include "d/d_item.h"
 #include "d/d_item_data.h"
 
-bool haveItem(u32 item)
-{
+bool haveItem(u32 item) {
     return checkItemGet((u8)item, 1);
 }
 
-u32 getProgressiveSword()
-{
+u32 getProgressiveSword() {
     static constexpr u8 progressiveItemsList[] = {dItemNo_Randomizer_WOOD_STICK_e, dItemNo_Randomizer_SWORD_e, dItemNo_Randomizer_MASTER_SWORD_e};
 
     u32 listLength = sizeof(progressiveItemsList) / sizeof(progressiveItemsList[0]);
@@ -27,8 +25,7 @@ u32 getProgressiveSword()
     return dItemNo_Randomizer_LIGHT_SWORD_e;
 };
 
-u32 getProgressiveBow()
-{
+u32 getProgressiveBow() {
     static const u8 progressiveItemsList[] = {dItemNo_Randomizer_BOW_e, dItemNo_Randomizer_ARROW_LV2_e};
 
     u32 listLength = sizeof(progressiveItemsList) / sizeof(progressiveItemsList[0]);
@@ -45,8 +42,7 @@ u32 getProgressiveBow()
     return dItemNo_Randomizer_ARROW_LV3_e;
 };
 
-u32 getProgressiveSkill()
-{
+u32 getProgressiveSkill() {
     static const u8 progressiveItemsList[] = {
         dItemNo_Randomizer_ENDING_BLOW_e,
         dItemNo_Randomizer_SHIELD_ATTACK_e,
@@ -70,8 +66,7 @@ u32 getProgressiveSkill()
     return dItemNo_Randomizer_GREAT_SPIN_e;
 };
 
-u32 getProgressiveSkybook()
-{
+u32 getProgressiveSkybook() {
     if (!haveItem(dItemNo_Randomizer_ANCIENT_DOCUMENT2_e))
     {
         if (haveItem(dItemNo_Randomizer_ANCIENT_DOCUMENT_e))
@@ -91,8 +86,7 @@ u32 getProgressiveSkybook()
     return dItemNo_Randomizer_ANCIENT_DOCUMENT2_e;
 };
 
-u32 getProgressiveKeyShard()
-{
+u32 getProgressiveKeyShard() {
     static const u8 progressiveItemsList[] = {dItemNo_Randomizer_L2_KEY_PIECES1_e, dItemNo_Randomizer_L2_KEY_PIECES2_e};
 
     u32 listLength = sizeof(progressiveItemsList) / sizeof(progressiveItemsList[0]);
@@ -109,8 +103,7 @@ u32 getProgressiveKeyShard()
     return dItemNo_Randomizer_LV2_BOSS_KEY_e;
 };
 
-u32 getProgressiveMirrorShard()
-{
+u32 getProgressiveMirrorShard() {
     static const u8 progressiveItemsList[] = {
         dItemNo_Randomizer_MIRROR_PIECE_1_e,
         dItemNo_Randomizer_MIRROR_PIECE_2_e,
@@ -131,8 +124,7 @@ u32 getProgressiveMirrorShard()
     return dItemNo_Randomizer_MIRROR_PIECE_4_e;
 };
 
-u32 getProgressiveFusedShadow()
-{
+u32 getProgressiveFusedShadow() {
     static const u8 progressiveItemsList[] = {dItemNo_Randomizer_FUSED_SHADOW_1_e, dItemNo_Randomizer_FUSED_SHADOW_2_e};
 
     u32 listLength = sizeof(progressiveItemsList) / sizeof(progressiveItemsList[0]);
@@ -149,8 +141,7 @@ u32 getProgressiveFusedShadow()
     return dItemNo_Randomizer_FUSED_SHADOW_3_e;
 };
 
-u8 getWarashibeItemCount()
-{
+u8 getWarashibeItemCount() {
     static constexpr u8 itemsList[] = {
         dItemNo_Randomizer_LETTER_e,
         dItemNo_Randomizer_BILL_e,
@@ -247,7 +238,7 @@ u32 verifyProgressiveItem(u32 item)
         case dItemNo_Randomizer_COPY_ROD_e:
         case dItemNo_Randomizer_COPY_ROD_2_e:
         {
-            if (haveItem(dItemNo_Randomizer_COPY_ROD_2_e))
+            if (!haveItem(dItemNo_Randomizer_COPY_ROD_e))
             {
                 item = dItemNo_Randomizer_COPY_ROD_e;
             }

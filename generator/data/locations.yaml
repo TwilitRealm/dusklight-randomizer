@@ -531,7 +531,7 @@
     - Faron Woods
   Metadata:
     - Flag: 0x5D
-      Stage: F_SP108
+      Stage: 45
 
 - Name: Faron Mist Cave Open Chest
   Original Item: North Faron Woods Gate Key
@@ -683,7 +683,7 @@
     - Hyrule Field - Faron Province
   Metadata:
     - Flag: 0x39
-      Stage: F_SP121
+      Stage: 56
 
 - Name: Faron Field Tree Heart Piece
   Original Item: Piece of Heart
@@ -705,7 +705,7 @@
     - Sacred Grove
   Metadata:
     - Flag: 0x10
-      Stage: F_SP117
+      Stage: 54
 
 - Name: Lost Woods Lantern Chest
   Original Item: Bombs 30
@@ -727,7 +727,7 @@
     - Sacred Grove
   Metadata:
     - Flag: 0x11
-      Stage: F_SP117
+      Stage: 54
 
 - Name: Sacred Grove Baba Serpent Grotto Chest
   Original Item: Piece of Heart
@@ -781,7 +781,7 @@
     - Sacred Grove
   Metadata:
     - Flag: 0x0F
-      Stage: F_SP117
+      Stage: 54
 
 - Name: Sacred Grove Female Snail
   Original Item: Female Snail
@@ -827,7 +827,7 @@
     - Sacred Grove
   Metadata:
     - Flag: 0x1E
-      Stage: F_SP117
+      Stage: 54
 
 # ELDIN PROVINCE
 
@@ -1038,7 +1038,7 @@
     - Hyrule Field - Eldin Province
   Metadata:
     - Flag: 0x3A
-      Stage: F_SP121
+      Stage: 56
 
 - Name: Kakariko Gorge Spire Heart Piece
   Original Item: Piece of Heart
@@ -1115,7 +1115,7 @@
     - Eldin Lantern Cave
   Metadata:
     - Flag: 0x60
-      Stage: D_SB02
+      Stage: 32
 
 - Name: Eldin Spring Underwater Chest
   Original Item: Piece of Heart
@@ -1286,7 +1286,7 @@
     - Kakariko Village
   Metadata:
     - Flag: 0x5E
-      Stage: F_SP109
+      Stage: 46
 
 # TODO
 - Name: Kakariko Village Watchtower Poe
@@ -1297,7 +1297,7 @@
     - Kakariko Village
   Metadata:
     - Flag: 0x5F
-      Stage: F_SP109
+      Stage: 46
 
 - Name: Kakariko Watchtower Alcove Chest
   Original Item: Orange Rupee
@@ -1428,7 +1428,7 @@
     - Kakariko Graveyard
   Metadata:
     - Flag: 0x58
-      Stage: F_SP111
+      Stage: 48
 
 # TODO
 - Name: Kakariko Graveyard Grave Poe
@@ -1439,7 +1439,7 @@
     - Kakariko Graveyard
   Metadata:
     - Flag: 0x57
-      Stage: F_SP111
+      Stage: 48
 
 - Name: Death Mountain Alcove Chest
   Original Item: Piece of Heart
@@ -1507,7 +1507,7 @@
     - Death Mountain
   Metadata:
     - Flag: 0x59
-      Stage: F_SP110
+      Stage: 47
 
 - Name: Eldin Field Bomb Rock Chest
   Original Item: Piece of Heart
@@ -1746,7 +1746,7 @@
     - Hidden Village
   Metadata:
     - Flag: 0x40
-      Stage: F_SP128
+      Stage: 63
 
 # TODO
 - Name: Ilia Charm
@@ -1956,7 +1956,7 @@
     - Hyrule Field - Lanayru Province
   Metadata:
     - Flag: 0x33
-      Stage: F_SP121
+      Stage: 56
 
 - Name: Lanayru Field Female Stag Beetle
   Original Item: Female Stag Beetle
@@ -2002,7 +2002,7 @@
     - Hyrule Field - Lanayru Province
   Metadata:
     - Flag: 0x0B
-      Stage: D_SB05
+      Stage: 35
 
 # TODO
 - Name: Lanayru Field Poe Grotto Right Poe
@@ -2013,7 +2013,7 @@
     - Hyrule Field - Lanayru Province
   Metadata:
     - Flag: 0x0A
-      Stage: D_SB05
+      Stage: 35
 
 - Name: Lanayru Field Skulltula Grotto Chest
   Original Item: Orange Rupee
@@ -2165,7 +2165,7 @@
     - Hyrule Field - Lanayru Province
   Metadata:
     - Flag: 0x49
-      Stage: D_SP122
+      Stage: 57
 
 # TODO
 - Name: Charlo Donation Blessing
@@ -2251,7 +2251,7 @@
     - Hyrule Field - Lanayru Province
   Metadata:
     - Flag: 0x47
-      Stage: F_SP122
+      Stage: 57
 
 # TODO
 - Name: Jovani 20 Poe Soul Reward
@@ -2294,7 +2294,7 @@
     - Poe
   Metadata:
     - Flag: 0x1E
-      Stage: R_SP160
+      Stage: 73
 
 # TODO
 - Name: Telma Invoice
@@ -2614,7 +2614,7 @@
     - Hyrule Field - Lanayru Province
   Metadata:
     - Flag: 0x30
-      Stage: F_SP122
+      Stage: 57
 
 - Name: Outside South Castle Town Tektite Grotto Chest
   Original Item: Orange Rupee
@@ -2756,7 +2756,7 @@
     - Hyrule Field - Lanayru Province
   Metadata:
     - Flag: 0x3B
-      Stage: F_SP121
+      Stage: 56
 
 - Name: Lake Hylia Bridge Bubble Grotto Chest
   Original Item: Orange Rupee
@@ -2800,7 +2800,7 @@
     - Lake Hylia
   Metadata:
     - Flag: 0x4C
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Lake Hylia Water Toadpoli Grotto Chest
   Original Item: Orange Rupee
@@ -2990,7 +2990,7 @@
     - Lake Lantern Cave
   Metadata:
     - Flag: 0x5E
-      Stage: D_SB03
+      Stage: 33
 
 # TODO
 - Name: Lake Lantern Cave Second Poe
@@ -3001,7 +3001,7 @@
     - Lake Lantern Cave
   Metadata:
     - Flag: 0x5D
-      Stage: D_SB03
+      Stage: 33
 
 # TODO
 - Name: Lake Lantern Cave Final Poe
@@ -3012,7 +3012,7 @@
     - Lake Lantern Cave
   Metadata:
     - Flag: 0x5F
-      Stage: D_SB03
+      Stage: 33
 
 - Name: Lake Hylia Underwater Chest
   Original Item: Orange Rupee
@@ -3079,7 +3079,7 @@
     - Lake Hylia
   Metadata:
     - Flag: 0x46
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Flight By Fowl Top Platform Reward
   Original Item: Orange Rupee
@@ -3146,7 +3146,7 @@
     - Lake Hylia
   Metadata:
     - Flag: 0x47
-      Stage: F_SP115
+      Stage: 52
 
 # TODO
 - Name: Flight By Fowl Ledge Poe
@@ -3157,7 +3157,7 @@
     - Lake Hylia
   Metadata:
     - Flag: 0x4D
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Lake Hylia Shell Blade Grotto Chest
   Original Item: Orange Rupee
@@ -3179,7 +3179,7 @@
     - Lake Hylia
   Metadata:
     - Flag: 0x4B
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Outside Lanayru Spring Left Statue Chest
   Original Item: Purple Rupee
@@ -3372,7 +3372,7 @@
     - Upper Zoras River
   Metadata:
     - Flag: 0x48
-      Stage: F_SP126
+      Stage: 61
 
 # TODO
 - Name: Iza Helping Hand
@@ -3440,7 +3440,7 @@
     - Zoras Domain
   Metadata:
     - Flag: 0x4A
-      Stage: F_SP113
+      Stage: 50
 
 - Name: Zoras Domain Chest Behind Waterfall
   Original Item: Red Rupee
@@ -3473,7 +3473,7 @@
     - Zoras Domain
   Metadata:
     - Flag: 0x49
-      Stage: F_SP113
+      Stage: 50
 
 # TODO
 - Name: Zoras Domain Behind Waterfall Rupee
@@ -3702,7 +3702,7 @@
     - Snowpeak Province
   Metadata:
     - Flag: 0x7D
-      Stage: F_SP114
+      Stage: 51
 
 # TODO
 - Name: Snowpeak Above Freezard Grotto Poe
@@ -3713,7 +3713,7 @@
     - Snowpeak Province
   Metadata:
     - Flag: 0x7C
-      Stage: F_SP114
+      Stage: 51
 
 # TODO
 - Name: Snowpeak Poe Among Trees
@@ -3724,7 +3724,7 @@
     - Snowpeak Province
   Metadata:
     - Flag: 0x7B
-      Stage: F_SP114
+      Stage: 51
 
 - Name: Snowpeak Freezard Grotto Chest
   Original Item: Orange Rupee
@@ -3757,7 +3757,7 @@
     - Snowpeak Province
   Metadata:
     - Flag: 0x7F
-      Stage: F_SP114
+      Stage: 51
 
 # TODO
 - Name: Snowpeak Icy Summit Poe
@@ -3768,7 +3768,7 @@
     - Snowpeak Province
   Metadata:
     - Flag: 0x7E
-      Stage: F_SP114
+      Stage: 51
 
 # TODO
 - Name: Snowboard Racing Prize
@@ -4020,7 +4020,7 @@
     - Gerudo Desert
   Metadata:
     - Flag: 0x5C
-      Stage: F_SP124
+      Stage: 59
 
 - Name: Gerudo Desert Skulltula Grotto Chest
   Original Item: Orange Rupee
@@ -4131,7 +4131,7 @@
     - Gerudo Desert
   Metadata:
     - Flag: 0x5D
-      Stage: F_SP124
+      Stage: 59
 
 - Name: Gerudo Desert West Canyon Chest
   Original Item: Purple Rupee
@@ -4154,7 +4154,7 @@
     - Gerudo Desert
   Metadata:
     - Flag: 0x5B
-      Stage: F_SP124
+      Stage: 59
 
 # TODO
 - Name: Gerudo Desert Rock Grotto First Poe
@@ -4165,7 +4165,7 @@
     - Gerudo Desert
   Metadata:
     - Flag: 0x0F
-      Stage: D_SB07
+      Stage: 37
 
 # TODO
 - Name: Gerudo Desert Rock Grotto Second Poe
@@ -4176,7 +4176,7 @@
     - Gerudo Desert
   Metadata:
     - Flag: 0x10
-      Stage: D_SB07
+      Stage: 37
 
 - Name: Gerudo Desert Rock Grotto Lantern Chest
   Original Item: Orange Rupee
@@ -4274,7 +4274,7 @@
     - Gerudo Desert
   Metadata:
     - Flag: 0x33
-      Stage: F_SP118
+      Stage: 59
 
 - Name: Bulblin Camp First Chest Under Tower At Entrance
   Original Item: Arrows 20
@@ -4332,7 +4332,7 @@
     - Bulblin Camp
   Metadata:
     - Flag: 0x78
-      Stage: F_SP118
+      Stage: 55
 
 - Name: Outside Arbiters Grounds Lantern Chest
   Original Item: Purple Rupee
@@ -4354,7 +4354,7 @@
     - Bulblin Camp
   Metadata:
     - Flag: 0x5A
-      Stage: F_SP5A
+      Stage: 55
 
 # HD Only Location
 # - Name: Cave of Ordeals Floor 10 Chest
@@ -4405,7 +4405,7 @@
     - Cave of Ordeals
   Metadata:
     - Flag: 0x45
-      Stage: D_SB01
+      Stage: 31
 
 # TODO
 - Name: Cave of Ordeals Floor 33 Poe
@@ -4416,7 +4416,7 @@
     - Cave of Ordeals
   Metadata:
     - Flag: 0x46
-      Stage: D_SB01
+      Stage: 31
 
 # TODO
 - Name: Cave of Ordeals Floor 44 Poe
@@ -4427,7 +4427,7 @@
     - Cave of Ordeals
   Metadata:
     - Flag: 0x47
-      Stage: D_SB01
+      Stage: 31
 
 # TODO
 - Name: Cave of Ordeals Great Fairy Reward
@@ -5256,7 +5256,7 @@
     - Arbiters Grounds
   Metadata:
     - Flag: 0x1E
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds Torch Room East Chest
   Original Item: Piece of Heart
@@ -5310,7 +5310,7 @@
     - Arbiters Grounds
   Metadata:
     - Flag: 0x1F
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds East Upper Turnable Chest
   Original Item: Arbiters Grounds Compass
@@ -5344,7 +5344,7 @@
     - Arbiters Grounds
   Metadata:
     - Flag: 0x20
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds Ghoul Rat Room Chest
   Original Item: Arbiters Grounds Small Key
@@ -5397,7 +5397,7 @@
     - Arbiters Grounds
   Metadata:
     - Flag: 0x21
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds North Turning Room Chest
   Original Item: Arbiters Grounds Small Key
@@ -5500,9 +5500,9 @@
     - Dungeon
     - Arbiters Grounds
     - Dungeon Reward
+    - Location Name Lookup
   Goal Location: True
-  Metadata:
-    - None
+  Metadata: Arbiters Grounds Dungeon Reward
 
 # SNOWPEAK RUINS
 
@@ -5538,7 +5538,7 @@
     - Snowpeak Ruins
   Metadata:
     - Flag: 0x15
-      Stage: D_MN11
+      Stage: 27
 
 # TODO
 - Name: Snowpeak Ruins Lobby Poe
@@ -5549,7 +5549,7 @@
     - Snowpeak Ruins
   Metadata:
     - Flag: 0x72
-      Stage: D_MN11
+      Stage: 27
 
 - Name: Snowpeak Ruins Lobby Chandelier Chest
   Original Item: Piece of Heart
@@ -5736,7 +5736,7 @@
     - Snowpeak Ruins
   Metadata:
     - Flag: 0x7F
-      Stage: D_MN11
+      Stage: 27
 
 - Name: Snowpeak Ruins Northeast Chandelier Chest
   Original Item: Snowpeak Ruins Small Key
@@ -5841,7 +5841,7 @@
     - Temple of Time
   Metadata:
     - Flag: 0x19
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time Armos Antechamber East Chest
   Original Item: Temple of Time Small Key
@@ -5934,7 +5934,7 @@
     - Temple of Time
   Metadata:
     - Flag: 0x18
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time Floor Switch Puzzle Room Upper Chest
   Original Item: Red Rupee
@@ -6152,7 +6152,7 @@
     - City in the Sky
   Metadata:
     - Flag: 0x54
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky West Garden Lower Chest
   Original Item: Bombs 5
@@ -6208,7 +6208,7 @@
     - City in the Sky
   Metadata:
     - Flag: 0x55
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky Big Key Chest
   Original Item: City in the Sky Big Key

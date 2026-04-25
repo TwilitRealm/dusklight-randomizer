@@ -512,10 +512,10 @@ int randomizer_getItemAtLocation(const std::string& locationName) {
     return randomizer_GetContext().mItemLocations[locationName];
 }
 
-u32 getActorPatchesCurrentStageKey() {
+u32 getActorPatchesCurrentStageKey(u8 roomNo) {
     u32 actorPatchesStageKey{};
     actorPatchesStageKey |= getStageID(dComIfGp_getStartStageName()) << 16;
-    actorPatchesStageKey |= dComIfGp_getStartStageRoomNo() << 8;
+    actorPatchesStageKey |= roomNo << 8;
     actorPatchesStageKey |= dComIfGp_getLayerNo();
     return actorPatchesStageKey;
 }

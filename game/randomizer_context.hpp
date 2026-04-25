@@ -140,7 +140,7 @@ std::vector<u8> HexToBytes(std::string hex);
 /*
  * Gets the current stage id, room no, and layer no in the format for a key in mActorPatches
  */
-u32 getActorPatchesCurrentStageKey();
+u32 getActorPatchesCurrentStageKey(u8 roomNo);
 
 class stage_actor_data_class;
 /*

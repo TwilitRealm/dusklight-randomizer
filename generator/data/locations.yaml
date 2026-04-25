@@ -272,6 +272,7 @@
     - Tbox ID: 7
       Stage: D_SB05
 
+# TODO
 - Name: Ordon Spring Golden Wolf
   Original Item: Progressive Hidden Skill
   Categories:
@@ -427,6 +428,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Coro Bottle
   Original Item: Bottle with Lantern Oil
   Categories:
@@ -437,6 +439,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Faron Woods Coro Boulder Rupee 1
   Original Item: Green Rupee
   Categories:
@@ -446,6 +449,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Faron Woods Coro Boulder Rupee 2
   Original Item: Green Rupee
   Categories:
@@ -455,6 +459,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Faron Woods Coro Boulder Rupee 3
   Original Item: Blue Rupee
   Categories:
@@ -464,6 +469,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Faron Woods Coro Boulder Rupee 4
   Original Item: Yellow Rupee
   Categories:
@@ -550,6 +556,7 @@
     - Tbox ID: 26
       Stage: F_SP108
 
+# TODO
 - Name: Faron Woods Golden Wolf
   Original Item: Progressive Hidden Skill
   Categories:
@@ -570,6 +577,7 @@
     - Tbox ID: 63
       Stage: F_SP108
 
+# TODO
 - Name: Faron Woods Owl Statue Sky Character
   Original Item: Progressive Sky Book
   Categories:
@@ -666,6 +674,7 @@
     - Stage: 56
       Flag: 0x9E
 
+# TODO
 - Name: Faron Field Poe
   Original Item: Poe Soul
   Categories:
@@ -687,6 +696,7 @@
     - Stage: 56
       Flag: 0x81
 
+# TODO
 - Name: Lost Woods Boulder Poe
   Original Item: Poe Soul
   Categories:
@@ -708,6 +718,7 @@
     - Tbox ID: 3
       Stage: F_SP117
 
+# TODO
 - Name: Lost Woods Waterfall Poe
   Original Item: Poe Soul
   Categories:
@@ -741,6 +752,7 @@
     - Tbox ID: 2
       Stage: F_SP117
 
+# TODO
 - Name: Sacred Grove Pedestal Master Sword
   Original Item: Progressive Sword
   Categories:
@@ -750,6 +762,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Sacred Grove Pedestal Shadow Crystal
   Original Item: Shadow Crystal
   Categories:
@@ -759,6 +772,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Sacred Grove Master Sword Poe
   Original Item: Poe Soul
   Categories:
@@ -804,6 +818,7 @@
     - Tbox ID: 1
       Stage: F_SP117
 
+# TODO
 - Name: Sacred Grove Temple of Time Owl Statue Poe
   Original Item: Poe Soul
   Categories:
@@ -994,6 +1009,7 @@
     - Tbox ID: 4
       Stage: F_SP121
 
+# TODO
 - Name: Kakariko Gorge Owl Statue Sky Character
   Original Item: Progressive Sky Book
   Categories:
@@ -1003,6 +1019,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Kakariko Gorge Owl Statue Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -1012,6 +1029,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Kakariko Gorge Poe
   Original Item: Poe Soul
   Categories:
@@ -1044,6 +1062,7 @@
     - Tbox ID: 5
       Stage: F_SP121
 
+# TODO
 - Name: Kakariko Gorge Spire Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -1087,6 +1106,7 @@
     - Tbox ID: 62
       Stage: D_SB02
 
+# TODO
 - Name: Eldin Lantern Cave Poe
   Original Item: Poe Soul
   Categories:
@@ -1108,6 +1128,7 @@
     - Tbox ID: 21
       Stage: F_SP109
 
+# TODO
 - Name: Eldin Spring Underwater Boulder Rupee
   Original Item: Orange Rupee
   Categories:
@@ -1128,6 +1149,7 @@
     - Stage: 46
       Flag: 0x8C
 
+# TODO
 - Name: Kakariko Village Bell Rupee
   Original Item: Silver Rupee
   Categories:
@@ -1137,6 +1159,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Kakariko Village Hot Spring Ledge Box Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -1146,6 +1169,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Kakariko Village Spring Shortcut Box Rupee 1
   Original Item: Blue Rupee
   Categories:
@@ -1155,6 +1179,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Kakariko Village Spring Shortcut Box Rupee 2
   Original Item: Yellow Rupee
   Categories:
@@ -1164,6 +1189,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Kakariko Village Malo Mart Hawkeye
   Original Item: Hawkeye
   Categories:
@@ -1174,6 +1200,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Kakariko Village Malo Mart Hylian Shield
   Original Item: Hylian Shield
   Categories:
@@ -1184,6 +1211,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Kakariko Village Malo Mart Red Potion
   Original Item: Red Potion Shop
   Categories:
@@ -1194,6 +1222,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Kakariko Village Malo Mart Wooden Shield
   Original Item: Wooden Shield
   Categories:
@@ -1227,6 +1256,7 @@
     - Stage: 68
       Flag: 0x90
 
+# TODO
 - Name: Kakariko Village Ant House Ledge Box Rupee
   Original Item: Red Rupee
   Categories:
@@ -1247,6 +1277,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Kakariko Village Bomb Shop Poe
   Original Item: Poe Soul
   Categories:
@@ -1257,6 +1288,7 @@
     - Flag: 0x5E
       Stage: F_SP109
 
+# TODO
 - Name: Kakariko Village Watchtower Poe
   Original Item: Poe Soul
   Categories:
@@ -1289,6 +1321,7 @@
     - Tbox ID: 17
       Stage: R_SP109
 
+# TODO
 - Name: Talo Sharpshooting
   Original Item: Piece of Heart
   Categories:
@@ -1299,6 +1332,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Renados Letter
   Original Item: Renados Letter
   Categories:
@@ -1309,6 +1343,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Ilia Memory Reward
   Original Item: Horse Call
   Categories:
@@ -1318,6 +1353,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Rutelas Blessing
   Original Item: Zora Armor
   Categories:
@@ -1328,6 +1364,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Gift From Ralis
   Original Item: Progressive Fishing Rod
   Categories:
@@ -1349,6 +1386,7 @@
     - Tbox ID: 24
       Stage: F_SP111
 
+# TODO
 - Name: Kakariko Graveyard Male Ant
   Original Item: Male Ant
   Categories:
@@ -1361,6 +1399,7 @@
     - Stage: 48
       Flag: 0x91
 
+# TODO
 - Name: Kakariko Graveyard Underwater Boulder Rupee
   Original Item: Red Rupee
   Categories:
@@ -1370,6 +1409,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Kakariko Graveyard Golden Wolf
   Original Item: Progressive Hidden Skill
   Categories:
@@ -1379,6 +1419,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Kakariko Graveyard Open Poe
   Original Item: Poe Soul
   Categories:
@@ -1389,6 +1430,7 @@
     - Flag: 0x58
       Stage: F_SP111
 
+# TODO
 - Name: Kakariko Graveyard Grave Poe
   Original Item: Poe Soul
   Categories:
@@ -1410,6 +1452,7 @@
     - Tbox ID: 22
       Stage: F_SP110
 
+# TODO
 - Name: Death Mountain Volcano Ledge Rupee 1
   Original Item: Yellow Rupee
   Categories:
@@ -1421,6 +1464,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Death Mountain Volcano Ledge Rupee 2
   Original Item: Yellow Rupee
   Categories:
@@ -1432,6 +1476,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Death Mountain Volcano Ledge Rupee 3
   Original Item: Yellow Rupee
   Categories:
@@ -1443,6 +1488,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Death Mountain Volcano Pipe Ledge Rock Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -1452,6 +1498,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Death Mountain Trail Poe
   Original Item: Poe Soul
   Categories:
@@ -1520,6 +1567,7 @@
     - Stage: 56
       Flag: 0x99
 
+# TODO
 - Name: Goron Springwater Rush
   Original Item: Piece of Heart
   Categories:
@@ -1579,6 +1627,7 @@
     - Tbox ID: 3
       Stage: F_SP121
 
+# TODO
 - Name: Bridge of Eldin Owl Statue Sky Character
   Original Item: Progressive Sky Book
   Categories:
@@ -1588,6 +1637,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Bridge of Eldin Boulder Rupee
   Original Item: Red Rupee
   Categories:
@@ -1664,6 +1714,7 @@
     - Tbox ID: 2
       Stage: D_SB06
 
+# TODO
 - Name: Skybook From Impaz
   Original Item: Progressive Sky Book
   Categories:
@@ -1674,6 +1725,7 @@
   Metadata:
     - None
 
+# TODO (Might be fine, haven't checked)
 - Name: Cats Hide and Seek Minigame
   Original Item: Piece of Heart
   Categories:
@@ -1685,6 +1737,7 @@
     - Stage: 63
       Flag: 0x8B
 
+# TODO
 - Name: Hidden Village Poe
   Original Item: Poe Soul
   Categories:
@@ -1695,6 +1748,7 @@
     - Flag: 0x40
       Stage: F_SP128
 
+# TODO
 - Name: Ilia Charm
   Original Item: Ilias Charm
   Categories:
@@ -1863,6 +1917,7 @@
     - Tbox ID: 7
       Stage: F_SP121
 
+# TODO
 - Name: Lanayru Field North Underwater Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -1872,6 +1927,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Lanayru Field South Underwater Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -1881,6 +1937,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Lanayru Field Tree Boulder Rupee
   Original Item: Purple Rupee
   Categories:
@@ -1890,6 +1947,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Lanayru Field Bridge Poe
   Original Item: Poe Soul
   Categories:
@@ -1935,6 +1993,7 @@
 #   Metadata:
 #     - None
 
+# TODO
 - Name: Lanayru Field Poe Grotto Left Poe
   Original Item: Poe Soul
   Categories:
@@ -1945,6 +2004,7 @@
     - Flag: 0x0B
       Stage: D_SB05
 
+# TODO
 - Name: Lanayru Field Poe Grotto Right Poe
   Original Item: Poe Soul
   Categories:
@@ -1989,6 +2049,7 @@
     - Tbox ID: 8
       Stage: F_SP121
 
+# TODO
 - Name: Lanayru Field North Spinner Track Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -1998,6 +2059,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Lanayru Field South Spinner Track Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -2031,6 +2093,7 @@
     - Stage: 57
       Flag: 0x9D
 
+# TODO
 - Name: West Hyrule Field Northern Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -2040,6 +2103,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: West Hyrule Field Southern Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -2061,6 +2125,7 @@
     - Tbox ID: 0
       Stage: D_SB05
 
+# TODO
 - Name: West Hyrule Field Golden Wolf
   Original Item: Progressive Hidden Skill
   Categories:
@@ -2081,6 +2146,7 @@
     - Tbox ID: 11
       Stage: F_SP122
 
+# TODO
 - Name: Hyrule Field Amphitheater Owl Statue Sky Character
   Original Item: Progressive Sky Book
   Categories:
@@ -2090,6 +2156,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Hyrule Field Amphitheater Poe
   Original Item: Poe Soul
   Categories:
@@ -2100,6 +2167,7 @@
     - Flag: 0x49
       Stage: D_SP122
 
+# TODO
 - Name: Charlo Donation Blessing
   Original Item: Piece of Heart
   Categories:
@@ -2111,6 +2179,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: STAR Prize 1
   Original Item: Progressive Bow
   Categories:
@@ -2121,6 +2190,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: STAR Prize 2
   Original Item: Progressive Bow
   Categories:
@@ -2131,6 +2201,7 @@
   Metadata:
     - None
 
+# TODO (Might work, haven't checked)
 - Name: Castle Town Malo Mart Magic Armor
   Original Item: Magic Armor
   Categories:
@@ -2150,6 +2221,7 @@
 #   Metadata:
 #     - None
 
+# TODO
 - Name: North Castle Town Golden Wolf
   Original Item: Progressive Hidden Skill
   Categories:
@@ -2170,6 +2242,7 @@
     - Tbox ID: 1
       Stage: F_SP116
 
+# TODO
 - Name: East Castle Town Bridge Poe
   Original Item: Poe Soul
   Categories:
@@ -2180,6 +2253,7 @@
     - Flag: 0x47
       Stage: F_SP122
 
+# TODO
 - Name: Jovani 20 Poe Soul Reward
   Original Item: Bottle with Great Fairies Tears
   # HD Original Item: Ghost Lantern
@@ -2191,6 +2265,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Jovani 60 Poe Soul Reward
   Original Item: Silver Rupee
   #HD Original Item: Bottle with Great Fairies Tears
@@ -2210,6 +2285,7 @@
 #   Metadata:
 #     - None
 
+# TODO
 - Name: Jovani House Poe
   Original Item: Poe Soul
   Categories:
@@ -2220,6 +2296,7 @@
     - Flag: 0x1E
       Stage: R_SP160
 
+# TODO
 - Name: Telma Invoice
   Original Item: Invoice
   Categories:
@@ -2528,6 +2605,7 @@
     - Stage: 57
       Flag: 0x90
 
+# TODO
 - Name: Outside South Castle Town Poe
   Original Item: Poe Soul
   Categories:
@@ -2549,6 +2627,7 @@
     - Tbox ID: 1
       Stage: D_SB09
 
+# TODO
 - Name: Outside South Castle Town Golden Wolf
   Original Item: Progressive Hidden Skill
   Categories:
@@ -2570,6 +2649,7 @@
     - Tbox ID: 13
       Stage: F_SP122
 
+# TODO
 - Name: Outside South Castle Town Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -2579,6 +2659,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Wooden Statue
   Original Item: Wooden Statue
   Categories:
@@ -2600,6 +2681,7 @@
     - Tbox ID: 15
       Stage: F_SP121
 
+# TODO
 - Name: Lake Hylia Bridge Owl Statue Sky Character
   Original Item: Progressive Sky Book
   Categories:
@@ -2609,6 +2691,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Lake Hylia Bridge Owl Statue Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -2664,6 +2747,7 @@
     - Tbox ID: 9
       Stage: F_SP121
 
+# TODO
 - Name: Lake Hylia Bridge Cliff Poe
   Original Item: Poe Soul
   Categories:
@@ -2686,6 +2770,7 @@
     - Tbox ID: 4
       Stage: D_SB08
 
+# TODO
 - Name: Lake Hylia Bridge Faron Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -2695,6 +2780,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Auru Gift To Fyer
   Original Item: Aurus Memo
   Categories:
@@ -2705,6 +2791,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Lake Hylia Tower Poe
   Original Item: Poe Soul
   Categories:
@@ -2894,6 +2981,7 @@
     - Tbox ID: 3
       Stage: D_SB03
 
+# TODO
 - Name: Lake Lantern Cave First Poe
   Original Item: Poe Soul
   Categories:
@@ -2904,6 +2992,7 @@
     - Flag: 0x5E
       Stage: D_SB03
 
+# TODO
 - Name: Lake Lantern Cave Second Poe
   Original Item: Poe Soul
   Categories:
@@ -2914,6 +3003,7 @@
     - Flag: 0x5D
       Stage: D_SB03
 
+# TODO
 - Name: Lake Lantern Cave Final Poe
   Original Item: Poe Soul
   Categories:
@@ -2936,6 +3026,7 @@
     - Tbox ID: 5
       Stage: F_SP115
 
+# TODO
 - Name: Lake Hylia Left Underwater Boulder Rupee
   Original Item: Purple Rupee
   Categories:
@@ -2945,6 +3036,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Lake Hylia Left Underwater Pillar Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -2956,6 +3048,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Lake Hylia Right Underwater Boulder Rupee
   Original Item: Green Rupee
   Categories:
@@ -2965,6 +3058,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Lake Hylia Right Underwater Pillar Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -2976,6 +3070,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Lake Hylia Alcove Poe
   Original Item: Poe Soul
   Categories:
@@ -3042,6 +3137,7 @@
     - Tbox ID: 7
       Stage: F_SP115
 
+# TODO
 - Name: Isle of Riches Poe
   Original Item: Poe Soul
   Categories:
@@ -3052,6 +3148,7 @@
     - Flag: 0x47
       Stage: F_SP115
 
+# TODO
 - Name: Flight By Fowl Ledge Poe
   Original Item: Poe Soul
   Categories:
@@ -3073,6 +3170,7 @@
     - Tbox ID: 21
       Stage: D_SB09
 
+# TODO
 - Name: Lake Hylia Dock Poe
   Original Item: Poe Soul
   Categories:
@@ -3182,6 +3280,7 @@
     - Tbox ID: 10
       Stage: F_SP115
 
+# TODO
 - Name: Lanayru Spring Lower Underwater Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3191,6 +3290,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Lanayru Spring Upper Underwater Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3200,6 +3300,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Plumm Fruit Balloon Minigame
   Original Item: Piece of Heart
   Categories:
@@ -3222,6 +3323,7 @@
     - Stage: 61
       Flag: 0x9E
 
+# TODO
 - Name: Upper Zoras River Central Underwater Boulder Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3231,6 +3333,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Upper Zoras River East Underwater Boulder Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3240,6 +3343,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Upper Zoras River Ledge Boulder Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3249,6 +3353,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Upper Zoras River West Underwater Boulder Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3258,6 +3363,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Upper Zoras River Poe
   Original Item: Poe Soul
   Categories:
@@ -3268,6 +3374,7 @@
     - Flag: 0x48
       Stage: F_SP126
 
+# TODO
 - Name: Iza Helping Hand
   Original Item: Bomb Bag
   Categories:
@@ -3278,6 +3385,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Iza Raging Rapids Minigame
   Original Item: Giant Bomb Bag
   Categories:
@@ -3288,6 +3396,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Fishing Hole Bottle
   Original Item: Empty Bottle
   Categories:
@@ -3322,6 +3431,7 @@
     - Stage: 50
       Flag: 0x9F
 
+# TODO
 - Name: Zoras Domain Mother and Child Isle Poe
   Original Item: Poe Soul
   Categories:
@@ -3354,6 +3464,7 @@
     - Tbox ID: 30
       Stage: F_SP113
 
+# TODO
 - Name: Zoras Domain Waterfall Poe
   Original Item: Poe Soul
   Categories:
@@ -3364,6 +3475,7 @@
     - Flag: 0x49
       Stage: F_SP113
 
+# TODO
 - Name: Zoras Domain Behind Waterfall Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3375,6 +3487,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Zoras Domain Central Underwater Boulder Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3384,6 +3497,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Zoras Domain North Underwater Boulder Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3393,6 +3507,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Zoras Domain Shortcut Ledge Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3404,6 +3519,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Zoras Domain Shortcut Lower Boulder Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3413,6 +3529,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Zoras Domain Shortcut Upper Boulder Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3422,6 +3539,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Zoras Domain Top Ledge Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3433,6 +3551,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Zoras Domain Vine Ledge Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3444,6 +3563,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Zoras Domain Waterfall Ledge Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3477,6 +3597,7 @@
     - Tbox ID: 19
       Stage: F_SP113
 
+# TODO
 - Name: Zoras Domain Underwater Goron
   Original Item: Bomb Bag
   Categories:
@@ -3487,6 +3608,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Zoras Domain Throne East Gate Underwater Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3498,6 +3620,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Zoras Domain Throne East Underwater Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3509,6 +3632,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Zoras Domain Throne Northwest Underwater Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3520,6 +3644,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Zoras Domain Throne South Underwater Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3531,6 +3656,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Zoras Domain Throne West Gate Underwater Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3542,6 +3668,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Zoras Domain Throne West Underwater Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3555,6 +3682,7 @@
 
 # SNOWPEAK PROVINCE
 
+# TODO
 - Name: Ashei Sketch
   Original Item: Asheis Sketch
   Categories:
@@ -3565,6 +3693,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Snowpeak Blizzard Poe
   Original Item: Poe Soul
   Categories:
@@ -3575,6 +3704,7 @@
     - Flag: 0x7D
       Stage: F_SP114
 
+# TODO
 - Name: Snowpeak Above Freezard Grotto Poe
   Original Item: Poe Soul
   Categories:
@@ -3585,6 +3715,7 @@
     - Flag: 0x7C
       Stage: F_SP114
 
+# TODO
 - Name: Snowpeak Poe Among Trees
   Original Item: Poe Soul
   Categories:
@@ -3617,6 +3748,7 @@
     - Tbox ID: 0
       Stage: F_SP114
 
+# TODO
 - Name: Snowpeak Cave Ice Poe
   Original Item: Poe Soul
   Categories:
@@ -3627,6 +3759,7 @@
     - Flag: 0x7F
       Stage: F_SP114
 
+# TODO
 - Name: Snowpeak Icy Summit Poe
   Original Item: Poe Soul
   Categories:
@@ -3637,6 +3770,7 @@
     - Flag: 0x7E
       Stage: F_SP114
 
+# TODO
 - Name: Snowboard Racing Prize
   Original Item: Piece of Heart
   Categories:
@@ -3647,6 +3781,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Snowboarding Bridge Ledge Bottom Rupee
   Original Item: Green Rupee
   Categories:
@@ -3658,6 +3793,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Bridge Ledge Middle Rupee
   Original Item: Green Rupee
   Categories:
@@ -3669,6 +3805,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Bridge Ledge Upper Rupee
   Original Item: Green Rupee
   Categories:
@@ -3680,6 +3817,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Shortcut Rupee 1
   Original Item: Green Rupee
   Categories:
@@ -3691,6 +3829,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Shortcut Rupee 2
   Original Item: Green Rupee
   Categories:
@@ -3702,6 +3841,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Shortcut Rupee 3
   Original Item: Green Rupee
   Categories:
@@ -3713,6 +3853,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Shortcut Rupee 4
   Original Item: Green Rupee
   Categories:
@@ -3724,6 +3865,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Shortcut Rupee 5
   Original Item: Red Rupee
   Categories:
@@ -3735,6 +3877,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Shortcut Rupee 6
   Original Item: Green Rupee
   Categories:
@@ -3746,6 +3889,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Shortcut Rupee 7
   Original Item: Green Rupee
   Categories:
@@ -3757,6 +3901,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Shortcut Rupee 8
   Original Item: Green Rupee
   Categories:
@@ -3768,6 +3913,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Shortcut Rupee 9
   Original Item: Green Rupee
   Categories:
@@ -3779,6 +3925,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Shortcut Rupee 10
   Original Item: Green Rupee
   Categories:
@@ -3790,6 +3937,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Shortcut Rupee 11
   Original Item: Green Rupee
   Categories:
@@ -3801,6 +3949,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Snowy Tree Top Rupee 1
   Original Item: Blue Rupee
   Categories:
@@ -3812,6 +3961,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Snowy Tree Top Rupee 2
   Original Item: Red Rupee
   Categories:
@@ -3823,6 +3973,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Snowy Tree Top Rupee 3
   Original Item: Purple Rupee
   Categories:
@@ -3834,6 +3985,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Top Left Rupee
   Original Item: Green Rupee
   Categories:
@@ -3845,6 +3997,7 @@
     - Stage: 0xFF
       Flag: 0xFF
 
+# TODO
 - Name: Snowboarding Top Right Rupee
   Original Item: Green Rupee
   Categories:
@@ -3858,6 +4011,7 @@
 
 # DESERT PROVINCE
 
+# TODO
 - Name: Gerudo Desert East Poe
   Original Item: Poe Soul
   Categories:
@@ -3958,6 +4112,7 @@
     - Tbox ID: 1
       Stage: F_SP124
 
+# TODO
 - Name: Gerudo Desert Owl Statue Sky Character
   Original Item: Progressive Sky Book
   Categories:
@@ -3967,6 +4122,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Gerudo Desert Poe Above Cave of Ordeals
   Original Item: Poe Soul
   Categories:
@@ -3989,6 +4145,7 @@
     - Tbox ID: 7
       Stage: F_SP124
 
+# TODO
 - Name: Gerudo Desert North Peahat Poe
   Original Item: Poe Soul
   Categories:
@@ -3999,6 +4156,7 @@
     - Flag: 0x5B
       Stage: F_SP124
 
+# TODO
 - Name: Gerudo Desert Rock Grotto First Poe
   Original Item: Poe Soul
   Categories:
@@ -4009,6 +4167,7 @@
     - Flag: 0x0F
       Stage: D_SB07
 
+# TODO
 - Name: Gerudo Desert Rock Grotto Second Poe
   Original Item: Poe Soul
   Categories:
@@ -4097,6 +4256,7 @@
     - Tbox ID: 13
       Stage: F_SP115
 
+# TODO
 - Name: Gerudo Desert Golden Wolf
   Original Item: Progressive Hidden Skill
   Categories:
@@ -4140,6 +4300,7 @@
     - Tbox ID: 30
       Stage: F_SP118
 
+# TODO (Might work, haven't checked)
 - Name: Bulblin Camp Roasted Boar
   Original Item: Piece of Heart
   Categories:
@@ -4151,6 +4312,7 @@
     - Stage: 55
       Flag: 0x9F
 
+# TODO
 - Name: Bulblin Guard Key
   Original Item: Gerudo Desert Bulblin Camp Key
   Categories:
@@ -4161,6 +4323,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Bulblin Camp Poe
   Original Item: Poe Soul
   Categories:
@@ -4182,6 +4345,7 @@
     - Tbox ID: 15
       Stage: F_SP118
 
+# TODO
 - Name: Outside Arbiters Grounds Poe
   Original Item: Poe Soul
   Categories:
@@ -4232,7 +4396,7 @@
 #     - Chest
 #     - Cave of Ordeals
 
-
+# TODO
 - Name: Cave of Ordeals Floor 17 Poe
   Original Item: Poe Soul
   Categories:
@@ -4243,6 +4407,7 @@
     - Flag: 0x45
       Stage: D_SB01
 
+# TODO
 - Name: Cave of Ordeals Floor 33 Poe
   Original Item: Poe Soul
   Categories:
@@ -4253,6 +4418,7 @@
     - Flag: 0x46
       Stage: D_SB01
 
+# TODO
 - Name: Cave of Ordeals Floor 44 Poe
   Original Item: Poe Soul
   Categories:
@@ -4263,6 +4429,7 @@
     - Flag: 0x47
       Stage: D_SB01
 
+# TODO
 - Name: Cave of Ordeals Great Fairy Reward
   Original Item: Fairy Tears
   Categories:
@@ -4334,6 +4501,7 @@
     - Tbox ID: 31
       Stage: D_MN05
 
+# TODO
 - Name: Forest Temple Big Baba Key
   Original Item: Forest Temple Small Key
   Categories:
@@ -4378,6 +4546,7 @@
     - Tbox ID: 24
       Stage: D_MN05
 
+# TODO
 - Name: Forest Temple Gale Boomerang
   Original Item: Gale Boomerang
   Categories:
@@ -4458,6 +4627,7 @@
     - Tbox ID: 2
       Stage: D_MN05
 
+# TODO
 - Name: Forest Temple Diababa Heart Container
   Original Item: Heart Container
   Categories:
@@ -4468,6 +4638,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Forest Temple Dungeon Reward
   Original Item: Progressive Fused Shadow
   Categories:
@@ -4505,6 +4676,7 @@
     - Tbox ID: 11
       Stage: D_MN04
 
+# TODO
 - Name: Goron Mines Gor Amato Key Shard
   Original Item: Goron Mines Key Shard
   Categories:
@@ -4622,6 +4794,7 @@
     - Tbox ID: 14
       Stage: D_MN04
 
+# TODO
 - Name: Goron Mines Gor Ebizo Key Shard
   Original Item: Goron Mines Key Shard
   Categories:
@@ -4680,6 +4853,7 @@
     - Tbox ID: 12
       Stage: D_MN04
 
+# TODO
 - Name: Goron Mines Gor Liggs Key Shard
   Original Item: Goron Mines Key Shard
   Categories:
@@ -4714,6 +4888,7 @@
     - Tbox ID: 30
       Stage: D_MN04
 
+# TODO
 - Name: Goron Mines Fyrus Heart Container
   Original Item: Heart Container
   Categories:
@@ -4724,6 +4899,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Goron Mines Dungeon Reward
   Original Item: Progressive Fused Shadow
   Categories:
@@ -5034,6 +5210,7 @@
     - Tbox ID: 12
       Stage: D_MN01
 
+# TODO
 - Name: Lakebed Temple Morpheel Heart Container
   Original Item: Heart Container
   Categories:
@@ -5044,6 +5221,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Lakebed Temple Dungeon Reward
   Original Item: Progressive Fused Shadow
   Categories:
@@ -5069,6 +5247,7 @@
     - Tbox ID: 23
       Stage: D_MN10
 
+# TODO
 - Name: Arbiters Grounds Torch Room Poe
   Original Item: Poe Soul
   Categories:
@@ -5122,6 +5301,7 @@
     - Tbox ID: 6
       Stage: D_MN10
 
+# TODO
 - Name: Arbiters Grounds East Turning Room Poe
   Original Item: Poe Soul
   Categories:
@@ -5155,6 +5335,7 @@
     - Tbox ID: 5
       Stage: D_MN10
 
+# TODO
 - Name: Arbiters Grounds Hidden Wall Poe
   Original Item: Poe Soul
   Categories:
@@ -5207,6 +5388,7 @@
     - Tbox ID: 17
       Stage: D_MN10
 
+# TODO
 - Name: Arbiters Grounds West Poe
   Original Item: Poe Soul
   Categories:
@@ -5300,6 +5482,7 @@
     - Tbox ID: 20
       Stage: D_MN10
 
+# TODO
 - Name: Arbiters Grounds Stallord Heart Container
   Original Item: Heart Container
   Categories:
@@ -5310,6 +5493,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Arbiters Grounds Dungeon Reward
   Original Item: Progressive Mirror Shard
   Categories:
@@ -5345,6 +5529,7 @@
     - Tbox ID: 22
       Stage: D_MN11
 
+# TODO
 - Name: Snowpeak Ruins Lobby Armor Poe
   Original Item: Poe Soul
   Categories:
@@ -5355,6 +5540,7 @@
     - Flag: 0x15
       Stage: D_MN11
 
+# TODO
 - Name: Snowpeak Ruins Lobby Poe
   Original Item: Poe Soul
   Categories:
@@ -5376,6 +5562,7 @@
     - Tbox ID: 21
       Stage: D_MN11
 
+# TODO
 - Name: Snowpeak Ruins Mansion Map
   Original Item: Snowpeak Ruins Dungeon Map
   Categories:
@@ -5507,6 +5694,7 @@
     - Tbox ID: 2
       Stage: D_MN11
 
+# TODO
 - Name: Snowpeak Ruins Ball and Chain
   Original Item: Ball and Chain
   Categories:
@@ -5539,6 +5727,7 @@
     - Tbox ID: 25
       Stage: D_MN11
 
+# TODO
 - Name: Snowpeak Ruins Ice Room Poe
   Original Item: Poe Soul
   Categories:
@@ -5573,6 +5762,7 @@
     - Tbox ID: 11
       Stage: D_MN11
 
+# TODO
 - Name: Snowpeak Ruins Blizzeta Heart Container
   Original Item: Heart Container
   Categories:
@@ -5642,6 +5832,7 @@
     - Tbox ID: 1
       Stage: D_MN06
 
+# TODO
 - Name: Temple of Time Poe Behind Gate
   Original Item: Poe Soul
   Categories:
@@ -5734,6 +5925,7 @@
     - Tbox ID: 47
       Stage: D_MN06
 
+# TODO
 - Name: Temple of Time Poe Above Scales
   Original Item: Poe Soul
   Categories:
@@ -5801,6 +5993,7 @@
     - Tbox ID: 0
       Stage: D_MN06B
 
+# TODO
 - Name: Temple of Time Armogohma Heart Container
   Original Item: Heart Container
   Categories:
@@ -5811,6 +6004,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: Temple of Time Dungeon Reward
   Original Item: Progressive Mirror Shard
   Categories:
@@ -5949,6 +6143,7 @@
     - Tbox ID: 25
       Stage: D_MN07
 
+# TODO
 - Name: City in the Sky Garden Island Poe
   Original Item: Poe Soul
   Categories:
@@ -6004,6 +6199,7 @@
     - Tbox ID: 24
       Stage: D_MN07
 
+# TODO
 - Name: City in the Sky Poe Above Central Fan
   Original Item: Poe Soul
   Categories:
@@ -6118,6 +6314,7 @@
     - Tbox ID: 17
       Stage: D_MN07
 
+# TODO
 - Name: City in the Sky Argorok Heart Container
   Original Item: Heart Container
   Categories:
@@ -6128,6 +6325,7 @@
   Metadata:
     - None
 
+# TODO
 - Name: City in the Sky Dungeon Reward
   Original Item: Progressive Mirror Shard
   Categories:
@@ -6335,6 +6533,7 @@
     - Tbox ID: 26
       Stage: DM_MN09
 
+# TODO
 - Name: Palace of Twilight Zant Heart Container
   Original Item: Heart Container
   Categories:
@@ -6370,6 +6569,7 @@
     - Tbox ID: 9
       Stage: D_MN09
 
+# TODO
 - Name: Hyrule Castle King Bulblin Key
   Original Item: Hyrule Castle Small Key
   Categories:

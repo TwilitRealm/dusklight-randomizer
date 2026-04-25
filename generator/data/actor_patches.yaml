@@ -127,9 +127,9 @@ F_SP111:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x91
-        name: item
-        parameters: 0xF1FF91D4
+        # Turn this bug into a htPiece actor with collectible flag 0x91
+        name: htPiece
+        parameters: 0x00FF91D4
       layers:
         - 0
         - 2
@@ -151,9 +151,9 @@ F_SP113:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x9F
-        name: item
-        parameters: 0xF1FF9FD2
+        # Turn this bug into a htPiece actor with collectible flag 0x9F
+        name: htPiece
+        parameters: 0x00FF9FD2
         position:
           y: -5300
       layers:
@@ -176,9 +176,9 @@ F_SP117:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x99
-        name: item
-        parameters: 0xF1FF99D0
+        # Turn this bug into a htPiece actor with collectible flag 0x99
+        name: htPiece
+        parameters: 0x00FF99D0
         position:
           y: 1383
       layers:
@@ -198,9 +198,9 @@ F_SP117:
         y: 0x5D27
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x98
-        name: item
-        parameters: 0xF1FF98D1
+        # Turn this bug into a htPiece actor with collectible flag 0x98
+        name: htPiece
+        parameters: 0x00FF98D1
       layers:
         - 2
 
@@ -220,9 +220,9 @@ F_SP121:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x99
-        name: item
-        parameters: 0xF1FF99C2
+        # Turn this bug into a htPiece actor with collectible flag 0x99
+        name: htPiece
+        parameters: 0x00FF99C2
       layers:
         - 0
         - 6
@@ -240,9 +240,9 @@ F_SP121:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x98
-        name: item
-        parameters: 0xF1FF98C3
+        # Turn this bug into a htPiece actor with collectible flag 0x98
+        name: htPiece
+        parameters: 0x00FF98C3
       layers:
         - 0
         - 6
@@ -260,9 +260,9 @@ F_SP121:
         y: 0x4000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x97
-        name: item
-        parameters: 0xF1FF97C8
+        # Turn this bug into a htPiece actor with collectible flag 0x97
+        name: htPiece
+        parameters: 0x00FF97C8
       layers:
         - 0
         - 6
@@ -280,9 +280,9 @@ F_SP121:
         y: 0x58E3
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x96
-        name: item
-        parameters: 0xF1FF96C9
+        # Turn this bug into a htPiece actor with collectible flag 0x96
+        name: htPiece
+        parameters: 0x00FF96C9
       layers:
         - 0
         - 6
@@ -302,9 +302,9 @@ F_SP121:
         y: 0x8000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x95
-        name: item
-        parameters: 0xF1FF95CA
+        # Turn this bug into a htPiece actor with collectible flag 0x95
+        name: htPiece
+        parameters: 0x00FF95CA
       layers:
         - 0
         - 6
@@ -321,9 +321,9 @@ F_SP121:
         y: 0x8000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x94
-        name: item
-        parameters: 0xF1FF94CB
+        # Turn this bug into a htPiece actor with collectible flag 0x94
+        name: htPiece
+        parameters: 0x00FF94CB
       layers:
         - 0
         - 6
@@ -342,9 +342,9 @@ F_SP121:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x9F
-        name: item
-        parameters: 0xF1FF9FC0
+        # Turn this bug into a htPiece actor with collectible flag 0x9F
+        name: htPiece
+        parameters: 0x00FF9FC0
         position:
           y: -8910 # Lower by 100 so Link can reach it
       layers:
@@ -365,9 +365,9 @@ F_SP121:
         y: 0x2000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x9E
-        name: item
-        parameters: 0xF1FF9EC1
+        # Turn this bug into a htPiece actor with collectible flag 0x9E
+        name: htPiece
+        parameters: 0x00FF9EC1
       layers:
         - 0
         - 6
@@ -388,9 +388,9 @@ F_SP121:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x9B
-        name: item
-        parameters: 0xF1FF9BC4
+        # Turn this bug into a htPiece actor with collectible flag 0x9B
+        name: htPiece
+        parameters: 0x00FF9BC4
       layers:
         - 0
         - 6
@@ -407,9 +407,9 @@ F_SP121:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x9A
-        name: item
-        parameters: 0xF1FF9AC5
+        # Turn this bug into a htPiece actor with collectible flag 0x9A
+        name: htPiece
+        parameters: 0x00FF9AC5
       layers:
         - 0
         - 6
@@ -428,9 +428,9 @@ F_SP121:
         y: 0x4000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x93
-        name: item
-        parameters: 0xF1FF93CC
+        # Turn this bug into a htPiece actor with collectible flag 0x93
+        name: htPiece
+        parameters: 0x00FF93CC
       layers:
         - 0
         - 6
@@ -447,9 +447,9 @@ F_SP121:
         y: 0xC000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x92
-        name: item
-        parameters: 0xF1FF92CD
+        # Turn this bug into a htPiece actor with collectible flag 0x92
+        name: htPiece
+        parameters: 0x00FF92CD
       layers:
         - 0
         - 6
@@ -470,9 +470,9 @@ F_SP122:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x9D
-        name: item
-        parameters: 0xF1FF9DC2
+        # Turn this bug into a htPiece actor with collectible flag 0x9D
+        name: htPiece
+        parameters: 0x00FF9DC2
         position:
           y: -471
       layers:
@@ -490,9 +490,9 @@ F_SP122:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x9D
-        name: item
-        parameters: 0xF1FF9DC2
+        # Turn this bug into a htPiece actor with collectible flag 0x9D
+        name: htPiece
+        parameters: 0x00FF9DC2
         position:
           y: -471
       layers:
@@ -510,9 +510,9 @@ F_SP122:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x9C
-        name: item
-        parameters: 0xF1FF9CCD
+        # Turn this bug into a htPiece actor with collectible flag 0x9C
+        name: htPiece
+        parameters: 0x00FF9CCD
         position:
           y: -706
       layers:
@@ -533,9 +533,9 @@ F_SP122:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x91
-        name: item
-        parameters: 0xF1FF91CE
+        # Turn this bug into a htPiece actor with collectible flag 0x91
+        name: htPiece
+        parameters: 0x00FF91CE
         position:
           y: -6081 # Lower the item so it isn't awkwardly floating
       layers:
@@ -555,9 +555,9 @@ F_SP122:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x90
-        name: item
-        parameters: 0xF1FF90CF
+        # Turn this bug into a htPiece actor with collectible flag 0x90
+        name: htPiece
+        parameters: 0x00FF90CF
       layers:
         - 0
         - 1
@@ -579,9 +579,9 @@ F_SP124:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x99
-        name: item
-        parameters: 0xF1FF99D6
+        # Turn this bug into a htPiece actor with collectible flag 0x99
+        name: htPiece
+        parameters: 0x00FF99D6
       layers:
         - 0
 
@@ -597,9 +597,9 @@ F_SP124:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x98
-        name: item
-        parameters: 0xF1FF98D7
+        # Turn this bug into a htPiece actor with collectible flag 0x98
+        name: htPiece
+        parameters: 0x00FF98D7
       layers:
         - 0
 
@@ -619,9 +619,9 @@ F_SP126:
         y: 0x0000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x9E
-        name: item
-        parameters: 0xF1FF9ED3
+        # Turn this bug into a htPiece actor with collectible flag 0x9E
+        name: htPiece
+        parameters: 0x00FF9ED3
       layers:
         - 0
         - 1
@@ -642,9 +642,9 @@ R_SP109:
         y: 0x8000
         z: 0x0000
       patch:
-        # Turn this bug into an item actor with collectible flag 0x90
-        name: item
-        parameters: 0xF1FF90D5
+        # Turn this bug into a htPiece actor with collectible flag 0x90
+        name: htPiece
+        parameters: 0x00FF90D5
       layers:
         - 0
         - 1

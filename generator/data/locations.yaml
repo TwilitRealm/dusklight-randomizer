@@ -81,6 +81,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x80
@@ -91,6 +92,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x8B
@@ -101,6 +103,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x8A
@@ -111,6 +114,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x86
@@ -121,6 +125,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x88
@@ -131,6 +136,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x96
@@ -141,6 +147,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x95
@@ -151,6 +158,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x91
@@ -161,6 +169,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x82
@@ -171,6 +180,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x87
@@ -181,6 +191,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x85
@@ -191,6 +202,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x84
@@ -201,6 +213,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x81
@@ -211,6 +224,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x94
@@ -221,6 +235,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x97
@@ -231,6 +246,7 @@
     - Overworld
     - Ordona Province
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 43
       Flag: 0x89
@@ -633,6 +649,7 @@
     - Golden Bug
     - Hyrule Field - Faron Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 56
       Flag: 0x9F
@@ -644,6 +661,7 @@
     - Golden Bug
     - Hyrule Field - Faron Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 56
       Flag: 0x9E
@@ -664,8 +682,10 @@
     - Overworld
     - Hyrule Field - Faron Province
     - ARC
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x81
 
 - Name: Lost Woods Boulder Poe
   Original Item: Poe Soul
@@ -756,6 +776,7 @@
     - Golden Bug
     - Sacred Grove
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 54
       Flag: 0x98
@@ -767,6 +788,7 @@
     - Golden Bug
     - Sacred Grove
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 54
       Flag: 0x99
@@ -1006,8 +1028,10 @@
     - Overworld
     - Hyrule Field - Eldin Province
     - ARC
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x82
 
 - Name: Kakariko Gorge Double Clawshot Chest
   Original Item: Piece of Heart
@@ -1099,8 +1123,10 @@
     - Overworld
     - Kakariko Village
     - DZX
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 46
+      Flag: 0x8C
 
 - Name: Kakariko Village Bell Rupee
   Original Item: Silver Rupee
@@ -1196,6 +1222,7 @@
     - Golden Bug
     - Kakariko Village
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 68
       Flag: 0x90
@@ -1329,6 +1356,7 @@
     - Golden Bug
     - Kakariko Graveyard
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 48
       Flag: 0x91
@@ -1388,6 +1416,7 @@
     - Overworld
     - Death Mountain
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -1398,6 +1427,7 @@
     - Overworld
     - Death Mountain
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -1408,6 +1438,7 @@
     - Overworld
     - Death Mountain
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -1472,6 +1503,7 @@
     - Golden Bug
     - Hyrule Field - Eldin Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 56
       Flag: 0x98
@@ -1483,6 +1515,7 @@
     - Golden Bug
     - Hyrule Field - Eldin Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 56
       Flag: 0x99
@@ -1494,8 +1527,10 @@
     - Npc
     - Hyrule Field - Eldin Province
     - Boss
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x80
 
 - Name: Eldin Field Water Bomb Fish Grotto Chest
   Original Item: Purple Rupee
@@ -1516,6 +1551,7 @@
     - Golden Bug
     - Hyrule Field - Eldin Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 56
       Flag: 0x96
@@ -1527,6 +1563,7 @@
     - Golden Bug
     - Hyrule Field - Eldin Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 56
       Flag: 0x97
@@ -1643,9 +1680,10 @@
     - Overworld
     - Npc
     - Hidden Village
-    - DZX
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 63
+      Flag: 0x8B
 
 - Name: Hidden Village Poe
   Original Item: Poe Soul
@@ -1869,6 +1907,7 @@
     - Golden Bug
     - Hyrule Field - Lanayru Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 56
       Flag: 0x9A
@@ -1880,6 +1919,7 @@
     - Golden Bug
     - Hyrule Field - Lanayru Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 56
       Flag: 0x9B
@@ -1974,6 +2014,7 @@
     - Golden Bug
     - Hyrule Field - Lanayru Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 57
       Flag: 0x9C
@@ -1985,6 +2026,7 @@
     - Golden Bug
     - Hyrule Field - Lanayru Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 57
       Flag: 0x9D
@@ -2469,6 +2511,7 @@
     - Golden Bug
     - Hyrule Field - Lanayru Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 57
       Flag: 0x91
@@ -2480,6 +2523,7 @@
     - Golden Bug
     - Hyrule Field - Lanayru Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 57
       Flag: 0x90
@@ -2592,6 +2636,7 @@
     - Golden Bug
     - Hyrule Field - Lanayru Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 56
       Flag: 0x92
@@ -2603,6 +2648,7 @@
     - Golden Bug
     - Hyrule Field - Lanayru Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 56
       Flag: 0x93
@@ -2905,6 +2951,7 @@
     - Overworld
     - Lake Hylia
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -2924,6 +2971,7 @@
     - Overworld
     - Lake Hylia
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3169,6 +3217,7 @@
     - Golden Bug
     - Upper Zoras River
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 61
       Flag: 0x9E
@@ -3256,8 +3305,10 @@
     - Fishing Hole
     - ARC
     - REL
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 62
+      Flag: 0x80
 
 - Name: Zoras Domain Male Dragonfly
   Original Item: Male Dragonfly
@@ -3266,6 +3317,7 @@
     - Golden Bug
     - Zoras Domain
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 50
       Flag: 0x9F
@@ -3318,6 +3370,7 @@
     - Overworld
     - Zoras Domain
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3346,6 +3399,7 @@
     - Overworld
     - Zoras Domain
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3374,6 +3428,7 @@
     - Overworld
     - Zoras Domain
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3384,6 +3439,7 @@
     - Overworld
     - Zoras Domain
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3394,6 +3450,7 @@
     - Overworld
     - Zoras Domain
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3436,6 +3493,7 @@
     - Overworld
     - Zoras Domain
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3446,6 +3504,7 @@
     - Overworld
     - Zoras Domain
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3456,6 +3515,7 @@
     - Overworld
     - Zoras Domain
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3466,6 +3526,7 @@
     - Overworld
     - Zoras Domain
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3476,6 +3537,7 @@
     - Overworld
     - Zoras Domain
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3486,6 +3548,7 @@
     - Overworld
     - Zoras Domain
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3590,6 +3653,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3600,6 +3664,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3610,6 +3675,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3620,6 +3686,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3630,6 +3697,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3640,6 +3708,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3650,6 +3719,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3660,6 +3730,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3670,6 +3741,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3680,6 +3752,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3690,6 +3763,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3700,6 +3774,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3710,6 +3785,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3720,6 +3796,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3730,6 +3807,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3740,6 +3818,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3750,6 +3829,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3760,6 +3840,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3770,6 +3851,7 @@
     - Overworld
     - Snowpeak
     - Rupee - Freestanding
+    - Freestanding Item
   Metadata:
     - Stage: 0xFF
       Flag: 0xFF
@@ -3848,6 +3930,7 @@
     - Golden Bug
     - Gerudo Desert
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 59
       Flag: 0x99
@@ -3859,6 +3942,7 @@
     - Golden Bug
     - Gerudo Desert
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 59
       Flag: 0x98
@@ -4062,8 +4146,10 @@
     - Overworld
     - Bulblin Camp
     - Boss
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 55
+      Flag: 0x9F
 
 - Name: Bulblin Guard Key
   Original Item: Gerudo Desert Bulblin Camp Key

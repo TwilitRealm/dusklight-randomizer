@@ -64,7 +64,7 @@ namespace dusk {
             }
 
             // Freestanding Overrides
-            if (location->HasCategories("Rupee - Freestanding") || location->HasCategories("Golden Bug")) {
+            if (location->HasCategories("Freestanding Item")) {
                 u8 stage = metaData[0]["Stage"].as<u8>();
                 u8 flag = metaData[0]["Flag"].as<u8>();
                 u8 itemId = location->GetCurrentItem()->GetID();

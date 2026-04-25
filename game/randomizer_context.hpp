@@ -88,4 +88,5 @@ class stage_actor_data_class;
  */
 u32 getActorCRC32(stage_actor_data_class*);
 
+void GenerateAndWriteSeed(std::string& generationStatusMsg);
 #endif //DUSK_RANDOMIZER_CONTEXT_HPP

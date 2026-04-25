@@ -4,6 +4,8 @@
 #include "dusk/logging.h"
 #include "dusk/main.h"
 #include "dusk/randomizer/game/tools.h"
+#include "dusk/randomizer/game/stages.h"
+#include "dusk/randomizer/game/verify_item_functions.h"
 #include "dusk/randomizer/generator/utility/endian.hpp"
 #include "dusk/randomizer/generator/utility/yaml.hpp"
 #include "dusk/randomizer/generator/randomizer.hpp"
@@ -14,6 +16,10 @@
 #include <fstream>
 
 #include "d/actor/d_a_alink.h"
+#include "d/d_com_inf_game.h"
+#include "d/d_meter2_info.h"
+#include "d/d_meter2.h"
+#include "d/d_meter2_draw.h"
 
 std::optional<std::string> RandomizerContext::WriteToFile() {
 
@@ -45,6 +51,9 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
             out["mTreasureChestOverrides"][stageName][static_cast<u16>(tboxId)] = static_cast<u16>(itemId);
         }
     }
+
+    const std::unordered_map<u16, u16> u16PoeOverrides(this->mPoeOverrides.begin(), this->mPoeOverrides.end());
+    out["mPoeOverrides"] = u16PoeOverrides;
 
     for (const auto& [stageIdx, itemOverride] : this->mFreestandingItemOverrides) {
         for (const auto& [flag, itemId] : itemOverride) {
@@ -119,6 +128,13 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         }
     }
 
+    // Poe Overrides
+    for (const auto& poeNode : in["mPoeOverrides"]) {
+        u16 key = poeNode.first.as<u16>();
+        u8 itemId = poeNode.second.as<u8>();
+        this->mPoeOverrides[key] = itemId;
+    }
+
     // Freestanding overrides
     for (const auto& stageNode : in["mFreestandingItemOverrides"]) {
         const auto& stageIdx = stageNode.first.as<u8>();
@@ -180,6 +196,296 @@ std::string RandomizerContext::GetSeedDataPath() const {
     return std::string(SDL_GetPrefPath(dusk::OrgName, dusk::AppName)) + "randomizer/seeds/" + this->mHash + "/seed.dat";
 }
 
+RandomizerState g_randomizerState;
+
+int RandomizerState::_create() {
+    mInitialized = true;
+    mEventItemStatus = QUEUE_EMPTY;
+    mHasPendingToDChange = false;
+    // g_customMenuRing._initialize();
+    return 1;
+}
+
+int RandomizerState::_delete() {
+    mInitialized = false;
+    return 1;
+}
+
+int RandomizerState::execute() {
+    if (!mInitialized) {
+        return 0;
+    }
+
+    // Always check for and handle time of day changes
+    if (getTimeChange() != NO_CHANGE) {
+        handleTimeSpeed();
+    }
+
+    bool currentReloadingState;
+    // Any custom functionality that relies on Link's actor being on a stage
+    if (daAlink_getAlinkActorClass()) {
+        currentReloadingState = daAlink_getAlinkActorClass()->checkRestartRoom();
+        // Handle giving item to the player at any time.
+        initGiveItemToPlayer();
+    }
+    else {
+        currentReloadingState = true;
+    }
+
+    bool prevReloadingState = getRoomReloadingState();
+    if (!currentReloadingState) {
+        if (prevReloadingState) {
+            offLoad();
+        }
+    }
+    setRoomReloadingState(currentReloadingState);
+
+    // COpypasta old rando code until I build the framework out.
+    /*if (!libtp::tp::d_a_alink::checkStageName(libtp::data::stage::allStages[libtp::data::stage::StageIDs::Title_Screen]))
+    {
+        handleFoolishItem(randoPtr);
+    }*/
+
+    return 1;
+}
+
+int RandomizerState::draw() {
+    return 1;
+}
+
+void RandomizerState::handlePoeItem(u8 bitSw)
+{
+    u16 key = getStageID() << 8 | bitSw;
+    u8 item = randomizer_GetContext().mPoeOverrides[key];
+    addItemToEventQueue(item);
+    daAlink_getAlinkActorClass()->procWolfAtnActorMoveInit();
+}
+
+void RandomizerState::addItemToEventQueue(u8 item)
+{
+    for (int i = 0; i < EVENT_ITEM_QUEUE_SIZE; i++)
+    {
+        if (mEventItemQueue[i] == 0)
+        {
+            mEventItemQueue[i] = item;
+            break;
+        }
+    }
+}
+
+void RandomizerState::initGiveItemToPlayer()
+{
+    switch (daAlink_getAlinkActorClass()->mProcID)
+    {
+        case daAlink_c::PROC_WAIT:
+        case daAlink_c::PROC_TIRED_WAIT:
+        case daAlink_c::PROC_MOVE:
+        case daAlink_c::PROC_WOLF_WAIT:
+        case daAlink_c::PROC_WOLF_TIRED_WAIT:
+        case daAlink_c::PROC_WOLF_MOVE:
+        case daAlink_c::PROC_ATN_MOVE:
+        case daAlink_c::PROC_WOLF_ATN_AC_MOVE:
+        {
+            // Check if link is currently in a cutscene
+            if (daAlink_getAlinkActorClass()->checkEventRun())
+            {
+                break;
+            }
+
+            // Ensure that link is not currently in a message-based event.
+            if (daAlink_getAlinkActorClass()->getEventId() != 0)
+            {
+                break;
+            }
+
+            u8 itemToGive = 0xFF;
+
+            for (int i = 0; i < EVENT_ITEM_QUEUE_SIZE; i++)
+            {
+                const u8 storedItem = mEventItemQueue[i];
+
+                if (storedItem)
+                {
+                    const u8 giveItemToPlayerStatus = getGiveItemToPlayerStatus();
+
+                    // If we have the call to clear the queue, then we want to clear the item and break out.
+                    if (giveItemToPlayerStatus == CLEAR_QUEUE)
+                    {
+                        mEventItemQueue[i] = 0;
+                        setGiveItemToPlayerStatus(QUEUE_EMPTY);
+                        break;
+                    }
+
+                    // If the queue is empty and we have an item to give, update the queue state.
+                    else if (giveItemToPlayerStatus == QUEUE_EMPTY)
+                    {
+                        setGiveItemToPlayerStatus(ITEM_IN_QUEUE);
+                    }
+
+                    itemToGive = verifyProgressiveItem(storedItem);
+                    break;
+                }
+            }
+
+            // if there is no item to give, break out of the case.
+            if (itemToGive == 0xFF)
+            {
+                break;
+            }
+
+            g_dComIfG_gameInfo.play.getEvent()->setGtItm(itemToGive);
+
+            // Set the process value for getting an item to start the "get item" cutscene when next available.
+            daAlink_getAlinkActorClass()->mProcID = daAlink_c::PROC_GET_ITEM;
+
+            //  Get the event index for the "Get Item" event.
+            const s16 eventIdx = dComIfGp_getEventManager().getEventIdx((fopAc_ac_c*)daAlink_getAlinkActorClass(),"DEFAULT_GETITEM",0xFF);
+
+            // Finally we want to modify the event stack to prioritize our custom event so that it happens next.
+            fopAcM_orderChangeEventId(daAlink_getAlinkActorClass(), eventIdx, 1, 0xFFFF);
+        }
+        default:
+        {
+            break;
+        }
+    }
+}
+
+void RandomizerState::handleTimeOfDayChange()
+{
+    if (dComIfGp_roomControl_getTimePass())
+    {
+        // No point in changing values if we are already changing the time.
+        if (getTimeChange() == NO_CHANGE)
+        {
+            if (!dKy_daynight_check()) // Day time
+            {
+                setTimeChange(CHANGE_TO_NIGHT);
+            }
+            else
+            {
+                setTimeChange(CHANGE_TO_DAY);
+            }
+            g_env_light.time_change_rate = 1.f; // Increase time speed
+        }
+    }
+    else
+    {
+        if (!dKy_daynight_check()) // Day time
+        {
+            dComIfGs_setTime(285.f);
+        }
+        else
+        {
+            dComIfGs_setTime(105.f);
+        }
+        dComIfGp_setEnableNextStage();
+    }
+}
+
+void RandomizerState::handleTimeSpeed()
+{
+
+    if (!dKy_daynight_check()) // Day time
+    {
+        if (getTimeChange() == CHANGE_TO_DAY)
+        {
+            g_env_light.time_change_rate = 0.012f; // Set time speed to normal
+            setTimeChange(NO_CHANGE);
+        }
+    }
+    else if (getTimeChange() == CHANGE_TO_NIGHT)
+    {
+        g_env_light.time_change_rate = 0.012f; // Set time speed to normal
+        setTimeChange(NO_CHANGE);
+    }
+}
+
+void RandomizerState::offLoad()
+{
+    if ((getStageID() == City_in_the_Sky) && (dStage_roomControl_c::mStayNo == 0) && (dComIfGp_getStartStagePoint() == 3))
+    {
+        // Fan in the main room active
+        dComIfGs_offSaveSwitch(0xA);
+
+        // Main Room 1F explored
+        dComIfGs_offSaveSwitch(0xF);
+    }
+
+    if (playerIsInRoomStage(1, allStages[Sacred_Grove]))
+    {
+        // If the portal in SG isn't active then we want to spawn the shadow beasts.
+        if (!dComIfGs_isSaveSwitch(0x64))
+        {
+            dComIfGs_onSvOneZoneSwitch(0, 0xE);
+        }
+    }
+
+    if ((getStageID() == Ordon_Ranch) && (dComIfGp_getStartStagePoint() == 1))
+    {
+        // Clear the danBit that starts a conversation when entering the ranch so the player can do goats as needed.
+        dComIfGs_offSaveDunSwitch(0x1);
+    }
+}
+
+bool checkFoolishItemEffectReady()
+{
+    // Verify Link is loaded on the map.
+    if (!daAlink_getAlinkActorClass())
+    {
+        return false;
+    }
+
+    // Ensure Link is not in a cutscene
+    if (daAlink_getAlinkActorClass()->checkEventRun())
+    {
+        return false;
+    }
+
+    // Make sure Link isn't riding anything
+    if (daAlink_getAlinkActorClass()->checkRide())
+    {
+        return false;
+    }
+
+    // Ensure there are pointers to the mMeterClass and mpMeterDraw structs
+    if (!dMeter2Info_getMeterClass())
+    {
+        return false;
+    }
+
+    if (!dMeter2Info_getMeterClass()->getMeterDrawPtr())
+    {
+        return false;
+    }
+
+    // Make sure Z button isn't dimmed
+    if (dMeter2Info_getMeterClass()->getMeterDrawPtr()->getZButtonAlpha() != 1.f)
+    {
+        return false;
+    }
+
+    switch (daAlink_getAlinkActorClass()->mProcID)
+    {
+        case daAlink_c::PROC_TALK:
+        case daAlink_c::PROC_WOLF_SWIM_MOVE:
+        case daAlink_c::PROC_SWIM_MOVE:
+        case daAlink_c::PROC_SWIM_WAIT:
+        case daAlink_c::PROC_WOLF_SWIM_WAIT:
+        case daAlink_c::PROC_SWIM_UP:
+        case daAlink_c::PROC_SWIM_DIVE:
+        {
+            return false;
+        }
+        default:
+        {
+            break;
+        }
+    }
+    return true;
+}
+
+
 RandomizerContext& randomizer_GetContext() {
     static RandomizerContext instance;
     return instance;
@@ -218,6 +524,9 @@ u32 getActorCRC32(stage_actor_data_class* actor) {
     return zng_crc32(0, reinterpret_cast<u8*>(actor), RandomizerContext::ACTOR_CRC_SIZE);
 }
 
+/*
+ * Generates a seed and writes the necessary seed files to the players seed directory
+ */
 void GenerateAndWriteSeed(std::string& generationStatusMsg) {
     const auto result = SDL_GetPrefPath(dusk::OrgName, dusk::AppName);
     if (!result) {
@@ -252,6 +561,16 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
             const auto& tboxId = metaData[0]["Tbox ID"].as<u8>();
             const auto& itemId = location->GetCurrentItem()->GetID();
             randoData.mTreasureChestOverrides[stage][tboxId] = itemId;
+        }
+
+        // Poe Overrides
+        // Keyed by u16 of 0xFF00 (stage index) and 0x00FF (collectible flag)
+        if (location->HasCategories("Poe")) {
+            const auto& stage = metaData[0]["Stage"].as<u8>();
+            const auto& flag = metaData[0]["Flag"].as<u8>();
+            u8 itemId = location->GetCurrentItem()->GetID();
+            u16 key = (stage << 8) | flag;
+            randoData.mPoeOverrides[key] = itemId;
         }
 
         // Freestanding Overrides

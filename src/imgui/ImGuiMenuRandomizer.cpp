@@ -42,6 +42,7 @@ namespace dusk {
                     // Put seed generation on a separate thread so it doesn't freeze the game
                     std::thread randoGenerationThread(StartSeedGeneration);
                     randoGenerationThread.detach();
+                    // StartSeedGeneration();
                     m_showRandoGeneration = true;
                 }
 

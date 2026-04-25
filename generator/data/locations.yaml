@@ -577,7 +577,6 @@
     - Tbox ID: 63
       Stage: F_SP108
 
-# TODO
 - Name: Faron Woods Owl Statue Sky Character
   Original Item: Progressive Sky Book
   Categories:
@@ -585,7 +584,8 @@
     - Faron Woods
     - Sky Book
   Metadata:
-    - None
+    - Stage: 45
+      Room: 8
 
 - Name: Faron Woods Owl Statue Chest
   Original Item: Piece of Heart
@@ -1009,7 +1009,6 @@
     - Tbox ID: 4
       Stage: F_SP121
 
-# TODO
 - Name: Kakariko Gorge Owl Statue Sky Character
   Original Item: Progressive Sky Book
   Categories:
@@ -1017,7 +1016,8 @@
     - Hyrule Field - Eldin Province
     - Sky Book
   Metadata:
-    - None
+    - Stage: 56
+      Room: 3
 
 # TODO
 - Name: Kakariko Gorge Owl Statue Boulder Rupee
@@ -1627,7 +1627,6 @@
     - Tbox ID: 3
       Stage: F_SP121
 
-# TODO
 - Name: Bridge of Eldin Owl Statue Sky Character
   Original Item: Progressive Sky Book
   Categories:
@@ -1635,7 +1634,8 @@
     - Hyrule Field - Eldin Province
     - Sky Book
   Metadata:
-    - None
+    - Stage: 56
+      Room: 0
 
 # TODO
 - Name: Bridge of Eldin Boulder Rupee
@@ -2146,7 +2146,6 @@
     - Tbox ID: 11
       Stage: F_SP122
 
-# TODO
 - Name: Hyrule Field Amphitheater Owl Statue Sky Character
   Original Item: Progressive Sky Book
   Categories:
@@ -2154,7 +2153,8 @@
     - Hyrule Field - Lanayru Province
     - Sky Book
   Metadata:
-    - None
+    - Stage: 57
+      Room: 8
 
 # TODO
 - Name: Hyrule Field Amphitheater Poe
@@ -2681,7 +2681,6 @@
     - Tbox ID: 15
       Stage: F_SP121
 
-# TODO
 - Name: Lake Hylia Bridge Owl Statue Sky Character
   Original Item: Progressive Sky Book
   Categories:
@@ -2689,7 +2688,8 @@
     - Hyrule Field - Lanayru Province
     - Sky Book
   Metadata:
-    - None
+    - Stage: 56
+      Room: 13
 
 # TODO
 - Name: Lake Hylia Bridge Owl Statue Boulder Rupee
@@ -4112,7 +4112,6 @@
     - Tbox ID: 1
       Stage: F_SP124
 
-# TODO
 - Name: Gerudo Desert Owl Statue Sky Character
   Original Item: Progressive Sky Book
   Categories:
@@ -4120,7 +4119,8 @@
     - Gerudo Desert
     - Sky Book
   Metadata:
-    - None
+    - Stage: 59
+      Room: 0
 
 # TODO
 - Name: Gerudo Desert Poe Above Cave of Ordeals

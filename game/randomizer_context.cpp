@@ -55,6 +55,9 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
     const std::unordered_map<u16, u16> u16BugRewardOverrides(this->mBugRewardOverrides.begin(), this->mBugRewardOverrides.end());
     out["mBugRewardOverrides"] = u16BugRewardOverrides;
 
+    const std::unordered_map<u16, u16> u16SkyCharacterOverrides(this->mSkyCharacterOverrides.begin(), this->mSkyCharacterOverrides.end());
+    out["mSkyCharacterOverrides"] = u16SkyCharacterOverrides;
+
     out["mItemLocations"] = this->mItemLocations;
 
     out["mStartHour"] = static_cast<u16>(this->mStartHour);
@@ -136,6 +139,13 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         u8 bugItemId = bugNode.first.as<u8>();
         u8 itemId = bugNode.second.as<u8>();
         this->mBugRewardOverrides[bugItemId] = itemId;
+    }
+
+    // Sky Characters
+    for (const auto& skyCharacterNode : in["mSkyCharacterOverrides"]) {
+        u16 key = skyCharacterNode.first.as<u16>();
+        u8 itemId = skyCharacterNode.second.as<u8>();
+        this->mSkyCharacterOverrides[key] = itemId;
     }
 
     // Items we call by location name
@@ -245,6 +255,7 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
         }
 
         // Freestanding Overrides
+        // Keyed by the stage index and collectible flag of the item
         if (location->HasCategories("Freestanding Item")) {
             u8 stage = metaData[0]["Stage"].as<u8>();
             u8 flag = metaData[0]["Flag"].as<u8>();
@@ -253,10 +264,21 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
         }
 
         // Bug Rewards
+        // Keyed by the item id of the original bug
         if (location->HasCategories("Bug Reward")) {
             u8 bugItemId = metaData[0]["Bug Item Id"].as<u8>();
             u8 itemId = location->GetCurrentItem()->GetID();
             randoData.mBugRewardOverrides[bugItemId] = itemId;
+        }
+
+        // Sky Characters
+        // Keyed by u16 of 0xFF00 (stage index) and 0x00FF (roomNo)
+        if (location->HasCategories("Sky Book")) {
+            u8 stageIdx = metaData[0]["Stage"].as<u8>();
+            u8 roomNo = metaData[0]["Room"].as<u8>();
+            u8 itemId = location->GetCurrentItem()->GetID();
+            u16 key = (stageIdx << 8) | roomNo;
+            randoData.mSkyCharacterOverrides[key] = itemId;
         }
 
         // Items that we lookup just by calling their location name

@@ -982,6 +982,7 @@
     - Golden Bug
     - Hyrule Field - Eldin Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 56
       Flag: 0x94
@@ -993,6 +994,7 @@
     - Golden Bug
     - Hyrule Field - Eldin Province
     - DZX
+    - Freestanding Item
   Metadata:
     - Stage: 56
       Flag: 0x95
@@ -1386,7 +1388,6 @@
     - Tbox ID: 24
       Stage: F_SP111
 
-# TODO
 - Name: Kakariko Graveyard Male Ant
   Original Item: Male Ant
   Categories:

@@ -251,22 +251,5 @@ Can Open Hyrule Castle Big Key Gate: Hyrule_Castle_Big_Key_Requirements == None 
                                      (Hyrule_Castle_Big_Key_Requirements == Poe_Souls and count(Poe_Soul, Hyrule_Castle_Big_Key_Poe_Souls)) or
                                      (Hyrule_Castle_Big_Key_Requirements == Hearts and hearts(Hyrule_Castle_Big_Key_Hearts))
 
-# WARP PORTALS
 
-Ordon Spring Warp Portal: Can_Complete_Prologue
-South Faron Woods Warp Portal: Can_Complete_Faron_Twilight
-North Faron Woods Warp Portal: Can_Complete_Faron_Twilight
-Sacred Grove Warp Portal: Sacred_Grove_Does_Not_Require_Skull_Kid == On or (Has_Sword_For_Temple_of_Time and 'Can_Access_Sacred_Grove_Lower' and Can_Defeat_Shadow_Beast)
-Kakariko Gorge Warp Portal: Can_Complete_Eldin_Twilight
-Kakariko Village Warp Portal: Can_Complete_Eldin_Twilight
-Death Mountain Warp Portal: Can_Complete_Eldin_Twilight
-Bridge of Eldin Warp Portal: Can_Defeat_Shadow_Beast and 'Can_Access_Eldin_Field_North_of_Bridge'
-Castle Town Warp Portal: Can_Complete_Lanayru_Twilight
-Lake Hylia Warp Portal: Can_Complete_Lanayru_Twilight
-Upper Zoras River Warp Portal: (Sword or (Can_Defeat_Shadow_Beast and Logic_Transform_Anywhere == On)) and 'Can_Access_Upper_Zoras_River'
-Zoras Domain Warp Portal: Can_Complete_Lanayru_Twilight
-Snowpeak Warp Portal: Snowpeak_Does_Not_Require_Reekfish_Scent == On or (Can_Defeat_Shadow_Beast and 'Can_Access_Snowpeak_Summit_Upper')
-Gerudo Desert Warp Portal: Can_Defeat_Shadow_Beast and 'Can_Access_Gerudo_Desert_Cave_of_Ordeals_Plateau'
-Mirror Chamber Warp Portal: Can_Defeat_Shadow_Beast and 'Can_Access_Mirror_Chamber_Upper'
-
-Can Talk to Springwater Goron: Nothing # Change later
+Can Talk to Springwater Goron: Nothing # TODO

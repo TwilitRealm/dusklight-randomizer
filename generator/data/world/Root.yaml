@@ -86,21 +86,21 @@
 
 - Name: Warp Portals
   Exits:
-    Ordon Spring Warp Portal: Ordon_Spring_Warp_Portal and (Unlock_Map_Regions == On or 'Ordona_Province_Map_Sector')
-    South Faron Woods Warp Portal: South_Faron_Woods_Warp_Portal and (Unlock_Map_Regions == On or 'Faron_Province_Map_Sector')
-    North Faron Woods Warp Portal: North_Faron_Woods_Warp_Portal and (Unlock_Map_Regions == On or 'Faron_Province_Map_Sector')
-    Sacred Grove Warp Portal: Sacred_Grove_Warp_Portal and (Unlock_Map_Regions == On or 'Faron_Province_Map_Sector')
-    Kakariko Gorge Warp Portal: Kakariko_Gorge_Warp_Portal and (Unlock_Map_Regions == On or 'Eldin_Province_Map_Sector')
-    Kakariko Village Warp Portal: Kakariko_Village_Warp_Portal and (Unlock_Map_Regions == On or 'Eldin_Province_Map_Sector')
-    Death Mountain Warp Portal: Death_Mountain_Warp_Portal and (Unlock_Map_Regions == On or 'Eldin_Province_Map_Sector')
-    Bridge of Eldin Warp Portal: Bridge_of_Eldin_Warp_Portal and (Unlock_Map_Regions == On or 'Eldin_Province_Map_Sector')
-    Castle Town Warp Portal: Castle_Town_Warp_Portal and (Unlock_Map_Regions == On or 'Lanayru_Province_Map_Sector')
-    Lake Hylia Warp Portal: Lake_Hylia_Warp_Portal and (Unlock_Map_Regions == On or 'Lanayru_Province_Map_Sector')
-    Upper Zoras River Warp Portal: Upper_Zoras_River_Warp_Portal and (Unlock_Map_Regions == On or 'Lanayru_Province_Map_Sector')
-    Zoras Domain Warp Portal: Zoras_Domain_Warp_Portal and (Unlock_Map_Regions == On or 'Lanayru_Province_Map_Sector')
-    Snowpeak Warp Portal: Snowpeak_Warp_Portal and (Unlock_Map_Regions == On or 'Snowpeak_Province_Map_Sector')
-    Gerudo Desert Warp Portal: Gerudo_Desert_Warp_Portal and 'Desert_Province_Map_Sector'
-    Mirror Chamber Warp Portal: Mirror_Chamber_Warp_Portal and 'Desert_Province_Map_Sector'
+    Ordon Spring Warp Portal: Ordon_Spring_Portal and (Unlock_Map_Regions == On or 'Ordona_Province_Map_Sector')
+    South Faron Woods Warp Portal: South_Faron_Portal and (Unlock_Map_Regions == On or 'Faron_Province_Map_Sector')
+    North Faron Woods Warp Portal: North_Faron_Portal and (Unlock_Map_Regions == On or 'Faron_Province_Map_Sector')
+    Sacred Grove Warp Portal: Sacred_Grove_Portal and (Unlock_Map_Regions == On or 'Faron_Province_Map_Sector')
+    Kakariko Gorge Warp Portal: Kakariko_Gorge_Portal and (Unlock_Map_Regions == On or 'Eldin_Province_Map_Sector')
+    Kakariko Village Warp Portal: Kakariko_Village_Portal and (Unlock_Map_Regions == On or 'Eldin_Province_Map_Sector')
+    Death Mountain Warp Portal: Death_Mountain_Portal and (Unlock_Map_Regions == On or 'Eldin_Province_Map_Sector')
+    Bridge of Eldin Warp Portal: Bridge_of_Eldin_Portal and (Unlock_Map_Regions == On or 'Eldin_Province_Map_Sector')
+    Castle Town Warp Portal: Castle_Town_Portal and (Unlock_Map_Regions == On or 'Lanayru_Province_Map_Sector')
+    Lake Hylia Warp Portal: Lake_Hylia_Portal and (Unlock_Map_Regions == On or 'Lanayru_Province_Map_Sector')
+    Upper Zoras River Warp Portal: Upper_Zoras_River_Portal and (Unlock_Map_Regions == On or 'Lanayru_Province_Map_Sector')
+    Zoras Domain Warp Portal: Zoras_Domain_Portal and (Unlock_Map_Regions == On or 'Lanayru_Province_Map_Sector')
+    Snowpeak Warp Portal: Snowpeak_Portal and (Unlock_Map_Regions == On or 'Snowpeak_Province_Map_Sector')
+    Gerudo Desert Warp Portal: Gerudo_Desert_Portal and 'Desert_Province_Map_Sector'
+    Mirror Chamber Warp Portal: Mirror_Chamber_Portal and 'Desert_Province_Map_Sector'
 
 - Name: Ordon Spring Warp Portal
   Exits:

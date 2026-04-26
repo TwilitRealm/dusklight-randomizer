@@ -567,6 +567,8 @@ namespace randomizer::logic::world
                 (this->Setting("Freestanding Rupees") == "Off" && location->HasCategories("Rupee - Freestanding")) ||
                 // North Faron Woods Gate Key
                 (this->Setting("Skip Prologue") == "Off" && locationName == "Faron Mist Cave Open Chest") ||
+                // Warp Portals
+                (location->HasCategories("Warp Portal")) ||
                 // Some locations which will always be vanilla for the time being
                 (utility::str::Contains(locationName,
                                                "Renados Letter",

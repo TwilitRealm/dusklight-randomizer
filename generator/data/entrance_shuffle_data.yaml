@@ -334,7 +334,7 @@
 
 - Type: Dungeon
   Forward:
-    Connection: Mirror Chamber Portal -> Palace of Twilight Entrance
+    Connection: Twilight Realm Portal -> Palace of Twilight Entrance
     Alias: Mirror Chamber -> Palace of Twilight
     Stage: 15
     Room: 0
@@ -343,7 +343,7 @@
     Parameters: "F01F"
     State: "E"
   Return:
-    Connection: Palace of Twilight Entrance -> Mirror Chamber Portal
+    Connection: Palace of Twilight Entrance -> Twilight Realm Portal
     Alias: Palace of Twilight -> Mirror Chamber
     Stage: 60
     Room: 4

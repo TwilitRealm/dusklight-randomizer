@@ -390,11 +390,6 @@ namespace randomizer::logic::item_pool
             startingItems["Castle Town Portal"] = 1;
         }
 
-        if (world->Setting("Snowpeak Does Not Require Reekfish Scent") == "On")
-        {
-            startingItems["Snowpeak Portal"] = 1;
-        }
-
         // Add each item to the world's _startingItemPool and erase it from the regular _itemPool
         for (const auto& [itemName, count] : startingItems)
         {

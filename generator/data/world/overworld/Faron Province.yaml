@@ -10,6 +10,7 @@
   Events:
     Can Refill Lantern Oil: "'Can_Farm_Rupees'"
   Locations:
+    South Faron Warp Portal: Can_Complete_Prologue
     Faron Woods Coro Boulder Rupee 1: Can_Smash
     Faron Woods Coro Boulder Rupee 2: Can_Smash
     Faron Woods Coro Boulder Rupee 3: Can_Smash
@@ -228,6 +229,7 @@
     Can Refill Lantern Oil: "'Can_Farm_Rupees'"
     Can Refill Slingshot Seeds: Can_Defeat_Deku_Baba
   Locations:
+    North Faron Warp Portal: Can_Complete_Prologue
     North Faron Woods Deku Baba Chest: Nothing
     Faron Woods Golden Wolf: Nothing
     North Faron Woods Twilit Insect 1: Can_Defeat_Faron_Twilit_Insect
@@ -324,6 +326,7 @@
   Region: Sacred Grove
   Can Warp: True
   Locations:
+    Sacred Grove Warp Portal: Can_Defeat_Shadow_Beast
     Sacred Grove Male Snail: Clawshot or Gale_Boomerang
     Sacred Grove Master Sword Poe: Can_Use_Senses and Night
     Sacred Grove Pedestal Master Sword: Nothing

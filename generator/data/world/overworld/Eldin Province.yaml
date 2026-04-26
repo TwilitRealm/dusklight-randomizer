@@ -7,6 +7,7 @@
   Twilight: Eldin
   Can Warp: True
   Locations:
+    Kakariko Gorge Warp Portal: Nothing
     Kakariko Gorge Owl Statue Chest: Restored_Dominion_Rod
     Kakariko Gorge Double Clawshot Chest: Double_Clawshots
     Kakariko Gorge Spire Heart Piece: Clawshot or Gale_Boomerang
@@ -63,6 +64,7 @@
   Events:
     Can Start Springwater Rush: Can_Talk_to_Springwater_Goron
   Locations:
+    Kakariko Village Warp Portal: Nothing
     Eldin Spring Underwater Chest: Can_Smash and Iron_Boots
     Eldin Spring Underwater Boulder Rupee: Water_Bombs and (Iron_Boots or Zora_Armor) and Can_Complete_Eldin_Twilight
     Kakariko Village Bomb Rock Spire Heart Piece: Bombs and Gale_Boomerang
@@ -400,6 +402,7 @@
   Twilight: Eldin
   Can Warp: True
   Locations:
+    Death Mountain Warp Portal: Nothing
     Death Mountain Volcano Pipe Ledge Rock Rupee: Can_Complete_Eldin_Twilight and (Can_Defeat_Goron or 'Can_Complete_Goron_Mines') 
     Death Mountain Trail Twilit Insect on Wall: Can_Defeat_Eldin_Twilit_Insect
     Death Mountain Trail Twilit Insect in Hot Spring: Can_Defeat_Eldin_Twilit_Insect
@@ -463,6 +466,7 @@
   Events:
     Can Finish Goron Springwater Rush: "'Can_Start_Springwater_Rush' and (Skip_Bridge_Donation == On or 'Can_Fund_Malo_Mart')"
   Locations:
+    Bridge of Eldin Warp Portal: Can_Defeat_Shadow_Beast
     Eldin Field Bomb Rock Chest: Can_Smash
     Bridge of Eldin Owl Statue Chest: Restored_Dominion_Rod
     Goron Springwater Rush: "'Can_Finish_Goron_Springwater_Rush'"

@@ -90,6 +90,7 @@
   Twilight: Lanayru
   Can Warp: True
   Locations:
+    Castle Town Warp Portal: Nothing
     Hyrule Field Amphitheater Owl Statue Chest: Restored_Dominion_Rod
     Hyrule Field Amphitheater Owl Statue Sky Character: Restored_Dominion_Rod
     West Hyrule Field Northern Boulder Rupee: Can_Smash
@@ -496,6 +497,7 @@
   Events:
     Can Farm Lots of Rupees: Nothing
   Locations:
+    Lake Hylia Warp Portal: Nothing
     Lake Hylia Underwater Chest: Iron_Boots
     Lake Hylia Left Underwater Boulder Rupee: Zora_Armor and Iron_Boots and Water_Bombs and Can_Complete_Lanayru_Twilight
     Lake Hylia Left Underwater Pillar Rupee: Zora_Armor and Can_Complete_Lanayru_Twilight
@@ -652,6 +654,7 @@
   Events:
     Howl at Upper Zoras River Howling Stone: Can_Howl
   Locations:
+    Upper Zoras River Warp Portal: Sword or (Can_Defeat_Shadow_Beast and Logic_Transform_Anywhere == On)
     Upper Zoras River Ledge Boulder Rupee: Can_Smash
     Upper Zoras River East Underwater Boulder Rupee: Iron_Boots and Water_Bombs
     Upper Zoras River West Underwater Boulder Rupee: Iron_Boots and Water_Bombs
@@ -660,7 +663,7 @@
     Upper Zoras River Poe: Can_Use_Senses
     Upper Zoras River Twilit Insect: Can_Defeat_Lanayru_Twilit_Insect
   Exits:
-    Upper Zoras River Izas House: Can_Open_Doors and Upper_Zoras_River_Warp_Portal
+    Upper Zoras River Izas House: Can_Open_Doors and Upper_Zoras_River_Portal
     Fishing Hole: Can_Open_Doors
     Zoras Domain: Nothing
     Lanayru Field: Nothing
@@ -668,8 +671,8 @@
 - Name: Upper Zoras River Izas House
   Can Warp: True
   Locations:
-    Iza Helping Hand: Bow and Upper_Zoras_River_Warp_Portal
-    Iza Raging Rapids Minigame: Bow and Upper_Zoras_River_Warp_Portal
+    Iza Helping Hand: Bow and Upper_Zoras_River_Portal
+    Iza Raging Rapids Minigame: Bow and Upper_Zoras_River_Portal
   Exits:
     Upper Zoras River: Can_Open_Doors
 
@@ -754,6 +757,7 @@
   Twilight: Lanayru
   Can Warp: True
   Locations:
+    Zoras Domain Warp Portal: Nothing
     Zoras Domain Light All Torches Chest: Can_Light_Torches and Iron_Boots
     Zoras Domain Extinguish All Torches Chest: Can_Extinguish_Torches and Iron_Boots
     Zoras Domain Throne East Gate Underwater Rupee: Can_Complete_Lanayru_Twilight and Iron_Boots

@@ -34,6 +34,7 @@
   Region: South Gerudo Desert
   Can Warp: True
   Locations:
+    Gerudo Desert Warp Portal: Can_Defeat_Shadow_Beast
     Gerudo Desert Poe Above Cave of Ordeals: Can_Use_Senses and Night
   Exits:
     Cave of Ordeals: Nothing
@@ -131,15 +132,17 @@
   Map Sector: Desert Province
   Region: Mirror Chamber
   Can Warp: True
+  Locations:
+    Mirror Chamber Warp Portal: Can_Defeat_Shadow_Beast
   Exits:
-    Mirror Chamber Portal: Can_Defeat_Shadow_Beast and
+    Twilight Realm Portal:  Mirror_Chamber_Portal and
                             (Palace_of_Twilight_Requirements == Open or
                             (Palace_of_Twilight_Requirements == Fused_Shadows and count(Progressive_Fused_Shadow, 3)) or
                             (Palace_of_Twilight_Requirements == Mirror_Shards and count(Progressive_Mirror_Shard, 4)) or
                             (Palace_of_Twilight_Requirements == Vanilla and 'Can_Complete_City_in_the_Sky'))
     Mirror Chamber Lower: Can_Defeat_Shadow_Beast
 
-- Name: Mirror Chamber Portal
+- Name: Twilight Realm Portal
   Exits:
     Palace of Twilight Entrance: Nothing
     Mirror Chamber Upper: Can_Defeat_Shadow_Beast 

@@ -27,9 +27,8 @@
   Region: Ordon
   Can Warp: True
   Can Change Time: True
-  Events:
-    Ordon Spring Warp Portal: Nothing
   Locations:
+    Ordon Spring Warp Portal: Nothing
     Ordon Spring Golden Wolf: "'Howl_at_Death_Mountain_Howling_Stone'"
   Exits:
     Outside Links House: Nothing

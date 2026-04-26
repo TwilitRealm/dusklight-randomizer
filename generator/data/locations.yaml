@@ -282,6 +282,15 @@
   Metadata:
     - None
 
+- Name: Ordon Spring Warp Portal
+  Original Item: Ordon Spring Portal
+  Categories:
+    - Overworld
+    - Warp Portal
+    - Ordona Province
+  Metadata:
+      - None
+
 # FARON PROVINCE
 
 - Name: South Faron Woods Twilit Insect in Tunnel 1
@@ -428,6 +437,15 @@
   Metadata:
     - None
 
+- Name: South Faron Warp Portal
+  Original Item: South Faron Portal
+  Categories:
+    - Overworld
+    - Warp Portal
+    - Faron Woods
+  Metadata:
+    - None
+
 - Name: Coro Bottle
   Original Item: Bottle with Lantern Oil
   Categories:
@@ -554,6 +572,15 @@
   Metadata:
     - Tbox ID: 26
       Stage: F_SP108
+
+- Name: North Faron Warp Portal
+  Original Item: North Faron Portal
+  Categories:
+    - Overworld
+    - Warp Portal
+    - Faron Woods
+  Metadata:
+    - None
 
 # TODO
 - Name: Faron Woods Golden Wolf
@@ -747,6 +774,15 @@
   Metadata:
     - Tbox ID: 2
       Stage: F_SP117
+
+- Name: Sacred Grove Warp Portal
+  Original Item: Sacred Grove Portal
+  Categories:
+    - Overworld
+    - Warp Portal
+    - Sacred Grove
+  Metadata:
+    - None
 
 - Name: Sacred Grove Pedestal Master Sword
   Original Item: Progressive Sword
@@ -967,6 +1003,15 @@
   Metadata:
     - None
 
+- Name: Kakariko Gorge Warp Portal
+  Original Item: Kakariko Gorge Portal
+  Categories:
+    - Overworld
+    - Warp Portal
+    - Hyrule Field - Eldin Province
+  Metadata:
+    - None
+
 - Name: Kakariko Gorge Female Pill Bug
   Original Item: Female Pill Bug
   Categories:
@@ -1108,6 +1153,15 @@
   Metadata:
     - Flag: 0x60
       Stage: 32
+
+- Name: Kakariko Village Warp Portal
+  Original Item: Kakariko Village Portal
+  Categories:
+    - Overworld
+    - Warp Portal
+    - Kakariko Village
+  Metadata:
+    - None
 
 - Name: Eldin Spring Underwater Chest
   Original Item: Piece of Heart
@@ -1428,6 +1482,15 @@
     - Flag: 0x57
       Stage: 48
 
+- Name: Death Mountain Warp Portal
+  Original Item: Death Mountain Portal
+  Categories:
+    - Overworld
+    - Warp Portal
+    - Death Mountain
+  Metadata:
+    - None
+
 - Name: Death Mountain Alcove Chest
   Original Item: Piece of Heart
   Categories:
@@ -1577,6 +1640,15 @@
   Metadata:
     - Tbox ID: 16
       Stage: D_SB09
+
+- Name: Bridge of Eldin Warp Portal
+  Original Item: Bridge of Eldin Portal
+  Categories:
+    - Overworld
+    - Warp Portal
+    - Hyrule Field - Eldin Province
+  Metadata:
+    - None
 
 - Name: Bridge of Eldin Female Phasmid
   Original Item: Female Phasmid
@@ -2048,6 +2120,15 @@
     - Overworld
     - Hyrule Field - Lanayru
     - Rupee - Hidden
+  Metadata:
+    - None
+
+- Name: Castle Town Warp Portal
+  Original Item: Castle Town Portal
+  Categories:
+    - Overworld
+    - Warp Portal
+    - Hyrule Field - Lanayru Province
   Metadata:
     - None
 
@@ -2757,6 +2838,15 @@
   Metadata:
     - None
 
+- Name: Lake Hylia Warp Portal
+  Original Item: Lake Hylia Portal
+  Categories:
+    - Overworld
+    - Warp Portal
+    - Ordona Province
+  Metadata:
+    - None
+
 - Name: Auru Gift To Fyer
   Original Item: Aurus Memo
   Categories:
@@ -3279,6 +3369,15 @@
   Metadata:
     - None
 
+- Name: Upper Zoras River Warp Portal
+  Original Item: Upper Zoras River Portal
+  Categories:
+    - Overworld
+    - Warp Portal
+    - Upper Zoras River
+  Metadata:
+    - None
+
 - Name: Upper Zoras River Female Dragonfly
   Original Item: Female Dragonfly
   Categories:
@@ -3385,6 +3484,15 @@
   Metadata:
     - Stage: 62
       Flag: 0x80
+
+- Name: Zoras Domain Warp Portal
+  Original Item: Zoras Domain Portal
+  Categories:
+    - Overworld
+    - Warp Portal
+    - Zoras Domain
+  Metadata:
+    - None
 
 - Name: Zoras Domain Male Dragonfly
   Original Item: Male Dragonfly
@@ -3646,6 +3754,15 @@
       Flag: 0xFF
 
 # SNOWPEAK PROVINCE
+
+- Name: Snowpeak Warp Portal
+  Original Item: Snowpeak Portal
+  Categories:
+    - Overworld
+    - Warp Portal
+    - Snowpeak Province
+  Metadata:
+    - None
 
 # TODO
 - Name: Ashei Sketch
@@ -3970,6 +4087,15 @@
       Flag: 0xFF
 
 # DESERT PROVINCE
+
+- Name: Gerudo Desert Warp Portal
+  Original Item: Gerudo Desert Portal
+  Categories:
+    - Overworld
+    - Warp Portal
+    - Gerudo Desert
+  Metadata:
+    - None
 
 - Name: Gerudo Desert East Poe
   Original Item: Poe Soul
@@ -4389,7 +4515,16 @@
     - ARC
   Metadata:
     - None
-  
+
+- Name: Mirror Chamber Warp Portal
+  Original Item: Mirror Chamber Portal
+  Categories:
+    - Overworld
+    - Warp Portal
+    - Mirror Chamber
+  Metadata:
+    - None
+
 # FOREST TEMPLE
 
 - Name: Forest Temple Entrance Vines Chest

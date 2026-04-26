@@ -749,25 +749,23 @@
     - Tbox ID: 2
       Stage: F_SP117
 
-# TODO
 - Name: Sacred Grove Pedestal Master Sword
   Original Item: Progressive Sword
   Categories:
     - Overworld
     - Sacred Grove
     - Event
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Sacred Grove Pedestal Master Sword
 
-# TODO
 - Name: Sacred Grove Pedestal Shadow Crystal
   Original Item: Shadow Crystal
   Categories:
     - Overworld
     - Sacred Grove
     - Event
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Sacred Grove Pedestal Shadow Crystal
 
 - Name: Sacred Grove Master Sword Poe
   Original Item: Poe Soul

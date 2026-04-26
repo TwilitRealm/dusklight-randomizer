@@ -224,6 +224,9 @@ int RandomizerState::_create() {
     mEventItemStatus = QUEUE_EMPTY;
     mHasPendingToDChange = false;
     // g_customMenuRing._initialize();
+    for (int i = 0; i < EVENT_ITEM_QUEUE_SIZE; i++) {
+        mEventItemQueue[i] = 0;
+    }
     return 1;
 }
 

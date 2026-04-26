@@ -1,0 +1,23 @@
+# New actors to spawn in
+
+# NOTE: All data is expressed in little endian format
+
+# Objects which have the ACTR dzx type
+ACTR:
+  # Sacred Grove
+  F_SP117:
+    # Pedestal of Time
+    1:
+      # Spawn in the Master Sword actor
+      - name: mstrsrd
+        parameters: 0x00020110
+        position:
+          x: 0.0
+          y: 1700.0
+          z: -5435.0
+        angle:
+          x: 0x0147
+          y: 0x0000
+          z: 0x0000
+        layers:
+          - 2

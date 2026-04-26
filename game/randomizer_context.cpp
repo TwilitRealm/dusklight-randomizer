@@ -78,6 +78,14 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
         }
     }
 
+    for (const auto& [actorType, stages] : this->mActorAdditions) {
+        for (const auto& [stageRoomLayer, newActors] : stages) {
+            for (const auto& actor : newActors) {
+                out["mActorAdditions"][actorType][stageRoomLayer].push_back(ContainerToHexString(actor));
+            }
+        }
+    }
+
     seedData << YAML::Dump(out);
     seedData.close();
 
@@ -184,6 +192,19 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
             auto actorBytes = HexToBytes(actorPatchNode.second.as<std::string>());
             auto& patchedActor = this->mActorPatches[stageRoomLayer][actorCRC];
             std::copy_n(actorBytes.begin(), actorBytes.size(), patchedActor.begin());
+        }
+    }
+
+    // Actor Additions
+    for (const auto& typeNode: in["mActorAdditions"]) {
+        u32 type = typeNode.first.as<u32>();
+        for (const auto& stageNode : typeNode.second) {
+            u32 stageRoomLayer = stageNode.first.as<u32>();
+            for (const auto& actorNode : stageNode.second) {
+                auto actorBytes = HexToBytes(actorNode.as<std::string>());
+                auto& patchedActor = this->mActorAdditions[type][stageRoomLayer].emplace_back();
+                std::copy_n(actorBytes.begin(), actorBytes.size(), patchedActor.begin());
+            }
         }
     }
 
@@ -752,6 +773,53 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
             }
         }
     }
+
+    // Actor Additions
+    auto actorAdditions = LoadYAML(RANDO_DATA_PATH "actor_additions.yaml");
+    for (const auto& typeNode : actorAdditions) {
+        const auto& actorTypeStr = typeNode.first.as<std::string>();
+        // Get the integer interpretation of the multi-char type literal
+        u32 actorType = *(reinterpret_cast<const u32*>(actorTypeStr.c_str()));
+        // For each stage
+        for (const auto& stageNode : typeNode.second) {
+            const auto& stageName = stageNode.first.as<std::string>();
+            // For each room
+            for (const auto& roomNode : stageNode.second) {
+                u8 roomNo = roomNode.first.as<u8>();
+                // Get data on new actors
+                for (const auto& actorNode : roomNode.second) {
+                    using namespace Utility::Endian;
+                    // Get all the data for the actor (with endian shenanigans)
+                    stage_actor_data_class actor{};
+                    const auto& actorName = actorNode["name"].as<std::string>();
+                    strncpy(actor.name, actorName.c_str(), 8);
+                    actor.base.parameters = toPlatform(target, actorNode["parameters"].as<u32>());
+                    actor.base.position.x = toPlatform(target, actorNode["position"]["x"].as<f32>());
+                    actor.base.position.y = toPlatform(target, actorNode["position"]["y"].as<f32>());
+                    actor.base.position.z = toPlatform(target, actorNode["position"]["z"].as<f32>());
+                    // Have to retrieve as u16 and then cast as s16 because otherwise yaml-cpp
+                    // complains about values over 32767 not fitting in s16
+                    actor.base.angle.x = toPlatform(target, static_cast<s16>(actorNode["angle"]["x"].as<u16>()));
+                    actor.base.angle.y = toPlatform(target, static_cast<s16>(actorNode["angle"]["y"].as<u16>()));
+                    actor.base.angle.z = toPlatform(target, static_cast<s16>(actorNode["angle"]["z"].as<u16>()));
+
+                    // Insert the actor into the context keyed by type and the stage/layer/room combo
+                    std::array<u8, RandomizerContext::ACTOR_CRC_SIZE> newActorData{};
+                    std::memcpy(newActorData.data(), &actor, RandomizerContext::ACTOR_CRC_SIZE);
+                    for (const auto& layerNode : actorNode["layers"]) {
+                        u8 layerNo = layerNode.as<u8>();
+                        // Create key based off of stage index, room, and layer
+                        u32 stageRoomLayerKey{};
+                        stageRoomLayerKey |= getStageID(stageName.c_str()) << 16;
+                        stageRoomLayerKey |= roomNo << 8;
+                        stageRoomLayerKey |= layerNo;
+                        randoData.mActorAdditions[actorType][stageRoomLayerKey].push_back(newActorData);
+                    }
+                }
+            }
+        }
+    }
+
 
     randoData.mHash = r.GetConfig().GetHash();
     auto writeToFileResult = randoData.WriteToFile();

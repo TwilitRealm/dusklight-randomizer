@@ -38,6 +38,7 @@ public:
     u8 mMapBits{};
 
     std::unordered_map<u32, std::unordered_map<u32, std::array<u8, 30>>> mActorPatches{};
+    std::unordered_map<u32, std::unordered_map<u32, std::list<std::array<u8, 30>>>> mActorAdditions{};
 
     std::optional<std::string> WriteToFile();
     std::optional<std::string> LoadFromHash(const std::string& hash);

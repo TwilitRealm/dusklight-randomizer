@@ -428,7 +428,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Coro Bottle
   Original Item: Bottle with Lantern Oil
   Categories:
@@ -436,8 +435,8 @@
     - Npc
     - Faron Woods
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Coro Bottle
 
 # TODO
 - Name: Faron Woods Coro Boulder Rupee 1

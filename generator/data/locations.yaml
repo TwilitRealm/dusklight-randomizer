@@ -2758,7 +2758,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Auru Gift To Fyer
   Original Item: Aurus Memo
   Categories:
@@ -2766,8 +2765,8 @@
     - Npc
     - Lake Hylia
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Auru Gift To Fyer
 
 - Name: Lake Hylia Tower Poe
   Original Item: Poe Soul

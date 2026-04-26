@@ -160,6 +160,29 @@ F_SP113:
         - 0
         - 2
 
+# Lake Hylia
+F_SP115:
+  # Room 0 - Main Lake
+  0:
+    # Chest at the top of isle of riches
+    - name: tboxEL1
+      parameters: 0x00000106
+      position:
+        x: -102523.015625
+        y: -16646.677734375
+        z: 43291.4296875
+      angle:
+        x: 0x0000
+        y: 0xA16D
+        z: 0x0000
+      patch: # Give it a unique tbox id
+        parameters: 0x00190106
+      layers:
+        - 1
+        - 2
+        - 3
+        - 4
+
 # Sacred Grove
 F_SP117:
   # Room 1 - Pedestal of Time

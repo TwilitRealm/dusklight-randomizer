@@ -560,7 +560,7 @@ namespace randomizer::logic::world
                 // Shop Items
                 (this->Setting("Shop Items") == "Off" && location->HasCategories("Shop")) ||
                 // Hidden Skills
-                (this->Setting("Hidden Skills") == "Off" && location->HasCategories("Hidden Skill")) ||
+                (this->Setting("Hidden Skills") == "Off" && location->HasCategories("Golden Wolf")) ||
                 // Hidden Rupees
                 (this->Setting("Hidden Rupees") == "Off" && location->HasCategories("Rupee - Hidden")) ||
                 // Freestanding Rupees

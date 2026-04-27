@@ -111,6 +111,28 @@ F_SP103:
       layers:
         - 0
 
+# Ordon Spring
+F_SP104:
+  # Room 1 - Main Spring
+  1:
+    # Golden Wolf in Ordon Spring
+    - name: GWolf
+      parameters: 0x0E4102FF
+      position:
+        x: -1855.69543457031
+        y: 311.160461425781
+        z: -8084.61572265625
+      angle:
+        x: 0x0BD1
+        y: 0x8000
+        z: 0x00FF
+      patch:
+        # Turn the golden wolf into a htPiece actor with the hidden skill item
+        name: htPiece
+        parameters: 0xFFFFFFE1
+      layers:
+        - 2
+
 # Kakariko Graveyard
 F_SP111:
   # Room 0 - Main graveyard
@@ -132,6 +154,25 @@ F_SP111:
         parameters: 0x00FF91D4
       layers:
         - 0
+        - 2
+        - 3
+
+    # Golden Wolf in Kakariko Graveyard
+    - name: GWolf
+      parameters: 0x037906FF
+      position:
+        x: 17575.34375
+        y: 500.0
+        z: -51.3761901855469
+      angle:
+        x: 0x0BD1
+        y: 0xC000
+        z: 0x00FF
+      patch:
+        # Turn the golden wolf into a htPiece actor with the hidden skill item
+        name: htPiece
+        parameters: 0xFFFFFFE1
+      layers:
         - 2
         - 3
 
@@ -182,6 +223,28 @@ F_SP115:
         - 2
         - 3
         - 4
+
+# Castle Town
+F_SP116:
+  # Room 1 - North Castle Town
+  1:
+    # Golden Wolf in North Castle Town
+    - name: GWolf
+      parameters: 0x013207FF
+      position:
+        x: 0.0
+        y: 800.0
+        z: -9500.0
+      angle:
+        x: 0x0BD1
+        y: 0x0000
+        z: 0x00FF
+      patch:
+        # Turn the golden wolf into a htPiece actor with the hidden skill item
+        name: htPiece
+        parameters: 0xFFFFFFE1
+      layers:
+        - 1
 
 # Sacred Grove
 F_SP117:
@@ -542,6 +605,28 @@ F_SP122:
         - 0
         - 6
 
+    # Golden Wolf Outside Castle Town West
+    - name: GWolf
+      parameters: 0x042903FF
+      position:
+        x: -68310.15625
+        y: -1050.0
+        z: 5925.4560546875
+      angle:
+        x: 0x0BD1
+        y: 0xC16D
+        z: 0x00FF
+      patch:
+        # Turn the golden wolf into a htPiece actor with the hidden skill item
+        name: htPiece
+        parameters: 0xFFFFFFE1
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
   # Room 16 - Outside South Castle Town
   16:
     # Male Ladybug
@@ -586,6 +671,28 @@ F_SP122:
         - 1
         - 6
 
+    # Golden Wolf Outside Castle Town South
+    - name: GWolf
+      parameters: 0x022A04FF
+      position:
+        x: -55927.09375
+        y: -6100.0
+        z: 25315.892578125
+      angle:
+        x: 0x0BD1
+        y: 0xE9F5
+        z: 0x00FF
+      patch:
+        # Turn the golden wolf into a htPiece actor with the hidden skill item
+        name: htPiece
+        parameters: 0xFFFFFFE1
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
 # Gerudo Desert
 F_SP124:
   # Room 0 - Main Desert
@@ -623,6 +730,24 @@ F_SP124:
         # Turn this bug into a htPiece actor with collectible flag 0x98
         name: htPiece
         parameters: 0x00FF98D7
+      layers:
+        - 0
+
+    # Golden Wolf in Desert
+    - name: GWolf
+      parameters: 0x0B3205FF
+      position:
+        x: 1112.08215332031
+        y: -162.940002441406
+        z: 12659.6689453125
+      angle:
+        x: 0x0BD1
+        y: 0x0000
+        z: 0x00FF
+      patch:
+        # Turn the golden wolf into a htPiece actor with the hidden skill item
+        name: htPiece
+        parameters: 0xFFFFFFE1
       layers:
         - 0
 

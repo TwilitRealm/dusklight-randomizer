@@ -272,15 +272,14 @@
     - Tbox ID: 7
       Stage: D_SB05
 
-# TODO
 - Name: Ordon Spring Golden Wolf
   Original Item: Progressive Hidden Skill
   Categories:
     - Overworld
-    - Hidden Skill
+    - Golden Wolf
     - Ordona Province
   Metadata:
-    - None
+    - Flag: 0x3C08
 
 - Name: Ordon Spring Warp Portal
   Original Item: Ordon Spring Portal
@@ -582,15 +581,14 @@
   Metadata:
     - None
 
-# TODO
 - Name: Faron Woods Golden Wolf
   Original Item: Progressive Hidden Skill
   Categories:
     - Overworld
-    - Hidden Skill
+    - Golden Wolf
     - Faron Woods
   Metadata:
-    - None
+    - Flag: 0x3C10
 
 - Name: North Faron Woods Deku Baba Chest
   Original Item: Yellow Rupee
@@ -1452,15 +1450,14 @@
   Metadata:
     - None
 
-# TODO
 - Name: Kakariko Graveyard Golden Wolf
   Original Item: Progressive Hidden Skill
   Categories:
     - Overworld
-    - Hidden Skill
+    - Golden Wolf
     - Kakariko Graveyard
   Metadata:
-    - None
+    - Flag: 0x3D80
 
 - Name: Kakariko Graveyard Open Poe
   Original Item: Poe Soul
@@ -2188,15 +2185,14 @@
     - Tbox ID: 0
       Stage: D_SB05
 
-# TODO
 - Name: West Hyrule Field Golden Wolf
   Original Item: Progressive Hidden Skill
   Categories:
     - Overworld
-    - Hidden Skill
+    - Golden Wolf
     - Hyrule Field - Lanayru Province
   Metadata:
-    - None
+    - Flag: 0x3C04
 
 - Name: Hyrule Field Amphitheater Owl Statue Chest
   Original Item: Orange Rupee
@@ -2288,10 +2284,10 @@
   Original Item: Progressive Hidden Skill
   Categories:
     - Overworld
-    - Hidden Skill
+    - Golden Wolf
     - Castle Town
   Metadata:
-    - None
+    - Flag: 0x3D40
 
 - Name: Doctors Office Balcony Chest
   Original Item: Red Rupee
@@ -2686,15 +2682,14 @@
     - Tbox ID: 1
       Stage: D_SB09
 
-# TODO
 - Name: Outside South Castle Town Golden Wolf
   Original Item: Progressive Hidden Skill
   Categories:
     - Overworld
-    - Hidden Skill
+    - Golden Wolf
     - Hyrule Field - Lanayru Province
   Metadata:
-    - None
+    - Flag: 0x3C02
 
 - Name: Outside South Castle Town Double Clawshot Chasm Chest
   Original Item: Orange Rupee
@@ -4337,15 +4332,14 @@
     - Tbox ID: 13
       Stage: F_SP124
 
-# TODO
 - Name: Gerudo Desert Golden Wolf
   Original Item: Progressive Hidden Skill
   Categories:
     - Overworld
-    - Hidden Skill
+    - Golden Wolf
     - Gerudo Desert
   Metadata:
-    - None
+    - Flag: 0x3C01
 
 - Name: Outside Bulblin Camp Poe
   Original Item: Poe Soul

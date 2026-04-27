@@ -4,6 +4,24 @@
 
 
 ACTR: # Objects which have the ACTR dzx type
+  # Faron Woods
+  F_SP108:
+    # Room 6 - North Faron Woods
+    6:
+      # Spawn Item for Golden Wolf in North Faron Woods layer 3
+      - name: htPiece
+        parameters: 0xFFFFFFE1
+        position:
+          x: -36699.4375
+          y: 428.600311279297
+          z: -23663.64453125
+        angle:
+          x: 0x0000
+          y: 0x0000
+          z: 0x00FF
+        layers:
+          - 3
+
   F_SP115: # Lake Hylia
     0: # Room 0 - Main Lake
       # Spawn Auru on layers 1 & 3

@@ -67,6 +67,9 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
     const std::unordered_map<u16, u16> u16SkyCharacterOverrides(this->mSkyCharacterOverrides.begin(), this->mSkyCharacterOverrides.end());
     out["mSkyCharacterOverrides"] = u16SkyCharacterOverrides;
 
+    const std::unordered_map<u16, u16> u16GoldenWolfOverrides(this->mGoldenWolfOverrides.begin(), this->mGoldenWolfOverrides.end());
+    out["mGoldenWolfOverrides"] = u16GoldenWolfOverrides;
+
     out["mItemLocations"] = this->mItemLocations;
 
     out["mStartHour"] = static_cast<u16>(this->mStartHour);
@@ -170,6 +173,13 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         u16 key = skyCharacterNode.first.as<u16>();
         u8 itemId = skyCharacterNode.second.as<u8>();
         this->mSkyCharacterOverrides[key] = itemId;
+    }
+
+    // Golden Wolves
+    for (const auto& goldenWolfNode : in["mGoldenWolfOverrides"]) {
+        u16 key = goldenWolfNode.first.as<u16>();
+        u8 itemId = goldenWolfNode.second.as<u8>();
+        this->mGoldenWolfOverrides[key] = itemId;
     }
 
     // Items we call by location name
@@ -622,6 +632,14 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
             u8 itemId = location->GetCurrentItem()->GetID();
             u16 key = (stageIdx << 8) | roomNo;
             randoData.mSkyCharacterOverrides[key] = itemId;
+        }
+
+        // Golden Wolves
+        // Keyed by u16 of the event flag for obtaining the golden wolf item
+        if (location->HasCategories("Golden Wolf")) {
+            u16 flag = metaData[0]["Flag"].as<u16>();
+            u8 itemId = location->GetCurrentItem()->GetID();
+            randoData.mGoldenWolfOverrides[flag] = itemId;
         }
 
         // Items that we lookup just by calling their location name

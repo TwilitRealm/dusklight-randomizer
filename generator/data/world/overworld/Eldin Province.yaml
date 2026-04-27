@@ -186,7 +186,7 @@
     Kakariko Graveyard Male Ant: Nothing
     Kakariko Graveyard Grave Poe: Can_Use_Senses and Night
     Kakariko Graveyard Open Poe: Can_Use_Senses and Night
-    Kakariko Graveyard Golden Wolf: "'Howl_at_Snowpeak_Mountain_Howling_Stone'"
+    Kakariko Graveyard Golden Wolf: Can_Complete_Eldin_Twilight and 'Howl_at_Snowpeak_Mountain_Howling_Stone'
     Kakariko Graveyard Twilit Insect: Can_Defeat_Eldin_Twilit_Insect
   Exits:
     Kakariko Graveyard Pond: "'Can_Follow_Rutella'"

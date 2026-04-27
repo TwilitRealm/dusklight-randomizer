@@ -398,7 +398,7 @@ enum EventFlags
     TALKED_TO_YETA_AFTER_WINNING_RACE_AGAINST_YETO                                           = 0x3B20,
     WON_SNOWBOARD_RACE_AGAINST_YETO                                                          = 0x3B40,
     GOT_CORAL_EARRING_FROM_RALIS                                                             = 0x3B80,
-    GOT_SKILL_FROM_BULBLIN_CAMP_WOLF                                                          = 0x3C01,
+    GOT_SKILL_FROM_BULBLIN_CAMP_WOLF                                                         = 0x3C01,
     GOT_SKILL_FROM_SOUTH_CT_FIELD_WOLF                                                       = 0x3C02,
     GOT_SKILL_FROM_WEST_CT_WOLF                                                              = 0x3C04,
     GOT_SKILL_FROM_ORDON_WOLF                                                                = 0x3C08,
@@ -616,3 +616,11 @@ enum EventFlags
     TALKED_TO_COLIN_ORDON_DAY_1                                                              = 0x6280,
     HENA_BEAT_ROLLGOAL_8_8                                                                   = 0x6302
 };
+
+struct goldenWolfFlags {
+    u8 mapMarkerFlag{};
+    u16 howledAtStoneFlag{};
+    u16 obtainedItemFlag{};
+};
+
+goldenWolfFlags getCurrentGoldenWolfFlags(u8 roomNo);

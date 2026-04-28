@@ -1060,15 +1060,16 @@
     - Stage: 56
       Room: 3
 
-# TODO
 - Name: Kakariko Gorge Owl Statue Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
     - Overworld
     - Hyrule Field - Eldin
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x8D
 
 - Name: Kakariko Gorge Poe
   Original Item: Poe Soul
@@ -1102,15 +1103,16 @@
     - Tbox ID: 5
       Stage: F_SP121
 
-# TODO
 - Name: Kakariko Gorge Spire Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
     - Overworld
     - Hyrule Field - Eldin
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x8E
 
 - Name: Eldin Lantern Cave First Chest
   Original Item: Red Rupee
@@ -1176,15 +1178,16 @@
     - Tbox ID: 21
       Stage: F_SP109
 
-# TODO
 - Name: Eldin Spring Underwater Boulder Rupee
   Original Item: Orange Rupee
   Categories:
     - Overworld
     - Kakariko Village
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 46
+      Flag: 0x8D
 
 - Name: Kakariko Village Bomb Rock Spire Heart Piece
   Original Item: Piece of Heart
@@ -1197,45 +1200,49 @@
     - Stage: 46
       Flag: 0x8C
 
-# TODO
 - Name: Kakariko Village Bell Rupee
   Original Item: Silver Rupee
   Categories:
     - Overworld
     - Kakariko Village
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 46
+      Flag: 0x8A
 
-# TODO
 - Name: Kakariko Village Hot Spring Ledge Box Rupee
   Original Item: Yellow Rupee
   Categories:
     - Overworld
     - Kakariko Village
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 46
+      Flag: 0x87
 
-# TODO
 - Name: Kakariko Village Spring Shortcut Box Rupee 1
   Original Item: Blue Rupee
   Categories:
     - Overworld
     - Kakariko Village
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 46
+      Flag: 0x88
 
-# TODO
 - Name: Kakariko Village Spring Shortcut Box Rupee 2
   Original Item: Yellow Rupee
   Categories:
     - Overworld
     - Kakariko Village
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 46
+      Flag: 0x89
 
 # TODO
 - Name: Kakariko Village Malo Mart Hawkeye
@@ -1304,15 +1311,16 @@
     - Stage: 68
       Flag: 0x90
 
-# TODO
 - Name: Kakariko Village Ant House Ledge Box Rupee
   Original Item: Red Rupee
   Categories:
     - Overworld
     - Kakariko Village
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 46
+      Flag: 0x85
 
 - Name: Barnes Bomb Bag
   Original Item: Bomb Bag
@@ -1451,8 +1459,10 @@
     - Overworld
     - Kakariko Graveyard
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 48
+      Flag: 0x8E
 
 - Name: Kakariko Graveyard Golden Wolf
   Original Item: Progressive Hidden Skill
@@ -1503,7 +1513,6 @@
     - Tbox ID: 22
       Stage: F_SP110
 
-# TODO
 - Name: Death Mountain Volcano Ledge Rupee 1
   Original Item: Yellow Rupee
   Categories:
@@ -1512,10 +1521,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 47
+      Flag: 0x81
 
-# TODO
 - Name: Death Mountain Volcano Ledge Rupee 2
   Original Item: Yellow Rupee
   Categories:
@@ -1524,10 +1532,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 47
+      Flag: 0x82
 
-# TODO
 - Name: Death Mountain Volcano Ledge Rupee 3
   Original Item: Yellow Rupee
   Categories:
@@ -1536,18 +1543,19 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 47
+      Flag: 0x83
 
-# TODO
 - Name: Death Mountain Volcano Pipe Ledge Rock Rupee
   Original Item: Yellow Rupee
   Categories:
     - Overworld
     - Death Mountain
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 47
+      Flag: 0x80
 
 - Name: Death Mountain Trail Poe
   Original Item: Poe Soul
@@ -1696,15 +1704,16 @@
     - Stage: 56
       Room: 0
 
-# TODO
 - Name: Bridge of Eldin Boulder Rupee
   Original Item: Red Rupee
   Categories:
     - Overworld
     - Hyrule Field - Eldin
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x8F
 
 - Name: Eldin Stockcave Upper Chest
   Original Item: Red Rupee

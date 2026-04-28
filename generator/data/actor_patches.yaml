@@ -133,6 +133,67 @@ F_SP104:
       layers:
         - 2
 
+# Faron Woods
+F_SP108:
+  # Room 4 - Coro's Clearing
+  4:
+    # Rupee under boulder near coro (green)
+    - name: item
+      parameters: 0xF3048001
+      position:
+        x: -14823.521484375
+        y: -207.559860229492
+        z: -17239.197265625
+      angle:
+        x: 0x0000
+        y: 0x2B60
+        z: 0x003F
+      patch:
+        # Give this item a unique flag
+        parameters: 0xF3048101
+      layers:
+        - 1
+        - 3
+        - 5
+
+    # Rupee under boulder near coro (blue)
+    - name: item
+      parameters: 0xF3048002
+      position:
+        x: -14708.259765625
+        y: 65.5312805175781
+        z: -17336.09375
+      angle:
+        x: 0x0000
+        y: 0x2B60
+        z: 0x003F
+      patch:
+        # Give this item a unique flag
+        parameters: 0xF3048201
+      layers:
+        - 1
+        - 3
+        - 5
+
+    # Rupee under boulder near coro (yellow)
+    - name: item
+      parameters: 0xF3048003
+      position:
+        x: -14725.6796875
+        y: -29.1403198242188
+        z: -17190.748046875
+      angle:
+        x: 0x0000
+        y: 0x2B60
+        z: 0x003F
+      patch:
+        # Give this item a unique flag
+        parameters: 0xF3048301
+      layers:
+        - 1
+        - 3
+        - 5
+
 # Kakariko Graveyard
 F_SP111:
   # Room 0 - Main graveyard

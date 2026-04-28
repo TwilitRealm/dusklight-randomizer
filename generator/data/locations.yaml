@@ -455,45 +455,49 @@
     - Location Name Lookup
   Metadata: Coro Bottle
 
-# TODO
 - Name: Faron Woods Coro Boulder Rupee 1
   Original Item: Green Rupee
   Categories:
     - Overworld
     - Faron Woods
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 45
+      Flag: 0x80
 
-# TODO
 - Name: Faron Woods Coro Boulder Rupee 2
   Original Item: Green Rupee
   Categories:
     - Overworld
     - Faron Woods
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 45
+      Flag: 0x81
 
-# TODO
 - Name: Faron Woods Coro Boulder Rupee 3
   Original Item: Blue Rupee
   Categories:
     - Overworld
     - Faron Woods
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 45
+      Flag: 0x82
 
-# TODO
 - Name: Faron Woods Coro Boulder Rupee 4
   Original Item: Yellow Rupee
   Categories:
     - Overworld
     - Faron Woods
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 45
+      Flag: 0x83
 
 - Name: South Faron Cave Chest
   Original Item: Yellow Rupee

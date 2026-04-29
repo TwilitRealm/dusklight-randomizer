@@ -70,6 +70,9 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
     const std::unordered_map<u16, u16> u16GoldenWolfOverrides(this->mGoldenWolfOverrides.begin(), this->mGoldenWolfOverrides.end());
     out["mGoldenWolfOverrides"] = u16GoldenWolfOverrides;
 
+    const std::unordered_map<u16, u16> u16ShopOverrides(this->mShopOverrides.begin(), this->mShopOverrides.end());
+    out["mShopOverrides"] = u16ShopOverrides;
+
     out["mItemLocations"] = this->mItemLocations;
 
     out["mStartHour"] = static_cast<u16>(this->mStartHour);
@@ -180,6 +183,13 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         u16 key = goldenWolfNode.first.as<u16>();
         u8 itemId = goldenWolfNode.second.as<u8>();
         this->mGoldenWolfOverrides[key] = itemId;
+    }
+
+    // Shop Items
+    for (const auto& shopNode : in["mShopOverrides"]) {
+        u16 key = shopNode.first.as<u16>();
+        u8 itemId = shopNode.second.as<u8>();
+        this->mShopOverrides[key] = itemId;
     }
 
     // Items we call by location name
@@ -640,6 +650,15 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
             u16 flag = metaData[0]["Flag"].as<u16>();
             u8 itemId = location->GetCurrentItem()->GetID();
             randoData.mGoldenWolfOverrides[flag] = itemId;
+        }
+
+        // Shop Items
+        // Keyed by u16 of the stage and original shop item
+        if (location->HasCategories("Shop") && world->Setting("Shop Items") == "On") {
+            u8 stage = metaData[0]["Stage"].as<u8>();
+            u8 originalItem = metaData[0]["Item"].as<u8>();
+            u16 key = (stage << 8) | originalItem;
+            randoData.mShopOverrides[key] = location->GetCurrentItem()->GetID();
         }
 
         // Items that we lookup just by calling their location name

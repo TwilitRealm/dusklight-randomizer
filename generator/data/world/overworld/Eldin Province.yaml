@@ -210,13 +210,12 @@
   Twilight: Eldin
   Can Transform: If Transform Anywhere
   Events:
-    Can Buy Wooden Shield: Not_Twilight and 'Can_Farm_Lots_of_Rupees'
-    Can Fund Malo Mart: Not_Twilight and Can_Complete_Lanayru_Twilight and 'Can_Farm_Lots_of_Rupees'
+    Can Fund Malo Mart: Can_Talk_to_Humans and Not_Twilight and Can_Complete_Lanayru_Twilight and 'Can_Farm_Lots_of_Rupees'
   Locations:
-    Kakariko Village Malo Mart Hylian Shield: Not_Twilight and 'Can_Farm_Lots_of_Rupees'
-    Kakariko Village Malo Mart Hawkeye: Not_Twilight and 'Can_Farm_Lots_of_Rupees'
-    Kakariko Village Malo Mart Red Potion: Not_Twilight and 'Can_Farm_Lots_of_Rupees'
-    Kakariko Village Malo Mart Wooden Shield: Not_Twilight and 'Can_Farm_Lots_of_Rupees'
+    Kakariko Village Malo Mart Hylian Shield: Can_Talk_to_Humans and Not_Twilight and 'Can_Farm_Lots_of_Rupees'
+    Kakariko Village Malo Mart Hawkeye: "'Can_Start_Talo_Sharpshooting' and 'Can_Farm_Lots_of_Rupees'"
+    Kakariko Village Malo Mart Red Potion: Can_Talk_to_Humans and Not_Twilight and 'Can_Farm_Lots_of_Rupees'
+    Kakariko Village Malo Mart Wooden Shield: Can_Talk_to_Humans and Not_Twilight and 'Can_Farm_Lots_of_Rupees'
     Kakariko Malo Mart Twilit Insect: Can_Defeat_Eldin_Twilit_Insect
   Exits:
     Lower Kakariko Village: Nothing
@@ -356,8 +355,10 @@
   Region: Kakariko Village
   Twilight: Eldin
   Can Warp: True
+  Events:
+    Can Start Talo Sharpshooting: Day and Can_Climb_Ladders and Bow and 'Can_Complete_Goron_Mines'
   Locations:
-    Talo Sharpshooting: Day and Can_Climb_Ladders and Bow and 'Can_Complete_Goron_Mines'
+    Talo Sharpshooting: "'Can_Start_Talo_Sharpshooting'"
   Exits:
     Kakariko Watchtower Upper Interior: Can_Open_Doors
 
@@ -403,14 +404,26 @@
   Can Warp: True
   Locations:
     Death Mountain Warp Portal: Nothing
-    Death Mountain Volcano Pipe Ledge Rock Rupee: Can_Complete_Eldin_Twilight and (Can_Defeat_Goron or 'Can_Complete_Goron_Mines') 
+    Death Mountain Volcano Pipe Ledge Rock Rupee: Can_Complete_Eldin_Twilight and (Can_Defeat_Goron or 'Can_Complete_Goron_Mines')
     Death Mountain Trail Twilit Insect on Wall: Can_Defeat_Eldin_Twilit_Insect
-    Death Mountain Trail Twilit Insect in Hot Spring: Can_Defeat_Eldin_Twilit_Insect
   Exits:
+    Death Mountain Hot Spring: Twilight or (Can_Defeat_Goron or 'Can_Complete_Goron_Mines')
     Death Mountain Lower Elevator: Goron_Mines_Entrance == Open or 'Can_Access_Death_Mountain_Lower_Elevator'
     Death Mountain Outside Sumo Hall: Iron_Boots and (Can_Defeat_Goron or 'Can_Complete_Goron_Mines') and Can_Complete_Eldin_Twilight
     Death Mountain Trail: Nothing
-  
+
+- Name: Death Mountain Hot Spring
+  Map Sector: Eldin Province
+  Region: Death Mountain
+  Twilight: Eldin
+  Can Warp: True
+  Events:
+    Can Buy Wooden Shield: Can_Talk_to_Humans and 'Can_Farm_Rupees' and (Can_Defeat_Goron or 'Can_Complete_Goron_Mines')
+  Locations:
+    Death Mountain Trail Twilit Insect in Hot Spring: Can_Defeat_Eldin_Twilit_Insect
+  Exits:
+    Death Mountain Volcano: Nothing
+
 - Name: Death Mountain Lower Elevator
   Map Sector: Eldin Province
   Region: Death Mountain
@@ -431,6 +444,7 @@
     Death Mountain Volcano Ledge Rupee 3: Can_Complete_Eldin_Twilight and (Can_Defeat_Goron or 'Can_Complete_Goron_Mines')
   Exits:
     Death Mountain Sumo Hall: Nothing
+    Death Mountain Hot Spring: Nothing
     Death Mountain Volcano: Nothing
 
 - Name: Death Mountain Sumo Hall Elevator

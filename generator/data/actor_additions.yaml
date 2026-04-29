@@ -72,3 +72,19 @@ ACTR: # Objects which have the ACTR dzx type
         layers:
           - 2
 
+  R_SP109: # Kakariko Interiors
+    3: # Kak Malo Mart
+      # Spawn in a middle item Sold Out Sign
+      - name: TGSPITM
+        parameters: 0x02FFFFFF
+        position:
+          x: -650.0
+          y: 450.0
+          z: -500.0
+        angle:
+          x: 0x0147
+          y: 0x8000
+          z: 0x05FF
+        layers:
+          - 2
+          - 3

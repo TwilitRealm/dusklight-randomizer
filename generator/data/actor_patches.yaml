@@ -1010,6 +1010,127 @@ F_SP126:
 
 # Kakariko Village Interiors
 R_SP109:
+  # Room 3 - Kak Malo Mart
+  3:
+    # Red Potion Shop item (left side)
+    - name: TGSPITM
+      parameters: 0x01001E61
+      position:
+        x: -550
+        y: 450
+        z: -500
+      angle:
+        x: 0x014D
+        y: 0x0000
+        z: 0x74FF
+      patch:
+        # Change this into a sold out sign until the hawkeye is available
+        parameters: 0x01FFFFFF
+        angle:
+          x: 0x014B
+          y: 0x8000
+          z: 0x0BFF
+      layers:
+        - 2
+        - 3
+
+    # Hawkeye Shop Item (left side)
+    - name: TGSPITM
+      parameters: 0x0100643E
+      position:
+        x: -550
+        y: 450
+        z: -500
+      angle:
+        x: 0x0149
+        y: 0x0000
+        z: 0x3E33
+      patch:
+        # Give the hawkeye shop item a different bought flag
+        angle:
+          z: 0x3E3D 
+      layers:
+        - 2
+        - 3
+
+    # Wooden Shield Shop Item (middle)
+    - name: TGSPITM
+      parameters: 0x0200322B
+      position:
+        x: -650
+        y: 450
+        z: -500
+      angle:
+        x: 0x0143
+        y: 0x0000
+        z: 0xFFFF
+      patch:
+        # Give the wooden shield item a different bought flag
+        angle:
+          z: 0xFF05 
+      layers:
+        - 2
+        - 3
+
+    # Red Potion Shop item (Right Side)
+    - name: TGSPITM
+      parameters: 0x03001E61
+      position:
+        x: -750
+        y: 450
+        z: -500
+      angle:
+        x: 0x014D
+        y: 0x8000
+        z: 0x76FF
+      patch:
+        # Give this item a unique flag, and make it set the
+        # flag for the right side sold out sign
+        angle:
+          z: 0x3904
+      layers:
+        - 2
+        - 3
+
+    # Right side Sold Out shop item
+    - name: TGSPITM
+      parameters: 0x03FFFFFF
+      position:
+        x: -750
+        y: 450
+        z: -500
+      angle:
+        x: 0x0147
+        y: 0x8000
+        z: 0x3976
+      patch:
+        # Give the sign a different set of flags
+        angle:
+          z: 0x04FF
+      layers:
+        - 2
+        - 3
+
+    # Left side Sold Out Sign
+    - name: TGSPITM
+      parameters: 0x01FFFFFF
+      position:
+        x: -550
+        y: 450
+        z: -500
+      angle:
+        x: 0x014B
+        y: 0x8000
+        z: 0x333D
+      patch:
+        # Change the sign to the Hylian Shield sold out sign
+        angle:
+          x: 0x0147
+          z: 0x33FF
+      layers:
+        - 2
+        - 3
+
   # Room 6 - Abandoned House
   6:
     # Female Ant

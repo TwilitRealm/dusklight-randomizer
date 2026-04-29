@@ -506,6 +506,14 @@
   Importance: Major
   Id: 0x60
 
+- Name: Red Potion Shop
+  Importance: Junk
+  Id: 0x61
+
+- Name: Blue Potion Shop
+  Importance: Junk
+  Id: 0x63
+
 - Name: Bottle with Lantern Oil
   Importance: Major
   Id: 0x9D
@@ -629,10 +637,6 @@
 - Name: Lanayru Twilight Tear
   Importance: Major
   Id: 0x105
-
-- Name: Red Potion Shop
-  Importance: Junk
-  Id: 0x106
 
 - Name: Fairy Tears
   Importance: Junk

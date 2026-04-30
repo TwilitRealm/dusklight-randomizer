@@ -1408,7 +1408,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Rutelas Blessing
   Original Item: Zora Armor
   Categories:
@@ -1416,10 +1415,9 @@
     - Npc
     - Kakariko Graveyard
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Rutelas Blessing
 
-# TODO
 - Name: Gift From Ralis
   Original Item: Progressive Fishing Rod
   Categories:
@@ -1427,8 +1425,8 @@
     - Npc
     - Kakariko Graveyard
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Gift From Ralis
 
 - Name: Kakariko Graveyard Lantern Chest
   Original Item: Purple Rupee

@@ -1,0 +1,22 @@
+# Patches for NPC text flows
+
+# NOTE: All data is expressed in little endian
+
+#0: # zel_00.bmg
+#1: # zel_01.bmg
+2: # zel_02.bmg
+  # Patch Barnes branch to see if you can buy the bomb bag to use
+  # query 54 (custom event check) instead of query 22 (how many bomb bags the player has)
+  - index: 0x47C
+    type: branch
+    num results: 2
+    query: 53
+    parameters: 0x004D
+    next node index: 0x340
+
+#3: # zel_03.bmg
+#4: # zel_04.bmg
+#5: # zel_05.bmg
+#6: # zel_06.bmg
+#7: # zel_07.bmg
+#8: # zel_08.bmg

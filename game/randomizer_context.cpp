@@ -20,6 +20,7 @@
 #include "d/d_meter2_info.h"
 #include "d/d_meter2.h"
 #include "d/d_meter2_draw.h"
+#include "d/d_msg_flow.h"
 
 std::optional<std::string> RandomizerContext::WriteToFile() {
 
@@ -91,6 +92,8 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
             }
         }
     }
+
+    out["mFlowPatches"] = this->mFlowPatches;
 
     seedData << YAML::Dump(out);
     seedData.close();
@@ -226,6 +229,13 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
                 std::copy_n(actorBytes.begin(), actorBytes.size(), patchedActor.begin());
             }
         }
+    }
+
+    // Flow Patches
+    for (const auto& flowNode: in["mFlowPatches"]) {
+        auto key = flowNode.first.as<u32>();
+        auto value = flowNode.second.as<u64>();
+        this->mFlowPatches[key] = value;
     }
 
     DuskLog.debug("Loaded Randomizer Seed {}", this->mHash);
@@ -860,6 +870,27 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
         }
     }
 
+    // Flow Patches
+    auto flowPatches = LoadYAML(RANDO_DATA_PATH "flow_patches.yaml");
+    for (const auto& groupNode : flowPatches) {
+        u8 groupNo = groupNode.first.as<u8>();
+        for (const auto& flowNode : groupNode.second) {
+            u16 index = flowNode["index"].as<u16>();
+            const auto& type = flowNode["type"].as<std::string>();
+            u64 value{};
+            if (type == "branch") {
+                auto branch = reinterpret_cast<mesg_flow_node_branch*>(&value);
+                branch->type = 2;
+                branch->field_0x1 = flowNode["num results"].as<u8>();
+                branch->query_idx = flowNode["query"].as<u16>();
+                branch->param = flowNode["parameters"].as<u16>();
+                branch->next_node_idx = flowNode["next node index"].as<u16>();
+            }
+
+            u32 key = (groupNo << 16) | index;
+            randoData.mFlowPatches[key] = value;
+        }
+    }
 
     randoData.mHash = r.GetConfig().GetHash();
     auto writeToFileResult = randoData.WriteToFile();

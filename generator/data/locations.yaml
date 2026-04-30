@@ -1333,8 +1333,8 @@
     - Kakariko Village
     - ARC
   Metadata:
-    - Stage: 0xFF
-      Item: 0xFF
+    - Stage: 68
+      Item: 0x50
 
 - Name: Kakariko Village Bomb Shop Poe
   Original Item: Poe Soul

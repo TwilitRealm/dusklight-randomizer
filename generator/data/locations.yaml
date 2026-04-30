@@ -1323,7 +1323,6 @@
     - Stage: 46
       Flag: 0x85
 
-# TODO
 - Name: Barnes Bomb Bag
   Original Item: Bomb Bag
   Categories:
@@ -1378,7 +1377,6 @@
     - Tbox ID: 17
       Stage: R_SP109
 
-# TODO
 - Name: Talo Sharpshooting
   Original Item: Piece of Heart
   Categories:
@@ -1386,8 +1384,8 @@
     - Npc
     - Kakariko Village
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Talo Sharpshooting
 
 # TODO
 - Name: Renados Letter

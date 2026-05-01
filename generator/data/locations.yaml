@@ -2273,7 +2273,6 @@
     - Location Name Lookup
   Metadata: STAR Prize 2
 
-# TODO (Might work, haven't checked)
 - Name: Castle Town Malo Mart Magic Armor
   Original Item: Magic Armor
   Categories:
@@ -2282,8 +2281,8 @@
     - ARC
     - Shop
   Metadata:
-    - Stage: 0xFF
-      Item: 0xFF
+    - Stage: 73
+      Item: 0x30
 
 # HD Only location
 # - Name: Castle Town Malo Mart Stamp

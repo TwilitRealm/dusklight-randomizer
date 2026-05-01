@@ -88,3 +88,20 @@ ACTR: # Objects which have the ACTR dzx type
         layers:
           - 2
           - 3
+
+  R_SP160: # Castle Town Shops
+    5: # Jovani's House
+      # Spawn the poe in Jovani's House
+      - name: E_hp
+        parameters: 0xFF031E00
+        position:
+          x: 4531.19
+          y: -30.0
+          z: 2631.961
+        angle:
+          x: 0x0000
+          y: 0x0000
+          z: 0x0000
+        layers:
+          - 0
+          - 1

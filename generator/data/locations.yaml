@@ -2329,7 +2329,6 @@
     - Flag: 0x47
       Stage: 57
 
-# TODO
 - Name: Jovani 20 Poe Soul Reward
   Original Item: Bottle with Great Fairies Tears
   # HD Original Item: Ghost Lantern
@@ -2338,10 +2337,9 @@
     - Npc
     - Castle Town
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Jovani 20 Poe Soul Reward
 
-# TODO
 - Name: Jovani 60 Poe Soul Reward
   Original Item: Silver Rupee
   #HD Original Item: Bottle with Great Fairies Tears
@@ -2350,6 +2348,8 @@
     - Npc
     - Castle Town
     - ARC
+    - Location Name Lookup
+  Metadata: Jovani 60 Poe Soul Reward
 
 # HD Only Location
 # - Name: Gengle 60 Poe Soul Reward

@@ -734,6 +734,228 @@ F_SP121:
         - 0
         - 6
 
+    # South Underwater Boulder Rupee (Yellow)
+    - name: item
+      parameters: 0x137F8603
+      position:
+        x: -44868.2109375
+        y: -4623.99853515625
+        z: -29872.623046875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0001
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0x137FFF03
+      layers:
+        - 0
+        - 6
+        - 14
+
+    # South Underwater Boulder Rupee (Green)
+    - name: item
+      parameters: 0x137F8601
+      position:
+        x: -44725.27734375
+        y: -4658.63720703125
+        z: -29682.888671875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0001
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0x137FFF01
+      layers:
+        - 0
+        - 6
+        - 14
+
+    # South Underwater Boulder Rupee (Blue 1)
+    - name: item
+      parameters: 0x137F8602
+      position:
+        x: -44813.50390625
+        y: -4589.35986328125
+        z: -29537.416015625
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0001
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0x137FFF02
+      layers:
+        - 0
+        - 6
+        - 14
+
+    # South Underwater Boulder Rupee (Blue 2)
+    - name: item
+      parameters: 0x137F8602
+      position:
+        x: -44999.03125
+        y: -4675.9560546875
+        z: -29785.939453125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0001
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0x137FFF02
+      layers:
+        - 0
+        - 6
+        - 14
+
+    # North Underwater Boulder Rupee (Red 1)
+    - name: item
+      parameters: 0x137E8704
+      position:
+        x: -45730.50390625
+        y: -3624.84008789063
+        z: -40552.89453125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0001
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0x137EFF04
+      layers:
+        - 0
+        - 6
+        - 14
+
+    # North Underwater Boulder Rupee (Red 1)
+    - name: item
+      parameters: 0x137E8704
+      position:
+        x: -45478.16015625
+        y: -3763.39453125
+        z: -40783.9609375
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0001
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0x137EFF04
+      layers:
+        - 0
+        - 6
+        - 14
+
+    # North Spinner Track Boulder Rupee (Yellow 1)
+    - name: item
+      parameters: 0xF30F8903
+      position:
+        x: -76250
+        y: 750
+        z: -32100
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0005
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF30FFF03
+      layers:
+        - 0
+        - 6
+        - 14
+
+    # North Spinner Track Boulder Rupee (Yellow 2)
+    - name: item
+      parameters: 0xF30F8903
+      position:
+        x: -75500
+        y: 700
+        z: -31700
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0005
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF30FFF03
+      layers:
+        - 0
+        - 6
+        - 14
+
+  # Room 12 - Hylia Bridge-Lanayru Field Transition
+  12:
+    # South Spinner Track Boulder Rupee (Blue 1)
+    - name: item
+      parameters: 0xF30E8A02
+      position:
+        x: -93650
+        y: -2800
+        z: 5000
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0005
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF30EFF02
+      layers:
+        - 0
+        - 6
+        - 14
+
+    # South Spinner Track Boulder Rupee (Blue 2)
+    - name: item
+      parameters: 0xF30E8A02
+      position:
+        x: -93400
+        y: -2850
+        z: 4850
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0005
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF30EFF02
+      layers:
+        - 0
+        - 6
+        - 14
+
+    # South Spinner Track Boulder Rupee (Blue 3)
+    - name: item
+      parameters: 0xF30E8A02
+      position:
+        x: -93900
+        y: -2800
+        z: 4750
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0005
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF30EFF02
+      layers:
+        - 0
+        - 6
+        - 14
+
   # Room 13 - Great Bridge of Hylia
   13:
     # Male Mantis

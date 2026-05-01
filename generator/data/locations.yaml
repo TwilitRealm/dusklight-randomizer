@@ -1981,35 +1981,38 @@
     - Tbox ID: 7
       Stage: 56
 
-# TODO
 - Name: Lanayru Field North Underwater Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
     - Overworld
     - Hyrule Field - Lanayru
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x87
 
-# TODO
 - Name: Lanayru Field South Underwater Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
     - Overworld
     - Hyrule Field - Lanayru
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x86
 
-# TODO
 - Name: Lanayru Field Tree Boulder Rupee
   Original Item: Purple Rupee
   Categories:
     - Overworld
     - Hyrule Field - Lanayru
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x88
 
 - Name: Lanayru Field Bridge Poe
   Original Item: Poe Soul
@@ -2110,25 +2113,27 @@
     - Tbox ID: 8
       Stage: 56
 
-# TODO
 - Name: Lanayru Field North Spinner Track Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
     - Overworld
     - Hyrule Field - Lanayru
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x89
 
-# TODO
 - Name: Lanayru Field South Spinner Track Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
     - Overworld
     - Hyrule Field - Lanayru
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x8A
 
 - Name: Castle Town Warp Portal
   Original Item: Castle Town Portal

@@ -996,6 +996,85 @@ F_SP121:
         - 0
         - 6
 
+    # Boulder Near Owl Statue Rupee (Blue 1)
+    - name: item
+      parameters: 0xF37C8B02
+      position:
+        x: -89951.5546875
+        y: -5034.109375
+        z: 22045.078125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0005
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF37CFF02
+      layers:
+        - 0
+        - 6
+        - 14
+
+    # Boulder Near Owl Statue Rupee (Blue 2)
+    - name: item
+      parameters: 0xF37C8B02
+      position:
+        x: -89746.765625
+        y: -4973.77587890625
+        z: 21901.685546875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0005
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF37CFF02
+      layers:
+        - 0
+        - 6
+        - 14
+
+    # Boulder Near Owl Statue Rupee (Blue 3)
+    - name: item
+      parameters: 0xF37C8B02
+      position:
+        x: -89632.046875
+        y: -5076.08056640625
+        z: 22065.515625
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0005
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF37CFF02
+      layers:
+        - 0
+        - 6
+        - 14
+
+    # Boulder Near Faron Rupee (Yellow)
+    - name: item
+      parameters: 0xF37B8C03
+      position:
+        x: -78349.703125
+        y: -7331.6181640625
+        z: 58471.4375
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0005
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF37BFF03
+      layers:
+        - 0
+        - 6
+
 # Outside Castle Town Maps
 F_SP122:
   # Room 8 - Outside West Castle Town

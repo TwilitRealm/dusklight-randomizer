@@ -2761,15 +2761,16 @@
     - Stage: 56
       Room: 13
 
-# TODO
 - Name: Lake Hylia Bridge Owl Statue Boulder Rupee
-  Original Item: Yellow Rupee
+  Original Item: Blue Rupee
   Categories:
     - Overworld
     - Hyrule Field - Lanayru
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x8B
 
 - Name: Lake Hylia Bridge Vines Chest
   Original Item: Orange Rupee
@@ -2839,15 +2840,16 @@
     - Tbox ID: 4
       Stage: 38
 
-# TODO
 - Name: Lake Hylia Bridge Faron Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
     - Overworld
     - Hyrule Field - Lanayru
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 56
+      Flag: 0x8C
 
 - Name: Lake Hylia Warp Portal
   Original Item: Lake Hylia Portal

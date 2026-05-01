@@ -299,7 +299,7 @@ u32 verifyProgressiveItem(u32 item)
         case dItemNo_Randomizer_BOMB_INSECT_20_e:
         case dItemNo_Randomizer_BOMB_INSECT_30_e:
         {
-            if (!haveItem(dItemNo_Randomizer_BOMB_IN_BAG_e))
+            if (!haveItem(dItemNo_Randomizer_BOMB_BAG_LV1_e))
             {
                 item = dItemNo_Randomizer_BLUE_RUPEE_e;
             }

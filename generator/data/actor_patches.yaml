@@ -1015,8 +1015,6 @@ F_SP122:
         # Turn this bug into a htPiece actor with collectible flag 0x9D
         name: htPiece
         parameters: 0x00FF9DC2
-        position:
-          y: -471
       layers:
         - 0
 
@@ -1035,8 +1033,6 @@ F_SP122:
         # Turn this bug into a htPiece actor with collectible flag 0x9D
         name: htPiece
         parameters: 0x00FF9DC2
-        position:
-          y: -471
       layers:
         - 6
 
@@ -1055,8 +1051,6 @@ F_SP122:
         # Turn this bug into a htPiece actor with collectible flag 0x9C
         name: htPiece
         parameters: 0x00FF9CCD
-        position:
-          y: -706
       layers:
         - 0
         - 6
@@ -1076,6 +1070,204 @@ F_SP122:
         # Turn the golden wolf into a htPiece actor with the hidden skill item
         name: htPiece
         parameters: 0xFFFFFFE1
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Northern Boulder Rupee (Yellow)
+    - name: item
+      parameters: 0xF34B8403
+      position:
+        x: -71091.9375
+        y: -1082.32336425781
+        z: -7070.81005859375
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34BFF03
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Northern Boulder Rupee (Green 1)
+    - name: item
+      parameters: 0xF34B8401
+      position:
+        x: -71149.3515625
+        y: -1131.98156738281
+        z: -6873.412109375
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34BFF01
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Northern Boulder Rupee (Green 2)
+    - name: item
+      parameters: 0xF34B8401
+      position:
+        x: -71028.1640625
+        y: -1086.46154785156
+        z: -6809.62451171875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34BFF01
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Northern Boulder Rupee (Green 3)
+    - name: item
+      parameters: 0xF34B8401
+      position:
+        x: -70900.6015625
+        y: -1007.83605957031
+        z: -6860.65478515625
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34BFF01
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Northern Boulder Rupee (Blue)
+    - name: item
+      parameters: 0xF34B8402
+      position:
+        x: -70951.6328125
+        y: -1090.59973144531
+        z: -7000.9873046875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34BFF02
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Southern Boulder Rupee (Yellow 1)
+    - name: item
+      parameters: 0xF34C8503
+      position:
+        x: -71926.4140625
+        y: -1947.20300292969
+        z: -542.079528808594
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34BFF03
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Southern Boulder Rupee (Yellow 2)
+    - name: item
+      parameters: 0xF34C8503
+      position:
+        x: -71668.03125
+        y: -1902.7158203125
+        z: -393.373565673828
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34BFF03
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Southern Boulder Rupee (Blue 1)
+    - name: item
+      parameters: 0xF34C8502
+      position:
+        x: -71791.0859375
+        y: -1996.86120605469
+        z: -319.543182373047
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34BFF02
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Southern Boulder Rupee (Blue 2)
+    - name: item
+      parameters: 0xF34C8502
+      position:
+        x: -71758.1796875
+        y: -1955.47937011719
+        z: -564.430725097656
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34BFF02
       layers:
         - 0
         - 4
@@ -1142,6 +1334,160 @@ F_SP122:
         # Turn the golden wolf into a htPiece actor with the hidden skill item
         name: htPiece
         parameters: 0xFFFFFFE1
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Boulder Rupee (Green 1)
+    - name: item
+      parameters: 0xF34A8301
+      position:
+        x: -46447.33984375
+        y: -5826.849609375
+        z: 26237.958984375
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34AFF01
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Boulder Rupee (Green 2)
+    - name: item
+      parameters: 0xF34A8301
+      position:
+        x: -46278.0234375
+        y: -5826.849609375
+        z: 26476.99609375
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34AFF01
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Boulder Rupee (Green 3)
+    - name: item
+      parameters: 0xF34A8301
+      position:
+        x: -46596.7421875
+        y: -5826.849609375
+        z: 26277.798828125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34AFF01
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Boulder Rupee (Blue 1)
+    - name: item
+      parameters: 0xF34A8302
+      position:
+        x: -46317.86328125
+        y: -5826.849609375
+        z: 26138.361328125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34AFF02
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Boulder Rupee (Blue 2)
+    - name: item
+      parameters: 0xF34A8302
+      position:
+        x: -46576.8203125
+        y: -5826.849609375
+        z: 26486.955078125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34AFF02
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Boulder Rupee (Blue 3)
+    - name: item
+      parameters: 0xF34A8302
+      position:
+        x: -46377.62890625
+        y: -5826.849609375
+        z: 26357.4765625
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34AFF02
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Boulder Rupee (Yellow)
+    - name: item
+      parameters: 0xF34A8303
+      position:
+        x: -46359.03515625
+        y: -5826.849609375
+        z: 26254.951171875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Take away the flag from this item so it doesn't conflict
+        # with the nearby randomized item
+        parameters: 0xF34AFF03
       layers:
         - 0
         - 4

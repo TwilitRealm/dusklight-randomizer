@@ -2168,25 +2168,27 @@
     - Stage: 57
       Flag: 0x9D
 
-# TODO
 - Name: West Hyrule Field Northern Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
     - Overworld
     - Hyrule Field - Lanayru
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 57
+      Flag: 0x84
 
-# TODO
 - Name: West Hyrule Field Southern Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
     - Overworld
     - Hyrule Field - Lanayru
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 57
+      Flag: 0x85
 
 - Name: West Hyrule Field Helmasaur Grotto Chest
   Original Item: Orange Rupee
@@ -2720,15 +2722,16 @@
     - Tbox ID: 13
       Stage: 57
 
-# TODO
 - Name: Outside South Castle Town Boulder Rupee
   Original Item: Yellow Rupee
   Categories:
     - Overworld
     - Hyrule Field - Lanayru
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 57
+      Flag: 0x83
 
 # TODO
 - Name: Wooden Statue

@@ -29,9 +29,9 @@ public:
     std::list<u16> mStartEventFlags{};
     std::unordered_map<u8, std::list<u8>> mStartRegionFlags{};
     std::list<u8> mStartingInventory{};
-    std::unordered_map<std::string, std::unordered_map<u8, u8>> mTreasureChestOverrides{};
+    std::unordered_map<u16, u8> mTreasureChestOverrides{};
     std::unordered_map<u16, u8> mPoeOverrides{};
-    std::unordered_map<u8, std::unordered_map<u8, u8>> mFreestandingItemOverrides{};
+    std::unordered_map<u16, u8> mFreestandingItemOverrides{};
     std::unordered_map<u8, u8> mBugRewardOverrides{};
     std::unordered_map<u16, u8> mSkyCharacterOverrides{};
     std::unordered_map<u16, u8> mGoldenWolfOverrides{};

@@ -9,7 +9,7 @@
     - ARC
   Metadata:
     - Tbox ID: 4
-      Stage: R_SP01
+      Stage: 65
 
 - Name: Links Basement Chest
   Original Item: Purple Rupee Links House
@@ -20,7 +20,7 @@
     - ARC
   Metadata:
     - Tbox ID: 1
-      Stage: R_SP01
+      Stage: 65
 
 - Name: Uli Cradle Delivery
   Original Item: Progressive Fishing Rod
@@ -74,7 +74,7 @@
     - ARC
   Metadata:
     - Tbox ID: 2
-      Stage: R_SP01
+      Stage: 65
 
 - Name: Ordon Bo Cliff Rupee
   Original Item: Yellow Rupee
@@ -271,7 +271,7 @@
     - DZX
   Metadata:
     - Tbox ID: 7
-      Stage: D_SB05
+      Stage: 35
 
 - Name: Ordon Spring Golden Wolf
   Original Item: Progressive Hidden Skill
@@ -289,7 +289,7 @@
     - Warp Portal
     - Ordona Province
   Metadata:
-      - None
+    - None
 
 # FARON PROVINCE
 
@@ -509,7 +509,7 @@
     - ARC
   Metadata:
     - Tbox ID: 31
-      Stage: D_SB10
+      Stage: 40
 
 - Name: Faron Mist South Chest
   Original Item: Purple Rupee
@@ -519,8 +519,8 @@
     - Faron Woods
     - DZX
   Metadata:
-      - Tbox ID: 29
-        Stage: F_SP108
+    - Tbox ID: 29
+      Stage: 45
 
 - Name: Faron Mist Stump Chest
   Original Item: Red Rupee
@@ -531,7 +531,7 @@
     - DZX
   Metadata:
     - Tbox ID: 28
-      Stage: F_SP108
+      Stage: 45
 
 - Name: Faron Mist North Chest
   Original Item: Yellow Rupee
@@ -542,7 +542,7 @@
     - DZX
   Metadata:
     - Tbox ID: 27
-      Stage: F_SP108
+      Stage: 45
 
 - Name: Faron Mist Poe
   Original Item: Poe Soul
@@ -564,7 +564,7 @@
     - ARC
   Metadata:
     - Tbox ID: 24
-      Stage: F_SP108
+      Stage: 45
 
 - Name: Faron Mist Cave Lantern Chest
   Original Item: Piece of Heart
@@ -575,7 +575,7 @@
     - ARC
   Metadata:
     - Tbox ID: 26
-      Stage: F_SP108
+      Stage: 45
 
 - Name: North Faron Warp Portal
   Original Item: North Faron Portal
@@ -604,7 +604,7 @@
     - ARC
   Metadata:
     - Tbox ID: 63
-      Stage: F_SP108
+      Stage: 45
 
 - Name: Faron Woods Owl Statue Sky Character
   Original Item: Progressive Sky Book
@@ -625,7 +625,7 @@
     - ARC
   Metadata:
     - Tbox ID: 30
-      Stage: F_SP108
+      Stage: 45
 
 - Name: Faron Field Bridge Chest
   Original Item: Orange Rupee
@@ -636,7 +636,7 @@
     - ARC
   Metadata:
     - Tbox ID: 6
-      Stage: F_SP121
+      Stage: 56
 
 # HD Only
 # - Name: Faron Field Corner Grotto Main Chest
@@ -655,7 +655,7 @@
     - DZX
   Metadata:
     - Tbox ID: 11
-      Stage: D_SB06
+      Stage: 36
 
 - Name: Faron Field Corner Grotto Rear Chest
   Original Item: Yellow Rupee
@@ -666,7 +666,7 @@
     - DZX
   Metadata:
     - Tbox ID: 13
-      Stage: D_SB06
+      Stage: 36
 
 - Name: Faron Field Corner Grotto Right Chest
   Original Item: Red Rupee
@@ -677,7 +677,7 @@
     - DZX
   Metadata:
     - Tbox ID: 12
-      Stage: D_SB06
+      Stage: 36
 
 - Name: Faron Field Female Beetle
   Original Item: Female Beetle
@@ -743,7 +743,7 @@
     - ARC
   Metadata:
     - Tbox ID: 3
-      Stage: F_SP117
+      Stage: 54
 
 - Name: Lost Woods Waterfall Poe
   Original Item: Poe Soul
@@ -764,7 +764,7 @@
     - DZX
   Metadata:
     - Tbox ID: 3
-      Stage: D_SB06
+      Stage: 36
 
 - Name: Sacred Grove Spinner Chest
   Original Item: Orange Rupee
@@ -776,7 +776,7 @@
     - ARC
   Metadata:
     - Tbox ID: 2
-      Stage: F_SP117
+      Stage: 54
 
 - Name: Sacred Grove Warp Portal
   Original Item: Sacred Grove Portal
@@ -848,7 +848,7 @@
     - ARC
   Metadata:
     - Tbox ID: 1
-      Stage: F_SP117
+      Stage: 54
 
 - Name: Sacred Grove Temple of Time Owl Statue Poe
   Original Item: Poe Soul
@@ -1049,7 +1049,7 @@
     - ARC
   Metadata:
     - Tbox ID: 4
-      Stage: F_SP121
+      Stage: 56
 
 - Name: Kakariko Gorge Owl Statue Sky Character
   Original Item: Progressive Sky Book
@@ -1102,7 +1102,7 @@
     - ARC
   Metadata:
     - Tbox ID: 5
-      Stage: F_SP121
+      Stage: 56
 
 - Name: Kakariko Gorge Spire Boulder Rupee
   Original Item: Yellow Rupee
@@ -1125,7 +1125,7 @@
     - ARC
   Metadata:
     - Tbox ID: 61
-      Stage: D_SB02
+      Stage: 32
 
 - Name: Eldin Lantern Cave Second Chest
   Original Item: Purple Rupee
@@ -1136,7 +1136,7 @@
     - ARC
   Metadata:
     - Tbox ID: 63
-      Stage: D_SB02
+      Stage: 32
 
 - Name: Eldin Lantern Cave Lantern Chest
   Original Item: Piece of Heart
@@ -1147,7 +1147,7 @@
     - ARC
   Metadata:
     - Tbox ID: 62
-      Stage: D_SB02
+      Stage: 32
 
 - Name: Eldin Lantern Cave Poe
   Original Item: Poe Soul
@@ -1177,7 +1177,7 @@
     - ARC
   Metadata:
     - Tbox ID: 21
-      Stage: F_SP109
+      Stage: 46
 
 - Name: Eldin Spring Underwater Boulder Rupee
   Original Item: Orange Rupee
@@ -1298,7 +1298,7 @@
     - ARC
   Metadata:
     - Tbox ID: 23
-      Stage: R_SP109
+      Stage: 68
 
 - Name: Kakariko Village Female Ant
   Original Item: Female Ant
@@ -1364,7 +1364,7 @@
     - ARC
   Metadata:
     - Tbox ID: 20
-      Stage: F_SP109
+      Stage: 46
 
 - Name: Kakariko Watchtower Chest
   Original Item: Purple Rupee
@@ -1375,7 +1375,7 @@
     - ARC
   Metadata:
     - Tbox ID: 17
-      Stage: R_SP109
+      Stage: 68
 
 - Name: Talo Sharpshooting
   Original Item: Piece of Heart
@@ -1437,7 +1437,7 @@
     - ARC
   Metadata:
     - Tbox ID: 24
-      Stage: F_SP111
+      Stage: 48
 
 - Name: Kakariko Graveyard Male Ant
   Original Item: Male Ant
@@ -1509,7 +1509,7 @@
     - ARC
   Metadata:
     - Tbox ID: 22
-      Stage: F_SP110
+      Stage: 47
 
 - Name: Death Mountain Volcano Ledge Rupee 1
   Original Item: Yellow Rupee
@@ -1574,7 +1574,7 @@
     - ARC
   Metadata:
     - Tbox ID: 2
-      Stage: F_SP121
+      Stage: 56
 
 - Name: Eldin Field Bomskit Grotto Lantern Chest
   Original Item: Purple Rupee
@@ -1586,7 +1586,7 @@
     - DZX
   Metadata:
     - Tbox ID: 6
-      Stage: D_SB05
+      Stage: 35
 
 - Name: Eldin Field Bomskit Grotto Left Chest
   Original Item: Purple Rupee
@@ -1597,7 +1597,7 @@
     - DZX
   Metadata:
     - Tbox ID: 10
-      Stage: D_SB05
+      Stage: 35
 
 - Name: Eldin Field Female Grasshopper
   Original Item: Female Grasshopper
@@ -1646,7 +1646,7 @@
     - DZX
   Metadata:
     - Tbox ID: 16
-      Stage: D_SB09
+      Stage: 39
 
 - Name: Bridge of Eldin Warp Portal
   Original Item: Bridge of Eldin Portal
@@ -1690,7 +1690,7 @@
     - ARC
   Metadata:
     - Tbox ID: 3
-      Stage: F_SP121
+      Stage: 56
 
 - Name: Bridge of Eldin Owl Statue Sky Character
   Original Item: Progressive Sky Book
@@ -1722,7 +1722,7 @@
     - ARC
   Metadata:
     - Tbox ID: 63
-      Stage: D_SB04
+      Stage: 34
 
 - Name: Eldin Stockcave Lantern Chest
   Original Item: Orange Rupee
@@ -1734,7 +1734,7 @@
     - ARC
   Metadata:
     - Tbox ID: 62
-      Stage: D_SB04
+      Stage: 34
 
 - Name: Eldin Stockcave Lowest Chest
   Original Item: Piece of Heart
@@ -1745,7 +1745,7 @@
     - ARC
   Metadata:
     - Tbox ID: 61
-      Stage: D_SB04
+      Stage: 34
 
 - Name: Eldin Field Stalfos Grotto Left Small Chest
   Original Item: Bombs 5
@@ -1756,7 +1756,7 @@
     - DZX
   Metadata:
     - Tbox ID: 18
-      Stage: D_SB06
+      Stage: 36
 
 - Name: Eldin Field Stalfos Grotto Right Small Chest
   Original Item: Bombs 5
@@ -1767,7 +1767,7 @@
     - DZX
   Metadata:
     - Tbox ID: 17
-      Stage: D_SB06
+      Stage: 36
 
 - Name: Eldin Field Stalfos Grotto Stalfos Chest
   Original Item: Piece of Heart
@@ -1778,7 +1778,7 @@
     - DZX
   Metadata:
     - Tbox ID: 2
-      Stage: D_SB06
+      Stage: 36
 
 # TODO
 - Name: Skybook From Impaz
@@ -1980,7 +1980,7 @@
     - ARC
   Metadata:
     - Tbox ID: 7
-      Stage: F_SP121
+      Stage: 56
 
 # TODO
 - Name: Lanayru Field North Underwater Boulder Rupee
@@ -2087,7 +2087,7 @@
     - DZX
   Metadata:
     - Tbox ID: 19
-      Stage: D_SB08
+      Stage: 38
 
 - Name: Lanayru Ice Block Puzzle Cave Chest
   Original Item: Piece of Heart
@@ -2098,7 +2098,7 @@
     - ARC
   Metadata:
     - Tbox ID: 0
-      Stage: D_SB00
+      Stage: 30
 
 - Name: Lanayru Field Spinner Track Chest
   Original Item: Piece of Heart
@@ -2109,7 +2109,7 @@
     - ARC
   Metadata:
     - Tbox ID: 8
-      Stage: F_SP121
+      Stage: 56
 
 # TODO
 - Name: Lanayru Field North Spinner Track Boulder Rupee
@@ -2194,7 +2194,7 @@
     - DZX
   Metadata:
     - Tbox ID: 0
-      Stage: D_SB05
+      Stage: 35
 
 - Name: West Hyrule Field Golden Wolf
   Original Item: Progressive Hidden Skill
@@ -2214,7 +2214,7 @@
     - ARC
   Metadata:
     - Tbox ID: 11
-      Stage: F_SP122
+      Stage: 57
 
 - Name: Hyrule Field Amphitheater Owl Statue Sky Character
   Original Item: Progressive Sky Book
@@ -2311,7 +2311,7 @@
     - ARC
   Metadata:
     - Tbox ID: 1
-      Stage: F_SP116
+      Stage: 53
 
 - Name: East Castle Town Bridge Poe
   Original Item: Poe Soul
@@ -2636,7 +2636,7 @@
     - ARC
   Metadata:
     - Tbox ID: 12
-      Stage: F_SP122
+      Stage: 57
 
 - Name: Outside South Castle Town Fountain Chest
   Original Item: Orange Rupee
@@ -2648,7 +2648,7 @@
     - ARC
   Metadata:
     - Tbox ID: 14
-      Stage: F_SP122
+      Stage: 57
 
 - Name: Outside South Castle Town Male Ladybug
   Original Item: Male Ladybug
@@ -2693,7 +2693,7 @@
     - DZX
   Metadata:
     - Tbox ID: 1
-      Stage: D_SB09
+      Stage: 39
 
 - Name: Outside South Castle Town Golden Wolf
   Original Item: Progressive Hidden Skill
@@ -2714,7 +2714,7 @@
     - ARC
   Metadata:
     - Tbox ID: 13
-      Stage: F_SP122
+      Stage: 57
 
 # TODO
 - Name: Outside South Castle Town Boulder Rupee
@@ -2746,7 +2746,7 @@
     - ARC
   Metadata:
     - Tbox ID: 15
-      Stage: F_SP121
+      Stage: 56
 
 - Name: Lake Hylia Bridge Owl Statue Sky Character
   Original Item: Progressive Sky Book
@@ -2777,7 +2777,7 @@
     - ARC
   Metadata:
     - Tbox ID: 10
-      Stage: F_SP121
+      Stage: 56
 
 - Name: Lake Hylia Bridge Female Mantis
   Original Item: Female Mantis
@@ -2812,7 +2812,7 @@
     - ARC
   Metadata:
     - Tbox ID: 9
-      Stage: F_SP121
+      Stage: 56
 
 - Name: Lake Hylia Bridge Cliff Poe
   Original Item: Poe Soul
@@ -2834,7 +2834,7 @@
     - DZX
   Metadata:
     - Tbox ID: 4
-      Stage: D_SB08
+      Stage: 38
 
 # TODO
 - Name: Lake Hylia Bridge Faron Boulder Rupee
@@ -2885,7 +2885,7 @@
     - DZX
   Metadata:
     - Tbox ID: 5
-      Stage: D_SB09
+      Stage: 39
 
 - Name: Lake Lantern Cave First Chest
   Original Item: Bomblings 5
@@ -2896,7 +2896,7 @@
     - ARC
   Metadata:
     - Tbox ID: 1
-      Stage: D_SB03
+      Stage: 33
 
 - Name: Lake Lantern Cave Second Chest
   Original Item: Yellow Rupee
@@ -2907,7 +2907,7 @@
     - ARC
   Metadata:
     - Tbox ID: 2
-      Stage: D_SB03
+      Stage: 33
 
 - Name: Lake Lantern Cave Third Chest
   Original Item: Red Rupee
@@ -2918,7 +2918,7 @@
     - ARC
   Metadata:
     - Tbox ID: 6
-      Stage: D_SB03
+      Stage: 33
 
 - Name: Lake Lantern Cave Fourth Chest
   Original Item: Arrows 10
@@ -2929,7 +2929,7 @@
     - ARC
   Metadata:
     - Tbox ID: 0
-      Stage: D_SB03
+      Stage: 33
 
 - Name: Lake Lantern Cave Fifth Chest
   Original Item: Red Rupee
@@ -2941,7 +2941,7 @@
     - ARC
   Metadata:
     - Tbox ID: 8
-      Stage: D_SB03
+      Stage: 33
 
 - Name: Lake Lantern Cave Sixth Chest
   Original Item: Orange Rupee
@@ -2952,7 +2952,7 @@
     - ARC
   Metadata:
     - Tbox ID: 14
-      Stage: D_SB03
+      Stage: 33
 
 - Name: Lake Lantern Cave Seventh Chest
   Original Item: Bomblings 5
@@ -2963,7 +2963,7 @@
     - ARC
   Metadata:
     - Tbox ID: 10
-      Stage: D_SB03
+      Stage: 33
 
 - Name: Lake Lantern Cave Eighth Chest
   Original Item: Red Rupee
@@ -2974,7 +2974,7 @@
     - ARC
   Metadata:
     - Tbox ID: 7
-      Stage: D_SB03
+      Stage: 33
 
 - Name: Lake Lantern Cave Ninth Chest
   Original Item: Arrows 10
@@ -2985,7 +2985,7 @@
     - ARC
   Metadata:
     - Tbox ID: 9
-      Stage: D_SB03
+      Stage: 33
 
 - Name: Lake Lantern Cave Tenth Chest
   Original Item: Purple Rupee
@@ -2996,7 +2996,7 @@
     - ARC
   Metadata:
     - Tbox ID: 4
-      Stage: D_SB03
+      Stage: 33
 
 - Name: Lake Lantern Cave Eleventh Chest
   Original Item: Bomblings 10
@@ -3007,7 +3007,7 @@
     - ARC
   Metadata:
     - Tbox ID: 11
-      Stage: D_SB03
+      Stage: 33
 
 - Name: Lake Lantern Cave Twelfth Chest
   Original Item: Purple Rupee
@@ -3018,7 +3018,7 @@
     - ARC
   Metadata:
     - Tbox ID: 5
-      Stage: D_SB09
+      Stage: 39
 
 - Name: Lake Lantern Cave Thirteenth Chest
   Original Item: Seeds 50
@@ -3029,7 +3029,7 @@
     - ARC
   Metadata:
     - Tbox ID: 12
-      Stage: D_SB03
+      Stage: 33
 
 - Name: Lake Lantern Cave Fourteenth Chest
   Original Item: Orange Rupee
@@ -3041,7 +3041,7 @@
     - ARC
   Metadata:
     - Tbox ID: 13
-      Stage: D_SB03
+      Stage: 33
 
 - Name: Lake Lantern Cave End Lantern Chest
   Original Item: Piece of Heart
@@ -3052,7 +3052,7 @@
     - ARC
   Metadata:
     - Tbox ID: 3
-      Stage: D_SB03
+      Stage: 33
 
 - Name: Lake Lantern Cave First Poe
   Original Item: Poe Soul
@@ -3094,7 +3094,7 @@
     - DZX
   Metadata:
     - Tbox ID: 5
-      Stage: F_SP115
+      Stage: 52
 
 # TODO
 - Name: Lake Hylia Left Underwater Boulder Rupee
@@ -3159,7 +3159,7 @@
     - DZX
   Metadata:
     - Tbox ID: 25
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Flight By Fowl Second Platform Chest
   Original Item: Piece of Heart
@@ -3170,7 +3170,7 @@
     - DZX
   Metadata:
     - Tbox ID: 0
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Flight By Fowl Third Platform Chest
   Original Item: Purple Rupee
@@ -3182,7 +3182,7 @@
     - DZX
   Metadata:
     - Tbox ID: 2
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Flight By Fowl Fourth Platform Chest
   Original Item: Red Rupee
@@ -3193,7 +3193,7 @@
     - DZX
   Metadata:
     - Tbox ID: 8
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Flight By Fowl Fifth Platform Chest
   Original Item: Yellow Rupee
@@ -3204,7 +3204,7 @@
     - DZX
   Metadata:
     - Tbox ID: 7
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Isle of Riches Poe
   Original Item: Poe Soul
@@ -3235,7 +3235,7 @@
     - DZX
   Metadata:
     - Tbox ID: 21
-      Stage: D_SB09
+      Stage: 39
 
 - Name: Lake Hylia Dock Poe
   Original Item: Poe Soul
@@ -3256,7 +3256,7 @@
     - DZX
   Metadata:
     - Tbox ID: 1
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Outside Lanayru Spring Right Statue Chest
   Original Item: Orange Rupee
@@ -3267,7 +3267,7 @@
     - DZX
   Metadata:
     - Tbox ID: 6
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Lanayru Spring Back Room Lantern Chest
   Original Item: Piece of Heart
@@ -3278,7 +3278,7 @@
     - ARC
   Metadata:
     - Tbox ID: 29
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Lanayru Spring Back Room Left Chest
   Original Item: Bombs 5
@@ -3289,7 +3289,7 @@
     - ARC
   Metadata:
     - Tbox ID: 28
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Lanayru Spring Back Room Right Chest
   Original Item: Blue Rupee
@@ -3300,7 +3300,7 @@
     - ARC
   Metadata:
     - Tbox ID: 27
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Lanayru Spring East Double Clawshot Chest
   Original Item: Orange Rupee
@@ -3311,7 +3311,7 @@
     - ARC
   Metadata:
     - Tbox ID: 4
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Lanayru Spring West Double Clawshot Chest
   Original Item: Orange Rupee
@@ -3322,7 +3322,7 @@
     - ARC
   Metadata:
     - Tbox ID: 3
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Lanayru Spring Underwater Left Chest
   Original Item: Blue Rupee
@@ -3333,7 +3333,7 @@
     - ARC
   Metadata:
     - Tbox ID: 12 
-      Stage: F_SP115
+      Stage: 52
 
 - Name: Lanayru Spring Underwater Right Chest
   Original Item: Yellow Rupee
@@ -3344,7 +3344,7 @@
     - ARC
   Metadata:
     - Tbox ID: 10
-      Stage: F_SP115
+      Stage: 52
 
 # TODO
 - Name: Lanayru Spring Lower Underwater Boulder Rupee
@@ -3533,7 +3533,7 @@
     - ARC
   Metadata:
     - Tbox ID: 26
-      Stage: F_SP113
+      Stage: 50
 
 - Name: Zoras Domain Chest By Mother and Child Isles
   Original Item: Yellow Rupee
@@ -3544,7 +3544,7 @@
     - ARC
   Metadata:
     - Tbox ID: 30
-      Stage: F_SP113
+      Stage: 50
 
 - Name: Zoras Domain Waterfall Poe
   Original Item: Poe Soul
@@ -3665,7 +3665,7 @@
     - ARC
   Metadata:
     - Tbox ID: 20
-      Stage: F_SP113
+      Stage: 50
 
 - Name: Zoras Domain Light All Torches Chest
   Original Item: Purple Rupee
@@ -3676,7 +3676,7 @@
     - ARC
   Metadata:
     - Tbox ID: 19
-      Stage: F_SP113
+      Stage: 50
 
 # TODO
 - Name: Zoras Domain Underwater Goron
@@ -3822,7 +3822,7 @@
     - DZX
   Metadata:
     - Tbox ID: 15
-      Stage: D_SB08
+      Stage: 38
 
 - Name: Snowpeak Cave Ice Lantern Chest
   Original Item: Orange Rupee
@@ -3833,7 +3833,7 @@
     - ARC
   Metadata:
     - Tbox ID: 0
-      Stage: F_SP114
+      Stage: 51
 
 - Name: Snowpeak Cave Ice Poe
   Original Item: Poe Soul
@@ -4124,7 +4124,7 @@
     - DZX
   Metadata:
     - Tbox ID: 8
-      Stage: D_SB08
+      Stage: 38
 
 - Name: Gerudo Desert Peahat Ledge Chest
   Original Item: Red Rupee
@@ -4135,7 +4135,7 @@
     - ARC
   Metadata:
     - Tbox ID: 11
-      Stage: F_SP124
+      Stage: 59
 
 - Name: Gerudo Desert East Canyon Chest
   Original Item: Red Rupee
@@ -4146,7 +4146,7 @@
     - ARC
   Metadata:
     - Tbox ID: 6
-      Stage: F_SP124
+      Stage: 59
 
 - Name: Gerudo Desert South Chest Behind Wooden Gates
   Original Item: Orange Rupee
@@ -4157,7 +4157,7 @@
     - ARC
   Metadata:
     - Tbox ID: 0
-      Stage: F_SP124
+      Stage: 59
 
 - Name: Gerudo Desert Lone Small Chest
   Original Item: Arrows 10
@@ -4168,7 +4168,7 @@
     - ARC
   Metadata:
     - Tbox ID: 5
-      Stage: F_SP124
+      Stage: 59
 
 - Name: Gerudo Desert Male Dayfly
   Original Item: Male Dayfly
@@ -4203,7 +4203,7 @@
     - ARC
   Metadata:
     - Tbox ID: 1
-      Stage: F_SP124
+      Stage: 59
 
 - Name: Gerudo Desert Owl Statue Sky Character
   Original Item: Progressive Sky Book
@@ -4235,7 +4235,7 @@
     - ARC
   Metadata:
     - Tbox ID: 7
-      Stage: F_SP124
+      Stage: 59
 
 - Name: Gerudo Desert North Peahat Poe
   Original Item: Poe Soul
@@ -4277,7 +4277,7 @@
     - DZX
   Metadata:
     - Tbox ID: 14
-      Stage: D_SB07
+      Stage: 37
 
 - Name: Gerudo Desert Campfire East Chest
   Original Item: Purple Rupee
@@ -4288,7 +4288,7 @@
     - ARC
   Metadata:
     - Tbox ID: 9
-      Stage: F_SP124
+      Stage: 59
 
 - Name: Gerudo Desert Campfire North Chest
   Original Item: Red Rupee
@@ -4299,7 +4299,7 @@
     - ARC
   Metadata:
     - Tbox ID: 8
-      Stage: F_SP124
+      Stage: 59
 
 - Name: Gerudo Desert Campfire West Chest
   Original Item: Arrows 10
@@ -4310,7 +4310,7 @@
     - ARC
   Metadata:
     - Tbox ID: 10
-      Stage: F_SP124
+      Stage: 59
 
 - Name: Gerudo Desert Northeast Chest Behind Gates
   Original Item: Red Rupee
@@ -4321,7 +4321,7 @@
     - ARC
   Metadata:
     - Tbox ID: 2
-      Stage: F_SP124
+      Stage: 59
 
 - Name: Gerudo Desert Northwest Chest Behind Gates
   Original Item: Red Rupee
@@ -4332,7 +4332,7 @@
     - ARC
   Metadata:
     - Tbox ID: 3
-      Stage: F_SP124
+      Stage: 59
 
 - Name: Gerudo Desert North Small Chest Before Bulblin Camp
   Original Item: Arrows 10
@@ -4343,7 +4343,7 @@
     - ARC
   Metadata:
     - Tbox ID: 13
-      Stage: F_SP124
+      Stage: 59
 
 - Name: Gerudo Desert Golden Wolf
   Original Item: Progressive Hidden Skill
@@ -4373,7 +4373,7 @@
     - DZX
   Metadata:
     - Tbox ID: 31
-      Stage: F_SP118
+      Stage: 55
 
 # In vanilla this chest shares a flag with the other small chest
 # in the area. So we change this one to use a different flag
@@ -4386,7 +4386,7 @@
     - DZX
   Metadata:
     - Tbox ID: 30
-      Stage: F_SP118
+      Stage: 55
 
 # TODO (Might work, haven't checked)
 - Name: Bulblin Camp Roasted Boar
@@ -4430,7 +4430,7 @@
     - ARC
   Metadata:
     - Tbox ID: 15
-      Stage: F_SP118
+      Stage: 55
 
 - Name: Outside Arbiters Grounds Poe
   Original Item: Poe Soul
@@ -4543,7 +4543,7 @@
     - ARC
   Metadata:
     - Tbox ID: 7
-      Stage: D_MN05
+      Stage: 6
 
 - Name: Forest Temple Central Chest Hanging From Web
   Original Item: Forest Temple Compass
@@ -4556,7 +4556,7 @@
     - ARC
   Metadata:
     - Tbox ID: 20
-      Stage: D_MN05
+      Stage: 6
 
 - Name: Forest Temple Central Chest Behind Stairs
   Original Item: Red Rupee
@@ -4567,7 +4567,7 @@
     - ARC
   Metadata:
     - Tbox ID: 37
-      Stage: D_MN05
+      Stage: 6
 
 - Name: Forest Temple Central North Chest
   Original Item: Forest Temple Dungeon Map
@@ -4580,7 +4580,7 @@
     - ARC
   Metadata:
     - Tbox ID: 39
-      Stage: D_MN05
+      Stage: 6
 
 - Name: Forest Temple West Deku Like Chest
   Original Item: Piece of Heart
@@ -4591,7 +4591,7 @@
     - ARC
   Metadata:
     - Tbox ID: 31
-      Stage: D_MN05
+      Stage: 6
 
 # TODO
 - Name: Forest Temple Big Baba Key
@@ -4614,7 +4614,7 @@
     - ARC
   Metadata:
     - Tbox ID: 25
-      Stage: D_MN05
+      Stage: 6
 
 - Name: Forest Temple West Tile Worm Chest Behind Stairs
   Original Item: Piece of Heart
@@ -4625,7 +4625,7 @@
     - ARC
   Metadata:
     - Tbox ID: 19
-      Stage: D_MN05
+      Stage: 6
 
 - Name: Forest Temple West Tile Worm Room Vines Chest
   Original Item: Red Rupee
@@ -4636,7 +4636,7 @@
     - ARC
   Metadata:
     - Tbox ID: 24
-      Stage: D_MN05
+      Stage: 6
 
 # TODO
 - Name: Forest Temple Gale Boomerang
@@ -4658,7 +4658,7 @@
     - ARC
   Metadata:
     - Tbox ID: 38
-      Stage: D_MN05
+      Stage: 6
 
 - Name: Forest Temple East Water Cave Chest
   Original Item: Yellow Rupee
@@ -4670,7 +4670,7 @@
     - ARC
   Metadata:
     - Tbox ID: 26
-      Stage: D_MN05
+      Stage: 6
 
 - Name: Forest Temple Second Monkey Under Bridge Chest
   Original Item: Yellow Rupee
@@ -4681,7 +4681,7 @@
     - ARC
   Metadata:
     - Tbox ID: 9
-      Stage: D_MN05
+      Stage: 6
 
 - Name: Forest Temple Windless Bridge Chest
   Original Item: Forest Temple Small Key
@@ -4693,7 +4693,7 @@
     - ARC
   Metadata:
     - Tbox ID: 4
-      Stage: D_MN05
+      Stage: 6
 
 - Name: Forest Temple East Tile Worm Chest
   Original Item: Red Rupee
@@ -4705,7 +4705,7 @@
     - ARC
   Metadata:
     - Tbox ID: 1
-      Stage: D_MN05
+      Stage: 6
 
 - Name: Forest Temple North Deku Like Chest
   Original Item: Forest Temple Small Key
@@ -4717,7 +4717,7 @@
     - ARC
   Metadata:
     - Tbox ID: 2
-      Stage: D_MN05
+      Stage: 6
 
 # TODO
 - Name: Forest Temple Diababa Heart Container
@@ -4754,7 +4754,7 @@
     - ARC
   Metadata:
     - Tbox ID: 27
-      Stage: D_MN04
+      Stage: 3
 
 - Name: Goron Mines Main Magnet Room Bottom Chest
   Original Item: Goron Mines Small Key
@@ -4766,7 +4766,7 @@
     - ARC
   Metadata:
     - Tbox ID: 11
-      Stage: D_MN04
+      Stage: 3
 
 # TODO
 - Name: Goron Mines Gor Amato Key Shard
@@ -4792,7 +4792,7 @@
     - ARC
   Metadata:
     - Tbox ID: 17
-      Stage: D_MN04
+      Stage: 3
 
 - Name: Goron Mines Gor Amato Small Chest
   Original Item: Red Rupee
@@ -4803,7 +4803,7 @@
     - ARC
   Metadata:
     - Tbox ID: 24
-      Stage: D_MN04
+      Stage: 3
 
 - Name: Goron Mines Magnet Maze Chest
   Original Item: Piece of Heart
@@ -4814,7 +4814,7 @@
     - ARC
   Metadata:
     - Tbox ID: 20
-      Stage: D_MN04
+      Stage: 3
 
 - Name: Goron Mines Crystal Switch Room Underwater Chest
   Original Item: Goron Mines Small Key
@@ -4826,7 +4826,7 @@
     - ARC
   Metadata:
     - Tbox ID: 16
-      Stage: D_MN04
+      Stage: 3
 
 - Name: Goron Mines Crystal Switch Room Small Chest
   Original Item: Red Rupee
@@ -4837,7 +4837,7 @@
     - ARC
   Metadata:
     - Tbox ID: 28
-      Stage: D_MN04
+      Stage: 3
 
 - Name: Goron Mines After Crystal Switch Room Magnet Wall Chest
   Original Item: Piece of Heart
@@ -4848,7 +4848,7 @@
     - ARC
   Metadata:
     - Tbox ID: 9
-      Stage: D_MN04
+      Stage: 3
 
 - Name: Goron Mines Outside Beamos Chest
   Original Item: Goron Mines Small Key
@@ -4860,7 +4860,7 @@
     - ARC
   Metadata:
     - Tbox ID: 15
-      Stage: D_MN04
+      Stage: 3
 
 - Name: Goron Mines Outside Underwater Chest
   Original Item: Purple Rupee
@@ -4872,7 +4872,7 @@
     - ARC
   Metadata:
     - Tbox ID: 21
-      Stage: D_MN04
+      Stage: 3
 
 - Name: Goron Mines Outside Clawshot Chest
   Original Item: Purple Rupee
@@ -4884,7 +4884,7 @@
     - ARC
   Metadata:
     - Tbox ID: 14
-      Stage: D_MN04
+      Stage: 3
 
 # TODO
 - Name: Goron Mines Gor Ebizo Key Shard
@@ -4908,7 +4908,7 @@
     - ARC
   Metadata:
     - Tbox ID: 25
-      Stage: D_MN04
+      Stage: 3
 
 - Name: Goron Mines Chest Before Dangoro
   Original Item: Yellow Rupee
@@ -4919,7 +4919,7 @@
     - ARC
   Metadata:
     - Tbox ID: 13
-      Stage: D_MN04
+      Stage: 3
 
 - Name: Goron Mines Dangoro Chest
   Original Item: Progressive Bow
@@ -4930,7 +4930,7 @@
     - ARC
   Metadata:
     - Tbox ID: 6
-      Stage: D_MN04
+      Stage: 3
 
 - Name: Goron Mines Beamos Room Chest
   Original Item: Goron Mines Compass
@@ -4943,7 +4943,7 @@
     - ARC
   Metadata:
     - Tbox ID: 12
-      Stage: D_MN04
+      Stage: 3
 
 # TODO
 - Name: Goron Mines Gor Liggs Key Shard
@@ -4967,7 +4967,7 @@
     - ARC
   Metadata:
     - Tbox ID: 26
-      Stage: D_MN04
+      Stage: 3
 
 - Name: Goron Mines Main Magnet Room Top Chest
   Original Item: Purple Rupee
@@ -4978,7 +4978,7 @@
     - ARC
   Metadata:
     - Tbox ID: 30
-      Stage: D_MN04
+      Stage: 3
 
 # TODO
 - Name: Goron Mines Fyrus Heart Container
@@ -5015,7 +5015,7 @@
     - ARC
   Metadata:
     - Tbox ID: 28
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple Lobby Rear Chest
   Original Item: Water Bombs 10
@@ -5026,7 +5026,7 @@
     - ARC
   Metadata:
     - Tbox ID: 29
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple Stalactite Room Chest
   Original Item: Water Bombs 10
@@ -5037,7 +5037,7 @@
     - ARC
   Metadata:
     - Tbox ID: 3
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple Chandelier Chest
   Original Item: Piece of Heart
@@ -5048,7 +5048,7 @@
     - ARC
   Metadata:
     - Tbox ID: 5
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple Central Room Spire Chest
   Original Item: Red Rupee
@@ -5060,7 +5060,7 @@
     - ARC
   Metadata:
     - Tbox ID: 16
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple Central Room Chest
   Original Item: Lakebed Temple Dungeon Map
@@ -5073,7 +5073,7 @@
     - ARC
   Metadata:
     - Tbox ID: 17
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple Central Room Small Chest
   Original Item: Arrows 20
@@ -5084,7 +5084,7 @@
     - ARC
   Metadata:
     - Tbox ID: 1
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple East Lower Waterwheel Stalactite Chest
   Original Item: Lakebed Temple Small Key
@@ -5096,7 +5096,7 @@
     - ARC
   Metadata:
     - Tbox ID: 6
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple East Lower Waterwheel Bridge Chest
   Original Item: Piece of Heart
@@ -5107,7 +5107,7 @@
     - ARC
   Metadata:
     - Tbox ID: 8
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple East Second Floor Southeast Chest
   Original Item: Lakebed Temple Small Key
@@ -5119,7 +5119,7 @@
     - ARC
   Metadata:
     - Tbox ID: 10
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple East Second Floor Southwest Chest
   Original Item: Water Bombs 5
@@ -5130,7 +5130,7 @@
     - ARC
   Metadata:
     - Tbox ID: 24
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple East Water Supply Small Chest
   Original Item: Water Bombs 10
@@ -5141,7 +5141,7 @@
     - ARC
   Metadata:
     - Tbox ID: 27
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple East Water Supply Clawshot Chest
   Original Item: Purple Rupee
@@ -5153,7 +5153,7 @@
     - ARC
   Metadata:
     - Tbox ID: 11
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple Before Deku Toad Alcove Chest
   Original Item: Lakebed Temple Small Key
@@ -5165,7 +5165,7 @@
     - ARC
   Metadata:
     - Tbox ID: 2
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple Before Deku Toad Underwater Left Chest
   Original Item: Red Rupee
@@ -5176,7 +5176,7 @@
     - ARC
   Metadata:
     - Tbox ID: 15
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple Before Deku Toad Underwater Right Chest
   Original Item: Water Bombs 5
@@ -5187,7 +5187,7 @@
     - ARC
   Metadata:
     - Tbox ID: 14
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple Deku Toad Chest
   Original Item: Progressive Clawshot
@@ -5198,7 +5198,7 @@
     - ARC
   Metadata:
     - Tbox ID: 0
-      Stage: D_MN01B
+      Stage: 2
 
 - Name: Lakebed Temple West Lower Small Chest
   Original Item: Water Bombs 10
@@ -5209,7 +5209,7 @@
     - ARC
   Metadata:
     - Tbox ID: 30
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple West Second Floor Central Small Chest
   Original Item: Red Rupee
@@ -5220,7 +5220,7 @@
     - ARC
   Metadata:
     - Tbox ID: 19
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple West Second Floor Northeast Chest
   Original Item: Water Bombs 15
@@ -5231,7 +5231,7 @@
     - ARC
   Metadata:
     - Tbox ID: 13
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple West Second Floor Southeast Chest
   Original Item: Red Rupee
@@ -5242,7 +5242,7 @@
     - ARC
   Metadata:
     - Tbox ID: 7
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple West Second Floor Southwest Underwater Chest
   Original Item: Red Rupee
@@ -5253,7 +5253,7 @@
     - ARC
   Metadata:
     - Tbox ID: 25
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple West Water Supply Small Chest
   Original Item: Water Bombs 10
@@ -5264,7 +5264,7 @@
     - ARC
   Metadata:
     - Tbox ID: 21
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple West Water Supply Chest
   Original Item: Lakebed Temple Compass
@@ -5277,7 +5277,7 @@
     - ARC
   Metadata:
     - Tbox ID: 20
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple Underwater Maze Small Chest
   Original Item: Water Bombs 5
@@ -5288,7 +5288,7 @@
     - ARC
   Metadata:
     - Tbox ID: 18
-      Stage: D_MN01
+      Stage: 0
 
 - Name: Lakebed Temple Big Key Chest
   Original Item: Lakebed Temple Big Key
@@ -5300,7 +5300,7 @@
     - ARC
   Metadata:
     - Tbox ID: 12
-      Stage: D_MN01
+      Stage: 0
 
 # TODO
 - Name: Lakebed Temple Morpheel Heart Container
@@ -5337,7 +5337,7 @@
     - Small Key
   Metadata:
     - Tbox ID: 23
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds Torch Room Poe
   Original Item: Poe Soul
@@ -5357,7 +5357,7 @@
     - Arbiters Grounds
   Metadata:
     - Tbox ID: 19
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds Torch Room West Chest
   Original Item: Arbiters Grounds Dungeon Map
@@ -5369,7 +5369,7 @@
     - Dungeon Map
   Metadata:
     - Tbox ID: 18
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds West Small Chest Behind Block
   Original Item: Red Rupee
@@ -5379,7 +5379,7 @@
     - Arbiters Grounds
   Metadata:
     - Tbox ID: 25
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds East Lower Turnable Redead Chest
   Original Item: Arbiters Grounds Small Key
@@ -5390,7 +5390,7 @@
     - Small Key
   Metadata:
     - Tbox ID: 6
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds East Turning Room Poe
   Original Item: Poe Soul
@@ -5412,7 +5412,7 @@
     - Compass
   Metadata:
     - Tbox ID: 4
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds East Upper Turnable Redead Chest
   Original Item: Arbiters Grounds Small Key
@@ -5423,7 +5423,7 @@
     - Small Key
   Metadata:
     - Tbox ID: 5
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds Hidden Wall Poe
   Original Item: Poe Soul
@@ -5444,7 +5444,7 @@
     - Small Key
   Metadata:
     - Tbox ID: 21
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds West Chandelier Chest
   Original Item: Red Rupee
@@ -5455,7 +5455,7 @@
     - Arbiters Grounds
   Metadata:
     - Tbox ID: 3
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds West Stalfos Northeast Chest
   Original Item: Bombs 5
@@ -5465,7 +5465,7 @@
     - Arbiters Grounds
   Metadata:
     - Tbox ID: 16
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds West Stalfos West Chest
   Original Item: Bombs 5
@@ -5475,7 +5475,7 @@
     - Arbiters Grounds
   Metadata:
     - Tbox ID: 17
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds West Poe
   Original Item: Poe Soul
@@ -5496,7 +5496,7 @@
     - Small Key
   Metadata:
     - Tbox ID: 24
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds Death Sword Chest
   Original Item: Spinner
@@ -5506,7 +5506,7 @@
     - Arbiters Grounds
   Metadata:
     - Tbox ID: 11
-      Stage: D_MN10B
+      Stage: 26
 
 - Name: Arbiters Grounds Spinner Room First Small Chest
   Original Item: Bombs 10
@@ -5516,7 +5516,7 @@
     - Arbiters Grounds
   Metadata:
     - Tbox ID: 28
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds Spinner Room Second Small Chest
   Original Item: Red Rupee
@@ -5526,7 +5526,7 @@
     - Arbiters Grounds
   Metadata:
     - Tbox ID: 27
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds Spinner Room Lower Central Small Chest
   Original Item: Yellow Rupee
@@ -5536,7 +5536,7 @@
     - Arbiters Grounds
   Metadata:
     - Tbox ID: 29
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds Spinner Room Stalfos Alcove Chest
   Original Item: Piece of Heart
@@ -5546,7 +5546,7 @@
     - Arbiters Grounds
   Metadata:
     - Tbox ID: 26
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds Spinner Room Lower North Chest
   Original Item: Yellow Rupee
@@ -5557,7 +5557,7 @@
     - Arbiters Grounds
   Metadata:
     - Tbox ID: 30
-      Stage: D_MN10
+      Stage: 24
 
 - Name: Arbiters Grounds Big Key Chest
   Original Item: Arbiters Grounds Big Key
@@ -5568,7 +5568,7 @@
     - Big Key
   Metadata:
     - Tbox ID: 20
-      Stage: D_MN10
+      Stage: 24
 
 # TODO
 - Name: Arbiters Grounds Stallord Heart Container
@@ -5604,7 +5604,7 @@
     - ARC
   Metadata:
     - Tbox ID: 23
-      Stage: D_MN11
+      Stage: 27
 
 - Name: Snowpeak Ruins Lobby East Armor Chest
   Original Item: Yellow Rupee
@@ -5615,7 +5615,7 @@
     - ARC
   Metadata:
     - Tbox ID: 22
-      Stage: D_MN11
+      Stage: 27
 
 - Name: Snowpeak Ruins Lobby Armor Poe
   Original Item: Poe Soul
@@ -5646,7 +5646,7 @@
     - ARC
   Metadata:
     - Tbox ID: 21
-      Stage: D_MN11
+      Stage: 27
 
 # TODO
 - Name: Snowpeak Ruins Mansion Map
@@ -5671,7 +5671,7 @@
     - ARC
   Metadata:
     - Tbox ID: 14
-      Stage: D_MN11
+      Stage: 27
 
 - Name: Snowpeak Ruins East Courtyard Buried Chest
   Original Item: Red Rupee
@@ -5682,7 +5682,7 @@
     - ARC
   Metadata:
     - Tbox ID: 15
-      Stage: D_MN11
+      Stage: 27
 
 - Name: Snowpeak Ruins Ordon Pumpkin Chest
   Original Item: Ordon Pumpkin
@@ -5696,7 +5696,7 @@
     - ARC
   Metadata:
     - Tbox ID: 10
-      Stage: D_MN11
+      Stage: 27
 
 - Name: Snowpeak Ruins Courtyard Central Chest
   Original Item: Bombs 5
@@ -5707,7 +5707,7 @@
     - ARC
   Metadata:
     - Tbox ID: 3
-      Stage: D_MN11
+      Stage: 27
 
 - Name: Snowpeak Ruins West Courtyard Buried Chest
   Original Item: Snowpeak Ruins Small Key
@@ -5719,7 +5719,7 @@
     - ARC
   Metadata:
     - Tbox ID: 13
-      Stage: D_MN11
+      Stage: 27
 
 - Name: Snowpeak Ruins West Cannon Room Central Chest
   Original Item: Red Rupee
@@ -5730,7 +5730,7 @@
     - ARC
   Metadata:
     - Tbox ID: 20
-      Stage: D_MN11
+      Stage: 27
 
 - Name: Snowpeak Ruins West Cannon Room Corner Chest
   Original Item: Bombs 5
@@ -5741,7 +5741,7 @@
     - ARC
   Metadata:
     - Tbox ID: 19
-      Stage: D_MN11
+      Stage: 27
 
 - Name: Snowpeak Ruins Wooden Beam Central Chest
   Original Item: Red Rupee
@@ -5753,7 +5753,7 @@
     - ARC
   Metadata:
     - Tbox ID: 1
-      Stage: D_MN11
+      Stage: 27
 
 - Name: Snowpeak Ruins Wooden Beam Chandelier Chest
   Original Item: Snowpeak Ruins Small Key
@@ -5765,7 +5765,7 @@
     - ARC
   Metadata:
     - Tbox ID: 7
-      Stage: D_MN11
+      Stage: 27
 
 - Name: Snowpeak Ruins Wooden Beam Northwest Chest
   Original Item: Snowpeak Ruins Compass
@@ -5778,7 +5778,7 @@
     - ARC
   Metadata:
     - Tbox ID: 2
-      Stage: D_MN11
+      Stage: 27
 
 # TODO
 - Name: Snowpeak Ruins Ball and Chain
@@ -5800,7 +5800,7 @@
     - ARC
   Metadata:
     - Tbox ID: 6
-      Stage: D_MN11B
+      Stage: 29
 
 - Name: Snowpeak Ruins Broken Floor Chest
   Original Item: Piece of Heart
@@ -5811,7 +5811,7 @@
     - ARC
   Metadata:
     - Tbox ID: 25
-      Stage: D_MN11
+      Stage: 27
 
 - Name: Snowpeak Ruins Ice Room Poe
   Original Item: Poe Soul
@@ -5833,7 +5833,7 @@
     - ARC
   Metadata:
     - Tbox ID: 18
-      Stage: D_MN11
+      Stage: 27
 
 - Name: Snowpeak Ruins Chapel Chest
   Original Item: Snowpeak Ruins Bedroom Key
@@ -5845,7 +5845,7 @@
     - ARC
   Metadata:
     - Tbox ID: 11
-      Stage: D_MN11
+      Stage: 27
 
 # TODO
 - Name: Snowpeak Ruins Blizzeta Heart Container
@@ -5880,7 +5880,7 @@
     - ARC
   Metadata:
     - Tbox ID: 41
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time First Staircase Gohma Gate Chest
   Original Item: Arrows 30
@@ -5891,7 +5891,7 @@
     - ARC
   Metadata:
     - Tbox ID: 2
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time First Staircase Window Chest
   Original Item: Red Rupee
@@ -5902,7 +5902,7 @@
     - ARC
   Metadata:
     - Tbox ID: 45
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time First Staircase Armos Chest
   Original Item: Temple of Time Dungeon Map
@@ -5915,7 +5915,7 @@
     - ARC
   Metadata:
     - Tbox ID: 1
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time Poe Behind Gate
   Original Item: Poe Soul
@@ -5937,7 +5937,7 @@
     - ARC
   Metadata:
     - Tbox ID: 4
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time Armos Antechamber North Chest
   Original Item: Red Rupee
@@ -5949,7 +5949,7 @@
     - ARC
   Metadata:
     - Tbox ID: 46
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time Armos Antechamber Statue Chest
   Original Item: Piece of Heart
@@ -5960,7 +5960,7 @@
     - ARC
   Metadata:
     - Tbox ID: 5
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time Moving Wall Beamos Room Chest
   Original Item: Temple of Time Compass
@@ -5973,7 +5973,7 @@
     - ARC
   Metadata:
     - Tbox ID: 6
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time Moving Wall Dinalfos Room Chest
   Original Item: Piece of Heart
@@ -5984,7 +5984,7 @@
     - ARC
   Metadata:
     - Tbox ID: 12
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time Scales Gohma Chest
   Original Item: Purple Rupee
@@ -5995,7 +5995,7 @@
     - ARC
   Metadata:
     - Tbox ID: 44
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time Scales Upper Chest
   Original Item: Red Rupee
@@ -6007,7 +6007,7 @@
     - ARC
   Metadata:
     - Tbox ID: 47
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time Poe Above Scales
   Original Item: Poe Soul
@@ -6028,7 +6028,7 @@
     - ARC
   Metadata:
     - Tbox ID: 48
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time Big Key Chest
   Original Item: Temple of Time Big Key
@@ -6040,7 +6040,7 @@
     - ARC
   Metadata:
     - Tbox ID: 8
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time Gilloutine Chest
   Original Item: Temple of Time Small Key
@@ -6052,7 +6052,7 @@
     - ARC
   Metadata:
     - Tbox ID: 9
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time Chest Before Darknut
   Original Item: Purple Rupee
@@ -6063,7 +6063,7 @@
     - ARC
   Metadata:
     - Tbox ID: 43
-      Stage: D_MN06
+      Stage: 9
 
 - Name: Temple of Time Darknut Chest
   Original Item: Progressive Dominion Rod
@@ -6074,7 +6074,7 @@
     - ARC
   Metadata:
     - Tbox ID: 0
-      Stage: D_MN06B
+      Stage: 11
 
 # TODO
 - Name: Temple of Time Armogohma Heart Container
@@ -6111,7 +6111,7 @@
     - ARC
   Metadata:
     - Tbox ID: 27
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky Underwater West Chest
   Original Item: Water Bombs 15
@@ -6122,7 +6122,7 @@
     - ARC
   Metadata:
     - Tbox ID: 3
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky West Wing First Chest
   Original Item: City in the Sky Small Key
@@ -6134,7 +6134,7 @@
     - ARC
   Metadata:
     - Tbox ID: 5
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky West Wing Baba Balcony Chest
   Original Item: Arrows 20
@@ -6145,7 +6145,7 @@
     - ARC
   Metadata:
     - Tbox ID: 21
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky West Wing Narrow Ledge Chest
   Original Item: Red Rupee
@@ -6157,7 +6157,7 @@
     - ARC
   Metadata:
     - Tbox ID: 22
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky West Wing Tile Worm Chest
   Original Item: Bombs 10
@@ -6168,7 +6168,7 @@
     - ARC
   Metadata:
     - Tbox ID: 20
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky Baba Tower Top Small Chest
   Original Item: Yellow Rupee
@@ -6179,7 +6179,7 @@
     - ARC
   Metadata:
     - Tbox ID: 7
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky Baba Tower Narrow Ledge Chest
   Original Item: Arrows 20
@@ -6190,7 +6190,7 @@
     - ARC
   Metadata:
     - Tbox ID: 23
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky Baba Tower Alcove Chest
   Original Item: Piece of Heart
@@ -6201,7 +6201,7 @@
     - ARC
   Metadata:
     - Tbox ID: 6
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky West Garden Corner Chest
   Original Item: Red Rupee
@@ -6212,7 +6212,7 @@
     - ARC
   Metadata:
     - Tbox ID: 15
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky West Garden Lone Island Chest
   Original Item: Purple Rupee
@@ -6224,7 +6224,7 @@
     - ARC
   Metadata:
     - Tbox ID: 25
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky Garden Island Poe
   Original Item: Poe Soul
@@ -6245,7 +6245,7 @@
     - ARC
   Metadata:
     - Tbox ID: 11
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky West Garden Ledge Chest
   Original Item: Piece of Heart
@@ -6256,7 +6256,7 @@
     - ARC
   Metadata:
     - Tbox ID: 9
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky Central Outside Ledge Chest
   Original Item: Red Rupee
@@ -6267,7 +6267,7 @@
     - ARC
   Metadata:
     - Tbox ID: 12
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky Central Outside Poe Island Chest
   Original Item: Purple Rupee
@@ -6279,7 +6279,7 @@
     - ARC
   Metadata:
     - Tbox ID: 24
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky Poe Above Central Fan
   Original Item: Poe Soul
@@ -6301,7 +6301,7 @@
     - ARC
   Metadata:
     - Tbox ID: 13
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky Chest Below Big Key Chest
   Original Item: Red Rupee
@@ -6312,7 +6312,7 @@
     - ARC
   Metadata:
     - Tbox ID: 14
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky East First Wing Chest After Fans
   Original Item: City in the Sky Dungeon Map
@@ -6325,7 +6325,7 @@
     - ARC
   Metadata:
     - Tbox ID: 2
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky East Tile Worm Small Chest
   Original Item: Yellow Rupee
@@ -6336,7 +6336,7 @@
     - ARC
   Metadata:
     - Tbox ID: 19
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky East Wing After Dinalfos Alcove Chest
   Original Item: Red Rupee
@@ -6347,7 +6347,7 @@
     - ARC
   Metadata:
     - Tbox ID: 18
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky East Wing After Dinalfos Ledge Chest
   Original Item: Purple Rupee
@@ -6358,7 +6358,7 @@
     - ARC
   Metadata:
     - Tbox ID: 26
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky East Wing Lower Level Chest
   Original Item: City in the Sky Compass
@@ -6371,7 +6371,7 @@
     - ARC
   Metadata:
     - Tbox ID: 4
-      Stage: D_MN07
+      Stage: 12
 
 - Name: City in the Sky Aeralfos Chest
   Original Item: Progressive Clawshot
@@ -6382,7 +6382,7 @@
     - ARC
   Metadata:
     - Tbox ID: 0
-      Stage: D_MN07B
+      Stage: 14
 
 - Name: City in the Sky Chest Behind North Fan
   Original Item: Purple Rupee
@@ -6393,7 +6393,7 @@
     - ARC
   Metadata:
     - Tbox ID: 17
-      Stage: D_MN07
+      Stage: 12
 
 # TODO
 - Name: City in the Sky Argorok Heart Container
@@ -6430,7 +6430,7 @@
     - Small Key
   Metadata:
     - Tbox ID: 4
-      Stage: D_MN08
+      Stage: 15
 
 - Name: Palace of Twilight West Wing Chest Behind Wall of Darkness
   Original Item: Piece of Heart
@@ -6440,7 +6440,7 @@
     - Palace of Twilight
   Metadata:
     - Tbox ID: 30
-      Stage: D_MN08
+      Stage: 15
 
 - Name: Palace of Twilight West Wing Second Room Central Chest
   Original Item: Palace of Twilight Small Key
@@ -6451,7 +6451,7 @@
     - Small Key
   Metadata:
     - Tbox ID: 5
-      Stage: D_MN08
+      Stage: 15
 
 - Name: Palace of Twilight West Wing Second Room Lower South Chest
   Original Item: Palace of Twilight Compass
@@ -6463,7 +6463,7 @@
     - Compass
   Metadata:
     - Tbox ID: 3
-      Stage: D_MN08
+      Stage: 15
 
 - Name: Palace of Twilight West Wing Second Room Southeast Chest
   Original Item: Orange Rupee
@@ -6474,7 +6474,7 @@
     - Palace of Twilight
   Metadata:
     - Tbox ID: 25
-      Stage: D_MN08
+      Stage: 15
 
 - Name: Palace of Twilight East Wing First Room Zant Head Chest
   Original Item: Palace of Twilight Small Key
@@ -6485,7 +6485,7 @@
     - Small Key
   Metadata:
     - Tbox ID: 6
-      Stage: D_MN08
+      Stage: 15
 
 - Name: Palace of Twilight East Wing First Room East Alcove Chest
   Original Item: Piece of Heart
@@ -6495,7 +6495,7 @@
     - Palace of Twilight
   Metadata:
     - Tbox ID: 0
-      Stage: D_MN08
+      Stage: 15
 
 - Name: Palace of Twilight East Wing First Room North Small Chest
   Original Item: Purple Rupee
@@ -6505,7 +6505,7 @@
     - Palace of Twilight
   Metadata:
     - Tbox ID: 36
-      Stage: D_MN08
+      Stage: 15
 
 - Name: Palace of Twilight East Wing First Room West Alcove Chest
   Original Item: Purple Rupee
@@ -6515,7 +6515,7 @@
     - Palace of Twilight
   Metadata:
     - Tbox ID: 27
-      Stage: D_MN08
+      Stage: 15
 
 - Name: Palace of Twilight East Wing Second Room Northeast Chest
   Original Item: Purple Rupee
@@ -6525,7 +6525,7 @@
     - Palace of Twilight
   Metadata:
     - Tbox ID: 28
-      Stage: D_MN08
+      Stage: 15
 
 - Name: Palace of Twilight East Wing Second Room Northwest Chest
   Original Item: Purple Rupee
@@ -6536,7 +6536,7 @@
     - Palace of Twilight
   Metadata:
     - Tbox ID: 29
-      Stage: DM_MN09
+      Stage: 15
 
 - Name: Palace of Twilight East Wing Second Room Southeast Chest
   Original Item: Palace of Twilight Small Key
@@ -6547,7 +6547,7 @@
     - Small Key
   Metadata:
     - Tbox ID: 7
-      Stage: DM_MN09
+      Stage: 15
 
 - Name: Palace of Twilight East Wing Second Room Southwest Chest
   Original Item: Palace of Twilight Dungeon Map
@@ -6559,7 +6559,7 @@
     - Dungeon Map
   Metadata:
     - Tbox ID: 33
-      Stage: DM_MN09
+      Stage: 15
 
 - Name: Palace of Twilight Collect Both Sols
   Original Item: Progressive Sword
@@ -6579,7 +6579,7 @@
     - Small Key
   Metadata:
     - Tbox ID: 22
-      Stage: DM_MN09
+      Stage: 15
 
 - Name: Palace of Twilight Central Outdoor Chest
   Original Item: Palace of Twilight Small Key
@@ -6590,7 +6590,7 @@
     - Small Key
   Metadata:
     - Tbox ID: 24
-      Stage: DM_MN09
+      Stage: 15
 
 - Name: Palace of Twilight Big Key Chest
   Original Item: Palace of Twilight Big Key
@@ -6601,7 +6601,7 @@
     - Big Key
   Metadata:
     - Tbox ID: 23
-      Stage: DM_MN09
+      Stage: 15
 
 - Name: Palace of Twilight Central Tower Chest
   Original Item: Palace of Twilight Small Key
@@ -6612,7 +6612,7 @@
     - Small Key
   Metadata:
     - Tbox ID: 26
-      Stage: DM_MN09
+      Stage: 15
 
 # TODO
 - Name: Palace of Twilight Zant Heart Container
@@ -6637,7 +6637,7 @@
     - ARC
   Metadata:
     - Tbox ID: 5
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle West Courtyard North Small Chest
   Original Item: Red Rupee
@@ -6648,7 +6648,7 @@
     - ARC
   Metadata:
     - Tbox ID: 9
-      Stage: D_MN09
+      Stage: 20
 
 # TODO
 - Name: Hyrule Castle King Bulblin Key
@@ -6673,7 +6673,7 @@
     - ARC
   Metadata:
     - Tbox ID: 4
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle East Wing Balcony Chest
   Original Item: Yellow Rupee
@@ -6685,7 +6685,7 @@
     - ARC
   Metadata:
     - Tbox ID: 11
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Graveyard Grave Switch Room Back Left Chest
   Original Item: Red Rupee
@@ -6696,7 +6696,7 @@
     - ARC
   Metadata:
     - Tbox ID: 34
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Graveyard Grave Switch Room Front Left Chest
   Original Item: Green Rupee
@@ -6707,7 +6707,7 @@
     - ARC
   Metadata:
     - Tbox ID: 33
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Graveyard Grave Switch Room Right Chest
   Original Item: Orange Rupee
@@ -6718,7 +6718,7 @@
     - ARC
   Metadata:
     - Tbox ID: 30
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Graveyard Owl Statue Chest
   Original Item: Hyrule Castle Small Key
@@ -6730,7 +6730,7 @@
     - ARC
   Metadata:
     - Tbox ID: 7
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Main Hall Northeast Chest
   Original Item: Hyrule Castle Compass
@@ -6743,7 +6743,7 @@
     - ARC
   Metadata:
     - Tbox ID: 8
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Main Hall Northwest Chest
   Original Item: Silver Rupee
@@ -6754,7 +6754,7 @@
     - ARC
   Metadata:
     - Tbox ID: 13
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Main Hall Southwest Chest
   Original Item: Purple Rupee
@@ -6765,7 +6765,7 @@
     - ARC
   Metadata:
     - Tbox ID: 2
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Lantern Staircase Chest
   Original Item: Purple Rupee
@@ -6776,7 +6776,7 @@
     - ARC
   Metadata:
     - Tbox ID: 25
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Southeast Balcony Tower Chest
   Original Item: Hyrule Castle Small Key
@@ -6788,7 +6788,7 @@
     - ARC
   Metadata:
     - Tbox ID: 1
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Big Key Chest
   Original Item: Hyrule Castle Big Key
@@ -6800,7 +6800,7 @@
     - ARC
   Metadata:
     - Tbox ID: 0
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Treasure Room First Chest
   Original Item: Orange Rupee
@@ -6811,7 +6811,7 @@
     - ARC
   Metadata:
     - Tbox ID: 15
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Treasure Room Second Chest
   Original Item: Seeds 50
@@ -6823,7 +6823,7 @@
     - ARC
   Metadata:
     - Tbox ID: 16
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Treasure Room Third Chest
   Original Item: Silver Rupee
@@ -6834,7 +6834,7 @@
     - ARC
   Metadata:
     - Tbox ID: 17
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Treasure Room Fourth Chest
   Original Item: Bomblings 10
@@ -6845,7 +6845,7 @@
     - ARC
   Metadata:
     - Tbox ID: 18
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Treasure Room Fifth Chest
   Original Item: Purple Rupee
@@ -6856,7 +6856,7 @@
     - ARC
   Metadata:
     - Tbox ID: 19
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Treasure Room First Small Chest
   Original Item: Arrows 30
@@ -6867,7 +6867,7 @@
     - ARC
   Metadata:
     - Tbox ID: 35
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Treasure Room Second Small Chest
   Original Item: Green Rupee
@@ -6878,7 +6878,7 @@
     - ARC
   Metadata:
     - Tbox ID: 29
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Treasure Room Third Small Chest
   Original Item: Bombs 20
@@ -6889,7 +6889,7 @@
     - ARC
   Metadata:
     - Tbox ID: 21
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Treasure Room Fourth Small Chest
   Original Item: Arrows 20
@@ -6900,7 +6900,7 @@
     - ARC
   Metadata:
     - Tbox ID: 23
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Treasure Room Fifth Small Chest
   Original Item: Water Bombs 15
@@ -6911,7 +6911,7 @@
     - ARC
   Metadata:
     - Tbox ID: 22
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Treasure Room Sixth Small Chest
   Original Item: Red Rupee
@@ -6922,7 +6922,7 @@
     - ARC
   Metadata:
     - Tbox ID: 26
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Treasure Room Seventh Small Chest
   Original Item: Yellow Rupee
@@ -6933,7 +6933,7 @@
     - ARC
   Metadata:
     - Tbox ID: 27
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Hyrule Castle Treasure Room Eighth Small Chest
   Original Item: Blue Rupee
@@ -6944,7 +6944,7 @@
     - ARC
   Metadata:
     - Tbox ID: 28
-      Stage: D_MN09
+      Stage: 20
 
 - Name: Defeat Ganondorf
   Original Item: Game Beatable

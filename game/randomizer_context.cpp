@@ -47,20 +47,14 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
     const std::list<u16> u16Inventory(this->mStartingInventory.begin(), this->mStartingInventory.end());
     out["mStartingInventory"] = u16Inventory;
 
-    for (const auto& [stageName, chestOverride] : this->mTreasureChestOverrides) {
-        for (const auto& [tboxId, itemId] : chestOverride) {
-            out["mTreasureChestOverrides"][stageName][static_cast<u16>(tboxId)] = static_cast<u16>(itemId);
-        }
-    }
+    const std::unordered_map<u16, u16> u16ChestOverrides(this->mTreasureChestOverrides.begin(), this->mTreasureChestOverrides.end());
+    out["mTreasureChestOverrides"] = u16ChestOverrides;
 
     const std::unordered_map<u16, u16> u16PoeOverrides(this->mPoeOverrides.begin(), this->mPoeOverrides.end());
     out["mPoeOverrides"] = u16PoeOverrides;
 
-    for (const auto& [stageIdx, itemOverride] : this->mFreestandingItemOverrides) {
-        for (const auto& [flag, itemId] : itemOverride) {
-            out["mFreestandingItemOverrides"][static_cast<u16>(stageIdx)][static_cast<u16>(flag)] = static_cast<u16>(itemId);
-        }
-    }
+    const std::unordered_map<u16, u16> u16FreestandingItemOverrides(this->mFreestandingItemOverrides.begin(), this->mFreestandingItemOverrides.end());
+    out["mFreestandingItemOverrides"] = u16FreestandingItemOverrides;
 
     const std::unordered_map<u16, u16> u16BugRewardOverrides(this->mBugRewardOverrides.begin(), this->mBugRewardOverrides.end());
     out["mBugRewardOverrides"] = u16BugRewardOverrides;
@@ -131,18 +125,10 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
     }
 
     // Chest overrides
-    for (const auto& stageNode : in["mTreasureChestOverrides"]) {
-        const auto& stageName = stageNode.first.as<std::string>();
-        // Single nodes with a zero in their key will get dumped as sequences
-        if (stageNode.second.IsSequence()) {
-            this->mTreasureChestOverrides[stageName][0] = stageNode.second[0].as<u8>();
-        } else {
-            for (const auto& chestItemPair : stageNode.second) {
-                auto tboxId = chestItemPair.first.as<u8>();
-                auto itemId = chestItemPair.second.as<u8>();
-                this->mTreasureChestOverrides[stageName][tboxId] = itemId;
-            }
-        }
+    for (const auto& chestNode : in["mTreasureChestOverrides"]) {
+        u16 key = chestNode.first.as<u16>();
+        u8 itemId = chestNode.second.as<u8>();
+        this->mTreasureChestOverrides[key] = itemId;
     }
 
     // Poe Overrides
@@ -153,18 +139,10 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
     }
 
     // Freestanding overrides
-    for (const auto& stageNode : in["mFreestandingItemOverrides"]) {
-        const auto& stageIdx = stageNode.first.as<u8>();
-        // Single nodes with a zero in their key will get dumped as sequences
-        if (stageNode.second.IsSequence()) {
-            this->mFreestandingItemOverrides[stageIdx][0] = stageNode.second[0].as<u8>();
-        } else {
-            for (const auto& flagItemPair : stageNode.second) {
-                auto flag = flagItemPair.first.as<u8>();
-                auto itemId = flagItemPair.second.as<u8>();
-                this->mFreestandingItemOverrides[stageIdx][flag] = itemId;
-            }
-        }
+    for (const auto& itemNode : in["mFreestandingItemOverrides"]) {
+        u16 key = itemNode.first.as<u16>();
+        u8 itemId = itemNode.second.as<u8>();
+        this->mFreestandingItemOverrides[key] = itemId;
     }
 
     // Bug Rewards
@@ -610,11 +588,13 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
         const auto& metaData = location->GetMetadata();
 
         // Chest Overrides
+        // Keyed by u16 of 0xFF00 (stage index) and 0x00FF (tbox id)
         if (location->HasCategories("Chest")) {
-            const auto& stage = metaData[0]["Stage"].as<std::string>();
-            const auto& tboxId = metaData[0]["Tbox ID"].as<u8>();
-            const auto& itemId = location->GetCurrentItem()->GetID();
-            randoData.mTreasureChestOverrides[stage][tboxId] = itemId;
+            u8 stage = metaData[0]["Stage"].as<u8>();
+            u8 tboxId = metaData[0]["Tbox ID"].as<u8>();
+            u8 itemId = location->GetCurrentItem()->GetID();
+            u16 key = (stage << 8) | tboxId;
+            randoData.mTreasureChestOverrides[key] = itemId;
         }
 
         // Poe Overrides
@@ -633,7 +613,8 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
             u8 stage = metaData[0]["Stage"].as<u8>();
             u8 flag = metaData[0]["Flag"].as<u8>();
             u8 itemId = location->GetCurrentItem()->GetID();
-            randoData.mFreestandingItemOverrides[stage][flag] = itemId;
+            u16 key = (stage << 8) | flag;
+            randoData.mFreestandingItemOverrides[key] = itemId;
         }
 
         // Bug Rewards

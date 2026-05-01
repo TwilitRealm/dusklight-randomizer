@@ -2253,7 +2253,6 @@
     - Location Name Lookup
   Metadata: Charlo Donation Blessing
 
-# TODO
 - Name: STAR Prize 1
   Original Item: Progressive Bow
   Categories:
@@ -2261,10 +2260,9 @@
     - Npc
     - Castle Town
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: STAR Prize 1
 
-# TODO
 - Name: STAR Prize 2
   Original Item: Progressive Bow
   Categories:
@@ -2272,8 +2270,8 @@
     - Npc
     - Castle Town
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: STAR Prize 2
 
 # TODO (Might work, haven't checked)
 - Name: Castle Town Malo Mart Magic Armor

@@ -2242,7 +2242,6 @@
     - Flag: 0x49
       Stage: 57
 
-# TODO
 - Name: Charlo Donation Blessing
   Original Item: Piece of Heart
   Categories:
@@ -2251,8 +2250,8 @@
     - Castle Town
     - ObjectARC
     - Boss
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Charlo Donation Blessing
 
 # TODO
 - Name: STAR Prize 1

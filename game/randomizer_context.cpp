@@ -867,6 +867,17 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
                 branch->param = flowNode["parameters"].as<u16>();
                 branch->next_node_idx = flowNode["next node index"].as<u16>();
             }
+            else if (type == "event") {
+                auto event = reinterpret_cast<mesg_flow_node_event*>(&value);
+                event->type = 3;
+                event->event_idx = flowNode["event"].as<u8>();
+                event->next_node_idx = flowNode["next node index"].as<u16>();
+                u32 params = flowNode["parameters"].as<u32>();
+                event->params[0] = (params >> 24) & 0xFF;
+                event->params[1] = (params >> 16) & 0xFF;
+                event->params[2] = (params >> 8) & 0xFF;
+                event->params[3] = params & 0xFF;
+            }
 
             u32 key = (groupNo << 16) | index;
             randoData.mFlowPatches[key] = value;

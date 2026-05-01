@@ -15,7 +15,26 @@
     next node index: 0x340
 
 #3: # zel_03.bmg
-#4: # zel_04.bmg
+4: # zel_04.bmg - Castle Town
+  # Patch Charlo to check for 100 rupees instead of 30
+  - index: 0x34A
+    type: branch
+    num results: 2
+    query: 6
+    parameters: 0x0064
+    next node index: 0x222
+  # Patch Charlo to take 100 rupees from Link instead of 30
+  - index: 0x34E
+    type: event
+    event: 41
+    parameters: 0x00000064
+    next node index: 0x226
+  # Patch Charlo to add 100 rupees to his counter instead of 30
+  - index: 0x357
+    type: event
+    event: 3
+    parameters: 0x00000064
+    next node index: 0x22B
 #5: # zel_05.bmg
 #6: # zel_06.bmg
 #7: # zel_07.bmg

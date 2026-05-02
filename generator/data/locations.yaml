@@ -3458,7 +3458,6 @@
     - Flag: 0x48
       Stage: 61
 
-# TODO
 - Name: Iza Helping Hand
   Original Item: Bomb Bag
   Categories:
@@ -3466,10 +3465,9 @@
     - Npc
     - Upper Zoras River
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Iza Helping Hand
 
-# TODO
 - Name: Iza Raging Rapids Minigame
   Original Item: Giant Bomb Bag
   Categories:
@@ -3477,8 +3475,8 @@
     - Npc
     - Upper Zoras River
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Iza Raging Rapids Minigame
 
 # TODO
 - Name: Fishing Hole Bottle

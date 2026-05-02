@@ -3478,7 +3478,6 @@
     - Location Name Lookup
   Metadata: Iza Raging Rapids Minigame
 
-# TODO
 - Name: Fishing Hole Bottle
   Original Item: Empty Bottle
   Categories:
@@ -3486,8 +3485,8 @@
     - Fishing Hole
     - ARC
     - REL
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Fishing Hole Bottle
 
 - Name: Fishing Hole Heart Piece
   Original Item: Piece of Heart

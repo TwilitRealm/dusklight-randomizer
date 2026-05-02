@@ -115,3 +115,13 @@ bool playerIsOnTitleScreen() {
     return strcmp(dComIfGp_getStartStageName(), "S_MV000") == 0 ||
           (strcmp(dComIfGp_getStartStageName(), "F_SP102") == 0 && dComIfG_play_c::getLayerNo(0) == 10);
 }
+
+u16 getItemMessageID(u8 itemId) {
+    // If heart piece, choose from the different heart piece messages
+    if (itemId == dItemNo_Randomizer_KAKERA_HEART_e) {
+        static u32 const heartPieceMessage[5] = {0x86, 0x9C, 0x9D, 0x9E, 0x9F};
+        return heartPieceMessage[dComIfGs_getMaxLife() % 5];
+    }
+
+    return itemId + 0x65;
+}

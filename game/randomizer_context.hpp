@@ -100,6 +100,9 @@ public:
     u8 mTimeChange{};
     u8 mEventItemQueue[EVENT_ITEM_QUEUE_SIZE];
     bool mRoomReloadingState{false};
+
+    // TODO: Probably a better way to handle this
+    u8 mFishingBottleItemId{};
 };
 
 extern RandomizerState g_randomizerState;

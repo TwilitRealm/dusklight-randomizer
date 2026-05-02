@@ -3351,25 +3351,27 @@
     - Tbox ID: 10
       Stage: 52
 
-# TODO
 - Name: Lanayru Spring Lower Underwater Boulder Rupee
-  Original Item: Yellow Rupee
+  Original Item: Red Rupee
   Categories:
     - Overworld
     - Lake Hylia
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 52
+      Flag: 0x8F
 
-# TODO
 - Name: Lanayru Spring Upper Underwater Boulder Rupee
-  Original Item: Yellow Rupee
+  Original Item: Red Rupee
   Categories:
     - Overworld
     - Lake Hylia
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 52
+      Flag: 0x90
 
 # TODO
 - Name: Plumm Fruit Balloon Minigame

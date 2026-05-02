@@ -425,6 +425,148 @@ F_SP115:
         - 2
         - 3
 
+  # Room 1 - Lanayru Spring
+  1:
+    # Lower Underwater Boulder Rupee (Yellow)
+    - name: item
+      parameters: 0x131D8F03
+      position:
+        x: -770.449157714844
+        y: -1573.41650390625
+        z: -357.485656738281
+      angle:
+        x: 0x0000
+        y: 0x8000
+        z: 0x003F
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x131DFF03
+      layers:
+        - 0
+        - 2
+        - 14
+
+    # Lower Underwater Boulder Rupee (Blue)
+    - name: item
+      parameters: 0x131D8F02
+      position:
+        x: -740.873229980469
+        y: -1604.72351074219
+        z: -263.534973144531
+      angle:
+        x: 0x0000
+        y: 0x8000
+        z: 0x003F
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x131DFF02
+      layers:
+        - 0
+        - 2
+        - 14
+
+    # Lower Underwater Boulder Rupee (Green 1)
+    - name: item
+      parameters: 0x131D8F01
+      position:
+        x: -657.096984863281
+        y: -1594.28796386719
+        z: -292.812927246094
+      angle:
+        x: 0x0000
+        y: 0x8000
+        z: 0x003F
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x131DFF01
+      layers:
+        - 0
+        - 2
+        - 14
+
+    # Lower Underwater Boulder Rupee (Green 2)
+    - name: item
+      parameters: 0x131D8F01
+      position:
+        x: -787.852966308594
+        y: -1514.28125
+        z: -297.316223144531
+      angle:
+        x: 0x0000
+        y: 0x8000
+        z: 0x003F
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x131DFF01
+      layers:
+        - 0
+        - 2
+        - 14
+
+    # Upper Underwater Boulder Rupee (Yellow 1)
+    - name: item
+      parameters: 0x13399003
+      position:
+        x: -1201.95251464844
+        y: -1100.27172851562
+        z: 1692.37805175781
+      angle:
+        x: 0x0000
+        y: 0x56C1
+        z: 0x003F
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1339FF03
+      layers:
+        - 0
+        - 2
+        - 14
+
+    # Upper Underwater Boulder Rupee (Yellow 2)
+    - name: item
+      parameters: 0x13399003
+      position:
+        x: -1157.26696777344
+        y: -1148.73376464844
+        z: 1796.97399902344
+      angle:
+        x: 0x0000
+        y: 0x56C1
+        z: 0x003F
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1339FF03
+      layers:
+        - 0
+        - 2
+        - 14
+
+    # Upper Underwater Boulder Rupee (Green)
+    - name: item
+      parameters: 0x13399001
+      position:
+        x: -1095.27661132812
+        y: -1106.08728027344
+        z: 1748.41162109375
+      angle:
+        x: 0x0000
+        y: 0x56C1
+        z: 0x003F
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1339FF01
+      layers:
+        - 0
+        - 2
+        - 14
+
 # Castle Town
 F_SP116:
   # Room 1 - North Castle Town

@@ -3373,7 +3373,6 @@
     - Stage: 52
       Flag: 0x90
 
-# TODO
 - Name: Plumm Fruit Balloon Minigame
   Original Item: Piece of Heart
   Categories:
@@ -3381,8 +3380,8 @@
     - Npc
     - Lake Hylia
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Plumm Fruit Balloon Minigame
 
 - Name: Upper Zoras River Warp Portal
   Original Item: Upper Zoras River Portal

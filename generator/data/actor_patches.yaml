@@ -1937,6 +1937,466 @@ F_SP126:
         - 0
         - 1
 
+    # Central Underwater Boulder Rupee (Blue 1)
+    - name: item
+      parameters: 0x13609102
+      position:
+        x: 1391.9443359375
+        y: -1868.77282714844
+        z: -1002.97778320312
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1360FF02
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # Central Underwater Boulder Rupee (Blue 2)
+    - name: item
+      parameters: 0x13609102
+      position:
+        x: 1491.43737792969
+        y: -1934.05505371094
+        z: -802.984436035156
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1360FF02
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # Central Underwater Boulder Rupee (Blue 3)
+    - name: item
+      parameters: 0x13609102
+      position:
+        x: 1346.45397949219
+        y: -1874.81726074219
+        z: -796.263793945313
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1360FF02
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # Central Underwater Boulder Rupee (Green)
+    - name: item
+      parameters: 0x13609101
+      position:
+        x: 1533.86730957031
+        y: -1853.056640625
+        z: -1013.22180175781
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1360FF01
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # Central Underwater Boulder Rupee (Yellow)
+    - name: item
+      parameters: 0x13609103
+      position:
+        x: 1465.11157226562
+        y: -1776.89404296875
+        z: -915.513854980469
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1360FF03
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # West Underwater Boulder Rupee (Yellow 1)
+    - name: item
+      parameters: 0x135F9203
+      position:
+        x: -909.917846679688
+        y: -1426.30310058594
+        z: 1181.94140625
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x135FFF03
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # West Underwater Boulder Rupee (Yellow 2)
+    - name: item
+      parameters: 0x135F9203
+      position:
+        x: -836.750610351562
+        y: -1334.42431640625
+        z: 1269.40539550781
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x135FFF03
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # West Underwater Boulder Rupee (Blue 1)
+    - name: item
+      parameters: 0x135F9202
+      position:
+        x: -810.4248046875
+        y: -1491.58532714844
+        z: 1381.93481445312
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x135FFF02
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # West Underwater Boulder Rupee (Blue 2)
+    - name: item
+      parameters: 0x135F9202
+      position:
+        x: -853.017944335938
+        y: -1491.58532714844
+        z: 1502.61547851562
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x135FFF02
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # West Underwater Boulder Rupee (Blue 3)
+    - name: item
+      parameters: 0x135F9202
+      position:
+        x: -648.732666015625
+        y: -1410.5869140625
+        z: 1270.46142578125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x135FFF02
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # West Underwater Boulder Rupee (Green 1)
+    - name: item
+      parameters: 0x135F9201
+      position:
+        x: -767.994873046875
+        y: -1410.5869140625
+        z: 1171.69738769531
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x135FFF01
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # West Underwater Boulder Rupee (Green 2)
+    - name: item
+      parameters: 0x135F9201
+      position:
+        x: -955.408203125
+        y: -1432.34753417969
+        z: 1388.65539550781
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x135FFF01
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # West Underwater Boulder Rupee (Green 3)
+    - name: item
+      parameters: 0x135F9201
+      position:
+        x: -605.872863769531
+        y: -1410.5869140625
+        z: 1397.17749023438
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x135FFF01
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # East Underwater Boulder Rupee (Yellow)
+    - name: item
+      parameters: 0x13549303
+      position:
+        x: 3569.236328125
+        y: -924.596496582031
+        z: 4092.87475585937
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1354FF03
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # East Underwater Boulder Rupee (Blue 1)
+    - name: item
+      parameters: 0x13549302
+      position:
+        x: 3496.06909179687
+        y: -1016.47528076172
+        z: 4005.4111328125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1354FF02
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # East Underwater Boulder Rupee (Blue 2)
+    - name: item
+      parameters: 0x13549302
+      position:
+        x: 3595.56201171875
+        y: -1081.75744628906
+        z: 4205.40283203125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1354FF02
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # East Underwater Boulder Rupee (Green 1)
+    - name: item
+      parameters: 0x13549301
+      position:
+        x: 3637.99194335937
+        y: -1000.75909423828
+        z: 3995.16748046875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1354FF01
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # East Underwater Boulder Rupee (Green 1)
+    - name: item
+      parameters: 0x13549301
+      position:
+        x: 3450.57861328125
+        y: -1022.51971435547
+        z: 4212.12353515625
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1354FF01
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # Ledge Boulder Rupee (Yellow)
+    - name: item
+      parameters: 0x13679403
+      position:
+        x: -11.2600412368774
+        y: 587.779846191406
+        z: -3185.00219726562
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1367FF03
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # Ledge Boulder Rupee (Blue 1)
+    - name: item
+      parameters: 0x13679402
+      position:
+        x: -84.4272842407227
+        y: 495.90087890625
+        z: -3272.46630859375
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1367FF02
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # Ledge Boulder Rupee (Blue 2)
+    - name: item
+      parameters: 0x13679402
+      position:
+        x: 15.0657520294189
+        y: 430.618682861328
+        z: -3072.47290039063
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1367FF02
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # Ledge Boulder Rupee (Blue 3)
+    - name: item
+      parameters: 0x13679402
+      position:
+        x: -129.917633056641
+        y: 489.8564453125
+        z: -3065.75219726562
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1367FF02
+      layers:
+        - 0
+        - 1
+        - 14
+
+    # Ledge Boulder Rupee (Green)
+    - name: item
+      parameters: 0x13679401
+      position:
+        x: 57.4956970214844
+        y: 511.617279052734
+        z: -3282.71020507812
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x000A
+      patch:
+        # Take away the unique flag from this rupee so it doesn't conflict
+        # with the one randomizer rupee nearby
+        parameters: 0x1367FF01
+      layers:
+        - 0
+        - 1
+        - 14
+
 # Kakariko Village Interiors
 R_SP109:
   # Room 3 - Kak Malo Mart

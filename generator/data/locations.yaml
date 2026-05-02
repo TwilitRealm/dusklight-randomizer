@@ -3404,45 +3404,49 @@
     - Stage: 61
       Flag: 0x9E
 
-# TODO
 - Name: Upper Zoras River Central Underwater Boulder Rupee
   Original Item: Blue Rupee
   Categories:
     - Overworld
     - Upper Zoras River
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 61
+      Flag: 0x91
 
-# TODO
 - Name: Upper Zoras River East Underwater Boulder Rupee
-  Original Item: Blue Rupee
+  Original Item: Yellow Rupee
   Categories:
     - Overworld
     - Upper Zoras River
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 61
+      Flag: 0x93
 
-# TODO
 - Name: Upper Zoras River Ledge Boulder Rupee
   Original Item: Blue Rupee
   Categories:
     - Overworld
     - Upper Zoras River
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 61
+      Flag: 0x94
 
-# TODO
 - Name: Upper Zoras River West Underwater Boulder Rupee
   Original Item: Blue Rupee
   Categories:
     - Overworld
     - Upper Zoras River
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 61
+      Flag: 0x92
 
 - Name: Upper Zoras River Poe
   Original Item: Poe Soul

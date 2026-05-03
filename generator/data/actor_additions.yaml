@@ -2,8 +2,8 @@
 
 # NOTE: All data is expressed in little endian format
 
-
-ACTR: # Objects which have the ACTR dzx type
+# Objects which have the ACTR dzx type
+ACTR:
   # Faron Woods
   F_SP108:
     # Room 6 - North Faron Woods
@@ -22,8 +22,10 @@ ACTR: # Objects which have the ACTR dzx type
         layers:
           - 3
 
-  F_SP115: # Lake Hylia
-    0: # Room 0 - Main Lake
+  # Lake Hylia
+  F_SP115:
+    # Room 0 - Main Lake
+    0:
       # Spawn Auru on layers 1 & 3
       - name: Rafrel
         parameters: 0x00001D01
@@ -56,8 +58,10 @@ ACTR: # Objects which have the ACTR dzx type
           - 2
           - 3
 
-  F_SP117: # Sacred Grove
-    1: # Room 1 - Pedestal of Time
+  # Sacred Grove
+  F_SP117:
+    # Room 1 - Pedestal of Time
+    1:
       # Spawn in the Master Sword actor
       - name: mstrsrd
         parameters: 0x00020110
@@ -93,8 +97,10 @@ ACTR: # Objects which have the ACTR dzx type
           - 2
           - 3
 
-  R_SP109: # Kakariko Interiors
-    3: # Kak Malo Mart
+  # Kakariko Interiors
+  R_SP109:
+    # Kak Malo Mart
+    3:
       # Spawn in a middle item Sold Out Sign
       - name: TGSPITM
         parameters: 0x02FFFFFF
@@ -110,8 +116,10 @@ ACTR: # Objects which have the ACTR dzx type
           - 2
           - 3
 
-  R_SP160: # Castle Town Shops
-    5: # Jovani's House
+  # Castle Town Shops
+  R_SP160:
+    # Jovani's House
+    5:
       # Spawn the poe in Jovani's House
       - name: E_hp
         parameters: 0xFF031E00

@@ -4490,7 +4490,6 @@
     - Flag: 0x47
       Stage: 31
 
-# TODO
 - Name: Cave of Ordeals Great Fairy Reward
   Original Item: Fairy Tears
   Categories:
@@ -4498,8 +4497,8 @@
     - Npc
     - Cave of Ordeals
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Cave of Ordeals Great Fairy Reward
 
 - Name: Mirror Chamber Warp Portal
   Original Item: Mirror Chamber Portal

@@ -68,6 +68,9 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
     const std::unordered_map<u16, u16> u16ShopOverrides(this->mShopOverrides.begin(), this->mShopOverrides.end());
     out["mShopOverrides"] = u16ShopOverrides;
 
+    const std::unordered_map<u32, u16> u32FlowItemMessageOverrides(this->mFlowItemMessageOverrides.begin(), this->mFlowItemMessageOverrides.end());
+    out["mFlowItemMessageOverrides"] = u32FlowItemMessageOverrides;
+
     out["mItemLocations"] = this->mItemLocations;
 
     out["mStartHour"] = static_cast<u16>(this->mStartHour);
@@ -171,6 +174,13 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         u16 key = shopNode.first.as<u16>();
         u8 itemId = shopNode.second.as<u8>();
         this->mShopOverrides[key] = itemId;
+    }
+
+    // FLW Override items
+    for (const auto& flwNode : in["mFlowItemMessageOverrides"]) {
+        u32 key = flwNode.first.as<u32>();
+        u8 itemId = flwNode.second.as<u8>();
+        this->mFlowItemMessageOverrides[key] = itemId;
     }
 
     // Items we call by location name
@@ -650,6 +660,14 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
             u8 originalItem = metaData[0]["Item"].as<u8>();
             u16 key = (stage << 8) | originalItem;
             randoData.mShopOverrides[key] = location->GetCurrentItem()->GetID();
+        }
+
+        // Items whose text we determine during a FLW message
+        if (location->HasCategories("FLW Message")) {
+            u8 group = metaData[0]["Group"].as<u8>();
+            u16 messageId = metaData[0]["Message Id"].as<u16>();
+            u32 key = (group << 16) | messageId;
+            randoData.mFlowItemMessageOverrides[key] = location->GetCurrentItem()->GetID();
         }
 
         // Items that we lookup just by calling their location name

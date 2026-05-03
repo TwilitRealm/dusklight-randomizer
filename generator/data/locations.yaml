@@ -4696,7 +4696,6 @@
     - Tbox ID: 2
       Stage: 6
 
-# TODO
 - Name: Forest Temple Diababa Heart Container
   Original Item: Heart Container
   Categories:
@@ -4704,10 +4703,11 @@
     - Dungeon
     - Forest Temple
     - Boss
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 7
+      Flag: 0x9F
 
-# TODO
 - Name: Forest Temple Dungeon Reward
   Original Item: Progressive Fused Shadow
   Categories:
@@ -4716,9 +4716,11 @@
     - Dungeon Reward
     - REL
     - ARC
+    - FLW Message
   Goal Location: True
   Metadata:
-    - None
+    - Group: 5
+      Message Id: 5001
 
 # GORON MINES
 
@@ -4957,7 +4959,6 @@
     - Tbox ID: 30
       Stage: 3
 
-# TODO
 - Name: Goron Mines Fyrus Heart Container
   Original Item: Heart Container
   Categories:
@@ -4965,10 +4966,11 @@
     - Dungeon
     - Goron Mines
     - Boss
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 4
+      Flag: 0x9F
 
-# TODO
 - Name: Goron Mines Dungeon Reward
   Original Item: Progressive Fused Shadow
   Categories:
@@ -4977,9 +4979,12 @@
     - Dungeon Reward
     - REL
     - ARC
+    - FLW Message
   Goal Location: True
   Metadata:
-    - None
+    - Group: 5
+      Message Id: 6011
+
 
 # LAKEBED TEMPLE
 
@@ -5279,7 +5284,6 @@
     - Tbox ID: 12
       Stage: 0
 
-# TODO
 - Name: Lakebed Temple Morpheel Heart Container
   Original Item: Heart Container
   Categories:
@@ -5287,10 +5291,11 @@
     - Dungeon
     - Lakebed Temple
     - Boss
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 1
+      Flag: 0x9F
 
-# TODO
 - Name: Lakebed Temple Dungeon Reward
   Original Item: Progressive Fused Shadow
   Categories:
@@ -5299,9 +5304,11 @@
     - Dungeon Reward
     - REL
     - ARC
+    - FLW Message
   Goal Location: True
   Metadata:
-    - None
+    - Group: 5
+      Message Id: 7001
 
 # ARBITERS GROUNDS
 
@@ -5547,7 +5554,6 @@
     - Tbox ID: 20
       Stage: 24
 
-# TODO
 - Name: Arbiters Grounds Stallord Heart Container
   Original Item: Heart Container
   Categories:
@@ -5555,10 +5561,11 @@
     - Arbiters Grounds
     - Dungeon
     - Boss
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 25
+      Flag: 0x9F
 
-# TODO
 - Name: Arbiters Grounds Dungeon Reward
   Original Item: Progressive Mirror Shard
   Categories:
@@ -5824,7 +5831,6 @@
     - Tbox ID: 11
       Stage: 27
 
-# TODO
 - Name: Snowpeak Ruins Blizzeta Heart Container
   Original Item: Heart Container
   Categories:
@@ -5832,8 +5838,10 @@
     - Dungeon
     - Snowpeak Ruins
     - Boss
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 28
+      Flag: 0x9F
 
 - Name: Snowpeak Ruins Dungeon Reward
   Original Item: Progressive Mirror Shard
@@ -5843,9 +5851,12 @@
     - Dungeon Reward
     - REL
     - ARC
+    - FLW Message
   Goal Location: True
   Metadata:
-    - None
+    - Group: 5
+      Message Id: 9301
+
 
 - Name: Temple of Time Lobby Lantern Chest
   Original Item: Temple of Time Small Key
@@ -6053,7 +6064,6 @@
     - Tbox ID: 0
       Stage: 11
 
-# TODO
 - Name: Temple of Time Armogohma Heart Container
   Original Item: Heart Container
   Categories:
@@ -6061,10 +6071,11 @@
     - Dungeon
     - Temple of Time
     - Boss
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 10
+      Flag: 0x9F
 
-# TODO
 - Name: Temple of Time Dungeon Reward
   Original Item: Progressive Mirror Shard
   Categories:
@@ -6073,9 +6084,12 @@
     - Dungeon Reward
     - REL
     - ARC
+    - FLW Message
   Goal Location: True
   Metadata:
-      - None
+    - Group: 5
+      Message Id: 9401
+
 
 # CITY IN THE SKY
 
@@ -6372,7 +6386,6 @@
     - Tbox ID: 17
       Stage: 12
 
-# TODO
 - Name: City in the Sky Argorok Heart Container
   Original Item: Heart Container
   Categories:
@@ -6380,10 +6393,11 @@
     - Dungeon
     - City in the Sky
     - Boss
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 13
+      Flag: 0x9F
 
-# TODO
 - Name: City in the Sky Dungeon Reward
   Original Item: Progressive Mirror Shard
   Categories:
@@ -6392,9 +6406,11 @@
     - Dungeon Reward
     - REL
     - ARC
+    - FLW Message
   Goal Location: True
   Metadata:
-      - None
+    - Group: 5
+      Message Id: 11001
 
 # PALACE OF TWILIGHT
 
@@ -6591,7 +6607,6 @@
     - Tbox ID: 26
       Stage: 15
 
-# TODO
 - Name: Palace of Twilight Zant Heart Container
   Original Item: Heart Container
   Categories:
@@ -6599,9 +6614,11 @@
     - Palace of Twilight
     - Heart Container
     - Dungeon Reward
+    - Freestanding Item
   Goal Location: True
   Metadata:
-    - None
+    - Stage: 16
+      Flag: 0x80
 
 # HYRULE CASTLE
 

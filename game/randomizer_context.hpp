@@ -36,6 +36,7 @@ public:
     std::unordered_map<u16, u8> mSkyCharacterOverrides{};
     std::unordered_map<u16, u8> mGoldenWolfOverrides{};
     std::unordered_map<u16, u8> mShopOverrides{};
+    std::unordered_map<u32, u8> mFlowItemMessageOverrides{};
     std::unordered_map<std::string, int> mItemLocations{};
     u8 mStartHour{0};
     u8 mMapBits{};

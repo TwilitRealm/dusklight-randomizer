@@ -3772,7 +3772,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Ashei Sketch
   Original Item: Asheis Sketch
   Categories:
@@ -3780,8 +3779,8 @@
     - Npc
     - Snowpeak Province
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Ashei Sketch
 
 - Name: Snowpeak Blizzard Poe
   Original Item: Poe Soul

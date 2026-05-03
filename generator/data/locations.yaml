@@ -4747,7 +4747,6 @@
     - Tbox ID: 11
       Stage: 3
 
-# TODO
 - Name: Goron Mines Gor Amato Key Shard
   Original Item: Goron Mines Key Shard
   Categories:
@@ -4757,8 +4756,8 @@
     - Dungeon Items
     - Big Key
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Goron Mines Gor Amato Key Shard
 
 - Name: Goron Mines Gor Amato Chest
   Original Item: Goron Mines Dungeon Map
@@ -4865,7 +4864,6 @@
     - Tbox ID: 14
       Stage: 3
 
-# TODO
 - Name: Goron Mines Gor Ebizo Key Shard
   Original Item: Goron Mines Key Shard
   Categories:
@@ -4875,8 +4873,8 @@
     - Dungeon Items
     - Big Key
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Goron Mines Gor Ebizo Key Shard
 
 - Name: Goron Mines Gor Ebizo Chest
   Original Item: Yellow Rupee
@@ -4924,7 +4922,6 @@
     - Tbox ID: 12
       Stage: 3
 
-# TODO
 - Name: Goron Mines Gor Liggs Key Shard
   Original Item: Goron Mines Key Shard
   Categories:
@@ -4934,8 +4931,8 @@
     - Dungeon Items
     - Big Key
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Goron Mines Gor Liggs Key Shard
 
 - Name: Goron Mines Gor Liggs Chest
   Original Item: Purple Rupee

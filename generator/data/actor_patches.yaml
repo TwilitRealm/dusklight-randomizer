@@ -600,6 +600,352 @@ F_SP113:
         - 2
         - 14
 
+# Snowpeak Province
+F_SP114:
+  # Room 1 - Snowboard Area
+  1:
+    # Snowboarding Bridge Ledge Bottom Rupee
+    - name: item
+      parameters: 0xF3FFFF01
+      position:
+        x: -48119.171875
+        y: 0
+        z: -2599.25610351562
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x84)
+        parameters: 0xF3FF8401
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Bridge Ledge Middle Rupee
+    - name: item
+      parameters: 0xF3FFFF01
+      position:
+        x: -46534.28125
+        y: 11544.2265625
+        z: -8413.3955078125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x83)
+        parameters: 0xF3FF8301
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Bridge Ledge Upper Rupee
+    - name: item
+      parameters: 0xF3FFFF01
+      position:
+        x: -43177.66796875
+        y: 15660.8828125
+        z: -9569.9169921875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x82)
+        parameters: 0xF3FF8201
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Shortcut Rupee 1
+    - name: item
+      parameters: 0xF3FFFF01
+      position:
+        x: -47645.078125
+        y: 0
+        z: 39380.15234375
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x88)
+        parameters: 0xF3FF8801
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Shortcut Rupee 2
+    - name: item
+      parameters: 0xF3FFFF01
+      position:
+        x: -46933.09375
+        y: 0
+        z: 40671.33984375
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x89)
+        parameters: 0xF3FF8901
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Shortcut Rupee 3
+    - name: item
+      parameters: 0xF3FFFF01
+      position:
+        x: -44577.45703125
+        y: 0
+        z: 47715.25390625
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x8A)
+        parameters: 0xF3FF8A01
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Shortcut Rupee 4
+    - name: item
+      parameters: 0xF3FFFF04
+      position:
+        x: -44606.390625
+        y: 0
+        z: 48379.03125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x8B)
+        parameters: 0xF3FF8B04
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Shortcut Rupee 5
+    - name: item
+      parameters: 0xF3FFFF01
+      position:
+        x: -44649.34765625
+        y: 0
+        z: 48967.97265625
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x8C)
+        parameters: 0xF3FF8C01
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Shortcut Rupee 6
+    - name: item
+      parameters: 0xF3FFFF01
+      position:
+        x: -44645.703125
+        y: 0
+        z: 50150.0078125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x8D)
+        parameters: 0xF3FF8D01
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Shortcut Rupee 7
+    - name: item
+      parameters: 0xF3FFFF01
+      position:
+        x: -44480.6953125
+        y: 0
+        z: 51324.0078125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x8E)
+        parameters: 0xF3FF8E01
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Shortcut Rupee 8
+    - name: item
+      parameters: 0xF3FFFF01
+      position:
+        x: -43814.9921875
+        y: 0
+        z: 55098.53125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x8F)
+        parameters: 0xF3FF8F01
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Shortcut Rupee 9
+    - name: item
+      parameters: 0xF3FFFF01
+      position:
+        x: -43624.30078125
+        y: 0
+        z: 57275.41796875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x90)
+        parameters: 0xF3FF9001
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Shortcut Rupee 10
+    - name: item
+      parameters: 0xF3FFFF01
+      position:
+        x: -43662.1171875
+        y: 0
+        z: 59659.77734375
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x91)
+        parameters: 0xF3FF9101
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Shortcut Rupee 11
+    - name: item
+      parameters: 0xF3FFFF01
+      position:
+        x: -44644.55859375
+        y: 0
+        z: 62885.18359375
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x92)
+        parameters: 0xF3FF9201
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Snowy Tree Top Rupee 1 (Blue)
+    - name: item
+      parameters: 0xF3FFFF02
+      position:
+        x: -48988.61328125
+        y: -27072.4296875
+        z: 22625.138671875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x85)
+        parameters: 0xF3FF8502
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Snowy Tree Top Rupee 2 (Red)
+    - name: item
+      parameters: 0xF3FFFF04
+      position:
+        x: -49091.05859375
+        y: 0
+        z: 25205.296875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x86)
+        parameters: 0xF3FF8604
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Snowy Tree Top Rupee 3 (Purple)
+    - name: item
+      parameters: 0xF3FFFF05
+      position:
+        x: -49256
+        y: 0
+        z: 27146.310546875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x87)
+        parameters: 0xF3FF8705
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Top Left Rupee
+    - name: item
+      parameters: 0xF3FFFF01
+      position:
+        x: -33332.109375
+        y: 15760.8828125
+        z: -5062.1845703125
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x80)
+        parameters: 0xF3FF8001
+      layers:
+        - 0
+        - 3
+
+    # Snowboarding Top Right Rupee
+    - name: item
+      parameters: 0xF3FFFF01
+      position:
+        x: -36254.51953125
+        y: 15760.8828125
+        z: -13958.623046875
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x003F
+      patch:
+        # Give this rupee a unique flag (0x81)
+        parameters: 0xF3FF8101
+      layers:
+        - 0
+        - 3
+
 # Lake Hylia
 F_SP115:
   # Room 0 - Main Lake

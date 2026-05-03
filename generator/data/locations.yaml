@@ -3865,7 +3865,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Snowboarding Bridge Ledge Bottom Rupee
   Original Item: Green Rupee
   Categories:
@@ -3874,10 +3873,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x84
 
-# TODO
 - Name: Snowboarding Bridge Ledge Middle Rupee
   Original Item: Green Rupee
   Categories:
@@ -3886,10 +3884,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x83
 
-# TODO
 - Name: Snowboarding Bridge Ledge Upper Rupee
   Original Item: Green Rupee
   Categories:
@@ -3898,10 +3895,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x82
 
-# TODO
 - Name: Snowboarding Shortcut Rupee 1
   Original Item: Green Rupee
   Categories:
@@ -3910,10 +3906,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x88
 
-# TODO
 - Name: Snowboarding Shortcut Rupee 2
   Original Item: Green Rupee
   Categories:
@@ -3922,10 +3917,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x89
 
-# TODO
 - Name: Snowboarding Shortcut Rupee 3
   Original Item: Green Rupee
   Categories:
@@ -3934,23 +3928,10 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x8A
 
-# TODO
 - Name: Snowboarding Shortcut Rupee 4
-  Original Item: Green Rupee
-  Categories:
-    - Overworld
-    - Snowpeak
-    - Rupee - Freestanding
-    - Freestanding Item
-  Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
-
-# TODO
-- Name: Snowboarding Shortcut Rupee 5
   Original Item: Red Rupee
   Categories:
     - Overworld
@@ -3958,10 +3939,20 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x8B
 
-# TODO
+- Name: Snowboarding Shortcut Rupee 5
+  Original Item: Green Rupee
+  Categories:
+    - Overworld
+    - Snowpeak
+    - Rupee - Freestanding
+    - Freestanding Item
+  Metadata:
+    - Stage: 51
+      Flag: 0x8C
+
 - Name: Snowboarding Shortcut Rupee 6
   Original Item: Green Rupee
   Categories:
@@ -3970,10 +3961,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x8D
 
-# TODO
 - Name: Snowboarding Shortcut Rupee 7
   Original Item: Green Rupee
   Categories:
@@ -3982,10 +3972,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x8E
 
-# TODO
 - Name: Snowboarding Shortcut Rupee 8
   Original Item: Green Rupee
   Categories:
@@ -3994,10 +3983,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x8F
 
-# TODO
 - Name: Snowboarding Shortcut Rupee 9
   Original Item: Green Rupee
   Categories:
@@ -4006,10 +3994,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x90
 
-# TODO
 - Name: Snowboarding Shortcut Rupee 10
   Original Item: Green Rupee
   Categories:
@@ -4018,10 +4005,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x91
 
-# TODO
 - Name: Snowboarding Shortcut Rupee 11
   Original Item: Green Rupee
   Categories:
@@ -4030,10 +4016,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x92
 
-# TODO
 - Name: Snowboarding Snowy Tree Top Rupee 1
   Original Item: Blue Rupee
   Categories:
@@ -4042,10 +4027,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x85
 
-# TODO
 - Name: Snowboarding Snowy Tree Top Rupee 2
   Original Item: Red Rupee
   Categories:
@@ -4054,10 +4038,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x86
 
-# TODO
 - Name: Snowboarding Snowy Tree Top Rupee 3
   Original Item: Purple Rupee
   Categories:
@@ -4066,10 +4049,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x87
 
-# TODO
 - Name: Snowboarding Top Left Rupee
   Original Item: Green Rupee
   Categories:
@@ -4078,10 +4060,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x80
 
-# TODO
 - Name: Snowboarding Top Right Rupee
   Original Item: Green Rupee
   Categories:
@@ -4090,8 +4071,8 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 51
+      Flag: 0x81
 
 # DESERT PROVINCE
 

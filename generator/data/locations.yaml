@@ -4616,15 +4616,14 @@
     - Tbox ID: 24
       Stage: 6
 
-# TODO
 - Name: Forest Temple Gale Boomerang
   Original Item: Gale Boomerang
   Categories:
     - Forest Temple
     - Dungeon
     - Boss
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Forest Temple Gale Boomerang
 
 - Name: Forest Temple Big Key Chest
   Original Item: Forest Temple Big Key

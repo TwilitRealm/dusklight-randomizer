@@ -3563,7 +3563,6 @@
     - Flag: 0x49
       Stage: 50
 
-# TODO
 - Name: Zoras Domain Behind Waterfall Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3572,30 +3571,31 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 50
+      Flag: 0x96
 
-# TODO
 - Name: Zoras Domain Central Underwater Boulder Rupee
-  Original Item: Blue Rupee
+  Original Item: Red Rupee
   Categories:
     - Overworld
     - Zoras Domain
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 50
+      Flag: 0x8E
 
-# TODO
 - Name: Zoras Domain North Underwater Boulder Rupee
-  Original Item: Blue Rupee
+  Original Item: Red Rupee
   Categories:
     - Overworld
     - Zoras Domain
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 50
+      Flag: 0x8D
 
-# TODO
 - Name: Zoras Domain Shortcut Ledge Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3604,30 +3604,32 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 50
+      Flag: 0x84
 
-# TODO
 - Name: Zoras Domain Shortcut Lower Boulder Rupee
   Original Item: Blue Rupee
   Categories:
     - Overworld
     - Zoras Domain
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 50
+      Flag: 0x8C
 
-# TODO
 - Name: Zoras Domain Shortcut Upper Boulder Rupee
-  Original Item: Blue Rupee
+  Original Item: Green Rupee
   Categories:
     - Overworld
     - Zoras Domain
     - Rupee - Hidden
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 50
+      Flag: 0x8B
 
-# TODO
+
 - Name: Zoras Domain Top Ledge Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3636,10 +3638,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 50
+      Flag: 0x83
 
-# TODO
 - Name: Zoras Domain Vine Ledge Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3648,10 +3649,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 50
+      Flag: 0x97
 
-# TODO
 - Name: Zoras Domain Waterfall Ledge Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3660,8 +3660,8 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 50
+      Flag: 0x95
 
 - Name: Zoras Domain Extinguish All Torches Chest
   Original Item: Purple Rupee
@@ -3696,7 +3696,6 @@
   Metadata:
     - None
 
-# TODO
 - Name: Zoras Domain Throne East Gate Underwater Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3705,10 +3704,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 50
+      Flag: 0x8A
 
-# TODO
 - Name: Zoras Domain Throne East Underwater Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3717,10 +3715,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 50
+      Flag: 0x86
 
-# TODO
 - Name: Zoras Domain Throne Northwest Underwater Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3729,10 +3726,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 50
+      Flag: 0x87
 
-# TODO
 - Name: Zoras Domain Throne South Underwater Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3741,10 +3737,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 50
+      Flag: 0x88
 
-# TODO
 - Name: Zoras Domain Throne West Gate Underwater Rupee
   Original Item: Blue Rupee
   Categories:
@@ -3753,10 +3748,9 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 50
+      Flag: 0x89
 
-# TODO
 - Name: Zoras Domain Throne West Underwater Rupee
   Original Item: Yellow Rupee
   Categories:
@@ -3765,8 +3759,8 @@
     - Rupee - Freestanding
     - Freestanding Item
   Metadata:
-    - Stage: 0xFF
-      Flag: 0xFF
+    - Stage: 50
+      Flag: 0x85
 
 # SNOWPEAK PROVINCE
 

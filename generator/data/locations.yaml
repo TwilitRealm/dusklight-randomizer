@@ -3854,7 +3854,6 @@
     - Flag: 0x7E
       Stage: 51
 
-# TODO
 - Name: Snowboard Racing Prize
   Original Item: Piece of Heart
   Categories:
@@ -3862,8 +3861,8 @@
     - Npc
     - Snowpeak Province
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Snowboard Racing Prize
 
 - Name: Snowboarding Bridge Ledge Bottom Rupee
   Original Item: Green Rupee

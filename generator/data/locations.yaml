@@ -4570,7 +4570,6 @@
     - Tbox ID: 31
       Stage: 6
 
-# TODO
 - Name: Forest Temple Big Baba Key
   Original Item: Forest Temple Small Key
   Categories:
@@ -4578,8 +4577,10 @@
     - Dungeon
     - Forest Temple
     - REL
+    - Freestanding Item
   Metadata:
-    - None
+    - Stage: 6
+      Flag: 0x6 # Technically a tbox id
 
 - Name: Forest Temple Totem Pole Chest
   Original Item: Forest Temple Small Key

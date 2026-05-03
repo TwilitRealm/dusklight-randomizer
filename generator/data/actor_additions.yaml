@@ -72,6 +72,27 @@ ACTR: # Objects which have the ACTR dzx type
         layers:
           - 2
 
+  # Outside Arbiters Grounds
+  F_SP118:
+    # Room 1 - Bulblin Camp
+    1:
+      # Spawn in the item for the Bulblin Guard Key on
+      # the layer where the camp is already beaten
+      - name: htPiece
+        parameters: 0x00FF9AD7
+        position:
+          x: 4000
+          y: 300
+          z: -3500
+        angle:
+          x: 0x0000
+          y: 0x0000
+          z: 0x0000
+        layers:
+          - 1
+          - 2
+          - 3
+
   R_SP109: # Kakariko Interiors
     3: # Kak Malo Mart
       # Spawn in a middle item Sold Out Sign

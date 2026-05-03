@@ -1317,6 +1317,71 @@ F_SP117:
       layers:
         - 2
 
+# Outside Arbiters Grounds
+F_SP118:
+  # Room 1 - Bulblin Camp
+  1:
+    # Small Key Actor
+    - name: Obj_key
+      parameters: 0xFFFFFFFF
+      position:
+        x: 4470
+        y: 300
+        z: -2950
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      patch:
+        # Turn this small key into the rando check
+        name: htPiece
+        parameters: 0x00FF9AD7
+        position:
+          x: 4000
+          z: -3500
+      layers:
+        - 0
+
+    # Chest in front of bulblin camp
+    - name: tboxA0
+      parameters: 0xFF0FFFC0
+      position:
+        x: 4761.640625
+        y: 0
+        z: 1580.57019042969
+      angle:
+        x: 0x0000
+        y: 0xE000
+        z: 0x0FFF
+      patch:
+        # Give this chest a unique tboxid
+        parameters: 0xFF0FF7C0
+      layers:
+        - 0
+        - 1
+        - 2
+        - 3
+
+    # Chest in back of bulblin camp
+    - name: tboxA0
+      parameters: 0xFF0FFFC0
+      position:
+        x: 2389.04541015625
+        y: 260
+        z: -1473.38720703125
+      angle:
+        x: 0x0000
+        y: 0x6000
+        z: 0x05FF
+      patch:
+        # Give this chest a unique tboxid
+        parameters: 0xFF0FF780
+      layers:
+        - 0
+        - 1
+        - 2
+        - 3
+
 # Hyrule Field
 F_SP121:
   # Room 0 - Eldin Field / Bridge of Eldin

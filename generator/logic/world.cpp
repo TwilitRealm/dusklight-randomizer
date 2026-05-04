@@ -575,7 +575,6 @@ namespace randomizer::logic::world
                                                "Telma Invoice",
                                                "Wooden Statue",
                                                "Ilia Charm",
-                                               "Ilia Memory Reward",
                                                "Defeat Ganondorf",
                                                "Twilit Insect",
                                                "Twilit Bloat")))

@@ -1387,7 +1387,6 @@
     - Location Name Lookup
   Metadata: Talo Sharpshooting
 
-# TODO
 - Name: Renados Letter
   Original Item: Renados Letter
   Categories:
@@ -1395,18 +1394,17 @@
     - Npc
     - Kakariko Village
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Renados Letter
 
-# TODO
 - Name: Ilia Memory Reward
   Original Item: Horse Call
   Categories:
     - Overworld
     - Npc
     - Kakariko Village
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Ilia Memory Reward
 
 - Name: Rutelas Blessing
   Original Item: Zora Armor
@@ -1779,7 +1777,6 @@
     - Tbox ID: 2
       Stage: 36
 
-# TODO
 - Name: Skybook From Impaz
   Original Item: Progressive Sky Book
   Categories:
@@ -1787,10 +1784,9 @@
     - Npc
     - Hidden Village
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Skybook From Impaz
 
-# TODO (Might be fine, haven't checked)
 - Name: Cats Hide and Seek Minigame
   Original Item: Piece of Heart
   Categories:
@@ -1812,7 +1808,6 @@
     - Flag: 0x40
       Stage: 63
 
-# TODO
 - Name: Ilia Charm
   Original Item: Ilias Charm
   Categories:
@@ -1820,8 +1815,8 @@
     - Npc
     - Hidden Village
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Ilia Charm
 
 # LANAYRU PROVINCE
 

@@ -5760,15 +5760,14 @@
     - Tbox ID: 2
       Stage: 27
 
-# TODO
 - Name: Snowpeak Ruins Ball and Chain
   Original Item: Ball and Chain
   Categories:
     - Dungeon
     - Snowpeak Ruins
     - REL
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Snowpeak Ruins Ball and Chain
 
 - Name: Snowpeak Ruins Chest After Darkhammer
   Original Item: Ordon Cheese

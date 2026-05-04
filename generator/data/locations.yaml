@@ -6639,7 +6639,6 @@
     - Tbox ID: 9
       Stage: 20
 
-# TODO
 - Name: Hyrule Castle King Bulblin Key
   Original Item: Hyrule Castle Small Key
   Categories:
@@ -6648,8 +6647,8 @@
     - Dungeon
     - Hyrule Castle
     - REL
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Hyrule Castle King Bulblin Key
 
 - Name: Hyrule Castle East Wing Boomerang Puzzle Chest
   Original Item: Hyrule Castle Dungeon Map

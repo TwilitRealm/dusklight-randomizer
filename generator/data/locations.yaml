@@ -5629,7 +5629,6 @@
     - Tbox ID: 21
       Stage: 27
 
-# TODO
 - Name: Snowpeak Ruins Mansion Map
   Original Item: Snowpeak Ruins Dungeon Map
   Categories:
@@ -5639,8 +5638,8 @@
     - Dungeon Items
     - Dungeon Map
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Snowpeak Ruins Mansion Map
 
 - Name: Snowpeak Ruins East Courtyard Chest
   Original Item: Snowpeak Ruins Small Key

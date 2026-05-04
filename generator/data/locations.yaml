@@ -2362,7 +2362,6 @@
     - Flag: 0x1E
       Stage: 73
 
-# TODO
 - Name: Telma Invoice
   Original Item: Invoice
   Categories:
@@ -2370,8 +2369,8 @@
     - Npc
     - Castle Town
     - ARC
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Telma Invoice
 
 - Name: Agitha Male Beetle Reward
   Original Item: Orange Rupee

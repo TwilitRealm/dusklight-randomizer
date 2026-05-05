@@ -5656,9 +5656,10 @@
     - Dungeon
     - Arbiters Grounds
     - Dungeon Reward
-    - Location Name Lookup
   Goal Location: True
-  Metadata: Arbiters Grounds Dungeon Reward
+  Metadata:
+    Name Lookup:
+      - Arbiters Grounds Dungeon Reward
 
 # SNOWPEAK RUINS
 

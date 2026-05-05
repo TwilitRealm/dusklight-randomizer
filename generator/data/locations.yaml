@@ -3538,8 +3538,9 @@
     - ARC
     - REL
   Metadata:
-    Name Lookup:
-      - Fishing Hole Bottle
+    FLW Message:
+      - Group: 0
+        Message Id: 1822
 
 - Name: Fishing Hole Heart Piece
   Original Item: Piece of Heart

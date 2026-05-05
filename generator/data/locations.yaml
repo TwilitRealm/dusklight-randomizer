@@ -2723,7 +2723,6 @@
     - Stage: 57
       Flag: 0x83
 
-# TODO
 - Name: Wooden Statue
   Original Item: Wooden Statue
   Categories:
@@ -2731,8 +2730,8 @@
     - Npc
     - Hyrule Field - Lanayru Province
     - REL
-  Metadata:
-    - None
+    - Location Name Lookup
+  Metadata: Wooden Statue
 
 - Name: Lake Hylia Bridge Owl Statue Chest
   Original Item: Orange Rupee

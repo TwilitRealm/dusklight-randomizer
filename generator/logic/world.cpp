@@ -166,7 +166,7 @@ namespace randomizer::logic::world
         for (const auto& locationNode : locationDataTree)
         {
             // Check to make sure all required fields are present
-            YAMLVerifyFields(locationNode, "Name", "Categories");
+            YAMLVerifyFields(locationNode, "Name", "Categories", "Metadata");
 
             // Required Fields
             auto name = locationNode["Name"].as<std::string>();
@@ -198,6 +198,15 @@ namespace randomizer::logic::world
             auto goalLocation = locationNode["Goal Location"].as<bool>(false);
             auto hintPriority = locationNode["Hint Priority"].as<std::string>("Never");
             auto metadata = locationNode["Metadata"];
+
+            // Add metadata fields to categories as well
+            if (metadata.IsMap()) {
+                for (const auto& fieldNode : metadata) {
+                    const auto& category = fieldNode.first.as<std::string>();
+                    categories.insert(category);
+                    this->_registeredLocationCategories.insert(category);
+                }
+            }
 
             auto location = std::make_unique<location::Location>(locationIdCounter++,
                                                                  name,

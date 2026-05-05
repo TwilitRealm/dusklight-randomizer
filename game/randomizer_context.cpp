@@ -600,81 +600,99 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
         // Chest Overrides
         // Keyed by u16 of 0xFF00 (stage index) and 0x00FF (tbox id)
         if (location->HasCategories("Chest")) {
-            u8 stage = metaData[0]["Stage"].as<u8>();
-            u8 tboxId = metaData[0]["Tbox ID"].as<u8>();
-            u8 itemId = location->GetCurrentItem()->GetID();
-            u16 key = (stage << 8) | tboxId;
-            randoData.mTreasureChestOverrides[key] = itemId;
+            for (const auto& chestNode : metaData["Chest"]) {
+                u8 stage = chestNode["Stage"].as<u8>();
+                u8 tboxId = chestNode["Tbox Id"].as<u8>();
+                u8 itemId = location->GetCurrentItem()->GetID();
+                u16 key = (stage << 8) | tboxId;
+                randoData.mTreasureChestOverrides[key] = itemId;
+            }
         }
 
         // Poe Overrides
         // Keyed by u16 of 0xFF00 (stage index) and 0x00FF (collectible flag)
         if (location->HasCategories("Poe")) {
-            const auto& stage = metaData[0]["Stage"].as<u8>();
-            const auto& flag = metaData[0]["Flag"].as<u8>();
-            u8 itemId = location->GetCurrentItem()->GetID();
-            u16 key = (stage << 8) | flag;
-            randoData.mPoeOverrides[key] = itemId;
+            for (const auto& poeNode : metaData["Poe"]) {
+                const auto& stage = poeNode["Stage"].as<u8>();
+                const auto& flag = poeNode["Flag"].as<u8>();
+                u8 itemId = location->GetCurrentItem()->GetID();
+                u16 key = (stage << 8) | flag;
+                randoData.mPoeOverrides[key] = itemId;
+            }
         }
 
         // Freestanding Overrides
         // Keyed by the stage index and collectible flag of the item
         if (location->HasCategories("Freestanding Item")) {
-            u8 stage = metaData[0]["Stage"].as<u8>();
-            u8 flag = metaData[0]["Flag"].as<u8>();
-            u8 itemId = location->GetCurrentItem()->GetID();
-            u16 key = (stage << 8) | flag;
-            randoData.mFreestandingItemOverrides[key] = itemId;
+            for (const auto& freestandingItemNode: metaData["Freestanding Item"]) {
+                u8 stage = freestandingItemNode["Stage"].as<u8>();
+                u8 flag = freestandingItemNode["Flag"].as<u8>();
+                u8 itemId = location->GetCurrentItem()->GetID();
+                u16 key = (stage << 8) | flag;
+                randoData.mFreestandingItemOverrides[key] = itemId;
+            }
         }
 
         // Bug Rewards
         // Keyed by the item id of the original bug
         if (location->HasCategories("Bug Reward")) {
-            u8 bugItemId = metaData[0]["Bug Item Id"].as<u8>();
-            u8 itemId = location->GetCurrentItem()->GetID();
-            randoData.mBugRewardOverrides[bugItemId] = itemId;
+            for (const auto& bugRewardNode : metaData["Bug Reward"]) {
+                u8 bugItemId = bugRewardNode["Item Id"].as<u8>();
+                u8 itemId = location->GetCurrentItem()->GetID();
+                randoData.mBugRewardOverrides[bugItemId] = itemId;
+            }
         }
 
         // Sky Characters
         // Keyed by u16 of 0xFF00 (stage index) and 0x00FF (roomNo)
-        if (location->HasCategories("Sky Book")) {
-            u8 stageIdx = metaData[0]["Stage"].as<u8>();
-            u8 roomNo = metaData[0]["Room"].as<u8>();
-            u8 itemId = location->GetCurrentItem()->GetID();
-            u16 key = (stageIdx << 8) | roomNo;
-            randoData.mSkyCharacterOverrides[key] = itemId;
+        if (location->HasCategories("Sky Character")) {
+            for (const auto& skyCharacterNode : metaData["Sky Character"]) {
+                u8 stageIdx = skyCharacterNode["Stage"].as<u8>();
+                u8 roomNo = skyCharacterNode["Room"].as<u8>();
+                u8 itemId = location->GetCurrentItem()->GetID();
+                u16 key = (stageIdx << 8) | roomNo;
+                randoData.mSkyCharacterOverrides[key] = itemId;
+            }
         }
 
         // Golden Wolves
         // Keyed by u16 of the event flag for obtaining the golden wolf item
         if (location->HasCategories("Golden Wolf")) {
-            u16 flag = metaData[0]["Flag"].as<u16>();
-            u8 itemId = location->GetCurrentItem()->GetID();
-            randoData.mGoldenWolfOverrides[flag] = itemId;
+            for (const auto& goldenWolfNode : metaData["Golden Wolf"]) {
+                u16 flag = goldenWolfNode["Flag"].as<u16>();
+                u8 itemId = location->GetCurrentItem()->GetID();
+                randoData.mGoldenWolfOverrides[flag] = itemId;
+            }
         }
 
         // Shop Items
         // Keyed by u16 of the stage and original shop item
         if (location->HasCategories("Shop") && world->Setting("Shop Items") == "On") {
-            u8 stage = metaData[0]["Stage"].as<u8>();
-            u8 originalItem = metaData[0]["Item"].as<u8>();
-            u16 key = (stage << 8) | originalItem;
-            randoData.mShopOverrides[key] = location->GetCurrentItem()->GetID();
+            for (const auto& shopNode : metaData["Shop"]) {
+                u8 stage = shopNode["Stage"].as<u8>();
+                u8 originalItem = shopNode["Item"].as<u8>();
+                u16 key = (stage << 8) | originalItem;
+                randoData.mShopOverrides[key] = location->GetCurrentItem()->GetID();
+            }
         }
 
-        // Items whose text we determine during a FLW message
+        // Items that we determine the text of and then give during a FLW message
         if (location->HasCategories("FLW Message")) {
-            u8 group = metaData[0]["Group"].as<u8>();
-            u16 messageId = metaData[0]["Message Id"].as<u16>();
-            u32 key = (group << 16) | messageId;
-            randoData.mFlowItemMessageOverrides[key] = location->GetCurrentItem()->GetID();
+            for (const auto& flwMessageNode : metaData["FLW Message"]) {
+                u8 group = flwMessageNode["Group"].as<u8>();
+                u16 messageId = flwMessageNode["Message Id"].as<u16>();
+                u32 key = (group << 16) | messageId;
+                randoData.mFlowItemMessageOverrides[key] = location->GetCurrentItem()->GetID();
+            }
         }
 
         // Items that we lookup just by calling their location name
-        if (location->HasCategories("Location Name Lookup")) {
-            const auto& locationName = metaData.as<std::string>();
-            const int itemId = location->GetCurrentItem()->GetID();
-            randoData.mItemLocations[locationName] = itemId;
+        if (location->HasCategories("Name Lookup")) {
+            for (const auto& locationNameNode : metaData["Name Lookup"]) {
+                const auto& locationName = locationNameNode.as<std::string>();
+                const int itemId = location->GetCurrentItem()->GetID();
+                randoData.mItemLocations[locationName] = itemId;
+            }
         }
     }
 

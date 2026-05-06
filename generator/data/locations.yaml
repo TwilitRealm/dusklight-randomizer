@@ -3385,8 +3385,9 @@
     - Lake Hylia
     - ARC
   Metadata:
-    - Tbox Id: 12 
-      Stage: 52
+    Chest:
+      - Tbox Id: 12
+        Stage: 52
 
 - Name: Lanayru Spring Underwater Right Chest
   Original Item: Yellow Rupee
@@ -4464,8 +4465,9 @@
     - Small Key
     - DZX
   Metadata:
-    - Stage: 55
-      Flag: 0x9A
+    Freestanding Item:
+      - Stage: 55
+        Flag: 0x9A
 
 - Name: Bulblin Camp Poe
   Original Item: Poe Soul
@@ -6653,7 +6655,9 @@
     - Dungeon
     - Palace of Twilight
   Metadata:
-    - None
+    Freestanding Item:
+      - Stage: 15
+        Flag: 0x81
 
 - Name: Palace of Twilight Central First Room Chest
   Original Item: Palace of Twilight Small Key

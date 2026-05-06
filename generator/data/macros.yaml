@@ -246,7 +246,7 @@ Can Break Hyrule Castle Barrier: Hyrule_Barrier_Requirements == Open or
 
 Can Open Hyrule Castle Big Key Gate: Hyrule_Castle_Big_Key_Requirements == None or
                                      (Hyrule_Castle_Big_Key_Requirements == Fused_Shadows and count(Progressive_Fused_Shadow, Hyrule_Castle_Big_Key_Fused_Shadows)) or
-                                     (Hyrule_Castle_Big_Key_Requirements == Mirror_Shards and count(Progressive_Fused_Shadow, Hyrule_Castle_Big_Key_Mirror_Shards)) or
+                                     (Hyrule_Castle_Big_Key_Requirements == Mirror_Shards and count(Progressive_Mirror_Shard, Hyrule_Castle_Big_Key_Mirror_Shards)) or
                                      (Hyrule_Castle_Big_Key_Requirements == Dungeons and dungeons_completed(Hyrule_Castle_Big_Key_Dungeons)) or
                                      (Hyrule_Castle_Big_Key_Requirements == Poe_Souls and count(Poe_Soul, Hyrule_Castle_Big_Key_Poe_Souls)) or
                                      (Hyrule_Castle_Big_Key_Requirements == Hearts and hearts(Hyrule_Castle_Big_Key_Hearts))

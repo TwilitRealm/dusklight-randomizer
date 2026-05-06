@@ -6706,11 +6706,11 @@
     - Palace of Twilight
     - Heart Container
     - Dungeon Reward
-    - Freestanding Item
   Goal Location: True
   Metadata:
-    - Stage: 16
-      Flag: 0x80
+    Freestanding Item:
+      - Stage: 16
+        Flag: 0x80
 
 # HYRULE CASTLE
 

@@ -14,3 +14,6 @@ int initCreatePlayerItem(u32 item, u32 flag, const cXyz* pos, int roomNo, const 
 int getStageID(const char* stage = NULL);
 bool playerIsOnTitleScreen();
 u16 getItemMessageID(u8 itemId);
+int numCompletedDungeons();
+int numFusedShadows();
+int numMirrorShards();

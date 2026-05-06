@@ -17,10 +17,11 @@
 
 #include "d/actor/d_a_alink.h"
 #include "d/d_com_inf_game.h"
-#include "d/d_meter2_info.h"
 #include "d/d_meter2.h"
 #include "d/d_meter2_draw.h"
+#include "d/d_meter2_info.h"
 #include "d/d_msg_flow.h"
+#include "flags.h"
 
 std::optional<std::string> RandomizerContext::WriteToFile() {
 
@@ -31,8 +32,8 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
 
     YAML::Node out{};
 
-    for (const auto& [settingName, option] : this->mSettings) {
-        out["mSettings"][settingName] = option;
+    for (const auto& [setting, option] : this->mSettings) {
+        out["mSettings"][setting] = option;
     }
 
     // NOTE: When dumping u8s, they must be converted to u16s (or higher), otherwise they get dumped
@@ -105,9 +106,9 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
 
     // Necessary settings
     for (const auto& settingNode : in["mSettings"] ) {
-        const auto& settingName = settingNode.first.as<std::string>();
-        const auto& option = settingNode.second.as<std::string>();
-        this->mSettings[settingName] = option;
+        const auto& setting = settingNode.first.as<int>();
+        const auto& option = settingNode.second.as<int>();
+        this->mSettings[setting] = option;
     }
 
     // Event flags
@@ -235,6 +236,49 @@ std::string RandomizerContext::GetSeedDataPath() const {
     return std::string(SDL_GetPrefPath(dusk::OrgName, dusk::AppName)) + "randomizer/seeds/" + this->mHash + "/seed.dat";
 }
 
+s32 RandomizerContext::settingToEnum(const std::string& settingName) {
+    static const std::unordered_map<std::string, s32> nameToEnum = {
+        {"Hyrule Barrier Dungeons", HYRULE_BARRIER_DUNGEONS},
+        {"Hyrule Barrier Requirements", HYRULE_BARRIER_REQUIREMENTS},
+        {"Hyrule Barrier Fused Shadows", HYRULE_BARRIER_FUSED_SHADOWS},
+        {"Hyrule Barrier Mirror Shards", HYRULE_BARRIER_MIRROR_SHARDS},
+        {"Hyrule Castle Big Key Requirements", HYRULE_BIG_KEY_REQUIREMENTS},
+        {"Hyrule Barrier Poe Souls", HYRULE_BARRIER_POE_SOULS},
+        {"Hyrule Barrier Hearts", HYRULE_BARRIER_HEARTS},
+        {"Hyrule Castle Big Key Mirror Shards", HYRULE_BIG_KEY_MIRROR_SHARDS},
+        {"Hyrule Castle Big Key Fused Shadows", HYRULE_BIG_KEY_FUSED_SHADOWS},
+        {"Hyrule Castle Big Key Dungeons", HYRULE_BIG_KEY_DUNGEONS},
+        {"Hyrule Castle Big Key Poe Souls", HYRULE_BIG_KEY_POE_SOULS},
+        {"Hyrule Castle Big Key Hearts", HYRULE_BIG_KEY_HEARTS},
+        {"Palace of Twilight Requirements", PALACE_OF_TWILIGHT_REQUIREMENTS},
+    };
+
+    if (nameToEnum.contains(settingName)) {
+        return nameToEnum.at(settingName);
+    }
+
+    return -1;
+}
+
+s32 RandomizerContext::optionToEnum(const std::string& optionName) {
+    static const std::unordered_map<std::string, s32> nameToEnum = {
+        {"None", NONE},
+        {"Vanilla", VANILLA},
+        {"Open", OPEN},
+        {"Fused Shadows", FUSED_SHADOWS},
+        {"Mirror Shards", MIRROR_SHARDS},
+        {"Poe Souls", POE_SOULS},
+        {"Hearts", HEARTS},
+        {"Dungeons", DUNGEONS},
+    };
+
+    if (nameToEnum.contains(optionName)) {
+        return nameToEnum.at(optionName);
+    }
+
+    return -1;
+}
+
 RandomizerState g_randomizerState;
 
 int RandomizerState::_create() {
@@ -251,6 +295,96 @@ int RandomizerState::_create() {
 int RandomizerState::_delete() {
     mInitialized = false;
     return 1;
+}
+
+/*
+ * Updates flags for Hyrule Castle Barrier, Palace of Twilight Access,
+ * and Hyrule Castle Big Key chest. Maybe a bit overkill to check this every frame, but
+ * it keeps it all in one place for now.
+ */
+static void updateGoalFlags() {
+    auto& settings = randomizer_GetContext().mSettings;
+
+    // Hyrule Castle Barrier
+    if (!dComIfGs_isEventBit(BARRIER_GONE)) {
+        bool destroyBarrier = false;
+        switch (settings[RandomizerContext::HYRULE_BARRIER_REQUIREMENTS]) {
+        case RandomizerContext::VANILLA:
+            destroyBarrier = dComIfGs_isEventBit(PALACE_OF_TWILIGHT_CLEARED);
+            break;
+        case RandomizerContext::FUSED_SHADOWS:
+            destroyBarrier = numFusedShadows() >= settings[RandomizerContext::HYRULE_BARRIER_FUSED_SHADOWS];
+            break;
+        case RandomizerContext::MIRROR_SHARDS:
+            destroyBarrier = numMirrorShards() >= settings[RandomizerContext::HYRULE_BARRIER_MIRROR_SHARDS];
+            break;
+        case RandomizerContext::DUNGEONS:
+            destroyBarrier = numCompletedDungeons() >= settings[RandomizerContext::HYRULE_BARRIER_DUNGEONS];
+            break;
+        case RandomizerContext::POE_SOULS:
+            destroyBarrier = dComIfGs_getPohSpiritNum() >= settings[RandomizerContext::HYRULE_BARRIER_POE_SOULS];
+            break;
+        case RandomizerContext::HEARTS:
+            destroyBarrier = dComIfGs_getMaxLife() >= 5 * settings[RandomizerContext::HYRULE_BARRIER_HEARTS];
+            break;
+        default:
+            break;
+        }
+
+        if (destroyBarrier) {
+            dComIfGs_onEventBit(BARRIER_GONE);
+        }
+    }
+
+    // Hyrule Castle Big Key Gate
+    if (!dComIfGs_isStageSwitch(0x18, 0x4B)) {
+        bool openGate = false;
+        switch (settings[RandomizerContext::HYRULE_BIG_KEY_REQUIREMENTS]) {
+        case RandomizerContext::FUSED_SHADOWS:
+            openGate = numFusedShadows() >= settings[RandomizerContext::HYRULE_BIG_KEY_FUSED_SHADOWS];
+            break;
+        case RandomizerContext::MIRROR_SHARDS:
+            openGate = numMirrorShards() >= settings[RandomizerContext::HYRULE_BIG_KEY_MIRROR_SHARDS];
+            break;
+        case RandomizerContext::DUNGEONS:
+            openGate = numCompletedDungeons() >= settings[RandomizerContext::HYRULE_BIG_KEY_DUNGEONS];
+            break;
+        case RandomizerContext::POE_SOULS:
+            openGate = dComIfGs_getPohSpiritNum() >= settings[RandomizerContext::HYRULE_BIG_KEY_POE_SOULS];
+            break;
+        case RandomizerContext::HEARTS:
+            openGate = dComIfGs_getMaxLife() >= 5 * settings[RandomizerContext::HYRULE_BIG_KEY_HEARTS];
+            break;
+        default:
+            break;
+        }
+
+        if (openGate) {
+            dComIfGs_onStageSwitch(0x18, 0x4B);
+        }
+    }
+
+    // Palace of Twlight Access
+    if (!dComIfGs_isEventBit(FIXED_THE_MIRROR_OF_TWILIGHT)) {
+        bool openPalace = false;
+        switch (settings[RandomizerContext::PALACE_OF_TWILIGHT_REQUIREMENTS]) {
+        case RandomizerContext::VANILLA:
+            openPalace = dComIfGs_isEventBit(CITY_IN_THE_SKY_CLEARED);
+            break;
+        case RandomizerContext::FUSED_SHADOWS:
+            openPalace = numFusedShadows() >= 3;
+            break;
+        case RandomizerContext::MIRROR_SHARDS:
+            openPalace = numMirrorShards() >= 4;
+            break;
+        default:
+            break;
+        }
+
+        if (openPalace) {
+            dComIfGs_onEventBit(FIXED_THE_MIRROR_OF_TWILIGHT);
+        }
+    }
 }
 
 int RandomizerState::execute() {
@@ -468,6 +602,9 @@ void RandomizerState::offLoad()
         // Clear the danBit that starts a conversation when entering the ranch so the player can do goats as needed.
         dComIfGs_offSaveDunSwitch(0x1);
     }
+
+    // Check and update our goal flags
+    updateGoalFlags();
 }
 
 bool checkFoolishItemEffectReady()
@@ -566,30 +703,28 @@ u32 getActorCRC32(stage_actor_data_class* actor) {
     return zng_crc32(0, reinterpret_cast<u8*>(actor), RandomizerContext::ACTOR_CRC_SIZE);
 }
 
-/*
- * Generates a seed and writes the necessary seed files to the players seed directory
- */
-void GenerateAndWriteSeed(std::string& generationStatusMsg) {
-    const auto result = SDL_GetPrefPath(dusk::OrgName, dusk::AppName);
-    if (!result) {
-        DuskLog.fatal("Unable to get PrefPath: {}", SDL_GetError());
-    }
-    randomizer::Randomizer r;
-    r.SetBaseOutputPath(result);
-    auto generationResult = r.Generate();
-    if (generationResult.has_value()) {
-        generationStatusMsg = fmt::format("Generation failed with the following error:\n{}", generationResult.value());
-        return;
-    }
-
-    const auto& world = r.GetWorlds()[0];
-
+RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::World>& world) {
     RandomizerContext randoData{};
 
     // Settings we need to check ingame
     for (const auto& [setting, info] : *randomizer::seedgen::settings::GetAllSettingsInfo()) {
         if (info->NeedInGame()) {
-            randoData.mSettings[setting] = world->Setting(setting).GetCurrentOption();
+            auto settingEnum = RandomizerContext::settingToEnum(setting);
+            if (settingEnum == -1) {
+                throw std::runtime_error("Setting \"" + setting + "\" does not have an associated enum value");
+            }
+            auto option = world->Setting(setting).GetCurrentOption();
+            int optionEnum{};
+            // If this setting's options are just numbers, get the numeric value
+            if (info->OptionsAreNumbers()) {
+                optionEnum = world->Setting(setting).GetCurrentOptionAsNumber();
+            } else {
+                optionEnum = RandomizerContext::optionToEnum(option);
+            }
+            if (optionEnum == -1) {
+                throw std::runtime_error("Option \"" + option + "\" for setting \"" + setting + "\" does not have an associated enum value");
+            }
+            randoData.mSettings[settingEnum] = optionEnum;
         }
     }
 
@@ -920,11 +1055,40 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
         }
     }
 
+    return std::move(randoData);
+}
+
+/*
+ * Generates a seed and writes the necessary seed files to the players seed directory
+ */
+void GenerateAndWriteSeed(std::string& generationStatusMsg) {
+    const auto result = SDL_GetPrefPath(dusk::OrgName, dusk::AppName);
+    if (!result) {
+        DuskLog.fatal("Unable to get PrefPath: {}", SDL_GetError());
+    }
+    randomizer::Randomizer r;
+    r.SetBaseOutputPath(result);
+    auto generationResult = r.Generate();
+    if (generationResult.has_value()) {
+        generationStatusMsg = fmt::format("Seed Generation failed. Reason:\n{}", generationResult.value());
+        return;
+    }
+
+    const auto& world = r.GetWorlds()[0];
+    RandomizerContext randoData{};
+    try {
+        randoData = WriteSeedData(world);
+    } catch (const std::runtime_error& e) {
+        generationStatusMsg =
+            fmt::format("Failed to write seed data. Reason:\n{}", e.what());
+        return;
+    }
+
     randoData.mHash = r.GetConfig().GetHash();
     auto writeToFileResult = randoData.WriteToFile();
     if (writeToFileResult.has_value()) {
         generationStatusMsg =
-            fmt::format("Failed to write seed data. Reason: {}", writeToFileResult.value());
+            fmt::format("Failed to write seed data to file. Reason:\n{}", writeToFileResult.value());
         return;
     }
 

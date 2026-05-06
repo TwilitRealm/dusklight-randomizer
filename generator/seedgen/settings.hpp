@@ -100,6 +100,7 @@ namespace randomizer::seedgen::settings
         int GetRandomHigh() const { return this->_randomHigh; }
         bool TrackerImportant() const { return this->_trackerImportant; }
         bool NeedInGame() const { return this->_needInGame; }
+        bool OptionsAreNumbers() const { return this->_optionsAreNumbers; }
 
        private:
         int _id = -1;
@@ -114,6 +115,7 @@ namespace randomizer::seedgen::settings
         int _randomHigh = 0;            // Upper bound when choosing a random option
         bool _trackerImportant = false; // Whether or not this setting can affect trackers
         bool _needInGame = false;       // Whether or not we need to read this setting during gameplay
+        bool _optionsAreNumbers = false;// Whether this setting's options are all numbers
 
         // Variables that hold the setting's name and options when being checked
         // in a logical requirement string.
@@ -135,6 +137,7 @@ namespace randomizer::seedgen::settings
         void SetCurrentOption(const std::string& newOption);
         void SetCurrentOption(const int& newOptionIndex);
         std::string GetCurrentOption() const;
+        int GetCurrentOptionAsNumber() const;
         const int& GetCurrentOptionIndex() const { return this->_currentOptionIndex; }
         const bool& IsUsingRandomOption() const { return this->_isUsingRandomOption; }
         SettingInfo* GetInfo() const { return this->_info; }

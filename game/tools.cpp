@@ -125,3 +125,28 @@ u16 getItemMessageID(u8 itemId) {
 
     return itemId + 0x65;
 }
+
+int numCompletedDungeons() {
+    int numCompleted{0};
+    // Loop through dungeon area node ids
+    for (int i = 0x10; i < 0x18; ++i) {
+        numCompleted += dComIfGs_isStageBossEnemy(i);
+    }
+    return numCompleted;
+}
+
+int numFusedShadows() {
+    int numFusedShadows{0};
+    for (int i = 0; i < 3; ++i) {
+        numFusedShadows += dComIfGs_isCollectCrystal(i);
+    }
+    return numFusedShadows;
+}
+
+int numMirrorShards() {
+    int numMirrorShards{0};
+    for (int i = 0; i < 4; ++i) {
+        numMirrorShards += dComIfGs_isCollectMirror(i);
+    }
+    return numMirrorShards;
+}

@@ -66,6 +66,11 @@ namespace randomizer::seedgen::settings
             utility::str::Erase(logicOption, "'", ")", "(");
             this->_logicOptions.push_back(logicOption);
         }
+
+        // Note: Assumes an option is never a negative number
+        this->_optionsAreNumbers = std::ranges::all_of(options, [](const std::string& option) {
+            return !option.empty() && std::ranges::all_of(option, ::isdigit);
+        });
     }
 
     std::string SettingInfo::GetDefaultOption() const
@@ -112,6 +117,15 @@ namespace randomizer::seedgen::settings
     std::string Setting::GetCurrentOption() const
     {
         return this->_info->GetOptions()[this->_currentOptionIndex];
+    }
+
+    int Setting::GetCurrentOptionAsNumber() const {
+        try {
+            return std::stoi(this->GetCurrentOption());
+        } catch (...) {
+            throw std::runtime_error("Option \"" + GetCurrentOption() + "\" for setting \"" + this->GetInfo()->GetName() +
+                                     "\" cannot be turned into a number");
+        }
     }
 
     void Setting::ResolveIfRandom()

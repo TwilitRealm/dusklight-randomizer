@@ -24,7 +24,8 @@ public:
     u32 mSeedID{0};
     std::string mHash{""};
 
-    std::unordered_map<std::string, std::string> mSettings{};
+    // Maps enum of necessary setting to enum of value
+    std::unordered_map<int, int> mSettings{};
 
     std::list<u16> mStartEventFlags{};
     std::unordered_map<u8, std::list<u8>> mStartRegionFlags{};
@@ -48,6 +49,37 @@ public:
     std::optional<std::string> WriteToFile();
     std::optional<std::string> LoadFromHash(const std::string& hash);
     std::string GetSeedDataPath() const;
+
+    enum Settings {
+        HYRULE_BARRIER_REQUIREMENTS,
+        HYRULE_BARRIER_FUSED_SHADOWS,
+        HYRULE_BARRIER_MIRROR_SHARDS,
+        HYRULE_BARRIER_POE_SOULS,
+        HYRULE_BARRIER_HEARTS,
+        HYRULE_BARRIER_DUNGEONS,
+        HYRULE_BIG_KEY_REQUIREMENTS,
+        HYRULE_BIG_KEY_FUSED_SHADOWS,
+        HYRULE_BIG_KEY_MIRROR_SHARDS,
+        HYRULE_BIG_KEY_POE_SOULS,
+        HYRULE_BIG_KEY_HEARTS,
+        HYRULE_BIG_KEY_DUNGEONS,
+        PALACE_OF_TWILIGHT_REQUIREMENTS,
+    };
+
+    enum Options {
+        NONE,
+        VANILLA,
+        OPEN,
+        FUSED_SHADOWS,
+        MIRROR_SHARDS,
+        POE_SOULS,
+        HEARTS,
+        DUNGEONS,
+    };
+
+    static int settingToEnum(const std::string& settingName);
+
+    static int optionToEnum(const std::string& optionName);
 };
 
 /*

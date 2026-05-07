@@ -123,7 +123,7 @@ namespace dusk {
                 ImGui::EndMenu();
             }
 
-            std::string name = "Deactive Randomizer";
+            std::string name = "Deactivate Randomizer";
             if (!playerIsOnTitleScreen()) {
                 name += " (Must be on title screen)";
             }
@@ -183,12 +183,18 @@ namespace dusk {
             const char* seed = randomizer_GetContext().mHash.empty() ? "None" : randomizer_GetContext().mHash.c_str();
 
             ImGui::Text("Current Seed: %s", seed);
-            ImGui::Text("Status: ");
+            ImGui::Text("Status:");
             ImGui::SameLine();
             if (randomizer_IsActive()) {
                 ImGui::TextColored(ImVec4(0.f, 1.f, 0.f, 1.f), "ACTIVE");
             } else {
-                ImGui::TextColored(ImVec4(1.f, 0.f, 0.f, 1.f), "NOT ACTIVE");
+                std::string reason{"Unknown"};
+                if (randomizer_GetContext().mHash.empty()) {
+                    reason = "No Seed Selected";
+                } else if (playerIsOnTitleScreen()) {
+                    reason = "On Title Screen";
+                }
+                ImGui::TextColored(ImVec4(1.f, 0.f, 0.f, 1.f), "NOT ACTIVE (Reason: %s)", reason.c_str());
             }
         }
 

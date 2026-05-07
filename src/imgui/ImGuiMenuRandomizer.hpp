@@ -13,7 +13,7 @@ public:
     void windowRandoGeneration();
 
 private:
-    bool m_showRandoStats{false};
+    bool m_showRandoStats{true};
     bool m_showRandoGeneration{false};
 };
 }

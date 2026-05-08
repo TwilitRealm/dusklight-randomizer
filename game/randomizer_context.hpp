@@ -3,6 +3,7 @@
 
 #include <dolphin/types.h>
 
+#include <array>
 #include <list>
 #include <iomanip>
 #include <optional>

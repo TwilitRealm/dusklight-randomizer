@@ -46,6 +46,12 @@ public:
     std::unordered_map<u32, std::unordered_map<u32, std::list<std::array<u8, 30>>>> mActorAdditions{};
     std::unordered_map<u32, u64> mFlowPatches{};
 
+    // struct TextOverride {
+    //     std::array<u8, 16> mAttributes{};
+    //     std::string mText{};
+    // };
+    std::unordered_map<u32, std::string> mTextOverrides{};
+
     std::optional<std::string> WriteToFile();
     std::optional<std::string> LoadFromHash(const std::string& hash);
     std::string GetSeedDataPath() const;
@@ -133,6 +139,12 @@ public:
     u8 mTimeChange{};
     u8 mEventItemQueue[EVENT_ITEM_QUEUE_SIZE];
     bool mRoomReloadingState{false};
+
+    // Used to store an item id for a flow message override so that we can give the item
+    // once the textbox is closed instead of when the message appears. This lines up
+    // more naturally with how the timing of how the game normally gives items and affects
+    // things like the sound of the rupee counter going up.
+    u8 mFlowMessageItemId{0};
 };
 
 extern RandomizerState g_randomizerState;

@@ -1,0 +1,325 @@
+Shadow Crystal Get Item Text:
+  Standard:
+    Text: |-
+      <slow>You got the <red>Shadow Crystal<white>!
+      This is a dark manifestation
+      of <red>Zant's<white> power that allows
+      you to transform at will!
+
+Restored Dominion Rod Text:
+  Standard:
+    Text: |-
+      <fast>Power has been restored to
+      the <red>Dominion Rod<white>! Now it can
+      be used to imbue statues
+      with life in the present!
+
+Forest Temple Small Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got a <red>Small Key<white> for the
+      <green>Forest Temple<white>!
+
+Goron Mines Small Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got a <red>Small Key<white> for
+      <red>Goron Mines<white>!
+
+Lakebed Temple Small Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got a <red>Small Key<white> for the
+      <blue>Lakebed Temple<white>!
+
+Arbiters Grounds Small Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got a <red>Small Key<white> for
+      <orange>Arbiter's Grounds<white>!
+
+Snowpeak Ruins Small Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got a <red>Small Key<white> for
+      <light blue>Snowpeak Ruins<white>!
+
+Temple of Time Small Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got a <red>Small Key<white> for the
+      <dark green>Temple of Time<white>!
+
+City in the Sky Small Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got a <red>Small Key<white> for the
+      <yellow>City in the Sky<white>!
+
+Palace of Twilight Small Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got a <red>Small Key<white> for the
+      <purple>Palace of Twilight<white>!
+
+Hyrule Castle Small Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got a <red>Small Key<white> for
+      <silver>Hyrule Castle<white>!
+
+Bulblin Camp Small Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got a <red>Small Key<white> for the
+      <orange>Bulblin Camp<white>!
+
+Forest Temple Big Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Big Key<white> for the
+      <green>Forest Temple<white>!
+
+Lakebed Temple Big Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Big Key<white> for the
+      <blue>Lakebed Temple<white>!
+
+Arbiters Grounds Big Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Big Key<white> for
+      <orange>Arbiter's Grounds<white>!
+
+Temple of Time Big Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Big Key<white> for the
+      <dark green>Temple of Time<white>!
+
+City in the Sky Big Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Big Key<white> for the
+      <yellow>City in the Sky<white>!
+
+Palace of Twilight Big Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Big Key<white> for the
+      <purple>Palace of Twilight<white>!
+
+Hyrule Castle Big Key Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Big Key<white> for
+      <silver>Hyrule Castle<white>!
+
+Forest Temple Compass Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Compass<white> for the
+      <green>Forest Temple<white>!
+
+Goron Mines Compass Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Compass<white> for
+      <red>Goron Mines<white>!
+
+Lakebed Temple Compass Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Compass<white> for the
+      <blue>Lakebed Temple<white>!
+
+Mirror Shard 2 Get item Text:
+  Standard:
+    Text: |-
+      <fast>You got the second shard of
+      the <red>Mirror of Twilight<white>! It
+      has a beautiful shine to it
+      and feels slightly <light blue>cold<white>...
+
+Mirror Shard 3 Get item Text:
+  Standard:
+    Text: |-
+      <fast>You got the third shard of
+      the <red>Mirror of Twilight<white>! It
+      is covered in dirt and
+      <dark green>webs<white>...
+
+Mirror Shard 4 Get item Text:
+  Standard:
+    Text: |-
+      <fast>You got the final shard of
+      the <red>Mirror of Twilight<white>! It
+      feels lighter than <yellow>air<white>...
+
+Arbiters Grounds Compass Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Compass<white> for
+      <orange>Arbiter's Grounds<white>!
+
+Snowpeak Ruins Compass Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Compass<white> for
+      <light blue>Snowpeak Ruins<white>!
+
+Temple of Time Compass Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Compass<white> for the
+      <dark green>Temple of Time<white>!
+
+City in the Sky Compass Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Compass<white> for the
+      <yellow>City in the Sky<white>!
+
+Palace of Twilight Compass Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Compass<white> for the
+      <purple>Palace of Twilight<white>!
+
+Hyrule Castle Compass Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Compass<white> for
+      <silver>Hyrule Castle<white>!
+      <fast>
+#
+Forest Temple Dungeon Map Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Dungeon Map<white> for the
+      <green>Forest Temple<white>!
+
+Goron Mines Dungeon Map Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Dungeon Map<white> for
+      <red>Goron Mines<white>!
+
+Lakebed Temple Dungeon Map Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Dungeon Map<white> for the
+      <blue>Lakebed Temple<white>!
+
+Snowpeak Ruins Dungeon Map Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Dungeon Map<white> for
+      <light blue>Snowpeak Ruins<white>!
+
+Arbiters Grounds Dungeon Map Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Dungeon Map<white> for
+      <orange>Arbiter's Grounds<white>!
+
+Temple of Time Dungeon Map Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Dungeon Map<white> for the
+      <dark green>Temple of Time<white>!
+
+City in the Sky Dungeon Map Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Dungeon Map<white> for the
+      <yellow>City in the Sky<white>!
+
+Palace of Twilight Dungeon Map Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Dungeon Map<white> for the
+      <purple>Palace of Twilight<white>!
+
+Hyrule Castle Dungeon Map Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the <red>Dungeon Map<white> for
+      <silver>Hyrule Castle<white>!
+      <fast>
+
+Fused Shadow 1 Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got a <red>Fused Shadow<white>!
+      It seems to have some <green>moss<white>
+      growing on it...
+
+Fused Shadow 2 Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the second <red>Fused
+      Shadow<white>! It feels <red>warm<white> to
+      the touch...
+
+Fused Shadow 3 Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the final <red>Fused
+      Shadow<white>! It feels <blue>wet<white> and
+      smells like fish...
+
+Mirror Shard 1 Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got the first shard of
+      the <red>Mirror of Twilight<white>! It
+      is covered in <orange>sand<white>...
+
+Poe Soul Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got a <red>Poe's Soul<white>!
+      You've collected <red>{}<white> so far.
+
+Ending Blow Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You learned the <red>Ending Blow<white>!
+
+Shield Attack Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You learned the <red>Shield Attack<white>!
+
+Back Slice Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You learned the <red>Back Slice<white>!
+
+Helm Splitter Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You learned the <red>Helm Splitter<white>!
+
+Mortal Draw Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You learned the <red>Mortal Draw<white>!
+
+Jump Strike Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You learned the <red>Jump Strike<white>!
+
+Great Spin Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You learned the <red>Great Spin<white>!
+
+Partially Filled Sky Book Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got a <red>Sky Character<white>!
+      You've collected <red>{}<white> so far.

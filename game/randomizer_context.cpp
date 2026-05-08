@@ -9,6 +9,7 @@
 #include "dusk/randomizer/generator/utility/endian.hpp"
 #include "dusk/randomizer/generator/utility/yaml.hpp"
 #include "dusk/randomizer/generator/randomizer.hpp"
+#include "dusk/randomizer/generator/utility/text.hpp"
 
 #include "SDL3/SDL_filesystem.h"
 #include <zlib-ng.h>
@@ -93,7 +94,20 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
 
     out["mFlowPatches"] = this->mFlowPatches;
 
+    // Dump text overrides as binary to avoid losing intentional null characters
+    YAML::Emitter textData;
+    textData << YAML::BeginMap;
+    textData << YAML::Key << "mTextOverrides";
+    textData << YAML::BeginMap;
+    for (const auto& [key, text] : this->mTextOverrides) {
+        textData << YAML::Key << key;
+        textData << YAML::Value << YAML::Binary(reinterpret_cast<const unsigned char*>(text.data()), text.size());
+    }
+    textData << YAML::EndMap;
+    textData << YAML::EndMap;
+
     seedData << YAML::Dump(out);
+    seedData << '\n' << textData.c_str();
     seedData.close();
 
     return std::nullopt;
@@ -225,6 +239,14 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         auto key = flowNode.first.as<u32>();
         auto value = flowNode.second.as<u64>();
         this->mFlowPatches[key] = value;
+    }
+
+    // Text Overrides
+    for (const auto& textNode: in["mTextOverrides"]) {
+        auto key = textNode.first.as<u32>();
+        auto binary = textNode.second.as<YAML::Binary>();
+        std::string text(reinterpret_cast<const char*>(binary.data()), binary.size());
+        this->mTextOverrides[key] = std::move(text);
     }
 
     DuskLog.debug("Loaded Randomizer Seed {}", this->mHash);
@@ -1053,6 +1075,20 @@ RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::
             u32 key = (groupNo << 16) | index;
             randoData.mFlowPatches[key] = value;
         }
+    }
+
+    // Text Overrides
+    auto textOverrides = LoadYAML(RANDO_DATA_PATH "text/text_overrides.yaml");
+    for (const auto& overrideNode : textOverrides) {
+        const auto& name = overrideNode["Name"].as<std::string>();
+        // TODO: Handle multiple languages
+        auto language = randomizer::Text::ENGLISH;
+        auto text = randomizer::getTextStr(name);
+        u8 group = overrideNode["Group"].as<u8>();
+        u16 messageId = overrideNode["Message Id"].as<u16>();
+        u32 key = (group << 16) | messageId;
+        randomizer::applyMessageCodes(text);
+        randoData.mTextOverrides[key] = text;
     }
 
     return std::move(randoData);

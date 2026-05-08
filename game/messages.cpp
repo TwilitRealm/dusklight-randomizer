@@ -1,0 +1,65 @@
+#include "messages.hpp"
+
+#include "JSystem/JMessage/control.h"
+#include "d/d_msg_class.h"
+#include "randomizer_context.hpp"
+
+#include <format>
+
+// Format certain messages that need to have dynamic info in them
+const char* GetFormatedTextOverride(u32 key, const std::string& text) {
+    // Store formatted message in static buffer so it never goes away.
+    // This is fine as long as we only ever need to format messages
+    // for textboxes, but will cause issues if we need to use it for 
+    // other UI elements
+    static std::array<char, 256> buf;
+    u32 value{};
+    char* outIt;
+    // For item counts, execItemGet hasn't run yet, so add one to the count
+    switch (key) {
+    case (0 << 16) | 325: // Group 0, id 325
+        // Poe Soul get item text
+        value = dComIfGs_getPohSpiritNum() + 1;
+        outIt = std::vformat_to(buf.data(), text, std::make_format_args(value));
+        break;
+    case (0 << 16) | 335: // Group 0, id 335
+        // Sky book characters get item text
+        value = dComIfGs_getAncientDocumentNum() + 1;
+        outIt = std::vformat_to(buf.data(), text, std::make_format_args(value));
+        break;
+    default:
+        // No override, return original text
+        return text.data();
+    }
+
+    // Null-terminate
+    size_t len = std::distance(buf.data(), outIt);
+    buf[len] = '\0';
+
+    // Return overriden text
+    return buf.data();
+}
+
+void HandleTextOverrides(JMessage::TControl* control, JMessage::TProcessor const* pProcessor, int groupID, int index) {
+    if (randomizer_IsActive()) {
+        // Get the entry for this message
+        auto entry = static_cast<JMSMesgEntry_c*>(pProcessor->getMessageEntry_messageCode(groupID, index));
+        if (!entry) {
+            return;
+        }
+
+        // If the message id is >= 5000 then it's part of the stage file's message group
+        // Otherwise it's part of group 0
+        auto msgId = entry->message_id.host();
+        u16 group = 0;
+        if (msgId >= 5000) {
+            group = dComIfGp_getStageStagInfo()->mMsgGroup;
+        }
+
+        u32 key = (group << 16) | msgId;
+        auto& textOverrides = randomizer_GetContext().mTextOverrides;
+        if (textOverrides.contains(key)) {
+            control->pMessageText_begin_ = GetFormatedTextOverride(key, textOverrides[key]);
+        }
+    }
+}

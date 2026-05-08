@@ -274,6 +274,8 @@ int RandomizerContext::SettingToEnum(const std::string& settingName) {
         {"Hyrule Castle Big Key Hearts", HYRULE_BIG_KEY_HEARTS},
         {"Palace of Twilight Requirements", PALACE_OF_TWILIGHT_REQUIREMENTS},
         {"Skip Minor Cutscenes", SKIP_MINOR_CUTSCENES},
+        {"Skip Major Cutscenes", SKIP_MAJOR_CUTSCENES},
+
     };
 
     if (nameToEnum.contains(settingName)) {

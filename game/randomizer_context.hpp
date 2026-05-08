@@ -72,6 +72,7 @@ public:
         HYRULE_BIG_KEY_DUNGEONS,
         PALACE_OF_TWILIGHT_REQUIREMENTS,
         SKIP_MINOR_CUTSCENES,
+        SKIP_MAJOR_CUTSCENES,
     };
 
     enum Options {

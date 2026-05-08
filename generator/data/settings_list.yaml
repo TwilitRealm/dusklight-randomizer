@@ -315,14 +315,15 @@
     - "On": description
 
 - Name: Skip Minor Cutscenes
-  Tracker Important: True
   Need In Game: True
+  Tracker Important: True
   Default Option: "Off"
   Options:
     - "Off": description
     - "On": description
 
 - Name: Skip Major Cutscenes
+  Need In Game: True
   Tracker Important: True
   Default Option: "Off"
   Options:

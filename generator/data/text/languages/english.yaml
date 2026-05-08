@@ -323,3 +323,10 @@ Partially Filled Sky Book Get Item Text:
     Text: |-
       <fast>You got a <red>Sky Character<white>!
       You've collected <red>{}<white> so far.
+
+Charlo Donation Choice Text:
+  Standard:
+    Text: |-
+      <choice 1>100 Rupees
+      <choice 2>50 Rupees
+      <choice 3>Sorry...

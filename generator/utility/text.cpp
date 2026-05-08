@@ -267,6 +267,9 @@ namespace randomizer {
         const static std::unordered_map<std::string, std::string> messageCodes = {
             {"<fast>",       "\x1A\x05\x00\x00\x01"s },
             {"<slow>",       "\x1A\x05\x00\x00\x02"s },
+            {"<choice 1>",   "\x1A\x06\x00\x00\x09\x01"s},
+            {"<choice 2>",   "\x1A\x06\x00\x00\x09\x02"s},
+            {"<choice 3>",   "\x1A\x06\x00\x00\x09\x03"s},
             {"<white>",      "\x1A\x06\xFF\x00\x00\x00"s},
             {"<red>",        "\x1A\x06\xFF\x00\x00\x01"s},
             {"<green>",      "\x1A\x06\xFF\x00\x00\x02"s},

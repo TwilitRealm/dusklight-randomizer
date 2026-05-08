@@ -221,3 +221,7 @@
 - Name: Partially Filled Sky Book Get Item Text
   Group: 0
   Message Id: 335
+
+- Name: Charlo Donation Choice Text
+  Group: 4
+  Message Id: 6403

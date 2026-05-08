@@ -7,7 +7,7 @@
 #include <format>
 
 // Format certain messages that need to have dynamic info in them
-const char* GetFormatedTextOverride(u32 key, const std::string& text) {
+char* GetFormatedTextOverride(u32 key, std::string& text) {
     // Store formatted message in static buffer so it never goes away.
     // This is fine as long as we only ever need to format messages
     // for textboxes, but will cause issues if we need to use it for 
@@ -62,4 +62,14 @@ void HandleTextOverrides(JMessage::TControl* control, JMessage::TProcessor const
             control->pMessageText_begin_ = GetFormatedTextOverride(key, textOverrides[key]);
         }
     }
+}
+
+// Used in special cases
+char* GetTextOverride(s16 groupID, u32 messageId) {
+    u32 key = (groupID << 16) | messageId;
+    auto& textOverrides = randomizer_GetContext().mTextOverrides;
+    if (textOverrides.contains(key)) {
+        return GetFormatedTextOverride(key, textOverrides[key]);
+    }
+    return NULL;
 }

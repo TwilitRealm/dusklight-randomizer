@@ -316,6 +316,7 @@
 
 - Name: Skip Minor Cutscenes
   Tracker Important: True
+  Need In Game: True
   Default Option: "Off"
   Options:
     - "Off": description

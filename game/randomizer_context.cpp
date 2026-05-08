@@ -258,8 +258,8 @@ std::string RandomizerContext::GetSeedDataPath() const {
     return std::string(SDL_GetPrefPath(dusk::OrgName, dusk::AppName)) + "randomizer/seeds/" + this->mHash + "/seed.dat";
 }
 
-s32 RandomizerContext::settingToEnum(const std::string& settingName) {
-    static const std::unordered_map<std::string, s32> nameToEnum = {
+int RandomizerContext::SettingToEnum(const std::string& settingName) {
+    static const std::unordered_map<std::string, int> nameToEnum = {
         {"Hyrule Barrier Dungeons", HYRULE_BARRIER_DUNGEONS},
         {"Hyrule Barrier Requirements", HYRULE_BARRIER_REQUIREMENTS},
         {"Hyrule Barrier Fused Shadows", HYRULE_BARRIER_FUSED_SHADOWS},
@@ -273,6 +273,7 @@ s32 RandomizerContext::settingToEnum(const std::string& settingName) {
         {"Hyrule Castle Big Key Poe Souls", HYRULE_BIG_KEY_POE_SOULS},
         {"Hyrule Castle Big Key Hearts", HYRULE_BIG_KEY_HEARTS},
         {"Palace of Twilight Requirements", PALACE_OF_TWILIGHT_REQUIREMENTS},
+        {"Skip Minor Cutscenes", SKIP_MINOR_CUTSCENES},
     };
 
     if (nameToEnum.contains(settingName)) {
@@ -282,8 +283,10 @@ s32 RandomizerContext::settingToEnum(const std::string& settingName) {
     return -1;
 }
 
-s32 RandomizerContext::optionToEnum(const std::string& optionName) {
-    static const std::unordered_map<std::string, s32> nameToEnum = {
+int RandomizerContext::OptionToEnum(const std::string& optionName) {
+    static const std::unordered_map<std::string, int> nameToEnum = {
+        {"On", ON},
+        {"Off", OFF},
         {"None", NONE},
         {"Vanilla", VANILLA},
         {"Open", OPEN},
@@ -731,7 +734,7 @@ RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::
     // Settings we need to check ingame
     for (const auto& [setting, info] : *randomizer::seedgen::settings::GetAllSettingsInfo()) {
         if (info->NeedInGame()) {
-            auto settingEnum = RandomizerContext::settingToEnum(setting);
+            auto settingEnum = RandomizerContext::SettingToEnum(setting);
             if (settingEnum == -1) {
                 throw std::runtime_error("Setting \"" + setting + "\" does not have an associated enum value");
             }
@@ -741,7 +744,7 @@ RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::
             if (info->OptionsAreNumbers()) {
                 optionEnum = world->Setting(setting).GetCurrentOptionAsNumber();
             } else {
-                optionEnum = RandomizerContext::optionToEnum(option);
+                optionEnum = RandomizerContext::OptionToEnum(option);
             }
             if (optionEnum == -1) {
                 throw std::runtime_error("Option \"" + option + "\" for setting \"" + setting + "\" does not have an associated enum value");

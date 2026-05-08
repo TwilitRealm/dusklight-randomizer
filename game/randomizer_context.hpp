@@ -71,9 +71,12 @@ public:
         HYRULE_BIG_KEY_HEARTS,
         HYRULE_BIG_KEY_DUNGEONS,
         PALACE_OF_TWILIGHT_REQUIREMENTS,
+        SKIP_MINOR_CUTSCENES,
     };
 
     enum Options {
+        ON,
+        OFF,
         NONE,
         VANILLA,
         OPEN,
@@ -84,9 +87,9 @@ public:
         DUNGEONS,
     };
 
-    static int settingToEnum(const std::string& settingName);
+    static int SettingToEnum(const std::string& settingName);
 
-    static int optionToEnum(const std::string& optionName);
+    static int OptionToEnum(const std::string& optionName);
 };
 
 /*
@@ -143,7 +146,7 @@ public:
 
     // Used to store an item id for a flow message override so that we can give the item
     // once the textbox is closed instead of when the message appears. This lines up
-    // more naturally with how the timing of how the game normally gives items and affects
+    // more naturally with the timing of when the game normally gives items and affects
     // things like the sound of the rupee counter going up.
     u8 mFlowMessageItemId{0};
 };

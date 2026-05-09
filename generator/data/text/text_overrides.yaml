@@ -222,6 +222,26 @@
   Group: 0
   Message Id: 335
 
+#- Name: Midna Call As Human Two Choice
+#  Group: 0
+#  Message Id: 2004
+#
+#- Name: Midna Call As Wolf Two Choice
+#  Group: 0
+#  Message Id: 2005
+
+#- Name: Midna Call As Wolf No Shadow Crystal Two Choice
+#  Group: 0
+#  Message Id: 2039
+
+- Name: Midna Call As Human Three Choice
+  Group: 0
+  Message Id: 2040
+
+- Name: Midna Call As Wolf Three Choice
+  Group: 0
+  Message Id: 2041
+
 - Name: Charlo Donation Choice Text
   Group: 4
   Message Id: 6403

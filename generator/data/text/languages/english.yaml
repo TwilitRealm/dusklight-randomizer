@@ -324,6 +324,38 @@ Partially Filled Sky Book Get Item Text:
       <fast>You got a <red>Sky Character<white>!
       You've collected <red>{}<white> so far.
 
+#Midna Call As Human Two Choice:
+#  Standard:
+#    Text: |-
+#      <choice 1>Transform into wolf
+#      <choice 2>Change time
+#
+#Midna Call As Wolf Two Choice:
+#  Standard:
+#    Text: |-
+#      <choice 1>Transform into human
+#      <choice 2>Change time
+
+#Midna Call As Wolf No Shadow Crystal Two Choice:
+#  Standard:
+#    Text: |-
+#      <choice 1>Warp
+#      <choice 2>Change time
+
+Midna Call As Human Three Choice:
+  Standard:
+    Text: |-
+      <choice 1>Transform into wolf
+      <choice 2>Warp
+      <choice 3>Change time
+
+Midna Call As Wolf Three Choice:
+  Standard:
+    Text: |-
+      <choice 1>Transform into human
+      <choice 2>Warp
+      <choice 3>Change time
+
 Charlo Donation Choice Text:
   Standard:
     Text: |-

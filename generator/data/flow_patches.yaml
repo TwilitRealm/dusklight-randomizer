@@ -2,7 +2,21 @@
 
 # NOTE: All data is expressed in little endian
 
-#0: # zel_00.bmg
+0: # zel_00.bmg
+  # Change Talk to Midna options to use custom event 44
+  # which changes the time of day
+  - index: 0x18F
+    type: event
+    event: 44
+    parameters: 0x00000000
+    next node index: 0x116
+
+  - index: 0x192
+    type: event
+    event: 44
+    parameters: 0x00000000
+    next node index: 0x110
+
 #1: # zel_01.bmg
 2: # zel_02.bmg
   # Patch Barnes branch to see if you can buy the bomb bag to use

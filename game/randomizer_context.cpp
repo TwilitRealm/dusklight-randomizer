@@ -78,25 +78,18 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
     out["mStartHour"] = static_cast<u16>(this->mStartHour);
     out["mMapBits"] = static_cast<u16>(this->mMapBits);
 
-    for (const auto& [stageRoomLayer, actorPatches] : this->mActorPatches) {
+    for (const auto& [stageRoomLayer, actorPatches] : this->mObjectPatches) {
         for (const auto& [actorCRC, actorPatch] : actorPatches) {
-            out["mActorPatches"][stageRoomLayer][actorCRC] = ContainerToHexString(actorPatch);
+            out["mObjectPatches"][stageRoomLayer][actorCRC] = ContainerToHexString(actorPatch);
         }
     }
 
-    for (const auto& [actorType, stages] : this->mActorAdditions) {
-        for (const auto& [stageRoomLayer, newActors] : stages) {
-            for (const auto& actor : newActors) {
-                out["mActorAdditions"][actorType][stageRoomLayer].push_back(ContainerToHexString(actor));
-            }
+    for (const auto& [stageRoomLayer, newActors] : this->mObjectAdditions) {
+        for (const auto& actor : newActors) {
+            out["mObjectAdditions"][stageRoomLayer].push_back(ContainerToHexString(actor));
         }
     }
 
-    for (const auto& [stageRoomLayer, actorPatches] : this->mTgscDeletions) {
-        for (const auto& actorCRC : actorPatches) {
-            out["mTgscDeletions"][stageRoomLayer].push_back(actorCRC);
-        }
-    }
 
     out["mFlowPatches"] = this->mFlowPatches;
 
@@ -216,36 +209,20 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
     // Starting map bits
     this->mMapBits = in["mMapBits"].as<u8>();
 
-    // Actor Patches
-    for (const auto& stageRoomLayerNode: in["mActorPatches"]) {
+    // Object Patches
+    for (const auto& stageRoomLayerNode: in["mObjectPatches"]) {
         u32 stageRoomLayer = stageRoomLayerNode.first.as<u32>();
         for (const auto& actorPatchNode : stageRoomLayerNode.second) {
             u32 actorCRC = actorPatchNode.first.as<u32>();
-            auto actorBytes = HexToBytes(actorPatchNode.second.as<std::string>());
-            auto& patchedActor = this->mActorPatches[stageRoomLayer][actorCRC];
-            std::copy_n(actorBytes.begin(), actorBytes.size(), patchedActor.begin());
+            this->mObjectPatches[stageRoomLayer][actorCRC] = HexToBytes(actorPatchNode.second.as<std::string>());
         }
     }
 
-    // Actor Additions
-    for (const auto& typeNode: in["mActorAdditions"]) {
-        u32 type = typeNode.first.as<u32>();
-        for (const auto& stageNode : typeNode.second) {
-            u32 stageRoomLayer = stageNode.first.as<u32>();
-            for (const auto& actorNode : stageNode.second) {
-                auto actorBytes = HexToBytes(actorNode.as<std::string>());
-                auto& patchedActor = this->mActorAdditions[type][stageRoomLayer].emplace_back();
-                std::copy_n(actorBytes.begin(), actorBytes.size(), patchedActor.begin());
-            }
-        }
-    }
-
-    // Actor Deletions
-    for (const auto& stageRoomLayerNode: in["mTgscDeletions"]) {
-        u32 stageRoomLayer = stageRoomLayerNode.first.as<u32>();
-        for (const auto& actorPatchNode : stageRoomLayerNode.second) {
-            u32 actorCRC = actorPatchNode.as<u32>();
-            this->mTgscDeletions[stageRoomLayer].insert(actorCRC);
+    // Object Additions
+    for (const auto& stageNode: in["mObjectAdditions"]) {
+        u32 stageRoomLayer = stageNode.first.as<u32>();
+        for (const auto& objectData : stageNode.second) {
+            this->mObjectAdditions[stageRoomLayer].emplace_back(HexToBytes(objectData.as<std::string>()));
         }
     }
 
@@ -745,6 +722,82 @@ u32 getStageObjCRC32(u8* data, size_t size) {
     return zng_crc32(0, (data), size);
 }
 
+stage_tgsc_data_class parseObjData(const YAML::Node& objectNode) {
+    using namespace Utility::Endian;
+    // Get all the data for the actor (with endian shenanigans)
+    stage_tgsc_data_class object{};
+    const auto& actorName = objectNode["name"].as<std::string>();
+    strncpy(object.name, actorName.c_str(), 8);
+    object.base.parameters = toPlatform(target, objectNode["parameters"].as<u32>());
+    object.base.position.x = toPlatform(target, objectNode["position"]["x"].as<f32>());
+    object.base.position.y = toPlatform(target, objectNode["position"]["y"].as<f32>());
+    object.base.position.z = toPlatform(target, objectNode["position"]["z"].as<f32>());
+    // Have to retrieve as u16 and then cast as s16 because otherwise yaml-cpp
+    // complains about values over 32767 not fitting in s16
+    object.base.angle.x = toPlatform(target, static_cast<s16>(objectNode["angle"]["x"].as<u16>()));
+    object.base.angle.y = toPlatform(target, static_cast<s16>(objectNode["angle"]["y"].as<u16>()));
+    object.base.angle.z = toPlatform(target, static_cast<s16>(objectNode["angle"]["z"].as<u16>()));
+    object.base.setID = toPlatform(target, static_cast<s16>(objectNode["set id"].as<u16>()));
+
+    if (objectNode["scale"]) {
+        object.scale.x = objectNode["scale"]["x"].as<u8>();
+        object.scale.y = objectNode["scale"]["y"].as<u8>();
+        object.scale.z = objectNode["scale"]["z"].as<u8>();
+    } else {
+        object.scale = fopAcM_prmScale_class{0, 0, 0};
+    }
+
+    return object;
+}
+
+void parseObjPatchData(stage_tgsc_data_class& object, const YAML::Node& patchNode) {
+    using namespace Utility::Endian;
+    if (patchNode["name"]) {
+        const auto& newName = patchNode["name"].as<std::string>();
+        strncpy(object.name, newName.c_str(), 8);
+    }
+    if (patchNode["parameters"]) {
+        object.base.parameters = toPlatform(target, patchNode["parameters"].as<u32>());
+    }
+    if (auto patchPosition = patchNode["position"]) {
+        if (patchPosition["x"]) {
+            object.base.position.x = toPlatform(target, patchPosition["x"].as<f32>());
+        }
+        if (patchPosition["y"]) {
+            object.base.position.y = toPlatform(target, patchPosition["y"].as<f32>());
+        }
+        if (patchPosition["z"]) {
+            object.base.position.z = toPlatform(target, patchPosition["z"].as<f32>());
+        }
+    }
+    if (auto patchAngle = patchNode["angle"]) {
+        // Have to retrieve as u16 and then cast as s16 because otherwise yaml-cpp
+        // complains about values over 32767 not fitting in s16
+        if (patchAngle["x"]) {
+            object.base.angle.x = toPlatform(target, static_cast<s16>(patchAngle["x"].as<u16>()));
+        }
+        if (patchAngle["y"]) {
+            object.base.angle.y = toPlatform(target, static_cast<s16>(patchAngle["y"].as<u16>()));
+        }
+        if (patchAngle["z"]) {
+            object.base.angle.z = toPlatform(target, static_cast<s16>(patchAngle["z"].as<u16>()));
+        }
+    }
+    if (auto patchScale = patchNode["scale"]) {
+        // Have to retrieve as u16 and then cast as s16 because otherwise yaml-cpp
+        // complains about values over 32767 not fitting in s16
+        if (patchScale["x"]) {
+            object.scale.x = toPlatform(target, static_cast<s16>(patchScale["x"].as<u16>()));
+        }
+        if (patchScale["y"]) {
+            object.scale.y = toPlatform(target, static_cast<s16>(patchScale["y"].as<u16>()));
+        }
+        if (patchScale["z"]) {
+            object.scale.z = toPlatform(target, static_cast<s16>(patchScale["z"].as<u16>()));
+        }
+    }
+}
+
 RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::World>& world) {
     RandomizerContext randoData{};
 
@@ -943,183 +996,56 @@ RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::
         randoData.mStartHour = 24;
 
     // Actor Patches
-    auto actorPatches = LoadYAML(RANDO_DATA_PATH "actor_patches.yaml");
+    auto actorPatches = LoadYAML(RANDO_DATA_PATH "object_patches.yaml");
     for (const auto& stageNode : actorPatches) {
         const auto& stageName = stageNode.first.as<std::string>();
         for (const auto& roomNode : stageNode.second) {
             u8 roomNo = roomNode.first.as<u8>();
-            for (const auto& actorNode : roomNode.second) {
-                using namespace Utility::Endian;
+            for (const auto& objectNode : roomNode.second) {
+                const auto& action = objectNode["action"].as<std::string>();
+
                 // Get all the data for the actor (with endian shenanigans)
-                stage_actor_data_class actor{};
-                const auto& actorName = actorNode["name"].as<std::string>();
-                strncpy(actor.name, actorName.c_str(), 8);
-                actor.base.parameters = toPlatform(target, actorNode["parameters"].as<u32>());
-                actor.base.position.x = toPlatform(target, actorNode["position"]["x"].as<f32>());
-                actor.base.position.y = toPlatform(target, actorNode["position"]["y"].as<f32>());
-                actor.base.position.z = toPlatform(target, actorNode["position"]["z"].as<f32>());
-                // Have to retrieve as u16 and then cast as s16 because otherwise yaml-cpp
-                // complains about values over 32767 not fitting in s16
-                actor.base.angle.x = toPlatform(target, static_cast<s16>(actorNode["angle"]["x"].as<u16>()));
-                actor.base.angle.y = toPlatform(target, static_cast<s16>(actorNode["angle"]["y"].as<u16>()));
-                actor.base.angle.z = toPlatform(target, static_cast<s16>(actorNode["angle"]["z"].as<u16>()));
+                auto object = parseObjData(objectNode);
+
+                size_t objDataSize = RandomizerContext::TGSC_CRC_SIZE;
+                // If the scale of this object is all zeros, it's an ACTR
+                if (object.scale.x == 0 && object.scale.y == 0 && object.scale.z == 0) {
+                    objDataSize = RandomizerContext::ACTR_CRC_SIZE;
+                }
 
                 // Create unique hash based off of actor data
-                u32 actorCRC32 = getStageObjCRC32(reinterpret_cast<u8*>(&actor), RandomizerContext::ACTOR_CRC_SIZE);
+                u32 objectCRC32 = getStageObjCRC32(reinterpret_cast<u8*>(&object), objDataSize);
 
-                // Then override the actor with whatever parts are being patched
-                const auto& patchNode = actorNode["patch"];
-                if (patchNode["name"]) {
-                    const auto& newName = patchNode["name"].as<std::string>();
-                    strncpy(actor.name, newName.c_str(), 8);
-                }
-                if (patchNode["parameters"]) {
-                    actor.base.parameters = toPlatform(target, patchNode["parameters"].as<u32>());
-                }
-                if (auto patchPosition = patchNode["position"]) {
-                    if (patchPosition["x"]) {
-                        actor.base.position.x = toPlatform(target, patchPosition["x"].as<f32>());
-                    }
-                    if (patchPosition["y"]) {
-                        actor.base.position.y = toPlatform(target, patchPosition["y"].as<f32>());
-                    }
-                    if (patchPosition["z"]) {
-                        actor.base.position.z = toPlatform(target, patchPosition["z"].as<f32>());
-                    }
-                }
-                if (auto patchAngle = patchNode["angle"]) {
-                    // Have to retrieve as u16 and then cast as s16 because otherwise yaml-cpp
-                    // complains about values over 32767 not fitting in s16
-                    if (patchAngle["x"]) {
-                        actor.base.angle.x = toPlatform(target, static_cast<s16>(patchAngle["x"].as<u16>()));
-                    }
-                    if (patchAngle["y"]) {
-                        actor.base.angle.y = toPlatform(target, static_cast<s16>(patchAngle["y"].as<u16>()));
-                    }
-                    if (patchAngle["z"]) {
-                        actor.base.angle.z = toPlatform(target, static_cast<s16>(patchAngle["z"].as<u16>()));
-                    }
+                // Depending on the action, store data on this actor
+                std::vector<u8> actorData(0);
+                // If we're patching this object, Then override the object with whatever parts are being patched
+                // and add that patch data to our actorData
+                if (action == "patch") {
+                    parseObjPatchData(object, objectNode["patch"]);
+                    actorData.resize(objDataSize);
+                    std::memcpy(actorData.data(), &object, objDataSize);
+                } else if (action == "add") {
+                    // If we're adding the object, add it's regular data to the actorData
+                    actorData.resize(objDataSize);
+                    std::memcpy(actorData.data(), &object, objDataSize);
+                } else if (action == "delete") {
+                    // If we're deleting this actor, give it a specific size to indicate we're deleting it
+                    actorData.resize(RandomizerContext::OBJ_DELETE_SIZE);
                 }
 
-                // Insert the actor patch into the context with our crc32 as the key and the
-                // raw actor patch data as the value
-                std::array<u8, RandomizerContext::ACTOR_CRC_SIZE> patchedActorData{};
-                std::memcpy(patchedActorData.data(), &actor, RandomizerContext::ACTOR_CRC_SIZE);
-                for (const auto& layerNode : actorNode["layers"]) {
+                // Loop through all of our layers to apply this action to
+                for (const auto& layerNode : objectNode["layers"]) {
                     u8 layerNo = layerNode.as<u8>();
                     // Create key based off of stage index, room, and layer
                     u32 stageRoomLayerKey{};
                     stageRoomLayerKey |= getStageID(stageName.c_str()) << 16;
                     stageRoomLayerKey |= roomNo << 8;
                     stageRoomLayerKey |= layerNo;
-                    randoData.mActorPatches[stageRoomLayerKey][actorCRC32] = patchedActorData;
-                }
-            }
-        }
-    }
 
-    // Actor Additions
-    auto actorAdditions = LoadYAML(RANDO_DATA_PATH "actor_additions.yaml");
-    for (const auto& typeNode : actorAdditions) {
-        const auto& actorTypeStr = typeNode.first.as<std::string>();
-        // Get the integer interpretation of the multi-char type literal
-        u32 actorType = *(reinterpret_cast<const u32*>(actorTypeStr.c_str()));
-        // For each stage
-        for (const auto& stageNode : typeNode.second) {
-            const auto& stageName = stageNode.first.as<std::string>();
-            // For each room
-            for (const auto& roomNode : stageNode.second) {
-                u8 roomNo = roomNode.first.as<u8>();
-                // Get data on new actors
-                for (const auto& actorNode : roomNode.second) {
-                    using namespace Utility::Endian;
-                    // Get all the data for the actor (with endian shenanigans)
-                    stage_actor_data_class actor{};
-                    const auto& actorName = actorNode["name"].as<std::string>();
-                    strncpy(actor.name, actorName.c_str(), 8);
-                    actor.base.parameters = toPlatform(target, actorNode["parameters"].as<u32>());
-                    actor.base.position.x = toPlatform(target, actorNode["position"]["x"].as<f32>());
-                    actor.base.position.y = toPlatform(target, actorNode["position"]["y"].as<f32>());
-                    actor.base.position.z = toPlatform(target, actorNode["position"]["z"].as<f32>());
-                    // Have to retrieve as u16 and then cast as s16 because otherwise yaml-cpp
-                    // complains about values over 32767 not fitting in s16
-                    actor.base.angle.x = toPlatform(target, static_cast<s16>(actorNode["angle"]["x"].as<u16>()));
-                    actor.base.angle.y = toPlatform(target, static_cast<s16>(actorNode["angle"]["y"].as<u16>()));
-                    actor.base.angle.z = toPlatform(target, static_cast<s16>(actorNode["angle"]["z"].as<u16>()));
-
-                    // Insert the actor into the context keyed by type and the stage/layer/room combo
-                    std::array<u8, RandomizerContext::ACTOR_CRC_SIZE> newActorData{};
-                    std::memcpy(newActorData.data(), &actor, RandomizerContext::ACTOR_CRC_SIZE);
-                    for (const auto& layerNode : actorNode["layers"]) {
-                        u8 layerNo = layerNode.as<u8>();
-                        // Create key based off of stage index, room, and layer
-                        u32 stageRoomLayerKey{};
-                        stageRoomLayerKey |= getStageID(stageName.c_str()) << 16;
-                        stageRoomLayerKey |= roomNo << 8;
-                        stageRoomLayerKey |= layerNo;
-                        randoData.mActorAdditions[actorType][stageRoomLayerKey].push_back(newActorData);
-                    }
-                }
-            }
-        }
-    }
-
-    // Actor Deletions
-    auto actorDeletions = LoadYAML(RANDO_DATA_PATH "actor_deletions.yaml");
-    for (const auto& typeNode : actorDeletions) {
-        const auto& actorTypeStr = typeNode.first.as<std::string>();
-        // Get the integer interpretation of the multi-char type literal
-        u32 actorType = *(reinterpret_cast<const u32*>(actorTypeStr.c_str()));
-        // For each stage
-        for (const auto& stageNode : typeNode.second) {
-            const auto& stageName = stageNode.first.as<std::string>();
-            // For each room
-            for (const auto& roomNode : stageNode.second) {
-                u8 roomNo = roomNode.first.as<u8>();
-                // Get data on actors to delete
-                for (const auto& actorNode : roomNode.second) {
-                    using namespace Utility::Endian;
-                    // Get all the data for the actor (with endian shenanigans)
-                    stage_tgsc_data_class actor{};
-                    const auto& actorName = actorNode["name"].as<std::string>();
-
-                    auto parameters = toPlatform(target, actorNode["parameters"].as<u32>());
-                    auto posX = toPlatform(target, actorNode["position"]["x"].as<f32>());
-                    auto posY = toPlatform(target, actorNode["position"]["y"].as<f32>());
-                    auto posZ = toPlatform(target, actorNode["position"]["z"].as<f32>());
-                    // Have to retrieve as u16 and then cast as s16 because otherwise yaml-cpp
-                    // complains about values over 32767 not fitting in s16
-                    auto angX = toPlatform(target, static_cast<s16>(actorNode["angle"]["x"].as<u16>()));
-                    auto angY = toPlatform(target, static_cast<s16>(actorNode["angle"]["y"].as<u16>()));
-                    auto angZ = toPlatform(target, static_cast<s16>(actorNode["angle"]["z"].as<u16>()));
-
-                    u8 scaleX, scaleY, scaleZ;
-                    if (actorNode["scale"]) {
-                        scaleX = actorNode["scale"]["x"].as<u8>();
-                        scaleY = actorNode["scale"]["y"].as<u8>();
-                        scaleZ = actorNode["scale"]["z"].as<u8>();
-                    }
-
-                    strncpy(actor.name, actorName.c_str(), 8);
-                    actor.base.parameters = parameters;
-                    actor.base.position = cXyz{posX, posY, posZ};
-                    actor.base.angle = csXyz{angX, angY, angZ};
-                    actor.base.setID = 0xFFFF; // Always seems to be 0xFFFF
-                    actor.scale = fopAcM_prmScale_class{scaleX, scaleY, scaleZ};
-
-                    u32 objCRC32 = getStageObjCRC32(reinterpret_cast<u8*>(&actor), RandomizerContext::TGSC_CRC_SIZE);
-
-                    // Insert the actor into the context keyed by type and the stage/layer/room combo
-                    std::array<u8, RandomizerContext::TGSC_CRC_SIZE> actorData{};
-                    std::memcpy(actorData.data(), &actor, RandomizerContext::TGSC_CRC_SIZE);
-                    for (const auto& layerNode : actorNode["layers"]) {
-                        u8 layerNo = layerNode.as<u8>();
-                        // Create key based off of stage index, room, and layer
-                        u32 stageRoomLayerKey{};
-                        stageRoomLayerKey |= getStageID(stageName.c_str()) << 16;
-                        stageRoomLayerKey |= roomNo << 8;
-                        stageRoomLayerKey |= layerNo;
-                        randoData.mTgscDeletions[stageRoomLayerKey].insert(objCRC32);
+                    if (action == "add") {
+                        randoData.mObjectAdditions[stageRoomLayerKey].push_back(actorData);
+                    } else { // patch or delete
+                        randoData.mObjectPatches[stageRoomLayerKey][objectCRC32] = actorData;
                     }
                 }
             }

@@ -18,8 +18,9 @@
  */
 class RandomizerContext {
 public:
-    static constexpr size_t ACTOR_CRC_SIZE = 30;
-    static constexpr size_t TGSC_CRC_SIZE = 35;
+    static constexpr size_t ACTR_CRC_SIZE = 32;
+    static constexpr size_t TGSC_CRC_SIZE = 35; // 3 extra bytes for scale x, y, z
+    static constexpr size_t OBJ_DELETE_SIZE = 1;
 
     RandomizerContext() = default;
 
@@ -45,9 +46,9 @@ public:
     u8 mStartHour{0};
     u8 mMapBits{};
 
-    std::unordered_map<u32, std::unordered_map<u32, std::array<u8, ACTOR_CRC_SIZE>>> mActorPatches{};
-    std::unordered_map<u32, std::unordered_map<u32, std::list<std::array<u8, ACTOR_CRC_SIZE>>>> mActorAdditions{};
-    std::unordered_map<u32, std::unordered_set<u32>> mTgscDeletions{};
+    std::unordered_map<u32, std::unordered_map<u32, std::vector<u8>>> mObjectPatches{};
+    std::unordered_map<u32, std::list<std::vector<u8>>> mObjectAdditions{};
+    // std::unordered_map<u32, std::unordered_set<u32>> mTgscDeletions{};
     std::unordered_map<u32, u64> mFlowPatches{};
 
     // struct TextOverride {

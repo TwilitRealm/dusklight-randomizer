@@ -92,6 +92,12 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
         }
     }
 
+    for (const auto& [stageRoomLayer, actorPatches] : this->mTgscDeletions) {
+        for (const auto& actorCRC : actorPatches) {
+            out["mTgscDeletions"][stageRoomLayer].push_back(actorCRC);
+        }
+    }
+
     out["mFlowPatches"] = this->mFlowPatches;
 
     // Dump text overrides as binary to avoid losing intentional null characters
@@ -231,6 +237,15 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
                 auto& patchedActor = this->mActorAdditions[type][stageRoomLayer].emplace_back();
                 std::copy_n(actorBytes.begin(), actorBytes.size(), patchedActor.begin());
             }
+        }
+    }
+
+    // Actor Deletions
+    for (const auto& stageRoomLayerNode: in["mTgscDeletions"]) {
+        u32 stageRoomLayer = stageRoomLayerNode.first.as<u32>();
+        for (const auto& actorPatchNode : stageRoomLayerNode.second) {
+            u32 actorCRC = actorPatchNode.as<u32>();
+            this->mTgscDeletions[stageRoomLayer].insert(actorCRC);
         }
     }
 
@@ -726,8 +741,8 @@ u32 getActorPatchesCurrentStageKey(u8 roomNo) {
     return actorPatchesStageKey;
 }
 
-u32 getActorCRC32(stage_actor_data_class* actor) {
-    return zng_crc32(0, reinterpret_cast<u8*>(actor), RandomizerContext::ACTOR_CRC_SIZE);
+u32 getStageObjCRC32(u8* data, size_t size) {
+    return zng_crc32(0, (data), size);
 }
 
 RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::World>& world) {
@@ -950,7 +965,7 @@ RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::
                 actor.base.angle.z = toPlatform(target, static_cast<s16>(actorNode["angle"]["z"].as<u16>()));
 
                 // Create unique hash based off of actor data
-                u32 actorCRC32 = getActorCRC32(&actor);
+                u32 actorCRC32 = getStageObjCRC32(reinterpret_cast<u8*>(&actor), RandomizerContext::ACTOR_CRC_SIZE);
 
                 // Then override the actor with whatever parts are being patched
                 const auto& patchNode = actorNode["patch"];
@@ -1043,6 +1058,68 @@ RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::
                         stageRoomLayerKey |= roomNo << 8;
                         stageRoomLayerKey |= layerNo;
                         randoData.mActorAdditions[actorType][stageRoomLayerKey].push_back(newActorData);
+                    }
+                }
+            }
+        }
+    }
+
+    // Actor Deletions
+    auto actorDeletions = LoadYAML(RANDO_DATA_PATH "actor_deletions.yaml");
+    for (const auto& typeNode : actorDeletions) {
+        const auto& actorTypeStr = typeNode.first.as<std::string>();
+        // Get the integer interpretation of the multi-char type literal
+        u32 actorType = *(reinterpret_cast<const u32*>(actorTypeStr.c_str()));
+        // For each stage
+        for (const auto& stageNode : typeNode.second) {
+            const auto& stageName = stageNode.first.as<std::string>();
+            // For each room
+            for (const auto& roomNode : stageNode.second) {
+                u8 roomNo = roomNode.first.as<u8>();
+                // Get data on actors to delete
+                for (const auto& actorNode : roomNode.second) {
+                    using namespace Utility::Endian;
+                    // Get all the data for the actor (with endian shenanigans)
+                    stage_tgsc_data_class actor{};
+                    const auto& actorName = actorNode["name"].as<std::string>();
+
+                    auto parameters = toPlatform(target, actorNode["parameters"].as<u32>());
+                    auto posX = toPlatform(target, actorNode["position"]["x"].as<f32>());
+                    auto posY = toPlatform(target, actorNode["position"]["y"].as<f32>());
+                    auto posZ = toPlatform(target, actorNode["position"]["z"].as<f32>());
+                    // Have to retrieve as u16 and then cast as s16 because otherwise yaml-cpp
+                    // complains about values over 32767 not fitting in s16
+                    auto angX = toPlatform(target, static_cast<s16>(actorNode["angle"]["x"].as<u16>()));
+                    auto angY = toPlatform(target, static_cast<s16>(actorNode["angle"]["y"].as<u16>()));
+                    auto angZ = toPlatform(target, static_cast<s16>(actorNode["angle"]["z"].as<u16>()));
+
+                    u8 scaleX, scaleY, scaleZ;
+                    if (actorNode["scale"]) {
+                        scaleX = actorNode["scale"]["x"].as<u8>();
+                        scaleY = actorNode["scale"]["y"].as<u8>();
+                        scaleZ = actorNode["scale"]["z"].as<u8>();
+                    }
+
+                    strncpy(actor.name, actorName.c_str(), 8);
+                    actor.base.parameters = parameters;
+                    actor.base.position = cXyz{posX, posY, posZ};
+                    actor.base.angle = csXyz{angX, angY, angZ};
+                    actor.base.setID = 0xFFFF; // Always seems to be 0xFFFF
+                    actor.scale = fopAcM_prmScale_class{scaleX, scaleY, scaleZ};
+
+                    u32 objCRC32 = getStageObjCRC32(reinterpret_cast<u8*>(&actor), RandomizerContext::TGSC_CRC_SIZE);
+
+                    // Insert the actor into the context keyed by type and the stage/layer/room combo
+                    std::array<u8, RandomizerContext::TGSC_CRC_SIZE> actorData{};
+                    std::memcpy(actorData.data(), &actor, RandomizerContext::TGSC_CRC_SIZE);
+                    for (const auto& layerNode : actorNode["layers"]) {
+                        u8 layerNo = layerNode.as<u8>();
+                        // Create key based off of stage index, room, and layer
+                        u32 stageRoomLayerKey{};
+                        stageRoomLayerKey |= getStageID(stageName.c_str()) << 16;
+                        stageRoomLayerKey |= roomNo << 8;
+                        stageRoomLayerKey |= layerNo;
+                        randoData.mTgscDeletions[stageRoomLayerKey].insert(objCRC32);
                     }
                 }
             }

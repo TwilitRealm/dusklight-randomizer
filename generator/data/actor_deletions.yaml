@@ -1,0 +1,26 @@
+# Stage Objects to not spawn in
+
+# Actors which have the SCOB dzx type
+SCOB:
+  # Palace of Twilight
+  D_MN08:
+    # Room 0 - Main Entrance
+    0:
+      # Delete invisible wall that blocks north access
+      # in Palace of Twilight unless both Sols are placed
+      - name: ClearB
+        parameters: 0x00003F81
+        position:
+          x: 255.0
+          y: 1600.0
+          z: 2560.0
+        angle:
+          x: 0x4000
+          y: 0x0000
+          z: 0x0000
+        scale:
+          x: 20
+          y: 10
+          z: 20
+        layers:
+          - 14

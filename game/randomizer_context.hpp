@@ -10,6 +10,7 @@
 #include <string>
 #include <sstream>
 #include <unordered_map>
+#include <unordered_set>
 
 /*
  * Class holding all the information necessary for playing
@@ -18,6 +19,7 @@
 class RandomizerContext {
 public:
     static constexpr size_t ACTOR_CRC_SIZE = 30;
+    static constexpr size_t TGSC_CRC_SIZE = 35;
 
     RandomizerContext() = default;
 
@@ -43,8 +45,9 @@ public:
     u8 mStartHour{0};
     u8 mMapBits{};
 
-    std::unordered_map<u32, std::unordered_map<u32, std::array<u8, 30>>> mActorPatches{};
-    std::unordered_map<u32, std::unordered_map<u32, std::list<std::array<u8, 30>>>> mActorAdditions{};
+    std::unordered_map<u32, std::unordered_map<u32, std::array<u8, ACTOR_CRC_SIZE>>> mActorPatches{};
+    std::unordered_map<u32, std::unordered_map<u32, std::list<std::array<u8, ACTOR_CRC_SIZE>>>> mActorAdditions{};
+    std::unordered_map<u32, std::unordered_set<u32>> mTgscDeletions{};
     std::unordered_map<u32, u64> mFlowPatches{};
 
     // struct TextOverride {
@@ -201,7 +204,7 @@ class stage_actor_data_class;
 /*
  * Gets the CRC32 hash of an actors name, parameters, position, and angle
  */
-u32 getActorCRC32(stage_actor_data_class*);
+u32 getStageObjCRC32(u8* data, size_t size);
 
 void GenerateAndWriteSeed(std::string& generationStatusMsg);
 #endif //DUSK_RANDOMIZER_CONTEXT_HPP

@@ -1636,6 +1636,26 @@ F_SP118:
         - 2
         - 3
 
+    # Gate to King Bublin 2 Fight
+    - action: patch
+      name: CrvGate
+      parameters: 0xFFFFFFFF
+      position:
+        x: 2150.0
+        y: 0.0
+        z: -450.0
+      angle:
+        x: 0x0000
+        y: 0x8000
+        z: 0x0000
+      set id: 0xFFFF
+      patch:
+        # Give the gate a unique flag (0x00) so
+        # it stays permanently open once it's been unlocked
+        parameters: 0xFFFF00FF
+      layers:
+        - 0
+
 # Hyrule Field
 F_SP121:
   # Room 0 - Eldin Field / Bridge of Eldin

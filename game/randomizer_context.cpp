@@ -1031,6 +1031,9 @@ RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::
                 } else if (action == "delete") {
                     // If we're deleting this actor, give it a specific size to indicate we're deleting it
                     actorData.resize(RandomizerContext::OBJ_DELETE_SIZE);
+                } else {
+                    // Unknown action. Don't continue
+                    throw std::runtime_error("object patch action \"" + action + "\" not recognized");
                 }
 
                 // Loop through all of our layers to apply this action to
@@ -1102,6 +1105,13 @@ RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::
     return std::move(randoData);
 }
 
+static void DeleteFailedGenerationFiles(randomizer::Randomizer& rando) {
+    // If the output path with "//" that means we never got far enough to create any files
+    if (!rando.GetSeedOutputPath().ends_with("//")) {
+        std::filesystem::remove_all(rando.GetSeedOutputPath());
+    }
+}
+
 /*
  * Generates a seed and writes the necessary seed files to the players seed directory
  */
@@ -1115,6 +1125,7 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
     auto generationResult = r.Generate();
     if (generationResult.has_value()) {
         generationStatusMsg = fmt::format("Seed Generation failed. Reason:\n{}", generationResult.value());
+        DeleteFailedGenerationFiles(r);
         return;
     }
 
@@ -1125,6 +1136,7 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
     } catch (const std::runtime_error& e) {
         generationStatusMsg =
             fmt::format("Failed to write seed data. Reason:\n{}", e.what());
+        DeleteFailedGenerationFiles(r);
         return;
     }
 
@@ -1133,6 +1145,7 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
     if (writeToFileResult.has_value()) {
         generationStatusMsg =
             fmt::format("Failed to write seed data to file. Reason:\n{}", writeToFileResult.value());
+        DeleteFailedGenerationFiles(r);
         return;
     }
 

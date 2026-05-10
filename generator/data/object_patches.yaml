@@ -1460,6 +1460,27 @@ F_SP115:
 
 # Castle Town
 F_SP116:
+  # Room 0 - Central castle Town
+  0:
+    # Shoe shiner in front of Malo Mart
+    - action: patch
+      name: shoe
+      parameters: 0x0434C864
+      position:
+        x: 1031.68518066406
+        y: -181.089660644531
+        z: 2604.8818359375
+      angle:
+        x: 0x0000
+        y: 0x905C
+        z: 0x0000
+      set id: 0xFFFF
+      patch:
+        # Make the shoe shiner always appear
+        parameters: 0x0434F000
+      layers:
+        - 0
+
   # Room 1 - North Castle Town
   1:
     # Golden Wolf in North Castle Town

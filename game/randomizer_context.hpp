@@ -21,6 +21,7 @@ public:
     static constexpr size_t ACTR_CRC_SIZE = 32;
     static constexpr size_t TGSC_CRC_SIZE = 35; // 3 extra bytes for scale x, y, z
     static constexpr size_t OBJ_DELETE_SIZE = 1;
+    static constexpr u8 ROOM_STAGE = 0xFF;
 
     RandomizerContext() = default;
 

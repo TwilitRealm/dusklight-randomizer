@@ -1042,7 +1042,13 @@ RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::
     for (const auto& stageNode : actorPatches) {
         const auto& stageName = stageNode.first.as<std::string>();
         for (const auto& roomNode : stageNode.second) {
-            u8 roomNo = roomNode.first.as<u8>();
+            u8 roomNo{};
+            // Special value for
+            if (roomNode.first.as<std::string>() == "Stage") {
+                roomNo = RandomizerContext::ROOM_STAGE;
+            } else {
+                roomNo = roomNode.first.as<u8>();
+            }
             for (const auto& objectNode : roomNode.second) {
                 const auto& action = objectNode["action"].as<std::string>();
 

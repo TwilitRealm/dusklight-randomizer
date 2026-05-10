@@ -27,6 +27,27 @@ D_MN08:
       layers:
         - 14
 
+    # Delete the TagYami as well so midna doesn't prevent
+    # the player from going north either
+    - action: delete
+      name: TagYami
+      parameters: 0x00E6E502
+      position:
+        x: 250
+        y: 800
+        z: 5800
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      scale:
+        x: 100
+        y: 50
+        z: 100
+      layers:
+        - 14
+
 # Ordon Village
 F_SP103:
   # Room 0 - Main Village

@@ -1,5 +1,45 @@
 # Patches for game objects that get spawned in
 
+# City in the Sky
+D_MN07:
+  # Stage file objects
+  Stage:
+    # change the Savemem actor that changes Link's spawn position
+    - action: patch
+      name: Savmem
+      parameters: 0x00000A03
+      position:
+        x: -15044.2919921875
+        y: 0.0
+        z: -11283.109375
+      angle:
+        x: 0xFFFF
+        y: 0xFFFF
+        z: 0x184D
+      set id: 0xFFFF
+      patch:
+        parameters: 0x00000003
+      layers:
+        - 0
+
+  # Room 6 - West Bridge
+  6:
+    # Delete argorok actor that normally breaks the bridge
+    - action: delete
+      name: dr
+      parameters: 0x00000018
+      position:
+        x: -7075
+        y: -200
+        z: -11809.4033203125
+      angle:
+        x: 0x0000
+        y: 0x8000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+
 # Palace of Twilight
 D_MN08:
   # Room 0 - Main Entrance

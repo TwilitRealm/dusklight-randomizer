@@ -85,6 +85,8 @@
 
 - Name: City in the Sky West Bridge Upper Ledge
   Region: City in the Sky
+  Events:
+    Can Extend City in the Sky West Bridge: Spinner
   Exits:
     City in the Sky West Bridge Near Lobby: Clawshot
     City in the Sky Lobby Floor Upper West Ledge: Nothing
@@ -92,7 +94,7 @@
 - Name: City in the Sky West Bridge Near Lobby
   Region: City in the Sky
   Exits:
-    City in the Sky West Bridge Near Double Clawshot Maze Room: Double_Clawshots
+    City in the Sky West Bridge Near Double Clawshot Maze Room: Double_Clawshots or 'Can_Extend_City_in_the_Sky_West_Bridge'
     City in the Sky West Bridge Upper Ledge: Clawshot
     City in the Sky Lobby Floor Near West Bridge: Nothing
 
@@ -100,7 +102,7 @@
   Region: City in the Sky
   Exits:
     City in the Sky Double Clawshot Maze Room Near West Bridge: Nothing
-    City in the Sky West Bridge Near Lobby: Double_Clawshots
+    City in the Sky West Bridge Near Lobby: Double_Clawshots or 'Can_Extend_City_in_the_Sky_West_Bridge'
 
 # CITY IN THE SKY DOUBLE CLAWSHOT MAZE ROOM
 

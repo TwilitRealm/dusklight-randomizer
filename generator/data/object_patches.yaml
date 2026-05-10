@@ -2193,6 +2193,31 @@ F_SP121:
         - 9
         - 10
 
+    # Spawn coming from Outside South Castle Town
+    - action: patch
+      name: Link
+      parameters: 0xFF00503F
+      position:
+        x: -47839.47265625
+        y: -9337.5810546875
+        z: 52352.32421875
+      angle:
+        x: 0x0000
+        y: 0xF334
+        z: 0x0001
+      set id: 0xFFFF
+      patch:
+        # Change spawn to not be inside rocks if the rocks aren't broken
+        position:
+          x: -48296.46875
+          y: -9428.5810546875
+          z: 53030.3203125
+      layers:
+        - 0
+        - 6
+        - 9
+        - 10
+
   # Room 10 - Lanayru Field
   10:
     # Male Stag Beetle
@@ -3150,6 +3175,32 @@ F_SP122:
         # Take away the flag from this item so it doesn't conflict
         # with the nearby randomized item
         parameters: 0xF34AFF03
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
+    # Spawn coming from Faron Field
+    - action: patch
+      name: Link
+      parameters: 0xFF00503F
+      position:
+        x: -50958.37109375
+        y: -7010.82958984375
+        z: 38985.1875
+      angle:
+        x: 0x0000
+        y: 0x8AAB
+        z: 0x0000
+      set id: 0xFFFF
+      patch:
+        # Change spawn to not be inside rocks if the rocks aren't broken
+        position:
+          x: -51369.37109375
+          y: -6698.830078125
+          z: 37038.19140625
       layers:
         - 0
         - 4

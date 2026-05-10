@@ -75,6 +75,7 @@ public:
         HYRULE_BIG_KEY_HEARTS,
         HYRULE_BIG_KEY_DUNGEONS,
         PALACE_OF_TWILIGHT_REQUIREMENTS,
+        TEMPLE_OF_TIME_SWORD_REQUIREMENT,
         SKIP_MINOR_CUTSCENES,
         SKIP_MAJOR_CUTSCENES,
     };
@@ -90,6 +91,10 @@ public:
         POE_SOULS,
         HEARTS,
         DUNGEONS,
+        WOODEN_SWORD,
+        ORDON_SWORD,
+        MASTER_SWORD,
+        LIGHT_SWORD,
     };
 
     static int SettingToEnum(const std::string& settingName);
@@ -164,6 +169,7 @@ bool randomizer_IsActive();
 
 int randomizer_getItemAtLocation(const std::string& locationName);
 
+bool randomizer_checkTempleOfTimeRequirement();
 /**
  * Helper function to convert raw bytes of a container to a hex string
  */

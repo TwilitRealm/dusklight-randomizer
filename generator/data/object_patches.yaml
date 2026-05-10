@@ -1508,6 +1508,68 @@ F_SP117:
       layers:
         - 2
 
+    # Door to the past
+    - action: patch
+      name: smgdoor
+      parameters: 0x064010FF
+      position:
+        x: 0.0
+        y: 1725.0
+        z: 6900.0
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      patch:
+        # Give the door a custom flag not tied to the portal
+        parameters: 0x063010FF
+      layers:
+        - 2
+
+    # Statue guarding door to the past
+    - action: patch
+      name: Sekizoa
+      parameters: 0x3000EE64
+      position:
+        x: 0.0
+        y: 1725.0
+        z: 7020.0
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      patch:
+        # Give the statue a custom flag not tied to the portal
+        parameters: 0x3000EE63
+      layers:
+        - 2
+
+    # Msg Tag for striking pedestal
+    - action: patch
+      name: KMsg
+      parameters: 0x03AA96C7
+      position:
+        x: 0.0
+        y: 1700.0
+        z: -5435.0
+      angle:
+        x: 0x8064
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      scale:
+        x: 0x23
+        y: 0x23
+        z: 0x23
+      patch:
+        # Give the tag a custom flag not tied to the portal
+        angle:
+          x: 0x80FF
+      layers:
+        - 2
+
     # Spawn in the Master Sword actor
     - action: add
       name: mstrsrd

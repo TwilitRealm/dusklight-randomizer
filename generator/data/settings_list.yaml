@@ -471,6 +471,7 @@
     - Open: description
 
 - Name: Temple of Time Sword Requirement
+  Need In Game: True
   Tracker Important: True
   Default Option: None
   Options:

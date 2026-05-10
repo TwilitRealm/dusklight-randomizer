@@ -267,7 +267,7 @@ int RandomizerContext::SettingToEnum(const std::string& settingName) {
         {"Palace of Twilight Requirements", PALACE_OF_TWILIGHT_REQUIREMENTS},
         {"Skip Minor Cutscenes", SKIP_MINOR_CUTSCENES},
         {"Skip Major Cutscenes", SKIP_MAJOR_CUTSCENES},
-
+        {"Temple of Time Sword Requirement", TEMPLE_OF_TIME_SWORD_REQUIREMENT},
     };
 
     if (nameToEnum.contains(settingName)) {
@@ -289,6 +289,10 @@ int RandomizerContext::OptionToEnum(const std::string& optionName) {
         {"Poe Souls", POE_SOULS},
         {"Hearts", HEARTS},
         {"Dungeons", DUNGEONS},
+        {"Wooden Sword", WOODEN_SWORD},
+        {"Ordon Sword", ORDON_SWORD},
+        {"Master Sword", MASTER_SWORD},
+        {"Light Sword", LIGHT_SWORD},
     };
 
     if (nameToEnum.contains(optionName)) {
@@ -708,6 +712,44 @@ std::vector<u8> HexToBytes(std::string hex) {
 
 int randomizer_getItemAtLocation(const std::string& locationName) {
     return randomizer_GetContext().mItemLocations[locationName];
+}
+
+bool randomizer_checkTempleOfTimeRequirement() {
+    auto swordRequirement = randomizer_GetContext().mSettings[RandomizerContext::TEMPLE_OF_TIME_SWORD_REQUIREMENT];
+    u8 roomNo = dComIfGp_getStartStageRoomNo();
+
+    // Don't strike the pedestal again if we've already set the flag for striking it
+    if (roomNo == 1 && dComIfGs_isSwitch(0x63, roomNo)) {
+        return false;
+    }
+
+    // Make sure we have a sword in Link's hands.
+    auto equippedSword = dComIfGs_getSelectEquipSword();
+    if (equippedSword != 0xFF) {
+        // Fallthrough is intentional to check each potential sword requirement below the current equipped sword
+        switch (equippedSword) {
+        case dItemNo_LIGHT_SWORD_e:
+            if (swordRequirement == RandomizerContext::LIGHT_SWORD) {
+                return true;
+            }
+        case dItemNo_MASTER_SWORD_e:
+            if (swordRequirement == RandomizerContext::MASTER_SWORD) {
+                return true;
+            }
+        case dItemNo_SWORD_e:
+            if (swordRequirement == RandomizerContext::ORDON_SWORD) {
+                return true;
+            }
+        case dItemNo_WOOD_STICK_e:
+            if (swordRequirement == RandomizerContext::WOODEN_SWORD) {
+                return true;
+            }
+        default:
+            return false;
+        }
+    }
+
+    return false;
 }
 
 u32 getActorPatchesCurrentStageKey(u8 roomNo) {

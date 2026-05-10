@@ -276,7 +276,7 @@ RegionFlags:
         - 0x49 # Stairs to Temple of time created.
         - 0x4A # Struck master sword pedestal with sword.
         - 0x4B # Stairs and window appear and work properly (Past).
-        - 0xBC # Statue in present is gone.
+        - 0xBC # Statue in present is gone. (custom flag)
       - Sacred_Grove_Does_Not_Require_Skull_Kid == On:
         - 0xB6 # Skull Kid - Human defeated.
         - 0xB7 # Lost Woods Turns to day after defeating Skull Kid - Human

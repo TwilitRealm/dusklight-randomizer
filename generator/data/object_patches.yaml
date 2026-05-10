@@ -1607,6 +1607,22 @@ F_SP117:
       layers:
         - 2
 
+    # Delete shadow beast fight walls
+    - action: delete
+      name: Obj_tp
+      parameters: 0xEF00FF01
+      position:
+        x: 1445.53735351562
+        y: 3895.68212890625
+        z: -3593.36694335937
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0xFF64
+      set id: 0xFFFF
+      layers:
+        - 2
+
   # Room 2 - Temple of Time
   2:
     # Female Snail

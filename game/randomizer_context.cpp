@@ -322,6 +322,109 @@ int RandomizerState::_delete() {
     return 1;
 }
 
+static bool checkFoolishItemEffectReady()
+{
+    // Verify Link is loaded on the map.
+    if (!daAlink_getAlinkActorClass())
+    {
+        return false;
+    }
+
+    // Ensure Link is not in a cutscene
+    if (daAlink_getAlinkActorClass()->checkEventRun())
+    {
+        return false;
+    }
+
+    // Make sure Link isn't riding anything
+    if (daAlink_getAlinkActorClass()->checkRide())
+    {
+        return false;
+    }
+
+    // Ensure there are pointers to the mMeterClass and mpMeterDraw structs
+    if (!dMeter2Info_getMeterClass())
+    {
+        return false;
+    }
+
+    if (!dMeter2Info_getMeterClass()->getMeterDrawPtr())
+    {
+        return false;
+    }
+
+    // Make sure Z button isn't dimmed
+    if (dMeter2Info_getMeterClass()->getMeterDrawPtr()->getZButtonAlpha() != 1.f)
+    {
+        return false;
+    }
+
+    switch (daAlink_getAlinkActorClass()->mProcID)
+    {
+        case daAlink_c::PROC_TALK:
+        case daAlink_c::PROC_WOLF_SWIM_MOVE:
+        case daAlink_c::PROC_SWIM_MOVE:
+        case daAlink_c::PROC_SWIM_WAIT:
+        case daAlink_c::PROC_WOLF_SWIM_WAIT:
+        case daAlink_c::PROC_SWIM_UP:
+        case daAlink_c::PROC_SWIM_DIVE:
+        {
+            return false;
+        }
+        default:
+        {
+            break;
+        }
+    }
+    return true;
+}
+
+static void handleFoolishItem() {
+    u32 count = g_randomizerState.foolishItemCount;
+    if (count == 0) {
+        return;
+    }
+
+    if (!checkFoolishItemEffectReady())
+    {
+        return;
+    }
+
+    // Failsafe: Make sure the count does not somehow exceed 100
+    if (count > 100) {
+        count = 100;
+    }
+
+    // Reset count
+    g_randomizerState.foolishItemCount = 0;
+
+    /* Store the currently loaded sound wave to local variables as we will need to load them back later.
+     * We use this method because if we just loaded the sound waves every time the item was gotten, we'd
+     * eventually run out of memory so it is safer to unload everything and load it back in. */
+
+    auto sceneMgr = Z2GetSceneMgr();
+    const u32 seWave1 = sceneMgr->getLoadedSeWave_1();
+    const u32 seWave2 = sceneMgr->getLoadedSeWave_2();
+    sceneMgr->eraseSeWave(seWave1);
+    sceneMgr->eraseSeWave(seWave2);
+    sceneMgr->loadSeWave(0x46);
+    mDoAud_seStartLevel(0x10040, nullptr, 0, 0);
+    sceneMgr->loadSeWave(seWave1);
+    sceneMgr->loadSeWave(seWave2);
+
+    // Initiate the appropriate visual damage process
+    if (daAlink_getAlinkActorClass()->checkWolf())
+    {
+        daAlink_getAlinkActorClass()->procWolfDamageInit(nullptr);
+    }
+    else
+    {
+        daAlink_getAlinkActorClass()->procDamageInit(nullptr, 0);
+    }
+
+    daPy_py_c::setPlayerDamage(count, TRUE);
+}
+
 /*
  * Updates flags for Hyrule Castle Barrier, Palace of Twilight Access,
  * and Hyrule Castle Big Key chest. Maybe a bit overkill to check this every frame, but
@@ -441,11 +544,9 @@ int RandomizerState::execute() {
     }
     setRoomReloadingState(currentReloadingState);
 
-    // COpypasta old rando code until I build the framework out.
-    /*if (!libtp::tp::d_a_alink::checkStageName(libtp::data::stage::allStages[libtp::data::stage::StageIDs::Title_Screen]))
-    {
-        handleFoolishItem(randoPtr);
-    }*/
+    if (getStageID() != Title_Screen) {
+        handleFoolishItem();
+    }
 
     return 1;
 }
@@ -632,64 +733,6 @@ void RandomizerState::offLoad()
     updateGoalFlags();
 }
 
-bool checkFoolishItemEffectReady()
-{
-    // Verify Link is loaded on the map.
-    if (!daAlink_getAlinkActorClass())
-    {
-        return false;
-    }
-
-    // Ensure Link is not in a cutscene
-    if (daAlink_getAlinkActorClass()->checkEventRun())
-    {
-        return false;
-    }
-
-    // Make sure Link isn't riding anything
-    if (daAlink_getAlinkActorClass()->checkRide())
-    {
-        return false;
-    }
-
-    // Ensure there are pointers to the mMeterClass and mpMeterDraw structs
-    if (!dMeter2Info_getMeterClass())
-    {
-        return false;
-    }
-
-    if (!dMeter2Info_getMeterClass()->getMeterDrawPtr())
-    {
-        return false;
-    }
-
-    // Make sure Z button isn't dimmed
-    if (dMeter2Info_getMeterClass()->getMeterDrawPtr()->getZButtonAlpha() != 1.f)
-    {
-        return false;
-    }
-
-    switch (daAlink_getAlinkActorClass()->mProcID)
-    {
-        case daAlink_c::PROC_TALK:
-        case daAlink_c::PROC_WOLF_SWIM_MOVE:
-        case daAlink_c::PROC_SWIM_MOVE:
-        case daAlink_c::PROC_SWIM_WAIT:
-        case daAlink_c::PROC_WOLF_SWIM_WAIT:
-        case daAlink_c::PROC_SWIM_UP:
-        case daAlink_c::PROC_SWIM_DIVE:
-        {
-            return false;
-        }
-        default:
-        {
-            break;
-        }
-    }
-    return true;
-}
-
-
 RandomizerContext& randomizer_GetContext() {
     static RandomizerContext instance;
     return instance;
@@ -752,6 +795,31 @@ bool randomizer_checkTempleOfTimeRequirement() {
     }
 
     return false;
+}
+
+u8 randomizer_getRandomFoolishItemModelID() {
+    static constexpr auto foolishItemModels = std::to_array<u8>({
+        dItemNo_Randomizer_ARMOR_e,
+        dItemNo_Randomizer_WOOD_STICK_e,
+        dItemNo_Randomizer_SHIELD_e,
+        dItemNo_Randomizer_HYLIA_SHIELD_e,
+        dItemNo_Randomizer_MAGIC_LV1_e,
+        dItemNo_Randomizer_FISHING_ROD_1_e,
+        dItemNo_Randomizer_HAWK_EYE_e,
+        dItemNo_Randomizer_BOOMERANG_e,
+        dItemNo_Randomizer_SPINNER_e,
+        dItemNo_Randomizer_IRONBALL_e,
+        dItemNo_Randomizer_BOW_e,
+        dItemNo_Randomizer_COPY_ROD_e,
+        dItemNo_Randomizer_HOOKSHOT_e,
+        dItemNo_Randomizer_HVY_BOOTS_e,
+        dItemNo_Randomizer_PACHINKO_e,
+        dItemNo_Randomizer_BOMB_BAG_LV1_e,
+        dItemNo_Randomizer_ANCIENT_DOCUMENT_e,
+    });
+
+    u8 selectedModal = foolishItemModels[static_cast<int>(cM_rnd() * foolishItemModels.size()) % foolishItemModels.size()];
+    return verifyProgressiveItem(selectedModal);
 }
 
 u32 getActorPatchesCurrentStageKey(u8 roomNo) {

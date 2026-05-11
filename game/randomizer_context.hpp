@@ -162,6 +162,8 @@ public:
     // more naturally with the timing of when the game normally gives items and affects
     // things like the sound of the rupee counter going up.
     u8 mFlowMessageItemId{0};
+
+    int foolishItemCount{0};
 };
 
 extern randomizer::Randomizer g_RandomizerGenerator;
@@ -175,6 +177,9 @@ bool randomizer_IsActive();
 int randomizer_getItemAtLocation(const std::string& locationName);
 
 bool randomizer_checkTempleOfTimeRequirement();
+
+u8 randomizer_getRandomFoolishItemModelID();
+
 /**
  * Helper function to convert raw bytes of a container to a hex string
  */

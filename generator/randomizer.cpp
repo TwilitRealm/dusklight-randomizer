@@ -31,11 +31,19 @@ namespace randomizer
         return std::nullopt;
     }
 
+    void Randomizer::LoadConfig() {
+        this->_config.LoadFromFile(GetConfigPath(), GetPrefPath());
+    }
+
     void Randomizer::GenerateWorlds()
     {
         utility::time::ScopedTimer<"Seed generation took ", std::chrono::milliseconds> timer;
         this->_worlds.clear();
-        this->_config.LoadFromFile(this->GetBaseOutputPath() + "settings.yaml", this->GetBaseOutputPath() + "preferences.yaml");
+        this->_eventIdCounter = 0;
+        this->_areaIdCounter = 0;
+        this->_locAccIdCounter = 0;
+        this->_playthroughSpheres.clear();
+        this->_entranceSpheres.clear();
 
         utility::platform::Log(std::string("Seed: ") + this->_config.GetSeed());
 

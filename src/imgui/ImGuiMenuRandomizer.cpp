@@ -60,10 +60,14 @@ namespace dusk {
 
                 std::list<std::string> hashes{};
 
-                for (const auto& entry : std::filesystem::directory_iterator(seedDirectory)) {
-                    if (entry.is_directory()) {
-                        hashes.push_back(entry.path().filename().string());
+                if (std::filesystem::exists(seedDirectory)) {
+                    for (const auto& entry : std::filesystem::directory_iterator(seedDirectory)) {
+                        if (entry.is_directory()) {
+                            hashes.push_back(entry.path().filename().string());
+                        }
                     }
+                }else {
+                    std::filesystem::create_directories(seedDirectory);
                 }
 
                 if (hashes.empty()) {

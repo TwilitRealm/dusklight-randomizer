@@ -304,6 +304,8 @@ int RandomizerContext::OptionToEnum(const std::string& optionName) {
 
 RandomizerState g_randomizerState;
 
+randomizer::Randomizer g_RandomizerGenerator;
+
 int RandomizerState::_create() {
     mInitialized = true;
     mEventItemStatus = QUEUE_EMPTY;
@@ -1164,12 +1166,8 @@ static void DeleteFailedGenerationFiles(randomizer::Randomizer& rando) {
  * Generates a seed and writes the necessary seed files to the players seed directory
  */
 void GenerateAndWriteSeed(std::string& generationStatusMsg) {
-    const auto result = SDL_GetPrefPath(dusk::OrgName, dusk::AppName);
-    if (!result) {
-        DuskLog.fatal("Unable to get PrefPath: {}", SDL_GetError());
-    }
-    randomizer::Randomizer r;
-    r.SetBaseOutputPath(result);
+    auto& r = g_RandomizerGenerator;
+
     auto generationResult = r.Generate();
     if (generationResult.has_value()) {
         generationStatusMsg = fmt::format("Seed Generation failed. Reason:\n{}", generationResult.value());
@@ -1198,4 +1196,13 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
     }
 
     generationStatusMsg = fmt::format("Seed generated! Hash: {}", randoData.mHash);
+}
+
+void LoadRandomizerConfig() {
+    const auto result = SDL_GetPrefPath(dusk::OrgName, dusk::AppName);
+    if (!result)
+        DuskLog.fatal("Unable to get PrefPath: {}", SDL_GetError());
+    g_RandomizerGenerator.SetBaseOutputPath(result);
+
+    g_RandomizerGenerator.LoadConfig();
 }

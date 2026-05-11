@@ -12,6 +12,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "dusk/randomizer/generator/randomizer.hpp"
+
 /*
  * Class holding all the information necessary for playing
  * the current randomizer seed
@@ -162,6 +164,8 @@ public:
     u8 mFlowMessageItemId{0};
 };
 
+extern randomizer::Randomizer g_RandomizerGenerator;
+
 extern RandomizerState g_randomizerState;
 
 RandomizerContext& randomizer_GetContext();
@@ -215,4 +219,7 @@ class stage_actor_data_class;
 u32 getStageObjCRC32(u8* data, size_t size);
 
 void GenerateAndWriteSeed(std::string& generationStatusMsg);
+
+void LoadRandomizerConfig();
+
 #endif //DUSK_RANDOMIZER_CONTEXT_HPP

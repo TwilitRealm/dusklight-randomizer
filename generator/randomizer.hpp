@@ -32,6 +32,11 @@ namespace randomizer
         std::string GetSeedOutputPath();
         const std::string& GetBaseOutputPath() const { return this->_baseOutputPath; };
         void SetBaseOutputPath(const std::string& path) { this->_baseOutputPath = path + "randomizer/"; };
+
+        void LoadConfig();
+
+        std::string GetConfigPath() const { return this->GetBaseOutputPath() + "settings.yaml"; }
+        std::string GetPrefPath() const { return this->GetBaseOutputPath() + "preferences.yaml"; }
     private:
         seedgen::config::Config _config{};
         logic::world::WorldPool _worlds{};

@@ -2988,7 +2988,7 @@
   Metadata:
     Chest:
       - Stage: 33
-        Tbox Id: 8
+        Tbox Id: 7
 
 - Name: Lake Lantern Cave Sixth Chest
   Original Item: Orange Rupee
@@ -2999,7 +2999,7 @@
   Metadata:
     Chest:
       - Stage: 33
-        Tbox Id: 14
+        Tbox Id: 8
 
 - Name: Lake Lantern Cave Seventh Chest
   Original Item: Bomblings 5
@@ -3010,7 +3010,7 @@
   Metadata:
     Chest:
       - Stage: 33
-        Tbox Id: 10
+        Tbox Id: 14
 
 - Name: Lake Lantern Cave Eighth Chest
   Original Item: Red Rupee
@@ -3021,7 +3021,7 @@
   Metadata:
     Chest:
       - Stage: 33
-        Tbox Id: 7
+        Tbox Id: 10
 
 - Name: Lake Lantern Cave Ninth Chest
   Original Item: Arrows 10
@@ -3043,7 +3043,7 @@
   Metadata:
     Chest:
       - Stage: 33
-        Tbox Id: 4
+        Tbox Id: 5
 
 - Name: Lake Lantern Cave Eleventh Chest
   Original Item: Bomblings 10
@@ -3054,7 +3054,7 @@
   Metadata:
     Chest:
       - Stage: 33
-        Tbox Id: 11
+        Tbox Id: 4
 
 - Name: Lake Lantern Cave Twelfth Chest
   Original Item: Purple Rupee
@@ -3064,8 +3064,8 @@
     - ARC
   Metadata:
     Chest:
-      - Stage: 39
-        Tbox Id: 5
+      - Stage: 33
+        Tbox Id: 11
 
 - Name: Lake Lantern Cave Thirteenth Chest
   Original Item: Seeds 50

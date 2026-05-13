@@ -97,14 +97,18 @@ F_SP103:
       name: kdoor
       parameters: 0x88000627
       position:
-        x: 470.48294
-        y: 500.19
-        z: 5323.129
+        x: 470.482940673828
+        y: 500.190002441406
+        z: 5323.12890625
       angle:
         x: 0x0191
         y: 0x3777
         z: 0xFFFF
-      set id: 0xFFFF
+      set id: 0x00FF
+      scale:
+        x: 10
+        y: 10
+        z: 10
       patch:
         # Set angle.x to -1 so the door isn't locked
         angle:
@@ -117,14 +121,18 @@ F_SP103:
       name: kdoor
       parameters: 0x94000627
       position:
-        x: 500.71118
-        y: 500.19
-        z: 5172.267
+        x: 500.711181640625
+        y: 500.190002441406
+        z: 5172.26708984375
       angle:
         x: 0x0191
         y: 0xB778
         z: 0xFFFF
-      set id: 0xFFFF
+      set id: 0x00FF
+      scale:
+        x: 10
+        y: 10
+        z: 10
       patch:
         # Set angle.x to -1 so the door isn't locked
         angle:

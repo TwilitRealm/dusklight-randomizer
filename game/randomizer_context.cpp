@@ -12,7 +12,7 @@
 #include "dusk/randomizer/generator/utility/text.hpp"
 
 #include "SDL3/SDL_filesystem.h"
-#include <zlib-ng.h>
+#include <zlib.h>
 
 #include <fstream>
 
@@ -831,7 +831,7 @@ u32 getActorPatchesCurrentStageKey(u8 roomNo) {
 }
 
 u32 getStageObjCRC32(u8* data, size_t size) {
-    return zng_crc32(0, (data), size);
+    return crc32(0, (data), size);
 }
 
 stage_tgsc_data_class parseObjData(const YAML::Node& objectNode) {

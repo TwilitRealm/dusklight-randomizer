@@ -43,14 +43,8 @@ FetchContent_Declare(
         GIT_REPOSITORY https://github.com/matheusgomes28/base64pp.git
         GIT_TAG v0.2.0-rc0
 )
-message(STATUS "randomizer: Fetching zlib-ng")
-FetchContent_Declare(
-        zlib-ng
-        GIT_REPOSITORY https://github.com/zlib-ng/zlib-ng.git
-        GIT_TAG 2.3.3
-)
 
-FetchContent_MakeAvailable(yaml-cpp base64pp zlib-ng)
+FetchContent_MakeAvailable(yaml-cpp zlib base64pp)
 
 string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
 set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} SOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})

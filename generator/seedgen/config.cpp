@@ -1,11 +1,12 @@
 #include "config.hpp"
 
-#include "zlib-ng.h"
+
 #include "seed.hpp"
 #include "../utility/log.hpp"
 #include "../utility/platform.hpp"
 #include "../utility/random.hpp"
 #include "../utility/yaml.hpp"
+#include <zlib.h>
 
 #include <iostream>
 
@@ -459,7 +460,7 @@ namespace randomizer::seedgen::config
             hashStr += "Spoiler Log: True";
         }
 
-        const size_t integerSeed = zng_crc32(0L, reinterpret_cast<const uint8_t*>(hashStr.data()), hashStr.length());
+        const size_t integerSeed = crc32(0L, reinterpret_cast<const uint8_t*>(hashStr.data()), hashStr.length());
         utility::random::RandomInit(integerSeed);
 
         return 0;

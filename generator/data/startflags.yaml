@@ -6,6 +6,7 @@ EventFlags:
   - 0x0F40 # Talked to Doctor for the first time.
   - 0x1208 # Can use Sera's Shop.
   - 0x1410 # Put Bo outside, ready to wrestle
+  - 0x0F01 # Got Lantern from Coro (Remove when adding Coro checks)
   - 0x0A2F # Bridge of Eldin Stolen, KB1 defeated, KB1 started
   - 0x0F68 # Bridge of Eldin Warped Back, forced text when entering dr. clinic, talked to dr before giving invoice
   - 0x4088 # Saved monkey from puppets, Visited Gerudo Desert for the first time.

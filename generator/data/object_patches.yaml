@@ -2226,6 +2226,54 @@ F_SP121:
         - 9
         - 10
 
+  7:
+    # Add Ganon Barriers to block Lanayru Twilight access
+    # during Eldin Twilight
+    - action: add
+      name: Obj_gb
+      parameters: 0x800F0601
+      position:
+        x: 10778.207
+        y: 3096.82666
+        z: -62651.0078
+      angle:
+        x: 0xFF5C
+        y: 0x4000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 14 # Twilight layer
+
+    - action: add
+      name: Obj_gb
+      parameters: 0x800F0601
+      position:
+        x: 10778.207
+        y: 3096.82666
+        z: -62921.0078
+      angle:
+        x: 0xFF5C
+        y: 0x4000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 14 # Twilight layer
+
+    - action: add
+      name: Obj_gb
+      parameters: 0x800F0601
+      position:
+        x: 10778.207
+        y: 3096.82666
+        z: -63191.0078
+      angle:
+        x: 0xFF5C
+        y: 0x4000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 14 # Twilight layer
+
   # Room 10 - Lanayru Field
   10:
     # Male Stag Beetle

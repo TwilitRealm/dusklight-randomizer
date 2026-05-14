@@ -1949,6 +1949,7 @@ F_SP121:
         - 0
         - 6
         - 8
+        - 14
 
     # Yellow Rupee under BoE Boulder 2
     - action: patch
@@ -1971,6 +1972,7 @@ F_SP121:
         - 0
         - 6
         - 8
+        - 14
 
   # Room 3 - Kakariko Gorge
   3:
@@ -2036,6 +2038,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 14
 
     # Blue Rupee under Gorge Spire Boulder 2
     - action: patch
@@ -2057,6 +2060,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 14
 
     # Green Rupee under Gorge Spire Boulder
     - action: patch
@@ -2078,6 +2082,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 14
 
     # Blue Rupee under Gorge Statue Boulder 1
     - action: patch
@@ -2099,6 +2104,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 14
 
     # Blue Rupee under Gorge Statue Boulder 2
     - action: patch
@@ -2120,6 +2126,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 14
 
     # Blue Rupee under Gorge Statue Boulder 3
     - action: patch
@@ -2141,6 +2148,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 14
 
     # Blue Rupee under Gorge Statue Boulder 4
     - action: patch
@@ -2162,6 +2170,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 14
 
   # Room 6 - Faron Field
   6:
@@ -2705,6 +2714,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 14
 
 # Outside Castle Town Maps
 F_SP122:

@@ -262,9 +262,13 @@ F_SP108:
         # Give this item a unique flag
         parameters: 0xF3048101
       layers:
+        - 0
         - 1
+        - 2
         - 3
         - 5
+        - 9
+        - 14
 
     # Rupee under boulder near coro (blue)
     - action: patch
@@ -283,9 +287,13 @@ F_SP108:
         # Give this item a unique flag
         parameters: 0xF3048201
       layers:
+        - 0
         - 1
+        - 2
         - 3
         - 5
+        - 9
+        - 14
 
     # Rupee under boulder near coro (yellow)
     - action: patch
@@ -304,9 +312,13 @@ F_SP108:
         # Give this item a unique flag
         parameters: 0xF3048301
       layers:
+        - 0
         - 1
+        - 2
         - 3
         - 5
+        - 9
+        - 14
 
   # Room 6 - North Faron Woods
   6:

@@ -2226,6 +2226,7 @@ F_SP121:
         - 9
         - 10
 
+  # Room 7 - North Eldin
   7:
     # Add Ganon Barriers to block Lanayru Twilight access
     # during Eldin Twilight

@@ -6,9 +6,11 @@
 #include "../utility/platform.hpp"
 #include "../utility/yaml.hpp"
 
+#include <version.h>
+
 #include <algorithm>
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 namespace randomizer::logic::spoiler_log
 {
@@ -31,7 +33,7 @@ namespace randomizer::logic::spoiler_log
 
     void LogBasicInfo(std::ofstream& log, Randomizer* randomizer)
     {
-        log << "Dusk Randomizer Version: " << "1.0.0" << std::endl;
+        log << "Dusklight Version: " << DUSK_WC_DESCRIBE << std::endl;
         log << "Seed: " << randomizer->GetConfig().GetSeed() << std::endl;
 
         // TODO: Setting string

@@ -49,6 +49,14 @@
     event: 3
     parameters: 0x00000064
     next node index: 0x22B
+  # Patch Malo Mart door person to not check for time of day.
+  # Change from branch node that checks time of day to event node
+  # that does nothing.
+  - index: 0x1A5
+    type: event
+    event: 42
+    parameters: 0x00000000
+    next node index: 0x10C
 #5: # zel_05.bmg
 #6: # zel_06.bmg
 #7: # zel_07.bmg

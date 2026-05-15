@@ -2393,6 +2393,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 13
         - 14
 
     # South Underwater Boulder Rupee (Green)
@@ -2415,6 +2416,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 13
         - 14
 
     # South Underwater Boulder Rupee (Blue 1)
@@ -2437,6 +2439,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 13
         - 14
 
     # South Underwater Boulder Rupee (Blue 2)
@@ -2459,6 +2462,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 13
         - 14
 
     # North Underwater Boulder Rupee (Red 1)
@@ -2481,6 +2485,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 13
         - 14
 
     # North Underwater Boulder Rupee (Red 1)
@@ -2503,6 +2508,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 13
         - 14
 
     # North Spinner Track Boulder Rupee (Yellow 1)
@@ -2525,6 +2531,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 13
         - 14
 
     # North Spinner Track Boulder Rupee (Yellow 2)
@@ -2547,6 +2554,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 13
         - 14
 
   # Room 12 - Hylia Bridge-Lanayru Field Transition
@@ -2571,6 +2579,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 13
         - 14
 
     # South Spinner Track Boulder Rupee (Blue 2)
@@ -2593,6 +2602,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 13
         - 14
 
     # South Spinner Track Boulder Rupee (Blue 3)
@@ -2615,6 +2625,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 13
         - 14
 
   # Room 13 - Great Bridge of Hylia
@@ -2681,6 +2692,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 13
         - 14
 
     # Boulder Near Owl Statue Rupee (Blue 2)
@@ -2703,6 +2715,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 13
         - 14
 
     # Boulder Near Owl Statue Rupee (Blue 3)
@@ -2725,6 +2738,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 13
         - 14
 
     # Boulder Near Faron Rupee (Yellow)
@@ -2747,6 +2761,7 @@ F_SP121:
       layers:
         - 0
         - 6
+        - 13
         - 14
 
 # Outside Castle Town Maps
@@ -3429,6 +3444,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # Central Underwater Boulder Rupee (Blue 2)
@@ -3451,6 +3467,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # Central Underwater Boulder Rupee (Blue 3)
@@ -3473,6 +3490,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # Central Underwater Boulder Rupee (Green)
@@ -3495,6 +3513,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # Central Underwater Boulder Rupee (Yellow)
@@ -3517,6 +3536,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # West Underwater Boulder Rupee (Yellow 1)
@@ -3539,6 +3559,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # West Underwater Boulder Rupee (Yellow 2)
@@ -3561,6 +3582,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # West Underwater Boulder Rupee (Blue 1)
@@ -3583,6 +3605,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # West Underwater Boulder Rupee (Blue 2)
@@ -3605,6 +3628,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # West Underwater Boulder Rupee (Blue 3)
@@ -3627,6 +3651,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # West Underwater Boulder Rupee (Green 1)
@@ -3649,6 +3674,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # West Underwater Boulder Rupee (Green 2)
@@ -3671,6 +3697,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # West Underwater Boulder Rupee (Green 3)
@@ -3693,6 +3720,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # East Underwater Boulder Rupee (Yellow)
@@ -3715,6 +3743,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # East Underwater Boulder Rupee (Blue 1)
@@ -3737,6 +3766,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # East Underwater Boulder Rupee (Blue 2)
@@ -3759,6 +3789,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # East Underwater Boulder Rupee (Green 1)
@@ -3781,6 +3812,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # East Underwater Boulder Rupee (Green 1)
@@ -3803,6 +3835,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # Ledge Boulder Rupee (Yellow)
@@ -3825,6 +3858,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # Ledge Boulder Rupee (Blue 1)
@@ -3847,6 +3881,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # Ledge Boulder Rupee (Blue 2)
@@ -3869,6 +3904,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # Ledge Boulder Rupee (Blue 3)
@@ -3891,6 +3927,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
     # Ledge Boulder Rupee (Green)
@@ -3913,6 +3950,7 @@ F_SP126:
       layers:
         - 0
         - 1
+        - 13
         - 14
 
 # Kakariko Village Interiors

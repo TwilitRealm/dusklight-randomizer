@@ -538,6 +538,7 @@ F_SP113:
       layers:
         - 0
         - 2
+        - 13
         - 14
 
     # Central Underwater Boulder Rupee (Blue)
@@ -560,6 +561,7 @@ F_SP113:
       layers:
         - 0
         - 2
+        - 13
         - 14
 
     # Central Underwater Boulder Rupee (Green 1)
@@ -582,6 +584,7 @@ F_SP113:
       layers:
         - 0
         - 2
+        - 13
         - 14
 
     # Central Underwater Boulder Rupee (Green 2)
@@ -604,6 +607,7 @@ F_SP113:
       layers:
         - 0
         - 2
+        - 13
         - 14
 
     # North Underwater Boulder Rupee (Red)
@@ -626,6 +630,7 @@ F_SP113:
       layers:
         - 0
         - 2
+        - 13
         - 14
 
     # North Underwater Boulder Rupee (Yellow 1)
@@ -648,6 +653,7 @@ F_SP113:
       layers:
         - 0
         - 2
+        - 13
         - 14
 
     # North Underwater Boulder Rupee (Yellow 2)
@@ -670,6 +676,7 @@ F_SP113:
       layers:
         - 0
         - 2
+        - 13
         - 14
 
     # Shortcut Lower Boulder Rupee (Yellow)
@@ -692,6 +699,7 @@ F_SP113:
       layers:
         - 0
         - 2
+        - 13
         - 14
 
     # Shortcut Lower Boulder Rupee (Green 1)
@@ -714,6 +722,7 @@ F_SP113:
       layers:
         - 0
         - 2
+        - 13
         - 14
 
     # Shortcut Lower Boulder Rupee (Green 2)
@@ -736,6 +745,7 @@ F_SP113:
       layers:
         - 0
         - 2
+        - 13
         - 14
 
     # Shortcut Upper Boulder Rupee (Yellow)
@@ -758,6 +768,7 @@ F_SP113:
       layers:
         - 0
         - 2
+        - 13
         - 14
 
     # Shortcut Upper Boulder Rupee (Blue 1)
@@ -780,6 +791,7 @@ F_SP113:
       layers:
         - 0
         - 2
+        - 13
         - 14
 
     # Shortcut Upper Boulder Rupee (Blue 2)
@@ -802,6 +814,7 @@ F_SP113:
       layers:
         - 0
         - 2
+        - 13
         - 14
 
 # Snowpeak Province

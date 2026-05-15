@@ -13,6 +13,10 @@
 
 #include <iostream>
 
+#include "SDL3/SDL_filesystem.h"
+#include "dusk/app_info.hpp"
+#include "dusk/logging.h"
+
 namespace randomizer
 {
     std::optional<std::string> Randomizer::Generate()
@@ -44,6 +48,14 @@ namespace randomizer
         this->_locAccIdCounter = 0;
         this->_playthroughSpheres.clear();
         this->_entranceSpheres.clear();
+
+#if RANDOMIZER_ONLY
+        const auto result = SDL_GetPrefPath(dusk::OrgName, dusk::AppName);
+        if (!result)
+            DuskLog.fatal("Unable to get PrefPath: {}", SDL_GetError());
+        SetBaseOutputPath(result);
+        LoadConfig();
+#endif
 
         utility::platform::Log(std::string("Seed: ") + this->_config.GetSeed());
 

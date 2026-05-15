@@ -528,9 +528,9 @@ namespace randomizer::logic::world
     void World::PerformPreEntranceShuffleTasks()
     {
         this->PlaceVanillaItems();
+        this->SetNonProgressLocations();
         this->SanitizeItemPool();
         this->PlacePlandomizerItems();
-        this->SetNonProgressLocations();
     }
 
     void World::PlaceVanillaItems()

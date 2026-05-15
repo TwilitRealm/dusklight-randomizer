@@ -175,6 +175,8 @@ RegionFlags:
       - 0x95 # Midna text after warping to North Faron for bridge.
       - 0xBF # Burned First cobweb in faron cave
       - 0xBE # Burned second cobweb in faron cave
+      - Skip_Prologue == On:
+        - 0x4B # North Faron Gate Unlocked
       - Skip_Minor_Cutscenes == On:
         - 0x74 # Faron intro CS.
         - 0x77 # See Faron Light Spirit from afar CS.
@@ -183,9 +185,10 @@ RegionFlags:
         - 0x46 # Midna jump 1 mist area.
         - 0x47 # Midna jump 1 mist area.
         - 0x98 # South Faron Portal.
-      - Small_Keys == Keysy:
-        - 0x53 # Coro gate unlocked.
-        - 0x4B # North Faron Gate Unlocked.
+      # Re-enable once key situation is sorted out
+      # - Small_Keys == Keysy:
+        # - 0x53 # Coro gate unlocked.
+        # - 0x4B # North Faron Gate Unlocked.
 
   Kakariko and Death Mountain:
     Index: 0x03

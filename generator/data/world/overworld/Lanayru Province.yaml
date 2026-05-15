@@ -593,11 +593,10 @@
     Flight By Fowl Third Platform Chest: Can_Talk_to_Humans and 'Can_Farm_Rupees'
     Flight By Fowl Fourth Platform Chest: Can_Talk_to_Humans and 'Can_Farm_Rupees'
     Flight By Fowl Fifth Platform Chest: Can_Talk_to_Humans and 'Can_Farm_Rupees'
-    Flight By Fowl Ledge Poe: Night and Can_Use_Senses and Can_Talk_to_Humans and 'Can_Farm_Rupees'
     Isle of Riches Poe: Night and Can_Use_Senses and Can_Talk_to_Humans and 'Can_Farm_Rupees'
     Lake Hylia Hint Sign: Nothing
   Exits:
-    Lake Hylia Shell Blade Grotto Ledge: Can_Talk_to_Humans
+    Lake Hylia Shell Blade Grotto Ledge: Can_Talk_to_Humans and 'Can_Farm_Rupees'
     Lake Hylia Bridge: Can_Open_Doors
     Lake Hylia: Can_Talk_to_Humans
 
@@ -606,6 +605,8 @@
   Region: Lake Hylia
   Twilight: Lanayru
   Can Warp: True
+  Locations:
+    Flight By Fowl Ledge Poe: Night and Can_Use_Senses
   Exits:
     Lake Hylia Shell Blade Grotto: Can_Dig
     Lake Hylia: Nothing

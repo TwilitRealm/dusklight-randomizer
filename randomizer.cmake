@@ -44,11 +44,11 @@ FetchContent_Declare(
         GIT_TAG v0.2.0-rc0
 )
 
-FetchContent_MakeAvailable(yaml-cpp zlib base64pp)
+FetchContent_MakeAvailable(yaml-cpp base64pp)
 
 string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
 set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} SOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})
-set(GAME_LIBS ${GAME_LIBS} yaml-cpp::yaml-cpp zlib base64pp)
+set(GAME_LIBS ${GAME_LIBS} yaml-cpp::yaml-cpp ZLIB::ZLIB base64pp)
 
 file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/randomizer")
 # Put data files together for easier manipulation

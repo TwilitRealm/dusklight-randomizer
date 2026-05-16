@@ -558,8 +558,8 @@ namespace randomizer::logic::world
                 // Vanilla Poe Souls
                 (originalItemName == "Poe Soul" &&
                  (this->Setting("Poe Souls") == "Vanilla" ||
-                  (this->Setting("Poe Souls") == "Dungeon" && location->HasCategories("Dungeon")) ||
-                  (this->Setting("Poe Souls") == "Overworld" && location->HasCategories("Overworld")))) ||
+                  (this->Setting("Poe Souls") == "Dungeon" && location->HasCategories("Overworld")) ||
+                  (this->Setting("Poe Souls") == "Overworld" && location->HasCategories("Dungeon")))) ||
                 // Vanilla Golden Bugs
                 (this->Setting("Golden Bugs") == "Off" && location->HasCategories("Golden Bug")) ||
                 // Sky Characters

@@ -1761,7 +1761,7 @@
   Metadata:
     Chest:
       - Stage: 34
-        Tbox Id: 62
+        Tbox Id: 61
 
 - Name: Eldin Stockcave Lowest Chest
   Original Item: Piece of Heart
@@ -1772,7 +1772,7 @@
   Metadata:
     Chest:
       - Stage: 34
-        Tbox Id: 61
+        Tbox Id: 62
 
 - Name: Eldin Field Stalfos Grotto Left Small Chest
   Original Item: Bombs 5

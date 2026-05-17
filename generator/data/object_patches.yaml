@@ -217,6 +217,23 @@ F_SP103:
       layers:
         - 0
 
+    # Add Epona actor to Ordon Village so we don't crash
+    # when entering on layer 0
+    - action: add
+      name: Horse
+      parameters: 0x00000148
+      position:
+        x: -1200
+        y: 367.4823
+        z: 6100
+      angle:
+        x: 0x0000
+        y: 0x71C7
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+
 # Ordon Spring
 F_SP104:
   # Room 1 - Main Spring

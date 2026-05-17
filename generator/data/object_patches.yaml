@@ -2205,6 +2205,26 @@ F_SP121:
         - 6
         - 14
 
+    - action: add
+      name: Hjump
+      parameters: 0x044FFF02
+      position:
+        x: 5600
+        y: -5680
+        z: 52055
+      angle:
+        x: 0x0000
+        y: 0x4000
+        z: 0x0000
+      set id: 0xFFFF
+      scale:
+        x: 32
+        y: 45
+        z: 45
+      layers:
+        - 2
+        - 6
+
   # Room 6 - Faron Field
   6:
     # Male Beetle

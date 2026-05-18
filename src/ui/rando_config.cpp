@@ -1,6 +1,7 @@
 #include "rando_config.hpp"
 
 #include <mutex>
+#include <thread>
 
 #include "bool_button.hpp"
 #include "pane.hpp"

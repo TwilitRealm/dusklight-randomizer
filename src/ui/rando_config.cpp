@@ -6,12 +6,13 @@
 #include "SDL3/SDL_filesystem.h"
 
 #include "bool_button.hpp"
+#include "dusk/app_info.hpp"
+#include "dusk/config.hpp"
+#include "dusk/data.hpp"
+#include "dusk/logging.h"
 #include "number_button.hpp"
 #include "pane.hpp"
 #include "string_button.hpp"
-#include "dusk/app_info.hpp"
-#include "dusk/config.hpp"
-#include "dusk/logging.h"
 
 namespace dusk::ui {
 
@@ -83,7 +84,7 @@ SelectButton& config_bool_select(
 }
 
 void SaveConfig() {
-    GetRandomizerConfig().WriteSettingsToFile(GetRandomizerConfigPath());
+    GetRandomizerConfig().WriteToFile(GetRandomizerSettingsPath(), GetRandomizerPreferencesPath());
 }
 
 void rando_config_group(Pane& leftPane, Pane& rightPane, std::string settingKey, std::function<Component*(const std::string&, Pane&)> onSelected = nullptr) {
@@ -344,4 +345,16 @@ RandomizerWindow::RandomizerWindow() {
     });
 }
 
+std::filesystem::path GetRandomizerSettingsPath() {
+    return data::configured_data_path() / "randomizer" / "settings.yaml";
+}
+
+std::filesystem::path GetRandomizerPreferencesPath() {
+    return data::configured_data_path() / "randomizer" / "preferences.yaml";
+}
+
+randomizer::seedgen::config::Config& GetRandomizerConfig() {
+    static randomizer::seedgen::config::Config s_config{GetRandomizerSettingsPath(), GetRandomizerPreferencesPath()};
+    return s_config;
+}
 }

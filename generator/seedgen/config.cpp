@@ -12,6 +12,9 @@
 
 namespace randomizer::seedgen::config
 {
+    Config::Config(const fspath& settingsPath, const fspath& preferencesPath) {
+        LoadFromFile(settingsPath, preferencesPath);
+    }
 
     void Config::LoadFromFile(const fspath& settingsPath,
                               const fspath& preferencesPath,
@@ -159,16 +162,6 @@ namespace randomizer::seedgen::config
                 settings.InsertSetting(preferenceName,
                                        settings::Setting(preferenceInfo.get(), preferenceOption));
             }
-            else if (preferenceName == "Game Base Path")
-            {
-                const auto& gameBasePath = preferenceNode.second.as<std::string>();
-                this->_gameBasePath = gameBasePath;
-            }
-            else if (preferenceName == "Output Path")
-            {
-                const auto& outputPath = preferenceNode.second.as<std::string>();
-                this->_outputPath = outputPath;
-            }
             else if (preferenceName == "Plandomizer Path")
             {
                 const auto& plandomizerPath = preferenceNode.second.as<std::string>();
@@ -205,7 +198,7 @@ namespace randomizer::seedgen::config
         {
             rewriteSettings = true;
         }
-        if (!preferencesTree["Game Base Path"] || !preferencesTree["Output Path"] || !preferencesTree["Plandomizer Path"])
+        if (!preferencesTree["Plandomizer Path"])
         {
             rewritePreferences = true;
         }
@@ -284,8 +277,6 @@ namespace randomizer::seedgen::config
         YAML::Node out;
         for (auto& settings : this->_settingsList)
         {
-            out["Game Base Path"] = this->_gameBasePath.generic_string();
-            out["Output Path"] = this->_outputPath.generic_string();
             out["Plandomizer Path"] = this->_plandomizerPath.generic_string();
             for (auto& [settingName, setting] : settings.GetMap())
             {
@@ -322,6 +313,11 @@ namespace randomizer::seedgen::config
 
         outputFile << this->PreferencesToYaml();
         outputFile.close();
+    }
+
+    void Config::WriteToFile(const fspath& settingsPath, const fspath& preferencesPath) {
+        WriteSettingsToFile(settingsPath);
+        WritePreferencesToFile(preferencesPath);
     }
 
     std::string Config::GetHash()
@@ -381,8 +377,6 @@ namespace randomizer::seedgen::config
         auto settingInfoMap = settings::GetAllSettingsInfo();
 
         YAML::Node root;
-        root["Game Base Path"] = "";
-        root["Output Path"] = "";
         root["Plandomizer Path"] = "";
         for (const auto& [name, info] : *settingInfoMap)
         {

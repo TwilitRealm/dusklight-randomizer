@@ -22,7 +22,7 @@ namespace randomizer::test::test
                 std::cout << "Testing " << testName << std::endl;
 
                 try {
-                    Randomizer r{};
+                    Randomizer r{RANDO_SAVE_PATH};
                     r.GenerateWorlds();
                 }
                 catch(const std::exception& e) {

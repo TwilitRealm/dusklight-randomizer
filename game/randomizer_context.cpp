@@ -3,6 +3,7 @@
 #include "dusk/app_info.hpp"
 #include "dusk/logging.h"
 #include "dusk/main.h"
+#include "dusk/data.hpp"
 #include "dusk/randomizer/game/tools.h"
 #include "dusk/randomizer/game/stages.h"
 #include "dusk/randomizer/game/verify_item_functions.h"
@@ -246,8 +247,8 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
     return std::nullopt;
 }
 
-std::string RandomizerContext::GetSeedDataPath() const {
-    return std::string(SDL_GetPrefPath(dusk::OrgName, dusk::AppName)) + "randomizer/seeds/" + this->mHash + "/seed.dat";
+std::filesystem::path RandomizerContext::GetSeedDataPath() const {
+    return dusk::data::configured_data_path() / "randomizer" / "seeds" / this->mHash / "seed.dat";
 }
 
 int RandomizerContext::SettingToEnum(const std::string& settingName) {
@@ -303,8 +304,6 @@ int RandomizerContext::OptionToEnum(const std::string& optionName) {
 }
 
 RandomizerState g_randomizerState;
-
-randomizer::Randomizer g_RandomizerGenerator;
 
 int RandomizerState::_create() {
     mInitialized = true;
@@ -1224,8 +1223,8 @@ RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::
 }
 
 static void DeleteFailedGenerationFiles(randomizer::Randomizer& rando) {
-    // If the output path with "//" that means we never got far enough to create any files
-    if (!rando.GetSeedOutputPath().ends_with("//")) {
+    // If the hash is empty, then we never generated any files
+    if (!rando.GetConfig().GetHash().empty()) {
         std::filesystem::remove_all(rando.GetSeedOutputPath());
     }
 }
@@ -1234,7 +1233,7 @@ static void DeleteFailedGenerationFiles(randomizer::Randomizer& rando) {
  * Generates a seed and writes the necessary seed files to the players seed directory
  */
 void GenerateAndWriteSeed(std::string& generationStatusMsg) {
-    auto& r = g_RandomizerGenerator;
+    auto r = randomizer::Randomizer{dusk::data::configured_data_path()};
 
     auto generationResult = r.Generate();
     if (generationResult.has_value()) {
@@ -1264,21 +1263,4 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
     }
 
     generationStatusMsg = fmt::format("Seed generated! Hash: {}", randoData.mHash);
-}
-
-void LoadRandomizerConfig() {
-    const auto result = SDL_GetPrefPath(dusk::OrgName, dusk::AppName);
-    if (!result)
-        DuskLog.fatal("Unable to get PrefPath: {}", SDL_GetError());
-    g_RandomizerGenerator.SetBaseOutputPath(result);
-
-    g_RandomizerGenerator.LoadConfig();
-}
-
-randomizer::seedgen::config::Config& GetRandomizerConfig() {
-    return g_RandomizerGenerator.GetConfig();
-}
-
-std::string GetRandomizerConfigPath() {
-    return g_RandomizerGenerator.GetConfigPath();
 }

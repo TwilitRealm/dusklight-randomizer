@@ -36,27 +36,11 @@ namespace randomizer
         return std::nullopt;
     }
 
-    void Randomizer::LoadConfig() {
-        this->_config.LoadFromFile(GetConfigPath(), GetPrefPath());
-    }
-
     void Randomizer::GenerateWorlds()
     {
         utility::time::ScopedTimer<"Seed generation took ", std::chrono::milliseconds> timer;
-        this->_worlds.clear();
-        this->_eventIdCounter = 0;
-        this->_areaIdCounter = 0;
-        this->_locAccIdCounter = 0;
-        this->_playthroughSpheres.clear();
-        this->_entranceSpheres.clear();
+        this->_config.LoadFromFile(GetConfigPath(), GetPrefPath());
 
-#if RANDOMIZER_ONLY
-        const auto result = SDL_GetPrefPath(dusk::OrgName, dusk::AppName);
-        if (!result)
-            DuskLog.fatal("Unable to get PrefPath: {}", SDL_GetError());
-        SetBaseOutputPath(result);
-        LoadConfig();
-#endif
         const std::string& configSeed = this->_config.GetSeed();
         std::string hashStr = configSeed.empty() ? seedgen::seed::GenerateSeed() : configSeed;
         _config.SetSeed(hashStr);
@@ -136,8 +120,8 @@ namespace randomizer
         logic::spoiler_log::GenerateAntiSpoilerLog(this);
     }
 
-    std::string Randomizer::GetSeedOutputPath()
+    std::filesystem::path Randomizer::GetSeedOutputPath()
     {
-        return this->_baseOutputPath + "seeds/" + this->_config.GetHash() + "/";
+        return this->_baseOutputPath / "seeds" / this->_config.GetHash();
     }
 } // namespace randomizer

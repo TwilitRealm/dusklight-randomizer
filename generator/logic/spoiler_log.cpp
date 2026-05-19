@@ -60,7 +60,7 @@ namespace randomizer::logic::spoiler_log
         auto& config = randomizer->GetConfig();
         auto& worlds = randomizer->GetWorlds();
 
-        std::string filepath = std::string(randomizer->GetSeedOutputPath()) + config.GetHash() + " Spoiler Log.txt";
+        std::filesystem::path filepath = randomizer->GetSeedOutputPath() / (config.GetHash() + " Spoiler Log.txt");
         std::ofstream spoilerLog;
         spoilerLog.open(filepath);
 
@@ -230,7 +230,7 @@ namespace randomizer::logic::spoiler_log
 
         spoilerLog.close();
 
-        utility::platform::Log("Wrote spoiler log to " + filepath);
+        utility::platform::Log("Wrote spoiler log to " + filepath.string());
     }
 
     void GenerateAntiSpoilerLog(Randomizer* randomizer)
@@ -241,7 +241,7 @@ namespace randomizer::logic::spoiler_log
             utility::file::create_directories(randomizer->GetSeedOutputPath());
         }
 
-        std::string filepath = std::string(randomizer->GetSeedOutputPath()) + randomizer->GetConfig().GetHash() + " Anti-Spoiler Log.txt";
+        std::filesystem::path filepath = randomizer->GetSeedOutputPath() / (randomizer->GetConfig().GetHash() + " Anti-Spoiler Log.txt");
         std::ofstream antiSpoilerLog;
         antiSpoilerLog.open(filepath);
 

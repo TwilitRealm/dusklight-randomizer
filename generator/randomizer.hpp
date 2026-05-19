@@ -9,7 +9,8 @@ namespace randomizer
     class Randomizer
     {
     public:
-        explicit Randomizer() = default;
+        Randomizer() = delete;
+        Randomizer(const std::filesystem::path& baseOutputPath) : _baseOutputPath(baseOutputPath / "randomizer") {}
 
         /**
          *  @brief Generates a complete randomizer seed
@@ -29,14 +30,12 @@ namespace randomizer
         auto& GetPlaythroughSpheres() { return this->_playthroughSpheres; }
         auto& GetEntranceSpheres() { return this->_entranceSpheres; }
 
-        std::string GetSeedOutputPath();
-        const std::string& GetBaseOutputPath() const { return this->_baseOutputPath; };
-        void SetBaseOutputPath(const std::string& path) { this->_baseOutputPath = path + "randomizer/"; };
+        std::filesystem::path GetSeedOutputPath();
+        std::filesystem::path GetBaseOutputPath() const { return this->_baseOutputPath; };
+        void SetBaseOutputPath(const std::filesystem::path& path) { this->_baseOutputPath = path / "randomizer"; };
 
-        void LoadConfig();
-
-        std::string GetConfigPath() const { return this->GetBaseOutputPath() + "settings.yaml"; }
-        std::string GetPrefPath() const { return this->GetBaseOutputPath() + "preferences.yaml"; }
+        std::filesystem::path GetConfigPath() const { return this->GetBaseOutputPath() / "settings.yaml"; }
+        std::filesystem::path GetPrefPath() const { return this->GetBaseOutputPath() / "preferences.yaml"; }
     private:
         seedgen::config::Config _config{};
         logic::world::WorldPool _worlds{};
@@ -49,6 +48,6 @@ namespace randomizer
         std::list<std::list<logic::location::Location*>> _playthroughSpheres{};
         std::list<std::list<logic::entrance::Entrance*>> _entranceSpheres{};
 
-        std::string _baseOutputPath{RANDO_SAVE_PATH};
+        std::filesystem::path _baseOutputPath{RANDO_SAVE_PATH};
     };
 } // namespace randomizer

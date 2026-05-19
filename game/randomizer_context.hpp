@@ -62,7 +62,7 @@ public:
 
     std::optional<std::string> WriteToFile();
     std::optional<std::string> LoadFromHash(const std::string& hash);
-    std::string GetSeedDataPath() const;
+    std::filesystem::path GetSeedDataPath() const;
 
     enum Settings {
         HYRULE_BARRIER_REQUIREMENTS,
@@ -166,8 +166,6 @@ public:
     int foolishItemCount{0};
 };
 
-extern randomizer::Randomizer g_RandomizerGenerator;
-
 extern RandomizerState g_randomizerState;
 
 RandomizerContext& randomizer_GetContext();
@@ -217,18 +215,11 @@ std::vector<u8> HexToBytes(std::string hex);
  */
 u32 getActorPatchesCurrentStageKey(u8 roomNo);
 
-class stage_actor_data_class;
 /*
  * Gets the CRC32 hash of an actors name, parameters, position, and angle
  */
 u32 getStageObjCRC32(u8* data, size_t size);
 
 void GenerateAndWriteSeed(std::string& generationStatusMsg);
-
-void LoadRandomizerConfig();
-
-randomizer::seedgen::config::Config& GetRandomizerConfig();
-
-std::string GetRandomizerConfigPath();
 
 #endif //DUSK_RANDOMIZER_CONTEXT_HPP

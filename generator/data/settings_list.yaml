@@ -703,12 +703,12 @@
 #     - "Off": "Link will be dressed in his green knight's uniform."
 #     - "On": "Link will be dressed in his Skyloft outfit seen at the start of the vanilla game."
 
-- Name: Remove Enemy Music
-  Type: Preference
-  Default Option: "Off"
-  Options:
-    - "Off": "The background music will be interrupted by enemy drums when you get near to an enemy. Additionally, the intense music when Scaldera and Tentalus are vulnerable will play as normal."
-    - "On": "The background music will continue to play when you get near to enemies. Additionally, the intense music when Scaldera and Tentalus are vulnerable will not play and the background music will continue uninterrupted."
+#- Name: Remove Enemy Music
+#  Type: Preference
+#  Default Option: "Off"
+#  Options:
+#    - "Off": "The background music will be interrupted by enemy drums when you get near to an enemy. Additionally, the intense music when Scaldera and Tentalus are vulnerable will play as normal."
+#    - "On": "The background music will continue to play when you get near to enemies. Additionally, the intense music when Scaldera and Tentalus are vulnerable will not play and the background music will continue uninterrupted."
 
 # - Name: low_health_beeping_speed
 #   type: Preference

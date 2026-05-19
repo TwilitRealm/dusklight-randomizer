@@ -46,9 +46,8 @@ namespace randomizer::seedgen::config
     {
        public:
         Config() = default;
+        Config(const fspath& settingsPath, const fspath& preferencesPath);
 
-        fspath GetGameBasePath() const { return this->_gameBasePath; }
-        fspath GetOutputPath() const { return this->_outputPath; }
         fspath GetPlandomizerPath() const { return this->_plandomizerPath; }
         void SetSeed(const std::string& newSeed) { this->_seed = newSeed; }
         std::string GetSeed() const { return this->_seed; }
@@ -66,7 +65,7 @@ namespace randomizer::seedgen::config
         YAML::Node PreferencesToYaml();
         void WriteSettingsToFile(const fspath& filePath);
         void WritePreferencesToFile(const fspath& preferencesPath);
-        // void WriteToFile(const fspath& filePath, const fspath& preferencesPath) const;
+        void WriteToFile(const fspath& filePath, const fspath& preferencesPath);
 
         // PermalinkError loadPermalink(std::string b64permalink);
         // std::string getPermalink(const bool& internal = false) const;
@@ -79,8 +78,6 @@ namespace randomizer::seedgen::config
         std::string GetHash();
 
        private:
-        fspath _gameBasePath;
-        fspath _outputPath;
         fspath _plandomizerPath;
 
         std::string _seed;

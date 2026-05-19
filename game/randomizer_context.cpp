@@ -1274,3 +1274,11 @@ void LoadRandomizerConfig() {
 
     g_RandomizerGenerator.LoadConfig();
 }
+
+randomizer::seedgen::config::Config& GetRandomizerConfig() {
+    return g_RandomizerGenerator.GetConfig();
+}
+
+std::string GetRandomizerConfigPath() {
+    return g_RandomizerGenerator.GetConfigPath();
+}

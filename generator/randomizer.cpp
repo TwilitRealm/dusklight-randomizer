@@ -13,6 +13,7 @@
 
 #include <iostream>
 
+#include "seedgen/seed.hpp"
 #include "SDL3/SDL_filesystem.h"
 #include "dusk/app_info.hpp"
 #include "dusk/logging.h"
@@ -56,6 +57,9 @@ namespace randomizer
         SetBaseOutputPath(result);
         LoadConfig();
 #endif
+        const std::string& configSeed = this->_config.GetSeed();
+        std::string hashStr = configSeed.empty() ? seedgen::seed::GenerateSeed() : configSeed;
+        _config.SetSeed(hashStr);
 
         utility::platform::Log(std::string("Seed: ") + this->_config.GetSeed());
 

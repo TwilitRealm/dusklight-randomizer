@@ -3,8 +3,13 @@
 #include <mutex>
 #include <thread>
 
+#include "SDL3/SDL_filesystem.h"
+
 #include "bool_button.hpp"
+#include "number_button.hpp"
 #include "pane.hpp"
+#include "string_button.hpp"
+#include "dusk/app_info.hpp"
 #include "dusk/config.hpp"
 #include "dusk/logging.h"
 
@@ -63,99 +68,124 @@ SelectButton& config_bool_select(
     return button;
 }
 
-auto& FindSetting(const std::string& key) {
-    // TODO: handle multi-world selection
-    auto& settings = g_RandomizerGenerator.GetConfig().GetSettingsList().front();
-    return settings.GetMap().at(key);
-}
+ randomizer::seedgen::settings::Setting* FindSetting(const std::string& key) {
+    if (key.empty()) {
+        DuskLog.fatal("Key is empty! Unable to find setting.");
+    }
 
-auto* FindSettingPtr(const std::string& key) {
     // TODO: handle multi-world selection
-    auto& settings = g_RandomizerGenerator.GetConfig().GetSettingsList().front();
-    return &settings.GetMap().at(key);
+    auto& settings = GetRandomizerConfig().GetSettingsList().front();
+    try {
+        return &settings.GetMap().at(key);
+    } catch (std::exception e) {
+        DuskLog.fatal("Failed to get Settings Key: {}", key);
+    }
 }
 
 void SaveConfig() {
-    g_RandomizerGenerator.GetConfig().WriteSettingsToFile(g_RandomizerGenerator.GetConfigPath());
+    GetRandomizerConfig().WriteSettingsToFile(GetRandomizerConfigPath());
 }
 
-void rando_config_group(Pane& leftPane, Pane& rightPane, std::string settingKey) {
+void rando_config_group(Pane& leftPane, Pane& rightPane, std::string settingKey, std::function<Component*(const std::string&, Pane&)> onSelected = nullptr) {
     auto randoSettings = randomizer::seedgen::settings::GetAllSettingsInfo();
     auto& settingData = randoSettings->at(settingKey);
 
     if (settingData == nullptr) {
         return;
     }
-    auto& curSetting = FindSetting(settingKey);
+    auto curSetting = FindSetting(settingKey);
 
     leftPane.register_control(
     leftPane.add_select_button({
         .key = settingKey,
         .getValue =
-        [settingKey = std::move(settingKey)] { return Rml::String{FindSetting(settingKey).GetCurrentOption()}; },
+        [curSetting] { return Rml::String{curSetting->GetCurrentOption()}; },
     }),
-    rightPane, [&curSetting, settingKey](Pane& pane) {
-        auto curSelIdx = curSetting.GetCurrentOptionIndex();
-        auto settingInfo = curSetting.GetInfo();
+    rightPane, [curSetting, onSelected](Pane& pane) {
+        auto curSelIdx = curSetting->GetCurrentOptionIndex();
+        auto settingInfo = curSetting->GetInfo();
 
         Rml::Element* text_elem = pane.add_rml(settingInfo->GetDescriptions().at(curSelIdx));
+
         for (int i = 0; i < settingInfo->GetOptions().size(); ++i) {
             pane.add_button(
                 {
                     .text = settingInfo->GetOptions()[i],
-                    .isSelected = [settingKey = std::move(settingKey), i] { return FindSetting(settingKey).GetCurrentOptionIndex() == i; },
+                    .isSelected = [curSetting, i] { return curSetting->GetCurrentOptionIndex() == i; },
                 })
-                .on_pressed([i, text_elem, settingKey = std::move(settingKey)] {
-                    auto& curSetting = FindSetting(settingKey);
-                    auto settingInfo = curSetting.GetInfo();
+                .on_pressed([i, text_elem, curSetting] {
+                    auto settingInfo = curSetting->GetInfo();
 
                     mDoAud_seStartMenu(kSoundItemChange);
-                    curSetting.SetCurrentOption(i);
+                    curSetting->SetCurrentOption(i);
                     text_elem->SetInnerRML(settingInfo->GetDescriptions().at(i));
 
                     SaveConfig();
                 });
+        }
+
+        if (onSelected) {
+            onSelected(curSetting->GetCurrentOption(), pane);
         }
     });
 }
 
 SelectButton& rando_config_toggle(
     Pane& leftPane, Pane& rightPane, std::string settingKey) {
+    auto setting = FindSetting(settingKey);
+
     auto& button = leftPane.add_child<BoolButton>(BoolButton::Props{
         .key = settingKey,
-        .getValue = [settingKey] { return FindSetting(settingKey).GetCurrentOptionIndex() != 0; },
+        .getValue = [setting] { return setting->GetCurrentOptionIndex() != 0; },
         .setValue =
-            [settingKey](bool value) {
-                auto& setting = FindSetting(settingKey);
-                auto idx = setting.GetCurrentOptionIndex();
+            [setting](bool value) {
+                auto idx = setting->GetCurrentOptionIndex();
                 if (idx == value) {
                     return;
                 }
 
-                setting.SetCurrentOption(value);
+                setting->SetCurrentOption(value);
 
                 SaveConfig();
             },
     });
     auto& comp = leftPane.register_control(
-        button, rightPane, [settingKey](Pane& pane) {
+        button, rightPane, [setting](Pane& pane) {
             pane.clear();
 
-            auto& setting = FindSetting(settingKey);
-            auto info = setting.GetInfo();
-
-            pane.add_rml(info->GetDescriptions()[setting.GetCurrentOptionIndex()]);
+            auto info = setting->GetInfo();
+            pane.add_rml(info->GetDescriptions()[setting->GetCurrentOptionIndex()]);
         });
 
-    comp.listen(comp.root(), Rml::EventId::Click, [&rightPane, settingKey](Rml::Event&) {
+    comp.listen(comp.root(), Rml::EventId::Click, [&rightPane, setting](Rml::Event&) {
         rightPane.clear();
-        auto& setting = FindSetting(settingKey);
-        auto info = setting.GetInfo();
 
-        rightPane.add_rml(info->GetDescriptions()[setting.GetCurrentOptionIndex()]);
+        auto info = setting->GetInfo();
+        rightPane.add_rml(info->GetDescriptions()[setting->GetCurrentOptionIndex()]);
     });
 
     return button;
+}
+
+NumberButton* rando_add_optional_setting(std::string optionValue, std::string optionsKeyPrefix, Pane& pane) {
+    std::string fullOptionalKey = fmt::format("{} {}", optionsKeyPrefix,  optionValue);
+
+    // check if setting exists
+    auto randoSettings = randomizer::seedgen::settings::GetAllSettingsInfo();
+    if (!randoSettings->contains(fullOptionalKey)) {
+        return nullptr;
+    }
+
+    auto curSetting = FindSetting(fullOptionalKey);
+    const auto& options = curSetting->GetInfo()->GetOptions();
+
+    return &pane.add_child<NumberButton>(NumberButton::Props{
+        .key = fmt::format("{} Count", optionValue),
+        .getValue = [curSetting] { return curSetting->GetCurrentOptionAsNumber(); },
+        .setValue = [curSetting](int value) { curSetting->SetCurrentOption(std::to_string(value)); },
+        .min = std::stoi(options.front()),
+        .max = std::stoi(options.back()),
+    });
 }
 
 RandomizerWindow::RandomizerWindow() {
@@ -173,6 +203,49 @@ RandomizerWindow::RandomizerWindow() {
             randoGenerationThread.detach();
             m_showRandoGeneration = true;
         });
+
+        leftPane.add_button("Load Last Generated Seed").on_pressed([] {
+            std::string seedDirectory =
+                    std::string(SDL_GetPrefPath(dusk::OrgName, dusk::AppName)) + "randomizer/seeds";
+
+            if (!std::filesystem::exists(seedDirectory)) {
+                DuskLog.error("No Files in Directory: {}", seedDirectory);
+                return;
+            }
+
+            std::string hash = "";
+            for (const auto& entry : std::filesystem::directory_iterator(seedDirectory)) {
+                if (entry.is_directory()) {
+                    hash = entry.path().filename().string();
+                    break;
+                }
+            }
+
+            if (!randomizer_IsActive() && !hash.empty()) {
+                DuskLog.info("Attempting to load Hash: {}", hash);
+
+                randomizer_GetContext() = RandomizerContext();
+                randomizer_GetContext().LoadFromHash(hash);
+            }else {
+                DuskLog.warn("No seeds found in generated folder: {}", hash);
+            }
+        });
+
+        leftPane.register_control(leftPane.add_child<StringButton>(StringButton::Props{
+                                      .key = "Seed String",
+                                      .getValue = [] {
+                                          return GetRandomizerConfig().GetSeed();
+                                      },
+                                      .setValue = [](Rml::String value) {
+                                          GetRandomizerConfig().SetSeed(value);
+                                          SaveConfig();
+                                      },
+                                      .maxLength = 32,
+                                  }),
+            rightPane, [](Pane& pane) {
+                pane.clear();
+                pane.add_rml("Current value of the seed used by the randomizer for generation. Leave blank for a random value.");
+            });
     });
 
     add_tab("Seed Options", [this](Rml::Element* content) {
@@ -185,7 +258,9 @@ RandomizerWindow::RandomizerWindow() {
 
         leftPane.add_section("Access Options");
 
-        rando_config_group(leftPane, rightPane, "Hyrule Barrier Requirements");
+        rando_config_group(leftPane, rightPane, "Hyrule Barrier Requirements", [](const std::string& value, Pane& pane) {
+            return rando_add_optional_setting(value, "Hyrule Barrier", pane);
+        });
         rando_config_group(leftPane, rightPane, "Palace of Twilight Requirements");
         rando_config_group(leftPane, rightPane, "Faron Woods Logic");
 
@@ -210,8 +285,9 @@ RandomizerWindow::RandomizerWindow() {
         rando_config_group(leftPane, rightPane, "Small Keys");
         rando_config_group(leftPane, rightPane, "Big Keys");
         rando_config_group(leftPane, rightPane, "Maps and Compasses");
-        rando_config_group(leftPane, rightPane, "Hyrule Castle Big Key Requirements");
-        // TODO: figure out a way to add conditional options depending on selection above
+        rando_config_group(leftPane, rightPane, "Hyrule Castle Big Key Requirements", [](const std::string& value, Pane& pane) {
+            return rando_add_optional_setting(value, "Hyrule Castle Big Key", pane);
+        });
 
         rando_config_toggle(leftPane, rightPane, "Dungeon Rewards Can Be Anywhere");
         rando_config_toggle(leftPane, rightPane, "No Small Keys on Bosses");

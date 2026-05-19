@@ -227,4 +227,8 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg);
 
 void LoadRandomizerConfig();
 
+randomizer::seedgen::config::Config& GetRandomizerConfig();
+
+std::string GetRandomizerConfigPath();
+
 #endif //DUSK_RANDOMIZER_CONTEXT_HPP

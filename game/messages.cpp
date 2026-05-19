@@ -4,7 +4,7 @@
 #include "d/d_msg_class.h"
 #include "randomizer_context.hpp"
 
-#include <format>
+#include <fmt/format.h>
 
 // Format certain messages that need to have dynamic info in them
 char* GetFormatedTextOverride(u32 key, std::string& text) {
@@ -20,12 +20,12 @@ char* GetFormatedTextOverride(u32 key, std::string& text) {
     case (0 << 16) | 325: // Group 0, id 325
         // Poe Soul get item text
         value = dComIfGs_getPohSpiritNum() + 1;
-        outIt = std::vformat_to(buf.data(), text, std::make_format_args(value));
+        outIt = fmt::vformat_to(buf.data(), text, fmt::make_format_args(value));
         break;
     case (0 << 16) | 335: // Group 0, id 335
         // Sky book characters get item text
         value = dComIfGs_getAncientDocumentNum() + 1;
-        outIt = std::vformat_to(buf.data(), text, std::make_format_args(value));
+        outIt = fmt::vformat_to(buf.data(), text, fmt::make_format_args(value));
         break;
     default:
         // No override, return original text

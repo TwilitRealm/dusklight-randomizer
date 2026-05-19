@@ -168,7 +168,7 @@ namespace dusk {
             generationStatusMsgMutex.unlock();
         }
 
-        ImGui::Text(generationText.c_str());
+        ImGui::Text("%s", generationText.c_str());
 
         ImGui::End();
     }

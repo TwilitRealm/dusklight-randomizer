@@ -6,6 +6,7 @@
 #include "SDL3/SDL_filesystem.h"
 
 #include "bool_button.hpp"
+#include "modal.hpp"
 #include "dusk/app_info.hpp"
 #include "dusk/config.hpp"
 #include "dusk/data.hpp"
@@ -13,9 +14,10 @@
 #include "number_button.hpp"
 #include "pane.hpp"
 #include "string_button.hpp"
+#include "dusk/randomizer/game/tools.h"
+#include "dusk/randomizer/generator/seedgen/seed.hpp"
 
 namespace dusk::ui {
-
 struct ConfigBoolProps {
     Rml::String key;
     Rml::String icon;
@@ -26,50 +28,14 @@ struct ConfigBoolProps {
 
 static bool generatingSeed = false;
 static std::string generationStatusMsg{};
-static std::mutex generationStatusMsgMutex{};
 
 static void StartSeedGeneration() {
-    if (generatingSeed) {
-        return;
-    }
-
-    generatingSeed = true;
-    std::lock_guard lock(generationStatusMsgMutex);
     GenerateAndWriteSeed(generationStatusMsg);
     generatingSeed = false;
     DuskLog.debug("{}", generationStatusMsg);
 }
 
-// ripped straight from settings window
-SelectButton& config_bool_select(
-    Pane& leftPane, Pane& rightPane, ConfigVar<bool>& var, ConfigBoolProps props) {
-    auto& button = leftPane.add_child<BoolButton>(BoolButton::Props{
-        .key = std::move(props.key),
-        .icon = std::move(props.icon),
-        .getValue = [&var] { return var.getValue(); },
-        .setValue =
-            [&var, callback = std::move(props.onChange)](bool value) {
-                if (value == var.getValue()) {
-                    return;
-                }
-                var.setValue(value);
-                config::Save();
-                if (callback) {
-                    callback(value);
-                }
-            },
-        .isDisabled = std::move(props.isDisabled),
-        .isModified = [&var] { return var.getValue() != var.getDefaultValue(); },
-    });
-    leftPane.register_control(
-        button, rightPane, [helpText = std::move(props.helpText)](Pane& pane) {
-            pane.clear();
-            pane.add_rml(helpText);
-        });
-    return button;
-}
-
- randomizer::seedgen::settings::Setting* FindSetting(const std::string& key) {
+randomizer::seedgen::settings::Setting* FindSetting(const std::string& key) {
     if (key.empty()) {
         DuskLog.fatal("Key is empty! Unable to find setting.");
     }
@@ -87,7 +53,49 @@ void SaveConfig() {
     GetRandomizerConfig().WriteToFile(GetRandomizerSettingsPath(), GetRandomizerPreferencesPath());
 }
 
-void rando_config_group(Pane& leftPane, Pane& rightPane, std::string settingKey, std::function<Component*(const std::string&, Pane&)> onSelected = nullptr) {
+bool TryCreateRandomSeed() {
+    auto& config = GetRandomizerConfig();
+
+    const std::string& configSeed = config.GetSeed();
+    if (configSeed.empty()) {
+        config.SetSeed(randomizer::seedgen::seed::GenerateSeed());
+        SaveConfig();
+        return true;
+    }
+    return false;
+}
+
+// ripped straight from settings window
+SelectButton& config_bool_select(
+    Pane& leftPane, Pane& rightPane, ConfigVar<bool>& var, ConfigBoolProps props) {
+    auto& button = leftPane.add_child<BoolButton>(BoolButton::Props{
+        .key = std::move(props.key),
+        .icon = std::move(props.icon),
+        .getValue = [&var] { return var.getValue(); },
+        .setValue =
+        [&var, callback = std::move(props.onChange)](bool value) {
+            if (value == var.getValue()) {
+                return;
+            }
+            var.setValue(value);
+            config::Save();
+            if (callback) {
+                callback(value);
+            }
+        },
+        .isDisabled = std::move(props.isDisabled),
+        .isModified = [&var] { return var.getValue() != var.getDefaultValue(); },
+    });
+    leftPane.register_control(
+        button, rightPane, [helpText = std::move(props.helpText)](Pane& pane) {
+            pane.clear();
+            pane.add_rml(helpText);
+        });
+    return button;
+}
+
+void rando_config_group(Pane& leftPane, Pane& rightPane, std::string settingKey,
+    std::function<Component*(const std::string&, Pane&)> onSelected = nullptr) {
     auto randoSettings = randomizer::seedgen::settings::GetAllSettingsInfo();
     auto& settingData = randoSettings->at(settingKey);
 
@@ -97,38 +105,40 @@ void rando_config_group(Pane& leftPane, Pane& rightPane, std::string settingKey,
     auto curSetting = FindSetting(settingKey);
 
     leftPane.register_control(
-    leftPane.add_select_button({
-        .key = settingKey,
-        .getValue =
-        [curSetting] { return Rml::String{curSetting->GetCurrentOption()}; },
-    }),
-    rightPane, [curSetting, onSelected](Pane& pane) {
-        auto curSelIdx = curSetting->GetCurrentOptionIndex();
-        auto settingInfo = curSetting->GetInfo();
+        leftPane.add_select_button({
+            .key = settingKey,
+            .getValue =
+            [curSetting] { return Rml::String{curSetting->GetCurrentOption()}; },
+        }),
+        rightPane, [curSetting, onSelected](Pane& pane) {
+            auto curSelIdx = curSetting->GetCurrentOptionIndex();
+            auto settingInfo = curSetting->GetInfo();
 
-        Rml::Element* text_elem = pane.add_rml(settingInfo->GetDescriptions().at(curSelIdx));
+            Rml::Element* text_elem = pane.add_rml(settingInfo->GetDescriptions().at(curSelIdx));
 
-        for (int i = 0; i < settingInfo->GetOptions().size(); ++i) {
-            pane.add_button(
-                {
-                    .text = settingInfo->GetOptions()[i],
-                    .isSelected = [curSetting, i] { return curSetting->GetCurrentOptionIndex() == i; },
-                })
-                .on_pressed([i, text_elem, curSetting] {
-                    auto settingInfo = curSetting->GetInfo();
+            for (int i = 0; i < settingInfo->GetOptions().size(); ++i) {
+                pane.add_button(
+                    {
+                        .text = settingInfo->GetOptions()[i],
+                        .isSelected = [curSetting, i] {
+                            return curSetting->GetCurrentOptionIndex() == i;
+                        },
+                    })
+                    .on_pressed([i, text_elem, curSetting] {
+                        auto settingInfo = curSetting->GetInfo();
 
-                    mDoAud_seStartMenu(kSoundItemChange);
-                    curSetting->SetCurrentOption(i);
-                    text_elem->SetInnerRML(settingInfo->GetDescriptions().at(i));
+                        mDoAud_seStartMenu(kSoundItemChange);
+                        curSetting->SetCurrentOption(i);
+                        text_elem->SetInnerRML(settingInfo->GetDescriptions().at(i));
 
-                    SaveConfig();
-                });
-        }
+                        SaveConfig();
+                    });
+            }
 
-        if (onSelected) {
-            onSelected(curSetting->GetCurrentOption(), pane);
-        }
-    });
+            if (onSelected) {
+                onSelected(curSetting->GetCurrentOption(), pane);
+            }
+        });
 }
 
 SelectButton& rando_config_toggle(
@@ -139,16 +149,16 @@ SelectButton& rando_config_toggle(
         .key = settingKey,
         .getValue = [setting] { return setting->GetCurrentOptionIndex() != 0; },
         .setValue =
-            [setting](bool value) {
-                auto idx = setting->GetCurrentOptionIndex();
-                if (idx == value) {
-                    return;
-                }
+        [setting](bool value) {
+            auto idx = setting->GetCurrentOptionIndex();
+            if (idx == value) {
+                return;
+            }
 
-                setting->SetCurrentOption(value);
+            setting->SetCurrentOption(value);
 
-                SaveConfig();
-            },
+            SaveConfig();
+        },
     });
     auto& comp = leftPane.register_control(
         button, rightPane, [setting](Pane& pane) {
@@ -168,8 +178,9 @@ SelectButton& rando_config_toggle(
     return button;
 }
 
-NumberButton* rando_add_optional_setting(std::string optionValue, std::string optionsKeyPrefix, Pane& pane) {
-    std::string fullOptionalKey = fmt::format("{} {}", optionsKeyPrefix,  optionValue);
+NumberButton* rando_add_optional_setting(std::string optionValue, std::string optionsKeyPrefix,
+    Pane& pane) {
+    std::string fullOptionalKey = fmt::format("{} {}", optionsKeyPrefix, optionValue);
 
     // check if setting exists
     auto randoSettings = randomizer::seedgen::settings::GetAllSettingsInfo();
@@ -183,10 +194,30 @@ NumberButton* rando_add_optional_setting(std::string optionValue, std::string op
     return &pane.add_child<NumberButton>(NumberButton::Props{
         .key = fmt::format("{} Count", optionValue),
         .getValue = [curSetting] { return curSetting->GetCurrentOptionAsNumber(); },
-        .setValue = [curSetting](int value) { curSetting->SetCurrentOption(std::to_string(value)); },
+        .setValue = [curSetting](int value) {
+            curSetting->SetCurrentOption(std::to_string(value));
+        },
         .min = std::stoi(options.front()),
         .max = std::stoi(options.back()),
     });
+}
+
+Document* show_seed_gen_modal(std::string_view message) {
+    auto* modal = &push_document(std::make_unique<Modal>(Modal::Props{
+        .title = "Randomizer",
+        .bodyRml = escape(message),
+        .onDismiss = [](Modal& modal) {
+            mDoAud_seStartMenu(kSoundWindowClose);
+            modal.pop();
+        },
+        .icon = "verifying",
+    }));
+
+    if (auto* doc = top_document()) {
+        doc->focus();
+    }
+
+    return modal;
 }
 
 RandomizerWindow::RandomizerWindow() {
@@ -194,58 +225,141 @@ RandomizerWindow::RandomizerWindow() {
         auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled);
         auto& rightPane = add_child<Pane>(content, Pane::Type::Controlled);
 
-        config_bool_select(leftPane, rightPane, getSettings().game.randomizerEnabled, {
-            .key = "Randomizer Enabled",
-            .helpText = "Determines if a new Save will load as a regular save or randomized save. (Doesn't do anything currently)"
+        leftPane.register_control(
+            leftPane.add_select_button({
+                .key = "Selected Seed",
+                .getValue =
+                [] {
+                    return randomizer_GetContext().mHash.empty() ?
+                               "None" :
+                               randomizer_GetContext().mHash;
+                },
+            }),
+            rightPane, [](Pane& pane) {
+                std::filesystem::path seedDirectory =
+                    dusk::data::configured_data_path() / "randomizer" / "seeds";
+
+                if (!std::filesystem::exists(seedDirectory)) {
+                    std::filesystem::create_directories(seedDirectory);
+                }
+
+                if (std::filesystem::is_empty(seedDirectory)) {
+                    pane.add_rml(
+                    "No seeds generated! Check out the options tab and generate a seed using the button below.");
+                    return;
+                }
+
+                pane.add_rml(
+                    "Apply a seed generated using the randomizer generator. (Note: must be done before selecting a save file).");
+
+                for (const auto& entry : std::filesystem::directory_iterator(seedDirectory)) {
+                    if (entry.is_directory()) {
+                        std::string hash = entry.path().filename().string();
+
+                        pane.add_button(
+                            {
+                                .text = hash,
+                                .isSelected = [hash] {
+                                    return randomizer_GetContext().mHash == hash;
+                                },
+                            })
+                            .on_pressed([hash] {
+                                randomizer_GetContext() = RandomizerContext();
+                                randomizer_GetContext().LoadFromHash(hash);
+                            });
+                    }
+                }
+            });
+
+        leftPane.register_control(
+            leftPane.add_button("Delete Seeds"),
+            rightPane, [](Pane& pane) {
+                std::filesystem::path seedDirectory =
+                    dusk::data::configured_data_path() / "randomizer" / "seeds";
+
+                if (!std::filesystem::exists(seedDirectory)) {
+                    std::filesystem::create_directories(seedDirectory);
+                }
+
+                if (std::filesystem::is_empty(seedDirectory)) {
+                    pane.add_rml(
+                    "No seeds generated.");
+                    return;
+                }
+
+                pane.add_rml(
+                "Delete any seed currently not active in the randomizer.");
+
+                for (const auto& entry : std::filesystem::directory_iterator(seedDirectory)) {
+                    if (entry.is_directory()) {
+                        std::string hash = entry.path().filename().string();
+
+                        // TODO: our ui lib doesnt have an easy way to either refresh or remove values from the right pane
+                        pane.add_button(
+                            {
+                                .text = hash,
+                                .isDisabled = [hash] {
+                                    return !playerIsOnTitleScreen() || randomizer_GetContext().mHash == hash;
+                                }
+                            })
+                            .on_pressed([hash, entry] {
+                                if (randomizer_GetContext().mHash != hash) {
+                                    std::filesystem::remove_all(entry);
+                                } else if (!randomizer_IsActive()){
+                                    // If the user selected the currently seed, but it's not active, we'll allow the delete
+                                    std::filesystem::remove_all(entry);
+                                    randomizer_GetContext() = RandomizerContext();
+                                }
+                            });
+                    }
+                }
+            });
+
+        leftPane.register_control(leftPane.add_button(ControlledButton::Props{
+            .text = "Deactivate Seed",
+            .isDisabled = [] { return randomizer_GetContext().mHash.empty() || !playerIsOnTitleScreen(); }
+        }).on_pressed([] {
+            if (!randomizer_IsActive()) {
+                randomizer_GetContext() = RandomizerContext();
+            }
+        }), rightPane, [](Pane& pane) {
+            pane.clear();
+            pane.add_rml("Disables currently chosen seed.");
         });
 
-        leftPane.add_button("Generate Seed").on_pressed([this] {
+        leftPane.register_control(leftPane.add_button("Generate Seed").on_pressed(
+        [this, &rightPane] {
+            if (TryCreateRandomSeed()) {
+                DuskLog.info("Created new Seed for generator.");
+            }
+
             std::thread randoGenerationThread(StartSeedGeneration);
             randoGenerationThread.detach();
-            m_showRandoGeneration = true;
-        });
 
-        leftPane.add_button("Load Last Generated Seed").on_pressed([] {
-            std::string seedDirectory =
-                    std::string(SDL_GetPrefPath(dusk::OrgName, dusk::AppName)) + "randomizer/seeds";
+            generatingSeed = true;
+            m_genSeedModal = show_seed_gen_modal("Generating Seed...");
 
-            if (!std::filesystem::exists(seedDirectory)) {
-                DuskLog.error("No Files in Directory: {}", seedDirectory);
-                return;
-            }
-
-            std::string hash = "";
-            for (const auto& entry : std::filesystem::directory_iterator(seedDirectory)) {
-                if (entry.is_directory()) {
-                    hash = entry.path().filename().string();
-                    break;
-                }
-            }
-
-            if (!randomizer_IsActive() && !hash.empty()) {
-                DuskLog.info("Attempting to load Hash: {}", hash);
-
-                randomizer_GetContext() = RandomizerContext();
-                randomizer_GetContext().LoadFromHash(hash);
-            }else {
-                DuskLog.warn("No seeds found in generated folder: {}", hash);
-            }
+        }),rightPane, [](Pane& pane) {
+            pane.clear();
+            pane.add_rml(
+                "Generate a Randomizer seed using the current configuration options, and the supplied seed string.");
         });
 
         leftPane.register_control(leftPane.add_child<StringButton>(StringButton::Props{
-                                      .key = "Seed String",
-                                      .getValue = [] {
-                                          return GetRandomizerConfig().GetSeed();
-                                      },
-                                      .setValue = [](Rml::String value) {
-                                          GetRandomizerConfig().SetSeed(value);
-                                          SaveConfig();
-                                      },
-                                      .maxLength = 32,
-                                  }),
+                .key = "Seed String",
+                .getValue = [] {
+                    return GetRandomizerConfig().GetSeed();
+                },
+                .setValue = [](Rml::String value) {
+                    GetRandomizerConfig().SetSeed(value);
+                    SaveConfig();
+                },
+                .maxLength = 32,
+            }),
             rightPane, [](Pane& pane) {
                 pane.clear();
-                pane.add_rml("Current value of the seed used by the randomizer for generation. Leave blank for a random value.");
+                pane.add_rml(
+                    "Current value of the seed used by the randomizer for generation. Leave blank for a random value.");
             });
     });
 
@@ -259,9 +373,10 @@ RandomizerWindow::RandomizerWindow() {
 
         leftPane.add_section("Access Options");
 
-        rando_config_group(leftPane, rightPane, "Hyrule Barrier Requirements", [](const std::string& value, Pane& pane) {
-            return rando_add_optional_setting(value, "Hyrule Barrier", pane);
-        });
+        rando_config_group(leftPane, rightPane, "Hyrule Barrier Requirements",
+            [](const std::string& value, Pane& pane) {
+                return rando_add_optional_setting(value, "Hyrule Barrier", pane);
+            });
         rando_config_group(leftPane, rightPane, "Palace of Twilight Requirements");
         rando_config_group(leftPane, rightPane, "Faron Woods Logic");
 
@@ -286,9 +401,10 @@ RandomizerWindow::RandomizerWindow() {
         rando_config_group(leftPane, rightPane, "Small Keys");
         rando_config_group(leftPane, rightPane, "Big Keys");
         rando_config_group(leftPane, rightPane, "Maps and Compasses");
-        rando_config_group(leftPane, rightPane, "Hyrule Castle Big Key Requirements", [](const std::string& value, Pane& pane) {
-            return rando_add_optional_setting(value, "Hyrule Castle Big Key", pane);
-        });
+        rando_config_group(leftPane, rightPane, "Hyrule Castle Big Key Requirements",
+            [](const std::string& value, Pane& pane) {
+                return rando_add_optional_setting(value, "Hyrule Castle Big Key", pane);
+            });
 
         rando_config_toggle(leftPane, rightPane, "Dungeon Rewards Can Be Anywhere");
         rando_config_toggle(leftPane, rightPane, "No Small Keys on Bosses");
@@ -345,6 +461,15 @@ RandomizerWindow::RandomizerWindow() {
     });
 }
 
+void RandomizerWindow::update() {
+    Window::update();
+
+    if (m_genSeedModal && !generatingSeed) {
+        m_genSeedModal->pop();
+        m_genSeedModal = nullptr;
+    }
+}
+
 std::filesystem::path GetRandomizerSettingsPath() {
     return data::configured_data_path() / "randomizer" / "settings.yaml";
 }
@@ -354,7 +479,8 @@ std::filesystem::path GetRandomizerPreferencesPath() {
 }
 
 randomizer::seedgen::config::Config& GetRandomizerConfig() {
-    static randomizer::seedgen::config::Config s_config{GetRandomizerSettingsPath(), GetRandomizerPreferencesPath()};
+    static randomizer::seedgen::config::Config s_config{GetRandomizerSettingsPath(),
+                                                        GetRandomizerPreferencesPath()};
     return s_config;
 }
 }

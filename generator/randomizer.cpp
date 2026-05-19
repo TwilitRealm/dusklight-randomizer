@@ -41,10 +41,6 @@ namespace randomizer
         utility::time::ScopedTimer<"Seed generation took ", std::chrono::milliseconds> timer;
         this->_config.LoadFromFile(GetConfigPath(), GetPrefPath());
 
-        const std::string& configSeed = this->_config.GetSeed();
-        std::string hashStr = configSeed.empty() ? seedgen::seed::GenerateSeed() : configSeed;
-        _config.SetSeed(hashStr);
-
         utility::platform::Log(std::string("Seed: ") + this->_config.GetSeed());
 
         seedgen::config::SeedRNG(this->_config, true, false);

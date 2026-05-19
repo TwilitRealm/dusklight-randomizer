@@ -15,8 +15,8 @@ namespace dusk::ui {
     class RandomizerWindow  : public Window {
     public:
         RandomizerWindow();
-
+        void update() override;
     private:
-        bool m_showRandoGeneration = false;
+        Document* m_genSeedModal = nullptr;
     };
 }

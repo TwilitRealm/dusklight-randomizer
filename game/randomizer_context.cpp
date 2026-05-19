@@ -116,6 +116,12 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
 std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& hash) {
     this->mHash = hash;
 
+    if (!std::filesystem::exists(this->GetSeedDataPath())) {
+        DuskLog.error("Failed to load Hash: {}", hash);
+        mHash.clear();
+        return std::nullopt;
+    }
+
     auto in = LoadYAML(this->GetSeedDataPath());
 
     // Necessary settings

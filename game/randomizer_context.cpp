@@ -1044,7 +1044,7 @@ RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::
     }
 
     // Set starting flags
-    auto startFlags = LoadYAML(RANDO_DATA_PATH "startflags.yaml");
+    auto startFlags = LOAD_EMBED_YAML(RANDO_DATA_PATH "startflags.yaml");
     // Event Flags
     for (const auto& flagNode : startFlags["EventFlags"]) {
         if (flagNode.IsScalar()) {
@@ -1108,7 +1108,7 @@ RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::
         randoData.mStartHour = 24;
 
     // Actor Patches
-    auto actorPatches = LoadYAML(RANDO_DATA_PATH "object_patches.yaml");
+    auto actorPatches = LOAD_EMBED_YAML(RANDO_DATA_PATH "object_patches.yaml");
     for (const auto& stageNode : actorPatches) {
         const auto& stageName = stageNode.first.as<std::string>();
         for (const auto& roomNode : stageNode.second) {
@@ -1174,7 +1174,7 @@ RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::
     }
 
     // Flow Patches
-    auto flowPatches = LoadYAML(RANDO_DATA_PATH "flow_patches.yaml");
+    auto flowPatches = LOAD_EMBED_YAML(RANDO_DATA_PATH "flow_patches.yaml");
     for (const auto& groupNode : flowPatches) {
         u8 groupNo = groupNode.first.as<u8>();
         for (const auto& flowNode : groupNode.second) {
@@ -1207,7 +1207,7 @@ RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::
     }
 
     // Text Overrides
-    auto textOverrides = LoadYAML(RANDO_DATA_PATH "text/text_overrides.yaml");
+    auto textOverrides = LOAD_EMBED_YAML(RANDO_DATA_PATH "text/text_overrides.yaml");
     for (const auto& overrideNode : textOverrides) {
         const auto& name = overrideNode["Name"].as<std::string>();
         // TODO: Handle multiple languages

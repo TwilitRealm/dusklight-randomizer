@@ -6,7 +6,7 @@ set(RANDO_SAVE_PATH "${CMAKE_BINARY_DIR}/randomizer/")
 set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} 
                         RANDOMIZER_ONLY=${RANDOMIZER_ONLY}
                         RANDO_SAVE_PATH="${RANDO_SAVE_PATH}"
-                        RANDO_DATA_PATH="${CMAKE_SOURCE_DIR}/src/dusk/randomizer/generator/data/")
+                        RANDO_DATA_PATH="src/dusk/randomizer/generator/data/")
 
 if(RANDO_ERROR_LOG)
   message("Error Log will be saved")
@@ -44,7 +44,14 @@ FetchContent_Declare(
         GIT_TAG v0.2.0-rc0
 )
 
-FetchContent_MakeAvailable(yaml-cpp base64pp)
+message(STATUS "randomizer: Fetching battery-embed")
+FetchContent_Declare(
+        battery-embed
+        GIT_REPOSITORY https://github.com/batterycenter/embed.git
+        GIT_TAG        fdbae3f
+)
+
+FetchContent_MakeAvailable(yaml-cpp base64pp battery-embed)
 
 string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
 set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} SOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})

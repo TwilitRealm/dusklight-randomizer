@@ -4,6 +4,12 @@
 
 #include "../utility/file.hpp"
 #include "../utility/path.hpp"
+#include "battery/embed.hpp"
+
+#define GET_EMBED_DATA(path) b::embed<path>().str()
+#define LOAD_EMBED_DATA(data) YAML::Load(data)
+
+#define LOAD_EMBED_YAML(path) LOAD_EMBED_DATA(GET_EMBED_DATA(path))
 
 // this wrapper is here to avoid path encoding issues
 // removes any possible path -> string oddities or the need to open the file manually

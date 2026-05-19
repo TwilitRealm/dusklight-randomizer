@@ -88,11 +88,7 @@ namespace randomizer::logic::world
     void World::BuildItemTable()
     {
         LOG_TO_DEBUG("Building Item Table for World " + std::to_string(this->GetID()));
-        // Check if we can open the file before parsing
-        auto filepath = RANDO_DATA_PATH "items.yaml";
-        utility::file::Verify(filepath);
-
-        auto itemDataTree = LoadYAML(filepath);
+        auto itemDataTree = LOAD_EMBED_YAML(RANDO_DATA_PATH "items.yaml");
         // Process all nodes of the yaml file. Each node contains one item
         for (const auto& itemNode : itemDataTree)
         {
@@ -156,11 +152,8 @@ namespace randomizer::logic::world
     void World::BuildLocationTable()
     {
         LOG_TO_DEBUG("Building Location Table for World " + std::to_string(this->GetID()));
-        // check if we can open the file before parsing because exceptions won't work on console
-        const auto filepath = RANDO_DATA_PATH "locations.yaml";
-        utility::file::Verify(filepath);
+        auto locationDataTree = LOAD_EMBED_YAML(RANDO_DATA_PATH "locations.yaml");
 
-        auto locationDataTree = LoadYAML(filepath);
         // Process all nodes of the yaml file. Each node contains one location
         int locationIdCounter = 0;
         for (const auto& locationNode : locationDataTree)
@@ -229,11 +222,8 @@ namespace randomizer::logic::world
     void World::LoadLogicMacros()
     {
         LOG_TO_DEBUG("Loading Macros for World " + std::to_string(this->GetID()));
-        // check if we can open the file before parsing
-        auto filepath = RANDO_DATA_PATH "macros.yaml";
-        utility::file::Verify(filepath);
 
-        auto macrosDataTree = LoadYAML(filepath);
+        auto macrosDataTree = LOAD_EMBED_YAML(RANDO_DATA_PATH "macros.yaml");
 
         // Process all nodes of the yaml file. Each node contains one macro
         int macroIdCounter = 0;
@@ -261,34 +251,29 @@ namespace randomizer::logic::world
         std::unordered_set<int> definedEvents = {};
         std::unordered_set<std::string> definedAreas = {};
 
-        // I don't know if directory iterator works on console so all logic files are manually specified here for now
-        std::string folder = RANDO_DATA_PATH "world/";
-        std::list<std::string> files = {
-            "Root.yaml",
-            "overworld/Ordona Province.yaml",
-            "overworld/Faron Province.yaml",
-            "overworld/Eldin Province.yaml",
-            "overworld/Lanayru Province.yaml",
-            "overworld/Gerudo Desert.yaml",
-            "overworld/Snowpeak Province.yaml",
-            "dungeons/Forest Temple.yaml",
-            "dungeons/Goron Mines.yaml",
-            "dungeons/Lakebed Temple.yaml",
-            "dungeons/Arbiters Grounds.yaml",
-            "dungeons/Snowpeak Ruins.yaml",
-            "dungeons/Temple of Time.yaml",
-            "dungeons/City in the Sky.yaml",
-            "dungeons/Palace of Twilight.yaml",
-            "dungeons/Hyrule Castle.yaml",
-        };
+        auto files = std::to_array({
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/Root.yaml"),
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/overworld/Ordona Province.yaml"),
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/overworld/Faron Province.yaml"),
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/overworld/Eldin Province.yaml"),
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/overworld/Lanayru Province.yaml"),
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/overworld/Gerudo Desert.yaml"),
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/overworld/Snowpeak Province.yaml"),
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/dungeons/Forest Temple.yaml"),
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/dungeons/Goron Mines.yaml"),
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/dungeons/Lakebed Temple.yaml"),
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/dungeons/Arbiters Grounds.yaml"),
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/dungeons/Snowpeak Ruins.yaml"),
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/dungeons/Temple of Time.yaml"),
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/dungeons/City in the Sky.yaml"),
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/dungeons/Palace of Twilight.yaml"),
+            GET_EMBED_DATA(RANDO_DATA_PATH "world/dungeons/Hyrule Castle.yaml"),
+        });
 
         // Loop through and process all files
         for (const auto& file : files)
         {
-            auto filepath = folder + file;
-            utility::file::Verify(filepath);
-
-            auto worldDataTree = LoadYAML(filepath);
+            auto worldDataTree = YAML::Load(file);
             for (const auto& areaNode : worldDataTree)
             {
                 YAMLVerifyFields(areaNode, "Name");

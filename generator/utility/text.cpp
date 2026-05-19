@@ -207,24 +207,29 @@ namespace randomizer {
     }
 
     static void LoadTextData(TextDatabase& tb) {
-        std::string dataPath = RANDO_DATA_PATH "text/languages";
-        for (const auto& entry : std::filesystem::directory_iterator(dataPath)) {
-            if (entry.is_regular_file() && entry.path().extension() == ".yaml") {
-                auto language = string_to_language(entry.path().stem().string());
-                auto textData = LoadYAML(entry.path());
-                for (const auto& textNode : textData) {
-                    const auto& name = textNode.first.as<std::string>();
-                    for (const auto& typeNode : textNode.second) {
-                        auto type = string_to_type(typeNode.first.as<std::string>());
-                        auto typeData = typeNode.second;
-                        const auto& text = typeData["Text"].as<std::string>();
-                        tb[name][type].mtext[language] = text;
-                        if (typeData["Gender"]) {
-                            tb[name][type].mGender[language] = string_to_gender(typeData["Gender"].as<std::string>());
-                        }
-                        if (typeData["Plurality"]) {
-                            tb[name][type].mPlurality[language] = string_to_plurality(typeData["Plurality"].as<std::string>());
-                        }
+        struct LanguageEntry {
+            std::string language;
+            std::string languageData;
+        };
+        auto files = std::to_array<LanguageEntry>({
+            {"english", GET_EMBED_DATA(RANDO_DATA_PATH "text/languages/english.yaml")},
+        });
+
+        for (const auto& file : files) {
+            auto language = string_to_language(file.language);
+            auto textData = LOAD_EMBED_DATA(file.languageData);
+            for (const auto& textNode : textData) {
+                const auto& name = textNode.first.as<std::string>();
+                for (const auto& typeNode : textNode.second) {
+                    auto type = string_to_type(typeNode.first.as<std::string>());
+                    auto typeData = typeNode.second;
+                    const auto& text = typeData["Text"].as<std::string>();
+                    tb[name][type].mtext[language] = text;
+                    if (typeData["Gender"]) {
+                        tb[name][type].mGender[language] = string_to_gender(typeData["Gender"].as<std::string>());
+                    }
+                    if (typeData["Plurality"]) {
+                        tb[name][type].mPlurality[language] = string_to_plurality(typeData["Plurality"].as<std::string>());
                     }
                 }
             }

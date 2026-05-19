@@ -219,16 +219,7 @@ namespace randomizer::seedgen::settings
     std::unique_ptr<SettingInfoMap_t> LoadAllSettingsInfo()
     {
         std::unique_ptr<SettingInfoMap_t> settingInfoMap = std::make_unique<SettingInfoMap_t>();
-        auto filepath = RANDO_DATA_PATH "settings_list.yaml";
-        // check if we can open the file before parsing because exceptions won't work on console
-        std::ifstream file(filepath);
-        if (!file.is_open())
-        {
-            throw std::runtime_error(std::string("Could not open ") + filepath);
-        }
-        file.close();
-
-        auto settingsDataTree = LoadYAML(filepath);
+        auto settingsDataTree = LOAD_EMBED_YAML(RANDO_DATA_PATH "settings_list.yaml");
 
         // Process all nodes of the yaml file. Each node contains one setting
         int settingIdCounter = 0;

@@ -37,13 +37,10 @@ namespace randomizer::logic::entrance_shuffle
 
     void SetAllEntrancesData(world::World* world)
     {
-        auto filepath = RANDO_DATA_PATH "entrance_shuffle_data.yaml";
-        utility::file::Verify(filepath);
-
         // Keep track of which double door entrances are together
         std::unordered_map<std::string, std::list<entrance::Entrance*>> coupledDoors = {};
 
-        auto entranceDataTree = LoadYAML(filepath);
+        auto entranceDataTree = LOAD_EMBED_YAML(RANDO_DATA_PATH "entrance_shuffle_data.yaml");
         for (const auto& entranceDataNode : entranceDataTree)
         {
             // Check to make sure all required fields are present

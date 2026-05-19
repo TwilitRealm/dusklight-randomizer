@@ -14,6 +14,8 @@
 #include <thread>
 #include <filesystem>
 
+#include "dusk/data.hpp"
+
 namespace dusk {
 
     static bool generatingSeed = false;
@@ -55,8 +57,8 @@ namespace dusk {
             }
             if (ImGui::BeginMenu(loadSeedText.c_str(), playerIsOnTitleScreen())) {
 
-                std::string seedDirectory =
-                    std::string(SDL_GetPrefPath(dusk::OrgName, dusk::AppName)) + "randomizer/seeds";
+                std::filesystem::path seedDirectory =
+                    dusk::data::configured_data_path() / "randomizer" / "seeds";
 
                 std::list<std::string> hashes{};
 
@@ -92,8 +94,8 @@ namespace dusk {
 
             if (ImGui::BeginMenu("Delete Seed")) {
 
-                std::string seedDirectory =
-                    std::string(SDL_GetPrefPath(dusk::OrgName, dusk::AppName)) + "randomizer/seeds";
+                std::filesystem::path seedDirectory =
+                    dusk::data::configured_data_path() / "randomizer" / "seeds";
 
                 std::list<std::string> hashes{};
 
@@ -113,7 +115,7 @@ namespace dusk {
                         name += " (Current Seed)";
                     }
                     if (ImGui::MenuItem(name.c_str(), nullptr, false, playerIsOnTitleScreen() || randomizer_GetContext().mHash != hash)) {
-                        const std::string hashDirectory = seedDirectory + "/" + hash;
+                        std::filesystem::path hashDirectory = seedDirectory / hash;
                         if (randomizer_GetContext().mHash != hash) {
                             std::filesystem::remove_all(hashDirectory);
                         } else if (!randomizer_IsActive()){

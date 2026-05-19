@@ -90,11 +90,18 @@ namespace randomizer::seedgen::seed
         "Vital",      "Vivid",      "Warm",       "Weekly",     "Weird",      "Wholesome",  "Wicked",     "Wise",
         "Wistful",    "Witty",      "Wonderful",  "Wooden",     "Worried",    "Wrong",      "Young",      "Zany"};
 
+    int GetRandValue(int min, int max) {
+        std::uniform_int_distribution<int> distribution(min, max);
+        std::random_device rd;
+        std::mt19937 engine(rd());
+        return distribution(engine);
+    }
+
     std::string GenerateSeed()
     {
-        const std::string adjective1 = adjectives[rand() % adjectives.size()];
-        const std::string adjective2 = adjectives[rand() % adjectives.size()];
-        const std::string noun = nouns[rand() % nouns.size()];
+        const std::string adjective1 = adjectives[GetRandValue(0, adjectives.size() - 1)];
+        const std::string adjective2 = adjectives[GetRandValue(0, adjectives.size() - 1)];
+        const std::string noun = nouns[GetRandValue(0, nouns.size() - 1)];
 
         return adjective1 + adjective2 + noun;
     }

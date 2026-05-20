@@ -443,15 +443,15 @@ RandomizerWindow::RandomizerWindow() {
         rando_config_toggle(leftPane, rightPane, "City Does Not Require Filled Skybook");
         rando_config_group(leftPane, rightPane, "Goron Mines Entrance");
         rando_config_group(leftPane, rightPane, "Temple of Time Sword Requirement");
-        rando_config_toggle(leftPane, rightPane, "Randomize Starting Spawn");
-        rando_config_group(leftPane, rightPane, "Randomize Dungeon Entrances");
-        rando_config_toggle(leftPane, rightPane, "Randomize Boss Entrances");
-        rando_config_toggle(leftPane, rightPane, "Randomize Grotto Entrances");
-        rando_config_toggle(leftPane, rightPane, "Randomize Cave Entrances");
-        rando_config_toggle(leftPane, rightPane, "Randomize Interior Entrances");
-        rando_config_toggle(leftPane, rightPane, "Randomize Overworld Entrances");
-        rando_config_toggle(leftPane, rightPane, "Decouple Double Door Entrances");
-        rando_config_toggle(leftPane, rightPane, "Decouple Entrances");
+        // rando_config_toggle(leftPane, rightPane, "Randomize Starting Spawn");
+        // rando_config_group(leftPane, rightPane, "Randomize Dungeon Entrances");
+        // rando_config_toggle(leftPane, rightPane, "Randomize Boss Entrances");
+        // rando_config_toggle(leftPane, rightPane, "Randomize Grotto Entrances");
+        // rando_config_toggle(leftPane, rightPane, "Randomize Cave Entrances");
+        // rando_config_toggle(leftPane, rightPane, "Randomize Interior Entrances");
+        // rando_config_toggle(leftPane, rightPane, "Randomize Overworld Entrances");
+        // rando_config_toggle(leftPane, rightPane, "Decouple Double Door Entrances");
+        // rando_config_toggle(leftPane, rightPane, "Decouple Entrances");
 
         leftPane.add_section("Tricks");
 

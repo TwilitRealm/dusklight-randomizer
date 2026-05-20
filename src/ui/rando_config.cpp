@@ -459,6 +459,24 @@ RandomizerWindow::RandomizerWindow() {
         rando_config_toggle(leftPane, rightPane, "Ball and Chain Webs");
         rando_config_toggle(leftPane, rightPane, "Logic Transform Anywhere");
     });
+
+    if (randomizer_IsActive()) {
+        add_tab("In-Game", [this](Rml::Element* content) {
+            auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled);
+            auto& rightPane = add_child<Pane>(content, Pane::Type::Uncontrolled);
+
+            leftPane.add_section("General");
+
+            leftPane.register_control(leftPane.add_button("Warp to Start").on_pressed([] {
+                mDoAud_seStartMenu(kSoundClick);
+                auto& locData = randomizer_GetContext().mStartLocation;
+                dComIfGp_setNextStage(locData.mapName.c_str(), locData.pointNo, locData.roomNo, locData.mapLayer);
+            }), rightPane, [](Pane& pane) {
+                pane.clear();
+                pane.add_rml("Respawns the player at their appropriate starting location.");
+            });
+        });
+    }
 }
 
 void RandomizerWindow::update() {

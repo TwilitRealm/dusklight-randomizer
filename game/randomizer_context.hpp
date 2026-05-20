@@ -60,6 +60,15 @@ public:
     // };
     std::unordered_map<u32, std::string> mTextOverrides{};
 
+    // TODO: hook this up to generator data
+    struct {
+        // for now use hardcoded values for this
+        std::string mapName = "F_SP103"; // (Ordon) Outside Link's House
+        int pointNo = 1;
+        int roomNo = 1;
+        int mapLayer = -1;
+    } mStartLocation;
+
     std::optional<std::string> WriteToFile();
     std::optional<std::string> LoadFromHash(const std::string& hash);
     std::filesystem::path GetSeedDataPath() const;

@@ -432,7 +432,7 @@ RandomizerWindow::RandomizerWindow() {
         rando_config_toggle(leftPane, rightPane, "Shops Display The Replaced Item");
         rando_config_toggle(leftPane, rightPane, "Bonks Do Damage");
         rando_config_group(leftPane, rightPane, "Trap Item Frequency");
-        rando_config_toggle(leftPane, rightPane, "Starting Time of Day");
+        rando_config_group(leftPane, rightPane, "Starting Time of Day");
 
         leftPane.add_section("Dungeon Entrance Settings");
 

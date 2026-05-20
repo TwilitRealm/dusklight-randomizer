@@ -10,6 +10,10 @@
 
 namespace randomizer::logic::search
 {
+    Search::Search(): _searchMode(SearchMode::NO_SEARCH) {
+
+    }
+
     Search::Search(const SearchMode& searchMode,
                    world::WorldPool* worlds,
                    const item_pool::ItemPool& items /* = {} */,

@@ -48,6 +48,7 @@ namespace randomizer::logic::search
 {
     enum class SearchMode
     {
+        NO_SEARCH,
         ACCESSIBLE_LOCATIONS,
         GAME_BEATABLE,
         ALL_LOCATIONS_REACHABLE,
@@ -59,6 +60,7 @@ namespace randomizer::logic::search
     class Search
     {
        public:
+        Search();
         Search(const SearchMode& searchMode,
                world::WorldPool* worlds,
                const item_pool::ItemPool& items = {},

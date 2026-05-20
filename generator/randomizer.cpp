@@ -13,10 +13,9 @@
 
 #include <iostream>
 
-#include "seedgen/seed.hpp"
-#include "SDL3/SDL_filesystem.h"
-#include "dusk/app_info.hpp"
+#include "dusk/data.hpp"
 #include "dusk/logging.h"
+#include "dusk/randomizer/game/randomizer_context.hpp"
 
 namespace randomizer
 {
@@ -34,6 +33,38 @@ namespace randomizer
         }
 
         return std::nullopt;
+    }
+
+    void Randomizer::GenerateTrackerWorld() {
+        auto contextHash = randomizer_GetContext().mHash;
+
+        if (contextHash.empty()) {
+            return;
+        }
+
+        std::filesystem::path seedSettings = dusk::data::configured_data_path() / "randomizer" / "seeds" /
+            contextHash / (contextHash + " Anti-Spoiler Log.txt");
+
+        this->_config.LoadFromFile(seedSettings, GetPrefPath());
+        this->_config.SetHash(contextHash);
+
+        std::unique_ptr<logic::world::World> world = std::make_unique<logic::world::World>(1, this);
+        world->SetSettings(this->_config.GetSettingsList().front());
+        world->Build();
+        this->_worlds.emplace_back(std::move(world));
+
+        auto trackerWorld = this->_worlds.at(0).get();
+        trackerWorld->SetNonProgressLocations();
+        trackerWorld->AssignAreaProperties();
+        trackerWorld->AssignGoalLocations();
+
+        // Cache exit form times. This *must* run before conducting the flattening search, otherwise
+        // the flattening search will pollute the exit timeform cache with a bunch of zeros
+        logic::fill::CacheExitTimeForms(this->_worlds);
+
+        // Set raw requirements for each location
+        FlattenSearch search = FlattenSearch(trackerWorld);
+        search.doSearch();
     }
 
     void Randomizer::GenerateWorlds()

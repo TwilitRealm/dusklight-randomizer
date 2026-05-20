@@ -320,9 +320,9 @@ namespace randomizer::seedgen::config
         WritePreferencesToFile(preferencesPath);
     }
 
-    std::string Config::GetHash()
+    std::string Config::GetHash(bool generateIfEmpty)
     {
-        if (this->_hash.empty())
+        if (this->_hash.empty() && generateIfEmpty)
         {
             this->_hash = seed::GenerateHash();
         }

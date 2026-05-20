@@ -15,6 +15,7 @@
 #include <filesystem>
 
 #include "dusk/data.hpp"
+#include "dusk/randomizer/generator/logic/search.hpp"
 
 namespace dusk {
 
@@ -142,6 +143,8 @@ namespace dusk {
             }
             ImGui::Checkbox("Show Rando Stats", &m_showRandoStats);
 
+            ImGui::Checkbox("Show Rando Tracker", &m_showRandoTracker);
+
             ImGui::EndMenu();
         }
     }
@@ -205,6 +208,86 @@ namespace dusk {
         }
 
         ImGui::End();
+    }
+
+
+    void ImGuiMenuRandomizer::windowRandoTracker() {
+        if (!m_showRandoTracker) {
+            return;
+        }
+
+        ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize |
+            ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav;
+
+        if (ImGui::Begin("Rando Tracker", nullptr, windowFlags)) {
+            auto trackerRando = getTrackerRando();
+            ImGui::Text("Here's where the tracker will be");
+
+            if (ImGui::Button("Update Tracker")) {
+                auto trackerRando = getTrackerRando();
+
+                // Generate tracker world if it doesn't exist
+                auto contextHash = randomizer_GetContext().mHash;
+                auto trackerHash = trackerRando->GetConfig().GetHash(false);
+                // If no hash, or seeds switched, try to create tracker world from currently active seed
+                if (trackerHash.empty() || (trackerHash != contextHash && !contextHash.empty())) {
+                    *trackerRando = randomizer::Randomizer(data::configured_data_path());
+                    trackerRando->GenerateTrackerWorld();
+                    auto trackerWorld = trackerRando->GetWorlds()[0].get();
+                    auto currentItems = trackerWorld->GetStartingItemPool();
+
+                    m_currentSearch = randomizer::logic::search::Search::Accessible(&trackerRando->GetWorlds(), currentItems);
+                    m_currentSearch.SearchWorlds();
+                } else {
+                    // Don't try to update inventory when on the title screen
+                    if (!playerIsOnTitleScreen()) {
+                        // TODO: Translate game save inventory into ItemPool that can be used for searching
+                        randomizer::logic::item_pool::ItemPool currentItems = {};
+                        m_currentSearch = randomizer::logic::search::Search::Accessible(&trackerRando->GetWorlds(), currentItems);
+                    }
+
+                    m_currentSearch.SearchWorlds();
+                }
+            }
+
+            if (trackerRando->GetConfig().GetHash(false).empty()) {
+                ImGui::Text("There is currently no tracker world");
+            } else {
+                ImGui::Text("Tracker world loaded from seed %s", trackerRando->GetConfig().GetHash().c_str());
+
+                // Show total number of available locations
+                auto locations = trackerRando->GetWorlds()[0]->GetAllLocations();
+                auto numAvailableLocations = m_currentSearch._visitedLocations.size();
+                ImGui::Text("Locations Available: %zu / %zu", numAvailableLocations, locations.size());
+
+                if (ImGui::BeginChild("ScrollRegion", ImVec2(500, 500), true))
+                {
+                    // Show all locations. Green for accessible. Red for Unaccessible
+                    for (auto location : locations) {
+                        // Color red
+                        auto color = ImVec4(1.f, 0.f, 0.f, 1.f);
+
+                        // If the search found this location, change color to green
+                        if (m_currentSearch._visitedLocations.contains(location)) {
+                            color = ImVec4(0.f, 1.f, 0.f, 1.f);
+                        }
+
+                        ImGui::TextColored(color, "%s", location->GetName().c_str());
+
+                        // Show requirements for the location below it (formatting isn't pretty right now)
+                        ImGui::Text("    %s", location->GetComputedRequirement().to_string().c_str());
+                    }
+                }
+                ImGui::EndChild();
+            }
+        }
+
+        ImGui::End();
+    }
+
+    randomizer::Randomizer* ImGuiMenuRandomizer::getTrackerRando() {
+        static randomizer::Randomizer trackerRando{data::configured_data_path()};
+        return &trackerRando;
     }
 
 } // namespace dusk

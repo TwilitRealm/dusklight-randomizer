@@ -19,6 +19,7 @@ namespace randomizer
          */
         std::optional<std::string> Generate();
         void GenerateWorlds();
+        void GenerateTrackerWorld();
 
         auto& GetConfig() { return this->_config; }
         auto& GetWorlds() { return this->_worlds; }

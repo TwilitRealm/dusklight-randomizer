@@ -71,11 +71,13 @@ namespace randomizer::seedgen::config
         // std::string getPermalink(const bool& internal = false) const;
 
         /**
-         *  @brief Returns the hash for the config. If the hash is an empty string, then a new one will be generated.
+         *  @brief Returns the hash for the config.
+         *  @param generateIfEmpty Generates a new hash if the current hash is empty
          *
          *  @return The hash as a string
          */
-        std::string GetHash();
+        std::string GetHash(bool generateIfEmpty = true);
+        void SetHash(const std::string& newHash) { this->_hash = newHash; }
 
        private:
         fspath _plandomizerPath;

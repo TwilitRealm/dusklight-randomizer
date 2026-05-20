@@ -427,10 +427,10 @@ RandomizerWindow::RandomizerWindow() {
 
         leftPane.add_section("Additional Settings");
 
-        rando_config_group(leftPane, rightPane, "Starting Form");
-        rando_config_toggle(leftPane, rightPane, "Increase Wallet Capacity");
+        // rando_config_group(leftPane, rightPane, "Starting Form");
+        //rando_config_toggle(leftPane, rightPane, "Increase Wallet Capacity");
         // rando_config_toggle(leftPane, rightPane, "Shops Display The Replaced Item");
-        rando_config_toggle(leftPane, rightPane, "Bonks Do Damage");
+        // rando_config_toggle(leftPane, rightPane, "Bonks Do Damage");
         rando_config_group(leftPane, rightPane, "Trap Item Frequency");
         rando_config_group(leftPane, rightPane, "Starting Time of Day");
 

@@ -281,7 +281,7 @@
 - Name: Castle Town Doctors Office Entrance
   Can Transform: If Transform Anywhere
   Exits:
-    Castle Town Doctors Office Lower: Invoice
+    Castle Town Doctors Office Lower: Invoice and Can_Talk_to_Humans
     Castle Town Doctors Office West Door Interior: Nothing
     Castle Town Doctors Office East Door Interior: Nothing
 
@@ -290,7 +290,7 @@
     Medicine Scent: Can_Sniff
   Exits:
     Castle Town Doctors Office Upper: Wolf_Link
-    Castle Town Doctors Office Entrance: Invoice
+    Castle Town Doctors Office Entrance: Invoice and Can_Talk_to_Humans
 
 - Name: Castle Town Doctors Office Upper
   Exits:

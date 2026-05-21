@@ -3,19 +3,17 @@
 #include "ImGuiConsole.hpp"
 #include "ImGuiMenuRandomizer.hpp"
 
-#include "dusk/app_info.hpp"
 #include "dusk/logging.h"
+#include "dusk/data.hpp"
+#include "dusk/randomizer/generator/logic/search.hpp"
 #include "dusk/randomizer/game/randomizer_context.hpp"
 #include "dusk/randomizer/game/tools.h"
-
-#include "SDL3/SDL_filesystem.h"
 
 #include <mutex>
 #include <thread>
 #include <filesystem>
 
-#include "dusk/data.hpp"
-#include "dusk/randomizer/generator/logic/search.hpp"
+#include "dusk/randomizer/generator/utility/string.hpp"
 
 namespace dusk {
 
@@ -221,9 +219,10 @@ namespace dusk {
 
         if (ImGui::Begin("Rando Tracker", nullptr, windowFlags)) {
             auto trackerRando = getTrackerRando();
-            ImGui::Text("Here's where the tracker will be");
 
-            if (ImGui::Button("Update Tracker")) {
+            // Uncomment button for manual updating
+            if (/*ImGui::Button("Update Tracker") || */g_randomizerState.mUpdateTracker) {
+                g_randomizerState.mUpdateTracker = false;
                 auto trackerRando = getTrackerRando();
 
                 // Generate tracker world if it doesn't exist
@@ -233,37 +232,49 @@ namespace dusk {
                 if (trackerHash.empty() || (trackerHash != contextHash && !contextHash.empty())) {
                     *trackerRando = randomizer::Randomizer(data::configured_data_path());
                     trackerRando->GenerateTrackerWorld();
-                    auto trackerWorld = trackerRando->GetWorlds()[0].get();
-                    auto currentItems = trackerWorld->GetStartingItemPool();
-
-                    m_currentSearch = randomizer::logic::search::Search::Accessible(&trackerRando->GetWorlds(), currentItems);
-                    m_currentSearch.SearchWorlds();
                 } else {
-                    // Don't try to update inventory when on the title screen
-                    if (!playerIsOnTitleScreen()) {
-                        // TODO: Translate game save inventory into ItemPool that can be used for searching
-                        randomizer::logic::item_pool::ItemPool currentItems = {};
-                        m_currentSearch = randomizer::logic::search::Search::Accessible(&trackerRando->GetWorlds(), currentItems);
+                    if (randomizer_IsActive()) {
+                        auto currentItems = getSaveItemPool(trackerRando->GetWorlds()[0].get());
+                        m_currentSearch = randomizer::logic::search::Search::AccessibleNoStartingInventory(&trackerRando->GetWorlds(), currentItems);
                     }
-
                     m_currentSearch.SearchWorlds();
                 }
             }
 
             if (trackerRando->GetConfig().GetHash(false).empty()) {
-                ImGui::Text("There is currently no tracker world");
+                ImGui::Text("Load a seed and start a file to activate the tracker");
             } else {
                 ImGui::Text("Tracker world loaded from seed %s", trackerRando->GetConfig().GetHash().c_str());
 
+                ImGui::Checkbox("Show Only Accessible Locations", &m_onlyAccessible);
+                ImGui::Checkbox("Show Location Requirements", &m_showRequirements);
+                ImGui::InputText("Location Filter", m_locationFilter, 100);
+
                 // Show total number of available locations
                 auto locations = trackerRando->GetWorlds()[0]->GetAllLocations();
+                auto numProgressionLocations = std::ranges::count_if(locations, [](auto* location) {return location->IsProgression();});
                 auto numAvailableLocations = m_currentSearch._visitedLocations.size();
-                ImGui::Text("Locations Available: %zu / %zu", numAvailableLocations, locations.size());
+                ImGui::Text("Locations Available: %zu / %zu", numAvailableLocations, numProgressionLocations);
 
                 if (ImGui::BeginChild("ScrollRegion", ImVec2(500, 500), true))
                 {
+                    std::string filter = m_locationFilter;
                     // Show all locations. Green for accessible. Red for Unaccessible
                     for (auto location : locations) {
+                        // Don't show locations which aren't progression
+                        // Don't show any locations which aren't accessible if only accessible is checked
+                        // Don't show any locations which don't meet the filter
+                        if (!location->IsProgression() ||
+                            (m_onlyAccessible && !m_currentSearch._visitedLocations.contains(location)) ||
+                            !randomizer::utility::str::Contains(location->GetName(), filter)) {
+                            continue;
+                        }
+
+                        // Don't show warp portals for now either
+                        if (location->HasCategories("Warp Portal")) {
+                            continue;
+                        }
+
                         // Color red
                         auto color = ImVec4(1.f, 0.f, 0.f, 1.f);
 
@@ -275,7 +286,9 @@ namespace dusk {
                         ImGui::TextColored(color, "%s", location->GetName().c_str());
 
                         // Show requirements for the location below it (formatting isn't pretty right now)
-                        ImGui::Text("    %s", location->GetComputedRequirement().to_string().c_str());
+                        if (m_showRequirements) {
+                            ImGui::Text("    %s", location->GetComputedRequirement().to_string().c_str());
+                        }
                     }
                 }
                 ImGui::EndChild();

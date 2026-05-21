@@ -172,7 +172,8 @@ public:
     // things like the sound of the rupee counter going up.
     u8 mFlowMessageItemId{0};
 
-    int foolishItemCount{0};
+    int mFoolishItemCount{0};
+    bool mUpdateTracker{false};
 };
 
 extern RandomizerState g_randomizerState;

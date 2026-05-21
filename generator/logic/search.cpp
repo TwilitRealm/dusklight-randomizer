@@ -17,19 +17,22 @@ namespace randomizer::logic::search
     Search::Search(const SearchMode& searchMode,
                    world::WorldPool* worlds,
                    const item_pool::ItemPool& items /* = {} */,
-                   const int& worldToSearch /* = -1 */):
-        _searchMode(searchMode), _worlds(worlds)
+                   const int& worldToSearch /* = -1 */,
+                   bool startingInventory /*= true */):
+        _searchMode(searchMode), _worlds(worlds), _startingInventory(startingInventory)
     {
         // Set the items we should already own
         this->_ownedItems.insert(items.begin(), items.end());
 
         // Add starting inventory items for each world
-        for (const auto& world : *(this->_worlds))
-        {
-            if (worldToSearch == -1 || world->GetID() == worldToSearch)
+        if (this->_startingInventory) {
+            for (const auto& world : *(this->_worlds))
             {
-                const auto& startingInventory = world->GetStartingItemPool();
-                this->_ownedItems.insert(startingInventory.begin(), startingInventory.end());
+                if (worldToSearch == -1 || world->GetID() == worldToSearch)
+                {
+                    const auto& startingInventory = world->GetStartingItemPool();
+                    this->_ownedItems.insert(startingInventory.begin(), startingInventory.end());
+                }
             }
         }
 

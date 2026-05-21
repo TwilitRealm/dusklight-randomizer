@@ -116,15 +116,8 @@ namespace randomizer::logic::world
             auto dungeonMap = itemNode["Dungeon Map"].as<std::string>("");
 
             // Make the item and insert it into the item table
-            auto item = std::make_unique<item::Item>(id,
-                                                                   name,
-                                                                   this,
-                                                                   importance,
-                                                                   gameWinningItem,
-                                                                   dungeonSmallKey != "",
-                                                                   dungeonBigKey != "",
-                                                                   dungeonCompass != "",
-                                                                   dungeonMap != "");
+            auto item = std::make_unique<item::Item>(id, name, this, importance, gameWinningItem,
+                dungeonSmallKey != "", dungeonBigKey != "", dungeonCompass != "", dungeonMap != "");
 
             this->_itemTable.try_emplace(name, std::move(item));
 
@@ -146,6 +139,9 @@ namespace randomizer::logic::world
             {
                 this->GetDungeon(dungeonMap)->SetDungeonMap(curItem);
             }
+
+            // Put item into itemIdTable as well
+            this->_itemIdTable.try_emplace(id, curItem);
         }
     }
 
@@ -990,6 +986,18 @@ namespace randomizer::logic::world
             return nullptr;
         }
         return this->_itemTable.at(name).get();
+    }
+
+    item::Item* World::GetItem(uint8_t id, const bool& ignoreError /*= false*/) {
+        if (!this->_itemIdTable.contains(id))
+        {
+            if (!ignoreError)
+            {
+                throw std::runtime_error("Unknown item id \"" + std::to_string(id) + "\"");
+            }
+            return item::Nothing.get();
+        }
+        return this->_itemIdTable.at(id);
     }
 
     item::Item* World::GetGameWinningItem() const

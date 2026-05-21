@@ -27,6 +27,10 @@ private:
     bool m_showRandoGeneration{false};
     bool m_showRandoTracker{false};
 
+    bool m_onlyAccessible{false};
+    bool m_showRequirements{false};
+    char m_locationFilter[100];
+
     randomizer::logic::search::Search m_currentSearch = randomizer::logic::search::Search();
 };
 }

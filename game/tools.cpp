@@ -1,10 +1,12 @@
 #include "tools.h"
-#include "stages.h"
-#include "d/d_com_inf_game.h"
 #include "d/actor/d_a_alink.h"
+#include "d/d_com_inf_game.h"
 #include "d/d_item.h"
 #include "d/d_item_data.h"
+#include "dusk/logging.h"
 #include "f_op/f_op_actor_mng.h"
+#include "stages.h"
+#include "verify_item_functions.h"
 
 bool playerIsInRoomStage(s32 room, const char* stage)
 {
@@ -149,4 +151,317 @@ int numMirrorShards() {
         numMirrorShards += dComIfGs_isCollectMirror(i);
     }
     return numMirrorShards;
+}
+
+int getTempleKeysFound(int stage) {
+    static std::unordered_map<int, std::vector<int>> keyDoorFlags = {
+        {0xA,  {0x0}},
+        {0x10, {0x7,  0xB,  0x2B, 0x3E}},
+        {0x11, {0x33, 0x3D, 0x3F}},
+        {0x12, {0x23, 0x24, 0x34}},
+        {0x13, {0x27, 0x46, 0x4D, 0x5A, 0x5B}},
+        {0x14, {0x2B, 0x2C, 0x2F, 0x30}},
+        {0x15, {0x1B, 0x1C, 0x1D}},
+        {0x16, {0x6}},
+        {0x17, {0x6,  0x7,   0x8, 0xB, 0x23, 0x24, 0x25}},
+        {0x18, {0x4C, 0x6F, 0x7C}}
+    };
+
+    int count = dComIfGs_getKeyNum(stage);
+
+    // Add number of unlocked key doors for this dungeon to current key count
+    for (auto flag : keyDoorFlags[stage]) {
+        if (dComIfGs_isSwitch(stage, flag)) {
+            count += 1;
+        }
+    }
+
+    return count;
+}
+
+bool isTempleBigKeyFound(int stage) {
+    // The boss key never gets taken away unlike small keys
+    return dComIfGs_isDungeonItemBossKey(stage);
+}
+
+randomizer::logic::item_pool::ItemPool getSaveItemPool(randomizer::logic::world::World* world) {
+    randomizer::logic::item_pool::ItemPool pool{};
+
+    // Item wheel items
+    for (int i = 0; i < MAX_ITEM_SLOTS; ++i) {
+        switch (dComIfGs_getItem(i, false)) {
+        case dItemNo_Randomizer_HAWK_EYE_e:
+            pool.push_back(world->GetItem("Hawkeye", true));
+            break;
+        case dItemNo_Randomizer_BOOMERANG_e:
+            pool.push_back(world->GetItem("Gale Boomerang", true));
+            break;
+        case dItemNo_Randomizer_SPINNER_e:
+            pool.push_back(world->GetItem("Spinner", true));
+            break;
+        case dItemNo_Randomizer_IRONBALL_e:
+            pool.push_back(world->GetItem("Ball and Chain", true));
+            break;
+        case dItemNo_Randomizer_BOW_e:
+            pool.push_back(world->GetItem("Progressive Bow", true));
+            break;
+        case dItemNo_Randomizer_W_HOOKSHOT_e:
+            pool.push_back(world->GetItem("Progressive Clawshot", true));
+            [[fallthrough]];
+        case dItemNo_Randomizer_HOOKSHOT_e:
+            pool.push_back(world->GetItem("Progressive Clawshot", true));
+            break;
+        case dItemNo_Randomizer_HVY_BOOTS_e:
+            pool.push_back(world->GetItem("Iron Boots", true));
+            break;
+        case dItemNo_Randomizer_COPY_ROD_e:
+            pool.push_back(world->GetItem("Progressive Dominion Rod", true));
+            // Powered up dominion rod
+            if (dComIfGs_isEventBit(0x2580)) {
+                pool.push_back(world->GetItem("Progressive Dominion Rod", true));
+            }
+            break;
+        case dItemNo_Randomizer_KANTERA_e:
+            pool.push_back(world->GetItem("Lantern", true));
+            break;
+        case dItemNo_Randomizer_JEWEL_ROD_e:
+        case dItemNo_Randomizer_JEWEL_BEE_ROD_e:
+        case dItemNo_Randomizer_JEWEL_WORM_ROD_e:
+            pool.push_back(world->GetItem("Progressive Fishing Rod", true));
+            [[fallthrough]];
+        case dItemNo_Randomizer_FISHING_ROD_1_e:
+        case dItemNo_Randomizer_BEE_ROD_e:
+        case dItemNo_Randomizer_WORM_ROD_e:
+            pool.push_back(world->GetItem("Progressive Fishing Rod", true));
+            break;
+        case dItemNo_Randomizer_PACHINKO_e:
+            pool.push_back(world->GetItem("Slingshot", true));
+            break;
+        case dItemNo_Randomizer_BOMB_BAG_LV1_e:
+            pool.push_back(world->GetItem("Bomb Bag", true));
+            break;
+        case dItemNo_Randomizer_RAFRELS_MEMO_e:
+            pool.push_back(world->GetItem("Aurus Memo", true));
+            break;
+        case dItemNo_Randomizer_ASHS_SCRIBBLING_e:
+            pool.push_back(world->GetItem("Asheis Sketch", true));
+            break;
+        case dItemNo_Randomizer_EMPTY_BOTTLE_e:
+        case dItemNo_Randomizer_RED_BOTTLE_e:
+        case dItemNo_Randomizer_GREEN_BOTTLE_e:
+        case dItemNo_Randomizer_BLUE_BOTTLE_e:
+        case dItemNo_Randomizer_MILK_BOTTLE_e:
+        case dItemNo_Randomizer_HALF_MILK_BOTTLE_e:
+        case dItemNo_Randomizer_OIL_BOTTLE_e:
+        case dItemNo_Randomizer_WATER_BOTTLE_e:
+        case dItemNo_Randomizer_OIL_BOTTLE_2_e:
+        case dItemNo_Randomizer_RED_BOTTLE_2_e:
+        case dItemNo_Randomizer_UGLY_SOUP_e:
+        case dItemNo_Randomizer_HOT_SPRING_e:
+        case dItemNo_Randomizer_FAIRY_e:
+        case dItemNo_Randomizer_HOT_SPRING_2_e:
+        case dItemNo_Randomizer_OIL2_e:
+        case dItemNo_Randomizer_OIL_e:
+        case dItemNo_Randomizer_FAIRY_DROP_e:
+        case dItemNo_Randomizer_DROP_BOTTLE_e:
+        case dItemNo_Randomizer_BEE_CHILD_e:
+        case dItemNo_Randomizer_CHUCHU_RARE_e:
+        case dItemNo_Randomizer_CHUCHU_RED_e:
+        case dItemNo_Randomizer_CHUCHU_BLUE_e:
+        case dItemNo_Randomizer_CHUCHU_GREEN_e:
+        case dItemNo_Randomizer_CHUCHU_YELLOW_e:
+        case dItemNo_Randomizer_CHUCHU_PURPLE_e:
+        case dItemNo_Randomizer_LV1_SOUP_e:
+        case dItemNo_Randomizer_LV2_SOUP_e:
+        case dItemNo_Randomizer_LV3_SOUP_e:
+        case dItemNo_Randomizer_OIL_BOTTLE3_e:
+        case dItemNo_Randomizer_CHUCHU_BLACK_e:
+            pool.push_back(world->GetItem("Empty Bottle", true));
+            break;
+        default:
+            break;
+        }
+    }
+
+    // Shadow Crystal
+    if (dComIfGs_isEventBit(0xD04)) {
+        pool.push_back(world->GetItem("Shadow Crystal", true));
+    }
+
+    // Fused Shadows
+    for (int i = 0; i < numFusedShadows(); ++i) {
+        pool.push_back(world->GetItem("Progressive Fused Shadow", true));
+    }
+
+    // Mirror Shards
+    for (int i = 0; i < numMirrorShards(); ++i) {
+        pool.push_back(world->GetItem("Progressive Mirror Shard", true));
+    }
+
+    // Poe Souls
+    for (int i = 0; i < dComIfGs_getPohSpiritNum(); ++i) {
+        pool.push_back(world->GetItem("Poe Soul", true));
+    }
+
+    // Hearts
+    for (int i = 0; i < dComIfGs_getMaxLife(); ++i) {
+        pool.push_back(world->GetItem("Piece of Heart", true));
+    }
+
+    // Sky Book characters
+    for (int i = 0; i < dComIfGs_getAncientDocumentNum(); ++i) {
+        pool.push_back(world->GetItem("Progressive Sky Book", true));
+    }
+
+    // Small Keys
+    static std::unordered_map<int, std::string> keyRegionItemNameMap = {
+        {0xA,  "Gerudo Desert Bulblin Camp Key"},
+        {0x10, "Forest Temple Small Key"},
+        {0x11, "Goron Mines Small Key"},
+        {0x12, "Lakebed Temple Small Key"},
+        {0x13, "Arbiters Grounds Small Key"},
+        {0x14, "Snowpeak Ruins Small Key"},
+        {0x15, "Temple of Time Small Key"},
+        {0x16, "City in the Sky Small Key"},
+        {0x17, "Palace of Twilight Small Key"},
+        {0x18, "Hyrule Castle Small Key"},
+    };
+    for (auto& [stage, keyName] : keyRegionItemNameMap) {
+        for (int i = 0; i < getTempleKeysFound(stage); ++i) {
+            pool.push_back(world->GetItem(keyName, true));
+        }
+    }
+
+    // Gate Keys
+    if (haveItem(dItemNo_Randomizer_BOSSRIDER_KEY_e)) {
+        pool.push_back(world->GetItem(dItemNo_Randomizer_BOSSRIDER_KEY_e, true));
+    }
+
+    // Big Keys
+    static std::unordered_map<int, std::string> bigKeyRegionItemNameMap = {
+        {0x10, "Forest Temple Big Key"},
+        {0x12, "Lakebed Temple Big Key"},
+        {0x13, "Arbiters Grounds Big Key"},
+        {0x14, "Snowpeak Ruins Bedroom Key"},
+        {0x15, "Temple of Time Big Key"},
+        {0x16, "City in the Sky Big Key"},
+        {0x17, "Palace of Twilight Big Key"},
+        {0x18, "Hyrule Castle Big Key"},
+    };
+    for (auto& [stage, keyName] : bigKeyRegionItemNameMap) {
+        if (isTempleBigKeyFound(stage)) {
+            pool.push_back(world->GetItem(keyName, true));
+        }
+    }
+
+    // Goron Mines Key Shards
+    for (int i = dItemNo_Randomizer_L2_KEY_PIECES1_e; i < dItemNo_Randomizer_L2_KEY_PIECES3_e; ++i) {
+        if (haveItem(i)) {
+            pool.push_back(world->GetItem("Goron Mines Key Shard", true));
+        }
+    }
+
+    // Ordon Pumpkin
+    if (haveItem(dItemNo_Randomizer_TOMATO_PUREE_e)) {
+        pool.push_back(world->GetItem(dItemNo_Randomizer_TOMATO_PUREE_e, true));
+    }
+
+    // Ordon Cheese
+    if (haveItem(dItemNo_Randomizer_TASTE_e)) {
+        pool.push_back(world->GetItem(dItemNo_Randomizer_TASTE_e, true));
+    }
+
+    // Golden Bugs
+    for (int i = dItemNo_Randomizer_M_BEETLE_e; i < dItemNo_Randomizer_F_MAYFLY_e; ++i) {
+        if (haveItem(i)) {
+            pool.push_back(world->GetItem(i, true));
+        }
+    }
+
+    // Ilia quest items
+    for (int i = dItemNo_Randomizer_LETTER_e; i < dItemNo_Randomizer_HORSE_FLUTE_e; ++i) {
+        if (haveItem(i)) {
+            pool.push_back(world->GetItem(i, true));
+        }
+    }
+
+    // Warp Portals
+    // Item ids are scattered so we have to explicitly list them all
+    static const int portals[] = {
+        dItemNo_Randomizer_ORDON_PORTAL_e,
+        dItemNo_Randomizer_SOUTH_FARON_PORTAL_e,
+        dItemNo_Randomizer_NORTH_FARON_PORTAL_e,
+        dItemNo_Randomizer_SACRED_GROVE_PORTAL_e,
+        dItemNo_Randomizer_KAKARIKO_GORGE_PORTAL_e,
+        dItemNo_Randomizer_KAKARIKO_VILLAGE_PORTAL_e,
+        dItemNo_Randomizer_DEATH_MOUNTAIN_PORTAL_e,
+        dItemNo_Randomizer_ELDIN_BRIDGE_PORTAL_e,
+        dItemNo_Randomizer_CASTLE_TOWN_PORTAL_e,
+        dItemNo_Randomizer_UPPER_ZORAS_RIVER_PORTAL_e,
+        dItemNo_Randomizer_ZORAS_DOMAIN_PORTAL_e,
+        dItemNo_Randomizer_SNOWPEAK_PORTAL_e,
+        dItemNo_Randomizer_GERUDO_DESERT_PORTAL_e,
+        dItemNo_Randomizer_MIRROR_CHAMBER_PORTAL_e,
+    };
+    for (auto portal : portals) {
+        if (haveItem(portal)) {
+            pool.push_back(world->GetItem(portal, true));
+        }
+    }
+
+    // Swords
+    static const int swords[] = {
+        dItemNo_Randomizer_WOOD_STICK_e,
+        dItemNo_Randomizer_SWORD_e,
+        dItemNo_Randomizer_MASTER_SWORD_e,
+        dItemNo_Randomizer_LIGHT_SWORD_e,
+    };
+    for (auto sword : swords) {
+        if (haveItem(sword)) {
+            pool.push_back(world->GetItem("Progressive Sword", true));
+        }
+    }
+
+    // Other Equipment
+    static const int equipment[] = {
+        dItemNo_Randomizer_WOOD_SHIELD_e,
+        dItemNo_Randomizer_HYLIA_SHIELD_e,
+        dItemNo_Randomizer_WEAR_ZORA_e,
+        dItemNo_Randomizer_ARMOR_e,
+    };
+    for (auto item : equipment) {
+        if (haveItem(item)) {
+            pool.push_back(world->GetItem(item, true));
+        }
+    }
+
+    // Hidden Skills
+    static const int hiddenSkills[] = {
+        dItemNo_Randomizer_ENDING_BLOW_e,
+        dItemNo_Randomizer_SHIELD_ATTACK_e,
+        dItemNo_Randomizer_BACK_SLICE_e,
+        dItemNo_Randomizer_HELM_SPLITTER_e,
+        dItemNo_Randomizer_MORTAL_DRAW_e,
+        dItemNo_Randomizer_JUMP_STRIKE_e,
+        dItemNo_Randomizer_GREAT_SPIN_e,
+    };
+    for (auto skill : hiddenSkills) {
+        if (haveItem(skill)) {
+            pool.push_back(world->GetItem("Progressive Hidden Skill", true));
+        }
+    }
+
+    // Wallets
+    switch (dComIfGs_getWalletSize()) {
+    case GIANT_WALLET:
+        pool.push_back(world->GetItem("Progressive Wallet", true));
+        [[fallthrough]];
+    case BIG_WALLET:
+        pool.push_back(world->GetItem("Progressive Wallet", true));
+        [[fallthrough]];
+    default:
+        break;
+    }
+
+    return pool;
 }

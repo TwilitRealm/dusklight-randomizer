@@ -385,7 +385,7 @@ static bool checkFoolishItemEffectReady()
 }
 
 static void handleFoolishItem() {
-    u32 count = g_randomizerState.foolishItemCount;
+    u32 count = g_randomizerState.mFoolishItemCount;
     if (count == 0) {
         return;
     }
@@ -401,7 +401,7 @@ static void handleFoolishItem() {
     }
 
     // Reset count
-    g_randomizerState.foolishItemCount = 0;
+    g_randomizerState.mFoolishItemCount = 0;
 
     /* Store the currently loaded sound wave to local variables as we will need to load them back later.
      * We use this method because if we just loaded the sound waves every time the item was gotten, we'd

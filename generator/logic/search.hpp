@@ -64,13 +64,21 @@ namespace randomizer::logic::search
         Search(const SearchMode& searchMode,
                world::WorldPool* worlds,
                const item_pool::ItemPool& items = {},
-               const int& worldToSearch = -1);
+               const int& worldToSearch = -1,
+               bool startingInventory = true);
 
         static auto Accessible(world::WorldPool* worlds,
                                const item_pool::ItemPool& items = {},
                                const int& worldToSearch = -1)
         {
             return Search(SearchMode::ACCESSIBLE_LOCATIONS, worlds, items, worldToSearch);
+        }
+
+        static auto AccessibleNoStartingInventory(world::WorldPool* worlds,
+                       const item_pool::ItemPool& items = {},
+                       const int& worldToSearch = -1)
+        {
+            return Search(SearchMode::ACCESSIBLE_LOCATIONS, worlds, items, worldToSearch, false);
         }
 
         static auto AllLocationsReachable(world::WorldPool* worlds,
@@ -136,6 +144,7 @@ namespace randomizer::logic::search
         bool _newThingsFound = true;
         bool _isBeatable = false;
         bool _collectItems = true;
+        bool _startingInventory = true;
         std::unordered_set<int> _ownedEvents;
         std::unordered_multiset<item::Item*> _ownedItems;
 

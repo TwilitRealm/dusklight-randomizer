@@ -17,3 +17,9 @@ u16 getItemMessageID(u8 itemId);
 int numCompletedDungeons();
 int numFusedShadows();
 int numMirrorShards();
+
+/*
+ * Reads the current player inventory and returns an ItemPool that can be used for logic searches
+ *
+ */
+randomizer::logic::item_pool::ItemPool getSaveItemPool(randomizer::logic::world::World* world);

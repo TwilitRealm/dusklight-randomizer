@@ -28,6 +28,9 @@ namespace randomizer::logic::item_pool
         {"Aurus Memo", 1},
         {"Asheis Sketch", 1},
         {"Renados Letter", 1},
+        {"Invoice", 1},
+        {"Wooden Statue", 1},
+        {"Ilias Charm", 1},
         {"Zora Armor", 1},
         {"Hylian Shield", 1},
         {"Ordon Shield", 1},
@@ -126,6 +129,11 @@ namespace randomizer::logic::item_pool
         {"Snowpeak Portal", 1},
         {"Gerudo Desert Portal", 1},
         {"Mirror Chamber Portal", 1},
+
+        // Tears
+        {"Faron Twilight Tear", 16},
+        {"Eldin Twilight Tear", 16},
+        {"Lanayru Twilight Tear", 16},
 
         // Junk we should always have
         {"Purple Rupee Links House", 1},

@@ -26,7 +26,8 @@ private:
     struct LocationTrackerInfo {
         std::string locationName;
         std::string logicStr;
-        bool accessible;
+        bool accessible = false;
+        bool collected = false;
     };
 
     struct TrackerAreaGroup {

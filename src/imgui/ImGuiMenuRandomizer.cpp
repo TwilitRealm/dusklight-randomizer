@@ -277,12 +277,15 @@ namespace dusk {
                                     continue;
                                 }
 
-                                // Color red
-                                auto color = ImVec4(1.f, 0.f, 0.f, 1.f);
-
-                                // If the search found this location, change color to green
-                                if (info.accessible) {
+                                ImVec4 color;
+                                if (info.collected) {
+                                    // gray to show collected
+                                    color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+                                }else if (info.accessible) {
+                                    // If the search found this location, change color to green
                                     color = ImVec4(0.f, 1.f, 0.f, 1.f);
+                                }else {
+                                    color = ImVec4(1.f, 0.f, 0.f, 1.f); // red for inaccessible
                                 }
 
                                 ImGui::TextColored(color, "%s", info.locationName.c_str());
@@ -336,6 +339,23 @@ namespace dusk {
                 .logicStr = location->GetComputedRequirement().to_string(),
                 .accessible = m_currentSearch._visitedLocations.contains(location)
             };
+
+            auto& locationMeta = location->GetMetadata();
+
+            if (auto& chestNode = locationMeta["Chest"]) {
+                if (chestNode.size() != 1) {
+                    DuskLog.warn("Assumption that theres one tbox id for this location was false!");
+                }
+                auto tboxId = chestNode[0]["Tbox Id"].as<u8>();
+                auto stageId = getStageSaveId(chestNode[0]["Stage"].as<u8>());
+                info.collected = dComIfGs_isStageTbox(stageId, tboxId);
+            } else if (auto& poeNode = locationMeta["Poe"]) {
+                auto flag = poeNode[0]["Flag"].as<u8>();
+                auto stageId = getStageSaveId(poeNode[0]["Stage"].as<u8>());
+                info.collected = dComIfGs_isStageSwitch(stageId, flag);
+            } else {
+                info.collected = false;
+            }
 
             for (auto access : location->GetAccessList()) {
                 auto areaName = access->GetArea()->GetName();

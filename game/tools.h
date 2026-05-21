@@ -23,3 +23,7 @@ int numMirrorShards();
  *
  */
 randomizer::logic::item_pool::ItemPool getSaveItemPool(randomizer::logic::world::World* world);
+
+// Used to get a stage's Area ID used for save flags
+int getStageSaveId(int id);
+int getStageSaveId(const char* stage);

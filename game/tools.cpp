@@ -465,3 +465,116 @@ randomizer::logic::item_pool::ItemPool getSaveItemPool(randomizer::logic::world:
 
     return pool;
 }
+
+int getStageSaveId(int id) {
+    switch (id) {
+        case 41: // F_SP00  (Ordon Ranch)
+        case 43: // F_SP103 (Ordon Village / Outside Link's House)
+        case 44: // F_SP104 (Ordon Spring)
+        case 65: // R_SP01  (Ordon House Interiors)
+            return 0x0;
+        case 66: // R_SP107 (Castle Town Sewers)
+            return 0x1;
+        case 40: // D_SB10  (Faron Woods Cave)
+        case 45: // F_SP108 (Faron Woods)
+        case 67: // R_SP108 (Coro's House)
+            return 0x2;
+        case 46: // F_SP109 (Kakariko Village)
+        case 47: // F_SP110 (Death Mountain Trail)
+        case 48: // F_SP111 (Kakariko Graveyard)
+        case 63: // F_SP128 (Hidden Village)
+        case 68: // R_SP109 (Kakariko Interiors)
+        case 69: // R_SP110 (Goron Elder's Hall)
+        case 72: // R_SP128 (Impaz's House)
+        case 75: // R_SP209 (Sanctuary Basement)
+            return 0x3;
+        case 49: // F_SP112 (Zora's River)
+        case 50: // F_SP113 (Zora's Domain)
+        case 52: // F_SP115 (Lake Hylia)
+        case 61: // F_SP126 (Upper Zora's River)
+        case 71: // R_SP127 (Hena's Cabin)
+            return 0x4;
+        case 56: // F_SP121 (Hyrule Field)
+        case 57: // F_SP122 (Outside Castle Town)
+        case 58: // F_SP123 (King Bulblin 2)
+        case 64: // F_SP200 (Wolf Howling Cutscene Map)
+            return 0x6;
+        case 54: // F_SP117 (Lost Woods)
+            return 0x7;
+        case 51: // F_SP114 (Snowpeak Mountain)
+            return 0x8;
+        case 53: // F_SP116 (Castle Town)
+        case 70: // R_SP116 (Telma's Bar / Secret Passage)
+        case 73: // R_SP160 (Hyrule Castle Town Interiors)
+        case 74: // R_SP161 (STAR Tent)
+            return 0x9;
+        case 55: // F_SP118 (Bulblin Camp)
+        case 59: // F_SP124 (Gerudo Desert)
+        case 60: // F_SP125 (Mirror Chamber)
+            return 0xA;
+        case 62: // F_SP127 (Fishing Pond)
+            return 0xB;
+        case 6:  // D_MN05  (Forest Temple)
+        case 7:  // D_MN05A (Diababa Arena)
+        case 8:  // D_MN05B (Ook Arena)
+            return 0x10;
+        case 3:  // D_MN04  (Goron Mines)
+        case 4:  // D_MN04A (Fyrus Arena)
+        case 5:  // D_MN04B (Dangoro Arena)
+            return 0x11;
+        case 0:  // D_MN01  (Lakebed Temple)
+        case 1:  // D_MN01A (Morpheel Arena)
+        case 2:  // D_MN01B (Deku Toad Arena)
+            return 0x12;
+        case 24: // D_MN10  (Arbiter's Grounds)
+        case 25: // D_MN10A (Stallord Arena)
+        case 26: // D_MN10B (Death Sword Arena)
+            return 0x13;
+        case 27: // D_MN11  (Snowpeak Ruins)
+        case 28: // D_MN11A (Blizzeta Arena)
+        case 29: // D_MN11B (Darkhammer Arena)
+            return 0x14;
+        case 9:  // D_MN06  (Temple of Time)
+        case 10: // D_MN06A (Armogohma Arena)
+        case 11: // D_MN06B (Darknut Arena)
+            return 0x15;
+        case 12: // D_MN07  (City in the Sky)
+        case 13: // D_MN07A (Argorok Arena)
+        case 14: // D_MN07B (Aeralfos Arena)
+            return 0x16;
+        case 15: // D_MN08  (Palace of Twilight)
+        case 16: // D_MN08A (Palace of Twilight Throne Room)
+        case 17: // D_MN08B (Phantom Zant Arena 1)
+        case 18: // D_MN08C (Phantom Zant Arena 2)
+        case 19: // D_MN08D (Zant Arenas)
+            return 0x17;
+        case 20: // D_MN09  (Hyrule Castle)
+        case 21: // D_MN09A (Hyrule Castle Throne Room)
+        case 22: // D_MN09B (Horseback Ganondorf Arena)
+        case 23: // D_MN09C (Dark Lord Ganondorf Arena)
+            return 0x18;
+        case 30: // D_SB00  (Ice Cavern)
+        case 31: // D_SB01  (Cave Of Ordeals)
+        case 32: // D_SB02  (Kakariko Gorge Cavern)
+            return 0x19;
+        case 33: // D_SB03  (Lake Hylia Cavern)
+        case 34: // D_SB04  (Goron Stockcave)
+            return 0x1A;
+        case 35: // D_SB05  (Grotto 1)
+        case 36: // D_SB06  (Grotto 2)
+        case 37: // D_SB07  (Grotto 3)
+        case 38: // D_SB08  (Grotto 4)
+        case 39: // D_SB09  (Grotto 5)
+            return 0x1B;
+        case 42: // F_SP102 (Title Screen / King Bulblin 1)
+            return 0xFF;
+        default:
+            DuskLog.warn("Failed to find Save Id for ID: {}" , id);
+            return -1;
+    }
+}
+
+int getStageSaveId(const char* stage) {
+    int id = getStageID(stage);
+    return getStageSaveId(id);
+}

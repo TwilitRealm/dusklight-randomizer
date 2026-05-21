@@ -357,9 +357,16 @@ namespace dusk {
                 info.collected = false;
             }
 
+            // Gather the hint regions this location is in (set avoids duplicates)
+            std::unordered_set<std::string> regions{};
             for (auto access : location->GetAccessList()) {
-                auto areaName = access->GetArea()->GetName();
-                auto& infoGroup = m_LocationInfo[areaName];
+                for (const auto& region : access->GetArea()->GetHintRegions()) {
+                    regions.insert(region);
+                }
+            }
+
+            for (const auto& region : regions) {
+                auto& infoGroup = m_LocationInfo[region];
                 if (!infoGroup.anyAccessible && info.accessible) {
                     infoGroup.anyAccessible = true;
                 }

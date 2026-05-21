@@ -221,9 +221,8 @@ namespace dusk {
             auto trackerRando = getTrackerRando();
 
             // Uncomment button for manual updating
-            if (/*ImGui::Button("Update Tracker") || */g_randomizerState.mUpdateTracker) {
+            if (ImGui::Button("Update Tracker") || g_randomizerState.mUpdateTracker) {
                 g_randomizerState.mUpdateTracker = false;
-                auto trackerRando = getTrackerRando();
 
                 // Generate tracker world if it doesn't exist
                 auto contextHash = randomizer_GetContext().mHash;
@@ -232,13 +231,15 @@ namespace dusk {
                 if (trackerHash.empty() || (trackerHash != contextHash && !contextHash.empty())) {
                     *trackerRando = randomizer::Randomizer(data::configured_data_path());
                     trackerRando->GenerateTrackerWorld();
-                } else {
-                    if (randomizer_IsActive()) {
-                        auto currentItems = getSaveItemPool(trackerRando->GetWorlds()[0].get());
-                        m_currentSearch = randomizer::logic::search::Search::AccessibleNoStartingInventory(&trackerRando->GetWorlds(), currentItems);
-                    }
-                    m_currentSearch.SearchWorlds();
                 }
+
+                if (randomizer_IsActive()) {
+                    auto currentItems = getSaveItemPool(trackerRando->GetWorlds()[0].get());
+                    m_currentSearch = randomizer::logic::search::Search::AccessibleNoStartingInventory(&trackerRando->GetWorlds(), currentItems);
+                }
+                m_currentSearch.SearchWorlds();
+
+                generateLocationInfo();
             }
 
             if (trackerRando->GetConfig().GetHash(false).empty()) {
@@ -260,34 +261,43 @@ namespace dusk {
                 {
                     std::string filter = m_locationFilter;
                     // Show all locations. Green for accessible. Red for Unaccessible
-                    for (auto location : locations) {
-                        // Don't show locations which aren't progression
-                        // Don't show any locations which aren't accessible if only accessible is checked
-                        // Don't show any locations which don't meet the filter
-                        if (!location->IsProgression() ||
-                            (m_onlyAccessible && !m_currentSearch._visitedLocations.contains(location)) ||
-                            !randomizer::utility::str::Contains(location->GetName(), filter)) {
+                    for (const auto& [areaName, location] : m_LocationInfo) {
+                        if (m_onlyAccessible && !location.anyAccessible)
                             continue;
+
+                        if (!location.anyAccessible) {
+                            ImGui::BeginDisabled();
                         }
 
-                        // Don't show warp portals for now either
-                        if (location->HasCategories("Warp Portal")) {
-                            continue;
+                        if (ImGui::TreeNode(areaName.c_str())) {
+                            for (const auto& info : location.locations) {
+                                // Don't show any locations which aren't accessible if only accessible is checked
+                                // Don't show any locations which don't meet the filter
+                                if ((m_onlyAccessible && !info.accessible) || !randomizer::utility::str::Contains(info.locationName, filter)) {
+                                    continue;
+                                }
+
+                                // Color red
+                                auto color = ImVec4(1.f, 0.f, 0.f, 1.f);
+
+                                // If the search found this location, change color to green
+                                if (info.accessible) {
+                                    color = ImVec4(0.f, 1.f, 0.f, 1.f);
+                                }
+
+                                ImGui::TextColored(color, "%s", info.locationName.c_str());
+
+                                // Show requirements for the location below it (formatting isn't pretty right now)
+                                if (m_showRequirements) {
+                                    ImGui::SetItemTooltip("    %s", info.logicStr.c_str());
+                                }
+                            }
+
+                            ImGui::TreePop();
                         }
 
-                        // Color red
-                        auto color = ImVec4(1.f, 0.f, 0.f, 1.f);
-
-                        // If the search found this location, change color to green
-                        if (m_currentSearch._visitedLocations.contains(location)) {
-                            color = ImVec4(0.f, 1.f, 0.f, 1.f);
-                        }
-
-                        ImGui::TextColored(color, "%s", location->GetName().c_str());
-
-                        // Show requirements for the location below it (formatting isn't pretty right now)
-                        if (m_showRequirements) {
-                            ImGui::Text("    %s", location->GetComputedRequirement().to_string().c_str());
+                        if (!location.anyAccessible) {
+                            ImGui::EndDisabled();
                         }
                     }
                 }
@@ -303,4 +313,38 @@ namespace dusk {
         return &trackerRando;
     }
 
+    void ImGuiMenuRandomizer::generateLocationInfo() {
+        auto trackerRando = getTrackerRando();
+        auto locations = trackerRando->GetWorlds()[0]->GetAllLocations();
+
+        m_LocationInfo.clear();
+
+        for (auto location : locations) {
+            // Don't show locations which aren't progression
+            // Don't show any locations which aren't accessible if only accessible is checked
+            if (!location->IsProgression()) {
+                continue;
+            }
+
+            // Don't show warp portals for now either
+            if (location->HasCategories("Warp Portal")) {
+                continue;
+            }
+
+            LocationTrackerInfo info {
+                .locationName = location->GetName(),
+                .logicStr = location->GetComputedRequirement().to_string(),
+                .accessible = m_currentSearch._visitedLocations.contains(location)
+            };
+
+            for (auto access : location->GetAccessList()) {
+                auto areaName = access->GetArea()->GetName();
+                auto& infoGroup = m_LocationInfo[areaName];
+                if (!infoGroup.anyAccessible && info.accessible) {
+                    infoGroup.anyAccessible = true;
+                }
+                infoGroup.locations.push_back(info);
+            }
+        }
+    }
 } // namespace dusk

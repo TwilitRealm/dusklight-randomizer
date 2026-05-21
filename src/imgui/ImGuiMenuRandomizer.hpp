@@ -23,6 +23,17 @@ public:
     randomizer::Randomizer* getTrackerRando();
 
 private:
+    struct LocationTrackerInfo {
+        std::string locationName;
+        std::string logicStr;
+        bool accessible;
+    };
+
+    struct TrackerAreaGroup {
+        std::vector<LocationTrackerInfo> locations;
+        bool anyAccessible;
+    };
+
     bool m_showRandoStats{false};
     bool m_showRandoGeneration{false};
     bool m_showRandoTracker{false};
@@ -32,6 +43,10 @@ private:
     char m_locationFilter[100];
 
     randomizer::logic::search::Search m_currentSearch = randomizer::logic::search::Search();
+
+    std::map<std::string, TrackerAreaGroup> m_LocationInfo;
+
+    void generateLocationInfo();
 };
 }
 

@@ -57,6 +57,9 @@ namespace randomizer::logic::search
 
     void Search::SearchWorlds()
     {
+        if (this->_searchMode == SearchMode::NO_SEARCH) {
+            return;
+        }
         // Get all locations which fit criteria to test on each iteration
         std::list<area::LocationAccess*> itemLocations = {};
         for (const auto& world : *(this->_worlds))

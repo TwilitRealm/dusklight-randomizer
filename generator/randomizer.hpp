@@ -23,6 +23,12 @@ namespace randomizer
 
         auto& GetConfig() { return this->_config; }
         auto& GetWorlds() { return this->_worlds; }
+        /**
+         * @param worldId
+         * @return The world with the specified Id. If no Id is specified, the first world will
+         * be returned. If a world with the Id does not exist, a nullptr will be returned.
+         */
+        logic::world::World* GetWorld(int worldId = 1);
 
         int GetNewEventID() { return ++(this->_eventIdCounter); }
         int GetNewAreaID() { return ++(this->_areaIdCounter); }

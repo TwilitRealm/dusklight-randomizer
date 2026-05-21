@@ -915,7 +915,7 @@ void parseObjPatchData(stage_tgsc_data_class& object, const YAML::Node& patchNod
     }
 }
 
-RandomizerContext WriteSeedData(const std::unique_ptr<randomizer::logic::world::World>& world) {
+RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
     RandomizerContext randoData{};
 
     // Settings we need to check ingame
@@ -1248,7 +1248,7 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
         return;
     }
 
-    const auto& world = r.GetWorlds()[0];
+    const auto world = r.GetWorld();
     RandomizerContext randoData{};
     try {
         randoData = WriteSeedData(world);

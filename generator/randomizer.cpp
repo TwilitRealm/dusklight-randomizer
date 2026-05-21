@@ -19,6 +19,15 @@
 
 namespace randomizer
 {
+    logic::world::World* Randomizer::GetWorld(int worldId /*= 1*/) {
+        auto worldIndex = worldId - 1;
+        if (worldIndex < this->_worlds.size()) {
+            return this->_worlds.at(worldIndex).get();
+        }
+
+        return nullptr;
+    }
+
     std::optional<std::string> Randomizer::Generate()
     {
         try

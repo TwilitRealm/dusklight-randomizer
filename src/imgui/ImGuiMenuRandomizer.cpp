@@ -234,7 +234,7 @@ namespace dusk {
                 }
 
                 if (randomizer_IsActive()) {
-                    auto currentItems = getSaveItemPool(trackerRando->GetWorlds()[0].get());
+                    auto currentItems = getSaveItemPool(trackerRando->GetWorld());
                     m_currentSearch = randomizer::logic::search::Search::AccessibleNoStartingInventory(&trackerRando->GetWorlds(), currentItems);
                 }
                 m_currentSearch.SearchWorlds();
@@ -252,7 +252,7 @@ namespace dusk {
                 ImGui::InputText("Location Filter", m_locationFilter, 100);
 
                 // Show total number of available locations
-                auto locations = trackerRando->GetWorlds()[0]->GetAllLocations();
+                auto locations = trackerRando->GetWorld()->GetAllLocations();
                 auto numProgressionLocations = std::ranges::count_if(locations, [](auto* location) {return location->IsProgression();});
                 auto numAvailableLocations = m_currentSearch._visitedLocations.size();
                 ImGui::Text("Locations Available: %zu / %zu", numAvailableLocations, numProgressionLocations);
@@ -318,7 +318,7 @@ namespace dusk {
 
     void ImGuiMenuRandomizer::generateLocationInfo() {
         auto trackerRando = getTrackerRando();
-        auto locations = trackerRando->GetWorlds()[0]->GetAllLocations();
+        auto locations = trackerRando->GetWorld()->GetAllLocations();
 
         m_LocationInfo.clear();
 

@@ -34,6 +34,7 @@
   Metadata:
     Name Lookup:
       - Uli Cradle Delivery
+    Event Flag: 0x0301
 
 - Name: Ordon Cat Rescue
   Original Item: Bottle with Half Milk
@@ -44,6 +45,7 @@
   Metadata:
     Name Lookup:
       - Ordon Cat Rescue
+    Event Flag: 0x1408
 
 - Name: Sera Shop Slingshot
   Original Item: Slingshot
@@ -63,6 +65,9 @@
   Metadata:
     Name Lookup:
       - Ordon Shield
+    Switch Flag:
+      Stage: 65
+      Flag: 0x20
 
 - Name: Ordon Sword
   Original Item: Progressive Sword
@@ -72,6 +77,9 @@
   Metadata:
     Name Lookup:
       - Ordon Sword
+    Switch Flag:
+      Stage: 65
+      Flag: 0x18
 
 - Name: Wrestling With Bo
   Original Item: Iron Boots
@@ -269,6 +277,7 @@
   Metadata:
     Name Lookup:
       - Herding Goats Reward
+    Event Flag: 0x4240
 
 - Name: Ordon Ranch Grotto Lantern Chest
   Original Item: Purple Rupee
@@ -466,6 +475,7 @@
   Metadata:
     Name Lookup:
       - Coro Bottle
+    Event Flag: 0x1A08
 
 - Name: Faron Woods Coro Boulder Rupee 1
   Original Item: Green Rupee
@@ -810,6 +820,7 @@
   Metadata:
     Name Lookup:
       - Sacred Grove Pedestal Master Sword
+    Event Flag: 0x2120
 
 - Name: Sacred Grove Pedestal Shadow Crystal
   Original Item: Shadow Crystal
@@ -820,6 +831,7 @@
   Metadata:
     Name Lookup:
       - Sacred Grove Pedestal Shadow Crystal
+    Event Flag: 0x2120
 
 - Name: Sacred Grove Master Sword Poe
   Original Item: Poe Soul
@@ -1409,6 +1421,7 @@
   Metadata:
     Name Lookup:
       - Talo Sharpshooting
+    Event Flag: 0x0920
 
 - Name: Renados Letter
   Original Item: Renados Letter
@@ -1420,6 +1433,7 @@
   Metadata:
     Name Lookup:
       - Renados Letter
+    Event Flag: 0x0F80
 
 - Name: Ilia Memory Reward
   Original Item: Horse Call
@@ -1430,6 +1444,7 @@
   Metadata:
     Name Lookup:
       - Ilia Memory Reward
+    Event Flag: 0x2320 # (Maybe use 0x5E04?)
 
 - Name: Rutelas Blessing
   Original Item: Zora Armor
@@ -1441,6 +1456,7 @@
   Metadata:
     Name Lookup:
       - Rutelas Blessing
+    Event Flag: 0x0804
 
 - Name: Gift From Ralis
   Original Item: Progressive Fishing Rod
@@ -1452,6 +1468,7 @@
   Metadata:
     Name Lookup:
       - Gift From Ralis
+    Event Flag: 0x3B80
 
 - Name: Kakariko Graveyard Lantern Chest
   Original Item: Purple Rupee
@@ -1817,6 +1834,7 @@
   Metadata:
     Name Lookup:
       - Skybook From Impaz
+    Event Flag: 0x5F80
 
 - Name: Cats Hide and Seek Minigame
   Original Item: Piece of Heart
@@ -1850,6 +1868,7 @@
   Metadata:
     Name Lookup:
       - Ilia Charm
+    Event Flag: 0x2280
 
 # LANAYRU PROVINCE
 
@@ -2284,6 +2303,7 @@
   Metadata:
     Name Lookup:
       - Charlo Donation Blessing
+    Event Flag: 0x2480
 
 - Name: STAR Prize 1
   Original Item: Progressive Bow
@@ -2295,6 +2315,7 @@
   Metadata:
     Name Lookup:
       - STAR Prize 1
+    Event Flag: 0x2308
 
 - Name: STAR Prize 2
   Original Item: Progressive Bow
@@ -2306,6 +2327,7 @@
   Metadata:
     Name Lookup:
       - STAR Prize 2
+    Event Flag: 0x2301
 
 - Name: Castle Town Malo Mart Magic Armor
   Original Item: Magic Armor
@@ -2371,6 +2393,7 @@
   Metadata:
     Name Lookup:
       - Jovani 20 Poe Soul Reward
+    Event Flag: 0x5510
 
 - Name: Jovani 60 Poe Soul Reward
   Original Item: Silver Rupee
@@ -2383,6 +2406,7 @@
   Metadata:
     Name Lookup:
       - Jovani 60 Poe Soul Reward
+    Event Flag: 0x3820
 
 # HD Only Location
 # - Name: Gengle 60 Poe Soul Reward
@@ -2415,6 +2439,7 @@
   Metadata:
     Name Lookup:
       - Telma Invoice
+    Event Flag: 0x2180
 
 - Name: Agitha Male Beetle Reward
   Original Item: Orange Rupee
@@ -2778,6 +2803,7 @@
   Metadata:
     Name Lookup:
       - Wooden Statue
+    Event Flag: 0x2204
 
 - Name: Lake Hylia Bridge Owl Statue Chest
   Original Item: Orange Rupee
@@ -2910,6 +2936,7 @@
   Metadata:
     Name Lookup:
       - Auru Gift To Fyer
+    Event Flag: 0x2520
 
 - Name: Lake Hylia Tower Poe
   Original Item: Poe Soul
@@ -3432,6 +3459,7 @@
   Metadata:
     Name Lookup:
       - Plumm Fruit Balloon Minigame
+    Event Flag: 0x2380
 
 - Name: Upper Zoras River Warp Portal
   Original Item: Upper Zoras River Portal
@@ -3519,6 +3547,7 @@
   Metadata:
     Name Lookup:
       - Iza Helping Hand
+    Event Flag: 0x0B01
 
 - Name: Iza Raging Rapids Minigame
   Original Item: Giant Bomb Bag
@@ -3530,6 +3559,7 @@
   Metadata:
     Name Lookup:
       - Iza Raging Rapids Minigame
+    Event Flag: 0x5908
 
 - Name: Fishing Hole Bottle
   Original Item: Empty Bottle
@@ -3542,6 +3572,7 @@
     FLW Message:
       - Group: 0
         Message Id: 1822
+    Event Flag: 0x3908
 
 - Name: Fishing Hole Heart Piece
   Original Item: Piece of Heart
@@ -3760,6 +3791,7 @@
   Metadata:
     Name Lookup:
       - Zoras Domain Underwater Goron
+    Event Flag: 0x3D10
 
 - Name: Zoras Domain Throne East Gate Underwater Rupee
   Original Item: Yellow Rupee
@@ -3848,6 +3880,7 @@
   Metadata:
     Name Lookup:
       - Ashei Sketch
+    Event Flag: 0x2940
 
 - Name: Snowpeak Blizzard Poe
   Original Item: Poe Soul
@@ -3936,6 +3969,7 @@
   Metadata:
     Name Lookup:
       - Snowboard Racing Prize
+    Event Flag: 0x3B10
 
 - Name: Snowboarding Bridge Ledge Bottom Rupee
   Original Item: Green Rupee
@@ -4580,6 +4614,7 @@
   Metadata:
     Name Lookup:
       - Cave of Ordeals Great Fairy Reward
+    Event Flag: 0x3E40      
 
 - Name: Mirror Chamber Warp Portal
   Original Item: Mirror Chamber Portal
@@ -4706,6 +4741,9 @@
   Metadata:
     Name Lookup:
       - Forest Temple Gale Boomerang
+    Switch Flag:
+      Stage: 8
+      Flag: 0x59
 
 - Name: Forest Temple Big Key Chest
   Original Item: Forest Temple Big Key
@@ -4803,6 +4841,7 @@
     FLW Message:
       - Group: 5
         Message Id: 5001
+    Event Flag: 0x0602 # late
 
 # GORON MINES
 
@@ -4841,6 +4880,7 @@
   Metadata:
     Name Lookup:
       - Goron Mines Gor Amato Key Shard
+    Event Flag: 0x3008 # late
 
 - Name: Goron Mines Gor Amato Chest
   Original Item: Goron Mines Dungeon Map
@@ -4959,6 +4999,7 @@
   Metadata:
     Name Lookup:
       - Goron Mines Gor Ebizo Key Shard
+    Event Flag: 0x3702 # late
 
 - Name: Goron Mines Gor Ebizo Chest
   Original Item: Yellow Rupee
@@ -5018,6 +5059,7 @@
   Metadata:
     Name Lookup:
       - Goron Mines Gor Liggs Key Shard
+    Event Flag: 0x3701 # late
 
 - Name: Goron Mines Gor Liggs Chest
   Original Item: Purple Rupee
@@ -5066,7 +5108,7 @@
     FLW Message:
       - Group: 5
         Message Id: 6011
-
+    Event Flag: 0x0701
 
 # LAKEBED TEMPLE
 
@@ -5391,6 +5433,7 @@
     FLW Message:
       - Group: 5
         Message Id: 7001
+    Event Flag: 0x0904 # late
 
 # ARBITERS GROUNDS
 
@@ -5662,6 +5705,7 @@
   Metadata:
     Name Lookup:
       - Arbiters Grounds Dungeon Reward
+    Event Flag: 0x2010
 
 # SNOWPEAK RUINS
 
@@ -5733,6 +5777,7 @@
   Metadata:
     Name Lookup:
       - Snowpeak Ruins Mansion Map
+    Event Flag: 0x0B10 # late
 
 - Name: Snowpeak Ruins East Courtyard Chest
   Original Item: Snowpeak Ruins Small Key
@@ -5862,6 +5907,9 @@
   Metadata:
     Name Lookup:
       - Snowpeak Ruins Ball and Chain
+    Switch Flag:
+      Stage: 29
+      Flag: 0x5F
 
 - Name: Snowpeak Ruins Chest After Darkhammer
   Original Item: Ordon Cheese
@@ -5946,7 +5994,7 @@
     FLW Message:
       - Group: 5
         Message Id: 9301
-
+    Event Flag: 0x2008
 
 - Name: Temple of Time Lobby Lantern Chest
   Original Item: Temple of Time Small Key
@@ -6181,7 +6229,7 @@
     FLW Message:
       - Group: 5
         Message Id: 9401
-
+    Event Flag: 0x2004
 
 # CITY IN THE SKY
 
@@ -6505,6 +6553,7 @@
     FLW Message:
       - Group: 5
         Message Id: 11001
+    Event Flag: 0x2002
 
 # PALACE OF TWILIGHT
 
@@ -6751,6 +6800,10 @@
   Metadata:
     Name Lookup:
       - Hyrule Castle King Bulblin Key
+    # Not actually a chest, but uses a chest collection flag
+    Chest: 
+      - Stage: 20
+        Tbox Id: 0x3
 
 - Name: Hyrule Castle East Wing Boomerang Puzzle Chest
   Original Item: Hyrule Castle Dungeon Map

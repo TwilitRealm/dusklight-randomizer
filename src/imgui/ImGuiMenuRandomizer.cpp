@@ -236,10 +236,9 @@ namespace dusk {
                 if (randomizer_IsActive()) {
                     auto currentItems = getSaveItemPool(trackerRando->GetWorld());
                     m_currentSearch = randomizer::logic::search::Search::AccessibleNoStartingInventory(&trackerRando->GetWorlds(), currentItems);
+                    m_currentSearch.SearchWorlds();
+                    generateLocationInfo();
                 }
-                m_currentSearch.SearchWorlds();
-
-                generateLocationInfo();
             }
 
             if (trackerRando->GetConfig().GetHash(false).empty()) {
@@ -352,6 +351,13 @@ namespace dusk {
             } else if (auto& poeNode = locationMeta["Poe"]) {
                 auto flag = poeNode[0]["Flag"].as<u8>();
                 auto stageId = getStageSaveId(poeNode[0]["Stage"].as<u8>());
+                info.collected = dComIfGs_isStageSwitch(stageId, flag);
+            } else if (auto& eventFlagNode = locationMeta["Event Flag"]) {
+                auto flag = eventFlagNode.as<u16>();
+                info.collected = dComIfGs_isEventBit(flag);
+            } else if (auto& switchFlagNode = locationMeta["Switch Flag"]) {
+                auto flag = switchFlagNode["Flag"].as<u8>();
+                auto stageId = getStageSaveId(switchFlagNode["Stage"].as<u8>());
                 info.collected = dComIfGs_isStageSwitch(stageId, flag);
             } else {
                 info.collected = false;

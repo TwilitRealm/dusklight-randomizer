@@ -1,9 +1,10 @@
 #include "randomizer_context.hpp"
 
-#include "dusk/app_info.hpp"
 #include "dusk/logging.h"
 #include "dusk/main.h"
 #include "dusk/data.hpp"
+#include "dusk/ui/rando_config.hpp"
+#include "dusk/randomizer/game/flags.h"
 #include "dusk/randomizer/game/tools.h"
 #include "dusk/randomizer/game/stages.h"
 #include "dusk/randomizer/game/verify_item_functions.h"
@@ -12,7 +13,6 @@
 #include "dusk/randomizer/generator/randomizer.hpp"
 #include "dusk/randomizer/generator/utility/text.hpp"
 
-#include "SDL3/SDL_filesystem.h"
 #include <zlib.h>
 
 #include <fstream>
@@ -23,7 +23,6 @@
 #include "d/d_meter2_draw.h"
 #include "d/d_meter2_info.h"
 #include "d/d_msg_flow.h"
-#include "flags.h"
 
 std::optional<std::string> RandomizerContext::WriteToFile() {
 
@@ -268,7 +267,7 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
 }
 
 std::filesystem::path RandomizerContext::GetSeedDataPath() const {
-    return dusk::data::configured_data_path() / "randomizer" / "seeds" / this->mHash / "seed.dat";
+    return dusk::ui::GetRandomizerSeedsPath() / this->mHash / "seed.dat";
 }
 
 int RandomizerContext::SettingToEnum(const std::string& settingName) {
@@ -1283,7 +1282,7 @@ static void DeleteFailedGenerationFiles(randomizer::Randomizer& rando) {
  * Generates a seed and writes the necessary seed files to the players seed directory
  */
 void GenerateAndWriteSeed(std::string& generationStatusMsg) {
-    auto r = randomizer::Randomizer{dusk::data::configured_data_path()};
+    auto r = randomizer::Randomizer{dusk::ui::GetRandomizerPath()};
 
     auto generationResult = r.Generate();
     if (generationResult.has_value()) {

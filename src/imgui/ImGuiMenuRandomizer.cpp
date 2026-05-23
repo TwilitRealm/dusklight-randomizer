@@ -5,6 +5,8 @@
 
 #include "dusk/logging.h"
 #include "dusk/data.hpp"
+#include "dusk/map_loader_definitions.h"
+#include "dusk/ui/rando_config.hpp"
 #include "dusk/randomizer/generator/logic/search.hpp"
 #include "dusk/randomizer/generator/utility/string.hpp"
 #include "dusk/randomizer/game/randomizer_context.hpp"
@@ -16,8 +18,6 @@
 #include <numeric>
 #include <ranges>
 
-#include "dusk/map_loader_definitions.h"
-#include "dusk/randomizer/generator/utility/string.hpp"
 
 namespace dusk {
 
@@ -78,8 +78,7 @@ namespace dusk {
             }
             if (ImGui::BeginMenu(loadSeedText.c_str(), playerIsOnTitleScreen())) {
 
-                std::filesystem::path seedDirectory =
-                    dusk::data::configured_data_path() / "randomizer" / "seeds";
+                std::filesystem::path seedDirectory = ui::GetRandomizerSeedsPath();
 
                 std::list<std::string> hashes{};
 
@@ -115,9 +114,7 @@ namespace dusk {
 
             if (ImGui::BeginMenu("Delete Seed")) {
 
-                std::filesystem::path seedDirectory =
-                    dusk::data::configured_data_path() / "randomizer" / "seeds";
-
+                std::filesystem::path seedDirectory = ui::GetRandomizerSeedsPath();
                 std::list<std::string> hashes{};
 
                 for (const auto& entry : std::filesystem::directory_iterator(seedDirectory)) {
@@ -251,7 +248,7 @@ namespace dusk {
                 auto trackerHash = trackerRando->GetConfig().GetHash(false);
                 // If no hash, or seeds switched, try to create tracker world from currently active seed
                 if (trackerHash.empty() || (trackerHash != contextHash && !contextHash.empty())) {
-                    *trackerRando = randomizer::Randomizer(data::configured_data_path());
+                    *trackerRando = randomizer::Randomizer(ui::GetRandomizerPath());
                     trackerRando->GenerateTrackerWorld();
                 }
 
@@ -347,7 +344,7 @@ namespace dusk {
     }
 
     randomizer::Randomizer* ImGuiMenuRandomizer::getTrackerRando() {
-        static randomizer::Randomizer trackerRando{data::configured_data_path()};
+        static randomizer::Randomizer trackerRando{ui::GetRandomizerPath()};
         return &trackerRando;
     }
 
@@ -403,7 +400,7 @@ namespace dusk {
             }
         }
 
-        auto counts = m_LocationInfo | std::views::transform([](const std::pair<std::string, TrackerAreaGroup>& location) { return location.second.accessibleCount; });
+        auto counts = m_LocationInfo | std::views::transform([](const std::pair<std::string, TrackerAreaGroup>& location) { return location.second.collectedCount; });
         m_numCollectedLocations = std::accumulate(counts.begin(), counts.end(), 0);
     }
 } // namespace dusk

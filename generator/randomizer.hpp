@@ -10,7 +10,7 @@ namespace randomizer
     {
     public:
         Randomizer() = delete;
-        Randomizer(const std::filesystem::path& baseOutputPath) : _baseOutputPath(baseOutputPath / "randomizer") {}
+        Randomizer(const std::filesystem::path& baseOutputPath) : _baseOutputPath(baseOutputPath) {}
 
         /**
          *  @brief Generates a complete randomizer seed
@@ -39,7 +39,7 @@ namespace randomizer
 
         std::filesystem::path GetSeedOutputPath();
         std::filesystem::path GetBaseOutputPath() const { return this->_baseOutputPath; };
-        void SetBaseOutputPath(const std::filesystem::path& path) { this->_baseOutputPath = path / "randomizer"; };
+        void SetBaseOutputPath(const std::filesystem::path& path) { this->_baseOutputPath = path; };
 
         std::filesystem::path GetConfigPath() const { return this->GetBaseOutputPath() / "settings.yaml"; }
         std::filesystem::path GetPrefPath() const { return this->GetBaseOutputPath() / "preferences.yaml"; }

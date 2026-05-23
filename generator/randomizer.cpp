@@ -13,8 +13,8 @@
 
 #include <iostream>
 
-#include "dusk/data.hpp"
 #include "dusk/logging.h"
+#include "dusk/ui/rando_config.hpp"
 #include "dusk/randomizer/game/randomizer_context.hpp"
 
 namespace randomizer
@@ -51,7 +51,7 @@ namespace randomizer
             return;
         }
 
-        std::filesystem::path seedSettings = dusk::data::configured_data_path() / "randomizer" / "seeds" /
+        std::filesystem::path seedSettings = dusk::ui::GetRandomizerSeedsPath() /
             contextHash / (contextHash + " Anti-Spoiler Log.txt");
 
         this->_config.LoadFromFile(seedSettings, GetPrefPath());

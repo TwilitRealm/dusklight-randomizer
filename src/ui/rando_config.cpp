@@ -3,11 +3,8 @@
 #include <mutex>
 #include <thread>
 
-#include "SDL3/SDL_filesystem.h"
-
 #include "bool_button.hpp"
 #include "modal.hpp"
-#include "dusk/app_info.hpp"
 #include "dusk/config.hpp"
 #include "dusk/data.hpp"
 #include "dusk/logging.h"
@@ -222,6 +219,12 @@ Document* show_seed_gen_modal(std::string_view message) {
 }
 
 RandomizerWindow::RandomizerWindow() {
+
+    // Create rando directories if they don't exist
+    if (!std::filesystem::exists(GetRandomizerSeedsPath())) {
+        std::filesystem::create_directories(GetRandomizerSeedsPath());
+    }
+
     add_tab("Seed Management", [this](Rml::Element* content) {
         auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled);
         auto& rightPane = add_child<Pane>(content, Pane::Type::Controlled);
@@ -237,12 +240,7 @@ RandomizerWindow::RandomizerWindow() {
                 },
             }),
             rightPane, [](Pane& pane) {
-                std::filesystem::path seedDirectory =
-                    dusk::data::configured_data_path() / "randomizer" / "seeds";
-
-                if (!std::filesystem::exists(seedDirectory)) {
-                    std::filesystem::create_directories(seedDirectory);
-                }
+                std::filesystem::path seedDirectory = GetRandomizerSeedsPath();
 
                 if (std::filesystem::is_empty(seedDirectory)) {
                     pane.add_rml(
@@ -275,12 +273,7 @@ RandomizerWindow::RandomizerWindow() {
         leftPane.register_control(
             leftPane.add_button("Delete Seeds"),
             rightPane, [](Pane& pane) {
-                std::filesystem::path seedDirectory =
-                    dusk::data::configured_data_path() / "randomizer" / "seeds";
-
-                if (!std::filesystem::exists(seedDirectory)) {
-                    std::filesystem::create_directories(seedDirectory);
-                }
+                std::filesystem::path seedDirectory = GetRandomizerSeedsPath();
 
                 if (std::filesystem::is_empty(seedDirectory)) {
                     pane.add_rml(
@@ -493,12 +486,20 @@ void RandomizerWindow::update() {
     }
 }
 
+std::filesystem::path GetRandomizerPath() {
+    return data::configured_data_path() / "randomizer";
+}
+
 std::filesystem::path GetRandomizerSettingsPath() {
-    return data::configured_data_path() / "randomizer" / "settings.yaml";
+    return GetRandomizerPath() / "settings.yaml";
 }
 
 std::filesystem::path GetRandomizerPreferencesPath() {
-    return data::configured_data_path() / "randomizer" / "preferences.yaml";
+    return GetRandomizerPath() / "preferences.yaml";
+}
+
+std::filesystem::path GetRandomizerSeedsPath() {
+    return GetRandomizerPath() / "seeds";
 }
 
 randomizer::seedgen::config::Config& GetRandomizerConfig() {

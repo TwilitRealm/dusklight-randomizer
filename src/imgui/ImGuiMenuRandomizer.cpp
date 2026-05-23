@@ -378,7 +378,7 @@ namespace dusk {
             } else if (auto& freeStandingItemNode = locationMeta["Freestanding Item"]) {
                 auto flag = freeStandingItemNode[0]["Flag"].as<u8>();
                 auto stageId = getStageSaveId(freeStandingItemNode[0]["Stage"].as<u8>());
-                info.collected = tracker_isStageSwitch(stageId, flag);
+                info.collected = tracker_isStageItem(stageId, flag);
             } else if (auto& eventFlagNode = locationMeta["Event Flag"]) {
                 auto flag = eventFlagNode.as<u16>();
                 info.collected = tracker_isEventBit(flag);

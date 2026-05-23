@@ -30,3 +30,4 @@ int getStageSaveId(const char* stage);
 
 bool tracker_isEventBit(u16 flag);
 bool tracker_isStageSwitch(int stage, int flag);
+bool tracker_isStageItem(int stage, int flag);

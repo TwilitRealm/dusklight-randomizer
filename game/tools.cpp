@@ -591,3 +591,11 @@ bool tracker_isStageSwitch(int stage, int flag) {
         (g_randomizerState.mTrackerTempSwitchFlag.flag == flag &&
          g_randomizerState.mTrackerTempSwitchFlag.stage == stage);
 }
+
+bool tracker_isStageItem(int stage, int flag) {
+    if (dComIfGp_getStageStagInfo() && stage == dStage_stagInfo_GetSaveTbl(dComIfGp_getStageStagInfo())) {
+        return dComIfGs_isItem(flag, -1);
+    } else {
+        return g_dComIfG_gameInfo.info.getSavedata().getSave(stage).getBit().isItem(flag);
+    }
+}

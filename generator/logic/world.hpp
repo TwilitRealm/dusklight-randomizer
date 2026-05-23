@@ -65,6 +65,15 @@ namespace randomizer::logic::world
         void GenerateItemPools();
 
         /**
+         * @brief Decides if a location should be removed depending on settings.
+         * @param locationName The name of the location
+         * @param originalItemName The name of the original item at the location
+         *
+         * @return true if the location should be removed. False otherwise
+         */
+        bool ShouldRemoveLocation(const std::string& locationName, const std::string& originalItemName);
+
+        /**
          * @brief Perform all tasks which must be complete before shuffling entrances.
          */
         void PerformPreEntranceShuffleTasks();

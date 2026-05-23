@@ -264,33 +264,45 @@ namespace randomizer::logic::item_pool
 
         // Remove the Tears for Twilight sections if they're cleared
         if (world->Setting("Faron Twilight Cleared") == "On") {
-            itemPool.at("Faron Twilight Tear") = 0;
+            itemPool.erase("Faron Twilight Tear");
         }
 
         if (world->Setting("Eldin Twilight Cleared") == "On") {
-            itemPool.at("Eldin Twilight Tear") = 0;
+            itemPool.erase("Eldin Twilight Tear");
         }
 
         if (world->Setting("Lanayru Twilight Cleared") == "On") {
-            itemPool.at("Lanayru Twilight Tear") = 0;
+            itemPool.erase("Lanayru Twilight Tear");
+        }
+
+        // Remove items depending on Ilia Memory Quest setting
+        const auto& iliaQuest = world->Setting("Ilia Memory Quest");
+        if (iliaQuest > "Letter") {
+            itemPool.erase("Renados Letter");
+        }
+        if (iliaQuest > "Invoice") {
+            itemPool.erase("Invoice");
+        }
+        if (iliaQuest > "Statue") {
+            itemPool.erase("Wooden Statue");
         }
 
         // Remove the North Faron Woods Gate Key if we're skipping prologue
         if (world->Setting("Skip Prologue") == "On")
         {
-            itemPool.at("North Faron Woods Gate Key") = 0;
+            itemPool.erase("North Faron Woods Gate Key");
         }
 
         // Remove the bulblin camp key if we're skipping bulblin camp
         if (world->Setting("Arbiters Does Not Require Bulblin Camp") == "On")
         {
-            itemPool.at("Gerudo Desert Bulblin Camp Key") = 0;
+            itemPool.erase("Gerudo Desert Bulblin Camp Key");
         }
 
         // Remove sky book characters if we're starting with the sky canon open
         if (world->Setting("City Does Not Require Filled Skybook") == "On")
         {
-            itemPool.at("Progressive Sky Book") = 0;
+            itemPool.erase("Progressive Sky Book");
         }
 
         // Remove Small Keys if we're playing without them
@@ -312,7 +324,7 @@ namespace randomizer::logic::item_pool
             };
             for (const auto& key : smallKeys)
             {
-                itemPool.at(key) = 0;
+                itemPool.erase(key);
             }
         }
 
@@ -337,7 +349,7 @@ namespace randomizer::logic::item_pool
 
             for (const auto& key : bigKeys)
             {
-                itemPool.at(key) = 0;
+                itemPool.erase(key);
             }
         }
 

@@ -172,13 +172,9 @@ namespace randomizer::logic::world
             // Optional Fields
             auto originalItemName = locationNode["Original Item"].as<std::string>("Nothing");
 
-            // If the original item is a twilight tear for a twilight section that's been cleared, then don't include the
-            // location
-            if ((originalItemName == "Faron Twilight Tear" && this->Setting("Faron Twilight Cleared") == "On") ||
-                (originalItemName == "Eldin Twilight Tear" && this->Setting("Eldin Twilight Cleared") == "On") ||
-                (originalItemName == "Lanayru Twilight Tear" && this->Setting("Lanayru Twilight Cleared") == "On"))
+            // If this location should be removed based on settings, don't insert it into the location table
+            if (ShouldRemoveLocation(name, originalItemName))
             {
-                LOG_TO_DEBUG("Removing " + name + " because it's corresponding twilight is already cleared");
                 this->_intentionallyRemovedLocations.insert(name);
                 continue;
             }
@@ -504,6 +500,41 @@ namespace randomizer::logic::world
         {
             LOG_TO_DEBUG("- " + item->GetName());
         }
+    }
+
+    bool World::ShouldRemoveLocation(const std::string& locationName, const std::string& originalItemName)
+    {
+        // Twilight Tears
+        if (originalItemName == "Faron Twilight Tear" && this->Setting("Faron Twilight Cleared") == "On")
+        {
+            LOG_TO_DEBUG("Removing " + locationName + " because Faron Twilight is cleared.");
+            return true;
+        }
+
+        if (originalItemName == "Eldin Twilight Tear" && this->Setting("Eldin Twilight Cleared") == "On")
+        {
+            LOG_TO_DEBUG("Removing " + locationName + " because Eldin Twilight is cleared.");
+            return true;
+        }
+
+        if (originalItemName == "Lanayru Twilight Tear" && this->Setting("Lanayru Twilight Cleared") == "On")
+        {
+            LOG_TO_DEBUG("Removing " + locationName + " because Lanayru Twilight is cleared.");
+            return true;
+        }
+
+        // Ilia Memory Quest
+        const auto& iliaQuest = this->Setting("Ilia Memory Quest");
+        if ((iliaQuest >= "Letter" && locationName == "Renados Letter") ||
+            (iliaQuest >= "Invoice" && locationName == "Telma Invoice") ||
+            (iliaQuest >= "Statue" && locationName == "Wooden Statue") ||
+            (iliaQuest >= "Charm" && locationName == "Ilia Charm"))
+        {
+            LOG_TO_DEBUG("Removing " + locationName + " because Ilia Memory Quest is " + iliaQuest.GetCurrentOption() + ".");
+            return true;
+        }
+
+        return false;
     }
 
     void World::PerformPreEntranceShuffleTasks()

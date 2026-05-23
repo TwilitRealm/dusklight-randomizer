@@ -149,6 +149,8 @@ namespace randomizer::seedgen::settings
         bool operator!=(const char* optionName) const;
         bool operator>=(const char* optionName) const;
         bool operator<=(const char* optionName) const;
+        bool operator>(const char* optionName) const;
+        bool operator<(const char* optionName) const;
 
         template<class... Types>
         bool IsAnyOf(Types... optionNames)

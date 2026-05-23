@@ -281,7 +281,7 @@
 - Name: Castle Town Doctors Office Entrance
   Can Transform: If Transform Anywhere
   Exits:
-    Castle Town Doctors Office Lower: Invoice and Can_Talk_to_Humans
+    Castle Town Doctors Office Lower: Ilia_Memory_Quest >= Statue or (Invoice and Can_Talk_to_Humans)
     Castle Town Doctors Office West Door Interior: Nothing
     Castle Town Doctors Office East Door Interior: Nothing
 

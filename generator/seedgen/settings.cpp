@@ -179,6 +179,28 @@ namespace randomizer::seedgen::settings
         return this->_currentOptionIndex <= optionNameIndex;
     }
 
+    bool Setting::operator>(const char* optionName) const
+    {
+        int optionNameIndex = this->GetInfo()->GetIndexOfOption(optionName);
+        if (optionNameIndex == -1)
+        {
+            throw std::runtime_error(std::string("\"") + optionName + "\" is not a valid option for setting \"" +
+                                     this->GetInfo()->GetName() + "\"");
+        }
+        return this->_currentOptionIndex > optionNameIndex;
+    }
+
+    bool Setting::operator<(const char* optionName) const
+    {
+        int optionNameIndex = this->GetInfo()->GetIndexOfOption(optionName);
+        if (optionNameIndex == -1)
+        {
+            throw std::runtime_error(std::string("\"") + optionName + "\" is not a valid option for setting \"" +
+                                     this->GetInfo()->GetName() + "\"");
+        }
+        return this->_currentOptionIndex < optionNameIndex;
+    }
+
     void Settings::InsertSetting(const std::string& settingName, Setting setting)
     {
         this->_map.emplace(settingName, setting);

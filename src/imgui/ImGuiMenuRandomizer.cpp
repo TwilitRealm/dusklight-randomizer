@@ -252,7 +252,7 @@ namespace dusk {
                 // Show total number of available locations
                 auto locations = trackerRando->GetWorld()->GetAllLocations();
                 auto numProgressionLocations = std::ranges::count_if(locations, [](auto* location) {return location->IsProgression();});
-                auto numAvailableLocations = m_currentSearch._visitedLocations.size();
+                auto numAvailableLocations = std::ranges::count_if(m_currentSearch._visitedLocations, [](auto* location) {return location->IsProgression();});
                 ImGui::Text("Locations Available: %zu / %zu", numAvailableLocations, numProgressionLocations);
 
                 if (ImGui::BeginChild("ScrollRegion", ImVec2(500, 500), true))

@@ -71,6 +71,7 @@ namespace randomizer::logic::world
         void PlaceVanillaItems();
         void PlacePlandomizerItems();
         void SetNonProgressLocations();
+        void SetTrackerNonProgressLocations();
 
         /**
          * @brief Perform all tasks which require shuffled entrances to be set, but before running the main item placement

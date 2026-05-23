@@ -58,9 +58,9 @@ namespace randomizer::logic::location
         void SetRegisteredLocationCategories(std::unordered_set<std::string>* registeredLocationCategories);
 
         /**
-         *  @brief Checks to see if the location has all the passed in categories. If a passed in category was never registred,
+         *  @brief Checks to see if the location has all the passed in categories. If a passed in category was never registered,
          *  a std::runtime_error will be thrown.
-         *  @param categoryNames paramater pack of string representations of category names
+         *  @param categoryNames parameter pack of string representations of category names
          *  @returns true if all passed in categories are present, false otherwise
          */
         template<class... Types>

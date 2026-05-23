@@ -64,6 +64,7 @@ namespace randomizer
 
         auto trackerWorld = this->_worlds.at(0).get();
         trackerWorld->SetNonProgressLocations();
+        trackerWorld->SetTrackerNonProgressLocations();
         trackerWorld->AssignAreaProperties();
         trackerWorld->AssignGoalLocations();
 

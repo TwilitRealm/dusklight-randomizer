@@ -645,6 +645,33 @@ namespace randomizer::logic::world
         }
     }
 
+    void World::SetTrackerNonProgressLocations() {
+        for (auto& [locationName, location] : this->_locationTable) {
+            auto originalItemName = location->GetOriginalItem()->GetName();
+            // Poe Souls
+            if ((originalItemName == "Poe Soul" &&
+             (this->Setting("Poe Souls") == "Vanilla" ||
+              (this->Setting("Poe Souls") == "Dungeon" && location->HasCategories("Overworld")) ||
+              (this->Setting("Poe Souls") == "Overworld" && location->HasCategories("Dungeon")))) ||
+            // Vanilla Golden Bugs
+            (this->Setting("Golden Bugs") == "Off" && location->HasCategories("Golden Bug")) ||
+            // Sky Characters
+            (this->Setting("Sky Characters") == "Off" && location->HasCategories("Sky Character")) ||
+            // NPC Gifts
+            (this->Setting("Gifts From NPCs") == "Off" && location->HasCategories("Npc")) ||
+            // Shop Items
+            (this->Setting("Shop Items") == "Off" && location->HasCategories("Shop")) ||
+            // Hidden Skills
+            (this->Setting("Hidden Skills") == "Off" && location->HasCategories("Golden Wolf")) ||
+            // Hidden Rupees
+            (this->Setting("Hidden Rupees") == "Off" && location->HasCategories("Rupee - Hidden")) ||
+            // Freestanding Rupees
+            (this->Setting("Freestanding Rupees") == "Off" && location->HasCategories("Rupee - Freestanding"))) {
+                location->SetProgression(false);
+            }
+        }
+    }
+
     void World::PerformPostEntranceShuffleTasks()
     {
         this->AssignAreaProperties();

@@ -6,14 +6,13 @@
 #include "dusk/logging.h"
 #include "dusk/data.hpp"
 #include "dusk/randomizer/generator/logic/search.hpp"
+#include "dusk/randomizer/generator/utility/string.hpp"
 #include "dusk/randomizer/game/randomizer_context.hpp"
 #include "dusk/randomizer/game/tools.h"
 
 #include <mutex>
 #include <thread>
 #include <filesystem>
-
-#include "dusk/randomizer/generator/utility/string.hpp"
 
 namespace dusk {
 
@@ -354,11 +353,11 @@ namespace dusk {
                 info.collected = dComIfGs_isStageSwitch(stageId, flag);
             } else if (auto& eventFlagNode = locationMeta["Event Flag"]) {
                 auto flag = eventFlagNode.as<u16>();
-                info.collected = dComIfGs_isEventBit(flag);
+                info.collected = tracker_isEventBit(flag);
             } else if (auto& switchFlagNode = locationMeta["Switch Flag"]) {
                 auto flag = switchFlagNode["Flag"].as<u8>();
                 auto stageId = getStageSaveId(switchFlagNode["Stage"].as<u8>());
-                info.collected = dComIfGs_isStageSwitch(stageId, flag);
+                info.collected = tracker_isStageSwitch(stageId, flag);
             } else {
                 info.collected = false;
             }

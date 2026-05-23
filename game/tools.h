@@ -27,3 +27,6 @@ randomizer::logic::item_pool::ItemPool getSaveItemPool(randomizer::logic::world:
 // Used to get a stage's Area ID used for save flags
 int getStageSaveId(int id);
 int getStageSaveId(const char* stage);
+
+bool tracker_isEventBit(u16 flag);
+bool tracker_isStageSwitch(int stage, int flag);

@@ -71,10 +71,19 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
     const std::unordered_map<u16, u16> u16ShopOverrides(this->mShopOverrides.begin(), this->mShopOverrides.end());
     out["mShopOverrides"] = u16ShopOverrides;
 
-    const std::unordered_map<u32, u16> u32FlowItemMessageOverrides(this->mFlowItemMessageOverrides.begin(), this->mFlowItemMessageOverrides.end());
-    out["mFlowItemMessageOverrides"] = u32FlowItemMessageOverrides;
+    for (const auto& [key, data] : this->mFlowItemMessageOverrides) {
+        auto node = out["mFlowItemMessageOverrides"][key];
+        node["itemId"] = data.itemId;
+        node["stage"] = data.stage;
+        node["flag"] = data.flag;
+    }
 
-    out["mItemLocations"] = this->mItemLocations;
+    for (const auto& [name, data] : this->mItemLocations) {
+        auto node = out["mItemLocations"][name];
+        node["itemId"] = data.itemId;
+        node["stage"] = data.stage;
+        node["flag"] = data.flag;
+    }
 
     out["mStartHour"] = static_cast<u16>(this->mStartHour);
     out["mMapBits"] = static_cast<u16>(this->mMapBits);
@@ -197,18 +206,23 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         this->mShopOverrides[key] = itemId;
     }
 
+    // Helper function for getting the item data out of a YAML node
+    auto retrieveItemData = [](auto& itemData, auto& node) {
+        itemData.itemId = node["itemId"].as<int>();
+        itemData.stage = node["stage"].as<int>();
+        itemData.flag = node["flag"].as<u16>();
+    };
+
     // FLW Override items
     for (const auto& flwNode : in["mFlowItemMessageOverrides"]) {
         u32 key = flwNode.first.as<u32>();
-        u8 itemId = flwNode.second.as<u8>();
-        this->mFlowItemMessageOverrides[key] = itemId;
+        retrieveItemData(this->mFlowItemMessageOverrides[key], flwNode.second);
     }
 
     // Items we call by location name
     for (const auto& locationNode : in["mItemLocations"]) {
         const auto& locationName = locationNode.first.as<std::string>();
-        int itemId = locationNode.second.as<int>();
-        this->mItemLocations[locationName] = itemId;
+        retrieveItemData(this->mItemLocations[locationName], locationNode.second);
     }
 
     // Starting hour
@@ -761,7 +775,25 @@ std::vector<u8> HexToBytes(std::string hex) {
 }
 
 int randomizer_getItemAtLocation(const std::string& locationName) {
-    return randomizer_GetContext().mItemLocations[locationName];
+    return randomizer_GetContext().mItemLocations[locationName].itemId;
+}
+
+static void randomizer_setTempFlag(RandomizerContext::itemLocationData data) {
+    // If stage is 0xFF, then this is an event flag
+    if (data.stage == 0xFF) {
+        g_randomizerState.mTrackerTempEventFlag = data.flag;
+    } else {
+        g_randomizerState.mTrackerTempSwitchFlag.stage = getStageSaveId(data.stage);
+        g_randomizerState.mTrackerTempSwitchFlag.flag = data.flag;
+    }
+}
+
+void randomizer_setTempFlagForLocation(const std::string& locationName) {
+    randomizer_setTempFlag(randomizer_GetContext().mItemLocations[locationName]);
+}
+
+void randomizer_setTempFlagForFLWOverride(u32 key) {
+    randomizer_setTempFlag(randomizer_GetContext().mFlowItemMessageOverrides[key]);
 }
 
 bool randomizer_checkTempleOfTimeRequirement() {
@@ -806,7 +838,7 @@ u8 randomizer_getRandomFoolishItemModelID() {
     static constexpr auto foolishItemModels = std::to_array<u8>({
         dItemNo_Randomizer_ARMOR_e,
         dItemNo_Randomizer_WOOD_STICK_e,
-        dItemNo_Randomizer_SHIELD_e,
+        dItemNo_Randomizer_WOOD_SHIELD_e,
         dItemNo_Randomizer_HYLIA_SHIELD_e,
         dItemNo_Randomizer_MAGIC_LV1_e,
         dItemNo_Randomizer_FISHING_ROD_1_e,
@@ -1023,13 +1055,24 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
             }
         }
 
+        // Helper function for getting flag values
+        auto getNodeFlags = [](auto& itemData, auto& metaData) {
+            if (metaData["Event Flag"]) {
+                itemData.flag = metaData["Event Flag"].as<u16>();
+            } else if (metaData["Switch Flag"]) {
+                itemData.stage = metaData["Switch Flag"]["Stage"].as<u8>();
+                itemData.flag = metaData["Switch Flag"]["Flag"].as<u8>();
+            }
+        };
+
         // Items that we determine the text of and then give during a FLW message
         if (location->HasCategories("FLW Message")) {
             for (const auto& flwMessageNode : metaData["FLW Message"]) {
                 u8 group = flwMessageNode["Group"].as<u8>();
                 u16 messageId = flwMessageNode["Message Id"].as<u16>();
                 u32 key = (group << 16) | messageId;
-                randoData.mFlowItemMessageOverrides[key] = location->GetCurrentItem()->GetID();
+                randoData.mFlowItemMessageOverrides[key].itemId = location->GetCurrentItem()->GetID();
+                getNodeFlags(randoData.mFlowItemMessageOverrides[key], metaData);
             }
         }
 
@@ -1038,7 +1081,8 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
             for (const auto& locationNameNode : metaData["Name Lookup"]) {
                 const auto& locationName = locationNameNode.as<std::string>();
                 const int itemId = location->GetCurrentItem()->GetID();
-                randoData.mItemLocations[locationName] = itemId;
+                randoData.mItemLocations[locationName].itemId = itemId;
+                getNodeFlags(randoData.mItemLocations[locationName], metaData);
             }
         }
     }

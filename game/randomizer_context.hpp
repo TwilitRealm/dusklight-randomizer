@@ -37,6 +37,13 @@ public:
     std::list<u16> mStartEventFlags{};
     std::unordered_map<u8, std::list<u8>> mStartRegionFlags{};
     std::list<u8> mStartingInventory{};
+
+    struct itemLocationData{
+        int itemId{0xFF};
+        int stage{0xFF};
+        u16 flag{0xFFFF};
+    };
+
     std::unordered_map<u16, u8> mTreasureChestOverrides{};
     std::unordered_map<u16, u8> mPoeOverrides{};
     std::unordered_map<u16, u8> mFreestandingItemOverrides{};
@@ -44,8 +51,9 @@ public:
     std::unordered_map<u16, u8> mSkyCharacterOverrides{};
     std::unordered_map<u16, u8> mGoldenWolfOverrides{};
     std::unordered_map<u16, u8> mShopOverrides{};
-    std::unordered_map<u32, u8> mFlowItemMessageOverrides{};
-    std::unordered_map<std::string, int> mItemLocations{};
+    std::unordered_map<u32, itemLocationData> mFlowItemMessageOverrides{};
+    std::unordered_map<std::string, itemLocationData> mItemLocations{};
+
     u8 mStartHour{0};
     u8 mMapBits{};
 
@@ -116,7 +124,7 @@ public:
 
 /*
  * Class holding seed-agnostic dynamic information about current randomizer play.
- * This gets reset when reseting to the title screen.
+ * This gets reset when resetting to the title screen.
  */
 class RandomizerState {
 public:
@@ -174,6 +182,11 @@ public:
 
     int mFoolishItemCount{0};
     bool mUpdateTracker{false};
+    u16 mTrackerTempEventFlag{0};
+    struct {
+        int stage{-1};
+        int flag{-1};
+    } mTrackerTempSwitchFlag;
 };
 
 extern RandomizerState g_randomizerState;
@@ -183,6 +196,15 @@ RandomizerContext& randomizer_GetContext();
 bool randomizer_IsActive();
 
 int randomizer_getItemAtLocation(const std::string& locationName);
+
+/*
+ * @brief Puts the associated flag into the randomizer state's temporary flag
+ * variable. This allows the tracker/Archipelago to know a location has been checked
+ * when the item is received instead of some indeterminate amount of time afterward.
+ */
+void randomizer_setTempFlagForLocation(const std::string& locationName);
+
+void randomizer_setTempFlagForFLWOverride(u32 key);
 
 bool randomizer_checkTempleOfTimeRequirement();
 

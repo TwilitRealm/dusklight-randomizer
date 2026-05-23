@@ -238,6 +238,9 @@ randomizer::logic::item_pool::ItemPool getSaveItemPool(randomizer::logic::world:
             pool.push_back(world->GetItem("Slingshot", true));
             break;
         case dItemNo_Randomizer_BOMB_BAG_LV1_e:
+        case dItemNo_Randomizer_NORMAL_BOMB_e:
+        case dItemNo_Randomizer_WATER_BOMB_e:
+        case dItemNo_Randomizer_POKE_BOMB_e:
             pool.push_back(world->GetItem("Bomb Bag", true));
             break;
         case dItemNo_Randomizer_RAFRELS_MEMO_e:
@@ -577,4 +580,14 @@ int getStageSaveId(int id) {
 int getStageSaveId(const char* stage) {
     int id = getStageID(stage);
     return getStageSaveId(id);
+}
+
+bool tracker_isEventBit(u16 flag) {
+    return g_randomizerState.mTrackerTempEventFlag == flag || dComIfGs_isEventBit(flag);
+}
+
+bool tracker_isStageSwitch(int stage, int flag) {
+    return dComIfGs_isStageSwitch(stage, flag) ||
+        (g_randomizerState.mTrackerTempSwitchFlag.flag == flag &&
+         g_randomizerState.mTrackerTempSwitchFlag.stage == stage);
 }

@@ -1444,7 +1444,7 @@
   Metadata:
     Name Lookup:
       - Ilia Memory Reward
-    Event Flag: 0x2320 # (Maybe use 0x5E04?)
+    Event Flag: 0x5E04
 
 - Name: Rutelas Blessing
   Original Item: Zora Armor

@@ -288,27 +288,27 @@ namespace dusk {
                 {
                     std::string filter = m_locationFilter;
                     // Show all locations. Green for accessible. Red for Unaccessible
-                    for (const auto& [areaName, location] : m_LocationInfo) {
-                        if (m_onlyAccessible && !location.showArea)
+                    for (const auto& [areaName, region] : m_LocationInfo) {
+                        if (m_onlyAccessible && !region.showArea)
                             continue;
 
-                        int areaCount = location.locations.size();
+                        int areaCount = region.locations.size();
 
                         bool isCurrentArea = areaName == curStageName;
 
                         if (isCurrentArea)
                             ImGui::PushStyleColor(ImGuiCol_Text, TRACKER_COLOR_ACTIVE);
-                        else if (!location.showArea)
+                        else if (!region.showArea)
                             ImGui::PushStyleColor(ImGuiCol_Text, TRACKER_COLOR_COLLECTED);
 
                         bool isShowNode = ImGui::TreeNode(fmt::format("{} ({}/{})",
-                            areaName, areaCount - location.collectedCount, areaCount).c_str());
+                            areaName, areaCount - region.collectedCount, areaCount).c_str());
 
-                        if (!location.showArea || isCurrentArea)
+                        if (!region.showArea || isCurrentArea)
                             ImGui::PopStyleColor();
 
                         if (isShowNode) {
-                            for (const auto& info : location.locations) {
+                            for (const auto& info : region.locations) {
                                 // Don't show any locations which aren't accessible if only accessible is checked
                                 // Don't show any locations which don't meet the filter
                                 if ((m_onlyAccessible && !info.accessible) ||

@@ -207,7 +207,7 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
     }
 
     // Helper function for getting the item data out of a YAML node
-    auto retrieveItemData = [](auto& itemData, auto& node) {
+    auto retrieveItemData = [](auto& itemData, const YAML::Node& node) {
         itemData.itemId = node["itemId"].as<int>();
         itemData.stage = node["stage"].as<int>();
         itemData.flag = node["flag"].as<u16>();
@@ -1056,7 +1056,7 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
         }
 
         // Helper function for getting flag values
-        auto getNodeFlags = [](auto& itemData, auto& metaData) {
+        auto getNodeFlags = [](auto& itemData, const YAML::Node& metaData) {
             if (metaData["Event Flag"]) {
                 itemData.flag = metaData["Event Flag"].as<u16>();
             } else if (metaData["Switch Flag"]) {

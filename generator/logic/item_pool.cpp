@@ -262,6 +262,19 @@ namespace randomizer::logic::item_pool
             }
         }
 
+        // Remove the Tears for Twilight sections if they're cleared
+        if (world->Setting("Faron Twilight Cleared") == "On") {
+            itemPool.at("Faron Twilight Tear") = 0;
+        }
+
+        if (world->Setting("Eldin Twilight Cleared") == "On") {
+            itemPool.at("Eldin Twilight Tear") = 0;
+        }
+
+        if (world->Setting("Lanayru Twilight Cleared") == "On") {
+            itemPool.at("Lanayru Twilight Tear") = 0;
+        }
+
         // Remove the North Faron Woods Gate Key if we're skipping prologue
         if (world->Setting("Skip Prologue") == "On")
         {

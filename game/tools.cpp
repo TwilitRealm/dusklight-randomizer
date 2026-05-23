@@ -629,6 +629,7 @@ bool tracker_isStageItem(int stage, int flag) {
     if (dComIfGp_getStageStagInfo() && stage == dStage_stagInfo_GetSaveTbl(dComIfGp_getStageStagInfo())) {
         return dComIfGs_isItem(flag, -1);
     } else {
-        return g_dComIfG_gameInfo.info.getSavedata().getSave(stage).getBit().isItem(flag);
+        // Need to subtract 0x80 (MEMORY_ITEM constant in d_save.cpp) because the above function does it
+        return g_dComIfG_gameInfo.info.getSavedata().getSave(stage).getBit().isItem(flag - 0x80);
     }
 }

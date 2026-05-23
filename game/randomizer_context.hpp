@@ -182,6 +182,7 @@ public:
 
     int mFoolishItemCount{0};
     bool mUpdateTracker{false};
+    bool mShowTracker{false};
     u16 mTrackerTempEventFlag{0};
     struct {
         int stage{-1};

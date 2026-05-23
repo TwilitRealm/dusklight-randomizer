@@ -475,6 +475,10 @@ RandomizerWindow::RandomizerWindow() {
                 pane.clear();
                 pane.add_rml("Respawns the player at their appropriate starting location.");
             });
+
+            leftPane.add_button("Toggle Tracker Window").on_pressed([] {
+                g_randomizerState.mShowTracker = !g_randomizerState.mShowTracker;
+            });
         });
     }
 }

@@ -56,6 +56,7 @@
     Shop:
       - Stage: 65
         Item: 0x4B
+    Event Flag: 0x4902
 
 - Name: Ordon Shield
   Original Item: Ordon Shield
@@ -637,6 +638,7 @@
     Sky Character:
       - Stage: 45
         Room: 8
+    Event Flag: 0x6080
 
 - Name: Faron Woods Owl Statue Chest
   Original Item: Piece of Heart
@@ -1090,6 +1092,7 @@
     Sky Character:
       - Stage: 56
         Room: 3
+    Event Flag: 0x6020
 
 - Name: Kakariko Gorge Owl Statue Boulder Rupee
   Original Item: Yellow Rupee
@@ -1287,6 +1290,9 @@
     Shop:
       - Stage: 68
         Item: 0x3E
+    Switch Flag:
+        Stage: 68
+        Flag: 0x33
 
 - Name: Kakariko Village Malo Mart Hylian Shield
   Original Item: Hylian Shield
@@ -1298,6 +1304,9 @@
     Shop:
       - Stage: 68
         Item: 0x2C
+    Switch Flag:
+        Stage: 68
+        Flag: 0x39
 
 - Name: Kakariko Village Malo Mart Red Potion
   Original Item: Red Potion Shop
@@ -1309,6 +1318,9 @@
     Shop:
       - Stage: 68
         Item: 0x61
+    Switch Flag:
+        Stage: 68
+        Flag: 0x4
 
 - Name: Kakariko Village Malo Mart Wooden Shield
   Original Item: Wooden Shield
@@ -1320,6 +1332,9 @@
     Shop:
       - Stage: 68
         Item: 0x2B
+    Switch Flag:
+        Stage: 68
+        Flag: 0x5
 
 - Name: Kakariko Inn Chest
   Original Item: Red Rupee
@@ -1366,6 +1381,7 @@
     Shop:
       - Stage: 68
         Item: 0x50
+    Event Flag: 0x0908
 
 - Name: Kakariko Village Bomb Shop Poe
   Original Item: Poe Soul
@@ -1745,6 +1761,7 @@
     Sky Character:
       - Stage: 56
         Room: 0
+    Event Flag: 0x6010
 
 - Name: Bridge of Eldin Boulder Rupee
   Original Item: Red Rupee
@@ -2280,6 +2297,9 @@
     Sky Character:
       - Stage: 57
         Room: 8
+    Switch Flag:
+        Stage: 57
+        Flag: 0x57
 
 - Name: Hyrule Field Amphitheater Poe
   Original Item: Poe Soul
@@ -2339,6 +2359,9 @@
     Shop:
       - Stage: 73
         Item: 0x30
+    Switch Flag:
+        Stage: 73
+        Flag: 0x2B
 
 # HD Only location
 # - Name: Castle Town Malo Mart Stamp
@@ -2450,6 +2473,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xC0
+    Event Flag: 0x3110
 
 - Name: Agitha Female Beetle Reward
   Original Item: Purple Rupee
@@ -2460,6 +2484,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xC1
+    Event Flag: 0x3108
 
 - Name: Agitha Male Butterfly Reward
   Original Item: Orange Rupee
@@ -2470,6 +2495,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xC2
+    Event Flag: 0x3104
 
 - Name: Agitha Female Butterfly Reward
   Original Item: Purple Rupee
@@ -2480,6 +2506,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xC3
+    Event Flag: 0x3102
 
 - Name: Agitha Male Stag Beetle Reward
   Original Item: Purple Rupee
@@ -2490,6 +2517,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xC4
+    Event Flag: 0x3101
 
 - Name: Agitha Female Stag Beetle Reward
   Original Item: Orange Rupee
@@ -2500,6 +2528,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xC5
+    Event Flag: 0x3280
 
 - Name: Agitha Male Grasshopper Reward
   Original Item: Progressive Wallet
@@ -2510,6 +2539,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xC6
+    Event Flag: 0x3240
 
 - Name: Agitha Female Grasshopper Reward
   Original Item: Orange Rupee
@@ -2520,6 +2550,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xC7
+    Event Flag: 0x3220
 
 - Name: Agitha Male Phasmid Reward
   Original Item: Progressive Wallet
@@ -2530,6 +2561,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xC8
+    Event Flag: 0x3210
 
 - Name: Agitha Female Phasmid Reward
   Original Item: Orange Rupee
@@ -2540,6 +2572,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xC9
+    Event Flag: 0x3208
 
 - Name: Agitha Male Pill Bug Reward
   Original Item: Orange Rupee
@@ -2550,6 +2583,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xCA
+    Event Flag: 0x3204
 
 - Name: Agitha Female Pill Bug Reward
   Original Item: Purple Rupee
@@ -2560,6 +2594,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xCB
+    Event Flag: 0x3202
 
 - Name: Agitha Male Mantis Reward
   Original Item: Purple Rupee
@@ -2570,6 +2605,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xCC
+    Event Flag: 0x3201
 
 - Name: Agitha Female Mantis Reward
   Original Item: Orange Rupee
@@ -2580,6 +2616,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xCD
+    Event Flag: 0x3380
 
 - Name: Agitha Male Ladybug Reward
   Original Item: Purple Rupee
@@ -2590,6 +2627,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xCE
+    Event Flag: 0x3340
 
 - Name: Agitha Female Ladybug Reward
   Original Item: Orange Rupee
@@ -2600,6 +2638,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xCF
+    Event Flag: 0x3320
 
 - Name: Agitha Male Snail Reward
   Original Item: Purple Rupee
@@ -2610,6 +2649,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xD0
+    Event Flag: 0x3310
 
 - Name: Agitha Female Snail Reward
   Original Item: Purple Rupee
@@ -2620,6 +2660,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xD1
+    Event Flag: 0x3308
 
 - Name: Agitha Male Dragonfly Reward
   Original Item: Purple Rupee
@@ -2630,6 +2671,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xD2
+    Event Flag: 0x3304
 
 - Name: Agitha Female Dragonfly Reward
   Original Item: Orange Rupee
@@ -2640,6 +2682,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xD3
+    Event Flag: 0x3302
 
 - Name: Agitha Male Ant Reward
   Original Item: Orange Rupee
@@ -2650,6 +2693,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xD4
+    Event Flag: 0x3301
 
 - Name: Agitha Female Ant Reward
   Original Item: Purple Rupee
@@ -2660,6 +2704,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xD5
+    Event Flag: 0x3480
 
 - Name: Agitha Male Dayfly Reward
   Original Item: Purple Rupee
@@ -2670,6 +2715,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xD6
+    Event Flag: 0x3440
 
 - Name: Agitha Female Dayfly Reward
   Original Item: Orange Rupee
@@ -2680,6 +2726,7 @@
   Metadata:
     Bug Reward:
       - Item Id: 0xD7
+    Event Flag: 0x3420
 
 # HD Only Location
 # - Name: Agitha 12 Golden Bugs Reward
@@ -2825,6 +2872,7 @@
     Sky Character:
       - Stage: 56
         Room: 13
+    Event Flag: 0x6008
 
 - Name: Lake Hylia Bridge Owl Statue Boulder Rupee
   Original Item: Blue Rupee
@@ -4301,6 +4349,7 @@
     Sky Character:
       - Stage: 59
         Room: 0
+    Event Flag: 0x6040
 
 - Name: Gerudo Desert Poe Above Cave of Ordeals
   Original Item: Poe Soul

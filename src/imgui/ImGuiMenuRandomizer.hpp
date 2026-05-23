@@ -32,12 +32,13 @@ private:
 
     struct TrackerAreaGroup {
         std::vector<LocationTrackerInfo> locations;
-        bool anyAccessible;
+        bool showArea;
+        int collectedCount;
+        int accessibleCount;
     };
 
     bool m_showRandoStats{false};
     bool m_showRandoGeneration{false};
-    bool m_showRandoTracker{false};
 
     bool m_onlyAccessible{false};
     bool m_showRequirements{false};

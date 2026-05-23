@@ -14,6 +14,9 @@
 #include <thread>
 #include <filesystem>
 
+#include "dusk/map_loader_definitions.h"
+#include "dusk/randomizer/generator/utility/string.hpp"
+
 namespace dusk {
 
     static bool generatingSeed = false;
@@ -30,6 +33,19 @@ namespace dusk {
         GenerateAndWriteSeed(generationStatusMsg);
         generatingSeed = false;
         DuskLog.debug("{}", generationStatusMsg);
+    }
+
+    static const char* lookup_map_name(const char* mapFile) {
+        if (!mapFile || mapFile[0] == '\0')
+            return nullptr;
+        for (const auto& region : gameRegions) {
+            for (const auto& map : region.maps) {
+                if (map.mapFile && strcmp(mapFile, map.mapFile) == 0) {
+                    return map.mapName;
+                }
+            }
+        }
+        return nullptr;
     }
 
     ImGuiMenuRandomizer::ImGuiMenuRandomizer() {}
@@ -140,7 +156,7 @@ namespace dusk {
             }
             ImGui::Checkbox("Show Rando Stats", &m_showRandoStats);
 
-            ImGui::Checkbox("Show Rando Tracker", &m_showRandoTracker);
+            ImGui::Checkbox("Show Rando Tracker", &g_randomizerState.mShowTracker);
 
             ImGui::EndMenu();
         }
@@ -209,7 +225,7 @@ namespace dusk {
 
 
     void ImGuiMenuRandomizer::windowRandoTracker() {
-        if (!m_showRandoTracker) {
+        if (!g_randomizerState.mShowTracker) {
             return;
         }
 
@@ -244,6 +260,13 @@ namespace dusk {
                 ImGui::Text("Load a seed and start a file to activate the tracker");
             } else {
                 ImGui::Text("Tracker world loaded from seed %s", trackerRando->GetConfig().GetHash().c_str());
+                const char* curStage = dComIfGp_getStartStageName();
+                ImGui::Text("Current Stage: %s (%s)", lookup_map_name(curStage), curStage);
+
+                auto stageInfo = dComIfGp_getStageStagInfo();
+                if (stageInfo && dStage_stagInfo_GetSaveTbl(stageInfo) != getStageSaveId(curStage)) {
+                    ImGui::TextColored(ImVec4(1.0f, 0.0f,0.0f,1.0f), "Error: Current Stage Save Tbl mismatch!");
+                }
 
                 ImGui::Checkbox("Show Only Accessible Locations", &m_onlyAccessible);
                 ImGui::Checkbox("Show Location Requirements", &m_showRequirements);
@@ -260,14 +283,15 @@ namespace dusk {
                     std::string filter = m_locationFilter;
                     // Show all locations. Green for accessible. Red for Unaccessible
                     for (const auto& [areaName, location] : m_LocationInfo) {
-                        if (m_onlyAccessible && !location.anyAccessible)
+                        if (m_onlyAccessible && !location.showArea)
                             continue;
 
-                        if (!location.anyAccessible) {
+                        if (!location.showArea) {
                             ImGui::BeginDisabled();
                         }
 
-                        if (ImGui::TreeNode(areaName.c_str())) {
+                        int areaCount = m_onlyAccessible ? location.accessibleCount : location.locations.size();
+                        if (ImGui::TreeNode(fmt::format("{} ({}/{})", areaName, areaCount - location.collectedCount, areaCount).c_str())) {
                             for (const auto& info : location.locations) {
                                 // Don't show any locations which aren't accessible if only accessible is checked
                                 // Don't show any locations which don't meet the filter
@@ -297,7 +321,7 @@ namespace dusk {
                             ImGui::TreePop();
                         }
 
-                        if (!location.anyAccessible) {
+                        if (!location.showArea) {
                             ImGui::EndDisabled();
                         }
                     }
@@ -350,9 +374,16 @@ namespace dusk {
             } else if (auto& poeNode = locationMeta["Poe"]) {
                 auto flag = poeNode[0]["Flag"].as<u8>();
                 auto stageId = getStageSaveId(poeNode[0]["Stage"].as<u8>());
-                info.collected = dComIfGs_isStageSwitch(stageId, flag);
+                info.collected = tracker_isStageSwitch(stageId, flag);
+            } else if (auto& freeStandingItemNode = locationMeta["Freestanding Item"]) {
+                auto flag = freeStandingItemNode[0]["Flag"].as<u8>();
+                auto stageId = getStageSaveId(freeStandingItemNode[0]["Stage"].as<u8>());
+                info.collected = tracker_isStageSwitch(stageId, flag);
             } else if (auto& eventFlagNode = locationMeta["Event Flag"]) {
                 auto flag = eventFlagNode.as<u16>();
+                info.collected = tracker_isEventBit(flag);
+            } else if (auto& wolfNode = locationMeta["Golden Wolf"]) {
+                auto flag = wolfNode[0]["Flag"].as<u16>();
                 info.collected = tracker_isEventBit(flag);
             } else if (auto& switchFlagNode = locationMeta["Switch Flag"]) {
                 auto flag = switchFlagNode["Flag"].as<u8>();
@@ -372,9 +403,15 @@ namespace dusk {
 
             for (const auto& region : regions) {
                 auto& infoGroup = m_LocationInfo[region];
-                if (!infoGroup.anyAccessible && info.accessible) {
-                    infoGroup.anyAccessible = true;
+                if (!infoGroup.showArea && info.accessible && !info.collected) {
+                    infoGroup.showArea = true;
                 }
+
+                if (info.collected)
+                    infoGroup.collectedCount++;
+                if (info.accessible)
+                    infoGroup.accessibleCount++;
+
                 infoGroup.locations.push_back(info);
             }
         }

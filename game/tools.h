@@ -24,6 +24,11 @@ int numMirrorShards();
  */
 randomizer::logic::item_pool::ItemPool getSaveItemPool(randomizer::logic::world::World* world);
 
+/*
+ * Finds locations relevant flag in save (using its metadata) and checks if it's been set.
+ */
+bool isLocationObtained(randomizer::logic::location::Location* location);
+
 // Used to get a stage's Area ID used for save flags
 int getStageSaveId(int id);
 int getStageSaveId(const char* stage);

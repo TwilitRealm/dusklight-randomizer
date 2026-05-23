@@ -37,6 +37,10 @@ private:
         int accessibleCount;
     };
 
+    size_t m_numAvailableLocations;
+    size_t m_numProgressionLocations;
+    size_t m_numCollectedLocations;
+
     bool m_showRandoStats{false};
     bool m_showRandoGeneration{false};
 

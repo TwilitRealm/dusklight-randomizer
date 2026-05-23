@@ -196,6 +196,7 @@ NumberButton* rando_add_optional_setting(std::string optionValue, std::string op
         .getValue = [curSetting] { return curSetting->GetCurrentOptionAsNumber(); },
         .setValue = [curSetting](int value) {
             curSetting->SetCurrentOption(std::to_string(value));
+            SaveConfig();
         },
         .min = std::stoi(options.front()),
         .max = std::stoi(options.back()),

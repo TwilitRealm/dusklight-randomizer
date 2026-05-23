@@ -13,6 +13,8 @@
 #include <mutex>
 #include <thread>
 #include <filesystem>
+#include <numeric>
+#include <ranges>
 
 #include "dusk/map_loader_definitions.h"
 #include "dusk/randomizer/generator/utility/string.hpp"
@@ -22,6 +24,11 @@ namespace dusk {
     static bool generatingSeed = false;
     static std::string generationStatusMsg{};
     static std::mutex generationStatusMsgMutex{};
+
+    static constexpr ImVec4 TRACKER_COLOR_INACCESSIBLE = ImVec4(1.0f, 0.0f, 0.0f, 1.0f);
+    static constexpr ImVec4 TRACKER_COLOR_ACCESSIBLE = ImVec4(0.f, 1.f, 0.f, 1.f);
+    static constexpr ImVec4 TRACKER_COLOR_COLLECTED = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+    static constexpr ImVec4 TRACKER_COLOR_ACTIVE = ImVec4(1.0f, 1.0f, 0.0f, 1.0f);
 
     static void StartSeedGeneration() {
         if (generatingSeed) {
@@ -261,7 +268,8 @@ namespace dusk {
             } else {
                 ImGui::Text("Tracker world loaded from seed %s", trackerRando->GetConfig().GetHash().c_str());
                 const char* curStage = dComIfGp_getStartStageName();
-                ImGui::Text("Current Stage: %s (%s)", lookup_map_name(curStage), curStage);
+                const char* curStageName = lookup_map_name(curStage);
+                ImGui::Text("Current Stage: %s (%s)", curStageName, curStage);
 
                 auto stageInfo = dComIfGp_getStageStagInfo();
                 if (stageInfo && dStage_stagInfo_GetSaveTbl(stageInfo) != getStageSaveId(curStage)) {
@@ -274,9 +282,7 @@ namespace dusk {
 
                 // Show total number of available locations
                 auto locations = trackerRando->GetWorld()->GetAllLocations();
-                auto numProgressionLocations = std::ranges::count_if(locations, [](auto* location) {return location->IsProgression();});
-                auto numAvailableLocations = std::ranges::count_if(m_currentSearch._visitedLocations, [](auto* location) {return location->IsProgression();});
-                ImGui::Text("Locations Available: %zu / %zu", numAvailableLocations, numProgressionLocations);
+                ImGui::Text("Locations Available: %zu / %zu (%zu Checked)", m_numAvailableLocations, m_numProgressionLocations, m_numCollectedLocations);
 
                 if (ImGui::BeginChild("ScrollRegion", ImVec2(500, 500), true))
                 {
@@ -286,28 +292,39 @@ namespace dusk {
                         if (m_onlyAccessible && !location.showArea)
                             continue;
 
-                        if (!location.showArea) {
-                            ImGui::BeginDisabled();
-                        }
+                        int areaCount = location.locations.size();
 
-                        int areaCount = m_onlyAccessible ? location.accessibleCount : location.locations.size();
-                        if (ImGui::TreeNode(fmt::format("{} ({}/{})", areaName, areaCount - location.collectedCount, areaCount).c_str())) {
+                        bool isCurrentArea = areaName == curStageName;
+
+                        if (isCurrentArea)
+                            ImGui::PushStyleColor(ImGuiCol_Text, TRACKER_COLOR_ACTIVE);
+                        else if (!location.showArea)
+                            ImGui::PushStyleColor(ImGuiCol_Text, TRACKER_COLOR_COLLECTED);
+
+                        bool isShowNode = ImGui::TreeNode(fmt::format("{} ({}/{})",
+                            areaName, areaCount - location.collectedCount, areaCount).c_str());
+
+                        if (!location.showArea || isCurrentArea)
+                            ImGui::PopStyleColor();
+
+                        if (isShowNode) {
                             for (const auto& info : location.locations) {
                                 // Don't show any locations which aren't accessible if only accessible is checked
                                 // Don't show any locations which don't meet the filter
-                                if ((m_onlyAccessible && !info.accessible) || !randomizer::utility::str::Contains(info.locationName, filter)) {
+                                if ((m_onlyAccessible && !info.accessible) ||
+                                    !randomizer::utility::str::Contains(info.locationName, filter)) {
                                     continue;
                                 }
 
                                 ImVec4 color;
                                 if (info.collected) {
                                     // gray to show collected
-                                    color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+                                    color = TRACKER_COLOR_COLLECTED;
                                 }else if (info.accessible) {
                                     // If the search found this location, change color to green
-                                    color = ImVec4(0.f, 1.f, 0.f, 1.f);
+                                    color = TRACKER_COLOR_ACCESSIBLE;
                                 }else {
-                                    color = ImVec4(1.f, 0.f, 0.f, 1.f); // red for inaccessible
+                                    color = TRACKER_COLOR_INACCESSIBLE;
                                 }
 
                                 ImGui::TextColored(color, "%s", info.locationName.c_str());
@@ -319,10 +336,6 @@ namespace dusk {
                             }
 
                             ImGui::TreePop();
-                        }
-
-                        if (!location.showArea) {
-                            ImGui::EndDisabled();
                         }
                     }
                 }
@@ -344,6 +357,9 @@ namespace dusk {
 
         m_LocationInfo.clear();
 
+        m_numProgressionLocations = std::ranges::count_if(locations, [](auto* location) {return location->IsProgression();});
+        m_numAvailableLocations = std::ranges::count_if(m_currentSearch._visitedLocations, [](auto* location) {return location->IsProgression();});
+
         for (auto location : locations) {
             // Don't show locations which aren't progression
             // Don't show any locations which aren't accessible if only accessible is checked
@@ -362,36 +378,7 @@ namespace dusk {
                 .accessible = m_currentSearch._visitedLocations.contains(location)
             };
 
-            auto& locationMeta = location->GetMetadata();
-
-            if (auto& chestNode = locationMeta["Chest"]) {
-                if (chestNode.size() != 1) {
-                    DuskLog.warn("Assumption that theres one tbox id for this location was false!");
-                }
-                auto tboxId = chestNode[0]["Tbox Id"].as<u8>();
-                auto stageId = getStageSaveId(chestNode[0]["Stage"].as<u8>());
-                info.collected = dComIfGs_isStageTbox(stageId, tboxId);
-            } else if (auto& poeNode = locationMeta["Poe"]) {
-                auto flag = poeNode[0]["Flag"].as<u8>();
-                auto stageId = getStageSaveId(poeNode[0]["Stage"].as<u8>());
-                info.collected = tracker_isStageSwitch(stageId, flag);
-            } else if (auto& freeStandingItemNode = locationMeta["Freestanding Item"]) {
-                auto flag = freeStandingItemNode[0]["Flag"].as<u8>();
-                auto stageId = getStageSaveId(freeStandingItemNode[0]["Stage"].as<u8>());
-                info.collected = tracker_isStageItem(stageId, flag);
-            } else if (auto& eventFlagNode = locationMeta["Event Flag"]) {
-                auto flag = eventFlagNode.as<u16>();
-                info.collected = tracker_isEventBit(flag);
-            } else if (auto& wolfNode = locationMeta["Golden Wolf"]) {
-                auto flag = wolfNode[0]["Flag"].as<u16>();
-                info.collected = tracker_isEventBit(flag);
-            } else if (auto& switchFlagNode = locationMeta["Switch Flag"]) {
-                auto flag = switchFlagNode["Flag"].as<u8>();
-                auto stageId = getStageSaveId(switchFlagNode["Stage"].as<u8>());
-                info.collected = tracker_isStageSwitch(stageId, flag);
-            } else {
-                info.collected = false;
-            }
+            info.collected = isLocationObtained(location);
 
             // Gather the hint regions this location is in (set avoids duplicates)
             std::unordered_set<std::string> regions{};
@@ -415,5 +402,8 @@ namespace dusk {
                 infoGroup.locations.push_back(info);
             }
         }
+
+        auto counts = m_LocationInfo | std::views::transform([](const std::pair<std::string, TrackerAreaGroup>& location) { return location.second.accessibleCount; });
+        m_numCollectedLocations = std::accumulate(counts.begin(), counts.end(), 0);
     }
 } // namespace dusk

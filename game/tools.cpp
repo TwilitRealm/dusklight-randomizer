@@ -484,7 +484,12 @@ bool isLocationObtained(randomizer::logic::location::Location* location) {
     if (auto& freeStandingItemNode = locationMeta["Freestanding Item"]) {
         auto flag = freeStandingItemNode[0]["Flag"].as<u8>();
         auto stageId = getStageSaveId(freeStandingItemNode[0]["Stage"].as<u8>());
-        return tracker_isStageItem(stageId, flag);
+        // big baba uses tbox, hardcode this edge case
+        if (location->GetName() == "Forest Temple Big Baba Key") {
+            return dComIfGs_isStageTbox(stageId, flag);
+        }else {
+            return tracker_isStageItem(stageId, flag);
+        }
     }
     if (auto& eventFlagNode = locationMeta["Event Flag"]) {
         auto flag = eventFlagNode.as<u16>();
@@ -500,6 +505,62 @@ bool isLocationObtained(randomizer::logic::location::Location* location) {
         return tracker_isStageSwitch(stageId, flag);
     }
     return false;
+}
+
+int getLocationItem(randomizer::logic::location::Location* location) {
+    auto& locationMeta = location->GetMetadata();
+    auto& context = randomizer_GetContext();
+
+    if (auto& chestNode = locationMeta["Chest"]) {
+        auto tboxId = chestNode[0]["Tbox Id"].as<u8>();
+        auto stage = chestNode[0]["Stage"].as<u8>();
+        auto key = (stage << 8) | tboxId;
+        return context.mTreasureChestOverrides[key];
+    }
+    if (auto& poeNode = locationMeta["Poe"]) {
+        auto flag = poeNode[0]["Flag"].as<u8>();
+        auto stage = poeNode[0]["Stage"].as<u8>();
+        auto key = (stage << 8) | flag;
+        return context.mPoeOverrides[key];
+    }
+    if (auto& freeStandingItemNode = locationMeta["Freestanding Item"]) {
+        auto flag = freeStandingItemNode[0]["Flag"].as<u8>();
+        auto stage = freeStandingItemNode[0]["Stage"].as<u8>();
+        auto key = (stage << 8) | flag;
+        return context.mFreestandingItemOverrides[key];
+    }
+    if (auto& wolfNode = locationMeta["Golden Wolf"]) {
+        auto flag = wolfNode[0]["Flag"].as<u16>();
+        return context.mGoldenWolfOverrides[flag];
+    }
+    if (auto& shopNode = locationMeta["Shop"]) {
+        u8 stage = shopNode[0]["Stage"].as<u8>();
+        u8 originalItem = shopNode[0]["Item"].as<u8>();
+        u16 key = (stage << 8) | originalItem;
+        return context.mShopOverrides[key];
+    }
+    if (auto& skyCharacterNode = locationMeta["Sky Character"]) {
+        u8 stageIdx = skyCharacterNode[0]["Stage"].as<u8>();
+        u8 roomNo = skyCharacterNode[0]["Room"].as<u8>();
+        u16 key = (stageIdx << 8) | roomNo;
+        return context.mSkyCharacterOverrides[key];
+    }
+    if (auto& bugRewardNode = locationMeta["Bug Reward"]) {
+        u8 bugItemId = bugRewardNode["Item Id"].as<u8>();
+        return context.mBugRewardOverrides[bugItemId];
+    }
+
+    if (auto& flwNode = locationMeta["FLW Message"]) {
+        auto group = flwNode[0]["Group"].as<u16>();
+        auto messageId = flwNode[0]["Message Id"].as<u16>();
+        u32 key = (group << 16) | messageId;
+        return context.mFlowItemMessageOverrides[key].itemId;
+    }
+    if (auto& nameNode = locationMeta["Name Lookup"]) {
+        auto name = nameNode[0].as<std::string>();
+        return context.mItemLocations[name].itemId;
+    }
+    return -1;
 }
 
 int getStageSaveId(int id) {

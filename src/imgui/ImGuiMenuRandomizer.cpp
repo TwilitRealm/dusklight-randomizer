@@ -279,6 +279,7 @@ namespace dusk {
 
                 // Show total number of available locations
                 auto locations = trackerRando->GetWorld()->GetAllLocations();
+                // TODO: maybe add remaining?
                 ImGui::Text("Locations Available: %zu / %zu (%zu Checked)", m_numAvailableLocations, m_numProgressionLocations, m_numCollectedLocations);
 
                 if (ImGui::BeginChild("ScrollRegion", ImVec2(500, 500), true))
@@ -313,22 +314,24 @@ namespace dusk {
                                     continue;
                                 }
 
-                                ImVec4 color;
                                 if (info.collected) {
-                                    // gray to show collected
-                                    color = TRACKER_COLOR_COLLECTED;
-                                }else if (info.accessible) {
-                                    // If the search found this location, change color to green
-                                    color = TRACKER_COLOR_ACCESSIBLE;
+                                    ImGui::TextColored(TRACKER_COLOR_COLLECTED, "%s [%s]",
+                                        info.locationName.c_str(),
+                                        info.locationItem.c_str());
                                 }else {
-                                    color = TRACKER_COLOR_INACCESSIBLE;
+                                    ImVec4 color;
+                                    if (info.accessible) {
+                                        // If the search found this location, change color to green
+                                        color = TRACKER_COLOR_ACCESSIBLE;
+                                    }else {
+                                        color = TRACKER_COLOR_INACCESSIBLE;
+                                    }
+                                    ImGui::TextColored(color, "%s", info.locationName.c_str());
                                 }
-
-                                ImGui::TextColored(color, "%s", info.locationName.c_str());
 
                                 // Show requirements for the location below it (formatting isn't pretty right now)
                                 if (m_showRequirements) {
-                                    ImGui::SetItemTooltip("    %s", info.logicStr.c_str());
+                                    ImGui::SetItemTooltip("%s", info.logicStr.c_str());
                                 }
                             }
 
@@ -350,7 +353,8 @@ namespace dusk {
 
     void ImGuiMenuRandomizer::generateLocationInfo() {
         auto trackerRando = getTrackerRando();
-        auto locations = trackerRando->GetWorld()->GetAllLocations();
+        auto world = trackerRando->GetWorld();
+        auto locations = world->GetAllLocations();
 
         m_LocationInfo.clear();
 
@@ -369,9 +373,12 @@ namespace dusk {
                 continue;
             }
 
+            int itemId = getLocationItem(location);
+
             LocationTrackerInfo info {
                 .locationName = location->GetName(),
                 .logicStr = location->GetComputedRequirement().to_string(),
+                .locationItem = itemId >= 0 ? world->GetItem(itemId)->GetName() : "Unknown",
                 .accessible = m_currentSearch._visitedLocations.contains(location)
             };
 

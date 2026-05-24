@@ -68,7 +68,7 @@
       - Ordon Shield
     Switch Flag:
       Stage: 65
-      Flag: 0x20
+      Flag: 0x1A
 
 - Name: Ordon Sword
   Original Item: Progressive Sword

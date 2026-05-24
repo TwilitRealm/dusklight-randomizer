@@ -29,6 +29,11 @@ randomizer::logic::item_pool::ItemPool getSaveItemPool(randomizer::logic::world:
  */
 bool isLocationObtained(randomizer::logic::location::Location* location);
 
+/*
+ * Pulls location item data from rando context using locations metadata.
+ */
+int getLocationItem(randomizer::logic::location::Location* location);
+
 // Used to get a stage's Area ID used for save flags
 int getStageSaveId(int id);
 int getStageSaveId(const char* stage);

@@ -781,9 +781,16 @@ static void randomizer_setTempFlag(RandomizerContext::itemLocationData data) {
     // If stage is 0xFF, then this is an event flag
     if (data.stage == 0xFF) {
         g_randomizerState.mTrackerTempEventFlag = data.flag;
-    } else {
+    }
+    // If it's less than 0x80 then it's a switch flag
+    else if (data.flag < 0x80) {
         g_randomizerState.mTrackerTempSwitchFlag.stage = getStageSaveId(data.stage);
         g_randomizerState.mTrackerTempSwitchFlag.flag = data.flag;
+    }
+    // Otherwise it's an item flag. Currently, any item flags that go through here are custom
+    // so we just set the bit directly.
+    else {
+        dComIfGs_onItem(data.flag, getStageSaveId(data.stage));
     }
 }
 
@@ -1061,6 +1068,9 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
             } else if (metaData["Switch Flag"]) {
                 itemData.stage = metaData["Switch Flag"]["Stage"].as<u8>();
                 itemData.flag = metaData["Switch Flag"]["Flag"].as<u8>();
+            } else if (metaData["Item Flag"]) {
+                itemData.stage = metaData["Item Flag"]["Stage"].as<u8>();
+                itemData.flag = metaData["Item Flag"]["Flag"].as<u8>();
             }
         };
 

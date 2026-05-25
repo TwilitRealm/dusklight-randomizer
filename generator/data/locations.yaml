@@ -4790,9 +4790,9 @@
   Metadata:
     Name Lookup:
       - Forest Temple Gale Boomerang
-    Switch Flag:
+    Item Flag:
       Stage: 8
-      Flag: 0x59
+      Flag: 0x9D
 
 - Name: Forest Temple Big Key Chest
   Original Item: Forest Temple Big Key
@@ -4890,7 +4890,9 @@
     FLW Message:
       - Group: 5
         Message Id: 5001
-    Event Flag: 0x0602 # late
+    Item Flag:
+      Stage: 7
+      Flag: 0x9E
 
 # GORON MINES
 
@@ -5754,7 +5756,9 @@
   Metadata:
     Name Lookup:
       - Arbiters Grounds Dungeon Reward
-    Event Flag: 0x2010
+    Item Flag:
+      Stage: 25
+      Flag: 0x9E
 
 # SNOWPEAK RUINS
 
@@ -6278,7 +6282,9 @@
     FLW Message:
       - Group: 5
         Message Id: 9401
-    Event Flag: 0x2004
+    Item Flag:
+      Stage: 10
+      Flag: 0x9E
 
 # CITY IN THE SKY
 

@@ -504,6 +504,11 @@ bool isLocationObtained(randomizer::logic::location::Location* location) {
         auto stageId = getStageSaveId(switchFlagNode["Stage"].as<u8>());
         return tracker_isStageSwitch(stageId, flag);
     }
+    if (auto& itemFlagNode = locationMeta["Item Flag"]) {
+        auto flag = itemFlagNode["Flag"].as<u8>();
+        auto stageId = getStageSaveId(itemFlagNode["Stage"].as<u8>());
+        return tracker_isStageItem(stageId, flag);
+    }
     return false;
 }
 
@@ -546,7 +551,7 @@ int getLocationItem(randomizer::logic::location::Location* location) {
         return context.mSkyCharacterOverrides[key];
     }
     if (auto& bugRewardNode = locationMeta["Bug Reward"]) {
-        u8 bugItemId = bugRewardNode["Item Id"].as<u8>();
+        u8 bugItemId = bugRewardNode[0]["Item Id"].as<u8>();
         return context.mBugRewardOverrides[bugItemId];
     }
 

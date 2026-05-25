@@ -16,7 +16,7 @@
 - Name: City in the Sky Shop
   Region: City in the Sky
   Events:
-    Can Refill Bombs: "'Can_Farm_Rupees'"
+    Can Refill Regular Bombs: "'Can_Farm_Rupees'"
     Can Refill Arrows: "'Can_Farm_Rupees'"
     Can Refill Lantern Oil: "'Can_Farm_Rupees'"
   Exits:

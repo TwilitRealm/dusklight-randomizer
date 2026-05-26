@@ -38,13 +38,6 @@
   Map Sector: Ordona Province
   Region: Ordon
   Can Warp: True
-  Locations:
-    # We can't assume repeatable non-twilight access to any of faron woods until after the prologue and twilight sections
-    # are finished. We put this location here when the prologue is on because the north faron woods gate key gets placed
-    # here as a vanilla item when the prologue is on. This allows the search algorithm to find the key for logical progression
-    # without needing to assume repeatable access to Faron Woods. Entrance randomizer doesn't need to be taken into account
-    # because entrance randomizer with the prologue on is not allowed.
-    Faron Mist Cave Open Chest: Skip_Prologue == Off
   Exits:
     South Faron Woods: Can_Complete_Prologue
     Ordon Spring: Skip_Prologue == On or ('Can_Access_Outside_Links_House' and Sword and Slingshot)

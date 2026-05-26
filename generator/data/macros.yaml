@@ -21,10 +21,6 @@ Can Sniff: Wolf_Link
 Can Midna Jump: Wolf_Link
 Can Use Tightrope: Wolf_Link
 Not Twilight: Human_Link or Wolf_Link
-# You can only use warp portals from certain stages.
-# 'Can_Warp' is an event added to any logical area
-# which is part of a stage that players can warp from.
-Can Use Warp Portals: Wolf_Link and 'Can_Warp' 
 
 Slingshot: Slingshot and 'Can_Refill_Slingshot_Seeds' and Human_Link
 Lantern: Lantern and 'Can_Refill_Lantern_Oil' and Human_Link
@@ -209,6 +205,11 @@ Can Defeat Zant: Master_Sword and Gale_Boomerang and (Iron_Boots or (Can_Do_Nich
 
 Can Open North Faron Woods Gate: North_Faron_Woods_Gate_Key or Small_Keys == Keysy
 Can Complete Prologue: Skip_Prologue == On or (Sword and Slingshot and Can_Open_North_Faron_Woods_Gate)
+
+# You can only use warp portals from certain stages.
+# 'Can_Warp' is an event added to any logical area
+# which is part of a stage that players can warp from.
+Can Use Warp Portals: Wolf_Link and 'Can_Warp' and Can_Complete_Prologue
 
 Can Free All Monkeys in Forest Temple: "'Can_Free_Monkey_in_Entrance_Room' and 'Can_Free_Monkey_on_Totem' and 
                                         'Can_Free_Monkey_in_Big_Baba_Room' and 'Can_Free_Monkey_in_West_Tileworm_Room' and

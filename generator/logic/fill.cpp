@@ -234,6 +234,7 @@ namespace randomizer::logic::fill
                 {
                     return item->GetName() == "Slingshot" || item->GetName() == "Progressive Sword" ||
                            item->GetName() == "Lantern" || item->GetName() == "Progressive Fishing Rod" ||
+                           item->GetName() == "North Faron Woods Gate Key" ||
                            item->IsShadowCrystal();
                 });
             auto completeItemPool = item_pool::GetCompleteItemPool(worlds);

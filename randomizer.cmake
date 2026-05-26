@@ -6,7 +6,8 @@ set(RANDO_SAVE_PATH "${CMAKE_BINARY_DIR}/randomizer/")
 set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS} 
                         RANDOMIZER_ONLY=${RANDOMIZER_ONLY}
                         RANDO_SAVE_PATH="${RANDO_SAVE_PATH}"
-                        RANDO_DATA_PATH="src/dusk/randomizer/generator/data/")
+                        RANDO_DATA_PATH="src/dusk/randomizer/generator/data/"
+                        RANDO_LOGIC_TESTS_PATH="${CMAKE_SOURCE_DIR}/src/dusk/randomizer/generator/data/tests/logic")
 
 if(RANDO_ERROR_LOG)
   message("Error Log will be saved")

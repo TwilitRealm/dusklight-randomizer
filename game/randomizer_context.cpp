@@ -1270,7 +1270,12 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
         const auto& name = overrideNode["Name"].as<std::string>();
         // TODO: Handle multiple languages
         auto language = randomizer::Text::ENGLISH;
-        auto text = randomizer::getTextStr(name);
+        std::string text;
+        if (world->GetTextDatabase().contains(name)) {
+            text = world->GetDynamicTextStr(name);
+        } else {
+            text = randomizer::getTextStr(name);
+        }
         u8 group = overrideNode["Group"].as<u8>();
         u16 messageId = overrideNode["Message Id"].as<u16>();
         u32 key = (group << 16) | messageId;

@@ -49,7 +49,7 @@ namespace randomizer {
             PLURALITY_MAX,
         };
 
-        std::array<std::string, LANGUAGE_MAX> mtext{};
+        std::array<std::string, LANGUAGE_MAX> mText{};
         std::array<Gender, LANGUAGE_MAX> mGender{};
         std::array<Plurality, LANGUAGE_MAX> mPlurality{};
     };
@@ -66,7 +66,7 @@ namespace randomizer {
     Text::Gender string_to_gender(const std::string& str);
     Text::Plurality string_to_plurality(const std::string& str);
 
-    // Retrieval of Text objects keyed by name and type (standard, pretty, criptic)
+    // Retrieval of Text objects keyed by name and type (standard, pretty, cryptic)
     using TextDatabase = std::unordered_map<std::string, std::array<Text, Text::TYPE_MAX>>;
 
     const TextDatabase& getTextDatabase();

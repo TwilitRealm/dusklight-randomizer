@@ -119,6 +119,14 @@ namespace randomizer::logic::dungeon
         return this->_required;
     }
 
+    void Dungeon::AddOutsideDependentLocation(location::Location* location) {
+        this->_outsideDependentLocations.push_back(location);
+    }
+
+    std::list<location::Location*> Dungeon::GetOutsideDependentLocations() {
+        return this->_outsideDependentLocations;
+    }
+
     bool Dungeon::ShouldBeBarren() const
     {
         return !this->_required && this->_world->Setting("Unrequired Dungeons Are Barren") == "On";

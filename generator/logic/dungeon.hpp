@@ -53,6 +53,8 @@ namespace randomizer::logic::dungeon
         location::Location* GetGoalLocation();
         void SetRequired(const bool& required);
         bool IsRequired() const;
+        void AddOutsideDependentLocation(location::Location* location);
+        std::list<location::Location*> GetOutsideDependentLocations();
 
         /**
          *  @brief Returns whether or not the dungeon should be barren given the current settings and placement of dungeon
@@ -71,6 +73,8 @@ namespace randomizer::logic::dungeon
         std::unordered_set<entrance::Entrance*> _startingEntrances;
         location::Location* _goalLocation;
         location::LocationPool _locations = {};
+        // Locations which depend on beating this dungeon
+        std::list<location::Location*> _outsideDependentLocations = {};
         bool _required = false;
     };
 } // namespace randomizer::logic::dungeon

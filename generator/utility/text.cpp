@@ -224,7 +224,7 @@ namespace randomizer {
                     auto type = string_to_type(typeNode.first.as<std::string>());
                     auto typeData = typeNode.second;
                     const auto& text = typeData["Text"].as<std::string>();
-                    tb[name][type].mtext[language] = text;
+                    tb[name][type].mText[language] = text;
                     if (typeData["Gender"]) {
                         tb[name][type].mGender[language] = string_to_gender(typeData["Gender"].as<std::string>());
                     }
@@ -264,7 +264,7 @@ namespace randomizer {
         if (!tb.contains(name)) {
             throw std::runtime_error("Text name \"" + name + "\" is not recognized.");
         }
-        return tb.at(name).at(type).mtext.at(language);
+        return tb.at(name).at(type).mText.at(language);
     }
 
     void applyMessageCodes(std::string& str) {

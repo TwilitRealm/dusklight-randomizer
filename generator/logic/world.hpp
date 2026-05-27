@@ -9,6 +9,7 @@
 
 #include "../seedgen/settings.hpp"
 #include "../utility/log.hpp"
+#include "../utility/text.hpp"
 
 #include <unordered_map>
 #include <map>
@@ -99,7 +100,7 @@ namespace randomizer::logic::world
          *  @brief STUB: Would choose required dungeons ahead of placing any non-vanilla and non-plandomized items. Not really
          *  required unless we let users choose a specific amount of directly required dungeons
          */
-        void ChooseRequiredDungeons();
+        void DetermineDungeonDependentLocations();
 
         /**
          *  @brief Determines which dungeons are required based on placed items. Sets required dungeons as such in their
@@ -149,6 +150,15 @@ namespace randomizer::logic::world
 
         seedgen::settings::Setting& Setting(const std::string& settingName);
 
+        TextDatabase& GetTextDatabase() { return this->_textDatabase; }
+        const std::string& GetDynamicTextStr(const std::string& name) {
+            return this->_textDatabase.at(name).at(Text::Type::STANDARD).mText.at(Text::Language::ENGLISH);
+        }
+        // Make a new custom text entry for this world specifically
+        std::string& AddDynamicTextStr(const std::string& name, Text::Type type = Text::STANDARD, Text::Language language = Text::ENGLISH) {
+            return this->_textDatabase[name][type].mText[language];
+        }
+
        private:
         int _id = -1;
         int _entranceIdCounter = 0;
@@ -168,6 +178,8 @@ namespace randomizer::logic::world
         item_pool::ItemPool _itemPool = {};
         item_pool::ItemPool _startingItemPool = {};
         std::unordered_map<entrance::Entrance*, int> _exitTimeFormCache = {};
+        // Custom text for this world specifically
+        TextDatabase _textDatabase = {};
 
         // Plandomizer Data
         std::unordered_map<location::Location*, item::Item*> _plandomizerLocations = {};

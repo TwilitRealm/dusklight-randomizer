@@ -12,9 +12,10 @@
 #include "../utility/string.hpp"
 #include "../utility/yaml.hpp"
 
-#include <iostream>
-#include <unordered_set>
 #include <filesystem>
+#include <iostream>
+#include <ranges>
+#include <unordered_set>
 
 namespace randomizer::logic::world
 {
@@ -705,7 +706,7 @@ namespace randomizer::logic::world
     {
         this->AssignAreaProperties();
         this->AssignGoalLocations();
-        this->ChooseRequiredDungeons();
+        this->DetermineDungeonDependentLocations();
         this->SetForbiddenItems();
     }
 
@@ -816,9 +817,43 @@ namespace randomizer::logic::world
         }
     }
 
-    void World::ChooseRequiredDungeons()
+    void World::DetermineDungeonDependentLocations()
     {
-        // STUB
+        for (const auto& [dungeonName, dungeon] : this->_dungeons)
+        {
+            // Hyrule Castle is implicitly required
+            if (dungeonName == "Hyrule Castle") {
+                continue;
+            }
+
+            // Disable the dungeon's starting entrances
+            for (auto& entrance : dungeon->GetStartingEntrances())
+            {
+                entrance->SetDisbled(true);
+            }
+
+            // Run an accessibility search to see which locations inherently require accessing this dungeon
+            auto completeItemPool = item_pool::GetCompleteItemPool(this->_randomizer->GetWorlds());
+            auto search = search::Search::Accessible(&this->_randomizer->GetWorlds(), completeItemPool);
+            search.SearchWorlds();
+            for (auto& location : this->_locationTable | std::ranges::views::values) {
+                // Don't check locations which are part of this dungeon
+                if (utility::container::ElementInContainer(dungeon->GetLocations(), location.get())) {
+                    continue;
+                }
+
+                // If the search does not contain this location, then the location is dependent on accessing this dungeon
+                if (!search._visitedLocations.contains(location.get())) {
+                    dungeon->AddOutsideDependentLocation(location.get());
+                }
+            }
+
+            // Re-enable the dungeon's entrances
+            for (auto& entrance : dungeon->GetStartingEntrances())
+            {
+                entrance->SetDisbled(false);
+            }
+        }
     }
 
     void World::DetermineRequiredDungeons()
@@ -826,8 +861,13 @@ namespace randomizer::logic::world
         for (const auto& [dungeonName, dungeon] : this->_dungeons)
         {
             // To determine if a dungeon is required, we're going to disable all of its entrances and then check to see
-            // that the game is still beatble. If the game is not beatable with the dungeon entrances disabled, then the
+            // that the game is still beatable. If the game is not beatable with the dungeon entrances disabled, then the
             // dungeon is required.
+
+            // Hyrule Castle is implicitly required
+            if (dungeonName == "Hyrule Castle") {
+                continue;
+            }
 
             // Disable the dungeon's starting entrances
             for (auto& entrance : dungeon->GetStartingEntrances())
@@ -838,13 +878,17 @@ namespace randomizer::logic::world
             // Check if the game is beatable, set dungeon as required if so. If the dungeon is not required and barren
             // unrequired dungeons is on, then set all the locations in the unrequired dungeon as nonprogress.
             auto completeItemPool = item_pool::GetCompleteItemPool(this->_randomizer->GetWorlds());
-            if (!search::GameBeatable(&(this->_randomizer->GetWorlds()), completeItemPool))
+            if (!search::GameBeatable(&this->_randomizer->GetWorlds(), completeItemPool))
             {
                 dungeon->SetRequired(true);
             }
             else if (this->Setting("Unrequired Dungeons Are Barren") == "On")
             {
                 for (auto& location : dungeon->GetLocations())
+                {
+                    location->SetProgression(false);
+                }
+                for (auto& location : dungeon->GetOutsideDependentLocations())
                 {
                     location->SetProgression(false);
                 }

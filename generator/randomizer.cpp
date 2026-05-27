@@ -3,6 +3,7 @@
 #include "logic/entrance_shuffle.hpp"
 #include "logic/fill.hpp"
 #include "logic/flatten/flatten.hpp"
+#include "logic/hints.hpp"
 #include "logic/plandomizer.hpp"
 #include "logic/search.hpp"
 #include "logic/spoiler_log.hpp"
@@ -147,7 +148,8 @@ namespace randomizer
         // Generate Playthrough
         logic::search::GeneratePlaythrough(this);
 
-        // TODO: Generate Hints
+        // Generate Hints
+        logic::hints::GenerateAllHints(this->_worlds);
 
         // Write Logs
         if (this->_config.IsGeneratingSpoilerLog())

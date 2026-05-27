@@ -29,13 +29,18 @@ private:
         std::string locationItem;
         bool accessible = false;
         bool collected = false;
+        bool hidden = false;
     };
 
     struct TrackerAreaGroup {
-        std::vector<LocationTrackerInfo> locations;
+        std::vector<LocationTrackerInfo> obtainedLocations;
+        std::vector<LocationTrackerInfo> unobtainedLocations;
         bool showArea;
+        int totalCount;
         int collectedCount;
         int accessibleCount;
+
+        void addToGroup(LocationTrackerInfo& loc);
     };
 
     size_t m_numAvailableLocations;
@@ -47,11 +52,13 @@ private:
 
     bool m_onlyAccessible{false};
     bool m_showRequirements{false};
+    bool m_hideAreaHeader{false};
     char m_locationFilter[100];
 
     randomizer::logic::search::Search m_currentSearch = randomizer::logic::search::Search();
 
     std::map<std::string, TrackerAreaGroup> m_LocationInfo;
+    std::vector<std::string> m_HiddenChecks;
 
     void generateLocationInfo();
 };

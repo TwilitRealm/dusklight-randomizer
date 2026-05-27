@@ -235,113 +235,149 @@ namespace dusk {
 
         ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize |
             ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav;
+        ImGui::SetNextWindowBgAlpha(0.5f);
 
-        if (ImGui::Begin("Rando Tracker", nullptr, windowFlags)) {
-            auto trackerRando = getTrackerRando();
+        if (!ImGui::Begin("Rando Tracker", nullptr, windowFlags) || !randomizer_IsActive()) {
+            ImGui::End();
+            return;
+        }
 
-            // Uncomment button for manual updating
-            if (ImGui::Button("Update Tracker") || g_randomizerState.mUpdateTracker) {
-                g_randomizerState.mUpdateTracker = false;
+        auto trackerRando = getTrackerRando();
 
-                // Generate tracker world if it doesn't exist
-                auto contextHash = randomizer_GetContext().mHash;
-                auto trackerHash = trackerRando->GetConfig().GetHash(false);
-                // If no hash, or seeds switched, try to create tracker world from currently active seed
-                if (trackerHash.empty() || (trackerHash != contextHash && !contextHash.empty())) {
-                    *trackerRando = randomizer::Randomizer(ui::GetRandomizerPath());
-                    trackerRando->GenerateTrackerWorld();
-                }
+        if (ImGui::Button("Update Tracker") || g_randomizerState.mUpdateTracker) {
+            g_randomizerState.mUpdateTracker = false;
 
-                if (randomizer_IsActive()) {
-                    auto currentItems = getSaveItemPool(trackerRando->GetWorld());
-                    m_currentSearch = randomizer::logic::search::Search::AccessibleNoStartingInventory(&trackerRando->GetWorlds(), currentItems);
-                    m_currentSearch.SearchWorlds();
-                    generateLocationInfo();
-                }
+            // Generate tracker world if it doesn't exist
+            auto contextHash = randomizer_GetContext().mHash;
+            auto trackerHash = trackerRando->GetConfig().GetHash(false);
+            // If no hash, or seeds switched, try to create tracker world from currently active seed
+            if (trackerHash.empty() || (trackerHash != contextHash && !contextHash.empty())) {
+                *trackerRando = randomizer::Randomizer(ui::GetRandomizerPath());
+                trackerRando->GenerateTrackerWorld();
             }
 
-            if (trackerRando->GetConfig().GetHash(false).empty()) {
-                ImGui::Text("Load a seed and start a file to activate the tracker");
-            } else {
-                ImGui::Text("Tracker world loaded from seed %s", trackerRando->GetConfig().GetHash().c_str());
-                const char* curStage = dComIfGp_getStartStageName();
-                const char* curStageName = lookup_map_name(curStage);
-                ImGui::Text("Current Stage: %s (%s)", curStageName, curStage);
-
-                auto stageInfo = dComIfGp_getStageStagInfo();
-                if (stageInfo && dStage_stagInfo_GetSaveTbl(stageInfo) != getStageSaveId(curStage)) {
-                    ImGui::TextColored(ImVec4(1.0f, 0.0f,0.0f,1.0f), "Error: Current Stage Save Tbl mismatch!");
-                }
-
-                ImGui::Checkbox("Show Only Accessible Locations", &m_onlyAccessible);
-                ImGui::Checkbox("Show Location Requirements", &m_showRequirements);
-                ImGui::InputText("Location Filter", m_locationFilter, 100);
-
-                // Show total number of available locations
-                auto locations = trackerRando->GetWorld()->GetAllLocations();
-                // TODO: maybe add remaining?
-                ImGui::Text("Locations Available: %zu / %zu (%zu Checked)", m_numAvailableLocations, m_numProgressionLocations, m_numCollectedLocations);
-
-                if (ImGui::BeginChild("ScrollRegion", ImVec2(500, 500), true))
-                {
-                    std::string filter = m_locationFilter;
-                    // Show all locations. Green for accessible. Red for Unaccessible
-                    for (const auto& [areaName, region] : m_LocationInfo) {
-                        if (m_onlyAccessible && !region.showArea)
-                            continue;
-
-                        int areaCount = region.locations.size();
-
-                        bool isCurrentArea = areaName == curStageName;
-
-                        if (isCurrentArea)
-                            ImGui::PushStyleColor(ImGuiCol_Text, TRACKER_COLOR_ACTIVE);
-                        else if (!region.showArea)
-                            ImGui::PushStyleColor(ImGuiCol_Text, TRACKER_COLOR_COLLECTED);
-
-                        bool isShowNode = ImGui::TreeNode(fmt::format("{} ({}/{})",
-                            areaName, areaCount - region.collectedCount, areaCount).c_str());
-
-                        if (!region.showArea || isCurrentArea)
-                            ImGui::PopStyleColor();
-
-                        if (isShowNode) {
-                            for (const auto& info : region.locations) {
-                                // Don't show any locations which aren't accessible if only accessible is checked
-                                // Don't show any locations which don't meet the filter
-                                if ((m_onlyAccessible && !info.accessible) ||
-                                    !randomizer::utility::str::Contains(info.locationName, filter)) {
-                                    continue;
-                                }
-
-                                if (info.collected) {
-                                    ImGui::TextColored(TRACKER_COLOR_COLLECTED, "%s [%s]",
-                                        info.locationName.c_str(),
-                                        info.locationItem.c_str());
-                                }else {
-                                    ImVec4 color;
-                                    if (info.accessible) {
-                                        // If the search found this location, change color to green
-                                        color = TRACKER_COLOR_ACCESSIBLE;
-                                    }else {
-                                        color = TRACKER_COLOR_INACCESSIBLE;
-                                    }
-                                    ImGui::TextColored(color, "%s", info.locationName.c_str());
-                                }
-
-                                // Show requirements for the location below it (formatting isn't pretty right now)
-                                if (m_showRequirements) {
-                                    ImGui::SetItemTooltip("%s", info.logicStr.c_str());
-                                }
-                            }
-
-                            ImGui::TreePop();
-                        }
-                    }
-                }
-                ImGui::EndChild();
+            if (randomizer_IsActive()) {
+                auto currentItems = getSaveItemPool(trackerRando->GetWorld());
+                m_currentSearch = randomizer::logic::search::Search::AccessibleNoStartingInventory(&trackerRando->GetWorlds(), currentItems);
+                m_currentSearch.SearchWorlds();
+                generateLocationInfo();
             }
         }
+
+        if (trackerRando->GetConfig().GetHash(false).empty()) {
+            ImGui::Text("Load a seed and start a file to activate the tracker");
+            ImGui::End();
+            return;
+        }
+
+        ImGui::Text("Tracker world loaded from seed %s", trackerRando->GetConfig().GetHash().c_str());
+        const char* curStage = dComIfGp_getStartStageName();
+        const char* curStageName = lookup_map_name(curStage);
+        ImGui::Text("Current Stage: %s (%s)", curStageName, curStage);
+
+        auto stageInfo = dComIfGp_getStageStagInfo();
+        if (stageInfo && dStage_stagInfo_GetSaveTbl(stageInfo) != getStageSaveId(curStage)) {
+            ImGui::TextColored(ImVec4(1.0f, 0.0f,0.0f,1.0f), "Error: Current Stage Save Tbl mismatch!");
+        }
+
+        ImGui::Checkbox("Show Only Accessible Locations", &m_onlyAccessible);
+        ImGui::Checkbox("Hide Area Header", &m_hideAreaHeader);
+        ImGui::Checkbox("Show Location Requirements", &m_showRequirements);
+        ImGui::InputText("Location Filter", m_locationFilter, 100);
+
+        // Show total number of available locations
+        auto locations = trackerRando->GetWorld()->GetAllLocations();
+        // TODO: maybe add remaining?
+        ImGui::Text("Locations Available: %zu / %zu (%zu Checked)", m_numAvailableLocations, m_numProgressionLocations, m_numCollectedLocations);
+
+        ImGui::SetNextWindowBgAlpha(0.5f);
+        if (ImGui::BeginChild("ScrollRegion", ImVec2(500, 500), true))
+        {
+            std::string filter = m_locationFilter;
+            auto drawLocationsFunc = [this, &filter](std::vector<LocationTrackerInfo>& locations) {
+                for (auto& info : locations) {
+                    // Don't show any locations which aren't accessible if only accessible is checked
+                    // Don't show any locations which don't meet the filter
+                    if ((m_onlyAccessible && !info.accessible) ||
+                        !randomizer::utility::str::Contains(info.locationName, filter)) {
+                        continue;
+                    }
+
+                    if (info.collected) {
+                        ImGui::TextColored(TRACKER_COLOR_COLLECTED, "%s [%s]",
+                            info.locationName.c_str(),
+                            info.locationItem.c_str());
+                    } else {
+                        if (ImGui::SmallButton(fmt::format("{}###HideCheckBtn_{}",
+                            info.hidden ? "+" : "-", info.locationName.c_str()).c_str())) {
+                            if (info.hidden) {
+                                std::erase(m_HiddenChecks, info.locationName);
+                            } else {
+                                m_HiddenChecks.push_back(info.locationName);
+                            }
+                            info.hidden = !info.hidden;
+                        }
+                        ImGui::SameLine();
+
+                        if (info.hidden) {
+                            ImGui::TextColored(TRACKER_COLOR_COLLECTED, "%s [Skipped]",
+                                info.locationName.c_str());
+                        } else {
+                            ImVec4 color;
+                            if (info.accessible) {
+                                // If the search found this location, change color to green
+                                color = TRACKER_COLOR_ACCESSIBLE;
+                            } else {
+                                color = TRACKER_COLOR_INACCESSIBLE;
+                            }
+
+                            ImGui::TextColored(color, "%s", info.locationName.c_str());
+                        }
+                    }
+
+                    // Show requirements for the location below it (formatting isn't pretty right now)
+                    if (m_showRequirements) {
+                        ImGui::SetItemTooltip("%s", info.logicStr.c_str());
+                    }
+                }
+            };
+
+            if (m_hideAreaHeader) {
+                for (auto& region : m_LocationInfo | std::views::values) {
+                    drawLocationsFunc(region.unobtainedLocations);
+                }
+                for (auto& region : m_LocationInfo | std::views::values) {
+                    drawLocationsFunc(region.obtainedLocations);
+                }
+            }else {
+                // Show all locations. Green for accessible. Red for Unaccessible
+                for (auto& [areaName, region] : m_LocationInfo) {
+                    if (m_onlyAccessible && !region.showArea)
+                        continue;
+
+                    int areaCount = region.totalCount;
+
+                    bool isCurrentArea = areaName == curStageName;
+
+                    if (isCurrentArea)
+                        ImGui::PushStyleColor(ImGuiCol_Text, TRACKER_COLOR_ACTIVE);
+                    else if (!region.showArea)
+                        ImGui::PushStyleColor(ImGuiCol_Text, TRACKER_COLOR_COLLECTED);
+
+                    bool isShowNode = ImGui::CollapsingHeader(fmt::format("{} ({}/{})###{}_{}",
+                        areaName, areaCount - region.collectedCount, areaCount, areaName, areaCount).c_str());
+
+                    if (!region.showArea || isCurrentArea)
+                        ImGui::PopStyleColor();
+
+                    if (isShowNode) {
+                        drawLocationsFunc(region.unobtainedLocations);
+                        drawLocationsFunc(region.obtainedLocations);
+                    }
+                }
+            }
+        }
+        ImGui::EndChild();
 
         ImGui::End();
     }
@@ -349,6 +385,25 @@ namespace dusk {
     randomizer::Randomizer* ImGuiMenuRandomizer::getTrackerRando() {
         static randomizer::Randomizer trackerRando{ui::GetRandomizerPath()};
         return &trackerRando;
+    }
+
+    void ImGuiMenuRandomizer::TrackerAreaGroup::addToGroup(LocationTrackerInfo& info) {
+        if (!showArea && info.accessible && !info.collected) {
+            showArea = true;
+        }
+
+        totalCount++;
+
+        if (info.collected)
+            collectedCount++;
+        if (info.accessible)
+            accessibleCount++;
+
+        if (info.collected) {
+            obtainedLocations.push_back(info);
+        }else {
+            unobtainedLocations.push_back(info);
+        }
     }
 
     void ImGuiMenuRandomizer::generateLocationInfo() {
@@ -384,6 +439,11 @@ namespace dusk {
 
             info.collected = isLocationObtained(location);
 
+            info.hidden = std::ranges::find(m_HiddenChecks, info.locationName) != m_HiddenChecks.end();
+
+            if (info.collected)
+                m_numAvailableLocations--;
+
             // Gather the hint regions this location is in (set avoids duplicates)
             std::unordered_set<std::string> regions{};
             for (auto access : location->GetAccessList()) {
@@ -394,16 +454,7 @@ namespace dusk {
 
             for (const auto& region : regions) {
                 auto& infoGroup = m_LocationInfo[region];
-                if (!infoGroup.showArea && info.accessible && !info.collected) {
-                    infoGroup.showArea = true;
-                }
-
-                if (info.collected)
-                    infoGroup.collectedCount++;
-                if (info.accessible)
-                    infoGroup.accessibleCount++;
-
-                infoGroup.locations.push_back(info);
+                infoGroup.addToGroup(info);
             }
         }
 

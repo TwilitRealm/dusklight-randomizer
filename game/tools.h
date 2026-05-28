@@ -17,6 +17,7 @@ u16 getItemMessageID(u8 itemId);
 int numCompletedDungeons();
 int numFusedShadows();
 int numMirrorShards();
+int getTempleKeysFound(int stage);
 
 /*
  * Reads the current player inventory and returns an ItemPool that can be used for logic searches

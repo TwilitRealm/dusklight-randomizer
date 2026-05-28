@@ -249,6 +249,11 @@ randomizer::logic::item_pool::ItemPool getSaveItemPool(randomizer::logic::world:
         case dItemNo_Randomizer_ASHS_SCRIBBLING_e:
             pool.push_back(world->GetItem("Asheis Sketch", true));
             break;
+        case dItemNo_Randomizer_ANCIENT_DOCUMENT_e:
+        case dItemNo_Randomizer_ANCIENT_DOCUMENT2_e:
+        case dItemNo_Randomizer_AIR_LETTER_e:
+            pool.push_back(world->GetItem("Progressive Sky Book", true));
+            break;
         case dItemNo_Randomizer_EMPTY_BOTTLE_e:
         case dItemNo_Randomizer_RED_BOTTLE_e:
         case dItemNo_Randomizer_GREEN_BOTTLE_e:
@@ -289,6 +294,11 @@ randomizer::logic::item_pool::ItemPool getSaveItemPool(randomizer::logic::world:
     // Shadow Crystal
     if (dComIfGs_isEventBit(0xD04)) {
         pool.push_back(world->GetItem("Shadow Crystal", true));
+    }
+
+    // Showed Auru's Memo to Fyer
+    if (dComIfGs_isEventBit(0x2680)) {
+        pool.push_back(world->GetItem("Aurus Memo", true));
     }
 
     // Fused Shadows

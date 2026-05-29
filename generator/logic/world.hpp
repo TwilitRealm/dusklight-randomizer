@@ -151,12 +151,12 @@ namespace randomizer::logic::world
         seedgen::settings::Setting& Setting(const std::string& settingName);
 
         TextDatabase& GetTextDatabase() { return this->_textDatabase; }
-        const std::string& GetDynamicTextStr(const std::string& name) {
+        const std::string& GetText(const std::string& name) {
             return this->_textDatabase.at(name).at(Text::Type::STANDARD).mText.at(Text::Language::ENGLISH);
         }
-        // Make a new custom text entry for this world specifically
-        std::string& AddDynamicTextStr(const std::string& name, Text::Type type = Text::STANDARD, Text::Language language = Text::ENGLISH) {
-            return this->_textDatabase[name][type].mText[language];
+        // Make a new custom text entry for this world specifically and return a reference to it
+        Text& AddNewText(const std::string& name, Text::Type type = Text::STANDARD) {
+            return this->_textDatabase[name][type];
         }
 
        private:

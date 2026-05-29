@@ -1,10 +1,8 @@
 #include "text.hpp"
 
-#include <unordered_map>
-#include <filesystem>
-#include <fstream>
-
 #include "yaml.hpp"
+
+#include <unordered_map>
 
 namespace randomizer {
 
@@ -156,6 +154,63 @@ namespace randomizer {
     //     return randomizer::utility::str::erge(lines, u'\n');
     // }
 
+    Text::Text(const std::string& str) {
+        for (auto& text : mText) {
+            text = str;
+        }
+    }
+
+    void Text::Replace(const std::string& oldStr, const Text& replacementText, int count/* = 1*/) {
+        for (size_t i = 0; i < mText.size(); ++i) {
+            auto& curString = mText[i];
+            for (int i = 0; i < count; ++i) {
+                if (auto startPos = curString.find(oldStr); startPos != std::string::npos) {
+                    curString.replace(startPos, oldStr.length(), replacementText.mText[i]);
+                }
+            }
+        }
+    }
+
+    void Text::Replace(const std::string& oldStr, const std::string& replacementText, int count/* = 1*/) {
+        for (size_t i = 0; i < mText.size(); ++i) {
+            auto& curString = mText[i];
+            for (int i = 0; i < count; ++i) {
+                if (auto startPos = curString.find(oldStr); startPos != std::string::npos) {
+                    curString.replace(startPos, oldStr.length(), replacementText);
+                }
+            }
+        }
+    }
+
+    Text& Text::operator+=(const Text& rhs) {
+        for (size_t i = 0; i < mText.size(); ++i) {
+            mText[i] += rhs.mText[i];
+        }
+        return *this;
+    }
+
+    Text& Text::operator+=(const std::string& rhs) {
+        for (auto& text : mText) {
+            text += rhs;
+        }
+        return *this;
+    }
+
+    Text operator+(Text lhs, const Text& rhs) {
+        lhs += rhs;
+        return lhs;
+    }
+
+    Text operator+(Text lhs, const std::string& rhs) {
+        for (auto& text : lhs.mText) {
+            text += rhs;
+        }
+        return lhs;
+    }
+
+    Text operator+(const std::string& lhs, const Text& rhs) {
+        return Text(lhs) + rhs;
+    }
 
     Text::Type string_to_type(const std::string& str) {
         std::unordered_map<std::string, Text::Type> strToType = {
@@ -267,25 +322,59 @@ namespace randomizer {
         return tb.at(name).at(type).mText.at(language);
     }
 
+    Text addColor(const Text& t, Text::Color color, int count /* = 1*/, bool forceAround /* = false*/) {
+        const static std::unordered_map<Text::Color, std::string> colorStrings = {
+            {Text::WHITE, "<white>"},
+            {Text::RED, "<red>"},
+            {Text::GREEN, "<green>"},
+            {Text::LIGHT_BLUE, "<light blue>"},
+            {Text::YELLOW, "<yellow>"},
+            {Text::PURPLE, "<purple>"},
+            {Text::ORANGE, "<orange>"},
+            {Text::DARK_GREEN, "<dark green>"},
+            {Text::BLUE, "<blue>"},
+            {Text::SILVER, "<silver>"},
+        };
+
+        if (color == Text::Color::RAW) {
+            return t;
+        }
+
+        if (!colorStrings.contains(color)) {
+            throw std::runtime_error("Color enum value \"" + std::to_string(color) + "\" is not recognized.");
+        }
+
+        Text text = t;
+        if (forceAround) {
+            text = colorStrings.at(color) + text + colorStrings.at(Text::WHITE);
+        }
+        text.Replace("{", colorStrings.at(color), count);
+        text.Replace("}", colorStrings.at(Text::WHITE), count);
+        return text;
+    }
+
     void applyMessageCodes(std::string& str) {
         using namespace std::string_literals;
         const static std::unordered_map<std::string, std::string> messageCodes = {
-            {"<fast>",       "\x1A\x05\x00\x00\x01"s },
-            {"<slow>",       "\x1A\x05\x00\x00\x02"s },
-            {"<choice 1>",   "\x1A\x06\x00\x00\x09\x01"s},
-            {"<choice 2>",   "\x1A\x06\x00\x00\x09\x02"s},
-            {"<choice 3>",   "\x1A\x06\x00\x00\x09\x03"s},
-            {"<white>",      "\x1A\x06\xFF\x00\x00\x00"s},
-            {"<red>",        "\x1A\x06\xFF\x00\x00\x01"s},
-            {"<green>",      "\x1A\x06\xFF\x00\x00\x02"s},
-            {"<light blue>", "\x1A\x06\xFF\x00\x00\x03"s},
-            {"<yellow>",     "\x1A\x06\xFF\x00\x00\x04"s},
-            {"<purple>",     "\x1A\x06\xFF\x00\x00\x06"s},
-            {"<orange>",     "\x1A\x06\xFF\x00\x00\x08"s},
+            {"<fast>",         "\x1A\x05\x00\x00\x01"s},
+            {"<slow>",         "\x1A\x05\x00\x00\x02"s},
+            {"<begin choice>", "\x1A\x05\x00\x00\x20"s},
+            {"<choice 1>",     "\x1A\x06\x00\x00\x09\x01"s},
+            {"<choice 2>",     "\x1A\x06\x00\x00\x09\x02"s},
+            {"<choice 3>",     "\x1A\x06\x00\x00\x09\x03"s},
+            {"<white>",        "\x1A\x06\xFF\x00\x00\x00"s},
+            {"<red>",          "\x1A\x06\xFF\x00\x00\x01"s},
+            {"<green>",        "\x1A\x06\xFF\x00\x00\x02"s},
+            {"<light blue>",   "\x1A\x06\xFF\x00\x00\x03"s},
+            {"<yellow>",       "\x1A\x06\xFF\x00\x00\x04"s},
+            {"<purple>",       "\x1A\x06\xFF\x00\x00\x06"s},
+            {"<orange>",       "\x1A\x06\xFF\x00\x00\x08"s},
             // custom colors
-            {"<dark green>", "\x1A\x06\xFF\x00\x00\x09"s},
-            {"<blue>",       "\x1A\x06\xFF\x00\x00\x0A"s},
-            {"<silver>",     "\x1A\x06\xFF\x00\x00\x0B"s},
+            {"<dark green>",   "\x1A\x06\xFF\x00\x00\x09"s},
+            {"<blue>",         "\x1A\x06\xFF\x00\x00\x0A"s},
+            {"<silver>",       "\x1A\x06\xFF\x00\x00\x0B"s},
+            {"<male>",         "\x1A\x05\x06\x00\x02"s},
+            {"<female>",       "\x1A\x05\x06\x00\x03"s},
         };
 
         for (const auto& [code, replacement] : messageCodes) {

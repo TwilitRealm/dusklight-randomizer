@@ -23,15 +23,16 @@ namespace randomizer {
         enum Color
         {
             RAW = 0,
-            NONE,
+            WHITE,
             RED,
             GREEN,
-            BLUE,
+            LIGHT_BLUE,
             YELLOW,
-            CYAN,
-            MAGENTA,
-            GRAY,
+            PURPLE,
             ORANGE,
+            DARK_GREEN,
+            BLUE,
+            SILVER,
         };
 
         enum Gender
@@ -49,9 +50,26 @@ namespace randomizer {
             PLURALITY_MAX,
         };
 
+        Text() = default;
+        explicit Text(const std::string& str);
+
         std::array<std::string, LANGUAGE_MAX> mText{};
         std::array<Gender, LANGUAGE_MAX> mGender{};
         std::array<Plurality, LANGUAGE_MAX> mPlurality{};
+
+        /**
+         *
+         * @param oldStr the string to replace
+         * @param replacementText the Text object to replace the old string
+         * @param count the number of occurences to replace
+         */
+        void Replace(const std::string& oldStr, const Text& replacementText, int count = 1);
+        void Replace(const std::string& oldStr, const std::string& replacementText, int count = 1);
+        Text& operator+=(const Text& rhs);
+        Text& operator+=(const std::string& rhs);
+        friend Text operator+(Text lhs, Text& rhs);
+        friend Text operator+(Text lhs, const std::string& rhs);
+        friend Text operator+(const std::string& lhs, const Text& rhs);
     };
 
     inline constexpr std::array supported_languages = {
@@ -71,7 +89,10 @@ namespace randomizer {
 
     const TextDatabase& getTextDatabase();
 
+    const Text& getTextObject(const std::string& name, Text::Type type = Text::STANDARD);
     const std::string& getTextStr(const std::string& name, Text::Type type = Text::STANDARD, Text::Language language = Text::ENGLISH);
+
+    Text addColor(const Text& text, Text::Color color, int count = 1, bool forceAround = false);
 
     // Replaces the message codes in the string with the ingame hex equivalents
     void applyMessageCodes(std::string&);

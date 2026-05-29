@@ -1272,7 +1272,7 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
         auto language = randomizer::Text::ENGLISH;
         std::string text;
         if (world->GetTextDatabase().contains(name)) {
-            text = world->GetDynamicTextStr(name);
+            text = world->GetText(name);
         } else {
             text = randomizer::getTextStr(name);
         }

@@ -254,9 +254,9 @@ namespace randomizer::logic::fill
         location::LocationPool goalLocations = {};
 
         // Filter out goal locations
-        goalLocations = utility::container::FilterFromVector(
-            allLocations,
-            [](const auto& location) { return location->IsGoalLocation() && location->IsEmpty(); });
+        goalLocations = utility::container::FilterFromVector(allLocations, [](const auto& location) {
+            return location->IsGoalLocation() && location->IsEmpty() && location->IsProgression();
+        });
 
         // Filter out goal items
         std::set<std::string> goalItemNames = {"Progressive Mirror Shard", "Progressive Fused Shadow"};
@@ -268,7 +268,7 @@ namespace randomizer::logic::fill
         // Return an error if there aren't enough goal locations
         if (goalItems.size() > goalLocations.size())
         {
-            throw std::runtime_error("Not enough goal locations to place dungeon rewards on goal locations.");
+            throw std::runtime_error("Not enough available locations to place dungeon rewards at the end of dungeons.");
         }
 
         // Place goal items at goal locations
@@ -282,9 +282,9 @@ namespace randomizer::logic::fill
         {
             // Filter hint signs out of dungeon locations
             auto dungeonLocations = dungeon->GetLocations();
-            utility::container::FilterAndEraseFromVector(dungeonLocations,
-                                                                [](const auto& location)
-                                                                { return location->HasCategories("Hint Sign"); });
+            utility::container::FilterAndEraseFromVector(dungeonLocations, [](const auto& location) {
+                return location->HasCategories("Hint Sign");
+            });
 
             // Clang doesn't like passing structured binding variables to lambda functions via reference, so we create these
             // temporary variables to serve the purpose
@@ -337,6 +337,10 @@ namespace randomizer::logic::fill
         }
 
         auto allLocations = world->GetAllLocations();
+        // Filter out any nonprogress locations
+        utility::container::FilterAndEraseFromVector(allLocations, [](const auto& location) {
+            return !location->IsProgression();
+        });
 
         // Filter out goal items
         std::set<std::string> goalItemNames = {"Progressive Mirror Shard", "Progressive Fused Shadow"};

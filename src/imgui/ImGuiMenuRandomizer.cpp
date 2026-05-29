@@ -18,6 +18,9 @@
 #include <numeric>
 #include <ranges>
 
+#include "imgui_internal.h"
+#include "dusk/randomizer/game/verify_item_functions.h"
+
 
 namespace dusk {
 
@@ -28,6 +31,7 @@ namespace dusk {
     static constexpr ImVec4 TRACKER_COLOR_INACCESSIBLE = ImVec4(1.0f, 0.0f, 0.0f, 1.0f);
     static constexpr ImVec4 TRACKER_COLOR_ACCESSIBLE = ImVec4(0.f, 1.f, 0.f, 1.f);
     static constexpr ImVec4 TRACKER_COLOR_COLLECTED = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+    static constexpr ImVec4 TRACKER_COLOR_COLLECTED_OUT_LOGIC = ImVec4(0.4f, 0.4f, 0.0f, 1.0f);
     static constexpr ImVec4 TRACKER_COLOR_ACTIVE = ImVec4(1.0f, 1.0f, 0.0f, 1.0f);
 
     static void StartSeedGeneration() {
@@ -227,7 +231,6 @@ namespace dusk {
         ImGui::End();
     }
 
-
     void ImGuiMenuRandomizer::windowRandoTracker() {
         if (!g_randomizerState.mShowTracker) {
             return;
@@ -280,6 +283,75 @@ namespace dusk {
             ImGui::TextColored(ImVec4(1.0f, 0.0f,0.0f,1.0f), "Error: Current Stage Save Tbl mismatch!");
         }
 
+        // TODO: move this out of tracker
+        if (ImGui::CollapsingHeader("Current Inventory")) {
+            if (ImGui::BeginChild("ScrollRegionCurInventory", ImVec2(500, 200), true)) {
+                ImGui::SeparatorText("Story Items Count");
+
+                ImGui::Text("Fused Shadows: %d/3", numFusedShadows());
+                ImGui::Text("Mirror Shards: %d/4", numMirrorShards());
+
+                static std::unordered_map<int, std::pair<int, std::string>> keyRegionItemNameMap = {
+                    {0x10, {4, "Forest Temple"}},
+                    {0x11, {3, "Goron Mines"}},
+                    {0x12, {3, "Lakebed Temple"}},
+                    {0x13, {5, "Arbiters Grounds"}},
+                    {0x14, {4, "Snowpeak Ruins"}},
+                    {0x15, {3, "Temple of Time"}},
+                    {0x16, {1, "City in the Sky"}},
+                    {0x17, {7, "Palace of Twilight"}},
+                    {0x18, {3, "Hyrule Castle"}},
+                    {0xA,  {1, "Gerudo Desert Bulblin Camp"}},
+                };
+                for (auto& [stage, keyInfo] : keyRegionItemNameMap) {
+                    ImGui::SeparatorText(keyInfo.second.c_str());
+
+                    int smallKeys = getTempleKeysFound(stage);
+
+                    ImGui::Text("Keys: %d/%d", smallKeys, keyInfo.first);
+
+                    if (stage == 0xA)
+                        continue;
+
+                    ImGui::Text("Has:");
+
+                    if (dComIfGs_isDungeonItemBossKey(stage)) {
+                        ImGui::SameLine();
+                        ImGui::Text("Big Key");
+                    }
+                    if (dComIfGs_isDungeonItemMap(stage)) {
+                        ImGui::SameLine();
+                        ImGui::Text("Map");
+                    }
+                    if (dComIfGs_isDungeonItemCompass(stage)) {
+                        ImGui::SameLine();
+                        ImGui::Text("Compass");
+                    }
+
+                    if (stage == 0x14) {
+                        // Ordon Pumpkin
+                        if (haveItem(dItemNo_Randomizer_TOMATO_PUREE_e)) {
+                            ImGui::SameLine();
+                            ImGui::Text("Pumpkin");
+                        }
+
+                        // Ordon Cheese
+                        if (haveItem(dItemNo_Randomizer_TASTE_e)) {
+                            ImGui::SameLine();
+                            ImGui::Text("Cheese");
+                        }
+                    }
+                }
+
+                ImGui::SeparatorText("Overworld Keys");
+
+                ImGui::Text("Faron Gate: %s", haveItem(dItemNo_SMALL_KEY2_e) ? "Yes" : "No");
+                ImGui::Text("Coro Gate: %s", haveItem(dItemNo_KEY_OF_FILONE_e) ? "Yes" : "No");
+                ImGui::Text("Gate Keys: %s", haveItem(dItemNo_Randomizer_BOSSRIDER_KEY_e) ? "Yes" : "No");
+            }
+            ImGui::EndChild();
+        }
+
         ImGui::Checkbox("Show Only Accessible Locations", &m_onlyAccessible);
         ImGui::Checkbox("Hide Area Header", &m_hideAreaHeader);
         ImGui::Checkbox("Show Location Requirements", &m_showRequirements);
@@ -288,7 +360,7 @@ namespace dusk {
         // Show total number of available locations
         auto locations = trackerRando->GetWorld()->GetAllLocations();
         // TODO: maybe add remaining?
-        ImGui::Text("Locations Available: %zu / %zu (%zu Checked)", m_numAvailableLocations, m_numProgressionLocations, m_numCollectedLocations);
+        ImGui::Text("Locations Available: %d / %d (%d Checked)", m_numAvailableLocations, m_numProgressionLocations, m_numCollectedLocations);
 
         ImGui::SetNextWindowBgAlpha(0.5f);
         if (ImGui::BeginChild("ScrollRegion", ImVec2(500, 500), true))
@@ -304,9 +376,15 @@ namespace dusk {
                     }
 
                     if (info.collected) {
-                        ImGui::TextColored(TRACKER_COLOR_COLLECTED, "%s [%s]",
+                        if (info.accessible) {
+                            ImGui::TextColored(TRACKER_COLOR_COLLECTED, "%s [%s]",
                             info.locationName.c_str(),
                             info.locationItem.c_str());
+                        }else {
+                            ImGui::TextColored(TRACKER_COLOR_COLLECTED_OUT_LOGIC, "%s [%s]",
+                            info.locationName.c_str(),
+                            info.locationItem.c_str());
+                        }
                     } else {
                         if (ImGui::SmallButton(fmt::format("{}###HideCheckBtn_{}",
                             info.hidden ? "+" : "-", info.locationName.c_str()).c_str())) {
@@ -441,7 +519,7 @@ namespace dusk {
 
             info.hidden = std::ranges::find(m_HiddenChecks, info.locationName) != m_HiddenChecks.end();
 
-            if (info.collected)
+            if (info.accessible && info.collected)
                 m_numAvailableLocations--;
 
             // Gather the hint regions this location is in (set avoids duplicates)

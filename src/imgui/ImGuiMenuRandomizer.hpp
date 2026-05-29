@@ -43,9 +43,9 @@ private:
         void addToGroup(LocationTrackerInfo& loc);
     };
 
-    size_t m_numAvailableLocations;
-    size_t m_numProgressionLocations;
-    size_t m_numCollectedLocations;
+    int m_numAvailableLocations;
+    int m_numProgressionLocations;
+    int m_numCollectedLocations;
 
     bool m_showRandoStats{false};
     bool m_showRandoGeneration{false};

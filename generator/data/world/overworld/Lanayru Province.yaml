@@ -400,7 +400,7 @@
 
 - Name: Outside Castle Town South
   Map Sector: Lanayru Province
-  Region: Outside Castle Town
+  Region: South of Castle Town
   Twilight: Lanayru
   Can Warp: True
   Locations:
@@ -422,7 +422,7 @@
 
 - Name: Outside Castle Town South Tektite Grotto Platform
   Map Sector: Lanayru Province
-  Region: Outside Castle Town
+  Region: South of Castle Town
   Twilight: Lanayru
   Can Warp: True
   Exits:
@@ -439,7 +439,7 @@
 # you get stuck and are forced to save-warp or portal-warp
 - Name: Outside Castle Town South Inside Boulder
   Map Sector: Lanayru Province
-  Region: Outside Castle Town
+  Region: South of Castle Town
   Twilight: Lanayru
   Can Warp: True
   Exits:
@@ -449,7 +449,7 @@
 
 - Name: Lake Hylia Bridge
   Map Sector: Lanayru Province
-  Region: Lake Hylia Bridge
+  Region: Great Bridge of Hylia
   Twilight: Lanayru
   Can Warp: True
   Locations:
@@ -471,7 +471,7 @@
 
 - Name: Lake Hylia Bridge Grotto Ledge
   Map Sector: Lanayru Province
-  Region: Lake Hylia Bridge
+  Region: Great Bridge of Hylia
   Twilight: Lanayru
   Can Warp: True
   Locations:

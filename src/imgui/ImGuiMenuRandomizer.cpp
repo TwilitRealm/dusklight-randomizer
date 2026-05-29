@@ -2,6 +2,7 @@
 
 #include "ImGuiConsole.hpp"
 #include "ImGuiMenuRandomizer.hpp"
+#include "imgui_internal.h"
 
 #include "dusk/logging.h"
 #include "dusk/data.hpp"
@@ -11,15 +12,13 @@
 #include "dusk/randomizer/generator/utility/string.hpp"
 #include "dusk/randomizer/game/randomizer_context.hpp"
 #include "dusk/randomizer/game/tools.h"
+#include "dusk/randomizer/game/verify_item_functions.h"
 
 #include <mutex>
 #include <thread>
 #include <filesystem>
 #include <numeric>
 #include <ranges>
-
-#include "imgui_internal.h"
-#include "dusk/randomizer/game/verify_item_functions.h"
 
 
 namespace dusk {

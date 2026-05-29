@@ -1017,7 +1017,11 @@ namespace randomizer::logic::world
             utility::random::ShufflePool(bottleLocations);
             for (auto& bottleLocation : bottleLocations)
             {
-                bottleLocation->SetCurrentItem(utility::random::PopRandomElement(bottlePool));
+                if (!bottlePool.empty()) {
+                    bottleLocation->SetCurrentItem(utility::random::PopRandomElement(bottlePool));
+                } else {
+                    bottleLocation->SetCurrentItem(this->GetItem("Empty Bottle"));
+                }
             }
         }
     }

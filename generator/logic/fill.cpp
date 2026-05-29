@@ -213,10 +213,6 @@ namespace randomizer::logic::fill
         PlaceOwnDungeonItems(world, worlds);
         PlacePrologueItems(world, worlds);
         PlaceAnywhereDungeonRewards(world, worlds);
-
-        // Determine required dungeons now so that we can place "any dungeon" items appropriately
-        world->DetermineRequiredDungeons();
-
         PlaceAnyDungeonItems(world, worlds);
         PlaceOverworldItems(world, worlds);
     }
@@ -275,6 +271,9 @@ namespace randomizer::logic::fill
         // Place goal items at goal locations
         auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
         AssumedFill(worlds, goalItems, completeItemPool, goalLocations);
+
+        // Determine required dungeons now that we placed goal location items
+        world->DetermineRequiredDungeons();
     }
 
     void PlaceOwnDungeonItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds)
@@ -286,6 +285,13 @@ namespace randomizer::logic::fill
             utility::container::FilterAndEraseFromVector(dungeonLocations, [](const auto& location) {
                 return location->HasCategories("Hint Sign");
             });
+
+            // Filter out excluded locations if this dungeon is required
+            if (dungeon->IsRequired()) {
+                utility::container::FilterAndEraseFromVector(dungeonLocations, [](const auto& location) {
+                    return !location->IsProgression();
+                });
+            }
 
             // Clang doesn't like passing structured binding variables to lambda functions via reference, so we create these
             // temporary variables to serve the purpose
@@ -353,6 +359,9 @@ namespace randomizer::logic::fill
         // Place the items
         auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
         AssumedFill(worlds, goalItems, completeItemPool, allLocations);
+
+        // Determine required dungeons now that we placed goal location items
+        world->DetermineRequiredDungeons();
     }
 
     void PlaceAnyDungeonItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds)

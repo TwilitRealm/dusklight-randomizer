@@ -421,8 +421,8 @@ static void handleFoolishItem() {
      * eventually run out of memory so it is safer to unload everything and load it back in. */
 
     auto sceneMgr = Z2GetSceneMgr();
-    const u32 seWave1 = sceneMgr->getLoadedSeWave_1();
-    const u32 seWave2 = sceneMgr->getLoadedSeWave_2();
+    const u32 seWave1 = mDoAud_getZelAudio().getLoadedSeWave_1();
+    const u32 seWave2 = mDoAud_getZelAudio().getLoadedSeWave_2();
     sceneMgr->eraseSeWave(seWave1);
     sceneMgr->eraseSeWave(seWave2);
     sceneMgr->loadSeWave(0x46);

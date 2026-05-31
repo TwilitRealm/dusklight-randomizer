@@ -1,4 +1,12 @@
-# This file contains all custom english text for the dusklight randomizer
+# This file contains all custom English text for the dusklight randomizer
+
+# NOTES FOR TRANSLATORS:
+# - You should only be translating the "Text" fields for each element in this file. Do not translate the
+# - Text being surrounded by braces '{}' means that the text will be colored. If a text field begins with a brace,
+#   the entire field must be surrounded with quotation marks.
+# - Below each text element, you can specify a given text's gender and/or plurality. If you need additional
+#   specifiers for pieces of text, let us know. If no gender is provided, the assumption is no gender. If no
+#   plurality is provided, the assumed plurality is singular.
 
 # ITEM NAMES
 Green Rupee:
@@ -139,10 +147,8 @@ Foolish Item:
     Text: Foolish Item
   Pretty:
     Text: a {Foolish Item}
-    Plurality: Singular
   Cryptic:
     Text: a {chilly surprise}
-    Plurality: Singular
 
 Ordon Spring Portal:
   Standard:
@@ -150,7 +156,7 @@ Ordon Spring Portal:
   Pretty:
     Text: the {Ordon Spring Portal}
   Cryptic:
-    Text: a {portal} to {home}
+    Text: a {portal to home}
 
 South Faron Portal:
   Standard:
@@ -158,7 +164,7 @@ South Faron Portal:
   Pretty:
     Text: the {South Faron Portal}
   Cryptic:
-    Text: a {portal} to a {forest clearing}
+    Text: a {portal to a forest clearing}
 
 Water Bombs 5:
   Standard:
@@ -288,7 +294,7 @@ Upper Zoras River Portal:
   Pretty:
     Text: the {Upper Zoras River Portal}
   Cryptic:
-    Text: a {portal} to some {raging rapids}
+    Text: a {portal to some raging rapids}
 
 Castle Town Portal:
   Standard:
@@ -296,7 +302,7 @@ Castle Town Portal:
   Pretty:
     Text: the {Castle Town Portal}
   Cryptic:
-    Text: a {portal} to the {city}
+    Text: a {portal to the city}
 
 Gerudo Desert Portal:
   Standard:
@@ -304,7 +310,7 @@ Gerudo Desert Portal:
   Pretty:
     Text: the {Gerudo Desert Portal}
   Cryptic:
-    Text: a {portal} to a {challenging cave}
+    Text: a {portal to a challenging cave}
 
 North Faron Portal:
   Standard:
@@ -312,7 +318,7 @@ North Faron Portal:
   Pretty:
     Text: the {North Faron Portal}
   Cryptic:
-    Text: a {portal} to a {forest clearing}
+    Text: a {portal to a forest clearing}
 
 Hawkeye:
   Standard:
@@ -418,7 +424,7 @@ Kakariko Gorge Portal:
   Pretty:
     Text: the {Kakariko Gorge Portal}
   Cryptic:
-    Text: a {portal} to a {big gap}
+    Text: a {portal to a big gap}
 
 Kakariko Village Portal:
   Standard:
@@ -426,7 +432,7 @@ Kakariko Village Portal:
   Pretty:
     Text: the {Kakariko Village Portal}
   Cryptic:
-    Text: a {portal} to a {village}
+    Text: a {portal to a village}
 
 Giant Bomb Bag:
   Standard:
@@ -450,7 +456,7 @@ Death Mountain Portal:
   Pretty:
     Text: the {Death Mountain Portal}
   Cryptic:
-    Text: a {portal} to a {volcano}
+    Text: a {portal to a volcano}
 
 Zoras Domain Portal:
   Standard:
@@ -458,7 +464,7 @@ Zoras Domain Portal:
   Pretty:
     Text: the {Zora's Domain Portal}
   Cryptic:
-    Text: a {portal} to {water}
+    Text: a {portal to water}
 
 Empty Bottle:
   Standard:
@@ -515,7 +521,7 @@ Renados Letter:
   Pretty:
     Text: "{Renado's Letter}"
   Cryptic:
-    Text: a {letter} from a {concerned shaman}
+    Text: a {letter from a concerned shaman}
 
 Invoice:
   Standard:
@@ -556,7 +562,7 @@ Forest Temple Small Key:
   Pretty:
     Text: a {Forest Temple Small Key}
   Cryptic:
-    Text: a {key} for a {deep forest}
+    Text: a {key for a deep forest}
 
 Goron Mines Small Key:
   Standard:
@@ -564,7 +570,7 @@ Goron Mines Small Key:
   Pretty:
     Text: a {Goron Mines Small Key}
   Cryptic:
-    Text: a {key} for a {volcanic mine}
+    Text: a {key for a volcanic mine}
 
 Lakebed Temple Small Key:
   Standard:
@@ -572,7 +578,7 @@ Lakebed Temple Small Key:
   Pretty:
     Text: a {Lakebed Temple Small Key}
   Cryptic:
-    Text: a {key} for an {underground lake}
+    Text: a {key for an underground lake}
 
 Arbiters Grounds Small Key:
   Standard:
@@ -580,7 +586,7 @@ Arbiters Grounds Small Key:
   Pretty:
     Text: an {Arbiters Grounds Small Key}
   Cryptic:
-    Text: a {key} for an {ancient prison}
+    Text: a {key for an ancient prison}
 
 Snowpeak Ruins Small Key:
   Standard:
@@ -588,7 +594,7 @@ Snowpeak Ruins Small Key:
   Pretty:
     Text: a {Snowpeak Ruins Small Key}
   Cryptic:
-    Text: a {key} for a {snowy mansion}
+    Text: a {key for a snowy mansion}
 
 Temple of Time Small Key:
   Standard:
@@ -596,7 +602,7 @@ Temple of Time Small Key:
   Pretty:
     Text: a {Temple of Time Small Key}
   Cryptic:
-    Text: a {key} for the {past}
+    Text: a {key for the past}
 
 City in the Sky Small Key:
   Standard:
@@ -604,7 +610,7 @@ City in the Sky Small Key:
   Pretty:
     Text: the {City in the Sky Small Key}
   Cryptic:
-    Text: a {key} for the {skies above}
+    Text: a {key for the skies above}
 
 Palace of Twilight Small Key:
   Standard:
@@ -612,7 +618,7 @@ Palace of Twilight Small Key:
   Pretty:
     Text: a {Palace of Twilight Small Key}
   Cryptic:
-    Text: a {key} for a {another realm}
+    Text: a {key for a another realm}
 
 Hyrule Castle Small Key:
   Standard:
@@ -620,7 +626,7 @@ Hyrule Castle Small Key:
   Pretty:
     Text: a {Hyrule Castle Small Key}
   Cryptic:
-    Text: a {key} for a {kingdom's castle}
+    Text: a {key for a kingdom's castle}
 
 Gerudo Desert Bulblin Camp Key:
   Standard:
@@ -628,7 +634,7 @@ Gerudo Desert Bulblin Camp Key:
   Pretty:
     Text: the {Gerudo Desert Bulblin Camp Key}
   Cryptic:
-    Text: the {key} for a {desert tent}
+    Text: the {key for a desert tent}
 
 Lake Hylia Portal:
   Standard:
@@ -636,7 +642,7 @@ Lake Hylia Portal:
   Pretty:
     Text: the {Lake Hylia Portal}
   Cryptic:
-    Text: a {portal} to a {vast lake}
+    Text: a {portal to a vast lake}
 
 Aurus Memo:
   Standard:
@@ -652,7 +658,7 @@ Asheis Sketch:
   Pretty:
     Text: "{Ashei's Sketch}"
   Cryptic:
-    Text: a {sketch} of a {horrific beast}
+    Text: a {sketch of a horrific beast}
 
 Forest Temple Big Key:
   Standard:
@@ -660,7 +666,7 @@ Forest Temple Big Key:
   Pretty:
     Text: the {Forest Temple Big Key}
   Cryptic:
-    Text: the {key} to the {twilit parasite}
+    Text: the {key to the twilit parasite}
 
 Lakebed Temple Big Key:
   Standard:
@@ -668,7 +674,7 @@ Lakebed Temple Big Key:
   Pretty:
     Text: the {Lakebed Temple Big Key}
   Cryptic:
-    Text: the {key} to the {twilit aquatic}
+    Text: the {key to the twilit aquatic}
 
 Arbiters Grounds Big Key:
   Standard:
@@ -676,7 +682,7 @@ Arbiters Grounds Big Key:
   Pretty:
     Text: the {Arbiters Grounds Big Key}
   Cryptic:
-    Text: the {key} to the {twilit fossil}
+    Text: the {key to the twilit fossil}
 
 Temple of Time Big Key:
   Standard:
@@ -684,7 +690,7 @@ Temple of Time Big Key:
   Pretty:
     Text: the {Temple of Time Big Key}
   Cryptic:
-    Text: the {key} to the {twilit arachnid}
+    Text: the {key to the twilit arachnid}
 
 City in the Sky Big Key:
   Standard:
@@ -692,7 +698,7 @@ City in the Sky Big Key:
   Pretty:
     Text: the {City in the Sky Big Key}
   Cryptic:
-    Text: the {key} to the {twilit dragon}
+    Text: the {key to the twilit dragon}
 
 Palace of Twilight Big Key:
   Standard:
@@ -700,7 +706,7 @@ Palace of Twilight Big Key:
   Pretty:
     Text: the {Palace of Twilight Big Key}
   Cryptic:
-    Text: the {key} to the {usurper king}
+    Text: the {key to the usurper king}
 
 Hyrule Castle Big Key:
   Standard:
@@ -708,7 +714,7 @@ Hyrule Castle Big Key:
   Pretty:
     Text: a {Hyrule Castle Big Key}
   Cryptic:
-    Text: the {key} to the {castle throne room}
+    Text: the {key to the castle throne room}
 
 Forest Temple Compass:
   Standard:
@@ -716,7 +722,7 @@ Forest Temple Compass:
   Pretty:
     Text: the {Forest Temple Compass}
   Cryptic:
-    Text: the {pointer} for a {deep forest}
+    Text: the {pointer for a deep forest}
 
 Goron Mines Compass:
   Standard:
@@ -724,7 +730,7 @@ Goron Mines Compass:
   Pretty:
     Text: the {Goron Mines Compass}
   Cryptic:
-    Text: the {pointer} for a {volcano}
+    Text: the {pointer for a volcano}
 
 Lakebed Temple Compass:
   Standard:
@@ -732,7 +738,7 @@ Lakebed Temple Compass:
   Pretty:
     Text: the {Lakebed Temple Compass}
   Cryptic:
-    Text: the {pointer} for an {underground lake}
+    Text: the {pointer for an underground lake}
 
 Bottle with Lantern Oil:
   Standard:
@@ -756,7 +762,7 @@ Arbiters Grounds Compass:
   Pretty:
     Text: the {Arbiters Grounds Compass}
   Cryptic:
-    Text: the {pointer} for an {ancient prison}
+    Text: the {pointer for an ancient prison}
 
 Snowpeak Ruins Compass:
   Standard:
@@ -764,7 +770,7 @@ Snowpeak Ruins Compass:
   Pretty:
     Text: the {Snowpeak Ruins Compass}
   Cryptic:
-    Text: the {pointer} for a {snowy mansion}
+    Text: the {pointer for a snowy mansion}
 
 Temple of Time Compass:
   Standard:
@@ -772,7 +778,7 @@ Temple of Time Compass:
   Pretty:
     Text: the {Temple of Time Compass}
   Cryptic:
-    Text: the {pointer} for the {past}
+    Text: the {pointer for the past}
 
 City in the Sky Compass:
   Standard:
@@ -780,7 +786,7 @@ City in the Sky Compass:
   Pretty:
     Text: the {City in the Sky Compass}
   Cryptic:
-    Text: the {pointer} for the {skies above}
+    Text: the {pointer for the skies above}
 
 Palace of Twilight Compass:
   Standard:
@@ -788,7 +794,7 @@ Palace of Twilight Compass:
   Pretty:
     Text: the {Palace of Twilight Compass}
   Cryptic:
-    Text: the {pointer} for {another realm}
+    Text: the {pointer for another realm}
 
 Hyrule Castle Compass:
   Standard:
@@ -796,7 +802,7 @@ Hyrule Castle Compass:
   Pretty:
     Text: a {Hyrule Castle Compass}
   Cryptic:
-    Text: the {pointer} for the {kingdom's castle}
+    Text: the {pointer for the kingdom's castle}
 
 Mirror Chamber Portal:
   Standard:
@@ -804,7 +810,7 @@ Mirror Chamber Portal:
   Pretty:
     Text: the {Mirror Chamber Portal}
   Cryptic:
-    Text: a {portal} to a {coliseum}
+    Text: a {portal to a coliseum}
 
 Snowpeak Portal:
   Standard:
@@ -812,7 +818,7 @@ Snowpeak Portal:
   Pretty:
     Text: the {Snowpeak Portal}
   Cryptic:
-    Text: a {portal} to a {snowy mountain}
+    Text: a {portal to a snowy mountain}
 
 Forest Temple Dungeon Map:
   Standard:
@@ -820,7 +826,7 @@ Forest Temple Dungeon Map:
   Pretty:
     Text: the {Forest Temple Dungeon Map}
   Cryptic:
-    Text: the {map} for a {deep forest}
+    Text: the {map for a deep forest}
 
 Goron Mines Dungeon Map:
   Standard:
@@ -828,7 +834,7 @@ Goron Mines Dungeon Map:
   Pretty:
     Text: the {Goron Mines Dungeon Map}
   Cryptic:
-    Text: the {map} for a {volcano}
+    Text: the {map for a volcano}
 
 Lakebed Temple Dungeon Map:
   Standard:
@@ -836,7 +842,7 @@ Lakebed Temple Dungeon Map:
   Pretty:
     Text: the {Lakebed Temple Dungeon Map}
   Cryptic:
-    Text: the {map} for an {underground lake}
+    Text: the {map for an underground lake}
 
 Arbiters Grounds Dungeon Map:
   Standard:
@@ -844,7 +850,7 @@ Arbiters Grounds Dungeon Map:
   Pretty:
     Text: the {Arbiters Grounds Dungeon Map}
   Cryptic:
-    Text: the {map} for an {ancient prison}
+    Text: the {map for an ancient prison}
 
 Snowpeak Ruins Dungeon Map:
   Standard:
@@ -852,7 +858,7 @@ Snowpeak Ruins Dungeon Map:
   Pretty:
     Text: the {Snowpeak Ruins Dungeon Map}
   Cryptic:
-    Text: the {map} for a {snowy mansion}
+    Text: the {map for a snowy mansion}
 
 Temple of Time Dungeon Map:
   Standard:
@@ -860,7 +866,7 @@ Temple of Time Dungeon Map:
   Pretty:
     Text: the {Temple of Time Dungeon Map}
   Cryptic:
-    Text: the {map} for the {past}
+    Text: the {map for the past}
 
 City in the Sky Dungeon Map:
   Standard:
@@ -868,7 +874,7 @@ City in the Sky Dungeon Map:
   Pretty:
     Text: the {City in the Sky Dungeon Map}
   Cryptic:
-    Text: the {map} for the {skies above}
+    Text: the {map for the skies above}
 
 Palace of Twilight Dungeon Map:
   Standard:
@@ -876,7 +882,7 @@ Palace of Twilight Dungeon Map:
   Pretty:
     Text: the {Palace of Twilight Dungeon Map}
   Cryptic:
-    Text: the {map} for {another realm}
+    Text: the {map for another realm}
 
 Hyrule Castle Dungeon Map:
   Standard:
@@ -884,7 +890,7 @@ Hyrule Castle Dungeon Map:
   Pretty:
     Text: a {Hyrule Castle Dungeon Map}
   Cryptic:
-    Text: the {map} for the {kingdom's castle}
+    Text: the {map for the kingdom's castle}
 
 Sacred Grove Portal:
   Standard:
@@ -892,7 +898,7 @@ Sacred Grove Portal:
   Pretty:
     Text: the {Sacred Grove Portal}
   Cryptic:
-    Text: a {portal} to an {ancient forest}
+    Text: a {portal to an ancient forest}
 
 Male Beetle:
   Standard:
@@ -1117,7 +1123,7 @@ Bridge of Eldin Portal:
   Pretty:
     Text: the {Bridge of Eldin Portal}
   Cryptic:
-    Text: a {portal} to a {long bridge}
+    Text: a {portal to a long bridge}
 
 Progressive Sky Book:
   Standard:
@@ -1142,7 +1148,7 @@ North Faron Woods Gate Key:
   Pretty:
     Text: the {North Faron Woods Gate Key}
   Cryptic:
-    Text: a {key} to a {northern forest}
+    Text: a {key to a northern forest}
 
 Gate Keys:
   Standard:
@@ -1176,7 +1182,7 @@ Snowpeak Ruins Bedroom Key:
   Pretty:
     Text: the {Snowpeak Ruins Bedroom Key}
   Cryptic:
-    Text: the {key} to a {snowy bedroom}
+    Text: the {key to a snowy bedroom}
 
 Goron Mines Key Shard:
   Standard:
@@ -1184,7 +1190,7 @@ Goron Mines Key Shard:
   Pretty:
     Text: a {Goron Mines Key Shard}
   Cryptic:
-    Text: "{one third} of a {key}"
+    Text: "{one third of a key}"
 
 Coro Key:
   Standard:
@@ -1192,7 +1198,7 @@ Coro Key:
   Pretty:
     Text: "{Coro's Key}"
   Cryptic:
-    Text: a {key} to a {forest cave}
+    Text: a {key to a forest cave}
 
 Game Beatable:
   Standard:
@@ -1216,7 +1222,7 @@ Faron Twilight Tear:
   Pretty:
     Text: a {Faron Twilight Tear}
   Cryptic:
-    Text: a {tear} of a {forest spirit}
+    Text: a {tear of a forest spirit}
 
 Eldin Twilight Tear:
   Standard:
@@ -1224,7 +1230,7 @@ Eldin Twilight Tear:
   Pretty:
     Text: an {Eldin Twilight Tear}
   Cryptic:
-    Text: a {tear} of a {volcano spirit}
+    Text: a {tear of a volcano spirit}
 
 Lanayru Twilight Tear:
   Standard:
@@ -1232,7 +1238,7 @@ Lanayru Twilight Tear:
   Pretty:
     Text: a {Lanayru Twilight Tear}
   Cryptic:
-    Text: a {tear} of a {lake spirit}
+    Text: a {tear of a lake spirit}
 
 
 # HINT REGION NAMES

@@ -66,7 +66,8 @@ public:
     //     std::array<u8, 16> mAttributes{};
     //     std::string mText{};
     // };
-    std::unordered_map<u32, std::string> mTextOverrides{};
+    // Map of language -> map of key -> string
+    std::unordered_map<int, std::unordered_map<u32, std::string>> mTextOverrides{};
 
     // TODO: hook this up to generator data
     struct {

@@ -8,7 +8,14 @@ namespace randomizer {
     class Text {
     public:
         enum Language {
-            ENGLISH = 0,
+            // First 5 match ordering of dSv_config_language in d_save.h
+            ENGLISH,
+            GERMAN,
+            FRENCH,
+            SPANISH,
+            ITALIAN,
+            // End of ordering for dSv_config_language
+            JAPANESE, // Not supported yet
             LANGUAGE_MAX
         };
 
@@ -72,8 +79,12 @@ namespace randomizer {
         friend Text operator+(const std::string& lhs, const Text& rhs);
     };
 
-    inline constexpr std::array supported_languages = {
+    inline constexpr std::array supportedLanguages = {
         Text::ENGLISH,
+        Text::SPANISH,
+        Text::FRENCH,
+        Text::GERMAN,
+        Text::ITALIAN
     };
 
     // std::u16string apply_name_color(std::u16string str, const Color& color);
@@ -81,8 +92,10 @@ namespace randomizer {
     // std::string    pad_str_4_lines(const std::string& string);
     // std::u16string pad_str_4_lines(const std::u16string& string);
 
-    Text::Gender string_to_gender(const std::string& str);
-    Text::Plurality string_to_plurality(const std::string& str);
+    Text::Language stringToLanguage(const std::string& str);
+    std::string languageToString(Text::Language language);
+    Text::Gender stringToGender(const std::string& str);
+    Text::Plurality stringToPlurality(const std::string& str);
 
     // Retrieval of Text objects keyed by name and type (standard, pretty, cryptic)
     using TextDatabase = std::unordered_map<std::string, std::array<Text, Text::TYPE_MAX>>;

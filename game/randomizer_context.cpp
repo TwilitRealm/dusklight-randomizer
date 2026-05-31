@@ -107,9 +107,15 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
     textData << YAML::BeginMap;
     textData << YAML::Key << "mTextOverrides";
     textData << YAML::BeginMap;
-    for (const auto& [key, text] : this->mTextOverrides) {
-        textData << YAML::Key << key;
-        textData << YAML::Value << YAML::Binary(reinterpret_cast<const unsigned char*>(text.data()), text.size());
+    for (auto language : randomizer::supportedLanguages) {
+        auto languageStr = randomizer::languageToString(language);
+        textData << YAML::Key << languageStr;
+        textData << YAML::BeginMap;
+        for (const auto& [key, text] : this->mTextOverrides[language]) {
+            textData << YAML::Key << key;
+            textData << YAML::Value << YAML::Binary(reinterpret_cast<const unsigned char*>(text.data()), text.size());
+        }
+        textData << YAML::EndMap;
     }
     textData << YAML::EndMap;
     textData << YAML::EndMap;
@@ -254,11 +260,15 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
     }
 
     // Text Overrides
-    for (const auto& textNode: in["mTextOverrides"]) {
-        auto key = textNode.first.as<u32>();
-        auto binary = textNode.second.as<YAML::Binary>();
-        std::string text(reinterpret_cast<const char*>(binary.data()), binary.size());
-        this->mTextOverrides[key] = std::move(text);
+    for (const auto& languageNode: in["mTextOverrides"]) {
+        const auto& languageStr = languageNode.first.as<std::string>();
+        auto language = randomizer::stringToLanguage(languageStr);
+        for (const auto& textNode : languageNode.second) {
+            auto key = textNode.first.as<u32>();
+            auto binary = textNode.second.as<YAML::Binary>();
+            std::string text(reinterpret_cast<const char*>(binary.data()), binary.size());
+            this->mTextOverrides[language][key] = std::move(text);
+        }
     }
 
     DuskLog.debug("Loaded Randomizer Seed {}", this->mHash);
@@ -1268,19 +1278,19 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
     auto textOverrides = LOAD_EMBED_YAML(RANDO_DATA_PATH "text/text_overrides.yaml");
     for (const auto& overrideNode : textOverrides) {
         const auto& name = overrideNode["Name"].as<std::string>();
-        // TODO: Handle multiple languages
-        auto language = randomizer::Text::ENGLISH;
-        std::string text;
-        if (world->GetTextDatabase().contains(name)) {
-            text = world->GetText(name);
-        } else {
-            text = randomizer::getTextStr(name);
+        for (auto language : randomizer::supportedLanguages) {
+            std::string text;
+            if (world->GetTextDatabase().contains(name)) {
+                text = world->GetText(name, randomizer::Text::STANDARD, language);
+            } else {
+                text = randomizer::getTextStr(name, randomizer::Text::STANDARD, language);
+            }
+            u8 group = overrideNode["Group"].as<u8>();
+            u16 messageId = overrideNode["Message Id"].as<u16>();
+            u32 key = (group << 16) | messageId;
+            randomizer::applyMessageCodes(text);
+            randoData.mTextOverrides[language][key] = text;
         }
-        u8 group = overrideNode["Group"].as<u8>();
-        u16 messageId = overrideNode["Message Id"].as<u16>();
-        u32 key = (group << 16) | messageId;
-        randomizer::applyMessageCodes(text);
-        randoData.mTextOverrides[key] = text;
     }
 
     return std::move(randoData);

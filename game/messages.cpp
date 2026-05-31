@@ -4,6 +4,8 @@
 #include "d/d_msg_class.h"
 #include "randomizer_context.hpp"
 
+#include "dusk/version.hpp"
+
 #include <fmt/format.h>
 
 // Format certain messages that need to have dynamic info in them
@@ -40,6 +42,17 @@ char* GetFormatedTextOverride(u32 key, std::string& text) {
     return buf.data();
 }
 
+u8 getLanguageForOverride() {
+    u8 language = randomizer::Text::ENGLISH;
+    if (dusk::version::isRegionPal()) {
+        language = dComIfGs_getPalLanguage();
+    }/* else if (dusk::version::isRegionJpn()) {
+        language = randomizer::Text::JAPANESE;
+    }*/
+
+    return language;
+}
+
 void HandleTextOverrides(JMessage::TControl* control, JMessage::TProcessor const* pProcessor, int groupID, int index) {
     if (randomizer_IsActive()) {
         // Get the entry for this message
@@ -58,8 +71,9 @@ void HandleTextOverrides(JMessage::TControl* control, JMessage::TProcessor const
 
         u32 key = (group << 16) | msgId;
         auto& textOverrides = randomizer_GetContext().mTextOverrides;
-        if (textOverrides.contains(key)) {
-            control->pMessageText_begin_ = GetFormatedTextOverride(key, textOverrides[key]);
+        u8 language = getLanguageForOverride();
+        if (textOverrides.at(language).contains(key)) {
+            control->pMessageText_begin_ = GetFormatedTextOverride(key, textOverrides[language][key]);
         }
     }
 }
@@ -68,8 +82,9 @@ void HandleTextOverrides(JMessage::TControl* control, JMessage::TProcessor const
 char* GetTextOverride(s16 groupID, u32 messageId) {
     u32 key = (groupID << 16) | messageId;
     auto& textOverrides = randomizer_GetContext().mTextOverrides;
-    if (textOverrides.contains(key)) {
-        return GetFormatedTextOverride(key, textOverrides[key]);
+    u8 language = getLanguageForOverride();
+    if (textOverrides.at(language).contains(key)) {
+        return GetFormatedTextOverride(key, textOverrides[language][key]);
     }
     return NULL;
 }

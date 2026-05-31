@@ -2,7 +2,10 @@
 
 #include "yaml.hpp"
 
+#include <fmt/format.h>
+
 #include <unordered_map>
+
 
 namespace randomizer {
 
@@ -212,7 +215,7 @@ namespace randomizer {
         return Text(lhs) + rhs;
     }
 
-    Text::Type string_to_type(const std::string& str) {
+    Text::Type stringToType(const std::string& str) {
         std::unordered_map<std::string, Text::Type> strToType = {
             {"Standard", Text::Type::STANDARD},
             {"Pretty", Text::Type::PRETTY},
@@ -227,9 +230,14 @@ namespace randomizer {
         throw std::runtime_error("Text type \"" + str + "\" is not recognized.");
     }
 
-    Text::Language string_to_language(const std::string& str) {
+    Text::Language stringToLanguage(const std::string& str) {
         std::unordered_map<std::string, Text::Language> strToLanguage = {
-            {"english", Text::Language::ENGLISH},
+            {"english",  Text::ENGLISH},
+            {"spanish",  Text::SPANISH},
+            {"french",   Text::FRENCH},
+            {"german",   Text::GERMAN},
+            {"italian",  Text::ITALIAN},
+            {"japanese", Text::JAPANESE}
         };
 
         if (strToLanguage.contains(str))
@@ -240,7 +248,27 @@ namespace randomizer {
         throw std::runtime_error("Language \"" + str + "\" is not recognized.");
     }
 
-    Text::Gender string_to_gender(const std::string& str)
+
+    std::string languageToString(Text::Language language) {
+        switch (language) {
+            case Text::ENGLISH:
+                return "english";
+            case Text::SPANISH:
+                return "spanish";
+            case Text::FRENCH:
+                return "french";
+            case Text::GERMAN:
+                return "german";
+            case Text::ITALIAN:
+                return "italian";
+            case Text::JAPANESE:
+                return "japanese";
+            default:
+                return "unknown language enum";
+        }
+    }
+
+    Text::Gender stringToGender(const std::string& str)
     {
         std::unordered_map<std::string, Text::Gender> strToGender = {
             {"Masculine", Text::Gender::MASCULINE},
@@ -255,10 +283,45 @@ namespace randomizer {
         return Text::Gender::NUETRAL;
     }
 
-    Text::Plurality string_to_plurality(const std::string& str)
+    Text::Plurality stringToPlurality(const std::string& str)
     {
         if (str == "Plural") return Text::Plurality::PLURAL;
         return Text::Plurality::SINGULAR;
+    }
+
+    std::string UTF8ToLatin1(const std::string& utf8Str) {
+        std::string latin1Str;
+        // The output string will be equal to or shorter than the UTF-8 string
+        latin1Str.reserve(utf8Str.length());
+
+        size_t read_pos = 0;
+        size_t len = utf8Str.length();
+
+        while (read_pos < len) {
+            unsigned char c = utf8Str[read_pos];
+
+            if (c < 0x80) {
+                // Standard ASCII (0x00 - 0x7F)
+                latin1Str.push_back(c);
+                ++read_pos;
+            }
+            else if ((c & 0xE0) == 0xC0 && (read_pos + 1 < len)) {
+                // Two-byte UTF-8 sequence (0xC0 - 0xDF)
+                unsigned char next_byte = utf8Str[read_pos + 1];
+
+                // Reconstruct the Latin-1 character value
+                unsigned char latin1_char = ((c & 0x1F) << 6) | (next_byte & 0x3F);
+
+                latin1Str.push_back(latin1_char);
+                read_pos += 2;
+            }
+            else {
+                // Multi-byte sequences out of Latin-1 range (or malformed bytes)
+                throw std::runtime_error(fmt::format("Invalid bytes when converting to Latin1 with \"{}\"", utf8Str));
+            }
+        }
+
+        return latin1Str;
     }
 
     static void LoadTextData(TextDatabase& tb) {
@@ -268,23 +331,32 @@ namespace randomizer {
         };
         auto files = std::to_array<LanguageEntry>({
             {"english", GET_EMBED_DATA(RANDO_DATA_PATH "text/languages/english.yaml")},
+            {"spanish", GET_EMBED_DATA(RANDO_DATA_PATH "text/languages/spanish.yaml")},
+            {"french",  GET_EMBED_DATA(RANDO_DATA_PATH "text/languages/french.yaml")},
+            {"german",  GET_EMBED_DATA(RANDO_DATA_PATH "text/languages/german.yaml")},
+            {"italian", GET_EMBED_DATA(RANDO_DATA_PATH "text/languages/italian.yaml")},
         });
 
         for (const auto& file : files) {
-            auto language = string_to_language(file.language);
+            auto language = stringToLanguage(file.language);
             auto textData = LOAD_EMBED_DATA(file.languageData);
             for (const auto& textNode : textData) {
                 const auto& name = textNode.first.as<std::string>();
                 for (const auto& typeNode : textNode.second) {
-                    auto type = string_to_type(typeNode.first.as<std::string>());
+                    auto type = stringToType(typeNode.first.as<std::string>());
                     auto typeData = typeNode.second;
                     const auto& text = typeData["Text"].as<std::string>();
-                    tb[name][type].mText[language] = text;
+                    if (language != Text::JAPANESE) {
+                        tb[name][type].mText[language] = UTF8ToLatin1(text);
+                    } else {
+                        // Probably have to handle Japanese another way at some point
+                        tb[name][type].mText[language] = text;
+                    }
                     if (typeData["Gender"]) {
-                        tb[name][type].mGender[language] = string_to_gender(typeData["Gender"].as<std::string>());
+                        tb[name][type].mGender[language] = stringToGender(typeData["Gender"].as<std::string>());
                     }
                     if (typeData["Plurality"]) {
-                        tb[name][type].mPlurality[language] = string_to_plurality(typeData["Plurality"].as<std::string>());
+                        tb[name][type].mPlurality[language] = stringToPlurality(typeData["Plurality"].as<std::string>());
                     }
                 }
             }
@@ -319,6 +391,12 @@ namespace randomizer {
         if (!tb.contains(name)) {
             throw std::runtime_error("Text name \"" + name + "\" is not recognized.");
         }
+
+        if (!tb.at(name).at(type).mText.at(language).empty()) {
+            return tb.at(name).at(type).mText.at(language);
+        }
+
+        // Return english if the other language's string is empty
         return tb.at(name).at(type).mText.at(language);
     }
 
@@ -359,6 +437,8 @@ namespace randomizer {
             {"<fast>",         "\x1A\x05\x00\x00\x01"s},
             {"<slow>",         "\x1A\x05\x00\x00\x02"s},
             {"<begin choice>", "\x1A\x05\x00\x00\x20"s},
+            {"<male>",         "\x1A\x05\x06\x00\x02"s},
+            {"<female>",       "\x1A\x05\x06\x00\x03"s},
             {"<choice 1>",     "\x1A\x06\x00\x00\x09\x01"s},
             {"<choice 2>",     "\x1A\x06\x00\x00\x09\x02"s},
             {"<choice 3>",     "\x1A\x06\x00\x00\x09\x03"s},
@@ -373,8 +453,6 @@ namespace randomizer {
             {"<dark green>",   "\x1A\x06\xFF\x00\x00\x09"s},
             {"<blue>",         "\x1A\x06\xFF\x00\x00\x0A"s},
             {"<silver>",       "\x1A\x06\xFF\x00\x00\x0B"s},
-            {"<male>",         "\x1A\x05\x06\x00\x02"s},
-            {"<female>",       "\x1A\x05\x06\x00\x03"s},
         };
 
         for (const auto& [code, replacement] : messageCodes) {

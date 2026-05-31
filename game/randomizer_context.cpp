@@ -744,7 +744,7 @@ void RandomizerState::offLoad()
     if ((getStageID() == Ordon_Ranch) && (dComIfGp_getStartStagePoint() == 1))
     {
         // Clear the danBit that starts a conversation when entering the ranch so the player can do goats as needed.
-        dComIfGs_offSaveDunSwitch(0x1);
+        dComIfGs_offSaveDunSwitch(0x0);
     }
 
     // Check and update our goal flags

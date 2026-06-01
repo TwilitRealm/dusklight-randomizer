@@ -115,8 +115,6 @@ EventFlags:
   - Skip_Bridge_Donation == Off:
     - 0xF901 # Add 256 Rupees to Malo Mart.
     - 0xFAF4 # Add 244 Rupees to Malo Mart.
-  - Skip_Bridge_Donation == On:
-    - 0x2E20 # Bridge Fundraising completed.
 
 RegionFlags:
   Ordona Province:
@@ -265,8 +263,6 @@ RegionFlags:
         - 0x58 # Lake Hylia has water on Hyrule Field Map
       - Ilia_Memory_Quest >= Charm:
         - 0x43 # Remove HV rocks from Hyrule field
-      - Skip_Bridge_Donation == On:
-        - 0x44 # East Castle Town Bridge
 
   Lost Woods and Sacred Grove:
     Index: 0x07

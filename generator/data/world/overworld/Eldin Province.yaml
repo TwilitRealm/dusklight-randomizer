@@ -490,7 +490,7 @@
     Eldin Field Hint Sign: Nothing
   Exits:
     # Only allow logical access to the other side if we've already been there or the bridge donation is skipped
-    Eldin Field Near Castle Town: Skip_Bridge_Donation == On or 'Can_Access_Eldin_Field_Near_Castle_Town'
+    Eldin Field Near Castle Town: (Skip_Bridge_Donation == On and Can_Complete_Eldin_Twilight and Can_Complete_Lanayru_Twilight) or 'Can_Access_Eldin_Field_Near_Castle_Town'
     Eldin Field Bomskit Grotto: Can_Dig
     Eldin Field Water Bomb Fish Grotto: Can_Dig
     Eldin Field North of Bridge: Nothing

@@ -359,6 +359,7 @@
     - "On": No description available.
 
 - Name: Skip Bridge Donation
+  Need In Game: True
   Tracker Important: True
   Default Option: "Off"
   Options:

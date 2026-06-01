@@ -295,9 +295,10 @@ int RandomizerContext::SettingToEnum(const std::string& settingName) {
         {"Hyrule Castle Big Key Poe Souls", HYRULE_BIG_KEY_POE_SOULS},
         {"Hyrule Castle Big Key Hearts", HYRULE_BIG_KEY_HEARTS},
         {"Palace of Twilight Requirements", PALACE_OF_TWILIGHT_REQUIREMENTS},
+        {"Temple of Time Sword Requirement", TEMPLE_OF_TIME_SWORD_REQUIREMENT},
         {"Skip Minor Cutscenes", SKIP_MINOR_CUTSCENES},
         {"Skip Major Cutscenes", SKIP_MAJOR_CUTSCENES},
-        {"Temple of Time Sword Requirement", TEMPLE_OF_TIME_SWORD_REQUIREMENT},
+        {"Skip Bridge Donation", SKIP_BRIDGE_DONATION},
     };
 
     if (nameToEnum.contains(settingName)) {

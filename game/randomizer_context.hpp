@@ -99,6 +99,7 @@ public:
         TEMPLE_OF_TIME_SWORD_REQUIREMENT,
         SKIP_MINOR_CUTSCENES,
         SKIP_MAJOR_CUTSCENES,
+        SKIP_BRIDGE_DONATION,
     };
 
     enum Options {

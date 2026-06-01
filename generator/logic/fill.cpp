@@ -219,24 +219,31 @@ namespace randomizer::logic::fill
 
     void PlacePrologueItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds)
     {
-        if (world->Setting("Skip Prologue") == "Off")
-        {
-            // Filter out the slingshot and progressive swords to place first. The first slingshot and sword have a very limited
-            // pool of locations and have to be found in the intro. We also include the lantern, shadow crystal, and progressive
-            // fishing rod because those items can lock prologue locations also.
-            auto& itemPool = world->GetItemPool();
-            auto prologueItems = utility::container::FilterAndEraseFromVector(
-                itemPool,
-                [](const auto& item)
-                {
-                    return item->GetName() == "Slingshot" || item->GetName() == "Progressive Sword" ||
-                           item->GetName() == "Lantern" || item->GetName() == "Progressive Fishing Rod" ||
-                           item->GetName() == "North Faron Woods Gate Key" ||
-                           item->IsShadowCrystal();
-                });
-            auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
-            AssumedFill(worlds, prologueItems, completeItemPool, world->GetAllLocations());
+        if (world->Setting("Skip Prologue") == "On") {
+            return;
         }
+
+        auto locations = world->GetAllLocations();
+        // Filter out excluded locations
+        utility::container::FilterAndEraseFromVector(locations, [](const auto& location) {
+            return !location->IsProgression();
+        });
+        
+        // Filter out the slingshot and progressive swords to place first. The slingshot and first sword have a very limited
+        // pool of locations and have to be found in the intro. We also include the lantern, shadow crystal, and progressive
+        // fishing rod because those items can lock prologue locations also.
+        auto& itemPool = world->GetItemPool();
+        auto prologueItems = utility::container::FilterAndEraseFromVector(
+            itemPool,
+            [](const auto& item)
+            {
+                return item->GetName() == "Slingshot" || item->GetName() == "Progressive Sword" ||
+                       item->GetName() == "Lantern" || item->GetName() == "Progressive Fishing Rod" ||
+                       item->GetName() == "North Faron Woods Gate Key" ||
+                       item->IsShadowCrystal();
+            });
+        auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
+        AssumedFill(worlds, prologueItems, completeItemPool, locations);
     }
 
     void PlaceGoalLocationItems(std::unique_ptr<world::World>& world, world::WorldPool& worlds)

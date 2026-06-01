@@ -68,10 +68,11 @@ namespace randomizer {
          *
          * @param oldStr the string to replace
          * @param replacementText the Text object to replace the old string
-         * @param count the number of occurences to replace
+         * @param count the number of occurrences to replace
          */
         void Replace(const std::string& oldStr, const Text& replacementText, int count = 1);
         void Replace(const std::string& oldStr, const std::string& replacementText, int count = 1);
+        bool empty() const;
         Text& operator+=(const Text& rhs);
         Text& operator+=(const std::string& rhs);
         friend Text operator+(Text lhs, Text& rhs);

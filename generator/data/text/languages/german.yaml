@@ -1506,6 +1506,11 @@ Hyrule Castle:
   Cryptic:
     Text: the {kingdom's castle}
 
+# NO REQUIRED DUNGEON TEXT
+No Required Dungeons Text:
+  Standard:
+    Text: No Required Dungeons
+
 # ITEM GET TEXT
 Foolish Get Item Text:
   Standard:

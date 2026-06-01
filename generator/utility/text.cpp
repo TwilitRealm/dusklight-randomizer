@@ -185,6 +185,15 @@ namespace randomizer {
         }
     }
 
+    bool Text::empty() const {
+        for (auto& text : mText) {
+            if (!text.empty()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     Text& Text::operator+=(const Text& rhs) {
         for (size_t i = 0; i < mText.size(); ++i) {
             mText[i] += rhs.mText[i];

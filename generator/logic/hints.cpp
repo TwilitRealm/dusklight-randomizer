@@ -26,6 +26,10 @@ namespace randomizer::logic::hints {
                     requiredDungeonText += dungeonColors.at(dungeonName) + getTextObject(dungeonName) + "\n";
                 }
             }
+
+            if (requiredDungeonText.empty()) {
+                requiredDungeonText += getTextObject("No Required Dungeons Text");
+            }
         }
     }
 

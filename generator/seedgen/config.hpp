@@ -52,6 +52,7 @@ namespace randomizer::seedgen::config
         void SetSeed(const std::string& newSeed) { this->_seed = newSeed; }
         std::string GetSeed() const { return this->_seed; }
         auto& GetSettingsList() { return this->_settingsList; }
+        auto& GetSettings() { return this->_settingsList.front();}
         bool IsUsingPlandomizer() const { return this->_isUsingPlandomizer; }
         bool IsGeneratingSpoilerLog() const { return this->_isGeneratingSpoilerLog; }
 

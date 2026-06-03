@@ -72,7 +72,7 @@ namespace randomizer {
          */
         void Replace(const std::string& oldStr, const Text& replacementText, int count = 1);
         void Replace(const std::string& oldStr, const std::string& replacementText, int count = 1);
-        bool empty() const;
+        bool Empty() const;
         Text& operator+=(const Text& rhs);
         Text& operator+=(const std::string& rhs);
         friend Text operator+(Text lhs, Text& rhs);
@@ -103,8 +103,10 @@ namespace randomizer {
 
     const TextDatabase& getTextDatabase();
 
+    bool textObjectExists(const std::string& name);
     const Text& getTextObject(const std::string& name, Text::Type type = Text::STANDARD);
     const std::string& getTextStr(const std::string& name, Text::Type type = Text::STANDARD, Text::Language language = Text::ENGLISH);
+
 
     Text addColor(const Text& text, Text::Color color, int count = 1, bool forceAround = false);
 

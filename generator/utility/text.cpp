@@ -185,7 +185,7 @@ namespace randomizer {
         }
     }
 
-    bool Text::empty() const {
+    bool Text::Empty() const {
         for (auto& text : mText) {
             if (!text.empty()) {
                 return false;
@@ -381,6 +381,10 @@ namespace randomizer {
         }
 
         return tb;
+    }
+
+    bool textObjectExists(const std::string& name) {
+        return getTextDatabase().contains(name);
     }
 
     const Text& getTextObject(const std::string& name, Text::Type type /*= Text::STANDARD*/)

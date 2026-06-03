@@ -1240,6 +1240,98 @@ Lanayru Twilight Tear:
   Cryptic:
     Text: a {tear of a lake spirit}
 
+# ITEM NAMES FOR PROGRESSIVE ITEMS
+Progressive Wallet x0:
+  Standard:
+    Text: Small Wallet
+
+Progressive Wallet x1:
+  Standard:
+    Text: Large Wallet
+
+Progressive Wallet x2:
+  Standard:
+    Text: Giant's Wallet
+
+Progressive Sword x1:
+  Standard:
+    Text: Wooden Sword
+
+Progressive Sword x2:
+  Standard:
+    Text: Ordon Sword
+
+Progressive Sword x3:
+  Standard:
+    Text: Master Sword
+
+Progressive Sword x4:
+  Standard:
+    Text: Light Sword
+
+Progressive Bow x1:
+  Standard:
+    Text: Bow (30 Arrows)
+
+Progressive Bow x2:
+  Standard:
+    Text: Bow (60 Arrows)
+
+Progressive Bow x3:
+  Standard:
+    Text: Bow (100 Arrows)
+
+Progressive Clawshot x1:
+  Standard:
+    Text: Clawshot
+
+Progressive Clawshot x2:
+  Standard:
+    Text: Double Clawshots
+
+Progressive Dominion Rod x1:
+  Standard:
+    Text: Dominion Rod
+
+Progressive Dominion Rod x2:
+  Standard:
+    Text: Restored Dominion Rod
+
+Progressive Fishing Rod x1:
+  Standard:
+    Text: Fishing Rod
+
+Progressive Fishing Rod x2:
+  Standard:
+    Text: Corral Earring
+
+Progressive Sky Book x1:
+  Standard:
+    Text: Sky Book (0/6 Characters)
+
+Progressive Sky Book x2:
+  Standard:
+    Text: Sky Book (1/6 Characters)
+
+Progressive Sky Book x3:
+  Standard:
+    Text: Sky Book (2/6 Characters)
+
+Progressive Sky Book x4:
+  Standard:
+    Text: Sky Book (3/6 Characters)
+
+Progressive Sky Book x5:
+  Standard:
+    Text: Sky Book (4/6 Characters)
+
+Progressive Sky Book x6:
+  Standard:
+    Text: Sky Book (5/6 Characters)
+
+Progressive Sky Book x7:
+  Standard:
+    Text: Sky Book (6/6 Characters)
 
 # HINT REGION NAMES
 Ordon:

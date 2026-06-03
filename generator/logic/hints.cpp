@@ -27,7 +27,7 @@ namespace randomizer::logic::hints {
                 }
             }
 
-            if (requiredDungeonText.empty()) {
+            if (requiredDungeonText.Empty()) {
                 requiredDungeonText += getTextObject("No Required Dungeons Text");
             }
         }

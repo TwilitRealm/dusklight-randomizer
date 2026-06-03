@@ -281,7 +281,7 @@
     Can Smash Lost Woods Rock: Can_Smash
   Locations:
     Sacred Grove Spinner Chest: Spinner
-    Lost Woods Boulder Poe: Can_Use_Senses and (Can_Defeat_Skull_Kid or Sacred_Grove_Does_Not_Require_Skull_Kid == On)
+    Lost Woods Boulder Poe: Can_Use_Senses and 'Can_Smash_Lost_Woods_Rock' and (Can_Defeat_Skull_Kid or Sacred_Grove_Does_Not_Require_Skull_Kid == On)
   Exits:
     # Human Link can't dig into the grotto, so we need to hide away blowing up the rock behind an event.
     # By requiring only wolf in the direct logic statement, this tells the search algorithm that only wolf is

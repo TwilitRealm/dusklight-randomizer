@@ -168,10 +168,11 @@ int getTempleKeysFound(int stage) {
     };
 
     int count = dComIfGs_getKeyNum(stage);
+    int saveId = getStageSaveId(stage);
 
     // Add number of unlocked key doors for this dungeon to current key count
     for (auto flag : keyDoorFlags[stage]) {
-        if (dComIfGs_isSwitch(stage, flag)) {
+        if (tracker_isStageSwitch(saveId, flag)) {
             count += 1;
         }
     }

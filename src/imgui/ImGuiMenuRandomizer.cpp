@@ -510,7 +510,7 @@ namespace dusk {
             LocationTrackerInfo info {
                 .locationName = location->GetName(),
                 .logicStr = location->GetComputedRequirement().to_string(),
-                .locationItem = itemId >= 0 ? world->GetItem(itemId)->GetName() : "Unknown",
+                .locationItem = itemId >= 0 ? world->GetItem(itemId, true)->GetName() : "Unknown",
                 .accessible = m_currentSearch._visitedLocations.contains(location)
             };
 

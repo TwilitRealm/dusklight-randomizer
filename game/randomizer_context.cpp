@@ -8,12 +8,11 @@
 #include "dusk/randomizer/game/tools.h"
 #include "dusk/randomizer/game/stages.h"
 #include "dusk/randomizer/game/verify_item_functions.h"
+#include "dusk/randomizer/generator/utility/crc32.hpp"
 #include "dusk/randomizer/generator/utility/endian.hpp"
 #include "dusk/randomizer/generator/utility/yaml.hpp"
 #include "dusk/randomizer/generator/randomizer.hpp"
 #include "dusk/randomizer/generator/utility/text.hpp"
-
-#include <zlib.h>
 
 #include <fstream>
 
@@ -885,7 +884,7 @@ u32 getActorPatchesCurrentStageKey(u8 roomNo) {
 }
 
 u32 getStageObjCRC32(u8* data, size_t size) {
-    return crc32(0, (data), size);
+    return randomizer::utility::crc32(data, size);
 }
 
 stage_tgsc_data_class parseObjData(const YAML::Node& objectNode) {

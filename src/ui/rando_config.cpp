@@ -1073,7 +1073,7 @@ RandomizerWindow::RandomizerWindow() {
         clickToRemoveSection->SetProperty("font-size", "15dp");
 
         auto& innerRightPane = rightPane.add_child<Pane>(Pane::Type::Controlled);
-        innerRightPane.root()->SetPseudoClass("excluded-locations-pane", true);
+        innerRightPane.root()->SetClass("excluded-locations-pane", true);
 
         // Setup left pane
         leftPane.root()->SetProperty("overflow", "hidden");
@@ -1099,7 +1099,7 @@ RandomizerWindow::RandomizerWindow() {
         filter.root()->SetProperty("height", "40dp");
 
         auto& innerLeftPane = leftPane.add_child<Pane>(Pane::Type::Controlled, false);
-        innerLeftPane.root()->SetPseudoClass("excluded-locations-pane", true);
+        innerLeftPane.root()->SetClass("excluded-locations-pane", true);
 
         // Attach listeners for left pane
         filter.listen(Rml::EventId::Change, [this, &innerLeftPane, &innerRightPane](Rml::Event& event) {

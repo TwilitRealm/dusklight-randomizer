@@ -255,6 +255,10 @@ u32 getActorPatchesCurrentStageKey(u8 roomNo);
  */
 u32 getStageObjCRC32(u8* data, size_t size);
 
-void GenerateAndWriteSeed(std::string& generationStatusMsg);
+/*
+ * Generates a seed and writes the necessary seed files to the players seed directory
+ * Returns true if generation was successful, false otherwise.
+ */
+bool GenerateAndWriteSeed(std::string& generationStatusMsg);
 
 #endif //DUSK_RANDOMIZER_CONTEXT_HPP

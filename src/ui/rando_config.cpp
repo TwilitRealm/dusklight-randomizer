@@ -24,12 +24,16 @@ struct ConfigBoolProps {
     std::function<bool()> isDisabled;
 };
 
-static bool generatingSeed = false;
+static std::atomic seedGenStatus = SeedGenerateStatus::Ready;
 static std::string generationStatusMsg{};
 
 static void StartSeedGeneration() {
-    GenerateAndWriteSeed(generationStatusMsg);
-    generatingSeed = false;
+    if (GenerateAndWriteSeed(generationStatusMsg)) {
+        seedGenStatus.store(SeedGenerateStatus::Success);
+    } else {
+        seedGenStatus.store(SeedGenerateStatus::Error);
+    }
+
     DuskLog.debug("{}", generationStatusMsg);
 }
 
@@ -406,16 +410,17 @@ void rando_starting_item_number_toggle(Pane& leftPane, Pane& rightPane, std::str
     });
 }
 
-Document* show_seed_gen_modal(std::string_view message) {
-    auto* modal = &push_document(std::make_unique<Modal>(Modal::Props{
+Modal* RandomizerWindow::show_seed_gen_modal(std::string_view message) {
+    auto* modal = dynamic_cast<Modal*>(&push_document(std::make_unique<Modal>(Modal::Props{
         .title = "Randomizer",
         .bodyRml = escape(message),
-        .onDismiss = [](Modal& modal) {
+        .onDismiss = [this](Modal& modal) {
             mDoAud_seStartMenu(kSoundWindowClose);
             modal.pop();
+            m_genSeedModal = nullptr;
         },
         .icon = "verifying",
-    }));
+    })));
 
     if (auto* doc = top_document()) {
         doc->focus();
@@ -815,10 +820,10 @@ RandomizerWindow::RandomizerWindow() {
                 DuskLog.info("Created new Seed for generator.");
             }
 
+            seedGenStatus.store(SeedGenerateStatus::Generating);
             std::thread randoGenerationThread(StartSeedGeneration);
             randoGenerationThread.detach();
 
-            generatingSeed = true;
             m_genSeedModal = show_seed_gen_modal("Generating Seed...");
 
         }),rightPane, [](Pane& pane) {
@@ -1172,9 +1177,29 @@ RandomizerWindow::RandomizerWindow() {
 void RandomizerWindow::update() {
     Window::update();
 
-    if (m_genSeedModal && !generatingSeed) {
-        m_genSeedModal->pop();
-        m_genSeedModal = nullptr;
+    auto curSeedGenStatus = seedGenStatus.load();
+    if (curSeedGenStatus == SeedGenerateStatus::Success ||
+        curSeedGenStatus == SeedGenerateStatus::Error)
+    {
+        if (curSeedGenStatus == SeedGenerateStatus::Success) {
+            mDoAud_seStartMenu(kSoundSeedGenerateSuccess);
+            m_genSeedModal->set_icon("celebration");
+        } else {
+            mDoAud_seStartMenu(kSoundSeedGenerateError);
+            m_genSeedModal->set_icon("error");
+        }
+
+        m_genSeedModal->set_body(generationStatusMsg);
+        m_genSeedModal->add_action({
+            .label = "OK",
+            .onPressed = [this](Modal& modal) {
+                mDoAud_seStartMenu(kSoundWindowClose);
+                modal.pop();
+                m_genSeedModal = nullptr;
+            }
+        });
+
+        seedGenStatus.store(SeedGenerateStatus::Ready);
     }
 }
 

@@ -1303,17 +1303,14 @@ static void DeleteFailedGenerationFiles(randomizer::Randomizer& rando) {
     }
 }
 
-/*
- * Generates a seed and writes the necessary seed files to the players seed directory
- */
-void GenerateAndWriteSeed(std::string& generationStatusMsg) {
+bool GenerateAndWriteSeed(std::string& generationStatusMsg) {
     auto r = randomizer::Randomizer{dusk::ui::GetRandomizerPath()};
 
     auto generationResult = r.Generate();
     if (generationResult.has_value()) {
-        generationStatusMsg = fmt::format("Seed Generation failed. Reason:\n{}", generationResult.value());
+        generationStatusMsg = fmt::format("Failed to generate seed. Reason:\n{}", generationResult.value());
         DeleteFailedGenerationFiles(r);
-        return;
+        return false;
     }
 
     const auto world = r.GetWorld();
@@ -1324,7 +1321,7 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
         generationStatusMsg =
             fmt::format("Failed to write seed data. Reason:\n{}", e.what());
         DeleteFailedGenerationFiles(r);
-        return;
+        return false;
     }
 
     randoData.mHash = r.GetConfig().GetHash();
@@ -1333,8 +1330,9 @@ void GenerateAndWriteSeed(std::string& generationStatusMsg) {
         generationStatusMsg =
             fmt::format("Failed to write seed data to file. Reason:\n{}", writeToFileResult.value());
         DeleteFailedGenerationFiles(r);
-        return;
+        return false;
     }
 
     generationStatusMsg = fmt::format("Seed generated! Hash: {}", randoData.mHash);
+    return true;
 }

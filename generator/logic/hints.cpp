@@ -74,6 +74,9 @@ namespace randomizer::logic::hints {
             doItemTextReplacement(world, "Castle Town Malo Mart Magic Armor", {"Chudleys Shop Magic Armor Text",
                 "Castle Town Malo Mart Magic Armor After Purchase Text", "Castle Town Malo Mart Magic Armor Text",
                 "Castle Town Malo Mart Magic Armor Sold Out Text"}, Text::ORANGE);
+
+            doItemTextReplacement(world, "Coro Bottle", {"Coro Bottle Offer 1 Text",
+                "Coro Bottle Offer 2 Text", "Coro Bottle Offer 3 Text", "Coro Bottle Offer 4 Text"}, Text::ORANGE);
         }
     }
 

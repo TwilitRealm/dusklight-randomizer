@@ -355,6 +355,22 @@
   Group: 4
   Message Id: 6403
 
+- Name: Coro Bottle Offer 1 Text
+  Group: 6
+  Message Id: 5216
+
+- Name: Coro Bottle Offer 2 Text
+  Group: 6
+  Message Id: 5223
+
+- Name: Coro Bottle Offer 3 Text
+  Group: 6
+  Message Id: 5237
+
+- Name: Coro Bottle Offer 4 Text
+  Group: 6
+  Message Id: 5253
+
 - Name: Fishing Hole Sign Text
   Group: 7
   Message Id: 9502

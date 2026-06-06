@@ -2153,6 +2153,37 @@ Charlo Donation Ask Text Template:
       For <Item Pretty Name>...
       Would you please make a donation?<begin choice>
 
+
+Coro Bottle Offer 1 Text Template:
+  Standard:
+    Text: |-
+      And check this out! I have a special,
+      one-time offer of <Item Pretty Name>
+      for only <purple>100 Rupees<white>!
+      How 'bout it, guy? What a bargain!<begin choice>
+
+Coro Bottle Offer 2 Text Template:
+  Standard:
+    Text: |-
+      I have a special, one-time offer of
+      <Item Pretty Name> for only
+      <purple>100 Rupees<white>. How 'bout it, guy?<begin choice>
+
+Coro Bottle Offer 3 Text Template:
+  Standard:
+    Text: |-
+      Right now we have a <purple>100-Rupee<white> 
+      <Item Standard Name> and <purple>20-Rupee<white>
+      <red>refills<white> to choose from!<begin choice>
+
+Coro Bottle Offer 4 Text Template:
+  Standard:
+    Text: |-
+      And check this out! I have a special,
+      one-time offer of <Item Pretty Name> 
+      for only <purple>100 Rupees<white>!
+      How 'bout it, guy? What a bargain!<begin choice>
+
 Fishing Hole Sign Text Template:
   Standard:
     Text: |-

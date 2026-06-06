@@ -7,6 +7,7 @@ namespace randomizer::seedgen::config {
 }
 
 namespace dusk::ui {
+    class Pane;
 
     std::filesystem::path GetRandomizerPath();
     std::filesystem::path GetRandomizerSettingsPath();
@@ -18,7 +19,10 @@ namespace dusk::ui {
     public:
         RandomizerWindow();
         void update() override;
+        void rando_excluded_locations_update_left_pane(Pane& innerLeftPane, Pane& rightPane, bool forceUpdate = false);
+        auto& get_locations_for_left_pane();
     private:
         Document* m_genSeedModal = nullptr;
+        std::string m_excludedLocationsFilter = "";
     };
 }

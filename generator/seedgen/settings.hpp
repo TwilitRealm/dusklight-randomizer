@@ -201,6 +201,7 @@ namespace randomizer::seedgen::settings
         const std::set<std::string>& GetExcludedLocations() const { return this->_excludedLocations; }
         const std::list<std::list<std::string>>& GetMixedEntrancePools() const { return this->_mixedEntrancePools; }
         std::map<std::string, int>& GetModifiableStartingInventory() { return this->_startingInventory; }
+        std::set<std::string>& GetModifiableExcludedLocations() { return this->_excludedLocations; }
 
        private:
         std::map<std::string, Setting> _map = {};

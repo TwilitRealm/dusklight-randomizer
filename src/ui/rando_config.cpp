@@ -4,15 +4,16 @@
 #include <thread>
 
 #include "bool_button.hpp"
-#include "modal.hpp"
 #include "dusk/config.hpp"
 #include "dusk/data.hpp"
 #include "dusk/logging.h"
+#include "dusk/randomizer/game/tools.h"
+#include "dusk/randomizer/generator/seedgen/seed.hpp"
+#include "dusk/randomizer/generator/utility/string.hpp"
+#include "modal.hpp"
 #include "number_button.hpp"
 #include "pane.hpp"
 #include "string_button.hpp"
-#include "dusk/randomizer/game/tools.h"
-#include "dusk/randomizer/generator/seedgen/seed.hpp"
 
 namespace dusk::ui {
 struct ConfigBoolProps {
@@ -46,7 +47,7 @@ randomizer::seedgen::settings::Setting* FindSetting(const std::string& key) {
     }
 }
 
-void SaveConfig() {
+void SaveRandomizerConfig() {
     GetRandomizerConfig().WriteToFile(GetRandomizerSettingsPath(), GetRandomizerPreferencesPath());
 }
 
@@ -56,7 +57,7 @@ bool TryCreateRandomSeed() {
     const std::string& configSeed = config.GetSeed();
     if (configSeed.empty()) {
         config.SetSeed(randomizer::seedgen::seed::GenerateSeed());
-        SaveConfig();
+        SaveRandomizerConfig();
         return true;
     }
     return false;
@@ -128,7 +129,7 @@ void rando_config_group(Pane& leftPane, Pane& rightPane, std::string settingKey,
                         curSetting->SetCurrentOption(i);
                         text_elem->SetInnerRML(settingInfo->GetDescriptions().at(i));
 
-                        SaveConfig();
+                        SaveRandomizerConfig();
                     });
             }
 
@@ -154,7 +155,7 @@ SelectButton& rando_config_toggle(
 
             setting->SetCurrentOption(value);
 
-            SaveConfig();
+            SaveRandomizerConfig();
         },
     });
     auto& comp = leftPane.register_control(
@@ -193,7 +194,7 @@ NumberButton* rando_add_optional_setting(std::string optionValue, std::string op
         .getValue = [curSetting] { return curSetting->GetCurrentOptionAsNumber(); },
         .setValue = [curSetting](int value) {
             curSetting->SetCurrentOption(std::to_string(value));
-            SaveConfig();
+            SaveRandomizerConfig();
         },
         .min = std::stoi(options.front()),
         .max = std::stoi(options.back()),
@@ -316,7 +317,7 @@ void rando_starting_item_toggle(Pane& leftPane, Pane& rightPane, std::string ite
         } else {
             inventory.at(itemName) = newCount;
         }
-        SaveConfig();
+        SaveRandomizerConfig();
     };
 
     // Helper function for decreasing a starting item count by 1
@@ -332,7 +333,7 @@ void rando_starting_item_toggle(Pane& leftPane, Pane& rightPane, std::string ite
         } else {
             inventory.at(itemName) = newCount;
         }
-        SaveConfig();
+        SaveRandomizerConfig();
     };
 
     leftPane.add_select_button({
@@ -395,7 +396,7 @@ void rando_starting_item_number_toggle(Pane& leftPane, Pane& rightPane, std::str
             } else {
                 inventory[itemName] = value;
             }
-            SaveConfig();
+            SaveRandomizerConfig();
         },
         .min = 0,
         .max = max,
@@ -421,6 +422,288 @@ Document* show_seed_gen_modal(std::string_view message) {
     }
 
     return modal;
+}
+
+struct ExcludedTabLocData {
+    std::string name {};
+    std::string lowercaseName{};
+    std::unordered_set<std::string> categories{};
+};
+
+auto& RandomizerWindow::get_locations_for_left_pane() {
+    static std::list<ExcludedTabLocData> locationsForExcludedTab;
+    // If we haven't loaded the locations to display for the excluded locations tab, load them up
+    // TODO: Maybe preload this before any graphics stuff happens?
+    if (locationsForExcludedTab.empty()) {
+        auto locationDataTree = LOAD_EMBED_YAML(RANDO_DATA_PATH "locations.yaml");
+        for (const auto& locationNode : locationDataTree) {
+            ExcludedTabLocData excludedTabLocData{};
+            auto& name = excludedTabLocData.name;
+            auto& lowercaseName = excludedTabLocData.lowercaseName;
+            name = locationNode["Name"].as<std::string>();
+            lowercaseName = name;
+            std::transform(lowercaseName.begin(), lowercaseName.end(), lowercaseName.begin(),
+           [](unsigned char c) { return std::tolower(c); });
+
+            for (const auto& category : locationNode["Categories"]) {
+                excludedTabLocData.categories.insert(category.as<std::string>());
+            }
+
+            if (locationNode["Metadata"].IsMap()) {
+                for (const auto& data : locationNode["Metadata"]) {
+                    excludedTabLocData.categories.insert(data.first.as<std::string>());
+                }
+            }
+
+            // Don't include warp portals
+            if (excludedTabLocData.categories.contains("Warp Portal")) {
+                continue;
+            }
+
+            // Certain locations we don't include for now
+            if (randomizer::utility::str::Contains(excludedTabLocData.name,
+                "Renados Letter", "Telma Invoice", "Wooden Statue", "Ilia Charm",
+                "Defeat Ganondorf", "Twilit Insect", "Twilit Bloat", "Hint"))
+            {
+                continue;
+            }
+
+            locationsForExcludedTab.push_back(excludedTabLocData);
+        }
+
+        locationsForExcludedTab.sort([](const auto& a, const auto& b) {
+            return a.name < b.name;
+        });
+    }
+
+    // Create the vector we're going to return
+    static std::vector<const std::string*> locationNames{};
+    locationNames.clear();
+
+    // Get settings values
+    auto& randoSettings = GetRandomizerConfig().GetSettings().GetMap();
+    bool goldenBugs = randoSettings.at("Golden Bugs") == "On";
+    bool skyCharacters = randoSettings.at("Sky Characters") == "On";
+    bool npcs = randoSettings.at("Gifts From NPCs") == "On";
+    bool shops = randoSettings.at("Shop Items") == "On";
+    bool goldenWolves = randoSettings.at("Hidden Skills") == "On";
+    bool hiddenRupees = randoSettings.at("Hidden Rupees") == "On";
+    bool freestandingRupees = randoSettings.at("Freestanding Rupees") == "On";
+    bool overworldPoes = randoSettings.at("Poe Souls").IsAnyOf("Overworld", "All");
+    bool dungeonPoes = randoSettings.at("Poe Souls").IsAnyOf("Dungeon", "All");
+
+    // Create lowercase filter
+    std::string lowercaseFilter = m_excludedLocationsFilter;
+    std::transform(lowercaseFilter.begin(), lowercaseFilter.end(), lowercaseFilter.begin(),
+               [](unsigned char c) { return std::tolower(c); });
+
+    // Add relevant location names
+    for (const auto& locData : locationsForExcludedTab) {
+        // Skip categories that aren't shuffled
+        auto& cats = locData.categories;
+        if ((!goldenBugs && cats.contains("Golden Bug")) ||
+            (!skyCharacters && cats.contains("Sky Character")) ||
+            (!npcs && cats.contains("Npc")) ||
+            (!shops && cats.contains("Shop")) ||
+            (!goldenWolves && cats.contains("Golden Wolf")) ||
+            (!hiddenRupees && cats.contains("Rupee - Hidden")) ||
+            (!freestandingRupees && cats.contains("Rupee - Freestanding")) ||
+            (!overworldPoes && cats.contains("Poe") && cats.contains("Overworld")) ||
+            (!dungeonPoes && cats.contains("Poe") && cats.contains("Dungeon")))
+        {
+            continue;
+        }
+
+        // Don't add this location if it doesn't match the current filter
+        if (locData.lowercaseName.find(lowercaseFilter) == std::string::npos) {
+            continue;
+        }
+
+        locationNames.push_back(&locData.name);
+    }
+
+    return locationNames;
+}
+
+// Forward declaration
+void rando_excluded_locations_update_right_pane(Pane& innerRightPane, bool forceUpdate = false);
+
+// Update the specified inner pane with the necessary button layout
+void rando_excluded_locations_update_inner_pane(Pane& paneToUpdate, Pane& rightPane,
+    const std::vector<const std::string*>& locations, bool forceUpdate)
+{
+    constexpr float buttonHeightDp = 48.0f;
+    Rml::Element* scrollContainer = paneToUpdate.root();
+    if (!scrollContainer) return;
+
+    // Get the density-independent scale factor to convert DP to physical pixels
+    float scaleFactor = scrollContainer->GetContext()->GetDensityIndependentPixelRatio();
+    const float buttonHeightPx = buttonHeightDp * scaleFactor;
+
+    int totalItems = static_cast<int>(locations.size());
+    // Clear pane and return early if no locations
+    if (totalItems == 0) {
+        paneToUpdate.clear();
+        return;
+    }
+
+    // Calculate viewport metrics
+    const float paneHeightPx = scrollContainer->GetParentNode()->GetParentNode()->GetClientHeight();
+    const float paneHeightDp = paneHeightPx / scaleFactor;
+
+    // Determine how many buttons are needed to fill the screen (+ 2 to prevent pop-in)
+    auto maxVisibleButtons = static_cast<int>(std::ceil(paneHeightDp / buttonHeightDp)) + 2;
+    if (maxVisibleButtons > totalItems) {
+        maxVisibleButtons = totalItems;
+    }
+
+    // Track the active scroll position
+    float scrollTopPx = scrollContainer->GetScrollTop();
+
+    // Find the index of the location that should be visible on the first button
+    auto topButtonIdx = static_cast<int>(std::floor(scrollTopPx / buttonHeightPx)) - 1;
+
+    // Clamp the index to ensure we don't calculate past the boundaries of the dataset
+    if (topButtonIdx < 0) topButtonIdx = 0;
+    if (topButtonIdx + maxVisibleButtons > totalItems) {
+        topButtonIdx = totalItems - maxVisibleButtons;
+        if (topButtonIdx < 0) topButtonIdx = 0;
+    }
+
+    // If the pane is empty, or if we've scrolled enough to need a new button,
+    // or we're forcing an update, make all the new buttons.
+    if (forceUpdate || paneToUpdate.children().empty() ||
+        paneToUpdate.children()[0]->root()->GetInnerRML() != *locations[topButtonIdx])
+    {
+        // Get the text of the currently focused element
+        std::string focusedText{};
+        for (const auto& button : paneToUpdate.children()) {
+            if (button->root()->IsPseudoClassSet("focus")) {
+                focusedText = dynamic_cast<ControlledButton*>(button.get())->get_text();
+                break;
+            }
+        }
+
+        // Clear all buttons from the element
+        paneToUpdate.clear();
+
+        // Add the top spacer before all other elements
+        auto topSpacer = append(paneToUpdate.root(), "div");
+
+        // Remake all the buttons with updated text and top/bottom padding
+        // TODO: Could improve this by only creating/deleting buttons from the top/bottom as necessary
+        // but I couldn't get that to work well
+        for (int i = 0; i < maxVisibleButtons; ++i) {
+            auto& name = *locations[topButtonIdx + i];
+            auto& button = paneToUpdate.add_button({
+                .text = name,
+                .isSelected = [name]{return GetRandomizerConfig().GetSettings().GetExcludedLocations().contains(name);},
+            })
+            .on_pressed([&rightPane, name] {
+                auto& excludedLocations = GetRandomizerConfig().GetSettings().GetModifiableExcludedLocations();
+                if (excludedLocations.contains(name)) {
+                    excludedLocations.erase(name);
+                    rando_excluded_locations_update_right_pane(rightPane, true);
+                } else {
+                    excludedLocations.insert(name);
+                    rando_excluded_locations_update_right_pane(rightPane, true);
+                }
+                SaveRandomizerConfig();
+            });
+            button.root()->SetProperty("padding-left", "8dp");
+            button.root()->SetProperty("font-size", "15dp");
+            // Call update now to prevent background opacity flickering
+            button.update();
+
+            // Focus this button if it has the same text as the one which was focused before
+            if (button.get_text() == focusedText) {
+                button.root()->SetPseudoClass("focus-visible", true);
+                button.root()->Focus();
+            }
+        }
+
+        // Add the bottom spacer after all other elements
+        auto bottomSpacer = append(paneToUpdate.root(), "div");
+
+        // Calculate and apply the top and bottom padding offsets.
+        // Using padding on the pane itself doesn't work for some
+        // reason, so instead we lock the height of the top and bottom spacers
+        int paddingTop = topButtonIdx * buttonHeightDp - 8;
+        int paddingBottom = (totalItems - topButtonIdx - paneToUpdate.children().size()) * buttonHeightDp + 8;
+        if (paddingBottom < 0) paddingBottom = 0;
+        topSpacer->SetProperty("height", std::to_string(paddingTop) + "dp");
+        bottomSpacer->SetProperty("height", std::to_string(paddingBottom) + "dp");
+    }
+}
+
+void rando_excluded_locations_update_right_pane(Pane& innerRightPane, bool forceUpdate /*= false*/) {
+    // Data for right pane is the current list of excluded locations
+    std::vector<const std::string*> excludedLocationsVec{};
+    for (const auto& location : GetRandomizerConfig().GetSettings().GetExcludedLocations()) {
+        excludedLocationsVec.push_back(&location);
+    }
+
+    // When the user removes an excluded location from the right pane, we have to track
+    // which child was focused here to properly restore focus to the previous child
+    int focusedId{-1};
+    for (int i = 0; i < innerRightPane.root()->GetNumChildren(); ++i) {
+        if (innerRightPane.root()->GetChild(i)->IsPseudoClassSet("focus")) {
+            focusedId = i;
+            break;
+        }
+    }
+    rando_excluded_locations_update_inner_pane(innerRightPane, innerRightPane, excludedLocationsVec, forceUpdate);
+
+    // Refocus the child with the same id (or the previous child if the user had deleted the last one)
+    // Subtract one more than normal for these calculations to take into account the spacer
+    if (focusedId >= innerRightPane.root()->GetNumChildren() - 1) {
+        focusedId = innerRightPane.root()->GetNumChildren() - 2;
+    }
+    if (focusedId >= 0) {
+        auto child = innerRightPane.root()->GetChild(focusedId);
+        child->SetPseudoClass("focus-visible", true);
+        child->Focus();
+    }
+}
+
+void RandomizerWindow::rando_excluded_locations_update_left_pane(Pane& innerLeftPane, Pane& rightPane, bool forceUpdate /* = false*/) {
+    // Data for left pane is all possible locations to exclude
+    auto& locations = get_locations_for_left_pane();
+    rando_excluded_locations_update_inner_pane(innerLeftPane, rightPane, locations, forceUpdate);
+}
+
+// Focus the closest child in the next Pane. Returns true if a child was found to focus
+bool focus_closest_child_on_next_pane(Pane& currentPane, Pane& nextPane) {
+    float childToFocusY = 0.f;
+    for (const auto& child : currentPane.children()) {
+        if (child->root()->IsPseudoClassSet("focus")) {
+            childToFocusY = child->root()->GetAbsoluteTop();
+        }
+    }
+
+    Rml::Element* closestchild = nullptr;
+    // If there was no focused child in this pane, select the middle one of the next pane
+    if (childToFocusY == 0.f && !nextPane.children().empty()) {
+        closestchild = nextPane.children().at(nextPane.children().size() / 2)->root();
+    // Otherwise, choose the closest one
+    } else if (childToFocusY > 0.f) {
+        float closestRightChildDistance = 100000.f;
+        for (const auto& child : nextPane.children()) {
+            float distance = std::abs(childToFocusY - child->root()->GetAbsoluteTop());
+            if (distance < closestRightChildDistance) {
+                closestchild = child->root();
+                closestRightChildDistance = distance;
+            }
+        }
+    }
+
+    if (closestchild) {
+        closestchild->SetPseudoClass("focus-visible", true);
+        closestchild->Focus();
+        return true;
+    }
+
+    return false;
 }
 
 RandomizerWindow::RandomizerWindow() {
@@ -551,7 +834,7 @@ RandomizerWindow::RandomizerWindow() {
                 },
                 .setValue = [](Rml::String value) {
                     GetRandomizerConfig().SetSeed(value);
-                    SaveConfig();
+                    SaveRandomizerConfig();
                 },
                 .maxLength = 32,
             }),
@@ -694,7 +977,7 @@ RandomizerWindow::RandomizerWindow() {
         .on_pressed([&rightPane]() {
             auto& inventory = GetRandomizerConfig().GetSettings().GetModifiableStartingInventory();
             inventory.clear();
-            SaveConfig();
+            SaveRandomizerConfig();
             rando_starting_inventory_update_right_pane(rightPane);
         });
 
@@ -765,6 +1048,102 @@ RandomizerWindow::RandomizerWindow() {
         rando_starting_item_toggle(leftPane, rightPane, "Sacred Grove Portal");
         rando_starting_item_toggle(leftPane, rightPane, "Bridge of Eldin Portal");
         rando_starting_item_toggle(leftPane, rightPane, "Upper Zora's River Portal", "Upper Zoras River Portal");
+    });
+
+    add_tab("Excluded Locations", [this](Rml::Element* content) {
+        auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled, false);
+        auto& rightPane = add_child<Pane>(content, Pane::Type::Controlled, false);
+
+        // Setup right pane
+        rightPane.root()->SetProperty("overflow", "hidden");
+        rightPane.root()->SetProperty("padding", "0dp");
+        rightPane.root()->SetProperty("gap", "0dp");
+
+        auto excludedLocationsSection = rightPane.add_section("Current Excluded Locations");
+        excludedLocationsSection->SetProperty("margin-top", "22dp");
+        excludedLocationsSection->SetProperty("margin-bottom", "0dp");
+        excludedLocationsSection->SetProperty("text-align", "center");
+        excludedLocationsSection->SetProperty("font-size", "25dp");
+        excludedLocationsSection->SetProperty("opacity", "1");
+
+        auto clickToRemoveSection = rightPane.add_section("Select a location to remove it");
+        clickToRemoveSection->SetProperty("margin-bottom", "21dp");
+        clickToRemoveSection->SetProperty("margin-top", "0dp");
+        clickToRemoveSection->SetProperty("text-align", "center");
+        clickToRemoveSection->SetProperty("font-size", "15dp");
+
+        auto& innerRightPane = rightPane.add_child<Pane>(Pane::Type::Controlled);
+        innerRightPane.root()->SetPseudoClass("excluded-locations-pane", true);
+
+        // Setup left pane
+        leftPane.root()->SetProperty("overflow", "hidden");
+        leftPane.root()->SetProperty("padding", "0dp");
+
+        auto& clearExcluded = leftPane.add_button(ControlledButton::Props{
+            .text = "Clear All",
+        });
+        clearExcluded.root()->SetProperty("margin", "12dp 24dp");
+        clearExcluded.root()->SetProperty("margin-bottom", "0dp");
+
+        clearExcluded.on_pressed([&innerRightPane] {
+            GetRandomizerConfig().GetSettings().GetModifiableExcludedLocations().clear();
+            rando_excluded_locations_update_right_pane(innerRightPane);
+        });
+
+        auto& filter = leftPane.add_child<StringButton>(StringButton::Props{
+            .key = "Filter",
+            .getValue = [this] { return m_excludedLocationsFilter; },
+            .setValue = [this](Rml::String str) { m_excludedLocationsFilter = str; },
+        });
+        filter.root()->SetProperty("margin", "6dp 24dp");
+        filter.root()->SetProperty("height", "40dp");
+
+        auto& innerLeftPane = leftPane.add_child<Pane>(Pane::Type::Controlled, false);
+        innerLeftPane.root()->SetPseudoClass("excluded-locations-pane", true);
+
+        // Attach listeners for left pane
+        filter.listen(Rml::EventId::Change, [this, &innerLeftPane, &innerRightPane](Rml::Event& event) {
+            if (event.GetParameters().find("text") != event.GetParameters().end()) {
+                const Rml::String text = event.GetParameter("text", Rml::String{});
+                m_excludedLocationsFilter = text;
+                this->rando_excluded_locations_update_left_pane(innerLeftPane, innerRightPane, true);
+                event.StopImmediatePropagation();
+            }
+        });
+
+        // Check for updating the left pane each time we scroll on it
+        innerLeftPane.listen(Rml::EventId::Scroll, [&innerLeftPane, &innerRightPane, this](Rml::Event&) {
+            this->rando_excluded_locations_update_left_pane(innerLeftPane, innerRightPane);
+        });
+
+        // Hijack the right nav command to make switching to the other pan more intuitive
+        innerLeftPane.listen(Rml::EventId::Keydown, [&innerLeftPane, &innerRightPane](Rml::Event& event) {
+            auto cmd = map_nav_event(event);
+            if (cmd == NavCommand::Right) {
+                if (focus_closest_child_on_next_pane(innerLeftPane, innerRightPane)) {
+                    event.StopPropagation();
+                }
+            }
+        });
+
+        // Attach listeners for right pane
+        innerRightPane.listen(Rml::EventId::Scroll, [&innerRightPane](Rml::Event&) {
+            rando_excluded_locations_update_right_pane(innerRightPane);
+        });
+
+        // Hijack the right nav command to make switching to the other pan more intuitive
+        innerRightPane.listen(Rml::EventId::Keydown, [&innerLeftPane, &innerRightPane](Rml::Event& event) {
+            auto cmd = map_nav_event(event);
+            if (cmd == NavCommand::Left) {
+                if (focus_closest_child_on_next_pane(innerRightPane, innerLeftPane)) {
+                    event.StopPropagation();
+                }
+            }
+        });
+
+        // Initial update of panes
+        rando_excluded_locations_update_right_pane(innerRightPane);
+        this->rando_excluded_locations_update_left_pane(innerLeftPane, innerRightPane);
     });
 
     if (randomizer_IsActive()) {

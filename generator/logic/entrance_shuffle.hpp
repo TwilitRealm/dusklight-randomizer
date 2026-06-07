@@ -5,30 +5,24 @@
 
 namespace randomizer::logic::entrance_shuffle
 {
-    void ShuffleWorldEntrances(world::World* world, world::WorldPool& worlds);
+    void ShuffleWorldEntrances(world::World* world);
     void SetAllEntrancesData(world::World* world);
     entrance::EntrancePools CreateEntrancePools(world::World* world);
     entrance::EntrancePools CreateTargetPools(entrance::EntrancePools& entrancePools);
     entrance::EntrancePool AssumeEntrancePool(entrance::EntrancePool& entrancePool);
     void SetPlandomizedEntrances(world::World* world,
-                                 world::WorldPool& worlds,
                                  entrance::EntrancePools& entrancePools,
                                  entrance::EntrancePools& targetEntrancePools);
     void ShuffleNonAssumedEntrancesPools(world::World* world,
-                                         world::WorldPool& worlds,
                                          entrance::EntrancePools& entrancePools,
                                          entrance::EntrancePools& targetEntrancePools);
-    void ShuffleEntrancePool(world::World* world,
-                             world::WorldPool& worlds,
-                             entrance::EntrancePool& entrancePool,
+    void ShuffleEntrancePool(entrance::EntrancePool& entrancePool,
                              entrance::EntrancePool& targetEntrancePool,
                              int retries = 20);
-    void ShuffleEntrances(world::WorldPool& worlds,
-                          entrance::EntrancePool& entrancePool,
+    void ShuffleEntrances(entrance::EntrancePool& entrancePool,
                           entrance::EntrancePool& targetEntrancePool,
                           std::unordered_map<entrance::Entrance*, entrance::Entrance*>& rollbacks);
-    bool ReplaceEntrance(world::WorldPool& worlds,
-                         entrance::Entrance* entrance,
+    bool ReplaceEntrance(entrance::Entrance* entrance,
                          entrance::Entrance* target,
                          std::unordered_map<entrance::Entrance*, entrance::Entrance*>& rollbacks,
                          const item_pool::ItemPool& completeItemPool);
@@ -40,7 +34,6 @@ namespace randomizer::logic::entrance_shuffle
     void ConfirmReplacement(entrance::Entrance* entrance, entrance::Entrance* target);
     void DeleteTargetEntrance(entrance::Entrance* target);
     void ValidateWorld(world::World* world,
-                       world::WorldPool& worlds,
                        entrance::Entrance* entrance,
                        const item_pool::ItemPool& completeItemPool);
 

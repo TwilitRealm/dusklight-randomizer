@@ -2,12 +2,11 @@
 
 #include "../utility/random.hpp"
 
-#include <vector>
 #include <string>
 
 namespace randomizer::seedgen::seed
 {
-    static const std::vector<std::string> nouns = {
+    static constexpr std::array nouns = {
         "Aeralfos",  "Agitha",    "Ant",        "Argorok",    "Armos",      "Ashei",      "Auru",     "BackSlice", "Bari",
         "Barnes",    "Beamos",    "Beth",       "BigBaba",    "Blizzeta",   "Bo",         "Bokoblin", "Bombfish",  "Borville",
         "Bulblin",   "Butterfly", "CastleTown", "Charlo",     "Cheese",     "Chilfos",    "Chu",      "Chudley",   "Clawshot",
@@ -24,7 +23,7 @@ namespace randomizer::seedgen::seed
         "Telma",     "Temple",    "TileWorm",   "Toadpoli",   "Trill",      "Twilight",   "Uli",      "WolfLink",  "Zant",
         "Zelda",     "Zora"};
 
-    static const std::vector<std::string> adjectives = {
+    static constexpr std::array adjectives = {
         "Abnormal",   "Absent",     "Absolute",   "Abstract",   "Absurd",     "Accurate",   "Active",     "Actual",
         "Adjacent",   "Aesthetic",  "Aggressive", "Alert",      "Alien",      "Alternate",  "Amazing",    "Ambitious",
         "Amusing",    "Ancient",    "Angry",      "Anxious",    "Apparent",   "Artistic",   "Astute",     "Atomic",

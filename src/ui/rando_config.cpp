@@ -421,6 +421,8 @@ Modal* RandomizerWindow::show_seed_gen_modal(std::string_view message) {
         },
         .icon = "verifying",
     })));
+    // Allow manual line breaks in this modal for error messages
+    modal->root()->SetProperty("white-space", "pre-line");
 
     if (auto* doc = top_document()) {
         doc->focus();
@@ -1189,7 +1191,7 @@ void RandomizerWindow::update() {
             m_genSeedModal->set_icon("error");
         }
 
-        m_genSeedModal->set_body(generationStatusMsg);
+        m_genSeedModal->set_body(escape(generationStatusMsg));
         m_genSeedModal->add_action({
             .label = "OK",
             .onPressed = [this](Modal& modal) {

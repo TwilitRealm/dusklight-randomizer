@@ -49,7 +49,7 @@ namespace randomizer::logic::entrance
         ALL,
     };
 
-    extern std::unordered_set<Type> NON_ASSUMED_TYPES;
+    static const std::unordered_set NON_ASSUMED_TYPES = {SPAWN, WARP_PORTAL};
 
     /**
      *  @brief Takes a string representation of a Type and returns the

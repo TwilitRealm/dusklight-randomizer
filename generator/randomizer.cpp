@@ -106,7 +106,11 @@ namespace randomizer
         // Process Plando Data for all worlds
         if (this->_config.IsUsingPlandomizer())
         {
-            logic::plandomizer::LoadPlandomizerData(this->_worlds, this->_config.GetPlandomizerPath());
+            try {
+                logic::plandomizer::LoadPlandomizerData(this->_worlds, this->_config.GetPlandomizerPath());
+            } catch (const std::runtime_error& e) {
+                throw std::runtime_error("Plandomizer Error: " + std::string(e.what()));
+            }
         }
 
         // Pre Entrance Shuffle Tasks
@@ -118,7 +122,7 @@ namespace randomizer
         utility::platform::Log("Shuffling Entrances...");
         for (auto& world : this->_worlds)
         {
-            logic::entrance_shuffle::ShuffleWorldEntrances(world.get(), this->_worlds);
+            logic::entrance_shuffle::ShuffleWorldEntrances(world.get());
         }
 
         // Post Entrance Shuffle Tasks

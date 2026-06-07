@@ -4,14 +4,12 @@
 
 #include "../utility/yaml.hpp"
 #include "../utility/file.hpp"
-#include "../utility/log.hpp"
 
 namespace randomizer::logic::plandomizer
 {
     void LoadPlandomizerData(world::WorldPool& worlds, const fspath& filepath, const bool& ignoreErrors /*false*/)
     {
         // Verify the file exists before trying to open it
-        // TODO: TRY CATCH HERE
         utility::file::Verify(filepath);
 
         auto plandoTree = LoadYAML(filepath);
@@ -33,8 +31,8 @@ namespace randomizer::logic::plandomizer
                             return;
                         }
 
-                        throw std::runtime_error("Plandomizer file locations for " + worldStr +
-                                                 " is not a map. Please check your syntax before trying again.");
+                        throw std::runtime_error("Locations for " + worldStr +
+                                                 " is not a map. Please check your plandomizer file syntax.");
                     }
 
                     for (const auto& locationNode : locations)
@@ -50,7 +48,7 @@ namespace randomizer::logic::plandomizer
                             }
                             else
                             {
-                                throw std::runtime_error("Plandomizer Error: Missing key \"item\" in node:\n" +
+                                throw std::runtime_error("Missing key \"item\" in node:\n" +
                                                          YAML::Dump(locationNode));
                             }
 
@@ -59,7 +57,7 @@ namespace randomizer::logic::plandomizer
                                 worldId = locationNode.second["World"].as<int>();
                                 if (worldId < 1 || worldId > worlds.size())
                                 {
-                                    std::string errorMsg = "Plandomizer Error: Bad World ID \"" + std::to_string(worldId) +
+                                    std::string errorMsg = "Bad World ID \"" + std::to_string(worldId) +
                                                            "\"\nOnly " + std::to_string(worlds.size()) +
                                                            " worlds are being generated.";
                                     throw std::runtime_error(errorMsg);

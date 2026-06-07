@@ -137,10 +137,10 @@ namespace randomizer::logic::world
         entrance::Entrance* GetEntrance(const std::string& originalName);
         int GetNewEntranceID();
         entrance::EntrancePool GetShuffleableEntrances(const entrance::Type& type,
-                                                                     const bool& onlyPrimary = false);
+                                                       bool onlyPrimary = false);
         entrance::EntrancePool GetShuffledEntrances(
             const entrance::Type& type = entrance::Type::ALL,
-            const bool& onlyPrimary = false);
+            bool onlyPrimary = false);
         std::unordered_map<entrance::Entrance*, int>& GetExitTimeFormCache();
 
         int GetMacroIndex(const std::string& macroName) const;
@@ -149,6 +149,7 @@ namespace randomizer::logic::world
         std::string GetEventName(const int& eventIndex);
 
         seedgen::settings::Setting& Setting(const std::string& settingName);
+        bool AnyEntranceRandomizerEnabled();
 
         TextDatabase& GetTextDatabase() { return this->_textDatabase; }
         const std::string& GetText(const std::string& name, Text::Type type = Text::STANDARD, Text::Language language = Text::ENGLISH) {

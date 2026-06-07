@@ -633,6 +633,21 @@ namespace randomizer::logic::world
             location->SetCurrentItem(item);
             utility::container::Erase(this->_itemPool, item);
         }
+
+        // If no world has entrance randomizer enabled, check to see if our plandomized item placements work
+        if (std::ranges::none_of(this->GetRandomizer()->GetWorlds(), [](const auto& world) {
+            return world->AnyEntranceRandomizerEnabled();
+        })) {
+            if (!this->_plandomizerLocations.empty() && Setting("Logic Rules") != "No Logic") {
+                auto& worlds = this->GetRandomizer()->GetWorlds();
+                auto completeItemPool = item_pool::GetCompleteItemPool(worlds);
+                auto verifyLogicError = search::VerifyLogic(&worlds, completeItemPool);
+                if (verifyLogicError.has_value())
+                {
+                    throw std::runtime_error("Plandomizer item placements do not work! Reason:\n" + verifyLogicError.value());
+                }
+            }
+        }
     }
 
     void World::SetNonProgressLocations()
@@ -1194,7 +1209,7 @@ namespace randomizer::logic::world
     }
 
     entrance::EntrancePool World::GetShuffleableEntrances(const entrance::Type& type,
-                                                                        const bool& onlyPrimary /* = false */)
+                                                          bool onlyPrimary /* = false */)
     {
         entrance::EntrancePool shuffleableEntrances = {};
         for (const auto& [areaName, area] : this->GetAreaTable())
@@ -1213,7 +1228,7 @@ namespace randomizer::logic::world
 
     entrance::EntrancePool World::GetShuffledEntrances(
         const entrance::Type& type /* = entrance::Type::ALL */,
-        const bool& onlyPrimary /* = false */)
+        bool onlyPrimary /* = false */)
     {
         auto entrances = this->GetShuffleableEntrances(type, onlyPrimary);
 
@@ -1281,5 +1296,15 @@ namespace randomizer::logic::world
             throw std::runtime_error("Setting \"" + settingName + "\" is not a known setting");
         }
         return settings.GetMap().at(settingName);
+    }
+
+    bool World::AnyEntranceRandomizerEnabled() {
+        return Setting("Randomize Starting Spawn") != "Off" ||
+               Setting("Randomize Dungeon Entrances") != "Off" ||
+               Setting("Randomize Boss Entrances") != "Off" ||
+               Setting("Randomize Grotto Entrances") != "Off" ||
+               Setting("Randomize Cave Entrances") != "Off" ||
+               Setting("Randomize Interior Entrances") != "Off" ||
+               Setting("Randomize Overworld Entrances") != "Off";
     }
 } // namespace randomizer::logic::world

@@ -7,7 +7,6 @@
 
 namespace randomizer::logic::entrance
 {
-    std::unordered_set<Type> NON_ASSUMED_TYPES = {Type::SPAWN, Type::WARP_PORTAL};
 
     Type TypeFromStr(const std::string& str)
     {

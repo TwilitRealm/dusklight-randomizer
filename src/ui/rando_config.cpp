@@ -1198,6 +1198,7 @@ void RandomizerWindow::update() {
                 m_genSeedModal = nullptr;
             }
         });
+        m_genSeedModal->focus();
 
         seedGenStatus.store(SeedGenerateStatus::Ready);
     }

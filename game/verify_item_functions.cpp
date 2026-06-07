@@ -8,10 +8,9 @@ bool haveItem(u32 item) {
     return checkItemGet((u8)item, 1);
 }
 
-u32 getProgressiveSword() {
-    static constexpr u8 progressiveItemsList[] = {dItemNo_Randomizer_WOOD_STICK_e, dItemNo_Randomizer_SWORD_e, dItemNo_Randomizer_MASTER_SWORD_e};
-
-    u32 listLength = sizeof(progressiveItemsList) / sizeof(progressiveItemsList[0]);
+template<typename T, size_t N>
+u32 getProgressiveItem(const std::array<T, N>& progressiveItemsList) {
+    u32 listLength = N;
     for (int i = 0; i < listLength; i++)
     {
         const u32 item = progressiveItemsList[i];
@@ -22,48 +21,42 @@ u32 getProgressiveSword() {
     }
 
     // All previous obtained, so return last upgrade
-    return dItemNo_Randomizer_LIGHT_SWORD_e;
+    return progressiveItemsList[listLength - 1];
+}
+
+u32 getProgressiveSword() {
+    static constexpr std::array progressiveItemsList = {
+        dItemNo_Randomizer_WOOD_STICK_e,
+        dItemNo_Randomizer_SWORD_e,
+        dItemNo_Randomizer_MASTER_SWORD_e,
+        dItemNo_Randomizer_LIGHT_SWORD_e,
+    };
+
+    return getProgressiveItem(progressiveItemsList);
 };
 
 u32 getProgressiveBow() {
-    static const u8 progressiveItemsList[] = {dItemNo_Randomizer_BOW_e, dItemNo_Randomizer_ARROW_LV2_e};
+    static constexpr std::array progressiveItemsList = {
+        dItemNo_Randomizer_BOW_e,
+        dItemNo_Randomizer_ARROW_LV2_e,
+        dItemNo_Randomizer_ARROW_LV3_e,
+    };
 
-    u32 listLength = sizeof(progressiveItemsList) / sizeof(progressiveItemsList[0]);
-    for (int i = 0; i < listLength; i++)
-    {
-        const u32 item = progressiveItemsList[i];
-        if (!haveItem(item))
-        {
-            return item;
-        }
-    }
-
-    // All previous obtained, so return last upgrade
-    return dItemNo_Randomizer_ARROW_LV3_e;
+    return getProgressiveItem(progressiveItemsList);
 };
 
 u32 getProgressiveSkill() {
-    static const u8 progressiveItemsList[] = {
+    static constexpr std::array progressiveItemsList = {
         dItemNo_Randomizer_ENDING_BLOW_e,
         dItemNo_Randomizer_SHIELD_ATTACK_e,
         dItemNo_Randomizer_BACK_SLICE_e,
         dItemNo_Randomizer_HELM_SPLITTER_e,
         dItemNo_Randomizer_MORTAL_DRAW_e,
-        dItemNo_Randomizer_JUMP_STRIKE_e
+        dItemNo_Randomizer_JUMP_STRIKE_e,
+        dItemNo_Randomizer_GREAT_SPIN_e,
     };
 
-    u32 listLength = sizeof(progressiveItemsList) / sizeof(progressiveItemsList[0]);
-    for (int i = 0; i < listLength; i++)
-    {
-        const u32 item = progressiveItemsList[i];
-        if (!haveItem(item))
-        {
-            return item;
-        }
-    }
-
-    // All previous obtained, so return last upgrade
-    return dItemNo_Randomizer_GREAT_SPIN_e;
+    return getProgressiveItem(progressiveItemsList);
 };
 
 u32 getProgressiveSkybook() {
@@ -87,58 +80,34 @@ u32 getProgressiveSkybook() {
 };
 
 u32 getProgressiveKeyShard() {
-    static const u8 progressiveItemsList[] = {dItemNo_Randomizer_L2_KEY_PIECES1_e, dItemNo_Randomizer_L2_KEY_PIECES2_e};
+    static constexpr std::array progressiveItemsList = {
+        dItemNo_Randomizer_L2_KEY_PIECES1_e,
+        dItemNo_Randomizer_L2_KEY_PIECES2_e,
+        dItemNo_Randomizer_LV2_BOSS_KEY_e,
+    };
 
-    u32 listLength = sizeof(progressiveItemsList) / sizeof(progressiveItemsList[0]);
-    for (int i = 0; i < listLength; i++)
-    {
-        const u32 item = progressiveItemsList[i];
-        if (!haveItem(item))
-        {
-            return item;
-        }
-    }
-
-    // All previous obtained, so return last upgrade
-    return dItemNo_Randomizer_LV2_BOSS_KEY_e;
+    return getProgressiveItem(progressiveItemsList);
 };
 
 u32 getProgressiveMirrorShard() {
-    static const u8 progressiveItemsList[] = {
+    static constexpr std::array progressiveItemsList = {
         dItemNo_Randomizer_MIRROR_PIECE_1_e,
         dItemNo_Randomizer_MIRROR_PIECE_2_e,
-        dItemNo_Randomizer_MIRROR_PIECE_3_e
+        dItemNo_Randomizer_MIRROR_PIECE_3_e,
+        dItemNo_Randomizer_MIRROR_PIECE_4_e,
     };
 
-    u32 listLength = sizeof(progressiveItemsList) / sizeof(progressiveItemsList[0]);
-    for (int i = 0; i < listLength; i++)
-    {
-        const u32 item = progressiveItemsList[i];
-        if (!haveItem(item))
-        {
-            return item;
-        }
-    }
-
-    // All previous obtained, so return last upgrade
-    return dItemNo_Randomizer_MIRROR_PIECE_4_e;
+    return getProgressiveItem(progressiveItemsList);
 };
 
 u32 getProgressiveFusedShadow() {
-    static const u8 progressiveItemsList[] = {dItemNo_Randomizer_FUSED_SHADOW_1_e, dItemNo_Randomizer_FUSED_SHADOW_2_e};
+    static constexpr std::array progressiveItemsList = {
+        dItemNo_Randomizer_FUSED_SHADOW_1_e,
+        dItemNo_Randomizer_FUSED_SHADOW_2_e,
+        dItemNo_Randomizer_FUSED_SHADOW_3_e,
+    };
 
-    u32 listLength = sizeof(progressiveItemsList) / sizeof(progressiveItemsList[0]);
-    for (int i = 0; i < listLength; i++)
-    {
-        const u32 item = progressiveItemsList[i];
-        if (!haveItem(item))
-        {
-            return item;
-        }
-    }
-
-    // All previous obtained, so return last upgrade
-    return dItemNo_Randomizer_FUSED_SHADOW_3_e;
+    return getProgressiveItem(progressiveItemsList);
 };
 
 u8 getWarashibeItemCount() {

@@ -1107,7 +1107,7 @@ namespace randomizer::logic::world
         return this->_itemTable.at(name).get();
     }
 
-    item::Item* World::GetItem(uint8_t id, const bool& ignoreError /*= false*/) {
+    item::Item* World::GetItem(uint16_t id, const bool& ignoreError /*= false*/) {
         if (!this->_itemIdTable.contains(id))
         {
             if (!ignoreError)

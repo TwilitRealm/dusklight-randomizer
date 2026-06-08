@@ -69,6 +69,8 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
     const std::unordered_map<u16, u16> u16ShopOverrides(this->mShopOverrides.begin(), this->mShopOverrides.end());
     out["mShopOverrides"] = u16ShopOverrides;
 
+    out["mTwilitInsectOverrides"] = mTwilitInsectOverrides;
+
     for (const auto& [key, data] : this->mFlowItemMessageOverrides) {
         auto node = out["mFlowItemMessageOverrides"][key];
         node["itemId"] = data.itemId;
@@ -208,6 +210,12 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         u16 key = shopNode.first.as<u16>();
         u8 itemId = shopNode.second.as<u8>();
         this->mShopOverrides[key] = itemId;
+    }
+
+    for (const auto& twilitInsectNode : in["mTwilitInsectOverrides"]) {
+        u16 key = twilitInsectNode.first.as<u16>();
+        u16 itemId = twilitInsectNode.second.as<u16>();
+        this->mTwilitInsectOverrides[key] = itemId;
     }
 
     // Helper function for getting the item data out of a YAML node
@@ -1068,6 +1076,18 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
                 u8 originalItem = shopNode["Item"].as<u8>();
                 u16 key = (stage << 8) | originalItem;
                 randoData.mShopOverrides[key] = location->GetCurrentItem()->GetID();
+            }
+        }
+
+        // Twilit Insect Overrides
+        // Keyed by u16 of 0xFF00 (stage index) and 0x00FF (flag, which is a tbox id)
+        if (location->HasCategories("Twilit Insect")) {
+            for (const auto& twilitInsectNode : metaData["Twilit Insect"]) {
+                u8 stage = twilitInsectNode["Stage"].as<u8>();
+                u8 tboxId = twilitInsectNode["Flag"].as<u8>();
+                u16 itemId = location->GetCurrentItem()->GetID();
+                u16 key = (stage << 8) | tboxId;
+                randoData.mTwilitInsectOverrides[key] = itemId;
             }
         }
 

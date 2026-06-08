@@ -124,7 +124,7 @@ namespace randomizer::logic::world
         dungeon::Dungeon* GetDungeon(const std::string& name);
         const std::map<std::string, std::unique_ptr<dungeon::Dungeon>>& GetDungeonTable() const;
         item::Item* GetItem(const std::string& name, const bool& ignoreError = false);
-        item::Item* GetItem(uint8_t id, const bool& ignoreError = false);
+        item::Item* GetItem(uint16_t id, const bool& ignoreError = false);
         item::Item* GetShadowCrystal();
         item::Item* GetGameWinningItem() const;
         item_pool::ItemPool& GetItemPool();

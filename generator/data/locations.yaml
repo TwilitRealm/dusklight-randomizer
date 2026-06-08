@@ -319,126 +319,140 @@
   Categories:
     - Overworld
     - Faron Woods
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 45
+        Flag: 0x1
 
 - Name: South Faron Woods Twilit Insect in Tunnel 2
   Original Item: Faron Twilight Tear
   Categories:
     - Overworld
     - Faron Woods
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 45
+        Flag: 0x6
 
 - Name: Faron Woods Coros House Interior Twilit Insect 1
   Original Item: Faron Twilight Tear
   Categories:
     - Overworld
     - Faron Woods
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 67
+        Flag: 0x9
 
 - Name: Faron Woods Coros House Interior Twilit Insect 2
   Original Item: Faron Twilight Tear
   Categories:
     - Overworld
     - Faron Woods
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 67
+        Flag: 0x4
 
 - Name: South Faron Woods Coros House Exterior Twilit Insect
   Original Item: Faron Twilight Tear
   Categories:
     - Overworld
     - Faron Woods
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 45
+        Flag: 0x0
 
 - Name: South Faron Woods Twilit Insect Behind Gate 1
   Original Item: Faron Twilight Tear
   Categories:
     - Overworld
     - Faron Woods
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 45
+        Flag: 0xB
 
 - Name: South Faron Woods Twilit Insect Behind Gate 2
   Original Item: Faron Twilight Tear
   Categories:
     - Overworld
     - Faron Woods
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 45
+        Flag: 0x5
 
 - Name: Faron Mist Twilit Insect on Wall 1
   Original Item: Faron Twilight Tear
   Categories:
     - Overworld
     - Faron Woods
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 45
+        Flag: 0x12
 
 - Name: Faron Mist Twilit Insect on Wall 2
   Original Item: Faron Twilight Tear
   Categories:
     - Overworld
     - Faron Woods
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 45
+        Flag: 0x11
 
 - Name: Faron Mist Twilit Insect on Center Stump 1
   Original Item: Faron Twilight Tear
   Categories:
     - Overworld
     - Faron Woods
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 45
+        Flag: 0xE
 
 - Name: Faron Mist Twilit Insect on Center Stump 2
   Original Item: Faron Twilight Tear
   Categories:
     - Overworld
     - Faron Woods
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 45
+        Flag: 0xD
 
 - Name: Faron Mist Twilit Insect on Center Stump 3
   Original Item: Faron Twilight Tear
   Categories:
     - Overworld
     - Faron Woods
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 45
+        Flag: 0xC
 
 - Name: Faron Mist Burrowing Twilit Insect 1
   Original Item: Faron Twilight Tear
   Categories:
     - Overworld
     - Faron Woods
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 45
+        Flag: 0x17
 
 - Name: Faron Mist Burrowing Twilit Insect 2
   Original Item: Faron Twilight Tear
   Categories:
     - Overworld
     - Faron Woods
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 45
+        Flag: 0x8
 
 - Name: North Faron Woods Twilit Insect 1
   Original Item: Faron Twilight Tear
@@ -447,7 +461,9 @@
     - Faron Woods
     - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 45
+        Flag: 0x15
 
 - Name: North Faron Woods Twilit Insect 2
   Original Item: Faron Twilight Tear
@@ -456,7 +472,9 @@
     - Faron Woods
     - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 45
+        Flag: 0x14
 
 - Name: South Faron Warp Portal
   Original Item: South Faron Portal
@@ -900,144 +918,160 @@
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 75
+        Flag: 0x2
 
 - Name: Sanctuary Basement Twilit Insect 2
   Original Item: Eldin Twilight Tear
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 75
+        Flag: 0x3
 
 - Name: Sanctuary Basement Twilit Insect 3
   Original Item: Eldin Twilight Tear
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 75
+        Flag: 0xC
 
 - Name: Kakariko Graveyard Twilit Insect
   Original Item: Eldin Twilight Tear
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 48
+        Flag: 0x6
 
 - Name: Kakariko Malo Mart Twilit Insect
   Original Item: Eldin Twilight Tear
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 68
+        Flag: 0x9
 
 - Name: Kakariko Inn Pipe Twilit Insect
   Original Item: Eldin Twilight Tear
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 68
+        Flag: 0x8
 
 - Name: Kakariko Inn Bedroom Twilit Insect
   Original Item: Eldin Twilight Tear
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 68
+        Flag: 0x0
 
 - Name: Kakariko Bug House Twilit Insect
   Original Item: Eldin Twilight Tear
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 68
+        Flag: 0x1
 
 - Name: Barnes Bomb Shop Twilit Insect
   Original Item: Eldin Twilight Tear
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 68
+        Flag: 0x7
 
 - Name: Kakariko Destroyed Building Twilit Insect 1
   Original Item: Eldin Twilight Tear
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 46
+        Flag: 0x4
 
 - Name: Kakariko Destroyed Building Twilit Insect 2
   Original Item: Eldin Twilight Tear
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 46
+        Flag: 0x5
 
 - Name: Kakariko Destroyed Building Twilit Insect 3
   Original Item: Eldin Twilight Tear
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 46
+        Flag: 0xB
 
 - Name: Kakariko Watchtower Twilit Insect
   Original Item: Eldin Twilight Tear
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 68
+        Flag: 0xA
 
 - Name: Death Mountain Trail Twilit Insect Near Howling Stone
   Original Item: Eldin Twilight Tear
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 47
+        Flag: 0xF
 
 - Name: Death Mountain Trail Twilit Insect on Wall
   Original Item: Eldin Twilight Tear
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 47
+        Flag: 0xE
 
 - Name: Death Mountain Trail Twilit Insect in Hot Spring
   Original Item: Eldin Twilight Tear
   Categories:
     - Overworld
     - Eldin Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 47
+        Flag: 0x10
 
 - Name: Kakariko Gorge Warp Portal
   Original Item: Kakariko Gorge Portal
@@ -1895,135 +1929,150 @@
   Categories:
     - Overworld
     - Lanayru Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 53
+        Flag: 0x2C
 
 - Name: Lake Hylia Twilit Insect Between Bridges
   Original Item: Lanayru Twilight Tear
   Categories:
     - Overworld
     - Lanayru Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 52
+        Flag: 0x2F
 
 - Name: Lake Hylia Burrowing Twilit Insect
   Original Item: Lanayru Twilight Tear
   Categories:
     - Overworld
     - Lanayru Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 52
+        Flag: 0x30
 
 - Name: Lake Hylia Twilit Insect Behind Canon
   Original Item: Lanayru Twilight Tear
   Categories:
     - Overworld
     - Lanayru Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 52
+        Flag: 0x32
 
 - Name: Lake Hylia Twilit Insect on Docks
   Original Item: Lanayru Twilight Tear
   Categories:
     - Overworld
     - Lanayru Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 52
+        Flag: 0x31
 
 - Name: Lake Hylia Twilit Bloat
   Original Item: Lanayru Twilight Tear
   Categories:
     - Overworld
     - Lanayru Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 52
+        Flag: 0x35
 
 - Name: Zoras River Twilit Insect 1
   Original Item: Lanayru Twilight Tear
   Categories:
     - Overworld
     - Lanayru Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 49
+        Flag: 0x3D
 
 - Name: Zoras River Twilit Insect 2
   Original Item: Lanayru Twilight Tear
   Categories:
     - Overworld
     - Lanayru Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 49
+        Flag: 0x36
 
 - Name: Zoras River Twilit Insect 3
   Original Item: Lanayru Twilight Tear
   Categories:
     - Overworld
     - Lanayru Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 49
+        Flag: 0x3A
 
 - Name: Zoras River Twilit Insect 4
   Original Item: Lanayru Twilight Tear
   Categories:
     - Overworld
     - Lanayru Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 49
+        Flag: 0x39
 
 - Name: Upper Zoras River Twilit Insect
   Original Item: Lanayru Twilight Tear
   Categories:
     - Overworld
     - Lanayru Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 61
+        Flag: 0x37
 
 - Name: Zoras Domain Twilit Insect near Lilypads 1
   Original Item: Lanayru Twilight Tear
   Categories:
     - Overworld
     - Lanayru Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 50
+        Flag: 0x3B
 
 - Name: Zoras Domain Twilit Insect near Lilypads 2
   Original Item: Lanayru Twilight Tear
   Categories:
     - Overworld
     - Lanayru Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 50
+        Flag: 0x2E
 
 - Name: Zoras Domain Burrowing Twilit Insect
   Original Item: Lanayru Twilight Tear
   Categories:
     - Overworld
     - Lanayru Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 50
+        Flag: 0x2D
 
 - Name: Zoras Domain Twilit Insect on West Ledge
   Original Item: Lanayru Twilight Tear
   Categories:
     - Overworld
     - Lanayru Province
-    - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 50
+        Flag: 0x3C
 
 - Name: Zoras Domain Throne Room Twilit Insect
   Original Item: Lanayru Twilight Tear
@@ -2032,7 +2081,9 @@
     - Lanayru Province
     - Twilit Insect
   Metadata:
-    - None
+    Twilit Insect:
+      - Stage: 50
+        Flag: 0x3E
 
 - Name: Lanayru Field Behind Gate Underwater Chest
   Original Item: Orange Rupee

@@ -477,6 +477,17 @@ randomizer::logic::item_pool::ItemPool getSaveItemPool(randomizer::logic::world:
         break;
     }
 
+    // Twilight Tears
+    for (int i = 0; i < dComIfGs_getLightDropNum(0); ++i) {
+        pool.push_back(world->GetItem("Faron Twilight Tear", true));
+    }
+    for (int i = 0; i < dComIfGs_getLightDropNum(1); ++i) {
+        pool.push_back(world->GetItem("Eldin Twilight Tear", true));
+    }
+    for (int i = 0; i < dComIfGs_getLightDropNum(2); ++i) {
+        pool.push_back(world->GetItem("Lanayru Twilight Tear", true));
+    }
+
     return pool;
 }
 
@@ -520,6 +531,11 @@ bool isLocationObtained(randomizer::logic::location::Location* location) {
         auto stageId = getStageSaveId(itemFlagNode["Stage"].as<u8>());
         return tracker_isStageItem(stageId, flag);
     }
+    if (auto& twilitInsectNode = locationMeta["Twilit Insect"]) {
+        auto flag = twilitInsectNode[0]["Flag"].as<u8>();
+        auto stageId = getStageSaveId(twilitInsectNode[0]["Stage"].as<u8>());
+        return dComIfGs_isStageTbox(stageId, flag);
+    }
     return false;
 }
 
@@ -545,6 +561,16 @@ int getLocationItem(randomizer::logic::location::Location* location) {
         auto key = (stage << 8) | flag;
         return context.mFreestandingItemOverrides[key];
     }
+    if (auto& bugRewardNode = locationMeta["Bug Reward"]) {
+        u8 bugItemId = bugRewardNode[0]["Item Id"].as<u8>();
+        return context.mBugRewardOverrides[bugItemId];
+    }
+    if (auto& skyCharacterNode = locationMeta["Sky Character"]) {
+        u8 stageIdx = skyCharacterNode[0]["Stage"].as<u8>();
+        u8 roomNo = skyCharacterNode[0]["Room"].as<u8>();
+        u16 key = (stageIdx << 8) | roomNo;
+        return context.mSkyCharacterOverrides[key];
+    }
     if (auto& wolfNode = locationMeta["Golden Wolf"]) {
         auto flag = wolfNode[0]["Flag"].as<u16>();
         return context.mGoldenWolfOverrides[flag];
@@ -555,17 +581,12 @@ int getLocationItem(randomizer::logic::location::Location* location) {
         u16 key = (stage << 8) | originalItem;
         return context.mShopOverrides[key];
     }
-    if (auto& skyCharacterNode = locationMeta["Sky Character"]) {
-        u8 stageIdx = skyCharacterNode[0]["Stage"].as<u8>();
-        u8 roomNo = skyCharacterNode[0]["Room"].as<u8>();
-        u16 key = (stageIdx << 8) | roomNo;
-        return context.mSkyCharacterOverrides[key];
+    if (auto& twilitInsectNode = locationMeta["Twilit Insect"]) {
+        auto flag = twilitInsectNode[0]["Flag"].as<u8>();
+        auto stage = twilitInsectNode[0]["Stage"].as<u8>();
+        auto key = (stage << 8) | flag;
+        return context.mTwilitInsectOverrides[key];
     }
-    if (auto& bugRewardNode = locationMeta["Bug Reward"]) {
-        u8 bugItemId = bugRewardNode[0]["Item Id"].as<u8>();
-        return context.mBugRewardOverrides[bugItemId];
-    }
-
     if (auto& flwNode = locationMeta["FLW Message"]) {
         auto group = flwNode[0]["Group"].as<u16>();
         auto messageId = flwNode[0]["Message Id"].as<u16>();

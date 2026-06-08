@@ -731,7 +731,7 @@
   Metadata:
     Freestanding Item:
       - Stage: 56
-        Flag: 0x9F
+        Flag: 0x9E
 
 - Name: Faron Field Male Beetle
   Original Item: Male Beetle
@@ -743,7 +743,7 @@
   Metadata:
     Freestanding Item:
       - Stage: 56
-        Flag: 0x9E
+        Flag: 0x9F
 
 - Name: Faron Field Poe
   Original Item: Poe Soul

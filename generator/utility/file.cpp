@@ -2,7 +2,9 @@
 #include "../utility/log.hpp"
 #include "../utility/path.hpp"
 #include "../utility/platform.hpp"
+#ifdef DEVKITPRO
 #include "../utility/thread_local.hpp"
+#endif
 
 #include <cstring>
 #include <regex>
@@ -31,6 +33,7 @@ namespace randomizer::utility::file
         return false;
     };
 
+#ifdef DEVKITPRO
     static constexpr int FILE_BUF_SIZE = 25 * 1024 * 1024;
     class AlignedBufferWrapper
     {
@@ -41,6 +44,7 @@ namespace randomizer::utility::file
         char* getBuffer() { return buffer; }
     };
     static ThreadLocal<AlignedBufferWrapper, DataIDs::FILE_OP_BUFFER> buf;
+#endif
 
     bool copy_file(const fspath& from, const fspath& to)
     {
@@ -189,11 +193,15 @@ namespace randomizer::utility::file
             return 1;
         }
 
+#ifdef DEVKITPRO
         while (file)
         {
             file.read(buf.get().getBuffer(), FILE_BUF_SIZE);
             fileContents.write(buf.get().getBuffer(), file.gcount());
         }
+#else
+        fileContents << file.rdbuf();
+#endif
 
         return 0;
     }

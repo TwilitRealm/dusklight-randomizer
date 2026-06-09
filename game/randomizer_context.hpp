@@ -191,6 +191,10 @@ public:
         int stage{-1};
         int flag{-1};
     } mTrackerTempSwitchFlag;
+    struct {
+        int stage{-1};
+        int flag{-1};
+    } mTrackerTempItemFlag;
 };
 
 extern RandomizerState g_randomizerState;

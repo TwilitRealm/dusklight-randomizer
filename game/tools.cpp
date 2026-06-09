@@ -724,6 +724,11 @@ bool tracker_isStageSwitch(int stage, int flag) {
 }
 
 bool tracker_isStageItem(int stage, int flag) {
+    if (g_randomizerState.mTrackerTempItemFlag.flag == flag &&
+         g_randomizerState.mTrackerTempItemFlag.stage == stage) {
+        return true;
+    }
+
     if (dComIfGp_getStageStagInfo() && stage == dStage_stagInfo_GetSaveTbl(dComIfGp_getStageStagInfo())) {
         return dComIfGs_isItem(flag, -1);
     } else {

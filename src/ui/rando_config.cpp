@@ -13,6 +13,7 @@
 #include "modal.hpp"
 #include "number_button.hpp"
 #include "pane.hpp"
+#include "rando_seed_generation.hpp"
 #include "string_button.hpp"
 
 namespace dusk::ui {
@@ -24,18 +25,7 @@ struct ConfigBoolProps {
     std::function<bool()> isDisabled;
 };
 
-static std::atomic seedGenStatus = SeedGenerateStatus::Ready;
-static std::string generationStatusMsg{};
 
-static void StartSeedGeneration() {
-    if (GenerateAndWriteSeed(generationStatusMsg)) {
-        seedGenStatus.store(SeedGenerateStatus::Success);
-    } else {
-        seedGenStatus.store(SeedGenerateStatus::Error);
-    }
-
-    DuskLog.debug("{}", generationStatusMsg);
-}
 
 randomizer::seedgen::settings::Setting* FindSetting(const std::string& key) {
     if (key.empty()) {
@@ -408,27 +398,6 @@ void rando_starting_item_number_toggle(Pane& leftPane, Pane& rightPane, std::str
     .listen(Rml::EventId::Change, [&rightPane](Rml::Event&) {
         rando_starting_inventory_update_right_pane(rightPane);
     });
-}
-
-Modal* RandomizerWindow::show_seed_gen_modal(std::string_view message) {
-    auto* modal = dynamic_cast<Modal*>(&push_document(std::make_unique<Modal>(Modal::Props{
-        .title = "Randomizer",
-        .bodyRml = escape(message),
-        .onDismiss = [this](Modal& modal) {
-            mDoAud_seStartMenu(kSoundWindowClose);
-            modal.pop();
-            m_genSeedModal = nullptr;
-        },
-        .icon = "verifying",
-    })));
-    // Allow manual line breaks in this modal for error messages
-    modal->root()->SetProperty("white-space", "pre-line");
-
-    if (auto* doc = top_document()) {
-        doc->focus();
-    }
-
-    return modal;
 }
 
 struct ExcludedTabLocData {
@@ -822,11 +791,7 @@ RandomizerWindow::RandomizerWindow() {
                 DuskLog.info("Created new Seed for generator.");
             }
 
-            seedGenStatus.store(SeedGenerateStatus::Generating);
-            std::thread randoGenerationThread(StartSeedGeneration);
-            randoGenerationThread.detach();
-
-            m_genSeedModal = show_seed_gen_modal("Generating Seed...");
+            GenerateRandomizerSeed();
 
         }),rightPane, [](Pane& pane) {
             pane.clear();
@@ -1173,36 +1138,6 @@ RandomizerWindow::RandomizerWindow() {
                 g_randomizerState.mShowTracker = !g_randomizerState.mShowTracker;
             });
         });
-    }
-}
-
-void RandomizerWindow::update() {
-    Window::update();
-
-    auto curSeedGenStatus = seedGenStatus.load();
-    if (curSeedGenStatus == SeedGenerateStatus::Success ||
-        curSeedGenStatus == SeedGenerateStatus::Error)
-    {
-        if (curSeedGenStatus == SeedGenerateStatus::Success) {
-            mDoAud_seStartMenu(kSoundSeedGenerateSuccess);
-            m_genSeedModal->set_icon("celebration");
-        } else {
-            mDoAud_seStartMenu(kSoundSeedGenerateError);
-            m_genSeedModal->set_icon("error");
-        }
-
-        m_genSeedModal->set_body(escape(generationStatusMsg));
-        m_genSeedModal->add_action({
-            .label = "OK",
-            .onPressed = [this](Modal& modal) {
-                mDoAud_seStartMenu(kSoundWindowClose);
-                modal.pop();
-                m_genSeedModal = nullptr;
-            }
-        });
-        m_genSeedModal->focus();
-
-        seedGenStatus.store(SeedGenerateStatus::Ready);
     }
 }
 

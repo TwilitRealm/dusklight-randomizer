@@ -6,7 +6,7 @@
 
 namespace randomizer::seedgen::seed
 {
-    static constexpr std::array nouns = {
+    static constexpr const char* nouns[] = {
         "Aeralfos",  "Agitha",    "Ant",        "Argorok",    "Armos",      "Ashei",      "Auru",     "BackSlice", "Bari",
         "Barnes",    "Beamos",    "Beth",       "BigBaba",    "Blizzeta",   "Bo",         "Bokoblin", "Bombfish",  "Borville",
         "Bulblin",   "Butterfly", "CastleTown", "Charlo",     "Cheese",     "Chilfos",    "Chu",      "Chudley",   "Clawshot",
@@ -21,9 +21,10 @@ namespace randomizer::seedgen::seed
         "Rutela",    "Sage",      "Sera",       "Shad",       "ShellBlade", "Sketch",     "SkullKid", "Skulltula", "SkyBook",
         "Snail",     "Snowpeak",  "Soal",       "Soldier",    "Spinner",    "Stalfos",    "Stallord", "Talo",      "Tektite",
         "Telma",     "Temple",    "TileWorm",   "Toadpoli",   "Trill",      "Twilight",   "Uli",      "WolfLink",  "Zant",
-        "Zelda",     "Zora"};
+        "Zelda",     "Zora"
+    };
 
-    static constexpr std::array adjectives = {
+    static constexpr const char* adjectives[] = {
         "Abnormal",   "Absent",     "Absolute",   "Abstract",   "Absurd",     "Accurate",   "Active",     "Actual",
         "Adjacent",   "Aesthetic",  "Aggressive", "Alert",      "Alien",      "Alternate",  "Amazing",    "Ambitious",
         "Amusing",    "Ancient",    "Angry",      "Anxious",    "Apparent",   "Artistic",   "Astute",     "Atomic",
@@ -87,7 +88,8 @@ namespace randomizer::seedgen::seed
         "Unlikely",   "Unreal",     "Upbeat",     "Upset",      "Urban",      "Useful",     "Usual",      "Vague",
         "Valid",      "Verbal",     "Vertical",   "Vicious",    "Vigorous",   "Villainous", "Virtual",    "Visible",
         "Vital",      "Vivid",      "Warm",       "Weekly",     "Weird",      "Wholesome",  "Wicked",     "Wise",
-        "Wistful",    "Witty",      "Wonderful",  "Wooden",     "Worried",    "Wrong",      "Young",      "Zany"};
+        "Wistful",    "Witty",      "Wonderful",  "Wooden",     "Worried",    "Wrong",      "Young",      "Zany"
+    };
 
     int GetRandValue(int min, int max) {
         std::uniform_int_distribution<int> distribution(min, max);
@@ -98,9 +100,9 @@ namespace randomizer::seedgen::seed
 
     std::string GenerateSeed()
     {
-        const std::string adjective1 = adjectives[GetRandValue(0, adjectives.size() - 1)];
-        const std::string adjective2 = adjectives[GetRandValue(0, adjectives.size() - 1)];
-        const std::string noun = nouns[GetRandValue(0, nouns.size() - 1)];
+        const std::string adjective1 = adjectives[GetRandValue(0, std::size(adjectives) - 1)];
+        const std::string adjective2 = adjectives[GetRandValue(0, std::size(adjectives) - 1)];
+        const std::string noun = nouns[GetRandValue(0, std::size(nouns) - 1)];
 
         return adjective1 + adjective2 + noun;
     }

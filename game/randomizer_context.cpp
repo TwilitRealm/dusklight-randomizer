@@ -278,8 +278,11 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         }
     }
 
-    DuskLog.debug("Loaded Randomizer Seed {}", this->mHash);
-
+    dusk::ui::push_toast(dusk::ui::Toast{
+        .title = "Randomizer",
+        .content =  fmt::format("Loaded Randomizer Seed {}", this->mHash),
+        .duration = std::chrono::seconds(3),
+    });
     return std::nullopt;
 }
 

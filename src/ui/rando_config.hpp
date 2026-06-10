@@ -5,6 +5,7 @@
 namespace randomizer::seedgen::config {
     class Config;
 }
+class dFile_select_c;
 
 namespace dusk::ui {
 class Pane;
@@ -19,10 +20,21 @@ class Pane;
     class RandomizerWindow  : public Window {
     public:
 
-        RandomizerWindow();
+        explicit RandomizerWindow(dFile_select_c* fileSelectMenu = nullptr);
         void rando_excluded_locations_update_left_pane(Pane& innerLeftPane, Pane& rightPane, bool forceUpdate = false);
         auto& get_locations_for_left_pane();
+
+    protected:
+        dFile_select_c* mFileSelectMenu{nullptr};
     private:
         std::string m_excludedLocationsFilter{};
+    };
+
+    class FileSelectRandomizerWindow : public RandomizerWindow {
+    public:
+        FileSelectRandomizerWindow(dFile_select_c* fileSelectMenu = nullptr);
+
+    protected:
+        bool consume_close_request() override;
     };
 }

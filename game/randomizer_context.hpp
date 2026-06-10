@@ -171,6 +171,7 @@ public:
     void setRoomReloadingState(bool newState) { mRoomReloadingState = newState; }
 
     bool mInitialized{false};
+    int mFileNum{-1};
     u8 mEventItemStatus{};
     bool mHasPendingToDChange{false};
     u8 mTimeChange{};

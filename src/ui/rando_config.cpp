@@ -16,6 +16,8 @@
 #include "rando_seed_generation.hpp"
 #include "string_button.hpp"
 
+#include "d/d_file_select.h"
+
 namespace dusk::ui {
 struct ConfigBoolProps {
     Rml::String key;
@@ -682,111 +684,131 @@ bool focus_closest_child_on_next_pane(Pane& currentPane, Pane& nextPane) {
     return false;
 }
 
-RandomizerWindow::RandomizerWindow() {
+void delete_seed_callback(Pane& pane) {
+    pane.clear();
+    std::filesystem::path seedDirectory = GetRandomizerSeedsPath();
+
+    if (std::filesystem::is_empty(seedDirectory)) {
+        pane.add_rml(
+        "No seeds generated.");
+        return;
+    }
+
+    pane.add_rml(
+    "Delete any seed not currently being used.");
+
+    for (const auto& entry : std::filesystem::directory_iterator(seedDirectory)) {
+        if (entry.is_directory()) {
+            std::string hash = entry.path().filename().string();
+
+            // If the hash is attached to any files, add the file number(s) afterward
+            auto& seedHashes = getSettings().randomizer.seedHashes;
+            auto hashCopy = hash;
+            for (int i = 0; i < seedHashes.size(); ++i) {
+                if (seedHashes[i].getValue() == hashCopy) {
+                    hash += " (File " + std::to_string(i + 1) + ")";
+                }
+            }
+
+            // TODO: our ui lib doesnt have an easy way to either refresh or remove values from the right pane
+            pane.add_button(
+                {
+                    .text = hash,
+                    .isDisabled = [hash] {
+                        return !playerIsOnTitleScreen() || hash.ends_with(')');
+                    }
+                })
+                .on_pressed([entry, &pane] {
+                    std::filesystem::remove_all(entry);
+                    delete_seed_callback(pane);
+                });
+        }
+    }
+};
+
+RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : mFileSelectMenu(fileSelect) {
 
     // Create rando directories if they don't exist
     if (!std::filesystem::exists(GetRandomizerSeedsPath())) {
         std::filesystem::create_directories(GetRandomizerSeedsPath());
     }
 
+    // If we're bringing this menu up during file selection
+    if (mFileSelectMenu) {
+        // Don't allow going back to the main dusklight menu while this menu
+        // is active
+        mTabBar->listen(Rml::EventId::Keydown, [](Rml::Event& event) {
+            auto cmd = map_nav_event(event);
+            if (cmd == NavCommand::Menu || cmd == NavCommand::Cancel) {
+                event.StopPropagation();
+            }
+        });
+
+        add_tab("Play", [this](Rml::Element* content) {
+            auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled);
+            auto& rightPane = add_child<Pane>(content, Pane::Type::Controlled);
+
+            leftPane.register_control(
+                leftPane.add_select_button({
+                    .key = "Selected Seed",
+                    .getValue =
+                    [] {
+                        return randomizer_GetContext().mHash.empty() ?
+                                   "None" :
+                                   randomizer_GetContext().mHash;
+                    },
+                }),
+                rightPane, [](Pane& pane) {
+                    std::filesystem::path seedDirectory = GetRandomizerSeedsPath();
+
+                    if (std::filesystem::is_empty(seedDirectory)) {
+                        pane.add_rml(
+                        "No seeds generated! You can generate a seed from the Seed Management Tab.");
+                        return;
+                    }
+
+                    pane.add_rml(
+                        "Choose which seed you want to play.");
+
+                    for (const auto& entry : std::filesystem::directory_iterator(seedDirectory)) {
+                        if (entry.is_directory()) {
+                            std::string hash = entry.path().filename().string();
+
+                            pane.add_button(
+                                {
+                                    .text = hash,
+                                    .isSelected = [hash] {
+                                        return randomizer_GetContext().mHash == hash;
+                                    },
+                                })
+                                .on_pressed([hash] {
+                                    randomizer_GetContext() = RandomizerContext();
+                                    randomizer_GetContext().LoadFromHash(hash);
+                                });
+                        }
+                    }
+                });
+
+            leftPane.add_button({
+                .text = "Start Randomizer",
+                .isDisabled = []{return randomizer_GetContext().mHash.empty();},
+            })
+            .on_pressed([this]{
+                if (mFileSelectMenu) {
+                    mFileSelectMenu->mDusk.mBackToFileSelect = false;
+                }
+                mDoAud_seStartMenu(Z2SE_SY_CURSOR_OK);
+                this->hide(true);
+            });
+        });
+    }
+
     add_tab("Seed Management", [this](Rml::Element* content) {
         auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled);
         auto& rightPane = add_child<Pane>(content, Pane::Type::Controlled);
 
-        leftPane.register_control(
-            leftPane.add_select_button({
-                .key = "Selected Seed",
-                .getValue =
-                [] {
-                    return randomizer_GetContext().mHash.empty() ?
-                               "None" :
-                               randomizer_GetContext().mHash;
-                },
-            }),
-            rightPane, [](Pane& pane) {
-                std::filesystem::path seedDirectory = GetRandomizerSeedsPath();
-
-                if (std::filesystem::is_empty(seedDirectory)) {
-                    pane.add_rml(
-                    "No seeds generated! Check out the options tab and generate a seed using the button below.");
-                    return;
-                }
-
-                pane.add_rml(
-                    "Apply a seed generated using the randomizer generator. (Note: must be done before selecting a save file).");
-
-                for (const auto& entry : std::filesystem::directory_iterator(seedDirectory)) {
-                    if (entry.is_directory()) {
-                        std::string hash = entry.path().filename().string();
-
-                        pane.add_button(
-                            {
-                                .text = hash,
-                                .isSelected = [hash] {
-                                    return randomizer_GetContext().mHash == hash;
-                                },
-                            })
-                            .on_pressed([hash] {
-                                randomizer_GetContext() = RandomizerContext();
-                                randomizer_GetContext().LoadFromHash(hash);
-                            });
-                    }
-                }
-            });
-
-        leftPane.register_control(
-            leftPane.add_button("Delete Seeds"),
-            rightPane, [](Pane& pane) {
-                std::filesystem::path seedDirectory = GetRandomizerSeedsPath();
-
-                if (std::filesystem::is_empty(seedDirectory)) {
-                    pane.add_rml(
-                    "No seeds generated.");
-                    return;
-                }
-
-                pane.add_rml(
-                "Delete any seed currently not active in the randomizer.");
-
-                for (const auto& entry : std::filesystem::directory_iterator(seedDirectory)) {
-                    if (entry.is_directory()) {
-                        std::string hash = entry.path().filename().string();
-
-                        // TODO: our ui lib doesnt have an easy way to either refresh or remove values from the right pane
-                        pane.add_button(
-                            {
-                                .text = hash,
-                                .isDisabled = [hash] {
-                                    return !playerIsOnTitleScreen() || randomizer_GetContext().mHash == hash;
-                                }
-                            })
-                            .on_pressed([hash, entry] {
-                                if (randomizer_GetContext().mHash != hash) {
-                                    std::filesystem::remove_all(entry);
-                                } else if (!randomizer_IsActive()){
-                                    // If the user selected the currently seed, but it's not active, we'll allow the delete
-                                    std::filesystem::remove_all(entry);
-                                    randomizer_GetContext() = RandomizerContext();
-                                }
-                            });
-                    }
-                }
-            });
-
-        leftPane.register_control(leftPane.add_button(ControlledButton::Props{
-            .text = "Deactivate Seed",
-            .isDisabled = [] { return randomizer_GetContext().mHash.empty() || !playerIsOnTitleScreen(); }
-        }).on_pressed([] {
-            if (!randomizer_IsActive()) {
-                randomizer_GetContext() = RandomizerContext();
-            }
-        }), rightPane, [](Pane& pane) {
-            pane.clear();
-            pane.add_rml("Disables currently chosen seed.");
-        });
-
         leftPane.register_control(leftPane.add_button("Generate Seed").on_pressed(
-        [this, &rightPane] {
+        [] {
             if (TryCreateRandomSeed()) {
                 DuskLog.info("Created new Seed for generator.");
             }
@@ -800,21 +822,26 @@ RandomizerWindow::RandomizerWindow() {
         });
 
         leftPane.register_control(leftPane.add_child<StringButton>(StringButton::Props{
-                .key = "Seed String",
-                .getValue = [] {
-                    return GetRandomizerConfig().GetSeed();
-                },
-                .setValue = [](Rml::String value) {
-                    GetRandomizerConfig().SetSeed(value);
-                    SaveRandomizerConfig();
-                },
-                .maxLength = 32,
-            }),
-            rightPane, [](Pane& pane) {
-                pane.clear();
-                pane.add_rml(
-                    "Current value of the seed used by the randomizer for generation. Leave blank for a random value.");
-            });
+            .key = "Seed String",
+            .getValue = [] {
+                return GetRandomizerConfig().GetSeed();
+            },
+            .setValue = [](Rml::String value) {
+                GetRandomizerConfig().SetSeed(value);
+                SaveRandomizerConfig();
+            },
+            .maxLength = 32,
+        }),
+        rightPane, [](Pane& pane) {
+            pane.clear();
+            pane.add_rml(
+                "Current value of the seed used by the randomizer for generation. Leave blank for a random value.");
+        });
+
+        leftPane.register_control(
+            leftPane.add_button("Delete Seeds"),
+            rightPane, delete_seed_callback
+            );
     });
 
     add_tab("Seed Options", [this](Rml::Element* content) {
@@ -1139,6 +1166,14 @@ RandomizerWindow::RandomizerWindow() {
             });
         });
     }
+}
+
+FileSelectRandomizerWindow::FileSelectRandomizerWindow(dFile_select_c* fileSelectMenu) :
+    RandomizerWindow(fileSelectMenu) { }
+
+bool FileSelectRandomizerWindow::consume_close_request() {
+    hide(true);
+    return true;
 }
 
 std::filesystem::path GetRandomizerPath() {

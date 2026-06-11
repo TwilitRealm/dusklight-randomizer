@@ -234,6 +234,40 @@ F_SP103:
       layers:
         - 0
 
+  # Room 1 - Outside Link's House
+  1:
+    # Delete 2nd Beth actor
+    - action: delete
+      name: Besu
+      parameters: 0x00FFFF10
+      position:
+        x: 907.519104003906
+        y: 800
+        z: -1572.38488769531
+      angle:
+        x: 0x0032
+        y: 0xA2D9
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 4
+
+    # Delete 2nd Malo actor
+    - action: delete
+      name: Maro
+      parameters: 0xFFFFFF0F
+      position:
+        x: 847.672119140625
+        y: 800
+        z: -1500.17639160156
+      angle:
+        x: 0x003D
+        y: 0xA2D9
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 4
+
 # Ordon Spring
 F_SP104:
   # Room 1 - Main Spring
@@ -3992,6 +4026,42 @@ F_SP126:
 
 # Kakariko Village Interiors
 R_SP109:
+  # Room 2 - Elde Inn
+  2:
+    # Delete 2nd Luda actor
+    - action: delete
+      name: Lud
+      parameters: 0x00FFFF07
+      position:
+        x: -1350
+        y: 0
+        z: -900
+      angle:
+        x: 0x0037
+        y: 0x18E3
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 2
+        - 3
+
+    # Delete 2nd Colin actor
+    - action: delete
+      name: Kolin
+      parameters: 0x00FFFF07
+      position:
+        x: -1150
+        y: 0
+        z: -800
+      angle:
+        x: 0x0004
+        y: 0xC38F
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 2
+        - 3
+
   # Room 3 - Kak Malo Mart
   3:
     # Red Potion Shop item (left side)

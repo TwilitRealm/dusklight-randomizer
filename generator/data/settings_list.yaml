@@ -1,5 +1,3 @@
-# NOTE: Initially copied from SSHDR. Some commented out settings may reference skyward sword
-
 ######################
 ##  Logic Settings  ##
 ######################
@@ -89,69 +87,69 @@
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": "The Golden Bug locations across Hyrule will not be randomized."
+    - "Off": "The Golden Bug locations across Hyrule will give the golden bug at that location in the base game."
     - "On": "The Golden Bug locations across Hyrule will be randomized."
 
 - Name: Sky Characters
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "The Sky Character locations across Hyrule will give Sky Characters."
+    - "On": "The Sky Character locations across Hyrule will be randomized."
 
 - Name: Gifts From NPCs
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "Locations which involve an NPC giving you a gift will give the item expected from the base game."
+    - "On": "Locations which involve an NPC giving you a gift will be randomized."
 
 - Name: Shop Items
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "Shop item locations will contain the item they have in the base game."
+    - "On": "Shop items will be randomized."
 
 - Name: Hidden Skills
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "The golden wolf locations across Hyrule will give you Hidden Skills. You will be required to get at least one of them to obtain the Ending Blow."
+    - "On": "The golden wolf locations across Hyrule will be randomized."
 
 - Name: Hidden Rupees
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "Rupees hidden in tricky locations will not be randomized."
+    - "On": "Rupees hidden in tricky locations will be randomized."
 
 - Name: Freestanding Rupees
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "Rupees out in the open will not be randomized."
+    - "On": "Rupees out in the open will be randomized."
 
 - Name: Poe Souls
   Tracker Important: True
   Default Option: Vanilla
   Options:
-    - Vanilla: No description available.
-    - Overworld: No description available.
-    - Dungeon: No description available.
-    - All: No description available.
+    - Vanilla: "All poes will give poe souls as the item for beating them."
+    - Overworld: "Overworld poes will give randomized items. Poes in dungeons will still give poe souls."
+    - Dungeon: "Poes in dungeons will give randomized items. Overworld poes will will give poe souls."
+    - All: "All poes will be randomized."
 
 - Name: Ilia Memory Quest
   Tracker Important: True
   Default Option: Vanilla
   Options:
-    - Vanilla: No description available.
-    - Letter: No description available.
-    - Invoice: No description available.
-    - Statue: No description available.
-    - Charm: No description available.
+    - Vanilla: "The Ilia Memory Quest will work the same way as the base game. You'll start it by beating Temple of Time and then talking to Renado in Kakariko Village."
+    - Letter: "Renado's Letter will be shuffled into the world somewhere. You'll start the quest by finding Renado's Letter and then showing it to Telma in her bar."
+    - Invoice: "The Invoice will be shuffled into the world somewhere. You'll start the quest by finding the Invoice and showing it to the Doctor in Castle Town."
+    - Statue: "The Wooden Statue will be shuffled into the world somewhere. You'll start the quest by finding the Wooden Statue and then showing it to Ilia in Kakariko Village."
+    - Charm: "Ilia's Charm will be shuffled into the world somewhere. You'll start the quest by finding Ilia's Charm and then showing it to Ilia in Kakariko Village to complete the quest."
 
 - Name: Item Scarcity
   Default Option: Vanilla
@@ -159,6 +157,15 @@
     - Vanilla: "No changes to the item pool."
     - Minimal: "Removes unrequired items such as Heart Containers and Pieces, Hawkeye, etc. Has as few items as possible for Bomb Bags, Bows, Hidden Skills, and Wallets. No Magic Armor and 1 Hidden Skill if Glitchless logic."
     - Plentiful: "One extra copy of major items. There are 17 Heart Containers but no Pieces of Heart. Extra keys if `Keysanity` or `Any Dungeon`."
+
+- Name: Trap Item Frequency
+  Default Option: None
+  Options:
+    - None: "All items in the game will be genuine."
+    - Few: "Approximately 12.5% of non-major items will be replaced with 'traps' that don't give the item they appear to be."
+    - Many: "Approximately 39.1% of non-major items will be replaced with 'traps' that don't give the item they appear to be."
+    - Mayhem: "Approximately 62.7% of non-major items will be replaced with 'traps' that don't give the item they appear to be."
+    - Nightmare: "All of the non-major items will be replaced with 'traps' that don't give the item they appear to be."
 
 ######################
 ##   Dungeon Items  ##
@@ -251,29 +258,21 @@
 - Name: Dungeon Rewards Can Be Anywhere
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "Dungeon reward items (Fused Shadows and Mirror Shards) will only appear at the end of dungeons."
+    - "On": "Dungeon reward items (Fused Shadows and Mirror Shards) can appear anywhere."
 
 - Name: No Small Keys on Bosses
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
-
-# - Name: required_dungeons
-#   Default Option: 2
-#   Pretty Name: Required Dungeons
-#   Pretty Options:
-#     - 0-7
-#   Options:
-#     - 0-7: "Choose how many dungeons will have required items on their dungeon completion checks. Triforces, then swords, then other progress items are chosen, in this order."
+    - "Off": "Small keys will not be placed on boss heart container or dungeon reward checks."
+    - "On": "Small keys can potentially be placed on boss heart container or dungeon reward checks. You may be expected to defeat a dungeon's boss before progressing further into the dungeon."
 
 - Name: Unrequired Dungeons Are Barren
   Tracker Important: True
   Default Option: "On"
   Options:
     - "Off": "Unrequired dungeons may contain items needed to beat the game."
-    - "On": "Unrequired dungeons will be barren."
+    - "On": "Unrequired dungeons will not contain any items necessary to beat the game."
 
 ######################
 ##    Timesavers    ##
@@ -283,88 +282,88 @@
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "You will be required to play through the prologue section of the game to begin the randomizer. This includes everything up to the second goat herding sequence."
+    - "On": "The prologue section of the game will be completed from the start."
 
 - Name: Faron Twilight Cleared
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "You will be required to complete the Castle Sewers and Faron Twilight section of the game."
+    - "On": "The Castle Sewers and Faron Twilight section of the game will be completed from the start."
 
 - Name: Eldin Twilight Cleared
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "You will be required to complete the Eldin Twilight section of the game."
+    - "On": "The Eldin Twilight section of the game will be completed from the start."
 
 - Name: Lanayru Twilight Cleared
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "You will be required to complete the Lanayru Twilight section of the game."
+    - "On": "The Lanayru Twilight section of the game will be completed from the start."
 
 - Name: Skip Midna's Desparate Hour
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "After completing Lakebed Temple, you will be required to complete the Midna's Desperate Hour section of the game. Note that some overworld poes require Midna's Desperate Hour to be completed before they spawn in."
+    - "On": "The Midna's Desperate Hour section of the game will be completed from the start."
 
 - Name: Skip Minor Cutscenes
   Need In Game: True
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "Minor cutscenes such as area introduction cutscenes and Midna text explanations will not be skipped."
+    - "On": "Minor cutscenes such as area introduction cutscenes and Midna text explanations will not play."
 
 - Name: Skip Major Cutscenes
   Need In Game: True
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "If you want to skip a skippable cutscene, you must press the start button twice while the cutscene is playing."
+    - "On": "The randomizer will automatically skip any skippable cutscene as fast as possible."
 
 - Name: Unlock Map Regions
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "The map will not start filled in at the beginning of the randomizer. You will have to travel to the different sections of the world to get them on the map."
+    - "On": "The map will start as filled in as possible. Certain sections such as Eldin and Lanayru will only be filled in if their Twilight section is cleared from the start."
 
 - Name: Open Door of Time
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "You will be required to lead the big statue down the Temple of Time to open the big door at the bottom."
+    - "On": "The big statue will already be set in place at the bottom of the Temple of Time and the door will be opened from the start."
 
 - Name: Active Goron Mines Magnets
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "The switches to activate magnets in Goron Mines will need to be activated manually."
+    - "On": "The switches to activate magnets in Goron Mines will be activated from the start except for the highest one in the main room."
 
 - Name: Lower Hyrule Castle Chandelier
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "The chandeliers in Hyrule Castle will all need to be lowered manually."
+    - "On": "One of the chandeliers in the Hyrule Castle main hall will be lowered from the start. This skips requiring Gale Boomerang and either Lantern or Bow to complete Hyrule Castle."
 
 - Name: Skip Bridge Donation
   Need In Game: True
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "You will need to donate money at Kakariko Malo Mart to build the bridge between Eldin Field and Castle Town."
+    - "On": "The bridge between Eldin Field and Castle Town will be automatically built after Eldin and Lanayru Twilight are both completed."
 
 ######################
 # Additional Settings#
@@ -377,20 +376,6 @@
     - Human: Start as Human Link
     - Wolf: Start as Wolf Link
 
-- Name: Increase Wallet Capacity
-  Tracker Important: True
-  Default Option: "Off"
-  Options:
-    - "Off": No description available.
-    - "On": No description available.
-
-- Name: Shops Display The Replaced Item
-  Tracker Important: True
-  Default Option: "Off"
-  Options:
-    - "Off": No description available.
-    - "On": No description available.
-
 - Name: Bonks Do Damage
   Tracker Important: True
   Default Option: "Off"
@@ -398,31 +383,35 @@
     - "Off": No description available.
     - "On": No description available.
 
-- Name: Trap Item Frequency
-  Default Option: None
-  Options:
-    - None: "All items in the game will be genuine."
-    - Few: "Approximately 12.5% of non-major items will be replaced with 'traps' that don't give the item they appear to be."
-    - Many: "Approximately 39.1% of non-major items will be replaced with 'traps' that don't give the item they appear to be."
-    - Mayhem: "Approximately 62.7% of non-major items will be replaced with 'traps' that don't give the item they appear to be."
-    - Nightmare: "All of the non-major items will be replaced with 'traps' that don't give the item they appear to be."
-
-- Name: Damage Multiplier
-  Default Option: Vanilla
-  Options:
-    - Vanilla: No description available.
-    - Double: No description available.
-    - Triple: No description available.
-    - Quadruple: No description available.
-    - OHKO: Any damage taken will kill link
-
 - Name: Starting Time of Day
   Default Option: Noon
   Options:
-    - Morning: No description available.
-    - Noon: No description available.
-    - Evening: No description available.
-    - Night: No description available.
+    - Morning: "Choose your in-game starting time."
+    - Noon: ""
+    - Evening: ""
+    - Night: ""
+
+- Name: Logic Transform Anywhere
+  Default Option: "On"
+  Options:
+    - "Off": "You will not be expected to transform in places that you normally can't."
+    - "On": "You may be expected to transform in places that require turning on the Dusklight Transform Anywhere setting."
+
+- Name: Logic Increase Wallet Capacity
+  Tracker Important: True
+  Default Option: "Off"
+  Options:
+    - "Off": "Logic will assume you have the same wallet capacities as the base game."
+    - "On": "Logic will assume that you have the Bigger Wallets Dusklight setting turned on."
+
+- Name: Logic Damage Multiplier
+  Default Option: Vanilla
+  Options:
+    - Vanilla: "Logic will assume your Dusklight Damage Multiplier is x1."
+    - Double: "Logic will assume your Dusklight Damage Multiplier is x2."
+    - Triple: "Logic will assume your Dusklight Damage Multiplier is x3."
+    - Quadruple: "Logic will assume your Dusklight Damage Multiplier is x4."
+    - OHKO: "Logic will assume your Dusklight Instant Death setting is turned on."
 
 #############################
 # Dungeon Entrance Settings #
@@ -432,136 +421,55 @@
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "The entrance to Lakebed Temple will be blocked by a boulder and require using Water Bombs to blow up."
+    - "On": "The rock blocking access to the entrance of Lakebed Temple will be gone, meaning you can get in without Water Bombs."
 
 - Name: Arbiters Does Not Require Bulblin Camp
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "Bulblin Camp will have to be completed to access the entrance to Arbiter's Grounds. This will require finding the Gerudo Desert Bulblin Camp Key."
+    - "On": "Bulblin Camp will be cleared at the start of the randomizer."
 
 - Name: Snowpeak Does Not Require Reekfish Scent
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "Getting the reekfish scent will be required for running through the blizzard on Snowpeak Mountain. Getting the reekfish scent requires the Coral Earring."
+    - "On": "The randomizer will start you with the reekfish scent, meaning you can go through the Snowpeak Mountain blizzard without needing the Coral Earring."
 
 - Name: Sacred Grove Does Not Require Skull Kid
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "Getting through the Lost Woods will require completing the Skull Kid chase sequence."
+    - "On": "The Skull Kid chase sequence in the Lost Woods will start already completed."
 
 - Name: City Does Not Require Filled Skybook
   Tracker Important: True
   Default Option: "Off"
   Options:
-    - "Off": No description available.
-    - "On": No description available.
+    - "Off": "The canon to City in the Sky will spawn in Lake Hylia when the Sky Book has been completed."
+    - "On": "The canon to City in the Sky will be in Lake Hylia from the start."
 
 - Name: Goron Mines Entrance
   Tracker Important: True
   Default Option: Closed
   Options:
-    - Closed: No description available.
-    - No Wrestling: No description available.
-    - Open: No description available.
+    - Closed: "Accessing Goron Mines will require climbing up to the Death Mountain Sumo Hall and wrestling with the Goron Elder."
+    - No Wrestling: "Accessing Goron Mines will require climbing up to the Death Mountain Sumo Hall, but wrestling the Goron Elder will not be necessary."
+    - Open: "The elevator shortcut to the Death Mountain Sumo Hall will be open, and can be used to access Goron Mines."
 
 - Name: Temple of Time Sword Requirement
   Need In Game: True
   Tracker Important: True
   Default Option: None
   Options:
-    - None: No description available.
-    - Wooden Sword: No description available.
-    - Ordon Sword: No description available.
-    - Master Sword: No description available.
-    - Light Sword: No description available.
-
-# - Name: chest_type_matches_contents
-#   Default Option: "Off"
-#   Pretty Name: Chest Type Matches Contents
-#   Pretty Options:
-#     - "Off"
-#     - "Only Dungeon Items"
-#     - "All Contents"
-#   Options:
-#     - "Off": "Each chest will have the same type as it would in the vanilla game."
-#     - "only_dungeon_items": "Each chest will have the same type as it would in the vanilla game, unless it contains a dungeon item. If a chest contains a Boss Key, it will appear as a fancy chest. If it contains a Small Key, it will appear as a big blue chest. If it contains a Map, it will appear as a brown, wooden chest."
-#     - "all_contents": "Each chest will have a different type based on the item inside. Important items will appear in big blue chests. Big Keys will appear in fancy chests. Other items will appear in brown, wooden chests."
-
-# - Name: small_keys_in_fancy_chests
-#   Default Option: "Off"
-#   Pretty Name: Small Keys in Fancy Chests
-#   Pretty Options:
-#     - "Off"
-#     - "On"
-#   Options:
-#     - "Off": "When Chest Type Matches Contents is not off, Small Keys will appear in big blue chests."
-#     - "On": "When Chest Type Matches Contents is not off, Small Keys will appear in fancy chests."
-
-# - Name: Path Hints
-#   Default Option: 3
-#   Options:
-#     - 0-7: "Select the number of path hints you would like to generate."
-
-# - Name: barren_hints
-#   Default Option: 2
-#   Pretty Name: Barren Hints
-#   Pretty Options:
-#     - 0-7
-#   Options:
-#     - 0-7: "Select the number of barren hints you would like to generate."
-
-# - Name: location_hints
-#   Default Option: 7 # assumes always_hints is on
-#   Pretty Name: Location Hints
-#   Pretty Options:
-#     - 0-7
-#   Options:
-#     - 0-7: "Select the number of location hints you would like to generate."
-
-# - Name: item_hints
-#   Default Option: 3
-#   Pretty Name: Item Hints
-#   Pretty Options:
-#     - 0-7
-#   Options:
-#     - 0-7: "Select the number of item hints you would like to generate."
-
-# - Name: gossip_stone_hints
-#   Default Option: "Off"
-#   Pretty Name: Gossip Stone Hints
-#   Pretty Options:
-#     - "Off"
-#     - "On"
-#   Options:
-#     - "Off": "Hints will not be placed on Gossip Stones."
-#     - "On": "Hints will be placed on Gossip Stones and can be seen by talking to them."
-
-# - Name: cryptic_hint_text
-#   Default Option: "Off"
-#   Pretty Name: Cryptic Hint Text
-#   Pretty Options:
-#     - "Off"
-#     - "On"
-#   Options:
-#     - "Off": "Item and location hints will use the normal, clear Names for their items and locations."
-#     - "On": "Item and location hints will use cryptic text for their items and locations."
-
-# - Name: always_hints
-#   Default Option: "On"
-#   Pretty Name: Prioritize Remote Location Hints
-#   Pretty Options:
-#     - "Off"
-#     - "On"
-#   Options:
-#     - "Off": "All locations will be treated equally for location hints."
-#     - "On": "Certain locations which are time-consuming to check will be given priority for location hints."
+    - None: "The door to the past will be open from the start."
+    - Wooden Sword: "The door to the past will require striking at least the Wooden Sword into the Master Sword pedestal."
+    - Ordon Sword: "The door to the past will require striking at least the Ordon Sword into the Master Sword pedestal."
+    - Master Sword: "The door to the past will require striking at least the Master Sword into the Master Sword pedestal."
+    - Light Sword: "The door to the past will require striking the Light Sword into the Master Sword pedestal."
 
 - Name: Randomize Starting Spawn
   Default Option: "Off"
@@ -627,119 +535,8 @@
     - "On": "Entering a location and taking the entrance behind you will take you to a random location."
 
 
-
-# - Name: random_bottle_contents
-#   Default Option: "Off"
-#   Pretty Name: Random Bottle Contents
-#   Pretty Options:
-#     - "Off"
-#     - "On"
-#   Options:
-#     - "Off": "There will be 3 Empty Bottles, 1 Revitalizing Potion, and 1 Bottle of Mushroom Spores in the item pool."
-#     - "On": "There will be 5 Bottles in the item pool - each with random contents (e.g. Heart Potion, Hot Pumpkin Soup, Sacred Water, etc...)."
-
-
-
-# - Name: trappable_items
-#   Default Option: "major_items"
-#   Pretty Name: Trappable Items
-#   Pretty Options:
-#     - "Major Items"
-#     - "Non Major Items"
-#     - "Any Items"
-#   Options:
-#     - "major_items": "Traps can mimic any major item that could be necessary to beat the game."
-#     - "non_major_items": "Traps can only mimic non-major items that cannot be necessary to beat the game."
-#     - "any_items": "Traps can mimic any item."
-
-
-
-########################
-## Preference Options ##
-########################
-
-# - Name: language
-#   type: Preference
-#   Default Option: english_us
-#   Pretty Name: In-Game Language
-#   Pretty Options:
-#     # - Chinese
-#     - Dutch
-#     - English (GB)
-#     - English (US)
-#     - French (FR)
-#     - French (US)
-#     - German
-#     - Italian
-#     # - Japanese
-#     # - Korean
-#     # - Russian
-#     - Spanish (ES)
-#     - Spanish (US)
-#     # - Taiwanese
-#   Options:
-#     # - chinese: "Status: Broken. The randomized game will use the Chinese language files."
-#     - dutch: "Status: Incomplete. The randomized game will use the Dutch language files."
-#     - english_gb: "Status: Complete. The randomized game will use the British English language files."
-#     - english_us: "Status: Complete. The randomized game will use the American English language files."
-#     - french_fr: "Status: Incomplete. The randomized game will use the French language files."
-#     - french_us: "Status: Incomplete. The randomized game will use the French language files."
-#     - german: "Status: Incomplete. The randomized game will use the German language files."
-#     - italian: "Status: Incomplete. The randomized game will use the Italian language files."
-#     # - japanese: "Status: Broken. The randomized game will use the Japanese language files."
-#     # - korean: "Status: Broken. The randomized game will use the Korean language files."
-#     # - russian: "Status: Broken. The randomized game will use the Russian language files."
-#     - spanish_es: "Status: Incomplete. The randomized game will use the Spanish language files."
-#     - spanish_us: "Status: Incomplete. The randomized game will use the Spanish language files."
-#     # - taiwanese: "Status: Broken. The randomized game will use the Taiwanese language files."
-
-# - Name: tunic_swap
-#   type: Preference
-#   Default Option: "Off"
-#   Pretty Name: Tunic Swap
-#   Pretty Options:
-#     - "Off"
-#     - "On"
-#   Options:
-#     - "Off": "Link will be dressed in his green knight's uniform."
-#     - "On": "Link will be dressed in his Skyloft outfit seen at the start of the vanilla game."
-
-#- Name: Remove Enemy Music
-#  Type: Preference
-#  Default Option: "Off"
-#  Options:
-#    - "Off": "The background music will be interrupted by enemy drums when you get near to an enemy. Additionally, the intense music when Scaldera and Tentalus are vulnerable will play as normal."
-#    - "On": "The background music will continue to play when you get near to enemies. Additionally, the intense music when Scaldera and Tentalus are vulnerable will not play and the background music will continue uninterrupted."
-
-# - Name: low_health_beeping_speed
-#   type: Preference
-#   Default Option: normal
-#   Pretty Name: Low Health Beeping Speed
-#   Pretty Options:
-#     - Very Fast
-#     - Fast
-#     - Normal
-#     - Slow
-#     - Very Slow
-#     - No Beeping
-#     - No Beeping or Flashing
-#   Options:
-#     - very_fast: "The game will play the low health beep sound every time Link flashes red."
-#     - fast: "The game will play the low health beep sound every other time Link flashes red."
-#     - normal: "The game will play the low health beep sound every 3rd time Link flashes red."
-#     - slow: "The game will play the low health beep sound every 6th time Link flashes red."
-#     - very_slow: "The game will play the low health beep sound every 12th time Link flashes red."
-#     - no_beeping: "The game will not play the low health beep sound. Link will still flash red."
-#     - no_beeping_or_flashing: "The game will not play the low health beep sound. Link will not flash red either."
-
-###############
-## Shortcuts ##
-###############
-
-
-
 #############################
-## Logic settings (tricks) ##
+##       Logic Tricks      ##
 #############################
 
 - Name: Back Slice as Sword
@@ -753,23 +550,3 @@
   Options:
     - "Off": "Ball and Chain will not be required to break webs."
     - "On": "Ball and Chain may be required to break webs."
-
-- Name: Logic Transform Anywhere
-  Default Option: "On"
-  Options:
-    - "Off": "You will not be expected to transform in places that you normally can't"
-    - "On": "You may be expected to trasform in places that require using the Transform Anywhere enhancement"
-
-#######################################
-## Extra Starting Inventory Settings ##
-#######################################
-
-# - Name: Random Starting Item Count
-#   Default Option: 0
-#   Options:
-#     - 0-7: "Select the number of randomly chosen items you would like to start with. Only a selection of the most useful items are able to be chosen to maximize the benefit of this setting."
-
-# - Name: Starting Hearts
-#   Default Option: 3
-#   Options:
-#     - 3-20: "Select the number of hearts you want to start with."

@@ -76,11 +76,11 @@ Can Do Difficult Combat: Impossible # TODO: Make settings for all of these
 Can Use Hot Spring Water: Bottle and 'Can_Buy_Hot_Spring_Water'
 Can Use Bottled Fairy: Bottle and 'Fairy_Access'
 # This will have to change if we allow players to start with less than 3 hearts
-Can Survive Damage: Damage_Multiplier != OHKO or Can_Use_Bottled_Fairy
+Can Survive Damage: Logic_Damage_Multiplier != OHKO or Can_Use_Bottled_Fairy
 Can Survive One Bonk: Bonks_Do_Damage == Off or Can_Survive_Damage
-Can Survive Two Bonks: Bonks_Do_Damage == Off or Damage_Multiplier != OHKO or 
+Can Survive Two Bonks: Bonks_Do_Damage == Off or Logic_Damage_Multiplier != OHKO or 
                        (Can_Use_Bottled_Fairy and count(Empty_Bottle, 2))
-Can Survive Three Bonks: Bonks_Do_Damage == Off or Damage_Multiplier != OHKO or 
+Can Survive Three Bonks: Bonks_Do_Damage == Off or Logic_Damage_Multiplier != OHKO or 
                          (Can_Use_Bottled_Fairy and count(Empty_Bottle, 3))
 Can Smash: Bombs or Ball_and_Chain
 Can Break Webs: Lantern or Bombs or (Ball_and_Chain and Ball_and_Chain_Webs == On)

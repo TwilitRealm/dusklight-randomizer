@@ -214,8 +214,7 @@
   Can Transform: If Transform Anywhere
   Locations:
     # Castle Town Malo Mart Stamp: Can_Talk_to_Humans and 'Can_Farm_Lots_of_Rupees' and 'Can_Fund_Malo_Mart' # HD only
-    Castle Town Malo Mart Magic Armor: Can_Talk_to_Humans and 'Can_Farm_Lots_of_Rupees' and 'Can_Fund_Malo_Mart' and
-                                       (Increase_Wallet_Capacity == On or Big_Wallet)
+    Castle Town Malo Mart Magic Armor: Can_Talk_to_Humans and 'Can_Farm_Lots_of_Rupees' and 'Can_Fund_Malo_Mart' and Big_Wallet
   Exits:
     Castle Town Center: Can_Open_Doors
 

@@ -53,7 +53,7 @@
   Events:
     Snowboarding Rupees: "(Snowpeak_Portal or Can_Defeat_Shadow_Beast)
                            and ((Bonks_Do_Damage == Off or (Bonks_Do_Damage == On
-                            and (Damage_Multiplier != OHKO or Can_Use_Bottled_Fairy))) or 'Can_Complete_Snowpeak_Ruins')"
+                            and (Logic_Damage_Multiplier != OHKO or Can_Use_Bottled_Fairy))) or 'Can_Complete_Snowpeak_Ruins')"
   Locations:
     Snowpeak Warp Portal: Can_Defeat_Shadow_Beast
     Snowboarding Bridge Ledge Bottom Rupee: "'Snowboarding_Rupees'"

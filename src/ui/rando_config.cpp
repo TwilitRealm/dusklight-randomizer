@@ -861,7 +861,7 @@ RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : m
         rando_config_group(leftPane, rightPane, "Palace of Twilight Requirements");
         rando_config_group(leftPane, rightPane, "Faron Woods Logic");
 
-        leftPane.add_section("World (TODO)");
+        // leftPane.add_section("World (TODO)");
 
         leftPane.add_section("Item Pool");
 
@@ -876,6 +876,7 @@ RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : m
         rando_config_group(leftPane, rightPane, "Poe Souls");
         rando_config_group(leftPane, rightPane, "Ilia Memory Quest");
         rando_config_group(leftPane, rightPane, "Item Scarcity");
+        rando_config_group(leftPane, rightPane, "Trap Item Frequency");
 
         leftPane.add_section("Dungeon Items");
 
@@ -909,11 +910,11 @@ RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : m
         leftPane.add_section("Additional Settings");
 
         // rando_config_group(leftPane, rightPane, "Starting Form");
-        // rando_config_toggle(leftPane, rightPane, "Increase Wallet Capacity");
-        // rando_config_toggle(leftPane, rightPane, "Shops Display The Replaced Item");
         // rando_config_toggle(leftPane, rightPane, "Bonks Do Damage");
-        rando_config_group(leftPane, rightPane, "Trap Item Frequency");
         rando_config_group(leftPane, rightPane, "Starting Time of Day");
+        rando_config_toggle(leftPane, rightPane, "Logic Transform Anywhere");
+        rando_config_toggle(leftPane, rightPane, "Logic Increase Wallet Capacity");
+        rando_config_group(leftPane, rightPane, "Logic Damage Multiplier");
 
         leftPane.add_section("Dungeon Entrance Settings");
 
@@ -938,7 +939,6 @@ RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : m
 
         rando_config_toggle(leftPane, rightPane, "Back Slice as Sword");
         rando_config_toggle(leftPane, rightPane, "Ball and Chain Webs");
-        rando_config_toggle(leftPane, rightPane, "Logic Transform Anywhere");
     });
 
     add_tab("Starting Inventory", [this](Rml::Element* content) {

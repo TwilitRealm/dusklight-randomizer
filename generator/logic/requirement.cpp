@@ -153,6 +153,10 @@ namespace randomizer::logic::requirement
                                        world::World* world,
                                        const bool& forceLogic /* = false */)
     {
+        if (world->Setting("Logic Rules") == "No Logic" && !forceLogic) {
+            return NO_REQUIREMENT;
+        }
+
         Requirement req;
         std::string logicStr(reqStr);
         // First, we make sure that the expression has no missing or extra parenthesis

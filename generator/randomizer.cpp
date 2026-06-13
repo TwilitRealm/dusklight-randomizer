@@ -60,6 +60,8 @@ namespace randomizer
 
         std::unique_ptr<logic::world::World> world = std::make_unique<logic::world::World>(1, this);
         world->SetSettings(this->_config.GetSettingsList().front());
+        // Always use logic when building a tracker world
+        world->Setting("Logic Rules").SetCurrentOption("All Locations Reachable");
         world->Build();
         this->_worlds.emplace_back(std::move(world));
 

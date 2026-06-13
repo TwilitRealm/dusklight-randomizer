@@ -102,6 +102,8 @@ namespace randomizer::logic::world
          */
         void DetermineDungeonDependentLocations();
 
+        bool IsNoLogicRequiredDungeon(const std::unique_ptr<dungeon::Dungeon>& dungeon);
+
         /**
          *  @brief Determines which dungeons are required based on placed items. Sets required dungeons as such in their
          *  properties. If "Unrequired Dungeons Are Barren" is "On", then unrequired dungeons will have all their locations

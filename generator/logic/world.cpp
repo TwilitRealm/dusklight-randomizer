@@ -226,9 +226,7 @@ namespace randomizer::logic::world
             auto macroReqStr = macroNode.second.as<std::string>();
 
             // Process the macro
-            this->_macros[macroIdCounter] = requirement::ParseRequirementString(macroReqStr,
-                                                                                              this,
-                                                                                              /*forceLogic = */ true);
+            this->_macros[macroIdCounter] = requirement::ParseRequirementString(macroReqStr, this, true);
 
             // Store it
             this->_macroIndexes[macroName] = macroIdCounter;
@@ -871,13 +869,44 @@ namespace randomizer::logic::world
         }
     }
 
+    // For no logic, we're purely going to base whether the dungeon is required on the Hyrule Castle
+    // Barrier requirements and Hyrule Castle Big Key chest requirements
+    bool World::IsNoLogicRequiredDungeon(const std::unique_ptr<dungeon::Dungeon>& dungeon) {
+        auto barrierRequirements = this->Setting("Hyrule Barrier Requirements");
+        auto bigKeyRequirements = this->Setting("Hyrule Castle Big Key Requirements");
+
+        bool dungeonHasFusedShadow = std::ranges::any_of(dungeon->GetLocations(), [](const auto& location) {
+            return location->GetCurrentItem()->GetName() == "Progressive Fused Shadow";
+        });
+        bool dungeonHasMirrorShard = std::ranges::any_of(dungeon->GetLocations(), [](const auto& location) {
+            return location->GetCurrentItem()->GetName() == "Progressive Mirror Shard";
+        });
+
+        if (dungeonHasFusedShadow && (barrierRequirements == "Fused Shadows" || bigKeyRequirements == "Fused Shadows")) {
+            return true;
+        }
+
+        if (dungeonHasMirrorShard && (barrierRequirements == "Mirror Shards" || bigKeyRequirements == "Mirror Shards")) {
+            return true;
+        }
+
+        if (barrierRequirements == "Vanilla" && (dungeon->GetName() == "Palace of Twilight" ||
+            (this->Setting("Palace of Twilight Requirements") == "Vanilla" && dungeon->GetName() == "City in the Sky")))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     void World::DetermineRequiredDungeons()
     {
         for (const auto& [dungeonName, dungeon] : this->_dungeons)
         {
             // To determine if a dungeon is required, we're going to disable all of its entrances and then check to see
             // that the game is still beatable. If the game is not beatable with the dungeon entrances disabled, then the
-            // dungeon is required.
+            // dungeon is required. For no logic, we determine required dungeons differently since otherwise no dungeon
+            // would be required.
 
             // Hyrule Castle is implicitly required
             if (dungeonName == "Hyrule Castle") {
@@ -893,7 +922,8 @@ namespace randomizer::logic::world
             // Check if the game is beatable, set dungeon as required if so. If the dungeon is not required and barren
             // unrequired dungeons is on, then set all the locations in the unrequired dungeon as nonprogress.
             auto completeItemPool = item_pool::GetCompleteItemPool(this->_randomizer->GetWorlds());
-            if (!search::GameBeatable(&this->_randomizer->GetWorlds(), completeItemPool))
+            if (!search::GameBeatable(&this->_randomizer->GetWorlds(), completeItemPool) ||
+                (this->Setting("Logic Rules") == "No Logic" && this->IsNoLogicRequiredDungeon(dungeon)))
             {
                 dungeon->SetRequired(true);
             }

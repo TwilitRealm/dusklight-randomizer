@@ -302,6 +302,11 @@ randomizer::logic::item_pool::ItemPool getSaveItemPool(randomizer::logic::world:
         pool.push_back(world->GetItem("Aurus Memo", true));
     }
 
+    // Showed Ralis Ashei's Sketch
+    if (dComIfGs_isEventBit(0x3B80)) {
+        pool.push_back(world->GetItem("Asheis Sketch", true));
+    }
+
     // Fused Shadows
     for (int i = 0; i < numFusedShadows(); ++i) {
         pool.push_back(world->GetItem("Progressive Fused Shadow", true));

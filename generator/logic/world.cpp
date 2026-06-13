@@ -58,7 +58,7 @@ namespace randomizer::logic::world
         // this creates a logically impossible scenario. We can't guarantee repeatable access to a bottled fairy in twilight
         // unless the player starts with the shadow crystal in their inventory. Turn off Bonks Do Damage in this case.
         bool bonksDoDamage = this->Setting("Bonks Do Damage") == "On";
-        bool ohko = this->Setting("Damage Multiplier") == "OHKO";
+        bool ohko = this->Setting("Logic Damage Multiplier") == "OHKO";
         bool eldinTwilightNotCleared = this->Setting("Eldin Twilight Cleared") == "Off";
         bool lanayruTwilightNotCleared = this->Setting("Lanayru Twilight Cleared") == "Off";
         if (bonksDoDamage && ohko && (eldinTwilightNotCleared || lanayruTwilightNotCleared))

@@ -153,7 +153,7 @@ int numMirrorShards() {
     return numMirrorShards;
 }
 
-int getTempleKeysFound(int stage) {
+int getTempleKeysFound(int saveId) {
     static std::unordered_map<int, std::vector<int>> keyDoorFlags = {
         {0xA,  {0x0}},
         {0x10, {0x7,  0xB,  0x2B, 0x3E}},
@@ -167,11 +167,10 @@ int getTempleKeysFound(int stage) {
         {0x18, {0x4C, 0x6F, 0x7C}}
     };
 
-    int count = dComIfGs_getKeyNum(stage);
-    int saveId = getStageSaveId(stage);
+    int count = dComIfGs_getKeyNum(saveId);
 
     // Add number of unlocked key doors for this dungeon to current key count
-    for (auto flag : keyDoorFlags[stage]) {
+    for (auto flag : keyDoorFlags[saveId]) {
         if (tracker_isStageSwitch(saveId, flag)) {
             count += 1;
         }

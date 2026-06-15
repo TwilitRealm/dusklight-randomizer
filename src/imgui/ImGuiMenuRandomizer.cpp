@@ -413,8 +413,9 @@ namespace dusk {
                     }
 
                     // Show requirements for the location below it (formatting isn't pretty right now)
-                    if (m_showRequirements) {
-                        ImGui::SetItemTooltip("%s", info.logicStr.c_str());
+                    if (m_showRequirements && ImGui::BeginItemTooltip()) {
+                        generateImGuiRequirementTooltip(info.logicReq);
+                        ImGui::EndTooltip();
                     }
                 }
             };
@@ -483,6 +484,302 @@ namespace dusk {
         }
     }
 
+    // Helper function to wrap text for ImGui requirement tooltips
+    static void SameLineOrTextWrap() {
+        ImGui::SameLine(0, 0);
+        if (ImGui::GetCursorPosX() > 600.f) {
+            ImGui::NewLine();
+        }
+    }
+
+    void ImGuiMenuRandomizer::generateImGuiRequirementTooltip(const randomizer::logic::requirement::Requirement& req, int nestingLevel /*= 0*/) {
+        using namespace randomizer::logic::requirement;
+        using namespace randomizer::logic::item;
+        std::string reqStr = "";
+        std::string itemStr = "";
+        Item* item;
+        Requirement nestedReq;
+        int count;
+        int heartCount;
+        int eventIndex;
+        int macroIndex;
+
+        if (req._type != Type::AND && nestingLevel == 0) {
+            ImGui::Bullet();
+            ImGui::SameLine();
+        }
+
+        switch (req._type)
+        {
+            case Type::NOTHING:
+                ImGui::TextColored(TRACKER_COLOR_ACCESSIBLE, "Nothing");
+                ImGui::SameLine();
+                return;
+
+            case Type::IMPOSSIBLE:
+                ImGui::TextColored(TRACKER_COLOR_INACCESSIBLE, "Impossible (Please discover an entrance first)");
+                ImGui::SameLine();
+                return;
+
+            case Type::OR:
+                for (int i = 0; i < req._args.size(); ++i) {
+                    auto& arg = req._args[i];
+                    nestedReq = std::get<Requirement>(arg);
+                    if (nestedReq._type == Type::AND || nestedReq._type == Type::OR)
+                    {
+                        ImGui::Text("(");
+                        ImGui::SameLine(0, 0);
+                        generateImGuiRequirementTooltip(nestedReq, nestingLevel + 1);
+                        ImGui::Text(")");
+                        SameLineOrTextWrap();
+                    }
+                    else
+                    {
+                        generateImGuiRequirementTooltip(nestedReq, nestingLevel + 1);
+                    }
+                    if (i < req._args.size() - 1) {
+                        ImGui::Text(" or ");
+                        SameLineOrTextWrap();
+                    }
+                }
+
+                return;
+
+            case Type::AND:
+                for (int i = 0; i < req._args.size(); ++i) {
+                    auto& arg = req._args[i];
+                    nestedReq = std::get<Requirement>(arg);
+
+                    if (nestingLevel > 0 && (nestedReq._type == Type::AND || nestedReq._type == Type::OR))
+                    {
+                        ImGui::Text("(");
+                        ImGui::SameLine(0, 0);
+                        generateImGuiRequirementTooltip(nestedReq, nestingLevel + 1);
+                        ImGui::Text(")");
+                        SameLineOrTextWrap();
+                    }
+                    else
+                    {
+                        if (nestingLevel == 0) {
+                            ImGui::Bullet();
+                            ImGui::SameLine();
+                        }
+
+                        generateImGuiRequirementTooltip(nestedReq, nestingLevel + 1);
+
+                        if (nestingLevel == 0) {
+                            ImGui::NewLine();
+                        }
+                    }
+
+                    if (nestingLevel > 0 && i < req._args.size() - 1) {
+                        ImGui::Text(" and ");
+                        SameLineOrTextWrap();
+                    }
+                }
+                return;
+
+            case Type::ITEM:
+                item = std::get<Item*>(req._args[0]);
+                switch (item->GetID()) {
+                case dItemNo_Randomizer_FISHING_ROD_1_e: // Progressive Fishing Rod
+                    itemStr = "Fishing Rod";
+                    break;
+                case dItemNo_Randomizer_WOOD_STICK_e: // Progressive Sword
+                    itemStr = "Sword";
+                    break;
+                case dItemNo_Randomizer_BOW_e:
+                    itemStr = "Bow";
+                    break;
+                case dItemNo_Randomizer_HOOKSHOT_e: // Progressive Clawshot
+                    itemStr = "Clawshot";
+                    break;
+                case dItemNo_Randomizer_COPY_ROD_e: // Progressive Dominion Rod
+                    itemStr = "Dominion Rod";
+                    break;
+                case dItemNo_Randomizer_ENDING_BLOW_e: // Progressive Hidden Skill
+                    itemStr = "Ending Blow";
+                    break;
+                case dItemNo_Randomizer_WALLET_LV2_e: // Progressive Wallet
+                    itemStr = "Big Wallet";
+                    break;
+                case dItemNo_Randomizer_MIRROR_PIECE_2_e:
+                    itemStr = "Mirror Shard";
+                    break;
+                case dItemNo_Randomizer_FUSED_SHADOW_1_e:
+                    itemStr = "Fused Shadow";
+                    break;
+                default:
+                    break;
+                }
+
+                if (itemStr.empty()) {
+                    itemStr = item->GetName();
+                }
+
+                if (m_currentSearch._ownedItems.contains(item)) {
+                    ImGui::TextColored(TRACKER_COLOR_ACCESSIBLE, "%s", itemStr.c_str());
+                    ImGui::SameLine(0, 0);
+                } else {
+                    ImGui::TextColored(TRACKER_COLOR_INACCESSIBLE, "%s", itemStr.c_str());
+                    ImGui::SameLine(0, 0);
+                }
+
+                return;
+
+            case Type::COUNT:
+                count = std::get<int>(req._args[0]);
+                item = std::get<Item*>(req._args[1]);
+
+                switch (item->GetID()) {
+                case dItemNo_Randomizer_FISHING_ROD_1_e: // Progressive Fishing Rod
+                    if (count == 2)
+                        itemStr = "Coral Earring";
+                    break;
+                case dItemNo_Randomizer_WOOD_STICK_e: // Progressive Sword
+                    if (count == 2)
+                        itemStr = "Ordon Sword";
+                    else if (count == 3)
+                        itemStr = "Master Sword";
+                    else if (count == 4)
+                        itemStr = "Light Sword";
+                    break;
+                case dItemNo_Randomizer_BOW_e:
+                    if (count == 2)
+                        itemStr = "Big Quiver";
+                    else if (count == 3)
+                        itemStr = "Giant Quiver";
+                    break;
+                case dItemNo_Randomizer_HOOKSHOT_e: // Progressive Clawshot
+                    if (count == 2)
+                        itemStr = "Double Clawshots";
+                    break;
+                case dItemNo_Randomizer_COPY_ROD_e: // Progressive Dominion Rod
+                    if (count == 2)
+                        itemStr = "Restored Dominion Rod";
+                    break;
+                case dItemNo_Randomizer_ENDING_BLOW_e:
+                    if (count == 2)
+                        itemStr = "Shield Attack";
+                    else if (count == 3)
+                        itemStr = "Back Slice";
+                    else if (count == 4)
+                        itemStr = "Helm Splitter";
+                    else if (count == 5)
+                        itemStr = "Mortal Draw";
+                    else if (count == 6)
+                        itemStr = "Jump Strike";
+                    else if (count == 7)
+                        itemStr = "Great Spin";
+                    break;
+                case dItemNo_Randomizer_WALLET_LV2_e:
+                    if (count == 2)
+                        itemStr = "Giant Wallet";
+                    break;
+                case dItemNo_Randomizer_MIRROR_PIECE_2_e:
+                    itemStr = "Mirror Shard x" + std::to_string(count);
+                    break;
+                case dItemNo_Randomizer_FUSED_SHADOW_1_e:
+                    itemStr = "Fused Shadow x" + std::to_string(count);
+                    break;
+                case dItemNo_Randomizer_ANCIENT_DOCUMENT_e:
+                    if (count == 7)
+                        itemStr = "Completed Sky Book";
+                    break;
+                case 0x103: // Faron Twilight Tear
+                    if (count == 16)
+                        itemStr = "Complete Faron Twilight";
+                    break;
+                case 0x104: // Eldin Twilight Tear
+                    if (count == 16)
+                        itemStr = "Complete Eldin Twilight";
+                    break;
+                case 0x105: // Lanayru Twilight Tear
+                    if (count == 16)
+                        itemStr = "Complete Lanayru Twilight";
+                    break;
+                default:
+                    break;
+                }
+
+                if (itemStr.empty()) {
+                    itemStr = item->GetName() + " x" + std::to_string(count);
+                }
+
+                if (m_currentSearch._ownedItems.count(item) >= count) {
+                    ImGui::TextColored(TRACKER_COLOR_ACCESSIBLE, "%s", itemStr.c_str());
+                    SameLineOrTextWrap();
+                } else {
+                    ImGui::TextColored(TRACKER_COLOR_INACCESSIBLE, "%s", itemStr.c_str());
+                    SameLineOrTextWrap();
+                }
+
+                return;
+
+            // case Type::EVENT:
+            //     eventIndex = std::get<int>(req._args[0]);
+            //     ImGui::Text("'Event_" + std::to_string(eventIndex) + "'");
+            //
+            // case Type::MACRO:
+            //     macroIndex = std::get<int>(req._args[0]);
+            //     return "'Macro_" + std::to_string(macroIndex) + "'";
+            //
+            // case Type::DAY:
+            //     return "Day";
+            //
+            // case Type::NIGHT:
+            //     return "Night";
+            //
+            // case Type::HUMAN_LINK:
+            //     return "Human Link";
+            //
+            // case Type::WOLF_LINK:
+            //     return "Wolf Link";
+            //
+            // case Type::TWILIGHT:
+            //     return "Twilight";
+            //
+            // case Type::GOLDEN_BUGS:
+            //     count = std::get<int>(req._args[0]);
+            //     return "golden_bugs(" + std::to_string(count) + ")";
+
+            case Type::HEARTS:
+                count = std::get<int>(req._args[0]);
+                heartCount = m_currentSearch._ownedItems.count(getTrackerRando()->GetWorld()->GetItem("Heart Container")) +
+                    (m_currentSearch._ownedItems.count(getTrackerRando()->GetWorld()->GetItem("Piece of Heart")) / 5);
+
+                itemStr = std::to_string(count) + " Hearts";
+
+                if (heartCount >= count) {
+                    ImGui::TextColored(TRACKER_COLOR_ACCESSIBLE, "%s", itemStr.c_str());
+                    SameLineOrTextWrap();
+                } else {
+                    ImGui::TextColored(TRACKER_COLOR_INACCESSIBLE, "%s", itemStr.c_str());
+                    SameLineOrTextWrap();
+                }
+                return;
+
+            case Type::DUNGEONS_COMPLETED:
+                count = std::get<int>(req._args[0]);
+                if (count == 1) {
+                    itemStr = "Complete " + std::to_string(count) + " Dungeon";
+                } else {
+                    itemStr = "Complete " + std::to_string(count) + " Dungeons";
+                }
+
+                if (EvaluateRequirementAtFormTime(req, &m_currentSearch, FormTime::ALL, getTrackerRando()->GetWorld())) {
+                    ImGui::TextColored(TRACKER_COLOR_ACCESSIBLE, "%s", itemStr.c_str());
+                    SameLineOrTextWrap();
+                } else {
+                    ImGui::TextColored(TRACKER_COLOR_INACCESSIBLE, "%s", itemStr.c_str());
+                    SameLineOrTextWrap();
+                }
+
+            default:
+                break;
+        }
+    }
+
     void ImGuiMenuRandomizer::generateLocationInfo() {
         auto trackerRando = getTrackerRando();
         auto world = trackerRando->GetWorld();
@@ -509,7 +806,7 @@ namespace dusk {
 
             LocationTrackerInfo info {
                 .locationName = location->GetName(),
-                .logicStr = location->GetComputedRequirement().to_string(),
+                .logicReq = location->GetComputedRequirement(),
                 .locationItem = itemId >= 0 ? world->GetItem(itemId, true)->GetName() : "Unknown",
                 .accessible = m_currentSearch._visitedLocations.contains(location)
             };

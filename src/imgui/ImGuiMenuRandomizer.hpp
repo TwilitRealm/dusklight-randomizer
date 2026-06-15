@@ -25,7 +25,7 @@ public:
 private:
     struct LocationTrackerInfo {
         std::string locationName;
-        std::string logicStr;
+        randomizer::logic::requirement::Requirement logicReq;
         std::string locationItem;
         bool accessible = false;
         bool collected = false;
@@ -60,6 +60,7 @@ private:
     std::map<std::string, TrackerAreaGroup> m_LocationInfo;
     std::vector<std::string> m_HiddenChecks;
 
+    void generateImGuiRequirementTooltip(const randomizer::logic::requirement::Requirement& req, int nestingLevel = 0);
     void generateLocationInfo();
 };
 }

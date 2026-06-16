@@ -652,39 +652,17 @@ void RandomizerWindow::rando_excluded_locations_update_left_pane(Pane& innerLeft
 
 // Focus the closest child in the next Pane. Returns true if a child was found to focus
 bool focus_closest_child_on_next_pane(Pane& currentPane, Pane& nextPane) {
-    float childToFocusY = 0.f;
-    for (const auto& child : currentPane.children()) {
-        if (child->root()->IsPseudoClassSet("focus")) {
-            childToFocusY = child->root()->GetAbsoluteTop();
-        }
-    }
 
-    Rml::Element* closestchild = nullptr;
-    // If there was no focused child in this pane, select the middle one of the next pane
-    if (childToFocusY == 0.f && !nextPane.children().empty()) {
-        closestchild = nextPane.children().at(nextPane.children().size() / 2)->root();
-    // Otherwise, choose the closest one
-    } else if (childToFocusY > 0.f) {
-        float closestRightChildDistance = 100000.f;
-        for (const auto& child : nextPane.children()) {
-            float distance = std::abs(childToFocusY - child->root()->GetAbsoluteTop());
-            if (distance < closestRightChildDistance) {
-                closestchild = child->root();
-                closestRightChildDistance = distance;
-            }
-        }
-    }
+    auto childToFocusY = currentPane.get_focused_child_y();
+    return nextPane.focus_closest_child(childToFocusY);
 
-    if (closestchild) {
-        closestchild->SetPseudoClass("focus-visible", true);
-        closestchild->Focus();
-        return true;
-    }
-
-    return false;
 }
 
 void delete_seed_callback(Pane& pane) {
+
+    // Get the Y position to focus the child nearest to after we rebuild this pane
+    auto childToFocusY = pane.get_focused_child_y();
+
     pane.clear();
     std::filesystem::path seedDirectory = GetRandomizerSeedsPath();
 
@@ -724,6 +702,9 @@ void delete_seed_callback(Pane& pane) {
                 });
         }
     }
+
+    // Refocus the closest child to the seed we just deleted
+    pane.focus_closest_child(childToFocusY);
 };
 
 RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : mFileSelectMenu(fileSelect) {

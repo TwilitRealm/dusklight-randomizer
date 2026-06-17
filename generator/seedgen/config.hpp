@@ -55,6 +55,7 @@ namespace randomizer::seedgen::config
         auto& GetSettings() { return this->_settingsList.front();}
         bool IsUsingPlandomizer() const { return this->_isUsingPlandomizer; }
         bool IsGeneratingSpoilerLog() const { return this->_isGeneratingSpoilerLog; }
+        void ResetSettingsToDefault();
 
         // void resetDefaultSettings();
         // void resetDefaultPreferences(const bool& paths = false);

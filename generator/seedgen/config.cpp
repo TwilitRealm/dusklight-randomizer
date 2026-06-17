@@ -16,6 +16,17 @@ namespace randomizer::seedgen::config
         LoadFromFile(settingsPath, preferencesPath);
     }
 
+    void Config::ResetSettingsToDefault() {
+        for (auto& settings : this->_settingsList) {
+            for (auto& [settingName, setting] : settings.GetMap()) {
+                setting.SetCurrentOption(setting.GetInfo()->GetDefaultOption());
+            }
+            settings.GetModifiableExcludedLocations().clear();
+            settings.GetModifiableStartingInventory().clear();
+            settings.GetModifiableMixedEntrancePools().clear();
+        }
+    }
+
     void Config::LoadFromFile(const fspath& settingsPath,
                               const fspath& preferencesPath,
                               const bool& createIfNotFound /*= true*/,

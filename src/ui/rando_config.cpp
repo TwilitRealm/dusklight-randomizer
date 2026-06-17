@@ -829,6 +829,17 @@ RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : m
         auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled);
         auto& rightPane = add_child<Pane>(content, Pane::Type::Uncontrolled);
 
+        leftPane.register_control(leftPane.add_button("Reset Settings to Default")
+            .on_pressed([] {
+                GetRandomizerConfig().ResetSettingsToDefault();
+                SaveRandomizerConfig();
+            }),
+            rightPane, [](Pane& pane) {
+            pane.clear();
+            pane.add_rml(
+                "Reset all settings to their default values. This will also clear starting items and excluded locations.");
+        });
+
         leftPane.add_section("Logic Settings");
 
         rando_config_group(leftPane, rightPane, "Logic Rules");

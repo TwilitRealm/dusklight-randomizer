@@ -1,6 +1,5 @@
 #include "config.hpp"
 
-
 #include "seed.hpp"
 #include "../utility/crc32.hpp"
 #include "../utility/log.hpp"
@@ -10,16 +9,34 @@
 
 #include <iostream>
 
+// Fields which aren't part of settings_list.yaml
+constexpr std::string_view SEED = "Seed";
+constexpr std::string_view PLANDOMIZER = "Plandomizer";
+constexpr std::string_view PLANDOMIZER_PATH = "Plandomizer Path";
+constexpr std::string_view STARTING_INVENTORY = "Starting Inventory";
+constexpr std::string_view EXCLUDED_LOCATIONS = "Excluded Locations";
+constexpr std::string_view MIXED_ENTRANCE_POOLS = "Mixed Entrance Pools";
+constexpr std::string_view GENERATE_SPOILER_LOG = "Generate Spoiler Log";
+
 namespace randomizer::seedgen::config
 {
+    Config::Config() {
+        // Create at least one player's settings
+        this->_settingsList.push_front(settings::Settings());
+    }
+
     Config::Config(const fspath& settingsPath, const fspath& preferencesPath) {
+        // Create at least one player's settings
+        this->_settingsList.push_front(settings::Settings());
         LoadFromFile(settingsPath, preferencesPath);
     }
 
     void Config::ResetSettingsToDefault() {
         for (auto& settings : this->_settingsList) {
             for (auto& [settingName, setting] : settings.GetMap()) {
-                setting.SetCurrentOption(setting.GetInfo()->GetDefaultOption());
+                if (setting.GetInfo()->GetType() == settings::Type::STANDARD) {
+                    setting.SetCurrentOption(setting.GetInfo()->GetDefaultOption());
+                }
             }
             settings.GetModifiableExcludedLocations().clear();
             settings.GetModifiableStartingInventory().clear();
@@ -27,20 +44,28 @@ namespace randomizer::seedgen::config
         }
     }
 
+    void Config::ResetPreferencesToDefault() {
+        for (auto& settings : this->_settingsList) {
+            for (auto& [settingName, setting] : settings.GetMap()) {
+                if (setting.GetInfo()->GetType() == settings::Type::PREFERENCE) {
+                    setting.SetCurrentOption(setting.GetInfo()->GetDefaultOption());
+                }
+            }
+            this->_plandomizerPath = "";
+        }
+    }
+
     void Config::LoadFromFile(const fspath& settingsPath,
                               const fspath& preferencesPath,
-                              const bool& createIfNotFound /*= true*/,
-                              const bool& allowRewrite /*= true*/)
+                              bool createIfNotFound /*= true*/,
+                              bool allowRewrite /*= true*/)
     {
         // Create files for settings/preferences if they don't exist
-        std::ifstream settingsFile(settingsPath);
-        std::ifstream preferencesFile(preferencesPath);
-
-        if (settingsFile.is_open() == false)
+        if (!std::filesystem::exists(settingsPath))
         {
             if (createIfNotFound)
             {
-                WriteDefaultSettings(settingsPath);
+                WriteSettingsToFile(settingsPath);
             }
             else
             {
@@ -48,22 +73,18 @@ namespace randomizer::seedgen::config
             }
         }
 
-        if (preferencesFile.is_open() == false)
+        if (!std::filesystem::exists(preferencesPath))
         {
             if (createIfNotFound)
             {
-                WriteDefaultPreferences(preferencesPath);
+                WritePreferencesToFile(preferencesPath);
             }
             else
             {
                 throw std::runtime_error("Could not open preferences file at \"" + preferencesPath.generic_string() + "\"");
             }
         }
-        settingsFile.close();
-        preferencesFile.close();
 
-        this->_settingsList.clear();
-        this->_settingsList.push_front(settings::Settings());
         auto& settings = this->_settingsList.front();
 
         // Load settings info
@@ -94,10 +115,10 @@ namespace randomizer::seedgen::config
                     rewriteSettings = true;
                 }
 
-                settings.InsertSetting(settingName, settings::Setting(settingInfo.get(), settingOption));
+                settings.GetMap().at(settingName).SetCurrentOption(settingOption);
             }
             // Special handling for starting inventory
-            else if (settingName == "Starting Inventory")
+            else if (settingName == STARTING_INVENTORY)
             {
                 for (const auto& inventoryNode : settingNode.second)
                 {
@@ -108,7 +129,7 @@ namespace randomizer::seedgen::config
                 }
             }
             // Special Handling for Excluded Locations
-            else if (settingName == "Excluded Locations")
+            else if (settingName == EXCLUDED_LOCATIONS)
             {
                 for (const auto& locationNode : settingNode.second)
                 {
@@ -117,7 +138,7 @@ namespace randomizer::seedgen::config
                 }
             }
             // Special Handling for Mixed Entrance Pools
-            else if (settingName == "Mixed Entrance Pools")
+            else if (settingName == MIXED_ENTRANCE_POOLS)
             {
                 for (const auto& poolNode : settingNode.second)
                 {
@@ -129,7 +150,7 @@ namespace randomizer::seedgen::config
                 }
             }
             // Special handling for Seed
-            else if (settingName == "Seed")
+            else if (settingName == SEED)
             {
                 const auto& seed = settingNode.second.as<std::string>();
                 this->_seed = seed;
@@ -141,7 +162,7 @@ namespace randomizer::seedgen::config
                 }
             }
             // Special handling for Plandomizer
-            else if (settingName == "Plandomizer")
+            else if (settingName == PLANDOMIZER)
             {
                 const auto& plandomizer = settingNode.second.as<bool>(false);
                 this->_isUsingPlandomizer = plandomizer;
@@ -167,26 +188,23 @@ namespace randomizer::seedgen::config
                                                   preferenceOption + "\". Reverting to default \"" +
                                                   preferenceInfo->GetDefaultOption() + "\"");
                     preferenceOption = preferenceInfo->GetDefaultOption();
-                    rewriteSettings = true;
+                    rewritePreferences = true;
                 }
 
-                settings.InsertSetting(preferenceName,
-                                       settings::Setting(preferenceInfo.get(), preferenceOption));
+                settings.GetMap().at(preferenceName).SetCurrentOption(preferenceOption);
             }
-            else if (preferenceName == "Plandomizer Path")
+            else if (preferenceName == PLANDOMIZER_PATH)
             {
                 const auto& plandomizerPath = preferenceNode.second.as<std::string>();
                 this->_plandomizerPath = plandomizerPath;
             }
         }
 
-        // Add in any missing settings/preferences
+        // Rewrite the file(s) if any settings or preferences are missing
         for (auto& [settingName, settingInfo] : *settingInfoMap)
         {
-            if (!settings.GetMap().contains(settingName))
+            if (!settingsTree[settingName])
             {
-                settings.InsertSetting(settingName,
-                                       settings::Setting(settingInfo.get(), settingInfo->GetDefaultOption()));
                 utility::platform::Log(std::string("Added missing setting \"") + settingName + "\"");
                 if (settingInfo->GetType() == settings::Type::STANDARD)
                 {
@@ -198,18 +216,18 @@ namespace randomizer::seedgen::config
                 }
             }
         }
-        if (!settingsTree["Seed"])
+        if (!settingsTree[SEED])
         {
             this->_seed = seed::GenerateSeed();
             utility::platform::Log("Seed is missing. Generated new seed.");
             rewriteSettings = true;
         }
-        if (!settingsTree["Plandomizer"] || !settingsTree["Generate Spoiler Log"] || !settingsTree["Starting Inventory"] ||
-            !settingsTree["Excluded Locations"] || !settingsTree["Mixed Entrance Pools"])
+        if (!settingsTree[PLANDOMIZER] || !settingsTree[GENERATE_SPOILER_LOG] || !settingsTree[STARTING_INVENTORY] ||
+            !settingsTree[EXCLUDED_LOCATIONS] || !settingsTree[MIXED_ENTRANCE_POOLS])
         {
             rewriteSettings = true;
         }
-        if (!preferencesTree["Plandomizer Path"])
+        if (!preferencesTree[PLANDOMIZER_PATH])
         {
             rewritePreferences = true;
         }
@@ -232,9 +250,9 @@ namespace randomizer::seedgen::config
         YAML::Node out;
         for (auto& settings : this->_settingsList)
         {
-            out["Seed"] = this->_seed;
-            out["Plandomizer"] = this->_isUsingPlandomizer;
-            out["Generate Spoiler Log"] = this->_isGeneratingSpoilerLog;
+            out[SEED] = this->_seed;
+            out[PLANDOMIZER] = this->_isUsingPlandomizer;
+            out[GENERATE_SPOILER_LOG] = this->_isGeneratingSpoilerLog;
 
             // Sort settings by id to keep relevant settings close together in the settings file
             std::list<std::string> sortedNames = {};
@@ -255,26 +273,26 @@ namespace randomizer::seedgen::config
                 }
             }
 
-            out["Starting Inventory"] = std::map<std::string, int>();
+            out[STARTING_INVENTORY] = std::map<std::string, int>();
             for (const auto& [itemName, count] : settings.GetStartingInventory())
             {
-                out["Starting Inventory"][itemName] = count;
+                out[STARTING_INVENTORY][itemName] = count;
             }
 
-            out["Excluded Locations"] = std::list<std::string>();
+            out[EXCLUDED_LOCATIONS] = std::list<std::string>();
             for (const auto& locationName : settings.GetExcludedLocations())
             {
-                out["Excluded Locations"].push_back(locationName);
+                out[EXCLUDED_LOCATIONS].push_back(locationName);
             }
 
-            out["Mixed Entrance Pools"] = std::list<std::list<std::string>>();
+            out[MIXED_ENTRANCE_POOLS] = std::list<std::list<std::string>>();
             int i = 0;
             for (const auto& pool : settings.GetMixedEntrancePools())
             {
-                out["Mixed Entrance Pools"].push_back({});
+                out[MIXED_ENTRANCE_POOLS].push_back({});
                 for (const auto& type : pool)
                 {
-                    out["Mixed Entrance Pools"][i].push_back(type);
+                    out[MIXED_ENTRANCE_POOLS][i].push_back(type);
                 }
                 i += 1;
             }
@@ -288,7 +306,7 @@ namespace randomizer::seedgen::config
         YAML::Node out;
         for (auto& settings : this->_settingsList)
         {
-            out["Plandomizer Path"] = this->_plandomizerPath.generic_string();
+            out[PLANDOMIZER_PATH] = this->_plandomizerPath.generic_string();
             for (auto& [settingName, setting] : settings.GetMap())
             {
                 if (setting.GetInfo()->GetType() == settings::Type::PREFERENCE)
@@ -341,70 +359,9 @@ namespace randomizer::seedgen::config
         return this->_hash;
     }
 
-    int WriteDefaultSettings(const fspath& settingsPath)
-    {
-        utility::platform::Log("Creating Default Settings");
-        std::ofstream settingsFile(settingsPath);
-        if (settingsFile.is_open() == false)
-        {
-            LOG_TO_ERROR("Could not open file to write default settings.");
-            return 1;
-        }
-
-        auto settingInfoMap = settings::GetAllSettingsInfo();
-
-        YAML::Node root;
-        root["Seed"] = seed::GenerateSeed();
-        root["Plandomizer"] = false;
-        root["Generate Spoiler Log"] = true;
-        // TODO: root["Permalink"] = permalink::GeneratePermalink();
-        for (const auto& [name, info] : *settingInfoMap)
-        {
-            if (info->GetType() == settings::Type::STANDARD)
-            {
-                root[name] = info->GetDefaultOption();
-            }
-        }
-        root["Starting Inventory"] = std::map<std::string, int>();
-        root["Excluded Locations"] = std::list<std::string>();
-        root["Mixed Entrance Pools"] = std::list<std::list<std::string>>();
-
-        settingsFile << root;
-        settingsFile.close();
-
-        return 0;
-    }
-
-    int WriteDefaultPreferences(const fspath& preferencesPath)
-    {
-        utility::platform::Log("Creating Default Preferences");
-        std::ofstream preferencesFile(preferencesPath);
-        if (preferencesFile.is_open() == false)
-        {
-            LOG_TO_ERROR("Could not open file to write default preferences.");
-            return 1;
-        }
-
-        auto settingInfoMap = settings::GetAllSettingsInfo();
-
-        YAML::Node root;
-        root["Plandomizer Path"] = "";
-        for (const auto& [name, info] : *settingInfoMap)
-        {
-            if (info->GetType() == settings::Type::PREFERENCE)
-            {
-                root[name] = info->GetDefaultOption();
-            }
-        }
-        preferencesFile << root;
-        preferencesFile.close();
-
-        return 0;
-    }
-
     int SeedRNG(Config& config,
-                const bool& resolveNonStandardRandom /* = false */,
-                const bool& ignoreInvalidPlandomizer /* = true */)
+                bool resolveNonStandardRandom /* = false */,
+                bool ignoreInvalidPlandomizer /* = true */)
     {
         // Seed with system time incase we have to choose random preferences during seeding
         auto seed = static_cast<uint32_t>(std::random_device {}());

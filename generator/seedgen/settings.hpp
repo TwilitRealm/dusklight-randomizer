@@ -190,7 +190,7 @@ namespace randomizer::seedgen::settings
     class Settings
     {
        public:
-        Settings() = default;
+        Settings();
 
         void InsertSetting(const std::string& settingName, Setting setting);
         void AddStartingItem(const std::string& itemName, const int& count = 1);

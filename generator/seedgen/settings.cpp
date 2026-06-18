@@ -201,6 +201,14 @@ namespace randomizer::seedgen::settings
         return this->_currentOptionIndex < optionNameIndex;
     }
 
+    Settings::Settings() {
+        // Load settings info and set defaults
+        auto settingInfoMap = GetAllSettingsInfo();
+        for (auto& [settingName, settingInfo] : *settingInfoMap) {
+            InsertSetting(settingName, Setting(settingInfo.get(), settingInfo->GetDefaultOption()));
+        }
+    }
+
     void Settings::InsertSetting(const std::string& settingName, Setting setting)
     {
         this->_map.emplace(settingName, setting);

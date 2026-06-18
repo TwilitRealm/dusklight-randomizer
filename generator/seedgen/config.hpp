@@ -45,7 +45,7 @@ namespace randomizer::seedgen::config
     class Config
     {
        public:
-        Config() = default;
+        Config();
         Config(const fspath& settingsPath, const fspath& preferencesPath);
 
         fspath GetPlandomizerPath() const { return this->_plandomizerPath; }
@@ -56,13 +56,12 @@ namespace randomizer::seedgen::config
         bool IsUsingPlandomizer() const { return this->_isUsingPlandomizer; }
         bool IsGeneratingSpoilerLog() const { return this->_isGeneratingSpoilerLog; }
         void ResetSettingsToDefault();
+        void ResetPreferencesToDefault();
 
-        // void resetDefaultSettings();
-        // void resetDefaultPreferences(const bool& paths = false);
         void LoadFromFile(const fspath& settingsPath,
                           const fspath& preferencesPath,
-                          const bool& createIfNotFound = true,
-                          const bool& allowRewrite = true);
+                          bool createIfNotFound = true,
+                          bool allowRewrite = true);
         YAML::Node SettingsToYaml();
         YAML::Node PreferencesToYaml();
         void WriteSettingsToFile(const fspath& filePath);
@@ -89,17 +88,7 @@ namespace randomizer::seedgen::config
         std::list<settings::Settings> _settingsList;
         bool _isUsingPlandomizer = false;
         bool _isGeneratingSpoilerLog = true;
-
-        // bool _converted = false;
-        // bool _updated = false;
-        // bool _configSet = false;
     };
 
-    int WriteDefaultSettings(const fspath& filePath);
-    int WriteDefaultPreferences(const fspath& filePath);
-
-    std::string ConfigErrorGetName(ConfigError err);
-    std::string PermalinkErrorGetName(ConfigError err);
-
-    int SeedRNG(Config& config, const bool& resolvePreferenceRandom = false, const bool& ignoreInvalidPlandomizer = true);
+    int SeedRNG(Config& config, bool resolveNonStandardRandom = false, bool ignoreInvalidPlandomizer = true);
 } // namespace randomizer::seedgen::config

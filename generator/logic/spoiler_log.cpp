@@ -78,7 +78,7 @@ namespace randomizer::logic::spoiler_log
         // Print starting inventories if there are any
         if (!worldswithStartingInventories.empty())
         {
-            spoilerLog << std::endl << "Starting Inventory:" << std::endl;
+            spoilerLog << std::endl << "All Starting Items:" << std::endl;
             for (const auto& world : worldswithStartingInventories)
             {
                 spoilerLog << "    World " << world->GetID() << ":" << std::endl;

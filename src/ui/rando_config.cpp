@@ -652,14 +652,11 @@ void RandomizerWindow::rando_excluded_locations_update_left_pane(Pane& innerLeft
 
 // Focus the closest child in the next Pane. Returns true if a child was found to focus
 bool focus_closest_child_on_next_pane(Pane& currentPane, Pane& nextPane) {
-
     auto childToFocusY = currentPane.get_focused_child_y();
     return nextPane.focus_closest_child(childToFocusY);
-
 }
 
 void delete_seed_callback(Pane& pane) {
-
     // Get the Y position to focus the child nearest to after we rebuild this pane
     auto childToFocusY = pane.get_focused_child_y();
 
@@ -688,7 +685,6 @@ void delete_seed_callback(Pane& pane) {
                 }
             }
 
-            // TODO: our ui lib doesnt have an easy way to either refresh or remove values from the right pane
             pane.add_button(
                 {
                     .text = hash,
@@ -712,6 +708,9 @@ RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : m
     // Create rando directories if they don't exist
     if (!std::filesystem::exists(GetRandomizerSeedsPath())) {
         std::filesystem::create_directories(GetRandomizerSeedsPath());
+    }
+    if (!std::filesystem::exists(GetRandomizerPresetsPath())) {
+        std::filesystem::create_directories(GetRandomizerPresetsPath());
     }
 
     // If we're bringing this menu up during file selection
@@ -823,6 +822,58 @@ RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : m
             leftPane.add_button("Delete Seeds"),
             rightPane, delete_seed_callback
             );
+
+        leftPane.add_section("Presets");
+        leftPane.register_control(
+            leftPane.add_button("Save Current Settings as Preset")
+            .on_pressed([] {
+                push_document(std::make_unique<TextInputModal>(Modal::Props{
+                    .title = "Preset Name",
+                    .bodyRml = "",
+                    .actions = {
+                        ModalAction{
+                            .label = "Save",
+                            .onPressed = [](Modal& modal) {
+                                auto textModal = dynamic_cast<TextInputModal*>(&modal);
+                                if (!textModal->get_input_text().empty()) {
+                                    modal.pop();
+                                    SaveNewRandomizerPreset(textModal->get_input_text());
+                                }
+                            },
+                        },
+                        ModalAction{
+                            .label = "Cancel",
+                            .onPressed = [](Modal& modal) {
+                                modal.pop();
+                            },
+                        },
+                    },
+                    .icon = "information"
+                }));
+
+            }),
+            rightPane, [](Pane& pane) {
+                pane.clear();
+                pane.add_text("Save the current settings to your list of presets.");
+        });
+
+        leftPane.register_control(
+            leftPane.add_button("Load Preset"),
+            rightPane, [](Pane& pane) {
+                pane.clear();
+                pane.add_text("Choose an existing preset to load from.");
+
+                for (const auto& file : std::filesystem::directory_iterator{GetRandomizerPresetsPath()}) {
+                    const auto& filepath = file.path();
+                    auto presetName = file.path().stem().generic_string();
+                    pane.add_button(ControlledButton::Props{
+                        .text = presetName,
+                    })
+                    .on_pressed([filepath] {
+                        ApplyExistingRandomizerPreset(filepath);
+                    });
+                }
+        });
     });
 
     add_tab("Seed Options", [this](Rml::Element* content) {
@@ -1168,6 +1219,90 @@ bool FileSelectRandomizerWindow::consume_close_request() {
     return true;
 }
 
+void SaveNewRandomizerPreset(const std::string& presetName, bool overwriteExisting /*= false*/) {
+    auto presetFilepath = GetRandomizerPresetsPath() / (presetName + ".yaml");
+
+    // If the preset exists, ask the user if they want to overwrite it. If so, call this function
+    // again but force overwrite the existing preset
+    if (std::filesystem::exists(presetFilepath) && !overwriteExisting) {
+        push_document(std::make_unique<Modal>(Modal::Props{
+            .title = "Overwrite Existing Preset",
+            .bodyRml = "A preset with the name " + presetName + " already exists. Do you wish to overwrite it?",
+            .actions = {
+                ModalAction{
+                    .label = "Yes",
+                    .onPressed = [presetName](Modal& modal) {
+                        modal.pop();
+                        SaveNewRandomizerPreset(presetName, true);
+                    }
+                },
+                ModalAction{
+                    .label = "No",
+                    .onPressed = [](Modal& modal) {
+                        modal.pop();
+                    }
+                }
+            }
+        }));
+    }
+
+    // If there was an error trying to save, let the user know
+    try {
+        GetRandomizerConfig().WriteSettingsToFile(presetFilepath);
+    } catch (std::exception& e) {
+        auto modal = dynamic_cast<Modal*>(&push_document(std::make_unique<Modal>(Modal::Props{
+            .title = "Error Saving Preset",
+            .bodyRml = fmt::format("Error: {}", e.what()),
+            .actions = {
+                ModalAction{
+                    .label = "Okay",
+                    .onPressed = [](Modal& modal) {
+                        modal.pop();
+                    }
+                }
+            },
+            .icon = "error"
+        })));
+        return;
+    }
+
+    push_toast(Toast{
+        .title = "",
+        .content = fmt::format("Saved preset {}", presetName),
+        .duration = std::chrono::seconds(3)
+    });
+}
+
+void ApplyExistingRandomizerPreset(const std::filesystem::path& presetFilePath) {
+    // Don't overwrite the seed with the one from the preset
+    auto seed = GetRandomizerConfig().GetSeed();
+    try {
+        GetRandomizerConfig().LoadFromFile(presetFilePath, GetRandomizerPreferencesPath(), false, false);
+        GetRandomizerConfig().SetSeed(seed);
+    } catch (std::exception& e) {
+        auto modal = dynamic_cast<Modal*>(&push_document(std::make_unique<Modal>(Modal::Props{
+            .title = "Error Loading Preset",
+            .bodyRml = fmt::format("Error: {}", e.what()),
+            .actions = {
+                ModalAction{
+                    .label = "Okay",
+                    .onPressed = [](Modal& modal) {
+                        modal.pop();
+                    }
+                }
+            },
+            .icon = "error"
+        })));
+        return;
+    }
+
+    push_toast(Toast{
+        .title = "",
+        .content = fmt::format("Loaded preset {}", presetFilePath.stem().generic_string()),
+        .duration = std::chrono::seconds(3)
+    });
+}
+
 std::filesystem::path GetRandomizerPath() {
     return data::configured_data_path() / "randomizer";
 }
@@ -1178,6 +1313,10 @@ std::filesystem::path GetRandomizerSettingsPath() {
 
 std::filesystem::path GetRandomizerPreferencesPath() {
     return GetRandomizerPath() / "preferences.yaml";
+}
+
+std::filesystem::path GetRandomizerPresetsPath() {
+    return GetRandomizerPath() / "presets";
 }
 
 std::filesystem::path GetRandomizerSeedsPath() {

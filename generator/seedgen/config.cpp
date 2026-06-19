@@ -86,6 +86,9 @@ namespace randomizer::seedgen::config
         }
 
         auto& settings = this->_settingsList.front();
+        settings.GetModifiableExcludedLocations().clear();
+        settings.GetModifiableMixedEntrancePools().clear();
+        settings.GetModifiableStartingInventory().clear();
 
         // Load settings info
         auto settingInfoMap = settings::GetAllSettingsInfo();

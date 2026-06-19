@@ -460,8 +460,8 @@
   Forward:
     Connection: Snowpeak Ruins West Courtyard North Balcony -> Snowpeak Ruins Boss Room
     Alias: Snowpeak Ruins -> Snowpeak Ruins Boss Room
-    Stage: 27
-    Room: 4
+    Stage: 28
+    Room: 50
     Spawn: "01"
     Spawn Type: "60"
     Parameters: "F01F"

@@ -39,6 +39,7 @@ namespace randomizer::logic::entrance_shuffle
 
     void SetShuffledEntrances(entrance::EntrancePools& entrancePools);
     entrance::EntrancePool GetReverseEntrances(const entrance::EntrancePool& entrances);
+    const std::set<std::string>& GetPossibleMixedPoolTypes();
 
     class EntranceShuffleError: public std::runtime_error
     {

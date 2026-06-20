@@ -148,4 +148,17 @@ namespace randomizer::logic::location
     {
         this->_registeredLocationCategories = registeredLocationCategories;
     }
+
+    const std::set<std::string>& GetAllRandomizerLocationNames() {
+        static std::set<std::string> locationNames{};
+
+        if (locationNames.empty()) {
+            auto locationDataTree = LOAD_EMBED_YAML(RANDO_DATA_PATH "locations.yaml");
+            for (const auto& locationNode : locationDataTree) {
+                locationNames.insert(locationNode["Name"].as<std::string>());
+            }
+        }
+
+        return locationNames;
+    }
 } // namespace randomizer::logic::location

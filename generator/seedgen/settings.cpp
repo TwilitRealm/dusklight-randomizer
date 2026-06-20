@@ -1,11 +1,15 @@
 #include "settings.hpp"
 
+#include "../utility/crc32.hpp"
+#include "../utility/endian.hpp"
 #include "../utility/log.hpp"
 #include "../utility/container.hpp"
 #include "../utility/file.hpp"
 #include "../utility/random.hpp"
 #include "../utility/string.hpp"
 #include "../utility/yaml.hpp"
+#include "../logic/location.hpp"
+#include "../logic/entrance_shuffle.hpp"
 
 #include <unordered_map>
 #include <algorithm>
@@ -26,18 +30,18 @@ namespace randomizer::seedgen::settings
         return types.at(str);
     }
 
-    SettingInfo::SettingInfo(const int& id,
+    SettingInfo::SettingInfo(int id,
                              const std::string& name,
-                             const Type& type,
+                             Type type,
                              const std::vector<std::string>& options,
                              const std::vector<std::string>& descriptions,
-                             const int& defaultOptionIndex,
-                             const bool& hasRandomOption,
-                             const int& randomOptionIndex,
-                             const int& randomLow,
-                             const int& randomHigh,
-                             const bool& trackerImportant,
-                             const bool& needInGame):
+                             int defaultOptionIndex,
+                             bool hasRandomOption,
+                             int randomOptionIndex,
+                             int randomLow,
+                             int randomHigh,
+                             bool trackerImportant,
+                             bool needInGame):
         _id(id),
         _name(name),
         _type(type),
@@ -71,6 +75,9 @@ namespace randomizer::seedgen::settings
         this->_optionsAreNumbers = std::ranges::all_of(options, [](const std::string& option) {
             return !option.empty() && std::ranges::all_of(option, ::isdigit);
         });
+
+        // Set options bitlength
+        this->_optionsBitLength = std::bit_width(this->_options.size());
     }
 
     std::string SettingInfo::GetDefaultOption() const
@@ -80,7 +87,7 @@ namespace randomizer::seedgen::settings
 
     int SettingInfo::GetIndexOfOption(const std::string& option) const
     {
-        return randomizer::utility::container::GetIndex(this->_options, option);
+        return utility::container::GetIndex(this->_options, option);
     }
 
     std::string SettingInfo::GetRandomOption() const
@@ -93,7 +100,7 @@ namespace randomizer::seedgen::settings
         this->_currentOptionIndex = info->GetIndexOfOption(option);
     }
 
-    void Setting::SetCurrentOption(const int& newOptionIndex)
+    void Setting::SetCurrentOption(int newOptionIndex)
     {
         if (newOptionIndex >= this->GetInfo()->GetOptions().size())
         {
@@ -122,7 +129,7 @@ namespace randomizer::seedgen::settings
     int Setting::GetCurrentOptionAsNumber() const {
         try {
             return std::stoi(this->GetCurrentOption());
-        } catch (...) {
+        } catch (const std::invalid_argument&) {
             throw std::runtime_error("Option \"" + GetCurrentOption() + "\" for setting \"" + this->GetInfo()->GetName() +
                                      "\" cannot be turned into a number");
         }
@@ -134,7 +141,7 @@ namespace randomizer::seedgen::settings
         {
             this->_isUsingRandomOption = true;
             auto randomOption =
-                randomizer::utility::random::Random(this->GetInfo()->GetRandomLow(), this->GetInfo()->GetRandomHigh());
+                utility::random::Random(this->GetInfo()->GetRandomLow(), this->GetInfo()->GetRandomHigh());
             this->SetCurrentOption(randomOption);
             LOG_TO_DEBUG("Chose \"" + this->GetInfo()->GetOptions()[randomOption] + " as random option for setting \"" +
                          this->GetInfo()->GetName());
@@ -300,7 +307,7 @@ namespace randomizer::seedgen::settings
             }
 
             // Calculate default option index
-            auto defaultOptionIndex = randomizer::utility::container::GetIndex(options, defaultOption);
+            auto defaultOptionIndex = utility::container::GetIndex(options, defaultOption);
             if (defaultOptionIndex == -1)
             {
                 throw std::runtime_error(std::string("Default Option \"") + defaultOption + "\" is not defined for setting \"" +
@@ -328,17 +335,17 @@ namespace randomizer::seedgen::settings
             if (settingNode["Random Low"])
             {
                 auto randomLowStr = settingNode["Random Low"].as<std::string>();
-                randomLow = randomizer::utility::container::GetIndex(options, randomLowStr);
+                randomLow = utility::container::GetIndex(options, randomLowStr);
                 if (randomLow == -1)
                 {
                     throw std::runtime_error(std::string("Random Low Option \"") + randomLowStr +
                                              "\" is not defined for setting \"" + name + "\"");
                 }
             }
-            if (settingNode["Random high"])
+            if (settingNode["Random High"])
             {
                 auto randomHighStr = settingNode["Random High"].as<std::string>();
-                randomHigh = randomizer::utility::container::GetIndex(options, randomHighStr);
+                randomHigh = utility::container::GetIndex(options, randomHighStr);
                 if (randomHigh == -1)
                 {
                     throw std::runtime_error(std::string("Random High Option \"") + randomHighStr +
@@ -347,13 +354,13 @@ namespace randomizer::seedgen::settings
             }
 
             // Generate the random option if it's not already there
-            if (hasRandomOption && randomizer::utility::container::GetIndex(options, randomAlias) != -1)
+            if (hasRandomOption && utility::container::GetIndex(options, randomAlias) != -1)
             {
                 options.push_back(randomAlias);
                 descriptions.push_back("A random option will be chosen");
             }
 
-            int randomOptionIndex = randomizer::utility::container::GetIndex(options, randomAlias);
+            int randomOptionIndex = utility::container::GetIndex(options, randomAlias);
 
             // Insert the data for the setting
             auto info = std::make_unique<SettingInfo>(settingIdCounter++,
@@ -372,6 +379,37 @@ namespace randomizer::seedgen::settings
         }
 
         return std::move(settingInfoMap);
+    }
+
+    uint32_t GetSettingInfoHash() {
+        static uint32_t settingsInfoHash = 0;
+        if (settingsInfoHash == 0) {
+            auto allSettingInfo = GetAllSettingsInfo();
+            for (const auto& [settingName, settingInfo] : *allSettingInfo) {
+                settingsInfoHash = utility::crc32(settingName.data(), settingName.length(), settingsInfoHash);
+                for (const auto& optionName : settingInfo->GetOptions()) {
+                    settingsInfoHash = utility::crc32(optionName.data(), optionName.length(), settingsInfoHash);
+                }
+            }
+
+            for (const auto& [itemName, maxRef] : logic::item_pool::GetValidStartingInventoryItems()) {
+                int maxCount = maxRef;
+                settingsInfoHash = utility::crc32(itemName.data(), itemName.length(), settingsInfoHash);
+                if constexpr (std::endian::native == std::endian::big) {
+                    maxCount = Utility::Endian::byteswap(maxCount);
+                }
+                settingsInfoHash = utility::crc32(&maxCount, sizeof(maxCount), settingsInfoHash);
+            }
+
+            for (const auto& locationName : logic::location::GetAllRandomizerLocationNames()) {
+                settingsInfoHash = utility::crc32(locationName.data(), locationName.length(), settingsInfoHash);
+            }
+
+            for (const auto& entranceType : logic::entrance_shuffle::GetPossibleMixedPoolTypes()) {
+                settingsInfoHash = utility::crc32(entranceType.data(), entranceType.length(), settingsInfoHash);
+            }
+        }
+        return settingsInfoHash;
     }
 
 }; // namespace randomizer::seedgen::settings

@@ -1,13 +1,18 @@
 #include "config.hpp"
 
+#include "packed_bits.hpp"
 #include "seed.hpp"
+#include "../utility/base64pp.hpp"
 #include "../utility/crc32.hpp"
 #include "../utility/log.hpp"
 #include "../utility/platform.hpp"
 #include "../utility/random.hpp"
 #include "../utility/yaml.hpp"
+#include "../logic/entrance_shuffle.hpp"
 
+#include <fmt/format.h>
 #include <iostream>
+#include <version.h>
 
 // Fields which aren't part of settings_list.yaml
 constexpr std::string_view SEED = "Seed";
@@ -360,6 +365,193 @@ namespace randomizer::seedgen::config
         }
 
         return this->_hash;
+    }
+
+    std::string Config::GetPermalink() {
+        // If a permalink was set, return that instead
+        if (!this->_permalink.empty()) {
+            return this->_permalink;
+        }
+
+        std::string permalink{};
+
+        permalink += DUSK_WC_DESCRIBE;
+        permalink += '\0';
+        permalink += std::to_string(settings::GetSettingInfoHash());
+        permalink += '\0';
+        permalink += this->_seed;
+        permalink += '\0';
+
+        // Pack the settings up
+        PackedBitsWriter bitsWriter{};
+        // Regular Settings
+        for (const auto& [settingName, setting] : GetSettings().GetMap()) {
+            if (setting.GetInfo()->GetType() != settings::Type::STANDARD) {
+                continue;
+            }
+
+            auto optionIndex = setting.GetCurrentOptionIndex();
+            auto bitLength = setting.GetInfo()->GetOptionsBitLength();
+            bitsWriter.write(optionIndex, bitLength);
+        }
+        // Starting Items
+        const auto& startingInventory = GetSettings().GetStartingInventory();
+        for (const auto& [itemName, maxCount] : logic::item_pool::GetValidStartingInventoryItems()) {
+            int count = 0;
+            if (startingInventory.contains(itemName)) {
+                count = startingInventory.at(itemName);
+            }
+
+            int numBits = std::bit_width(static_cast<uint32_t>(maxCount));
+            bitsWriter.write(count, numBits);
+        }
+        // Excluded Locations
+        for (const auto& locationName : logic::location::GetAllRandomizerLocationNames()) {
+            if (GetSettings().GetExcludedLocations().contains(locationName)) {
+                bitsWriter.write(1, 1);
+            } else {
+                bitsWriter.write(0, 1);
+            }
+        }
+        // Mixed Entrance Pools
+        const auto& mixedEntrancePools = GetSettings().GetMixedEntrancePools();
+        const auto& possibleMixedPoolTypes = logic::entrance_shuffle::GetPossibleMixedPoolTypes();
+        for (const auto& entranceType : possibleMixedPoolTypes) {
+            uint32_t poolIndex = 0;
+            uint32_t counter = 0;
+            for (const auto& pool : mixedEntrancePools) {
+                counter += 1;
+                if (utility::container::ElementInContainer(pool, entranceType)) {
+                    poolIndex = counter;
+                    break;
+                }
+            }
+            bitsWriter.write(poolIndex, std::bit_width(possibleMixedPoolTypes.size()));
+        }
+
+        bitsWriter.flush();
+        for (auto byte : bitsWriter.bytes) {
+            permalink += byte;
+        }
+        permalink = b64_encode(permalink);
+
+        return permalink;
+    }
+
+    std::optional<std::string> Config::LoadFromPermalink(std::string b64permalink) {
+
+        // Strip trailing spaces
+        std::erase_if(b64permalink, [](unsigned char ch){ return std::isspace(ch); });
+
+        std::string permalink = b64_decode(b64permalink);
+        // Empty string gets returned if there was an error
+        if (permalink.empty()) {
+            return "Pasted permalink is invalid and could not be decoded. (You likely miscopied it.)";
+        }
+
+        // Split the string into 4 parts along the null terminator delimiter
+        // 1st part - Version string
+        // 2nd part - setting info hash
+        // 3rd part - seed string
+        // 4th part - packed bits representing settings
+        std::vector<std::string> permaParts = {};
+        constexpr char delimiter = '\0';
+        size_t pos = permalink.find(delimiter);
+        while (pos != std::string::npos) {
+            if (permaParts.size() != 3) {
+                permaParts.push_back(permalink.substr(0, pos));
+                permalink.erase(0, pos + 1);
+            }
+            else {
+                permaParts.push_back(permalink);
+                break;
+            }
+
+            pos = permalink.find(delimiter);
+        }
+
+        if (permaParts.size() != 4) {
+            return "Pasted permalink does not have the expected number of parts.";
+        }
+
+        const auto& permaVersion = permaParts[0];
+        const auto& permaSettingsInfoHash = permaParts[1];
+        const auto& permaSeed = permaParts[2];
+        const auto& permaPackedSettings = permaParts[3];
+
+        if (permaSettingsInfoHash != std::to_string(settings::GetSettingInfoHash())) {
+            return fmt::format("Pasted permalink was generated with an incompatible Dusklight version.\n"
+                                  "Your version: {}\nPermalink version: {}", DUSK_WC_DESCRIBE, permaVersion);
+        }
+
+        const std::vector<char> bytes(permaPackedSettings.begin(), permaPackedSettings.end());
+        PackedBitsReader bitsReader{bytes};
+        Config newConfig{};
+
+        for (auto& [settingName, setting] : newConfig.GetSettings().GetMap()) {
+            if (setting.GetInfo()->GetType() != settings::Type::STANDARD) {
+                continue;
+            }
+
+            auto bitLength = setting.GetInfo()->GetOptionsBitLength();
+            auto optionIndex = bitsReader.read(bitLength);
+            setting.SetCurrentOption(optionIndex);
+        }
+        // Starting Items
+        auto& startingInventory = newConfig.GetSettings().GetModifiableStartingInventory();
+        for (const auto& [itemName, maxCount] : logic::item_pool::GetValidStartingInventoryItems()) {
+            int count = 0;
+            int numBits = std::bit_width(static_cast<uint32_t>(maxCount));
+            count = bitsReader.read(numBits);
+
+            if (count > 0) {
+                startingInventory[itemName] = count;
+            }
+        }
+        // Excluded Locations
+        auto& excludedLocations = newConfig.GetSettings().GetModifiableExcludedLocations();
+        for (const auto& locationName : logic::location::GetAllRandomizerLocationNames()) {
+            if (bitsReader.read(1) == 1) {
+                excludedLocations.insert(locationName);
+            }
+        }
+
+        // Mixed Entrance Pools
+        auto& mixedEntrancePools = newConfig.GetSettings().GetModifiableMixedEntrancePools();
+        const auto& possibleMixedPoolTypes = logic::entrance_shuffle::GetPossibleMixedPoolTypes();
+        for (const auto& entranceType : possibleMixedPoolTypes) {
+            auto poolIndex = bitsReader.read(std::bit_width(possibleMixedPoolTypes.size()));
+            if (poolIndex == 0) {
+                continue;
+            }
+            poolIndex -= 1;
+            if (poolIndex < possibleMixedPoolTypes.size()) {
+                while (poolIndex >= mixedEntrancePools.size()) {
+                    mixedEntrancePools.push_back({});
+                }
+                auto& pool = *std::next(mixedEntrancePools.begin(), poolIndex);
+                pool.push_back(entranceType);
+            }
+        }
+
+        if (!bitsReader.reached_last_byte()) {
+            return "Pasted permalink is incorrect length. (You likely miscopied it.)";
+        }
+
+        // Once we've gotten all the info, copy it over to this config
+        this->SetSeed(permaSeed);
+        for (auto& settings : this->_settingsList) {
+            for (auto& [settingName, setting] : settings.GetMap()) {
+                if (setting.GetInfo()->GetType() == settings::Type::STANDARD) {
+                    setting.SetCurrentOption(newConfig.GetSettings().GetMap().at(settingName).GetCurrentOptionIndex());
+                }
+            }
+            settings.GetModifiableExcludedLocations() = newConfig.GetSettings().GetExcludedLocations();
+            settings.GetModifiableStartingInventory() = newConfig.GetSettings().GetStartingInventory();
+            settings.GetModifiableMixedEntrancePools() = newConfig.GetSettings().GetMixedEntrancePools();
+        }
+
+        return std::nullopt;
     }
 
     int SeedRNG(Config& config,

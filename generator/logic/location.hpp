@@ -110,4 +110,10 @@ namespace randomizer::logic::location
     };
 
     using LocationPool = std::vector<Location*>;
+
+    /**
+     *
+     * @return A set of all randomizer location names
+     */
+    const std::set<std::string>& GetAllRandomizerLocationNames();
 } // namespace randomizer::logic::location

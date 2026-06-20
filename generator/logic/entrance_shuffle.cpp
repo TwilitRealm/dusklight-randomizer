@@ -783,4 +783,17 @@ namespace randomizer::logic::entrance_shuffle
         }
         return reverseEntrances;
     }
+
+    const std::set<std::string>& GetPossibleMixedPoolTypes() {
+        static std::set<std::string> possibleMixedPoolTypes = {
+            TypeToStr(DUNGEON),
+            TypeToStr(BOSS),
+            TypeToStr(GROTTO),
+            TypeToStr(INTERIOR),
+            TypeToStr(CAVE),
+            TypeToStr(OVERWORLD),
+        };
+
+        return possibleMixedPoolTypes;
+    }
 } // namespace randomizer::logic::entrance_shuffle

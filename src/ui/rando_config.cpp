@@ -1,8 +1,5 @@
 #include "rando_config.hpp"
 
-#include <mutex>
-#include <thread>
-
 #include "bool_button.hpp"
 #include "dusk/config.hpp"
 #include "dusk/data.hpp"
@@ -15,8 +12,11 @@
 #include "pane.hpp"
 #include "rando_seed_generation.hpp"
 #include "string_button.hpp"
-
 #include "d/d_file_select.h"
+#include "SDL3/SDL_clipboard.h"
+
+#include <mutex>
+#include <thread>
 
 namespace dusk::ui {
 struct ConfigBoolProps {
@@ -823,6 +823,29 @@ RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : m
             rightPane, delete_seed_callback
             );
 
+        leftPane.add_section("Permalink");
+        leftPane.register_control(
+            leftPane.add_button("Copy Permalink")
+            .on_pressed([] {
+                CopyPermalinkToClipboard();
+            }),
+            rightPane, [](Pane& pane) {
+                pane.clear();
+                pane.add_text("Copy your current settings permalink to share with others.");
+                auto text = pane.add_text(fmt::format("Current Permalink: {}", GetRandomizerConfig().GetPermalink()));
+                text->SetProperty("word-break", "break-word");
+        });
+
+        leftPane.register_control(
+            leftPane.add_button("Paste Permalink")
+            .on_pressed([] {
+                PastePermalinkFromClipboard();
+            }),
+            rightPane, [](Pane& pane) {
+                pane.clear();
+                pane.add_text("Paste in a permalink from your clipboard. This will overwrite your current settings.");
+        });
+
         leftPane.add_section("Presets");
         leftPane.register_control(
             leftPane.add_button("Save Current Settings as Preset")
@@ -1250,7 +1273,7 @@ void SaveNewRandomizerPreset(const std::string& presetName, bool overwriteExisti
     try {
         GetRandomizerConfig().WriteSettingsToFile(presetFilepath);
     } catch (std::exception& e) {
-        auto modal = dynamic_cast<Modal*>(&push_document(std::make_unique<Modal>(Modal::Props{
+        push_document(std::make_unique<Modal>(Modal::Props{
             .title = "Error Saving Preset",
             .bodyRml = fmt::format("Error: {}", e.what()),
             .actions = {
@@ -1262,7 +1285,7 @@ void SaveNewRandomizerPreset(const std::string& presetName, bool overwriteExisti
                 }
             },
             .icon = "error"
-        })));
+        }));
         return;
     }
 
@@ -1277,10 +1300,10 @@ void ApplyExistingRandomizerPreset(const std::filesystem::path& presetFilePath) 
     // Don't overwrite the seed with the one from the preset
     auto seed = GetRandomizerConfig().GetSeed();
     try {
-        GetRandomizerConfig().LoadFromFile(presetFilePath, GetRandomizerPreferencesPath(), false, false);
+        GetRandomizerConfig().LoadFromFile(presetFilePath, GetRandomizerPreferencesPath(), false, true);
         GetRandomizerConfig().SetSeed(seed);
     } catch (std::exception& e) {
-        auto modal = dynamic_cast<Modal*>(&push_document(std::make_unique<Modal>(Modal::Props{
+        push_document(std::make_unique<Modal>(Modal::Props{
             .title = "Error Loading Preset",
             .bodyRml = fmt::format("Error: {}", e.what()),
             .actions = {
@@ -1292,7 +1315,7 @@ void ApplyExistingRandomizerPreset(const std::filesystem::path& presetFilePath) 
                 }
             },
             .icon = "error"
-        })));
+        }));
         return;
     }
 
@@ -1301,6 +1324,55 @@ void ApplyExistingRandomizerPreset(const std::filesystem::path& presetFilePath) 
         .content = fmt::format("Loaded preset {}", presetFilePath.stem().generic_string()),
         .duration = std::chrono::seconds(3)
     });
+}
+
+void CopyPermalinkToClipboard() {
+    if (SDL_SetClipboardText(GetRandomizerConfig().GetPermalink().data())) {
+        push_toast(Toast{
+            .content = "Permalink Copied",
+            .duration = std::chrono::seconds(3)
+        });
+    } else {
+        push_document(std::make_unique<Modal>(Modal::Props{
+            .title = "Permalink Error",
+            .bodyRml = fmt::format("Could not copy permalink to clipboard. Reason: {}", SDL_GetError()),
+            .actions = {
+                ModalAction{
+                    .label = "Okay",
+                    .onPressed = [](Modal& modal) {
+                        modal.pop();
+                    }
+                }
+            },
+            .icon = "error"
+        }));
+    }
+}
+
+void PastePermalinkFromClipboard() {
+    if (SDL_HasClipboardText()) {
+        std::string clipBoardText = SDL_GetClipboardText();
+        auto result = GetRandomizerConfig().LoadFromPermalink(clipBoardText);
+        if (result.has_value()) {
+            auto modal = dynamic_cast<Modal*>(&push_document(std::make_unique<Modal>(Modal::Props{
+                .title = "Permalink Error",
+                .bodyRml = result.value(),
+                .actions = {
+                    ModalAction{
+                        .label = "Okay",
+                        .onPressed = [](Modal& modal) {
+                            modal.pop();
+                        }
+                    }
+                },
+                .icon = "error"
+            })));
+            modal->root()->SetProperty("white-space", "pre-line");
+        } else {
+            push_toast(Toast{.content = "Applied Permalink", .duration = std::chrono::seconds(3)});
+            SaveRandomizerConfig();
+        }
+    }
 }
 
 std::filesystem::path GetRandomizerPath() {

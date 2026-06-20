@@ -14,7 +14,7 @@
 namespace randomizer::seedgen::settings
 {
     class SettingInfo;
-    using SettingInfoMap_t = std::unordered_map<std::string, std::unique_ptr<SettingInfo>>;
+    using SettingInfoMap_t = std::map<std::string, std::unique_ptr<SettingInfo>>;
 
     /**
      *  @brief Enum for different types of settings.
@@ -48,18 +48,18 @@ namespace randomizer::seedgen::settings
     class SettingInfo
     {
        public:
-        SettingInfo(const int& id,
+        SettingInfo(int id,
                     const std::string& name,
-                    const Type& type,
+                    Type type,
                     const std::vector<std::string>& options,
                     const std::vector<std::string>& descriptions,
-                    const int& defaultOptionIndex,
-                    const bool& hasRandomOption,
-                    const int& randomOptionIndex,
-                    const int& randomLow,
-                    const int& randomHigh,
-                    const bool& trackerImportant,
-                    const bool& needInGame);
+                    int defaultOptionIndex,
+                    bool hasRandomOption,
+                    int randomOptionIndex,
+                    int randomLow,
+                    int randomHigh,
+                    bool trackerImportant,
+                    bool needInGame);
 
         int GetID() const { return this->_id; }
 
@@ -76,12 +76,12 @@ namespace randomizer::seedgen::settings
         /**
          *  @brief Returns a vector of strings of the setting's available options.
          */
-        std::vector<std::string> GetOptions() const { return this->_options; }
+        const std::vector<std::string>& GetOptions() const { return this->_options; }
 
         /**
          *  @brief Returns a vector of strings of the setting's options' descriptions.
          */
-        std::vector<std::string> GetDescriptions() const { return this->_descriptions; }
+        const std::vector<std::string>& GetDescriptions() const { return this->_descriptions; }
 
         /**
          *  @brief Returns the index of the default option in the options vector for the setting.
@@ -101,6 +101,7 @@ namespace randomizer::seedgen::settings
         bool TrackerImportant() const { return this->_trackerImportant; }
         bool NeedInGame() const { return this->_needInGame; }
         bool OptionsAreNumbers() const { return this->_optionsAreNumbers; }
+        int GetOptionsBitLength() const {return this->_optionsBitLength; }
 
        private:
         int _id = -1;
@@ -116,6 +117,7 @@ namespace randomizer::seedgen::settings
         bool _trackerImportant = false; // Whether or not this setting can affect trackers
         bool _needInGame = false;       // Whether or not we need to read this setting during gameplay
         bool _optionsAreNumbers = false;// Whether this setting's options are all numbers
+        int _optionsBitLength = 0;
 
         // Variables that hold the setting's name and options when being checked
         // in a logical requirement string.
@@ -135,14 +137,13 @@ namespace randomizer::seedgen::settings
         Setting(SettingInfo* info, const std::string& option);
 
         void SetCurrentOption(const std::string& newOption);
-        void SetCurrentOption(const int& newOptionIndex);
+        void SetCurrentOption(int newOptionIndex);
         std::string GetCurrentOption() const;
         int GetCurrentOptionAsNumber() const;
-        const int& GetCurrentOptionIndex() const { return this->_currentOptionIndex; }
-        const bool& IsUsingRandomOption() const { return this->_isUsingRandomOption; }
+        int GetCurrentOptionIndex() const { return this->_currentOptionIndex; }
+        bool IsUsingRandomOption() const { return this->_isUsingRandomOption; }
         SettingInfo* GetInfo() const { return this->_info; }
         const std::string& GetCustomOption() const { return this->_customOption; }
-        // void SetCustomOption(const std::string& newCustomOption);
         void ResolveIfRandom();
 
         bool operator==(const char* optionName) const;
@@ -158,7 +159,7 @@ namespace randomizer::seedgen::settings
             // Check to make sure all listed options exist
             for (const auto& optionName : {optionNames...})
             {
-                if (!randomizer::utility::container::ElementInContainer(this->GetInfo()->GetOptions(), optionName))
+                if (!utility::container::ElementInContainer(this->GetInfo()->GetOptions(), optionName))
                 {
                     throw std::runtime_error("\"" + std::string(optionName) + "\" is not a known option for setting \"" +
                                              this->GetInfo()->GetName() + "\"");
@@ -221,5 +222,12 @@ namespace randomizer::seedgen::settings
      *  @brief Reads settings_list.yaml and loads in all setting data
      */
     std::unique_ptr<SettingInfoMap_t> LoadAllSettingsInfo();
+
+    /**
+     * @brief Generates a hash based on the current settings info. This can be used
+     * to determine if settings between different permalinks are valid
+     * @return the hash for the current settings info
+     */
+    uint32_t GetSettingInfoHash();
 
 }; // namespace randomizer::seedgen::settings

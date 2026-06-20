@@ -102,4 +102,8 @@ class PackedBitsReader
 
         return value;
     }
+
+    bool reached_last_byte() const {
+        return current_byte_index == bytes.size() - 1;
+    }
 };

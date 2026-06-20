@@ -39,4 +39,6 @@ namespace randomizer::logic::item_pool
     std::map<std::string, int> GetInitialJunkPool();
 
     ItemPool GetCompleteItemPool(const world::WorldPool& worlds);
+
+    const std::map<std::string, int>& GetValidStartingInventoryItems();
 } // namespace randomizer::logic::item_pool

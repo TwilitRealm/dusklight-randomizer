@@ -451,4 +451,21 @@ namespace randomizer::logic::item_pool
 
         return completeItemPool;
     }
+
+    const std::map<std::string, int>& GetValidStartingInventoryItems() {
+        static std::map<std::string, int> validStartingInventoryItems{};
+        if (validStartingInventoryItems.empty()) {
+            validStartingInventoryItems = minimalItemPool;
+            for (const auto& [item, count] : standardItemPool) {
+                validStartingInventoryItems[item] += count;
+            }
+
+            // Remove junk
+            validStartingInventoryItems.erase("Purple Rupee Links House");
+            validStartingInventoryItems.erase("Green Rupee");
+            validStartingInventoryItems.erase("Orange Rupee");
+            validStartingInventoryItems.erase("Silver Rupee");
+        }
+        return validStartingInventoryItems;
+    }
 } // namespace randomizer::logic::item_pool

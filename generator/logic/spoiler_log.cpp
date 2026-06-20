@@ -35,9 +35,7 @@ namespace randomizer::logic::spoiler_log
     {
         log << "Dusklight Version: " << DUSK_WC_DESCRIBE << std::endl;
         log << "Seed: " << randomizer->GetConfig().GetSeed() << std::endl;
-
-        // TODO: Setting string
-
+        log << "Permalink: " << randomizer->GetConfig().GetPermalink() << std::endl;
         log << "Hash: " << randomizer->GetConfig().GetHash() << std::endl;
     }
 

@@ -65,19 +65,19 @@ namespace randomizer::logic::spoiler_log
         LogBasicInfo(spoilerLog, randomizer);
 
         // Gather worlds with starting inventories
-        std::list<world::World*> worldswithStartingInventories = {};
+        std::list<world::World*> worldsWithStartingInventories = {};
         for (const auto& world : worlds)
         {
             if (!world->GetStartingItemPool().empty())
             {
-                worldswithStartingInventories.push_back(world.get());
+                worldsWithStartingInventories.push_back(world.get());
             }
         }
         // Print starting inventories if there are any
-        if (!worldswithStartingInventories.empty())
+        if (!worldsWithStartingInventories.empty())
         {
             spoilerLog << std::endl << "All Starting Items:" << std::endl;
-            for (const auto& world : worldswithStartingInventories)
+            for (const auto& world : worldsWithStartingInventories)
             {
                 spoilerLog << "    World " << world->GetID() << ":" << std::endl;
                 for (const auto& item : world->GetStartingItemPool())
@@ -87,7 +87,31 @@ namespace randomizer::logic::spoiler_log
             }
         }
 
-        // TODO: Print required dungeons
+        // Gather worlds with required dungeons
+        std::list<world::World*> worldsWithRequiredDungeons = {};
+        for (const auto& world : worlds)
+        {
+            for (const auto& [dungeonName, dungeon] : world->GetDungeonTable()) {
+                if (dungeon->IsRequired()) {
+                    worldsWithRequiredDungeons.push_back(world.get());
+                    break;
+                }
+            }
+        }
+        // Print required dungeons if there are any
+        if (!worldsWithRequiredDungeons.empty())
+        {
+            spoilerLog << std::endl << "Required Dungeons:" << std::endl;
+            for (const auto& world : worldsWithRequiredDungeons)
+            {
+                spoilerLog << "    World " << world->GetID() << ":" << std::endl;
+                for (const auto& [dungeonName, dungeon] : world->GetDungeonTable()) {
+                    if (dungeon->IsRequired()) {
+                        spoilerLog << "      - " << dungeonName << std::endl;
+                    }
+                }
+            }
+        }
 
         // Get name lengths for pretty formatting
         size_t longestNameLength = 0;

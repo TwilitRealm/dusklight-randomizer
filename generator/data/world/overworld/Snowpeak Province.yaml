@@ -102,12 +102,14 @@
     Snowpeak Summit Lower: Nothing
 
 - Name: Snowpeak Ruins East Door Interior
+  Region: Snowpeak Ruins
   Can Transform: Never
   Exits:
     Snowpeak Ruins East Door Exterior: Can_Open_Doors
     Snowpeak Ruins Entrance: Nothing
 
 - Name: Snowpeak Ruins West Door Interior
+  Region: Snowpeak Ruins
   Can Transform: Never
   Exits:
     Snowpeak Ruins West Door Exterior: Can_Open_Doors

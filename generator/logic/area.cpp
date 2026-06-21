@@ -250,7 +250,7 @@ namespace randomizer::logic::area
             this->AddHintRegion(region);
             LOG_TO_DEBUG("Assigned \"" + region + "\" as hint region to \"" + this->GetName() + "\"");
 
-            // Also assign any loactions in this area to the dungeon if there are any dungeon regions
+            // Also assign any locations in this area to the dungeon if there are any dungeon regions
             if (dungeons.contains(region))
             {
                 auto locAccs = this->GetLocations();

@@ -728,22 +728,22 @@ namespace randomizer::logic::world
         for (auto& [areaName, area] : this->_areaTable)
         {
             area->AssignHintRegionsAndDungeonLocations();
+        }
 
+        for (auto& [areaName, area] : this->_areaTable)
+        {
             // Also assign dungeons their starting entrance
             for (const auto& exit : area->GetExits())
             {
                 auto parentRegions = exit->GetParentArea()->GetHintRegions();
                 auto connectedRegions = exit->GetConnectedArea()->GetHintRegions();
-                if (!parentRegions.contains("None"))
+                for (auto& [dungeonName, dungeon] : this->_dungeons)
                 {
-                    for (auto& [dungeonName, dungeon] : this->_dungeons)
+                    // If this exit leads into a dungeon and its parent area is not part of the dungeon
+                    // then this is the entrance that leads into the dungeon
+                    if (connectedRegions.contains(dungeonName) && !parentRegions.contains(dungeonName))
                     {
-                        // If this exit leads into a dungeon and its parent area is not part of the dungeon
-                        // then this is the entrance that leads into the dungeon
-                        if (connectedRegions.contains(dungeonName) && !parentRegions.contains(dungeonName))
-                        {
-                            dungeon->AddStartingEntrance(exit);
-                        }
+                        dungeon->AddStartingEntrance(exit);
                     }
                 }
             }

@@ -57,7 +57,16 @@
     event: 42
     parameters: 0x00000000
     next node index: 0x10C
-#5: # zel_05.bmg
+
+5: # zel_05.bmg
+  # Patch Gor Liggs to not set the flag for the third key shard
+  # Change event index 17 to event index 42 which does nothing
+  - index: 0x258
+    type: event
+    event: 42
+    parameters: 0x00000000
+    next node index: 0x1AC
+
 #6: # zel_06.bmg
 #7: # zel_07.bmg
 #8: # zel_08.bmg

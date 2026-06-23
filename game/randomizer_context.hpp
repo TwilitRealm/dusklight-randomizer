@@ -70,14 +70,15 @@ public:
     // Map of language -> map of key -> string
     std::unordered_map<int, std::unordered_map<u32, std::string>> mTextOverrides{};
 
-    // TODO: hook this up to generator data
-    struct {
-        // for now use hardcoded values for this
-        std::string mapName = "F_SP103"; // (Ordon) Outside Link's House
-        int pointNo = 1;
-        int roomNo = 1;
-        int mapLayer = -1;
-    } mStartLocation;
+    struct EntranceOverride {
+        u8 stageId = 0xFF;
+        s8 roomNo = -1;
+        s8 pointNo = -1;
+        s8 mapLayer = -1;
+    };
+
+    // keyed by stageId << 24 | pointNo << 16 | roomNo << 8 | mapLayer
+    std::unordered_map<int, EntranceOverride> mEntranceOverrides{};
 
     std::optional<std::string> WriteToFile();
     std::optional<std::string> LoadFromHash(const std::string& hash);
@@ -101,6 +102,7 @@ public:
         SKIP_MINOR_CUTSCENES,
         SKIP_MAJOR_CUTSCENES,
         SKIP_BRIDGE_DONATION,
+        MIRROR_CHAMBER_ACCESS,
     };
 
     enum Options {
@@ -118,6 +120,8 @@ public:
         ORDON_SWORD,
         MASTER_SWORD,
         LIGHT_SWORD,
+        BARRIER,
+        CLOSED,
     };
 
     static int SettingToEnum(const std::string& settingName);
@@ -207,6 +211,10 @@ bool randomizer_IsActive();
 int randomizer_getItemAtLocation(const std::string& locationName);
 
 /*
+ * @brief Overrides the given entrance paramaters if an override exists for them
+ */
+void randomizer_checkAndOverrideEntranceData(const char*& i_Name, s8& i_RoomNo, s16& i_Point, s8& i_Layer);
+/*
  * @brief Puts the associated flag into the randomizer state's temporary flag
  * variable. This allows the tracker/Archipelago to know a location has been checked
  * when the item is received instead of some indeterminate amount of time afterward.
@@ -216,6 +224,8 @@ void randomizer_setTempFlagForLocation(const std::string& locationName);
 void randomizer_setTempFlagForFLWOverride(u32 key);
 
 bool randomizer_checkTempleOfTimeRequirement();
+
+bool randomizer_mirrorChamberWallShouldExist();
 
 u8 randomizer_getRandomFoolishItemModelID();
 

@@ -121,6 +121,10 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
     textData << YAML::EndMap;
     textData << YAML::EndMap;
 
+    for (const auto& [key, override] : mEntranceOverrides) {
+        out["mEntranceOverrides"][key] = std::bit_cast<int>(override);
+    }
+
     seedData << YAML::Dump(out);
     seedData << '\n' << textData.c_str();
     seedData.close();
@@ -278,6 +282,13 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         }
     }
 
+    // Entrance Overrides
+    for (const auto& entranceNode : in["mEntranceOverrides"]) {
+        auto key = entranceNode.first.as<int>();
+        auto override = std::bit_cast<EntranceOverride>(entranceNode.second.as<int>());
+        this->mEntranceOverrides[key] = override;
+    }
+
     dusk::ui::push_toast(dusk::ui::Toast{
         .title = "Randomizer",
         .content =  fmt::format("Loaded Randomizer Seed {}", this->mHash),
@@ -291,7 +302,7 @@ std::filesystem::path RandomizerContext::GetSeedDataPath() const {
 }
 
 int RandomizerContext::SettingToEnum(const std::string& settingName) {
-    static const std::unordered_map<std::string, int> nameToEnum = {
+    static const std::map<std::string, int> nameToEnum = {
         {"Hyrule Barrier Dungeons", HYRULE_BARRIER_DUNGEONS},
         {"Hyrule Barrier Requirements", HYRULE_BARRIER_REQUIREMENTS},
         {"Hyrule Barrier Fused Shadows", HYRULE_BARRIER_FUSED_SHADOWS},
@@ -309,6 +320,7 @@ int RandomizerContext::SettingToEnum(const std::string& settingName) {
         {"Skip Minor Cutscenes", SKIP_MINOR_CUTSCENES},
         {"Skip Major Cutscenes", SKIP_MAJOR_CUTSCENES},
         {"Skip Bridge Donation", SKIP_BRIDGE_DONATION},
+        {"Mirror Chamber Access", MIRROR_CHAMBER_ACCESS},
     };
 
     if (nameToEnum.contains(settingName)) {
@@ -319,7 +331,7 @@ int RandomizerContext::SettingToEnum(const std::string& settingName) {
 }
 
 int RandomizerContext::OptionToEnum(const std::string& optionName) {
-    static const std::unordered_map<std::string, int> nameToEnum = {
+    static const std::map<std::string, int> nameToEnum = {
         {"On", ON},
         {"Off", OFF},
         {"None", NONE},
@@ -334,6 +346,8 @@ int RandomizerContext::OptionToEnum(const std::string& optionName) {
         {"Ordon Sword", ORDON_SWORD},
         {"Master Sword", MASTER_SWORD},
         {"Light Sword", LIGHT_SWORD},
+        {"Closed", CLOSED},
+        {"Barrier", BARRIER},
     };
 
     if (nameToEnum.contains(optionName)) {
@@ -531,7 +545,7 @@ static void updateGoalFlags() {
         }
     }
 
-    // Palace of Twlight Access
+    // Palace of Twilight Access
     if (!dComIfGs_isEventBit(FIXED_THE_MIRROR_OF_TWILIGHT)) {
         bool openPalace = false;
         switch (settings[RandomizerContext::PALACE_OF_TWILIGHT_REQUIREMENTS]) {
@@ -798,6 +812,21 @@ int randomizer_getItemAtLocation(const std::string& locationName) {
     return randomizer_GetContext().mItemLocations[locationName].itemId;
 }
 
+void randomizer_checkAndOverrideEntranceData(const char*& stageName, s8& roomNo, s16& pointNo, s8& mapLayer) {
+    RandomizerContext::EntranceOverride override = {
+        static_cast<u8>(getStageID(stageName)), roomNo, static_cast<s8>(pointNo), mapLayer
+    };
+
+    int key = std::bit_cast<int>(override);
+    if (randomizer_GetContext().mEntranceOverrides.contains(key)) {
+        auto& newOverride = randomizer_GetContext().mEntranceOverrides[key];
+        stageName = allStages[newOverride.stageId];
+        pointNo = newOverride.pointNo;
+        roomNo = newOverride.roomNo;
+        mapLayer = newOverride.mapLayer;
+    }
+}
+
 static void randomizer_setTempFlag(RandomizerContext::itemLocationData data) {
     // If stage is 0xFF, then this is an event flag
     if (data.stage == 0xFF) {
@@ -859,6 +888,12 @@ bool randomizer_checkTempleOfTimeRequirement() {
     }
 
     return false;
+}
+
+bool randomizer_mirrorChamberWallShouldExist() {
+    auto mirrorChamberAccess = randomizer_GetContext().mSettings[RandomizerContext::MIRROR_CHAMBER_ACCESS];
+    return mirrorChamberAccess == RandomizerContext::CLOSED ||
+          (mirrorChamberAccess == RandomizerContext::BARRIER && !dComIfGs_isStageBossEnemy(0x13));
 }
 
 u8 randomizer_getRandomFoolishItemModelID() {
@@ -1204,7 +1239,7 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
         const auto& stageName = stageNode.first.as<std::string>();
         for (const auto& roomNode : stageNode.second) {
             u8 roomNo{};
-            // Special value for
+            // Special value for actors always on the stage and not just one specific room
             if (roomNode.first.as<std::string>() == "Stage") {
                 roomNo = RandomizerContext::ROOM_STAGE;
             } else {
@@ -1314,6 +1349,27 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
             randomizer::applyMessageCodes(text);
             randoData.mTextOverrides[language][key] = text;
         }
+    }
+
+    // Entrance Overrides
+    if (world->Setting("Mirror Chamber Access") == "Closed") {
+        // Set exiting the Arbiter's Grounds Boss Room to spawn at the Arbiter's Grounds entrance
+        // if mirror chamber access is closed
+        RandomizerContext::EntranceOverride original = {
+            StageIDs::Mirror_Chamber,
+            4,
+            0,
+            -1
+        };
+
+        RandomizerContext::EntranceOverride override = {
+            StageIDs::Bulblin_Camp,
+            3,
+            3,
+            -1
+        };
+
+        randoData.mEntranceOverrides[std::bit_cast<int>(original)] = override;
     }
 
     return std::move(randoData);

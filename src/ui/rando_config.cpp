@@ -926,6 +926,7 @@ RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : m
             });
         rando_config_group(leftPane, rightPane, "Palace of Twilight Requirements");
         rando_config_group(leftPane, rightPane, "Faron Woods Logic");
+        rando_config_group(leftPane, rightPane, "Mirror Chamber Access");
 
         // leftPane.add_section("World (TODO)");
 
@@ -1220,8 +1221,7 @@ RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : m
 
             leftPane.register_control(leftPane.add_button("Warp to Start").on_pressed([] {
                 mDoAud_seStartMenu(kSoundClick);
-                auto& locData = randomizer_GetContext().mStartLocation;
-                dComIfGp_setNextStage(locData.mapName.c_str(), locData.pointNo, locData.roomNo, locData.mapLayer);
+                dComIfGp_setNextStage("F_SP103", 1, 1, -1);
             }), rightPane, [](Pane& pane) {
                 pane.clear();
                 pane.add_rml("Respawns the player at their appropriate starting location.");

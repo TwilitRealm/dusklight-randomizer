@@ -126,7 +126,7 @@
   Can Warp: True
   Exits:
     Mirror Chamber Upper: Nothing
-    Arbiters Grounds Boss Room: Nothing
+    Arbiters Grounds Boss Room: Mirror_Chamber_Access == Open or (Mirror_Chamber_Access == Barrier and 'Can_Complete_Arbiters_Grounds')
 
 - Name: Mirror Chamber Upper
   Map Sector: Desert Province

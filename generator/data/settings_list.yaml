@@ -79,6 +79,15 @@
     - Closed: "Midna will block the player from leaving Faron Woods until Forest Temple is completed."
     - Open: "Midna will not prevent the player from leaving Faron Woods."
 
+- Name: Mirror Chamber Access
+  Need In Game: True
+  Tracker Important: True
+  Default Option: Open
+  Options:
+    - Open: "The entrance is open and operates like normal. If you start with the Mirror Chamber Portal, you can access the Stallord boss fight without going through Arbiter's Grounds."
+    - Barrier: "A barrier is placed in front of the Mirror Chamber entrance and goes away once Stallord is defeated."
+    - Closed: "The Mirror Chamber is isolated from the world and cannot be reached from the Stallord boss room. To access it, players will either need the portal or access from Palace of Twilight."
+
 ######################
 ##    Item Pool     ##
 ######################

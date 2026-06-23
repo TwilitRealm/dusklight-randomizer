@@ -423,6 +423,15 @@ namespace randomizer::logic::item_pool
             startingItems["Castle Town Portal"] = 1;
         }
 
+        // Automatically give players the Mirror Chamber Portal if Mirror Chamber Access is closed
+        // and they aren't both randomizing and decoupling dungeon entrances. Otherwise, there's no
+        // way to access the chamber
+        if (world->Setting("Mirror Chamber Access") == "Closed" &&
+          !(world->Setting("Randomize Dungeon Entrances") == "On" && world->Setting("Decouple Entrances") == "On"))
+        {
+            startingItems["Mirror Chamber Portal"] = 1;
+        }
+
         // Add each item to the world's _startingItemPool and erase it from the regular _itemPool
         for (const auto& [itemName, count] : startingItems)
         {

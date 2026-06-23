@@ -5,9 +5,9 @@
 - Type: Spawn
   Forward:
     Connection: Links Spawn -> Outside Links House
-    Stage: -1
-    Room: -1
-    Spawn: ""
+    Stage: 43
+    Room: 1
+    Spawn: "01"
     Spawn Type: ""
     Parameters: ""
     State: "FF"
@@ -449,11 +449,11 @@
   Return:
     Connection: Arbiters Grounds Boss Room -> Mirror Chamber Lower
     Alias: Arbiters Grounds Boss Room -> Mirror Chamber
-    Stage: -1
-    Room: -1
-    Spawn: ""
-    Spawn Type: ""
-    Parameters: ""
+    Stage: 60
+    Room: 4
+    Spawn: "00"
+    Spawn Type: "10"
+    Parameters: "501F"
     State: "FF"
 
 - Type: Boss

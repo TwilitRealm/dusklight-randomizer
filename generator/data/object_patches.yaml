@@ -3470,6 +3470,28 @@ F_SP124:
       layers:
         - 0
 
+# Mirror Chamber
+F_SP125:
+  # Room 4 - Main Chamber
+  4:
+    # Add barrier to prevent players from going back to the Arbiters Boss Room
+    # depending on settings
+    - action: add
+      name: Obj_gb
+      parameters: 0x800F0601
+      position:
+        x: 1794.0
+        y: 2523.0
+        z: -17400.0
+      angle:
+        x: 0xFF7F
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 1
+
 # Upper Zora's River
 F_SP126:
   # Room 0 - Main area

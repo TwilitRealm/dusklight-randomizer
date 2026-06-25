@@ -45,6 +45,8 @@ namespace randomizer::logic::hints {
             text = getTextObject(textName + " Template");
             text.Replace("<Item Standard Name>", itemStandardName);
             text.Replace("<Item Pretty Name>", itemPrettyName);
+            text.Capitalize();
+            text.BreakLines();
         }
     }
 

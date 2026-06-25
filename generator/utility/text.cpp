@@ -9,154 +9,6 @@
 
 namespace randomizer {
 
-    // std::array<std::string, 3> supported_languages = {"English", "Spanish", "French"};
-    //
-    // static std::unordered_map<Text::Color, std::u16string> nameToColor = {
-    //     {Text::Color::NONE,    TEXT_COLOR_DEFAULT},
-    //     {Text::Color::RED,     TEXT_COLOR_RED},
-    //     {Text::Color::GREEN,   TEXT_COLOR_GREEN},
-    //     {Text::Color::BLUE,    TEXT_COLOR_BLUE},
-    //     {Text::Color::YELLOW,  TEXT_COLOR_YELLOW},
-    //     {Text::Color::CYAN,    TEXT_COLOR_CYAN},
-    //     {Text::Color::MAGENTA, TEXT_COLOR_MAGENTA},
-    //     {Text::Color::GRAY,    TEXT_COLOR_GRAY},
-    //     {Text::Color::ORANGE,  TEXT_COLOR_ORANGE},
-    // };
-    //
-    // std::u16string apply_name_color(std::u16string str, const Color& color)
-    // {
-    //     // Return the raw text (bars included)
-    //     if (color == Color::RAW)
-    //     {
-    //         return str;
-    //     }
-    //     // If there are no '|'s then just return with the color surrounding the whole string
-    //     if (str.find('|') == std::string::npos)
-    //     {
-    //         auto textColor = nameToColor[color];
-    //         return textColor + str + TEXT_COLOR_DEFAULT;
-    //     }
-    //
-    //     // Alternate between the text color and default incase there are multiple
-    //     // pairs of bars
-    //     auto textColor = nameToColor[color];
-    //     bool insertColor = false;
-    //     for (size_t pos = 0; pos < str.length(); pos++)
-    //     {
-    //         if (str[pos] == '|')
-    //         {
-    //             insertColor = !insertColor;
-    //             str.erase(pos, 1);
-    //             str.insert(pos, insertColor ? textColor : TEXT_COLOR_DEFAULT);
-    //         }
-    //     }
-    //
-    //     return str;
-    // }
-    //
-    // std::u16string word_wrap_string(const std::u16string& string, const size_t& max_line_len) {
-    //     size_t index_in_str = 0;
-    //     std::u16string wordwrapped_str;
-    //     std::u16string current_word;
-    //     size_t curr_word_len = 0;
-    //     size_t len_curr_line = 0;
-    //
-    //     while (index_in_str < string.length()) { //length is weird because its utf-16
-    //         char16_t character = string[index_in_str];
-    //
-    //         if (character == u'\x0E') { //need to parse the commands, only implementing a few necessary ones for now (will break with other commands)
-    //             std::u16string substr;
-    //             size_t code_len = 0;
-    //             if (string[index_in_str + 1] == u'\x00') {
-    //                 if (string[index_in_str + 2] == u'\x03') { //color command
-    //                     if (string[index_in_str + 4] == u'\xFFFF') { //text color white, weird length
-    //                     code_len = 10;
-    //                     }
-    //                     else {
-    //                     code_len = 5;
-    //                     }
-    //                 }
-    //             }
-    //             else if (string[index_in_str + 1] == u'\x01') { //all implemented commands in this group have length 4
-    //                 code_len = 4;
-    //             }
-    //             else if (string[index_in_str + 1] == u'\x02') { //all implemented commands in this group have length 4
-    //                 code_len = 4;
-    //             }
-    //             else if (string[index_in_str + 1] == u'\x03') { //all implemented commands in this group have length 4
-    //                 code_len = 4;
-    //             }
-    //             else if (string[index_in_str + 1] == u'\x04') { //all implemented commands in this group have length 4. Only used for Ho Ho sound
-    //                 code_len = 4;
-    //             }
-    //
-    //             substr = string.substr(index_in_str, code_len);
-    //             current_word += substr;
-    //             index_in_str += code_len;
-    //         }
-    //         else if (character == u'\n') {
-    //             wordwrapped_str += current_word;
-    //             wordwrapped_str += character;
-    //             len_curr_line = 0;
-    //             current_word = u"";
-    //             curr_word_len = 0;
-    //             index_in_str += 1;
-    //         }
-    //         else if (character == u' ') {
-    //             wordwrapped_str += current_word;
-    //             wordwrapped_str += character;
-    //             len_curr_line += curr_word_len + 1;
-    //             current_word = u"";
-    //             curr_word_len = 0;
-    //             index_in_str += 1;
-    //         }
-    //         else {
-    //             current_word += character;
-    //             curr_word_len += 1;
-    //             index_in_str += 1;
-    //
-    //             if (len_curr_line + curr_word_len > max_line_len) {
-    //                 wordwrapped_str += u'\n';
-    //                 len_curr_line = 0;
-    //
-    //                 if (curr_word_len > max_line_len) {
-    //                     wordwrapped_str += current_word + u'\n';
-    //                     current_word = u"";
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     wordwrapped_str += current_word;
-    //
-    //     return wordwrapped_str;
-    // }
-    //
-    // std::string pad_str_4_lines(const std::string& string)
-    // {
-    //     std::vector<std::string> lines = randomizer::utility::str::Split(string, '\n');
-    //
-    //     unsigned int padding_lines_needed = (4 - lines.size() % 4) % 4;
-    //     for (unsigned int i = 0; i < padding_lines_needed; i++)
-    //     {
-    //         lines.push_back("");
-    //     }
-    //
-    //     return randomizer::utility::str::Merge(lines, '\n');
-    // }
-    //
-    // std::u16string pad_str_4_lines(const std::u16string& string)
-    // {
-    //     std::vector<std::u16string> lines = randomizer::utility::str::Split(string, u'\n');
-    //
-    //     unsigned int padding_lines_needed = (4 - lines.size() % 4) % 4;
-    //     for (unsigned int i = 0; i < padding_lines_needed; i++)
-    //     {
-    //         lines.push_back(u"");
-    //     }
-    //
-    //     return randomizer::utility::str::erge(lines, u'\n');
-    // }
-
     Text::Text(const std::string& str) {
         for (auto& text : mText) {
             text = str;
@@ -182,6 +34,38 @@ namespace randomizer {
                     curString.replace(startPos, oldStr.length(), replacementText);
                 }
             }
+        }
+    }
+
+    void Text::Capitalize() {
+        try {
+            // Determine the platform-specific locale string
+#if defined(_WIN32) || defined(_WIN64)
+            const char* localeName = "English_United States.1252";
+#else
+            const char* localeName = "en_US.iso88591";
+#endif
+
+            static const std::locale latin1Locale(localeName);
+
+            for (auto& text : mText) {
+                if (!text.empty()) {
+                    text[0] = std::toupper(text[0], latin1Locale);
+                }
+            }
+        } catch (const std::runtime_error&) {
+            // Fallback incase the system completely lacks the requested locale definition
+            for (auto& text : mText) {
+                if (!text.empty()) {
+                    text[0] = static_cast<char>(std::toupper(static_cast<unsigned char>(text[0])));
+                }
+            }
+        }
+    }
+
+    void Text::BreakLines(int maxLineWidth /*= MAX_LINE_WIDTH*/) {
+        for (auto& text : mText) {
+            breakLines(text, maxLineWidth);
         }
     }
 
@@ -289,7 +173,7 @@ namespace randomizer {
             return strToGender.at(str);
         }
 
-        return Text::Gender::NUETRAL;
+        return Text::Gender::NEUTRAL;
     }
 
     Text::Plurality stringToPlurality(const std::string& str)
@@ -444,30 +328,89 @@ namespace randomizer {
         return text;
     }
 
-    void applyMessageCodes(std::string& str) {
-        using namespace std::string_literals;
-        const static std::unordered_map<std::string, std::string> messageCodes = {
-            {"<fast>",         "\x1A\x05\x00\x00\x01"s},
-            {"<slow>",         "\x1A\x05\x00\x00\x02"s},
-            {"<begin choice>", "\x1A\x05\x00\x00\x20"s},
-            {"<male>",         "\x1A\x05\x06\x00\x02"s},
-            {"<female>",       "\x1A\x05\x06\x00\x03"s},
-            {"<choice 1>",     "\x1A\x06\x00\x00\x09\x01"s},
-            {"<choice 2>",     "\x1A\x06\x00\x00\x09\x02"s},
-            {"<choice 3>",     "\x1A\x06\x00\x00\x09\x03"s},
-            {"<white>",        "\x1A\x06\xFF\x00\x00\x00"s},
-            {"<red>",          "\x1A\x06\xFF\x00\x00\x01"s},
-            {"<green>",        "\x1A\x06\xFF\x00\x00\x02"s},
-            {"<light blue>",   "\x1A\x06\xFF\x00\x00\x03"s},
-            {"<yellow>",       "\x1A\x06\xFF\x00\x00\x04"s},
-            {"<purple>",       "\x1A\x06\xFF\x00\x00\x06"s},
-            {"<orange>",       "\x1A\x06\xFF\x00\x00\x08"s},
-            // custom colors
-            {"<dark green>",   "\x1A\x06\xFF\x00\x00\x09"s},
-            {"<blue>",         "\x1A\x06\xFF\x00\x00\x0A"s},
-            {"<silver>",       "\x1A\x06\xFF\x00\x00\x0B"s},
-        };
+    using namespace std::string_view_literals;
+    static const std::unordered_map<std::string_view, std::string_view> messageCodes = {
+        {"<fast>",         "\x1A\x05\x00\x00\x01"sv},
+        {"<slow>",         "\x1A\x05\x00\x00\x02"sv},
+        {"<begin choice>", "\x1A\x05\x00\x00\x20"sv},
+        {"<male>",         "\x1A\x05\x06\x00\x02"sv},
+        {"<female>",       "\x1A\x05\x06\x00\x03"sv},
+        {"<choice 1>",     "\x1A\x06\x00\x00\x09\x01"sv},
+        {"<choice 2>",     "\x1A\x06\x00\x00\x09\x02"sv},
+        {"<choice 3>",     "\x1A\x06\x00\x00\x09\x03"sv},
+        {"<white>",        "\x1A\x06\xFF\x00\x00\x00"sv},
+        {"<red>",          "\x1A\x06\xFF\x00\x00\x01"sv},
+        {"<green>",        "\x1A\x06\xFF\x00\x00\x02"sv},
+        {"<light blue>",   "\x1A\x06\xFF\x00\x00\x03"sv},
+        {"<yellow>",       "\x1A\x06\xFF\x00\x00\x04"sv},
+        {"<purple>",       "\x1A\x06\xFF\x00\x00\x06"sv},
+        {"<orange>",       "\x1A\x06\xFF\x00\x00\x08"sv},
+        // custom colors
+        {"<dark green>",   "\x1A\x06\xFF\x00\x00\x09"sv},
+        {"<blue>",         "\x1A\x06\xFF\x00\x00\x0A"sv},
+        {"<silver>",       "\x1A\x06\xFF\x00\x00\x0B"sv},
+    };
 
+    void breakLines(std::string& str, int maxLineWidth) {
+        // Get game's font
+        auto gameFont = mDoExt_getMesgFont();
+
+        int curLineWidth = 0;
+        size_t i = 0;
+        size_t previousSpace = 0;
+        while (i < str.length()) {
+
+            // Skip over control codes since they don't get displayed
+            std::string code{};
+            for (const auto& [messageCode, replacement] : messageCodes) {
+                if (str.substr(i, messageCode.length()) == messageCode) {
+                    code = messageCode;
+                    break;
+                }
+            }
+
+            if (!code.empty()) {
+                // Assume worst case for player name width.
+                // 8 chars max * max char width
+                if (code == "<player_name>") {
+                    curLineWidth += 8 * 21;
+                }
+                i += code.length();
+                continue;
+            }
+
+            // Keep track of the previous space to replace with
+            // a line break when we reach the maximum width
+            if (str[i] == ' ') {
+                previousSpace = i;
+            }
+            // If we encounter an already inserted newline, reset the counter
+            else if (str[i] == '\n') {
+                curLineWidth = 0;
+                ++i;
+                continue;
+            }
+
+            JUTFont::TWidth width{};
+            gameFont->getWidthEntry(str[i], &width);
+            curLineWidth += /*width.field_0x0 + */width.field_0x1;
+            // If we exceed the maximum line width, replace the
+            // previous space with a newline and start counting
+            // from the newline again
+            if (curLineWidth > maxLineWidth) {
+                str[previousSpace] = '\n';
+                i = previousSpace;
+                curLineWidth = 0;
+            }
+
+            ++i;
+        }
+
+        // Free game's font
+        mDoExt_removeMesgFont();
+    }
+
+    void applyMessageCodes(std::string& str) {
         for (const auto& [code, replacement] : messageCodes) {
             size_t pos = 0;
             while ((pos = str.find(code, pos)) != std::string::npos) {

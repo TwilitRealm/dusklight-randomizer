@@ -1,10 +1,8 @@
-# TODO: Add relevant item data
-
-# Item Importance: 
+# Item Importance:
 # 1. Major - Item can potentially unlock locations. Will be placed in a non-excluded location
 # 2. Minor - Item does not unlock locations, but has gameplay utility. Will be placed 
 #            in a non-excluded location if any are empty.
-# 3. Junk  - Item is expendible. Will be placed completely randomly.
+# 3. Junk  - Item is expendable. Will be placed completely randomly.
 
 #- Name: Recovery Heart
 #  Importance: Junk

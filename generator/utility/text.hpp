@@ -44,7 +44,7 @@ namespace randomizer {
 
         enum Gender
         {
-            NUETRAL = 0,
+            NEUTRAL = 0,
             MASCULINE,
             FEMININE,
             GENDER_MAX,
@@ -56,6 +56,8 @@ namespace randomizer {
             PLURAL,
             PLURALITY_MAX,
         };
+
+        static constexpr size_t MAX_LINE_WIDTH = 441;
 
         Text() = default;
         explicit Text(const std::string& str);
@@ -72,6 +74,8 @@ namespace randomizer {
          */
         void Replace(const std::string& oldStr, const Text& replacementText, int count = 1);
         void Replace(const std::string& oldStr, const std::string& replacementText, int count = 1);
+        void BreakLines(int maxLineWidth = MAX_LINE_WIDTH);
+        void Capitalize();
         bool Empty() const;
         Text& operator+=(const Text& rhs);
         Text& operator+=(const std::string& rhs);
@@ -109,6 +113,9 @@ namespace randomizer {
 
 
     Text addColor(const Text& text, Text::Color color, int count = 1, bool forceAround = false);
+
+    // Adds newlines in appropriate places to properly break the text string for textboxes
+    void breakLines(std::string& str, int maxLineWidth);
 
     // Replaces the message codes in the string with the ingame hex equivalents
     void applyMessageCodes(std::string&);

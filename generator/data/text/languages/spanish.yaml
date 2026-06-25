@@ -806,7 +806,7 @@ Hyrule Castle Compass:
 
 Mirror Chamber Portal:
   Standard:
-    Text: Mirror Chamnber Portal
+    Text: Mirror Chamber Portal
   Pretty:
     Text: the {Mirror Chamber Portal}
   Cryptic:
@@ -1970,88 +1970,65 @@ Midna Call As Wolf Three Choice:
 Slingshot Shop Text Template:
   Standard:
     Text: |-
-      <Item Standard Name> <purple>30 Rupees<white>
-      I got this in for the kids. It's just a
-      toy, but it stings something AWFUL
-      when you get hit by it!
+      <Item Standard Name>: <purple>30 Rupees<white>
+#      I got this in for the kids. It's just a
+#      toy, but it stings something AWFUL
+#      when you get hit by it!
 
 Slingshot Shop Too Expensive Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> is <purple>30 Rupees<white>.
-      If you want it, bring some money
-      with you, all right, m'dear?
+      <Item Pretty Name> is <purple>30 Rupees<white>. If you want it, bring some money with you, all right, m'dear?
 
 Slingshot Shop Purchase Confirmation Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> is <purple>30 Rupees<white>.
-      Do you want to buy it, m'dear?<begin choice>
+      <Item Pretty Name> is <purple>30 Rupees<white>. Do you want to buy it, m'dear?<begin choice>
 
 Slingshot Shop After Purchase Text Template:
   Standard:
     Text: |-
-      What are you doing buying
-      <Item Pretty Name>, you naughty thing?
-      You're too old for toys! Will you at
-      least let the kids play with it?
+      What are you doing buying <Item Pretty Name>, you naughty thing? You're too old for toys! Will you at least let the kids play with it?
 
 Barnes Special Offer Text Template:
   Standard:
     Text: |-
-      I've got a special offer goin' right
-      now: <Item Pretty Name>, just <purple>120 
-      Rupees<white>! How 'bout that?<begin choice>
+      I've got a special offer goin' right now: <Item Pretty Name>, just <purple>120 Rupees<white>! How 'bout that?<begin choice>
 
 Kakariko Malo Mart Wooden Shield Purchase Confirmation Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> will cost you <purple>50
-      Rupees<white>. Want one or not?<begin choice>
+      <Item Pretty Name> will cost you <purple>50 Rupees<white>. Want one or not?<begin choice>
 
 Kakariko Malo Mart Wooden Shield Too Expensive Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> will cost you <purple>50
-      Rupees<white>, but you can't afford it.
-      Don't expect a discount just
-      because we're from the same town.
+      <Item Pretty Name> will cost you <purple>50 Rupees<white>, but you can't afford it. Don't expect a discount just because we're from the same town.
 
 Kakariko Malo Mart Hylian Shield Purchase Confirmation Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> will cost you <purple>200
-      Rupees<white>. Want one or not?<begin choice>
+      <Item Pretty Name> will cost you <purple>200 Rupees<white>. Want one or not?<begin choice>
 
 Kakariko Malo Mart Hylian Shield Too Expensive Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> will run you <purple>200
-      Rupees<white>...but if you have that much,
-      I'll eat my hat. And I don't even
-      HAVE a hat.
+      <Item Pretty Name> will run you <purple>200 Rupees<white>...but if you have that much, I'll eat my hat. And I don't even HAVE a hat.
 
 Kakariko Malo Mart Hylian Shield After Purchase Text Template:
   Standard:
     Text: |-
-      Well, you bought my last
-      <Item Standard Name>...
-      so you'd better take good
-      care of it.
+      Well, you bought my last <Item Standard Name>... so you'd better take good care of it.
 
 Kakariko Malo Mart Hawkeye Purchase Confirmation Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> is <purple>100 Rupees<white>. You
-      want it or not?<begin choice>
+      <Item Pretty Name> is <purple>100 Rupees<white>. You want it or not?<begin choice>
 
 Kakariko Malo Mart Hawkeye Too Expensive Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> costs <purple>100 Rupees<white>...
-      but there are people with enough
-      Rupees, and then there's you.
-      The guy with not enough.
+      <Item Pretty Name> costs <purple>100 Rupees<white>... but there are people with enough Rupees, and then there's you. The guy with not enough.
 
 Kakariko Malo Mart Hawkeye After Purchase Text Template:
   Standard:
@@ -2061,23 +2038,20 @@ Kakariko Malo Mart Hawkeye After Purchase Text Template:
 Kakariko Malo Mart Red Potion Too Expensive Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> will cost you <purple>30
-      Rupees<white>, but I won't be donating
-      it to the poor, sorry.
+      <Item Pretty Name> will cost you <purple>30 Rupees<white>, but I won't be donating it to the poor, sorry.
 
 Kakariko Malo Mart Red Potion Purchase Confirmation Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> will cost you <purple>30
-      Rupees<white>. Want some or not?<begin choice>
+      <Item Pretty Name> will cost you <purple>30 Rupees<white>. Want some or not?<begin choice>
 
 Kakariko Malo Mart Red Potion Text Template:
   Standard:
     Text: |-
       <Item Standard Name>: <purple>30 Rupees<white>
-      This potion replenishes your
-      life energy. Keep it in an <red>empty
-      bottle<white>.
+#      This potion replenishes your
+#      life energy. Keep it in an <red>empty
+#      bottle<white>.
 
 Kakariko Malo Mart Hawkeye Coming Soon Text Template:
   Standard:
@@ -2088,9 +2062,9 @@ Kakariko Malo Mart Hawkeye Text Template:
   Standard:
     Text: |-
       <Item Standard Name>: <purple>100 Rupees<white>
-      This eyewear allows you to see
-      distant objects as if with the eyes
-      of a hawk.
+#      This eyewear allows you to see
+#      distant objects as if with the eyes
+#      of a hawk.
 
 Kakariko Malo Mart Sold Out Text:
   Standard:
@@ -2099,24 +2073,24 @@ Kakariko Malo Mart Sold Out Text:
 Kakariko Malo Mart Wooden Shield Text Template:
   Standard:
     Text: |-
-      <Item Standard Name>: <purple>50 Rupees
-      <white>This is a simple shield. It's made of
-      wood, so it will burn away if
-      touched by fire.
+      <Item Standard Name>: <purple>50 Rupees<white>
+#      This is a simple shield. It's made of
+#      wood, so it will burn away if
+#      touched by fire.
 
 Kakariko Malo Mart Hylian Shield Text Template:
   Standard:
     Text: |-
-      <Item Standard Name>: <purple>200 Rupees
-      <white>        LIMITED SUPPLY!
-      Don't let them sell out before you
-      buy one!
+      <Item Standard Name>: <purple>200 Rupees<white>
+#              LIMITED SUPPLY!
+#      Don't let them sell out before you
+#      buy one!
 
 Chudleys Shop Magic Armor Text Template:
   Standard:
     Text: |-
       <Item Standard Name>
-      Armor for the richest and most
+      Only for the richest and most
       precious customers who value their
       lives over their Rupees.
 
@@ -2129,9 +2103,9 @@ Castle Town Malo Mart Magic Armor Text Template:
   Standard:
     Text: |-
       <Item Standard Name> <red>!Special! <purple>598 Rupees<white>
-      This is quite a bargain when you
-      think of how valuable your life is.
-      What's a few Rupees to stay alive?
+#      This is quite a bargain when you
+#      think of how valuable your life is.
+#      What's a few Rupees to stay alive?
 
 Castle Town Malo Mart Magic Armor Sold Out Text Template:
   Standard:
@@ -2153,43 +2127,35 @@ Charlo Donation Ask Text Template:
       For <Item Pretty Name>...
       Would you please make a donation?<begin choice>
 
-
 Coro Bottle Offer 1 Text Template:
   Standard:
     Text: |-
       And check this out! I have a special,
-      one-time offer of <Item Pretty Name>
-      for only <purple>100 Rupees<white>!
-      How 'bout it, guy? What a bargain!<begin choice>
+      one-time offer of <Item Pretty Name> for only <purple>100 Rupees<white>! How 'bout it, guy? What a bargain!<begin choice>
 
 Coro Bottle Offer 2 Text Template:
   Standard:
     Text: |-
       I have a special, one-time offer of
-      <Item Pretty Name> for only
-      <purple>100 Rupees<white>. How 'bout it, guy?<begin choice>
+      <Item Pretty Name> for only <purple>100 Rupees<white>. How 'bout it, guy?<begin choice>
 
 Coro Bottle Offer 3 Text Template:
   Standard:
     Text: |-
-      Right now we have a <purple>100-Rupee<white> 
-      <Item Standard Name> and <purple>20-Rupee<white>
-      <red>refills<white> to choose from!<begin choice>
+      Right now we have a <purple>100-Rupee<white>
+      <Item Standard Name> and <purple>20-Rupee<white> <red>refills<white> to choose from!<begin choice>
 
 Coro Bottle Offer 4 Text Template:
   Standard:
     Text: |-
       And check this out! I have a special,
-      one-time offer of <Item Pretty Name> 
-      for only <purple>100 Rupees<white>!
-      How 'bout it, guy? What a bargain!<begin choice>
+      one-time offer of <Item Pretty Name> for only <purple>100 Rupees<white>! How 'bout it, guy? What a bargain!<begin choice>
 
 Fishing Hole Sign Text Template:
   Standard:
     Text: |-
       <red>           DON'T LITTER!
       <white>Do NOT toss empty bottles or
-      <Item Pretty Name> here! 
-      The fish are CRYING!
+      <Item Pretty Name> here! The fish are CRYING!
 
       Keep the fishing hole clean!

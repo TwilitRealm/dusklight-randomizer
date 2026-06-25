@@ -7,6 +7,7 @@ set(GAME_COMPILE_DEFS ${GAME_COMPILE_DEFS}
                         RANDOMIZER_ONLY=${RANDOMIZER_ONLY}
                         RANDO_SAVE_PATH="${RANDO_SAVE_PATH}"
                         RANDO_DATA_PATH="src/dusk/randomizer/generator/data/"
+                        RANDO_ASSETS_PATH="src/dusk/randomizer/assets/"
                         RANDO_LOGIC_TESTS_PATH="${CMAKE_SOURCE_DIR}/src/dusk/randomizer/generator/data/tests/logic")
 
 if(RANDO_ERROR_LOG)

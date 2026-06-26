@@ -395,10 +395,10 @@
 - Name: Starting Time of Day
   Default Option: Noon
   Options:
-    - Morning: "Choose your in-game starting time."
-    - Noon: ""
-    - Evening: ""
-    - Night: ""
+    - Morning: "Time of day will start at 9am."
+    - Noon: "Time of day will start at noon."
+    - Evening: "Time of day will start at 6pm."
+    - Night: "Time of day will start at midnight."
 
 - Name: Logic Transform Anywhere
   Default Option: "On"

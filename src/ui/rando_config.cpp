@@ -19,15 +19,6 @@
 #include <thread>
 
 namespace dusk::ui {
-struct ConfigBoolProps {
-    Rml::String key;
-    Rml::String icon;
-    Rml::String helpText;
-    std::function<void(bool)> onChange;
-    std::function<bool()> isDisabled;
-};
-
-
 
 randomizer::seedgen::settings::Setting* FindSetting(const std::string& key) {
     if (key.empty()) {
@@ -59,33 +50,40 @@ bool TryCreateRandomSeed() {
     return false;
 }
 
-// ripped straight from settings window
-SelectButton& config_bool_select(
-    Pane& leftPane, Pane& rightPane, ConfigVar<bool>& var, ConfigBoolProps props) {
-    auto& button = leftPane.add_child<BoolButton>(BoolButton::Props{
-        .key = std::move(props.key),
-        .icon = std::move(props.icon),
-        .getValue = [&var] { return var.getValue(); },
-        .setValue =
-        [&var, callback = std::move(props.onChange)](bool value) {
-            if (value == var.getValue()) {
-                return;
-            }
-            var.setValue(value);
-            config::Save();
-            if (callback) {
-                callback(value);
-            }
-        },
-        .isDisabled = std::move(props.isDisabled),
-        .isModified = [&var] { return var.getValue() != var.getDefaultValue(); },
-    });
-    leftPane.register_control(
-        button, rightPane, [helpText = std::move(props.helpText)](Pane& pane) {
-            pane.clear();
-            pane.add_rml(helpText);
-        });
-    return button;
+void rando_config_group_update_right_pane(
+    Pane& pane,
+    randomizer::seedgen::settings::Setting* curSetting,
+    std::function<Component*(const std::string&, Pane&)> onSelected)
+{
+    pane.clear();
+    auto curSelIdx = curSetting->GetCurrentOptionIndex();
+    auto settingInfo = curSetting->GetInfo();
+
+    Rml::Element* text_elem = pane.add_rml(settingInfo->GetDescriptions().at(curSelIdx));
+
+    for (int i = 0; i < settingInfo->GetOptions().size(); ++i) {
+        pane.add_button(
+            {
+                .text = settingInfo->GetOptions()[i],
+                .isSelected = [curSetting, i] {
+                    return curSetting->GetCurrentOptionIndex() == i;
+                },
+            })
+            .on_pressed([i, text_elem, curSetting, &pane, onSelected] {
+                auto settingInfo = curSetting->GetInfo();
+
+                mDoAud_seStartMenu(kSoundItemChange);
+                curSetting->SetCurrentOption(i);
+                text_elem->SetInnerRML(settingInfo->GetDescriptions().at(i));
+
+                SaveRandomizerConfig();
+                rando_config_group_update_right_pane(pane, curSetting, onSelected);
+            });
+    }
+
+    if (onSelected) {
+        onSelected(curSetting->GetCurrentOption(), pane);
+    }
 }
 
 void rando_config_group(Pane& leftPane, Pane& rightPane, std::string settingKey,
@@ -105,68 +103,67 @@ void rando_config_group(Pane& leftPane, Pane& rightPane, std::string settingKey,
             [curSetting] { return Rml::String{curSetting->GetCurrentOption()}; },
         }),
         rightPane, [curSetting, onSelected](Pane& pane) {
-            auto curSelIdx = curSetting->GetCurrentOptionIndex();
-            auto settingInfo = curSetting->GetInfo();
-
-            Rml::Element* text_elem = pane.add_rml(settingInfo->GetDescriptions().at(curSelIdx));
-
-            for (int i = 0; i < settingInfo->GetOptions().size(); ++i) {
-                pane.add_button(
-                    {
-                        .text = settingInfo->GetOptions()[i],
-                        .isSelected = [curSetting, i] {
-                            return curSetting->GetCurrentOptionIndex() == i;
-                        },
-                    })
-                    .on_pressed([i, text_elem, curSetting] {
-                        auto settingInfo = curSetting->GetInfo();
-
-                        mDoAud_seStartMenu(kSoundItemChange);
-                        curSetting->SetCurrentOption(i);
-                        text_elem->SetInnerRML(settingInfo->GetDescriptions().at(i));
-
-                        SaveRandomizerConfig();
-                    });
-            }
-
-            if (onSelected) {
-                onSelected(curSetting->GetCurrentOption(), pane);
-            }
+            rando_config_group_update_right_pane(pane, curSetting, onSelected);
         });
 }
 
-SelectButton& rando_config_toggle(
+SelectButton& rando_config_button(
     Pane& leftPane, Pane& rightPane, std::string settingKey) {
     auto setting = FindSetting(settingKey);
 
-    auto& button = leftPane.add_child<BoolButton>(BoolButton::Props{
-        .key = settingKey,
-        .getValue = [setting] { return setting->GetCurrentOptionIndex() != 0; },
-        .setValue =
-        [setting](bool value) {
-            auto idx = setting->GetCurrentOptionIndex();
-            if (idx == value) {
-                return;
-            }
-
-            setting->SetCurrentOption(value);
-
-            SaveRandomizerConfig();
-        },
-    });
-    auto& comp = leftPane.register_control(
-        button, rightPane, [setting](Pane& pane) {
-            pane.clear();
-
-            auto info = setting->GetInfo();
-            pane.add_rml(info->GetDescriptions()[setting->GetCurrentOptionIndex()]);
-        });
-
-    comp.listen(comp.root(), Rml::EventId::Click, [&rightPane, setting](Rml::Event&) {
+    // Helper function to call when we want to update the right pane
+    auto updateRightPane = [setting, &rightPane] {
         rightPane.clear();
 
         auto info = setting->GetInfo();
-        rightPane.add_rml(info->GetDescriptions()[setting->GetCurrentOptionIndex()]);
+        // Show all options/descriptions
+        for (size_t i = 0; i < info->GetOptions().size(); ++i) {
+            auto text = rightPane.add_rml(fmt::format("<span style=\"color: #C2A42D;\">{}</span>: {}", info->GetOptions()[i], info->GetDescriptions()[i]));
+            // Change styling for currently selected option
+            if (i == setting->GetCurrentOptionIndex()) {
+                text->SetClass("current-option-text", true);
+            } else {
+                text->SetClass("not-current-option-text", true);
+            }
+        }
+    };
+
+    // Helper function for changing the setting index based on button presses
+    auto changeOptionIndex = [setting, updateRightPane](int change) {
+        auto newIndex = setting->GetCurrentOptionIndex() + change;
+        if (newIndex < 0) {
+            newIndex = setting->GetInfo()->GetOptions().size() - 1;
+        } else if (newIndex >= setting->GetInfo()->GetOptions().size()) {
+            newIndex = 0;
+        }
+        setting->SetCurrentOption(newIndex);
+        updateRightPane();
+    };
+
+    auto& button = leftPane.add_select_button(ControlledSelectButton::Props{
+        .key = settingKey,
+        .getValue = [setting] { return setting->GetCurrentOption(); }
+    })
+    // Cycle through the options forward when the button is pressed
+    .on_pressed([changeOptionIndex] {
+        changeOptionIndex(1);
+    });
+
+    // Update the right pane info when we change between options
+    auto& comp = leftPane.register_control(button, rightPane, [updateRightPane](Pane&) {
+        updateRightPane();
+    });
+
+    // Listen for left/right nav commands to cycle between the available options
+    comp.listen(comp.root(), Rml::EventId::Keydown, [changeOptionIndex](Rml::Event& event) {
+        auto cmd = map_nav_event(event);
+        if (cmd == NavCommand::Left) {
+            changeOptionIndex(-1);
+            event.StopPropagation();
+        } else if (cmd == NavCommand::Right) {
+            changeOptionIndex(1);
+            event.StopPropagation();
+        }
     });
 
     return button;
@@ -916,7 +913,7 @@ RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : m
 
         leftPane.add_section("Logic Settings");
 
-        rando_config_group(leftPane, rightPane, "Logic Rules");
+        rando_config_button(leftPane, rightPane, "Logic Rules");
 
         leftPane.add_section("Access Options");
 
@@ -924,74 +921,72 @@ RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : m
             [](const std::string& value, Pane& pane) {
                 return rando_add_optional_setting(value, "Hyrule Barrier", pane);
             });
-        rando_config_group(leftPane, rightPane, "Palace of Twilight Requirements");
-        rando_config_group(leftPane, rightPane, "Faron Woods Logic");
-        rando_config_group(leftPane, rightPane, "Mirror Chamber Access");
+        rando_config_button(leftPane, rightPane, "Palace of Twilight Requirements");
+        rando_config_button(leftPane, rightPane, "Faron Woods Logic");
+        rando_config_button(leftPane, rightPane, "Mirror Chamber Access");
 
-        // leftPane.add_section("World (TODO)");
+        leftPane.add_section("Shuffles");
 
-        leftPane.add_section("Item Pool");
+        rando_config_button(leftPane, rightPane, "Golden Bugs");
+        rando_config_button(leftPane, rightPane, "Sky Characters");
+        rando_config_button(leftPane, rightPane, "Gifts From NPCs");
+        rando_config_button(leftPane, rightPane, "Shop Items");
+        rando_config_button(leftPane, rightPane, "Hidden Skills");
+        rando_config_button(leftPane, rightPane, "Hidden Rupees");
+        rando_config_button(leftPane, rightPane, "Freestanding Rupees");
 
-        rando_config_toggle(leftPane, rightPane, "Golden Bugs");
-        rando_config_toggle(leftPane, rightPane, "Sky Characters");
-        rando_config_toggle(leftPane, rightPane, "Gifts From NPCs");
-        rando_config_toggle(leftPane, rightPane, "Shop Items");
-        rando_config_toggle(leftPane, rightPane, "Hidden Skills");
-        rando_config_toggle(leftPane, rightPane, "Hidden Rupees");
-        rando_config_toggle(leftPane, rightPane, "Freestanding Rupees");
-
-        rando_config_group(leftPane, rightPane, "Poe Souls");
-        rando_config_group(leftPane, rightPane, "Ilia Memory Quest");
-        rando_config_group(leftPane, rightPane, "Item Scarcity");
-        rando_config_group(leftPane, rightPane, "Trap Item Frequency");
+        rando_config_button(leftPane, rightPane, "Poe Souls");
+        rando_config_button(leftPane, rightPane, "Ilia Memory Quest");
+        rando_config_button(leftPane, rightPane, "Item Scarcity");
+        rando_config_button(leftPane, rightPane, "Trap Item Frequency");
 
         leftPane.add_section("Dungeon Items");
 
-        rando_config_group(leftPane, rightPane, "Small Keys");
-        rando_config_group(leftPane, rightPane, "Big Keys");
-        rando_config_group(leftPane, rightPane, "Maps and Compasses");
+        rando_config_button(leftPane, rightPane, "Small Keys");
+        rando_config_button(leftPane, rightPane, "Big Keys");
+        rando_config_button(leftPane, rightPane, "Maps and Compasses");
         rando_config_group(leftPane, rightPane, "Hyrule Castle Big Key Requirements",
             [](const std::string& value, Pane& pane) {
                 return rando_add_optional_setting(value, "Hyrule Castle Big Key", pane);
             });
 
-        rando_config_toggle(leftPane, rightPane, "Dungeon Rewards Can Be Anywhere");
-        rando_config_toggle(leftPane, rightPane, "No Small Keys on Bosses");
-        rando_config_toggle(leftPane, rightPane, "Unrequired Dungeons Are Barren");
+        rando_config_button(leftPane, rightPane, "Dungeon Rewards Can Be Anywhere");
+        rando_config_button(leftPane, rightPane, "No Small Keys on Bosses");
+        rando_config_button(leftPane, rightPane, "Unrequired Dungeons Are Barren");
 
         leftPane.add_section("Timesavers");
 
-        rando_config_toggle(leftPane, rightPane, "Skip Prologue");
-        rando_config_toggle(leftPane, rightPane, "Faron Twilight Cleared");
-        rando_config_toggle(leftPane, rightPane, "Eldin Twilight Cleared");
-        rando_config_toggle(leftPane, rightPane, "Lanayru Twilight Cleared");
-        rando_config_toggle(leftPane, rightPane, "Skip Midna's Desparate Hour");
-        rando_config_toggle(leftPane, rightPane, "Skip Minor Cutscenes");
-        rando_config_toggle(leftPane, rightPane, "Skip Major Cutscenes");
-        rando_config_toggle(leftPane, rightPane, "Unlock Map Regions");
-        rando_config_toggle(leftPane, rightPane, "Open Door of Time");
-        rando_config_toggle(leftPane, rightPane, "Active Goron Mines Magnets");
-        rando_config_toggle(leftPane, rightPane, "Lower Hyrule Castle Chandelier");
-        rando_config_toggle(leftPane, rightPane, "Skip Bridge Donation");
+        rando_config_button(leftPane, rightPane, "Skip Prologue");
+        rando_config_button(leftPane, rightPane, "Faron Twilight Cleared");
+        rando_config_button(leftPane, rightPane, "Eldin Twilight Cleared");
+        rando_config_button(leftPane, rightPane, "Lanayru Twilight Cleared");
+        rando_config_button(leftPane, rightPane, "Skip Midna's Desparate Hour");
+        rando_config_button(leftPane, rightPane, "Skip Minor Cutscenes");
+        rando_config_button(leftPane, rightPane, "Skip Major Cutscenes");
+        rando_config_button(leftPane, rightPane, "Unlock Map Regions");
+        rando_config_button(leftPane, rightPane, "Open Door of Time");
+        rando_config_button(leftPane, rightPane, "Active Goron Mines Magnets");
+        rando_config_button(leftPane, rightPane, "Lower Hyrule Castle Chandelier");
+        rando_config_button(leftPane, rightPane, "Skip Bridge Donation");
 
         leftPane.add_section("Additional Settings");
 
         // rando_config_group(leftPane, rightPane, "Starting Form");
         // rando_config_toggle(leftPane, rightPane, "Bonks Do Damage");
-        rando_config_group(leftPane, rightPane, "Starting Time of Day");
-        rando_config_toggle(leftPane, rightPane, "Logic Transform Anywhere");
-        rando_config_toggle(leftPane, rightPane, "Logic Increase Wallet Capacity");
-        rando_config_group(leftPane, rightPane, "Logic Damage Multiplier");
+        rando_config_button(leftPane, rightPane, "Starting Time of Day");
+        rando_config_button(leftPane, rightPane, "Logic Transform Anywhere");
+        rando_config_button(leftPane, rightPane, "Logic Increase Wallet Capacity");
+        rando_config_button(leftPane, rightPane, "Logic Damage Multiplier");
 
         leftPane.add_section("Dungeon Entrance Settings");
 
-        rando_config_toggle(leftPane, rightPane, "Lakebed Does Not Require Water Bombs");
-        rando_config_toggle(leftPane, rightPane, "Arbiters Does Not Require Bulblin Camp");
-        rando_config_toggle(leftPane, rightPane, "Snowpeak Does Not Require Reekfish Scent");
-        rando_config_toggle(leftPane, rightPane, "Sacred Grove Does Not Require Skull Kid");
-        rando_config_toggle(leftPane, rightPane, "City Does Not Require Filled Skybook");
-        rando_config_group(leftPane, rightPane, "Goron Mines Entrance");
-        rando_config_group(leftPane, rightPane, "Temple of Time Sword Requirement");
+        rando_config_button(leftPane, rightPane, "Lakebed Does Not Require Water Bombs");
+        rando_config_button(leftPane, rightPane, "Arbiters Does Not Require Bulblin Camp");
+        rando_config_button(leftPane, rightPane, "Snowpeak Does Not Require Reekfish Scent");
+        rando_config_button(leftPane, rightPane, "Sacred Grove Does Not Require Skull Kid");
+        rando_config_button(leftPane, rightPane, "City Does Not Require Filled Skybook");
+        rando_config_button(leftPane, rightPane, "Goron Mines Entrance");
+        rando_config_button(leftPane, rightPane, "Temple of Time Sword Requirement");
         // rando_config_toggle(leftPane, rightPane, "Randomize Starting Spawn");
         // rando_config_group(leftPane, rightPane, "Randomize Dungeon Entrances");
         // rando_config_toggle(leftPane, rightPane, "Randomize Boss Entrances");
@@ -1004,8 +999,8 @@ RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : m
 
         leftPane.add_section("Tricks");
 
-        rando_config_toggle(leftPane, rightPane, "Back Slice as Sword");
-        rando_config_toggle(leftPane, rightPane, "Ball and Chain Webs");
+        rando_config_button(leftPane, rightPane, "Back Slice as Sword");
+        rando_config_button(leftPane, rightPane, "Ball and Chain Webs");
     });
 
     add_tab("Starting Inventory", [this](Rml::Element* content) {

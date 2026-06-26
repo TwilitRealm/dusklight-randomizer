@@ -689,7 +689,11 @@ void delete_seed_callback(Pane& pane) {
                         return !playerIsOnTitleScreen() || hash.ends_with(')');
                     }
                 })
-                .on_pressed([entry, &pane] {
+                .on_pressed([entry, &pane, hash] {
+                    // If the currently selected seed is deleted, reset the context
+                    if (randomizer_GetContext().mHash == hash) {
+                        randomizer_GetContext() = RandomizerContext{};
+                    }
                     std::filesystem::remove_all(entry);
                     delete_seed_callback(pane);
                 });

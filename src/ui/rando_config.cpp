@@ -137,6 +137,7 @@ SelectButton& rando_config_button(
             newIndex = 0;
         }
         setting->SetCurrentOption(newIndex);
+        SaveRandomizerConfig();
         updateRightPane();
     };
 

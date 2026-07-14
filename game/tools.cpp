@@ -1,10 +1,13 @@
 #include "tools.h"
+
 #include "d/actor/d_a_alink.h"
 #include "d/d_com_inf_game.h"
 #include "d/d_item.h"
 #include "d/d_item_data.h"
 #include "dusk/logging.h"
+#include "dusk/randomizer/generator/logic/world.hpp"
 #include "f_op/f_op_actor_mng.h"
+#include "randomizer_context.hpp"
 #include "stages.h"
 #include "verify_item_functions.h"
 

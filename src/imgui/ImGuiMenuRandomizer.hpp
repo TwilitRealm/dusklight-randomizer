@@ -1,5 +1,6 @@
 #ifndef DUSK_IMGUI_MENU_RANDOMIZER_HPP
 #define DUSK_IMGUI_MENU_RANDOMIZER_HPP
+#include "dusk/randomizer/generator/logic/requirement.hpp"
 #include "dusk/randomizer/generator/logic/search.hpp"
 
 namespace randomizer {

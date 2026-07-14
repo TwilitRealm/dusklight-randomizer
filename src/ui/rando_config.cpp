@@ -4,9 +4,12 @@
 #include "dusk/config.hpp"
 #include "dusk/data.hpp"
 #include "dusk/logging.h"
+#include "dusk/randomizer/game/randomizer_context.hpp"
 #include "dusk/randomizer/game/tools.h"
 #include "dusk/randomizer/generator/seedgen/seed.hpp"
 #include "dusk/randomizer/generator/utility/string.hpp"
+#include "dusk/randomizer/generator/utility/text.hpp"
+#include "dusk/randomizer/generator/utility/yaml.hpp"
 #include "modal.hpp"
 #include "number_button.hpp"
 #include "pane.hpp"
@@ -17,6 +20,7 @@
 
 #include <mutex>
 #include <thread>
+#include <unordered_set>
 
 namespace dusk::ui {
 

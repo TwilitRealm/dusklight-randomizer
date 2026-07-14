@@ -1,6 +1,14 @@
 #pragma once
 
 #include "dolphin/types.h"
+#include "dusk/randomizer/generator/logic/item_pool.hpp"
+
+namespace randomizer::logic::location {
+class Location;
+}
+namespace randomizer::logic::world {
+class World;
+}
 
 bool playerIsInRoomStage(s32 room, const char* stage);
 void checkTransformFromWolf();

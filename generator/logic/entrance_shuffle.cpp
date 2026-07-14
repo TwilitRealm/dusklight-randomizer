@@ -2,6 +2,7 @@
 
 #include "item_pool.hpp"
 #include "search.hpp"
+#include "../randomizer.hpp"
 #include "../utility/random.hpp"
 #include "../utility/yaml.hpp"
 

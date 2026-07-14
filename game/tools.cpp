@@ -376,8 +376,8 @@ randomizer::logic::item_pool::ItemPool getSaveItemPool(randomizer::logic::world:
     }
 
     // Goron Mines Key Shards
-    for (int i = dItemNo_Randomizer_L2_KEY_PIECES1_e; i < dItemNo_Randomizer_L2_KEY_PIECES3_e; ++i) {
-        if (haveItem(i)) {
+    if (haveItem(dItemNo_Randomizer_L2_KEY_PIECES3_e)) {
+        for (int i = 0; i < 3; ++i) {
             pool.push_back(world->GetItem("Goron Mines Key Shard", true));
         }
     }

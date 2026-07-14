@@ -59,6 +59,20 @@
     next node index: 0x10C
 
 5: # zel_05.bmg
+  # Patch Yeta flow to always give the map check even if the player has obtained the Ordon Cheese
+  - index: 0x8
+    type: event
+    event: 42
+    parameters: 0x00000000
+    next node index: 0x8
+
+  # Patch Yeta flow to always give the map check even if the player has obtained the Ordon Cheese
+  - index: 0x5
+    type: event
+    event: 42
+    parameters: 0x00000000
+    next node index: 0x3
+
   # Patch Gor Liggs to not set the flag for the third key shard
   # Change event index 17 to event index 42 which does nothing
   - index: 0x258

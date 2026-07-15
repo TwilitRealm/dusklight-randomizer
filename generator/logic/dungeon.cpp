@@ -129,7 +129,9 @@ namespace randomizer::logic::dungeon
 
     bool Dungeon::ShouldBeBarren() const
     {
-        return !this->_required && this->_world->Setting("Unrequired Dungeons Are Barren") == "On";
+        return !this->_required &&
+                this->_world->Setting("Unrequired Dungeons Are Barren") == "On" &&
+                this->_name != "Hyrule Castle";
     }
 
 } // namespace randomizer::logic::dungeon

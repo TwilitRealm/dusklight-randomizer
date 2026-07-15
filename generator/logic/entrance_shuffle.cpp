@@ -575,7 +575,7 @@ namespace randomizer::logic::entrance_shuffle
                 {
                     RestoreConnections(entrance, target);
                 }
-                LOG_TO_DEBUG("Failed to place all entrances in a pool for World " + std::to_string(world->GetID()) +
+                LOG_TO_DEBUG("Failed to place all entrances in a pool for World " + std::to_string(entrancePool[0]->GetWorld()->GetID()) +
                              ". Will retry " + std::to_string(retries) + " more times");
                 LOG_TO_DEBUG(e.what());
             }

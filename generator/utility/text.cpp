@@ -352,9 +352,12 @@ namespace randomizer {
     };
 
     void breakLines(std::string& str, int maxLineWidth) {
+
+        // Randomizer Only shouldn't rely on needing access to the iso
+#ifndef RANDOMIZER_ONLY
         // Get game's font
         auto gameFont = mDoExt_getMesgFont();
-
+#endif
         int curLineWidth = 0;
         size_t i = 0;
         size_t previousSpace = 0;
@@ -392,7 +395,12 @@ namespace randomizer {
             }
 
             JUTFont::TWidth width{};
+#ifndef RANDOMIZER_ONLY
             gameFont->getWidthEntry(str[i], &width);
+#else
+            // Assume worst case with no iso access
+            width.field_0x1 = 21;
+#endif
             curLineWidth += /*width.field_0x0 + */width.field_0x1;
             // If we exceed the maximum line width, replace the
             // previous space with a newline and start counting
@@ -406,8 +414,10 @@ namespace randomizer {
             ++i;
         }
 
+#ifndef RANDOMIZER_ONLY
         // Free game's font
         mDoExt_removeMesgFont();
+#endif
     }
 
     void applyMessageCodes(std::string& str) {

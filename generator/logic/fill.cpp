@@ -290,7 +290,7 @@ namespace randomizer::logic::fill
             // Filter hint signs out of dungeon locations
             auto dungeonLocations = dungeon->GetLocations();
             utility::container::FilterAndEraseFromVector(dungeonLocations, [](const auto& location) {
-                return location->HasCategories("Hint Sign");
+                return location->HasCategories("Non-Item Location");
             });
 
             // Filter out excluded locations if this dungeon is required
@@ -439,6 +439,11 @@ namespace randomizer::logic::fill
                 // Add this dungeon's locations to the anyDungeonLocations pool. If this is a nonbarren dungeon, only include
                 // locations which are still progression. If it's a barren dungeon, include all the locations
                 auto dungeonLocations = dungeon->GetLocations();
+                // Filter out non-item locations (i.e. hint signs)
+                utility::container::FilterAndEraseFromVector(dungeonLocations, [](const auto& location) {
+                    return location->HasCategories("Non-Item Location");
+                });
+
                 std::ranges::copy_if(dungeonLocations,
                              std::back_inserter(anyDungeonLocations),
                              [&](const auto& location) { return dungeon->ShouldBeBarren() || location->IsProgression(); });

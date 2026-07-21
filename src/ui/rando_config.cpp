@@ -1223,14 +1223,6 @@ RandomizerWindow::RandomizerWindow(dFile_select_c* fileSelect /*= nullptr*/) : m
 
             leftPane.add_section("General");
 
-            leftPane.register_control(leftPane.add_button("Warp to Start").on_pressed([] {
-                mDoAud_seStartMenu(kSoundClick);
-                dComIfGp_setNextStage("F_SP103", 1, 1, -1);
-            }), rightPane, [](Pane& pane) {
-                pane.clear();
-                pane.add_rml("Respawns the player at their appropriate starting location.");
-            });
-
             leftPane.add_button("Toggle Tracker Window").on_pressed([] {
                 g_randomizerState.mShowTracker = !g_randomizerState.mShowTracker;
             });

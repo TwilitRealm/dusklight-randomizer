@@ -2,9 +2,7 @@
 
 #include <locale>
 #include <string>
-#include <map>
-#include <iostream>
-#include <cstdarg>
+#include <charconv>
 
 namespace randomizer::utility::str {
     //can't use codecvt on Wii U, deprecated in c++17 and g++ hates it
@@ -48,5 +46,47 @@ namespace randomizer::utility::str {
         }
 
         return ret;
+    }
+
+    // Takes in a string and returns an optional integer if the string
+    // could be turned into one
+    std::optional<int> toInt(std::string_view str) {
+        // Trim leading/trailing whitespace
+        auto start = str.find_first_not_of(" \t\r\n");
+        if (start == std::string_view::npos) {
+            return std::nullopt;
+        }
+        str.remove_prefix(start);
+
+        auto end = str.find_last_not_of(" \t\r\n");
+        if (end != std::string_view::npos) {
+            str = str.substr(0, end + 1);
+        }
+
+        if (str.empty()) {
+            return std::nullopt;
+        }
+
+        // Identify base (only decimal/hexadecimal handled)
+        int base = 10;
+        if (str.size() > 2 && str[0] == '0' && (str[1] == 'x' || str[1] == 'X')) {
+            base = 16;
+            str.remove_prefix(2);
+        }
+
+        if (str.empty()) {
+            return std::nullopt;
+        }
+
+        // Parse the remaining absolute string
+        int value = 0;
+        auto [ptr, ec] = std::from_chars(str.data(), str.data() + str.size(), value, base);
+
+        // Ensure conversion succeeded and consumed the entire trimmed string
+        if (ec == std::errc{} && ptr == str.data() + str.size()) {
+            return value;
+        }
+
+        return std::nullopt;
     }
 }

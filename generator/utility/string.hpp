@@ -113,4 +113,6 @@ namespace randomizer::utility::str {
             }
         }
     }
+
+    std::optional<int> toInt(std::string_view str);
 }

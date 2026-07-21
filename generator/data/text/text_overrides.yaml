@@ -223,17 +223,17 @@
   Group: 0
   Message Id: 335
 
-#- Name: Midna Call As Human Two Choice
-#  Group: 0
-#  Message Id: 2004
-#
-#- Name: Midna Call As Wolf Two Choice
-#  Group: 0
-#  Message Id: 2005
+- Name: Midna Call As Human Two Choice
+  Group: 0
+  Message Id: 2004
 
-#- Name: Midna Call As Wolf No Shadow Crystal Two Choice
-#  Group: 0
-#  Message Id: 2039
+- Name: Midna Call As Wolf Two Choice
+  Group: 0
+  Message Id: 2005
+
+- Name: Midna Call As Wolf No Shadow Crystal Two Choice
+  Group: 0
+  Message Id: 2039
 
 - Name: Midna Call As Human Three Choice
   Group: 0
@@ -374,3 +374,25 @@
 - Name: Fishing Hole Sign Text
   Group: 7
   Message Id: 9502
+
+# Completely Custom Text IDs
+- Name: Custom Midna Call Need Something Text
+  Attributes: 0x07F60000150D0000FF00000000000400
+
+- Name: Custom Midna Call 3 Choice Text
+  Attributes: 0x07F8000015000000FF00000000000400
+
+- Name: Custom Midna Call 2 Choice Text
+  Attributes: 0x07F8000015000000FF00000000000400
+
+- Name: Custom Midna Call Hints Text
+  Attributes: 0x07F60000150D0000FF00000000000400
+
+- Name: Return to Spawn Dungeon Intro Text
+  Attributes: 0x07F60000150D0000FF00000000000400
+
+- Name: Return to Spawn Dungeon Choice Text
+  Attributes: 0x07F60000150D0000FF00000000000400
+
+- Name: Return to Spawn Dungeon No Choice Text
+  Attributes: 0x07F60000150D0000FF00000000000400

@@ -1935,37 +1935,37 @@ Partially Filled Sky Book Get Item Text:
       <fast>You got a <red>Sky Character<white>!
       You've collected <red>{}<white> so far.
 
-#Midna Call As Human Two Choice:
-#  Standard:
-#    Text: |-
-#      <choice 1>Transform into wolf
-#      <choice 2>Change time
-#
-#Midna Call As Wolf Two Choice:
-#  Standard:
-#    Text: |-
-#      <choice 1>Transform into human
-#      <choice 2>Change time
+Midna Call As Human Two Choice:
+  Standard:
+    Text: |-
+      <2 way choice 1>Transform into wolf
+      <2 way choice 2>Something else
 
-#Midna Call As Wolf No Shadow Crystal Two Choice:
-#  Standard:
-#    Text: |-
-#      <choice 1>Warp
-#      <choice 2>Change time
+Midna Call As Wolf Two Choice:
+  Standard:
+    Text: |-
+      <2 way choice 1>Transform into human
+      <2 way choice 2>Something else
+
+Midna Call As Wolf No Shadow Crystal Two Choice:
+  Standard:
+    Text: |-
+      <2 way choice 1>Warp
+      <2 way choice 2>Something else
 
 Midna Call As Human Three Choice:
   Standard:
     Text: |-
-      <choice 1>Transform into wolf
-      <choice 2>Warp
-      <choice 3>Change time of day
+      <3 way choice 1>Transform into wolf
+      <3 way choice 2>Warp
+      <3 way choice 3>Something else
 
 Midna Call As Wolf Three Choice:
   Standard:
     Text: |-
-      <choice 1>Transform into human
-      <choice 2>Warp
-      <choice 3>Change time of day
+      <3 way choice 1>Transform into human
+      <3 way choice 2>Warp
+      <3 way choice 3>Something else
 
 Slingshot Shop Text Template:
   Standard:
@@ -2117,9 +2117,9 @@ Castle Town Malo Mart Magic Armor Sold Out Text Template:
 Charlo Donation Choice Text:
   Standard:
     Text: |-
-      <choice 1>100 Rupees
-      <choice 2>50 Rupees
-      <choice 3>Sorry...
+      <3 way choice 1>100 Rupees
+      <3 way choice 2>50 Rupees
+      <3 way choice 3>Sorry...
 
 Charlo Donation Ask Text Template:
   Standard:
@@ -2159,3 +2159,45 @@ Fishing Hole Sign Text Template:
       <Item Pretty Name> here! The fish are CRYING!
 
       Keep the fishing hole clean!
+
+Custom Midna Call Need Something Text:
+  Standard:
+    Text: |-
+      Need Something?<begin choice>
+
+Custom Midna Call 3 Choice Text:
+  Standard:
+    Text: |-
+      <3 way choice 1>Hints
+      <3 way choice 2>Change time of day
+      <3 way choice 3>Return to spawn
+
+Custom Midna Call 2 Choice Text:
+  Standard:
+    Text: |-
+      <2 way choice 1>Hints
+      <2 way choice 2>Return to spawn
+
+Custom Midna Call Hints Text:
+  Standard:
+    Text: |-
+      I have no hints to give.
+
+Return to Spawn Dungeon Intro Text:
+  Standard:
+    Text: |-
+      I'll get you out of here. 
+      Where do you want to go?<begin choice>
+
+Return to Spawn Dungeon Choice Text:
+  Standard:
+    Text: |-
+      <3 way choice 1>Dungeon entrance
+      <3 way choice 2>Nevermind
+      <3 way choice 3>Spawn
+
+Return to Spawn Dungeon No Choice Text:
+  Standard:
+    Text: |-
+      <2 way choice 1>Nevermind
+      <2 way choice 2>Spawn

@@ -62,6 +62,8 @@ public:
     std::unordered_map<u32, std::list<std::vector<u8>>> mObjectAdditions{};
     // std::unordered_map<u32, std::unordered_set<u32>> mTgscDeletions{};
     std::unordered_map<u32, u64> mFlowPatches{};
+    std::unordered_map<u32, std::vector<u16>> mFlowPatchesBranchOverrides{};
+    std::unordered_map<u32, std::array<u8, 20>> mAttributeOverrides{};
 
     // struct TextOverride {
     //     std::array<u8, 16> mAttributes{};
@@ -79,6 +81,9 @@ public:
 
     // keyed by stageId << 24 | pointNo << 16 | roomNo << 8 | mapLayer
     std::unordered_map<int, EntranceOverride> mEntranceOverrides{};
+
+    // Overrides for returning to spawn. Keyed by stageId
+    std::unordered_map<int, EntranceOverride> mReturnToPlaceOverrides{};
 
     std::optional<std::string> WriteToFile();
     std::optional<std::string> LoadFromHash(const std::string& hash);
@@ -226,6 +231,8 @@ void randomizer_setTempFlagForFLWOverride(u32 key);
 bool randomizer_checkTempleOfTimeRequirement();
 
 bool randomizer_mirrorChamberWallShouldExist();
+
+void randomizer_returnToSpawn(bool tryDungeon);
 
 u8 randomizer_getRandomFoolishItemModelID();
 

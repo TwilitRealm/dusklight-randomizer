@@ -2,7 +2,6 @@
 
 #include "dusk/logging.h"
 #include "dusk/main.h"
-#include "dusk/data.hpp"
 #include "dusk/ui/rando_config.hpp"
 #include "dusk/randomizer/game/flags.h"
 #include "dusk/randomizer/game/tools.h"
@@ -13,14 +12,17 @@
 #include "dusk/randomizer/generator/utility/yaml.hpp"
 #include "dusk/randomizer/generator/randomizer.hpp"
 #include "dusk/randomizer/generator/utility/text.hpp"
+#include "dusk/randomizer/generator/utility/string.hpp"
 
 #include <fstream>
 
+#include "custom_flow_ids.hpp"
 #include "d/actor/d_a_alink.h"
 #include "d/d_com_inf_game.h"
 #include "d/d_meter2.h"
 #include "d/d_meter2_draw.h"
 #include "d/d_meter2_info.h"
+#include "d/d_msg_class.h"
 #include "d/d_msg_flow.h"
 
 std::optional<std::string> RandomizerContext::WriteToFile() {
@@ -103,6 +105,12 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
 
     out["mFlowPatches"] = this->mFlowPatches;
 
+    for (const auto& [key, branchOverrides]: this->mFlowPatchesBranchOverrides) {
+        for (auto override : branchOverrides) {
+            out["mFlowPatchesBranchOverrides"][key].push_back(override);
+        }
+    }
+
     // Dump text overrides as binary to avoid losing intentional null characters
     YAML::Emitter textData;
     textData << YAML::BeginMap;
@@ -123,6 +131,10 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
 
     for (const auto& [key, override] : mEntranceOverrides) {
         out["mEntranceOverrides"][key] = std::bit_cast<int>(override);
+    }
+
+    for (const auto& [key, override] : mReturnToPlaceOverrides) {
+        out["mReturnToPlaceOverrides"][key] = std::bit_cast<int>(override);
     }
 
     seedData << YAML::Dump(out);
@@ -270,6 +282,15 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         this->mFlowPatches[key] = value;
     }
 
+    // Flow Patch Branch Overrides
+    for (const auto& flowNode : in["mFlowPatchesBranchOverrides"]) {
+        auto key = flowNode.first.as<u32>();
+        for (const auto& branchNode : flowNode.second) {
+            auto override = branchNode.as<u16>();
+            this->mFlowPatchesBranchOverrides[key].push_back(override);
+        }
+    }
+
     // Text Overrides
     for (const auto& languageNode: in["mTextOverrides"]) {
         const auto& languageStr = languageNode.first.as<std::string>();
@@ -287,6 +308,13 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         auto key = entranceNode.first.as<int>();
         auto override = std::bit_cast<EntranceOverride>(entranceNode.second.as<int>());
         this->mEntranceOverrides[key] = override;
+    }
+
+    // Return to Place Overrides
+    for (const auto& entranceNode : in["mReturnToPlaceOverrides"]) {
+        auto key = entranceNode.first.as<int>();
+        auto override = std::bit_cast<EntranceOverride>(entranceNode.second.as<int>());
+        this->mReturnToPlaceOverrides[key] = override;
     }
 
     dusk::ui::push_toast(dusk::ui::Toast{
@@ -896,6 +924,46 @@ bool randomizer_mirrorChamberWallShouldExist() {
           (mirrorChamberAccess == RandomizerContext::BARRIER && !dComIfGs_isStageBossEnemy(0x13));
 }
 
+void randomizer_returnToSpawn(bool tryOverride) {
+
+    auto& placeOverrides = randomizer_GetContext().mReturnToPlaceOverrides;
+    auto stageId = getStageID();
+
+    // If we're trying to override the default return to spawn
+    if (tryOverride && placeOverrides.contains(stageId)) {
+        auto entrance = placeOverrides[stageId];
+
+        // If in lakebed temple, spawn on land if shadow crystal is obtained like vanilla
+        if (entrance.stageId == Lakebed_Temple && dComIfGs_isEventBit(TRANSFORMING_UNLOCKED)) {
+            entrance.pointNo = 2;
+        }
+
+        dComIfGp_setNextStage(allStages[entrance.stageId], entrance.pointNo, entrance.roomNo, entrance.mapLayer);
+        return;
+    }
+
+    // If a player hasn't completed a twilight/MDH, we want to unset the transform flag so they aren't forced to be wolf
+    // unnecessarily.
+    for (int32_t i = 0; i < 4; i++) {
+        if (!dComIfGs_isDarkClearLV(i)) {
+            dComIfGs_offTransformLV(i);
+        }
+    }
+
+    // If Midna's Desperate Hour is not complete, unset the flags that trigger it incase the player
+    // used return to spawn while MDH was active
+    if (!dComIfGs_isEventBit(MIDNAS_DESPERATE_HOUR_COMPLETED)) {
+        dComIfGs_offStageSwitch(4, 0xE);
+        dComIfGs_offEventBit(MIDNAS_DESPERATE_HOUR_STARTED);
+    }
+
+    // Turn the player back into Link if they are currently wolf
+    dComIfGs_setTransformStatus(TF_STATUS_HUMAN);
+
+    // Return to spawn. If the spawn has been randomized, that's taken care of within the function
+    dComIfGp_setNextStage("F_SP103", 1, 1, -1);
+}
+
 u8 randomizer_getRandomFoolishItemModelID() {
     static constexpr auto foolishItemModels = std::to_array<u8>({
         dItemNo_Randomizer_ARMOR_e,
@@ -1299,12 +1367,42 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
         }
     }
 
+    // Give custom flows and message new indices as we read them in
+    std::unordered_map<std::string, u16> customMessageIDs{};
+    std::unordered_map<std::string, u16> customFlowIDs{};
+    u16 curCustomMessageID = BASE_CUSTOM_MSG_AND_FLOW_ID;
+    u16 curCustomFlowID = BASE_CUSTOM_MSG_AND_FLOW_ID;
+
     // Flow Patches
     auto flowPatches = LOAD_EMBED_YAML(RANDO_DATA_PATH "flow_patches.yaml");
     for (const auto& groupNode : flowPatches) {
         u8 groupNo = groupNode.first.as<u8>();
         for (const auto& flowNode : groupNode.second) {
-            u16 index = flowNode["index"].as<u16>();
+            std::string name{};
+            std::list<u16> indices{};
+            if (flowNode["index"]) {
+                if (flowNode["index"].IsSequence()) {
+                    for (const auto& indexNode : flowNode["index"]) {
+                        indices.push_back(indexNode.as<u16>());
+                    }
+                    name = std::to_string(indices.front());
+                }
+                else if (flowNode["index"].IsScalar()) {
+                    auto index = flowNode["index"].as<u16>();
+                    indices.push_back(index);
+                    name = std::to_string(index);
+                }
+            } else {
+                name = flowNode["name"].as<std::string>();
+                if (customFlowIDs.contains(name)) {
+                    indices.push_back(customFlowIDs[name]);
+                } else {
+                    auto newFlowIndex = curCustomFlowID++;
+                    indices.push_back(newFlowIndex);
+                    customFlowIDs[name] = newFlowIndex;
+                }
+            }
+
             const auto& type = flowNode["type"].as<std::string>();
             u64 value{};
             if (type == "branch") {
@@ -1314,21 +1412,97 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
                 branch->query_idx = flowNode["query"].as<u16>();
                 branch->param = flowNode["parameters"].as<u16>();
                 branch->next_node_idx = flowNode["next node index"].as<u16>();
+                if (flowNode["results"]) {
+                    if (flowNode["results"].size() != branch->field_0x1) {
+                        throw std::runtime_error(fmt::format("Flow results size for {} "
+                            "do not match num results. (expected: {}. size: {})", name, branch->field_0x1, flowNode["results"].size()));
+                    }
+                    for (const auto& resultNode : flowNode["results"]) {
+                        auto resultStr = resultNode.as<std::string>();
+                        auto resultInt = randomizer::utility::str::toInt(resultStr);
+                        u16 resultIndex{};
+                        if (resultInt.has_value()) {
+                            resultIndex = resultInt.value();
+                        } else {
+                            if (customFlowIDs.contains(resultStr)) {
+                                resultIndex = customFlowIDs[resultStr];
+                            } else {
+                                auto newFlowIndex = curCustomFlowID++;
+                                resultIndex = newFlowIndex;
+                                customFlowIDs[resultStr] = newFlowIndex;
+                            }
+                        }
+                        for (auto index : indices) {
+                            u32 key = (groupNo << 16) | index;
+                            randoData.mFlowPatchesBranchOverrides[key].push_back(resultIndex);
+                        }
+                    }
+                }
             }
             else if (type == "event") {
                 auto event = reinterpret_cast<mesg_flow_node_event*>(&value);
                 event->type = 3;
                 event->event_idx = flowNode["event"].as<u8>();
-                event->next_node_idx = flowNode["next node index"].as<u16>();
+                // Check to see if we're setting a custom node as our next node
+                auto nextNodeIndexStr = flowNode["next node index"].as<std::string>();
+                auto nextNodeIndex = randomizer::utility::str::toInt(nextNodeIndexStr);
+                // If we have a regular index, then assume we're using an existing node index
+                if (nextNodeIndex.has_value()) {
+                    event->next_node_idx = nextNodeIndex.value();
+                // If we don't, assume we're setting the next node to be a custom flow node
+                } else {
+                    if (customFlowIDs.contains(nextNodeIndexStr)) {
+                        event->next_node_idx = customFlowIDs.at(nextNodeIndexStr);
+                    } else {
+                        auto newFlowIndex = curCustomFlowID++;
+                        event->next_node_idx = newFlowIndex;
+                        customFlowIDs[nextNodeIndexStr] = newFlowIndex;
+                    }
+                }
                 u32 params = flowNode["parameters"].as<u32>();
                 event->params[0] = (params >> 24) & 0xFF;
                 event->params[1] = (params >> 16) & 0xFF;
                 event->params[2] = (params >> 8) & 0xFF;
                 event->params[3] = params & 0xFF;
+            } else if (type == "message") {
+                auto message = reinterpret_cast<mesg_flow_node*>(&value);
+                message->type = 1;
+                // Check to see if we have a custom index (identified by string)
+                auto infIndexStr = flowNode["inf index"].as<std::string>();
+                auto infIndex = randomizer::utility::str::toInt(infIndexStr);
+                if (infIndex.has_value()) {
+                    message->msg_index = infIndex.value();
+                } else {
+                    if (customMessageIDs.contains(infIndexStr)) {
+                        message->msg_index = customMessageIDs.at(infIndexStr);
+                    } else {
+                        auto newMsgIndex = curCustomMessageID++;
+                        message->msg_index = newMsgIndex;
+                        customMessageIDs[infIndexStr] = newMsgIndex;
+                    }
+                }
+                // message->next_node_idx = flowNode["next flow index"].as<u16>();
+                // Check to see if we're setting a custom node as our next node
+                auto nextNodeIndexStr = flowNode["next flow index"].as<std::string>();
+                auto nextNodeIndex = randomizer::utility::str::toInt(nextNodeIndexStr);
+                // If we have a regular index, then assume we're using an existing node index
+                if (nextNodeIndex.has_value()) {
+                    message->next_node_idx = nextNodeIndex.value();
+                    // If we don't, assume we're setting the next node to be a custom flow node
+                } else {
+                    if (customFlowIDs.contains(nextNodeIndexStr)) {
+                        message->next_node_idx = customFlowIDs.at(nextNodeIndexStr);
+                    } else {
+                        auto newFlowIndex = curCustomFlowID++;
+                        message->next_node_idx = newFlowIndex;
+                        customFlowIDs[nextNodeIndexStr] = newFlowIndex;
+                    }
+                }
             }
-
-            u32 key = (groupNo << 16) | index;
-            randoData.mFlowPatches[key] = value;
+            for (auto index : indices) {
+                u32 key = (groupNo << 16) | index;
+                randoData.mFlowPatches[key] = value;
+            }
         }
     }
 
@@ -1336,6 +1510,27 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
     auto textOverrides = LOAD_EMBED_YAML(RANDO_DATA_PATH "text/text_overrides.yaml");
     for (const auto& overrideNode : textOverrides) {
         const auto& name = overrideNode["Name"].as<std::string>();
+        u8 group;
+        u16 messageId;
+        if (overrideNode["Group"]) {
+            group = overrideNode["Group"].as<u8>();
+        } else {
+            // If no group specified, assume custom bmg group
+            group = CUSTOM_BMG_GROUP;
+        }
+        if (overrideNode["Message Id"]) {
+            messageId = overrideNode["Message Id"].as<u16>();
+        } else {
+            // If no message id specified, assign custom message id based on name
+            if (customMessageIDs.contains(name)) {
+                messageId = customMessageIDs[name];
+            } else {
+                auto newMessageId = curCustomMessageID++;
+                messageId = newMessageId;
+                customMessageIDs[name] = newMessageId;
+            }
+        }
+        u32 key = (group << 16) | messageId;
         for (auto language : randomizer::supportedLanguages) {
             std::string text;
             if (world->GetTextDatabase().contains(name)) {
@@ -1343,11 +1538,29 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
             } else {
                 text = randomizer::getTextStr(name, randomizer::Text::STANDARD, language);
             }
-            u8 group = overrideNode["Group"].as<u8>();
-            u16 messageId = overrideNode["Message Id"].as<u16>();
-            u32 key = (group << 16) | messageId;
+
             randomizer::applyMessageCodes(text);
             randoData.mTextOverrides[language][key] = text;
+        }
+
+        // If we have custom attributes
+        if (overrideNode["Attributes"]) {
+            auto attributesStr = overrideNode["Attributes"].as<std::string>();
+            auto attributesVec = HexToBytes(attributesStr);
+            if (attributesVec.size() != 16) {
+                throw std::runtime_error(fmt::format("Attributes for Text Override {} "
+                                                     "are the wrong length. (Expected: 16, Actual: {}", name, attributesVec.size()));
+            }
+
+            std::array<u8, 20> attributes{};
+            for (size_t i = 0; i < attributesVec.size(); ++i) {
+                attributes[i + 4] = attributesVec[i];
+            }
+
+            attributes[4] = messageId >> 8;
+            attributes[5] = messageId & 0xFF;
+
+            randoData.mAttributeOverrides[key] = attributes;
         }
     }
 
@@ -1370,6 +1583,27 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
         };
 
         randoData.mEntranceOverrides[std::bit_cast<int>(original)] = override;
+    }
+
+    // Vanilla Return to Place Overrides. Will need to change when boss/miniboss ER is implemented
+    static const std::list<std::pair<std::list<int>, RandomizerContext::EntranceOverride>> defaultPlaceOverrides{
+        {{Forest_Temple, Ook, Diababa},                      {Forest_Temple, 22, 0, -1}},
+        {{Goron_Mines, Dangoro, Fyrus},                      {Goron_Mines, 1, 0, -1}},
+        {{Lakebed_Temple, Deku_Toad, Morpheel},              {Lakebed_Temple, 0, 0, -1}},
+        {{Arbiters_Grounds, Death_Sword, Stallord},          {Arbiters_Grounds, 0, 0, -1}},
+        {{Snowpeak_Ruins, Darkhammer, Blizzeta},             {Snowpeak_Ruins, 0, 0, -1}},
+        {{Temple_of_Time, Darknut, Armogohma},               {Temple_of_Time, 0, 0, -1}},
+        {{City_in_the_Sky, Aeralfos, Argorok},               {City_in_the_Sky, 0, 3, -1}},
+        {{Palace_of_Twilight, Phantom_Zant_1,
+                Phantom_Zant_2, Zant_Main_Room, Zant_Fight}, {Palace_of_Twilight, 0, 0, -1}},
+        {{Hyrule_Castle, Ganondorf_Castle, Ganondorf_Field}, {Hyrule_Castle, 11, 0, -1}},
+    };
+
+    // Return to Place Overrides
+    for (const auto& [stages, returnPlace] : defaultPlaceOverrides) {
+        for (auto stage : stages) {
+            randoData.mReturnToPlaceOverrides[stage] = returnPlace;
+        }
     }
 
     return std::move(randoData);

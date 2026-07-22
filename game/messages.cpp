@@ -93,8 +93,8 @@ bool HandleCustomText(JMessage::TControl* control, u16 msgId) {
                 control->pEntry_ = reinterpret_cast<void*>(&attributeOverrides[key]);
             // Otherwise, use the default entry
             } else {
-                defaultEntry.message_id = msgId;
-                control->pEntry_ = &defaultEntry;
+                defaultJMSMesgEntry.message_id = msgId;
+                control->pEntry_ = &defaultJMSMesgEntry;
             }
             return true;
         }

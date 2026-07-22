@@ -578,6 +578,7 @@ RegionFlags:
   Hyrule Castle:
     Index: 0x18
     Flags:
+      - 0x4B # Watched CS with Allies in HC.
       - Skip_Minor_Cutscenes == On:
         - 0x4F # Hyrule Castle Graveyard intro CS.
         - 0x8C # East garden intro CS.

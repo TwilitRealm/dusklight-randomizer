@@ -22,6 +22,30 @@ D_MN07:
       layers:
         - 0
 
+  # Room 0 - Entrance
+  0:
+    # Add an extra loading zone so players can go down to Lake Hylia
+    # without needing the clawshot. This loading zone is placed to the
+    # west of the pond at the entrance and can be jumped into off the broken bridge
+    - action: add
+      name: scnChg
+      parameters: 0xFFFF0001
+      position:
+        x: -3176.0
+        y: -600.0
+        z: 5480.0
+      angle:
+        x: 0x0FFF
+        y: 0
+        z: 0x0FFF
+      set id: 0xFFFF
+      scale:
+        x: 20
+        y: 67
+        z: 54
+      layers:
+        - 0
+
   # Room 6 - West Bridge
   6:
     # Delete argorok actor that normally breaks the bridge

@@ -129,6 +129,10 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
     textData << YAML::EndMap;
     textData << YAML::EndMap;
 
+    for (const auto& [key, override] : mAttributeOverrides) {
+        out["mAttributeOverrides"][key] = ContainerToHexString(override);
+    }
+
     for (const auto& [key, override] : mEntranceOverrides) {
         out["mEntranceOverrides"][key] = std::bit_cast<int>(override);
     }
@@ -301,6 +305,15 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
             std::string text(reinterpret_cast<const char*>(binary.data()), binary.size());
             this->mTextOverrides[language][key] = std::move(text);
         }
+    }
+
+    // Attribute Overrides
+    for (const auto& attributeNode : in["mAttributeOverrides"]) {
+        auto key = attributeNode.first.as<u32>();
+        std::vector<u8> overrideVec = HexToBytes(attributeNode.second.as<std::string>());
+        std::array<u8, 20> override{};
+        std::copy(overrideVec.begin(), overrideVec.end(), override.begin());
+        this->mAttributeOverrides[key] = override;
     }
 
     // Entrance Overrides

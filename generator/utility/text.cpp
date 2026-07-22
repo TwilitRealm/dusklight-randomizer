@@ -63,7 +63,7 @@ namespace randomizer {
         }
     }
 
-    void Text::BreakLines(int maxLineWidth /*= MAX_LINE_WIDTH*/) {
+    void Text::BreakLines(int maxLineWidth /*= MAX_LINE_WIDTH_ITEM_TEXTBOX*/) {
         for (auto& text : mText) {
             breakLines(text, maxLineWidth);
         }

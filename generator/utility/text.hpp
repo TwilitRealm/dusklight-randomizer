@@ -57,7 +57,8 @@ namespace randomizer {
             PLURALITY_MAX,
         };
 
-        static constexpr size_t MAX_LINE_WIDTH = 441;
+        static constexpr size_t MAX_LINE_WIDTH_ITEM_TEXTBOX = 441;
+        static constexpr size_t MAX_LINE_WIDTH_NORMAL_TEXTBOX = 750;
 
         Text() = default;
         explicit Text(const std::string& str);
@@ -74,7 +75,7 @@ namespace randomizer {
          */
         void Replace(const std::string& oldStr, const Text& replacementText, int count = 1);
         void Replace(const std::string& oldStr, const std::string& replacementText, int count = 1);
-        void BreakLines(int maxLineWidth = MAX_LINE_WIDTH);
+        void BreakLines(int maxLineWidth = MAX_LINE_WIDTH_ITEM_TEXTBOX);
         void Capitalize();
         bool Empty() const;
         Text& operator+=(const Text& rhs);

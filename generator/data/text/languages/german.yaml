@@ -2201,3 +2201,13 @@ Return to Spawn Dungeon No Choice Text:
     Text: |-
       <2 way choice 1>Nevermind
       <2 way choice 2>Spawn
+
+Midna Hints Required Dungeons Intro Zero Dungeons:
+  Standard:
+    Text: |-
+      There are <red>0<white> required dungeons.
+
+Midna Hints Required Dungeons Intro At Least One Dungeon:
+  Standard:
+    Text: |-
+      There are <red><required dungeon count><white> required dungeons:

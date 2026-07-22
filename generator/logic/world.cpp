@@ -872,8 +872,17 @@ namespace randomizer::logic::world
     // For no logic, we're purely going to base whether the dungeon is required on the Hyrule Castle
     // Barrier requirements and Hyrule Castle Big Key chest requirements
     bool World::IsNoLogicRequiredDungeon(const std::unique_ptr<dungeon::Dungeon>& dungeon) {
-        auto barrierRequirements = this->Setting("Hyrule Barrier Requirements");
-        auto bigKeyRequirements = this->Setting("Hyrule Castle Big Key Requirements");
+        auto& barrierRequirements = this->Setting("Hyrule Barrier Requirements");
+        auto& bigKeyRequirements = this->Setting("Hyrule Castle Big Key Requirements");
+        auto barrierDungeonCount = this->Setting("Hyrule Barrier Dungeons").GetCurrentOptionAsNumber();
+        auto bigkeyDungeonCount = this->Setting("Hyrule Castle Big Key Dungeons").GetCurrentOptionAsNumber();
+
+        // If all dungeons are required, then always return true
+        if ((barrierRequirements == "Dungeons" && barrierDungeonCount == 8) ||
+            (bigKeyRequirements == "Dungeons" && bigkeyDungeonCount == 8))
+        {
+            return true;
+        }
 
         bool dungeonHasFusedShadow = std::ranges::any_of(dungeon->GetLocations(), [](const auto& location) {
             return location->GetCurrentItem()->GetName() == "Progressive Fused Shadow";

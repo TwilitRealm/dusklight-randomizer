@@ -3,27 +3,31 @@
 #include "dusk/randomizer/generator/utility/text.hpp"
 #include "world.hpp"
 
+#include <ranges>
+
 namespace randomizer::logic::hints {
+
+    static const std::list<std::pair<std::string, std::string>> dungeonColors = {
+        {"Forest Temple", "<green>"},
+        {"Goron Mines", "<red>"},
+        {"Lakebed Temple", "<blue>"},
+        {"Arbiters Grounds", "<orange>"},
+        {"Snowpeak Ruins", "<light blue>"},
+        {"Temple of Time", "<dark green>"},
+        {"City in the Sky", "<yellow>"},
+        {"Palace of Twilight", "<purple>"},
+        // {"Hyrule Castle", "<silver>"}
+    };
 
     // Tell the player which dungeons are required on the sign in front of Link's House
     static void GenerateRequiredDungeonsHint(world::WorldPool& worlds) {
-        static const std::unordered_map<std::string, std::string> dungeonColors = {
-            {"Forest Temple", "<green>"},
-            {"Goron Mines", "<red>"},
-            {"Lakebed Temple", "<blue>"},
-            {"Arbiters Grounds", "<orange>"},
-            {"Snowpeak Ruins", "<light blue>"},
-            {"Temple of Time", "<dark green>"},
-            {"City in the Sky", "<yellow>"},
-            {"Palace of Twilight", "<purple>"},
-            // {"Hyrule Castle", "<silver>"}
-        };
-
         for (const auto& world : worlds) {
             auto& requiredDungeonText = world->AddNewText("Links House Sign");
-            for (const auto& [dungeonName, dungeon] : world->GetDungeonTable()) {
+            // Use dungeonColors to loop through in base game dungeon order
+            for (const auto& [dungeonName, color] : dungeonColors) {
+                auto dungeon = world->GetDungeon(dungeonName);
                 if (dungeon->IsRequired()) {
-                    requiredDungeonText += dungeonColors.at(dungeonName) + getTextObject(dungeonName) + "\n";
+                    requiredDungeonText += color + getTextObject(dungeonName) + "\n";
                 }
             }
 
@@ -82,8 +86,51 @@ namespace randomizer::logic::hints {
         }
     }
 
+    void GenerateMidnaHintsText(world::WorldPool& worlds) {
+        for (const auto& world : worlds) {
+            auto& midnaHintText = world->AddNewText("Custom Midna Call Hints Text");
+
+            // Put required dungeons on Midna.
+            // First loop through to get required number
+            int numRequiredDungeons = 0;
+            for (const auto& dungeon : world->GetDungeonTable() | std::views::values) {
+                if (dungeon->IsRequired()) {
+                    ++numRequiredDungeons;
+                }
+            }
+
+            // Set the text for the number of required dungeons
+            if (numRequiredDungeons > 0) {
+                midnaHintText += getTextObject("Midna Hints Required Dungeons Intro At Least One Dungeon");
+                midnaHintText.Replace("<required dungeon count>", std::to_string(numRequiredDungeons));
+                // Add newlines to begin listing dungeons on the next textbox
+                midnaHintText += "\n\n\n\n";
+
+                // Then loop through again to add the dungeon names.
+                // Use dungeonColors to loop through in base game dungeon order
+                int displayedRequiredDungeons = 0;
+                for (const auto& [dungeonName, color] : dungeonColors) {
+                    auto dungeon = world->GetDungeon(dungeonName);
+                    if (dungeon->IsRequired()) {
+                        ++displayedRequiredDungeons;
+                        midnaHintText += color + getTextObject(dungeonName) + "<white>";
+                        // Add newline after every dungeon except the last one
+                        if (displayedRequiredDungeons < numRequiredDungeons) {
+                            midnaHintText += "\n";
+                        }
+                    }
+                }
+            } else {
+                midnaHintText += getTextObject("Midna Hints Required Dungeons Intro Zero Dungeons");
+            }
+
+            midnaHintText.BreakLines(Text::MAX_LINE_WIDTH_NORMAL_TEXTBOX);
+        }
+    }
+
     void GenerateAllHints(world::WorldPool& worlds) {
         GenerateRequiredDungeonsHint(worlds);
         GenerateItemTextReplacements(worlds);
+        GenerateMidnaHintsText(worlds);
     }
 }

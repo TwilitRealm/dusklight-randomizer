@@ -86,8 +86,16 @@ bool HandleCustomText(JMessage::TControl* control, u16 msgId) {
         u8 language = getLanguageForOverride();
         if (textOverrides.at(language).contains(key)) {
             control->pMessageText_begin_ = GetFormatedTextOverride(key, textOverrides[language][key]);
-            defaultEntry.message_id = msgId;
-            control->pEntry_ = &defaultEntry;
+
+            // Get the attributes for this text-box if they were specified
+            auto& attributeOverrides = randomizer_GetContext().mAttributeOverrides;
+            if (attributeOverrides.contains(key)) {
+                control->pEntry_ = reinterpret_cast<void*>(&attributeOverrides[key]);
+            // Otherwise, use the default entry
+            } else {
+                defaultEntry.message_id = msgId;
+                control->pEntry_ = &defaultEntry;
+            }
             return true;
         }
     }

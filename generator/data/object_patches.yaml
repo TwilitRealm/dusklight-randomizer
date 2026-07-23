@@ -1,5 +1,104 @@
 # Patches for game objects that get spawned in
 
+# Lakebed Temple
+D_MN01:
+  # Room 2 - Outer Bridges Rooms
+  2:
+    # Add hint sign near lower west water wheel
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -4765.38037
+        y: -1.21
+        z: 272.192261
+      angle:
+        x: 21125 # Flow node id
+        y: 0x46B9
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+
+# Goron Mines
+D_MN04:
+  # Room 17 - Gor Ebizo's Room
+  17:
+    # Add hint sign near Gor Ebizo
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: 11394.1855
+        y: 2878.65
+        z: -17913.05
+      angle:
+        x: 21124 # Flow node id
+        y: 0xD556
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+
+# Forest Temple
+D_MN05:
+  # Room 0 - Main Center Room
+  0:
+    # Add hint sign near west door
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -1972.11682
+        y: 3150
+        z: 7610.9751
+      angle:
+        x: 21123 # Flow node id
+        y: 0x6000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+
+# Temple of Time
+D_MN06:
+  # Room 0 - Entrance Room
+  0:
+    # Add hint sign near Ooccoo
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -618.9335
+        y: 725.0
+        z: 3112.2
+      angle:
+        x: 21128 # Flow node id
+        y: 0x8000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+
+  # Room 4 - Moving Walls Room
+  4:
+    # Add hint sign after first switch area
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -3885.2157
+        y: 4450.0
+        z: -6353.38135
+      angle:
+        x: 21129 # Flow node id
+        y: 0x2000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+
+
 # City in the Sky
 D_MN07:
   # Stage file objects
@@ -43,6 +142,24 @@ D_MN07:
         x: 20
         y: 67
         z: 54
+      layers:
+        - 0
+
+  # Room 2 - Central Room
+  2:
+    # Add hint sign after first switch area
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: 3376.54
+        y: 0.0
+        z: -12709.0352
+      angle:
+        x: 21130 # Flow node id
+        y: 0xC846
+        z: 0x0000
+      set id: 0xFFFF
       layers:
         - 0
 
@@ -111,6 +228,122 @@ D_MN08:
         z: 100
       layers:
         - 14
+
+    # Add hint sign to starting area
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: 679.0
+        y: -200.0
+        z: 9311.0
+      angle:
+        x: 21131 # Flow node id
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 14
+
+# Hyrule Castle
+D_MN09:
+  # Room 11 - Entrance Courtyard Area
+  11:
+    # Add hint sign near central statue
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: 0.0
+        y: 25.0
+        z: 11625.0
+      angle:
+        x: 21132 # Flow node id
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+
+# Arbiter's Grounds
+D_MN10:
+  # Room 2 - Poe Gate Room
+  2:
+    # Add hint sign near Poe Gate
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -349.4044
+        y: 450.0
+        z: -2876.90771
+      angle:
+        x: 21126 # Flow node id
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+
+# Snowpeak Ruins
+D_MN11:
+  # Room 1 - Yeta's Room
+  1:
+    # Add hint sign near Poe Gate
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -530.0
+        y: 0.0
+        z: -669.69
+      angle:
+        x: 21127 # Flow node id
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+
+# Cave of Ordeals
+D_SB01:
+  # Room 0 - Main Cave
+  0:
+    # Add hint sign at the start
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -1191.42
+        y: 1100.0
+        z: -260.65
+      angle:
+        x: 21133 # Flow node id
+        y: 0xE483
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+
+# Lake Hylia Lantern Cave
+D_SB03:
+  # Room 0 - Main Cave
+  0:
+    # Add hint sign about halfway through the cave
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -2897.38672
+        y: -1636.68994
+        z: -17674.8691
+      angle:
+        x: 21117 # Flow node id
+        y: 0x3E21
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
 
 # Ordon Village
 F_SP103:
@@ -292,6 +525,31 @@ F_SP103:
       layers:
         - 4
 
+    # Add hint sign near loading zone to Ordon Village
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: 687.89
+        y: 800.0
+        z: -1424.16
+      angle:
+        x: 21100 # Flow node id
+        y: 0xA019
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 8
+        - 9
+        - 12
+
 # Ordon Spring
 F_SP104:
   # Room 1 - Main Spring
@@ -320,6 +578,28 @@ F_SP104:
 F_SP108:
   # Room 4 - Coro's Clearing
   4:
+    # Add hint sign near on platform south of Coro's hut
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -12423.8467
+        y: 273.277985
+        z: -11518.958
+      angle:
+        x: 21101 # Flow node id
+        y: 0x9228
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 5
+        - 9
+        - 14
+
     # Rupee under boulder near coro (green)
     - action: patch
       name: item
@@ -433,6 +713,24 @@ F_SP109:
       layers:
         - 14
 
+    # Add hint sign near hot spring
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -3347.52734
+        y: 2999.16138
+        z: -2865.99341
+      angle:
+        x: 21105 # Flow node id
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 2
+        - 12
+        - 14
+
 # Kakariko Graveyard
 F_SP111:
   # Room 0 - Main graveyard
@@ -479,6 +777,25 @@ F_SP111:
       layers:
         - 2
         - 3
+
+    # Add hint sign behind zora grave
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: 21765.9863
+        y: 500.0
+        z: -62.247
+      angle:
+        x: 21106 # Flow node id
+        y: 0xC000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 2
+        - 3
+        - 14
 
 # Zora's Domain
 F_SP113:
@@ -892,8 +1209,46 @@ F_SP113:
         - 13
         - 14
 
+    # Add hint sign on west ledge
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -2964.84839
+        y: -2500.0
+        z: 17146.2676
+      angle:
+        x: 21119 # Flow node id
+        y: 0xAF09
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 2
+        - 13
+        - 14
+
 # Snowpeak Province
 F_SP114:
+  # Room 0 - Blizzard Area
+  0:
+    # Add hint sign in front of blizzard area
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: 15931.9238
+        y: -14389.4912
+        z: -17388.1992
+      angle:
+        x: 21120 # Flow node id
+        y: 0x2C5A
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 4
+
   # Room 1 - Snowboard Area
   1:
     # Snowboarding Bridge Ledge Bottom Rupee
@@ -1491,6 +1846,26 @@ F_SP115:
         - 2
         - 3
 
+    # Add hint sign in cucco shack
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -109203.461
+        y: -7220.0
+        z: 33083.7344
+      angle:
+        x: 21115 # Flow node id
+        y: 0x64B5
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 1
+        - 2
+        - 3
+        - 13
+        - 14
+
   # Room 1 - Lanayru Spring
   1:
     # Lower Underwater Boulder Rupee (Yellow)
@@ -1647,6 +2022,24 @@ F_SP115:
         - 2
         - 14
 
+    # Add hint sign underwater
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -309.997833
+        y: -1614.82178
+        z: 157.970795
+      angle:
+        x: 21116 # Flow node id
+        y: 0x8000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 2
+        - 14
+
 # Castle Town
 F_SP116:
   # Room 0 - Central castle Town
@@ -1667,6 +2060,22 @@ F_SP116:
       patch:
         # Make the shoe shiner always appear
         parameters: 0x0434F000
+      layers:
+        - 0
+
+    # Add hint sign south of the central fountain
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: 0.0
+        y: -200.0
+        z: 835.0
+      angle:
+        x: 21112 # Flow node id
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
       layers:
         - 0
 
@@ -1812,6 +2221,22 @@ F_SP117:
       layers:
         - 2
 
+    # Add hint sign near Door to the Past
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -1543.0
+        y: 1725.0
+        z: 7964.85498
+      angle:
+        x: 21102 # Flow node id
+        y: 0x4000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 2
+
   # Room 2 - Temple of Time
   2:
     # Female Snail
@@ -1941,6 +2366,22 @@ F_SP118:
         # Give the gate a unique flag (0x00) so
         # it stays permanently open once it's been unlocked
         parameters: 0xFFFF00FF
+      layers:
+        - 0
+
+    # Add hint sign before jump down to lower desert
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -568.556152
+        y: 260.0
+        z: -3969.31
+      angle:
+        x: 21122 # Flow node id
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
       layers:
         - 0
 
@@ -2076,6 +2517,25 @@ F_SP121:
         # Take away the unique flag from this rupee so it doesn't conflict
         # with the one randomizer rupee nearby
         parameters: 0xF377FF03
+      layers:
+        - 0
+        - 6
+        - 8
+        - 14
+
+    # Add hint sign next to Eldin field south small bridge
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -12433.2744
+        y: -1075.2218
+        z: 20885.7129
+      angle:
+        x: 21107 # Flow node id
+        y: 0x8000
+        z: 0x0000
+      set id: 0xFFFF
       layers:
         - 0
         - 6
@@ -2280,6 +2740,7 @@ F_SP121:
         - 6
         - 14
 
+    # Add Epona Jump to post MDH layers
     - action: add
       name: Hjump
       parameters: 0x044FFF02
@@ -2299,6 +2760,24 @@ F_SP121:
       layers:
         - 2
         - 6
+
+    # Add hint sign near owl statue
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -10116.0215
+        y: -4923.46191
+        z: 43064.4375
+      angle:
+        x: 21104 # Flow node id
+        y: 0x0789
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 6
+        - 14
 
   # Room 6 - Faron Field
   6:
@@ -2375,6 +2854,25 @@ F_SP121:
         - 9
         - 10
 
+    # Add hint sign under bridge
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -46039.4922
+        y: -9250.0
+        z: 81859.2891
+      angle:
+        x: 21103 # Flow node id
+        y: 0x8000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 6
+        - 9
+        - 10
+
   # Room 7 - North Eldin
   7:
     # Add Ganon Barriers to block Lanayru Twilight access
@@ -2423,6 +2921,25 @@ F_SP121:
       set id: 0xFFFF
       layers:
         - 14 # Twilight layer
+
+    # Add hint sign next to North Eldin Field spinner track
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: 18468.8418
+        y: 1580.0
+        z: -63560.9531
+      angle:
+        x: 21108 # Flow node id
+        y: 0xCDC6
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 6
+        - 8
+        - 14
 
   # Room 10 - Lanayru Field
   10:
@@ -2652,6 +3169,25 @@ F_SP121:
         - 13
         - 14
 
+    # Add hint sign at path fork in west Lanayru Field
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -64943.7422
+        y: -1359.66711
+        z: -31897.8828
+      angle:
+        x: 21110 # Flow node id
+        y: 0xE223
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 6
+        - 13
+        - 14
+
   # Room 12 - Hylia Bridge-Lanayru Field Transition
   12:
     # South Spinner Track Boulder Rupee (Blue 1)
@@ -2853,6 +3389,25 @@ F_SP121:
         # Take away the flag from this item so it doesn't conflict
         # with the nearby randomized item
         parameters: 0xF37BFF03
+      layers:
+        - 0
+        - 6
+        - 13
+        - 14
+
+    # Add hint sign on platform above owl statue
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -94678.8672
+        y: -3900.0
+        z: 18410.543
+      angle:
+        x: 21114 # Flow node id
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
       layers:
         - 0
         - 6
@@ -3164,6 +3719,25 @@ F_SP122:
         - 13
         - 14
 
+    # Add hint sign on platform with helmasaur grotto
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -80699.5
+        y: -765.58374
+        z: 1903.61462
+      angle:
+        x: 21111 # Flow node id
+        y: 0x25B7
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 6
+        - 13
+        - 14
+
   # Room 16 - Outside South Castle Town
   16:
     # Male Ladybug
@@ -3430,6 +4004,26 @@ F_SP122:
         - 13
         - 14
 
+    # Add hint sign south of the fountain
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -51500.0
+        y: -5500.0
+        z: 27368.3086
+      angle:
+        x: 21113 # Flow node id
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
+
 # Gerudo Desert
 F_SP124:
   # Room 0 - Main Desert
@@ -3491,6 +4085,22 @@ F_SP124:
         # Turn the golden wolf into a htPiece actor with the hidden skill item
         name: htPiece
         parameters: 0xFFFFFFE1
+      layers:
+        - 0
+
+    # Add hint sign before jump down to lower desert
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: 20356.23
+        y: 556.7
+        z: 38694.8047
+      angle:
+        x: 21121 # Flow node id
+        y: 0x0099
+        z: 0x0000
+      set id: 0xFFFF
       layers:
         - 0
 
@@ -4069,6 +4679,52 @@ F_SP126:
         - 1
         - 13
         - 14
+
+# Fishing Pond
+F_SP127:
+  # Room 0 - Main Pond
+  0:
+    # Add hint sign behind hut
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: -2924.74585
+        y: 35.0
+        z: 8386.28906
+      angle:
+        x: 21118 # Flow node id
+        y: 0x8000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 14
+
+# Hidden Village
+F_SP128:
+  # Room 0 - Main Village
+  0:
+    # Add hint sign
+    - action: add
+      name: Obj_kn2
+      parameters: 0xFFFFFFFF
+      position:
+        x: 5161.03
+        y: 0.0
+        z: -5264.33
+      angle:
+        x: 21109 # Flow node id
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 1
+        - 2
 
 # Kakariko Village Interiors
 R_SP109:

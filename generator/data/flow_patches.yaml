@@ -276,3 +276,211 @@
     event: 45
     parameters: 0x00000000
     next node index: 0x116
+
+  #################################################
+  #                  HINT SIGNS                   #
+  #################################################
+
+  - name: Ordon Hint Sign
+    index: 21100
+    type: message
+    inf index: Ordon Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: South Faron Woods Hint Sign
+    index: 21101
+    type: message
+    inf index: South Faron Woods Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Sacred Grove Hint Sign
+    index: 21102
+    type: message
+    inf index: Sacred Grove Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Faron Field Hint Sign
+    index: 21103
+    type: message
+    inf index: Faron Field Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Kakariko Gorge Hint Sign
+    index: 21104
+    type: message
+    inf index: Kakariko Gorge Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Kakariko Village Hint Sign
+    index: 21105
+    type: message
+    inf index: Kakariko Village Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Kakariko Graveyard Hint Sign
+    index: 21106
+    type: message
+    inf index: Kakariko Graveyard Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Eldin Field Hint Sign
+    index: 21107
+    type: message
+    inf index: Eldin Field Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: North Eldin Field Hint Sign
+    index: 21108
+    type: message
+    inf index: North Eldin Field Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Hidden Village Hint Sign
+    index: 21109
+    type: message
+    inf index: Hidden Village Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Lanayru Field Hint Sign
+    index: 21110
+    type: message
+    inf index: Lanayru Field Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Beside Castle Town Hint Sign
+    index: 21111
+    type: message
+    inf index: Beside Castle Town Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Castle Town Center Hint Sign
+    index: 21112
+    type: message
+    inf index: Castle Town Center Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Outside South Castle Town Hint Sign
+    index: 21113
+    type: message
+    inf index: Outside South Castle Town Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Lake Hylia Bridge Hint Sign
+    index: 21114
+    type: message
+    inf index: Lake Hylia Bridge Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Lake Hylia Hint Sign
+    index: 21115
+    type: message
+    inf index: Lake Hylia Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Lanayru Spring Hint Sign
+    index: 21116
+    type: message
+    inf index: Lanayru Spring Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Lake Lantern Cave Hint Sign
+    index: 21117
+    type: message
+    inf index: Lake Lantern Cave Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Fishing Hole Hint Sign
+    index: 21118
+    type: message
+    inf index: Fishing Hole Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Zoras Domain Hint Sign
+    index: 21119
+    type: message
+    inf index: Zoras Domain Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Snowpeak Hint Sign
+    index: 21120
+    type: message
+    inf index: Snowpeak Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Gerudo Desert Hint Sign
+    index: 21121
+    type: message
+    inf index: Gerudo Desert Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Bulblin Camp Hint Sign
+    index: 21122
+    type: message
+    inf index: Bulblin Camp Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Forest Temple Hint Sign
+    index: 21123
+    type: message
+    inf index: Forest Temple Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Goron Mines Hint Sign
+    index: 21124
+    type: message
+    inf index: Goron Mines Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Lakebed Temple Hint Sign
+    index: 21125
+    type: message
+    inf index: Lakebed Temple Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Arbiters Grounds Hint Sign
+    index: 21126
+    type: message
+    inf index: Arbiters Grounds Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Snowpeak Ruins Hint Sign
+    index: 21127
+    type: message
+    inf index: Snowpeak Ruins Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Temple of Time First Hint Sign
+    index: 21128
+    type: message
+    inf index: Temple of Time First Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Temple of Time Second Hint Sign
+    index: 21129
+    type: message
+    inf index: Temple of Time Second Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: City in the Sky Hint Sign
+    index: 21130
+    type: message
+    inf index: City in the Sky Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Palace of Twilight Hint Sign
+    index: 21131
+    type: message
+    inf index: Palace of Twilight Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Hyrule Castle Hint Sign
+    index: 21132
+    type: message
+    inf index: Hyrule Castle Hint Sign Text
+    next flow index: 0xFFFF
+
+  - name: Cave of Ordeals Hint Sign
+    index: 21133
+    type: message
+    inf index: Cave of Ordeals Hint Sign Text
+    next flow index: 0xFFFF

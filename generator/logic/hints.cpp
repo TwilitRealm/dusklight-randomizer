@@ -124,7 +124,7 @@ namespace randomizer::logic::hints {
                 midnaHintText += getTextObject("Midna Hints Required Dungeons Intro Zero Dungeons");
             }
 
-            midnaHintText.BreakLines(Text::MAX_LINE_WIDTH_NORMAL_TEXTBOX);
+            midnaHintText.BreakLines();
         }
     }
 

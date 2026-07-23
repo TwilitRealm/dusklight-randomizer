@@ -378,7 +378,7 @@ namespace randomizer {
             if (!code.empty()) {
                 // Assume worst case for player name width.
                 // 8 chars max * max char width
-                if (code == "<player_name>") {
+                if (code == "<player name>") {
                     curLineWidth += 8 * 21;
                 }
                 i += code.length();

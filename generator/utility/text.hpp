@@ -75,7 +75,7 @@ namespace randomizer {
          */
         void Replace(const std::string& oldStr, const Text& replacementText, int count = 1);
         void Replace(const std::string& oldStr, const std::string& replacementText, int count = 1);
-        void BreakLines(int maxLineWidth = MAX_LINE_WIDTH_ITEM_TEXTBOX);
+        void BreakLines(int maxLineWidth = MAX_LINE_WIDTH_NORMAL_TEXTBOX);
         void Capitalize();
         bool Empty() const;
         Text& operator+=(const Text& rhs);

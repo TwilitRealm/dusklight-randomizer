@@ -1380,11 +1380,48 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
         }
     }
 
-    // Give custom flows and message new indices as we read them in
+    // Give custom flows and messages new indices as we read them in
     std::unordered_map<std::string, u16> customMessageIDs{};
     std::unordered_map<std::string, u16> customFlowIDs{};
+    std::unordered_set<u16> usedMessageIDs{};
+    std::unordered_set<u16> usedFlowIDs{};
     u16 curCustomMessageID = BASE_CUSTOM_MSG_AND_FLOW_ID;
     u16 curCustomFlowID = BASE_CUSTOM_MSG_AND_FLOW_ID;
+
+    // Helper functions for assigning new custom flow IDs/message IDs
+    auto handleCustomID = [](const YAML::Node& node, auto& customIds, auto& usedIds, u16& curCustomID) {
+        u16 resultIndex{};
+        // Check to see if we're setting a custom index
+        auto resultStr = node.as<std::string>();
+        auto resultInt = randomizer::utility::str::toInt(resultStr);
+        // If we have a regular index, then use that directly
+        if (resultInt.has_value()) {
+            resultIndex = resultInt.value();
+        } else {
+            // If we don't, assume we're setting the index as custom
+            if (customIds.contains(resultStr)) {
+                resultIndex = customIds[resultStr];
+            } else {
+                while (usedIds.contains(curCustomID)) {
+                    ++curCustomID;
+                }
+                auto newIndex = curCustomID++;
+                resultIndex = newIndex;
+                customIds[resultStr] = newIndex;
+            }
+        }
+
+        usedIds.insert(resultIndex);
+        return resultIndex;
+    };
+
+    auto handleCustomFlowID = [&](const YAML::Node& node) {
+        return handleCustomID(node, customFlowIDs, usedFlowIDs, curCustomFlowID);
+    };
+
+    auto handleCustomMessageID = [&](const YAML::Node& node) {
+        return handleCustomID(node, customMessageIDs, usedMessageIDs, curCustomMessageID);
+    };
 
     // Flow Patches
     auto flowPatches = LOAD_EMBED_YAML(RANDO_DATA_PATH "flow_patches.yaml");
@@ -1394,26 +1431,32 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
             std::string name{};
             std::list<u16> indices{};
             if (flowNode["index"]) {
+                // If we're specifying a sequence of indices
                 if (flowNode["index"].IsSequence()) {
                     for (const auto& indexNode : flowNode["index"]) {
-                        indices.push_back(indexNode.as<u16>());
+                        auto index = indexNode.as<u16>();
+                        indices.push_back(index);
+                        usedFlowIDs.insert(index);
                     }
                     name = std::to_string(indices.front());
                 }
+                // If we have just a single index
                 else if (flowNode["index"].IsScalar()) {
                     auto index = flowNode["index"].as<u16>();
                     indices.push_back(index);
                     name = std::to_string(index);
+                    usedFlowIDs.insert(index);
+                }
+
+                // If we're specifying an index as well as a name, add the index to the custom
+                // ids
+                if (flowNode["name"]) {
+                    name = flowNode["name"].as<std::string>();
+                    customFlowIDs[name] = indices.front();
                 }
             } else {
                 name = flowNode["name"].as<std::string>();
-                if (customFlowIDs.contains(name)) {
-                    indices.push_back(customFlowIDs[name]);
-                } else {
-                    auto newFlowIndex = curCustomFlowID++;
-                    indices.push_back(newFlowIndex);
-                    customFlowIDs[name] = newFlowIndex;
-                }
+                indices.push_back(handleCustomFlowID(flowNode["name"]));
             }
 
             const auto& type = flowNode["type"].as<std::string>();
@@ -1425,26 +1468,15 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
                 branch->query_idx = flowNode["query"].as<u16>();
                 branch->param = flowNode["parameters"].as<u16>();
                 branch->next_node_idx = flowNode["next node index"].as<u16>();
+                // If we're using custom result indices
                 if (flowNode["results"]) {
-                    if (flowNode["results"].size() != branch->field_0x1) {
+                    auto& results = flowNode["results"];
+                    if (results.size() != branch->field_0x1) {
                         throw std::runtime_error(fmt::format("Flow results size for {} "
-                            "do not match num results. (expected: {}. size: {})", name, branch->field_0x1, flowNode["results"].size()));
+                            "do not match num results. (expected: {}. size: {})", name, branch->field_0x1, results.size()));
                     }
-                    for (const auto& resultNode : flowNode["results"]) {
-                        auto resultStr = resultNode.as<std::string>();
-                        auto resultInt = randomizer::utility::str::toInt(resultStr);
-                        u16 resultIndex{};
-                        if (resultInt.has_value()) {
-                            resultIndex = resultInt.value();
-                        } else {
-                            if (customFlowIDs.contains(resultStr)) {
-                                resultIndex = customFlowIDs[resultStr];
-                            } else {
-                                auto newFlowIndex = curCustomFlowID++;
-                                resultIndex = newFlowIndex;
-                                customFlowIDs[resultStr] = newFlowIndex;
-                            }
-                        }
+                    for (const auto& resultNode : results) {
+                        auto resultIndex = handleCustomFlowID(resultNode);
                         for (auto index : indices) {
                             u32 key = (groupNo << 16) | index;
                             randoData.mFlowPatchesBranchOverrides[key].push_back(resultIndex);
@@ -1456,22 +1488,7 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
                 auto event = reinterpret_cast<mesg_flow_node_event*>(&value);
                 event->type = 3;
                 event->event_idx = flowNode["event"].as<u8>();
-                // Check to see if we're setting a custom node as our next node
-                auto nextNodeIndexStr = flowNode["next node index"].as<std::string>();
-                auto nextNodeIndex = randomizer::utility::str::toInt(nextNodeIndexStr);
-                // If we have a regular index, then assume we're using an existing node index
-                if (nextNodeIndex.has_value()) {
-                    event->next_node_idx = nextNodeIndex.value();
-                // If we don't, assume we're setting the next node to be a custom flow node
-                } else {
-                    if (customFlowIDs.contains(nextNodeIndexStr)) {
-                        event->next_node_idx = customFlowIDs.at(nextNodeIndexStr);
-                    } else {
-                        auto newFlowIndex = curCustomFlowID++;
-                        event->next_node_idx = newFlowIndex;
-                        customFlowIDs[nextNodeIndexStr] = newFlowIndex;
-                    }
-                }
+                event->next_node_idx = handleCustomFlowID(flowNode["next node index"]);
                 u32 params = flowNode["parameters"].as<u32>();
                 event->params[0] = (params >> 24) & 0xFF;
                 event->params[1] = (params >> 16) & 0xFF;
@@ -1480,37 +1497,8 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
             } else if (type == "message") {
                 auto message = reinterpret_cast<mesg_flow_node*>(&value);
                 message->type = 1;
-                // Check to see if we have a custom index (identified by string)
-                auto infIndexStr = flowNode["inf index"].as<std::string>();
-                auto infIndex = randomizer::utility::str::toInt(infIndexStr);
-                if (infIndex.has_value()) {
-                    message->msg_index = infIndex.value();
-                } else {
-                    if (customMessageIDs.contains(infIndexStr)) {
-                        message->msg_index = customMessageIDs.at(infIndexStr);
-                    } else {
-                        auto newMsgIndex = curCustomMessageID++;
-                        message->msg_index = newMsgIndex;
-                        customMessageIDs[infIndexStr] = newMsgIndex;
-                    }
-                }
-                // message->next_node_idx = flowNode["next flow index"].as<u16>();
-                // Check to see if we're setting a custom node as our next node
-                auto nextNodeIndexStr = flowNode["next flow index"].as<std::string>();
-                auto nextNodeIndex = randomizer::utility::str::toInt(nextNodeIndexStr);
-                // If we have a regular index, then assume we're using an existing node index
-                if (nextNodeIndex.has_value()) {
-                    message->next_node_idx = nextNodeIndex.value();
-                    // If we don't, assume we're setting the next node to be a custom flow node
-                } else {
-                    if (customFlowIDs.contains(nextNodeIndexStr)) {
-                        message->next_node_idx = customFlowIDs.at(nextNodeIndexStr);
-                    } else {
-                        auto newFlowIndex = curCustomFlowID++;
-                        message->next_node_idx = newFlowIndex;
-                        customFlowIDs[nextNodeIndexStr] = newFlowIndex;
-                    }
-                }
+                message->msg_index = handleCustomMessageID(flowNode["inf index"]);
+                message->next_node_idx = handleCustomFlowID(flowNode["next flow index"]);
             }
             for (auto index : indices) {
                 u32 key = (groupNo << 16) | index;
@@ -1534,14 +1522,8 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
         if (overrideNode["Message Id"]) {
             messageId = overrideNode["Message Id"].as<u16>();
         } else {
-            // If no message id specified, assign custom message id based on name
-            if (customMessageIDs.contains(name)) {
-                messageId = customMessageIDs[name];
-            } else {
-                auto newMessageId = curCustomMessageID++;
-                messageId = newMessageId;
-                customMessageIDs[name] = newMessageId;
-            }
+            // If no message id specified, assume a custom one
+            messageId = handleCustomMessageID(overrideNode["Name"]);
         }
         u32 key = (group << 16) | messageId;
         for (auto language : randomizer::supportedLanguages) {
@@ -1570,6 +1552,7 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
                 attributes[i + 4] = attributesVec[i];
             }
 
+            // Set the message id in the attribute data
             attributes[4] = messageId >> 8;
             attributes[5] = messageId & 0xFF;
 

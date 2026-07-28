@@ -55,6 +55,6 @@ namespace randomizer
         std::list<std::list<logic::location::Location*>> _playthroughSpheres{};
         std::list<std::list<logic::entrance::Entrance*>> _entranceSpheres{};
 
-        std::filesystem::path _baseOutputPath{RANDO_SAVE_PATH};
+        std::filesystem::path _baseOutputPath{};
     };
 } // namespace randomizer

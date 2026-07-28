@@ -2,12 +2,29 @@
 
 #include "JSystem/JMessage/control.h"
 #include "d/d_msg_class.h"
+#include "d/d_com_inf_game.h"
 #include "randomizer_context.hpp"
 #include "custom_flow_ids.hpp"
-
-#include "dusk/version.hpp"
+#include "utilities.h"
 
 #include <fmt/format.h>
+
+static JMSMesgEntry_c defaultJMSMesgEntry{
+    .string_offset = 0,
+    .message_id = 0,
+    .event_label_id = 0,
+    .se_speaker = 0x24,
+    .fuki_kind = 0x00,
+    .output_type = 0x00,
+    .fuki_pos_type = 0x00,
+    .unk_0xc = 0xFF,
+    .unk_0xd = 0x00,
+    .se_mood = 0x00,
+    .camera_id = 0x00,
+    .base_anm_id = 0x02,
+    .face_anm_id = 0x03,
+    .unk_0x12 = 0x0400,
+};
 
 // Format certain messages that need to have dynamic info in them
 char* GetFormatedTextOverride(u32 key, std::string& text) {
@@ -27,7 +44,7 @@ char* GetFormatedTextOverride(u32 key, std::string& text) {
         break;
     case (0 << 16) | 335: // Group 0, id 335
         // Sky book characters get item text
-        value = dComIfGs_getAncientDocumentNum() + 1;
+        value = getAncientDocumentNum() + 1;
         outIt = fmt::vformat_to(buf.data(), text, fmt::make_format_args(value));
         break;
     default:
@@ -45,9 +62,11 @@ char* GetFormatedTextOverride(u32 key, std::string& text) {
 
 u8 getLanguageForOverride() {
     u8 language = randomizer::Text::ENGLISH;
-    if (dusk::version::isRegionPal()) {
+
+    // TODO: add service or something to check game language
+    /*if (dusk::version::isRegionPal()) {
         language = dComIfGs_getPalLanguage();
-    }/* else if (dusk::version::isRegionJpn()) {
+    }*//* else if (dusk::version::isRegionJpn()) {
         language = randomizer::Text::JAPANESE;
     }*/
 

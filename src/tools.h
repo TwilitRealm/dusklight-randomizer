@@ -1,7 +1,9 @@
 #pragma once
 
 #include "dolphin/types.h"
-#include "dusk/randomizer/generator/logic/item_pool.hpp"
+#include "../generator/logic/item_pool.hpp"
+#include "SSystem/SComponent/c_xyz.h"
+#include "SSystem/SComponent/c_sxyz.h"
 
 namespace randomizer::logic::location {
 class Location;

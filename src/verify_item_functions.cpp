@@ -1,8 +1,12 @@
 #include "verify_item_functions.h"
 
+#include <array>
+
 #include "d/d_com_inf_game.h"
 #include "d/d_item.h"
 #include "d/d_item_data.h"
+#include "item_ids.h"
+#include "utilities.h"
 
 bool haveItem(u32 item) {
     return checkItemGet((u8)item, 1);
@@ -64,7 +68,7 @@ u32 getProgressiveSkybook() {
     {
         if (haveItem(dItemNo_Randomizer_ANCIENT_DOCUMENT_e))
         {
-            if (dComIfGs_getAncientDocumentNum() != 5)
+            if (getAncientDocumentNum() != 5)
             {
                 return dItemNo_Randomizer_AIR_LETTER_e;
             }

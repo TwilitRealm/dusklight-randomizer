@@ -12,7 +12,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "dusk/randomizer/generator/randomizer.hpp"
+#include "../generator/randomizer.hpp"
 
 /*
  * Class holding all the information necessary for playing

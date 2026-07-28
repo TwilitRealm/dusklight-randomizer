@@ -1,6 +1,6 @@
 #include "hints.hpp"
 
-#include "dusk/randomizer/generator/utility/text.hpp"
+#include "../utility/text.hpp"
 #include "world.hpp"
 
 #include <ranges>

@@ -9,6 +9,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <cstring>
+#include <optional>
 
 namespace randomizer::utility::str {
     std::string toUTF8(const std::u16string& str);

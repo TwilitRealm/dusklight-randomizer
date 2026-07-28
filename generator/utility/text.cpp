@@ -6,6 +6,8 @@
 
 #include <unordered_map>
 
+#include "JSystem/JUtility/JUTFont.h"
+#include "m_Do/m_Do_ext.h"
 
 namespace randomizer {
 

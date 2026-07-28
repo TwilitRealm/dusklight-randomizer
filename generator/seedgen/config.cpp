@@ -12,7 +12,6 @@
 
 #include <fmt/format.h>
 #include <iostream>
-#include <version.h>
 
 // Fields which aren't part of settings_list.yaml
 constexpr std::string_view SEED = "Seed";
@@ -375,8 +374,9 @@ namespace randomizer::seedgen::config
 
         std::string permalink{};
 
-        permalink += DUSK_WC_DESCRIBE;
-        permalink += '\0';
+        // TODO: print mod version instead of dusklight version?
+        /*permalink += DUSK_WC_DESCRIBE;
+        permalink += '\0';*/
         permalink += std::to_string(settings::GetSettingInfoHash());
         permalink += '\0';
         permalink += this->_seed;
@@ -480,8 +480,9 @@ namespace randomizer::seedgen::config
         const auto& permaPackedSettings = permaParts[3];
 
         if (permaSettingsInfoHash != std::to_string(settings::GetSettingInfoHash())) {
+            // TODO: print mod version instead of dusklight version?
             return fmt::format("Pasted permalink was generated with an incompatible Dusklight version.\n"
-                                  "Your version: {}\nPermalink version: {}", DUSK_WC_DESCRIBE, permaVersion);
+                                  "Your version: {}\nPermalink version: {}", /*DUSK_WC_DESCRIBE*/ 0, permaVersion);
         }
 
         const std::vector<char> bytes(permaPackedSettings.begin(), permaPackedSettings.end());

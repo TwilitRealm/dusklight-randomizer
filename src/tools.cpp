@@ -1,14 +1,17 @@
 #include "tools.h"
 
+#include "../generator/logic/world.hpp"
 #include "d/actor/d_a_alink.h"
 #include "d/d_com_inf_game.h"
 #include "d/d_item.h"
 #include "d/d_item_data.h"
-#include "dusk/logging.h"
-#include "dusk/randomizer/generator/logic/world.hpp"
 #include "f_op/f_op_actor_mng.h"
+#include "fmt/format.h"
+#include "item_ids.h"
 #include "randomizer_context.hpp"
+#include "session.hpp"
 #include "stages.h"
+#include "utilities.h"
 #include "verify_item_functions.h"
 
 bool playerIsInRoomStage(s32 room, const char* stage)
@@ -170,7 +173,7 @@ int getTempleKeysFound(int saveId) {
         {0x18, {0x4C, 0x6F, 0x7C}}
     };
 
-    int count = dComIfGs_getKeyNum(saveId);
+    int count = getAreaKeyNum(saveId);
 
     // Add number of unlocked key doors for this dungeon to current key count
     for (auto flag : keyDoorFlags[saveId]) {
@@ -330,7 +333,7 @@ randomizer::logic::item_pool::ItemPool getSaveItemPool(randomizer::logic::world:
     }
 
     // Sky Book characters
-    for (int i = 0; i < dComIfGs_getAncientDocumentNum(); ++i) {
+    for (int i = 0; i < getAncientDocumentNum(); ++i) {
         pool.push_back(world->GetItem("Progressive Sky Book", true));
     }
 
@@ -709,8 +712,8 @@ int getStageSaveId(int id) {
             return 0x1B;
         case 42: // F_SP102 (Title Screen / King Bulblin 1)
             return 0xFF;
-        default:
-            DuskLog.warn("Failed to find Save Id for ID: {}" , id);
+    default:
+            randomizer::session::LogWarn(fmt::format("Failed to find Save Id for ID: {}" , id).c_str());
             return -1;
     }
 }

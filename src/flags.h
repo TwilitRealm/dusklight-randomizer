@@ -1,5 +1,7 @@
 #pragma once
 
+#include <dolphin/types.h>
+
 enum EventFlags
 {
     CHEESE_PUT_IN_SOUP                                                                       = 0x0001,

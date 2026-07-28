@@ -1,5 +1,7 @@
 #pragma once
 
+#include <dolphin/types.h>
+
 // Forward declaration
 namespace JMessage {
 struct TProcessor;

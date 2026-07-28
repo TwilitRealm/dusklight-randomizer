@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include "world.hpp"
 
 namespace randomizer::logic::world {
 class World;

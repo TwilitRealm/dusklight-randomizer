@@ -1,18 +1,18 @@
 #include "randomizer_context.hpp"
 
-#include "dusk/logging.h"
-#include "dusk/main.h"
-#include "dusk/ui/rando_config.hpp"
-#include "dusk/randomizer/game/flags.h"
-#include "dusk/randomizer/game/tools.h"
-#include "dusk/randomizer/game/stages.h"
-#include "dusk/randomizer/game/verify_item_functions.h"
-#include "dusk/randomizer/generator/utility/crc32.hpp"
-#include "dusk/randomizer/generator/utility/endian.hpp"
-#include "dusk/randomizer/generator/utility/yaml.hpp"
-#include "dusk/randomizer/generator/randomizer.hpp"
-#include "dusk/randomizer/generator/utility/text.hpp"
-#include "dusk/randomizer/generator/utility/string.hpp"
+#include "session.hpp"
+#include "paths.hpp"
+#include "flags.h"
+#include "tools.h"
+#include "stages.h"
+#include "verify_item_functions.h"
+#include "item_ids.h"
+#include "../generator/utility/crc32.hpp"
+#include "../generator/utility/endian.hpp"
+#include "../generator/utility/yaml.hpp"
+#include "../generator/randomizer.hpp"
+#include "../generator/utility/text.hpp"
+#include "../generator/utility/string.hpp"
 
 #include <fstream>
 
@@ -24,6 +24,8 @@
 #include "d/d_meter2_info.h"
 #include "d/d_msg_class.h"
 #include "d/d_msg_flow.h"
+#include "fmt/format.h"
+#include "m_Do/m_Do_audio.h"
 
 std::optional<std::string> RandomizerContext::WriteToFile() {
 
@@ -152,7 +154,7 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
     this->mHash = hash;
 
     if (!std::filesystem::exists(this->GetSeedDataPath())) {
-        DuskLog.error("Failed to load Hash: {}", hash);
+        randomizer::session::LogError(fmt::format("Failed to load Hash: {}", hash).c_str());
         mHash.clear();
         return std::nullopt;
     }
@@ -330,16 +332,17 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         this->mReturnToPlaceOverrides[key] = override;
     }
 
-    dusk::ui::push_toast(dusk::ui::Toast{
+    // TODO: setup ui service to allow pushing toasts
+    /*dusk::ui::push_toast(dusk::ui::Toast{
         .title = "Randomizer",
         .content =  fmt::format("Loaded Randomizer Seed {}", this->mHash),
         .duration = std::chrono::seconds(3),
-    });
+    });*/
     return std::nullopt;
 }
 
 std::filesystem::path RandomizerContext::GetSeedDataPath() const {
-    return dusk::ui::GetRandomizerSeedsPath() / this->mHash / "seed.dat";
+    return ::randomizer::paths::GetRandomizerSeedsPath() / this->mHash / "seed.dat";
 }
 
 int RandomizerContext::SettingToEnum(const std::string& settingName) {
@@ -448,7 +451,7 @@ static bool checkFoolishItemEffectReady()
     }
 
     // Make sure Z button isn't dimmed
-    if (dMeter2Info_getMeterClass()->getMeterDrawPtr()->getZButtonAlpha() != 1.f)
+    if (dMeter2Info_getMeterClass()->getMeterDrawPtr()->getButtonZAlpha() != 1.f)
     {
         return false;
     }
@@ -497,8 +500,8 @@ static void handleFoolishItem() {
      * eventually run out of memory so it is safer to unload everything and load it back in. */
 
     auto sceneMgr = Z2GetSceneMgr();
-    const u32 seWave1 = mDoAud_getZelAudio().getLoadedSeWave_1();
-    const u32 seWave2 = mDoAud_getZelAudio().getLoadedSeWave_2();
+    const u32 seWave1 = Z2AudioMgr::getInterface()->loadedSeWave_1;
+    const u32 seWave2 = Z2AudioMgr::getInterface()->loadedSeWave_2;
     sceneMgr->eraseSeWave(seWave1);
     sceneMgr->eraseSeWave(seWave2);
     sceneMgr->loadSeWave(0x46);
@@ -689,7 +692,8 @@ void RandomizerState::initGiveItemToPlayer()
             }
 
             // Ensure that link is not currently in a message-based event.
-            if (daAlink_getAlinkActorClass()->getEventId() != 0)
+            int event_item_id = 0;
+            if (daAlink_getAlinkActorClass()->mMsgFlow.getEventId(&event_item_id) != 0)
             {
                 break;
             }
@@ -775,7 +779,8 @@ void RandomizerState::handleTimeOfDayChange()
         {
             dComIfGs_setTime(105.f);
         }
-        dComIfGp_setEnableNextStage();
+
+        static_cast<dStage_nextStage_c*>(dComIfGp_getNextStartStage())->onEnable();
     }
 }
 
@@ -833,7 +838,7 @@ RandomizerContext& randomizer_GetContext() {
 }
 
 bool randomizer_IsActive() {
-    return dusk::IsGameLaunched && (!playerIsOnTitleScreen() || randomizer_GetContext().mCreatingSave) && !randomizer_GetContext().mHash.empty();
+    return (!playerIsOnTitleScreen() || randomizer_GetContext().mCreatingSave) && !randomizer_GetContext().mHash.empty();
 }
 
 std::vector<u8> HexToBytes(std::string hex) {
@@ -1006,7 +1011,7 @@ u32 getActorPatchesCurrentStageKey(u8 roomNo) {
     u32 actorPatchesStageKey{};
     actorPatchesStageKey |= getStageID(dComIfGp_getStartStageName()) << 16;
     actorPatchesStageKey |= roomNo << 8;
-    actorPatchesStageKey |= dComIfGp_getLayerNo();
+    actorPatchesStageKey |= dComIfG_play_c::getLayerNo(0);
     return actorPatchesStageKey;
 }
 
@@ -1260,7 +1265,7 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
         } else if (flagNode.IsMap()) {
             const auto& condition = flagNode.begin()->first.as<std::string>();
             if (world->EvaluateSettingCondition(condition)) {
-                DuskLog.debug("Setting flags for {}", condition);
+                randomizer::session::LogDebug(fmt::format("Setting flags for {}", condition).c_str());
                 for (const auto& conditionalFlag : flagNode.begin()->second) {
                     const auto& flag = conditionalFlag.as<u16>();
                     randoData.mStartEventFlags.push_back(flag);
@@ -1274,7 +1279,7 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
         const auto& region = regionNode.first.as<std::string>();
         const auto& index = regionNode.second["Index"].as<int>();
         const auto& flags = regionNode.second["Flags"];
-        DuskLog.debug("Setting region flags for {}", region);
+        randomizer::session::LogDebug(fmt::format("Setting region flags for {}", region).c_str());
         // This seems kinda scuffed so maybe we change it later
         for (const auto& flagNode : flags) {
             if (flagNode.IsScalar()) {
@@ -1613,7 +1618,7 @@ static void DeleteFailedGenerationFiles(randomizer::Randomizer& rando) {
 }
 
 bool GenerateAndWriteSeed(std::string& generationStatusMsg) {
-    auto r = randomizer::Randomizer{dusk::ui::GetRandomizerPath()};
+    auto r = randomizer::Randomizer{::randomizer::paths::GetRandomizerPath()};
 
     auto generationResult = r.Generate();
     if (generationResult.has_value()) {

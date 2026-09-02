@@ -111,6 +111,7 @@ DEFINE_HOOK(&getItemFunc, dItem_getItemFunc);
 extern int checkItemGet(u8 i_itemNo, int i_default);
 DEFINE_HOOK(&checkItemGet, dItem_checkItemGet);
 
+DEFINE_HOOK(&daAlink_c::create, daAlink_c__create);
 DEFINE_HOOK(&daAlink_c::decideDoStatus, daAlink_c__decideDoStatus);
 DEFINE_HOOK_SYMBOL("daAlink_searchBouDoor", void*(fopAc_ac_c*, void*), searchBouDoor);
 DEFINE_HOOK(&daAlink_c::checkGroundSpecialMode, daAlink_c__checkGroundSpecialMode);
@@ -1445,6 +1446,22 @@ HookAction hookPreOnStageSwitch(ModContext*, void* args, void* retval, void*) {
     if (dComIfGp_getStageStagInfo() == NULL) {
         dComIfGs_onSaveSwitch(i_stageNo, i_no);
         return HOOK_SKIP_ORIGINAL;
+    }
+
+    return HOOK_CONTINUE;
+}
+
+HookAction hookPre_daAlink_c__create(ModContext*, void* args, void* retval, void*) {
+    // Handles any cases where link may be riding epona into a stage, but epona's actor isn't loaded.
+    // Force load epona's actor here:
+    daAlink_c* i_this = mods::arg<daAlink_c*>(args, 0);
+
+    u32 sceneMode = i_this->getLastSceneMode();
+    s32 startMode = i_this->getStartMode();
+    BOOL isHorseStart = i_this->checkHorseStart(sceneMode, startMode);
+
+    if (isHorseStart && dComIfGp_getHorseActor() == NULL) {
+        fopAcM_create(fpcNm_HORSE_e, 0, &i_this->current.pos, fopAcM_GetRoomNo(i_this), &i_this->shape_angle, nullptr, -1);
     }
 
     return HOOK_CONTINUE;
@@ -3316,6 +3333,7 @@ ModResult initialize() {
 
     ADD_HOOK_PRE(onStageSwitch, hookPreOnStageSwitch);
 
+    ADD_HOOK_PRE(daAlink_c__create, hookPre_daAlink_c__create);
     ADD_HOOK_PRE(daAlink_c__decideDoStatus, hookPreDecideDoStatus);
     ADD_HOOK_PRE(searchBouDoor, hookPreSearchBouDoor);
     ADD_HOOK_PRE(daAlink_c__checkGroundSpecialMode, hookPreCheckGroundSpecialMode);

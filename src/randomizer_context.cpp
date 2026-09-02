@@ -927,7 +927,7 @@ void randomizer_checkAndOverrideEntranceData(const char*& stageName, s8& roomNo,
         // Check if we are going through a randomized entrance with epona, reset the lastMode
         // Todo: Create a list of entrances where epona is allowed and don't reset the lastMode if
         // Epona can be rode there
-        if ((lastMode&0xF) == 2 || (lastMode&0xF) == 8) {
+        if ((lastMode&0xF) == 1 || (lastMode&0xF) == 8) {
             lastMode = (lastMode&0xFFFFFFF0);
         }
 

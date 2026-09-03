@@ -1343,7 +1343,7 @@ ModResult add_location_list(UiElementHandle pane, const std::vector<std::string>
     list.items = items.data();
     list.item_count = items.size();
     list.on_pressed = [](ModContext*, UiListHandle, uint64_t, void*) {};
-    list.is_selected = [](ModContext*, UiListHandle, uint64_t key, void*) {
+    list.is_disabled = [](ModContext*, UiListHandle, uint64_t key, void*) {
         return g_tracker.isLocationObtained(key);
     };
     return session::svc_mng.ui->pane_add_list(mod_ctx, pane, &list, outList);

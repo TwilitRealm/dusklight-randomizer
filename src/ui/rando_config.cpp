@@ -690,6 +690,11 @@ ModResult buildSeedManagementTab(ModContext* ctx, UiWindowHandle, UiElementHandl
             auto result = GetRandomizerConfig().LoadFromPermalink(text);
             if (result.has_value()) {
                 mods::log::error("Failed to load permalink: {}", result.value());
+                UiToastDesc desc = UI_TOAST_DESC_INIT;
+                desc.title_rml = "Randomizer";
+                desc.body_rml = "Could not apply permalink. See the mod log for details.";
+                desc.duration_ms = 6000;
+                session::svc_mng.ui->push_toast(session::svc_mng.mod_ctx, &desc);
                 return;
             }
 

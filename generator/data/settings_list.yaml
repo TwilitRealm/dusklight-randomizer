@@ -5,9 +5,9 @@
 - Name: Logic Rules
   Default Option: All Locations Reachable
   Options:
-    - All Locations Reachable: "Logic is considered when placing items. Tricks and Glitches can be enabled for consideration below."
-    - Beatable Only: "Logic is considered when placing items only until the world is beatable. Remaining items are placed without logic consideration. Tricks and Glitches can be enabled for consideration below."
-    - No Logic: "Maximize randomization, logic is not considered when placing items. MAY BE IMPOSSIBLE TO BEAT."
+    - All Locations Reachable: "Ensures all locations, even unimportant, will be reachable with consideration to randomizer logic."
+    - Beatable Only: "Ensures no more than that the seed can be completed. Some unimportant items or locations may become unobtainable."
+    - No Logic: "There is NO GUARANTEE that the seed is beatable. Randomizer logic is not considered."
     # - Vanilla:                         "Items are placed in their vanilla locations."
 
 ######################

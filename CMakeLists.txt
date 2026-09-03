@@ -103,6 +103,7 @@ set(RANDOMIZER_SOURCES
         src/ui/rando_seed_generation.cpp
         src/ui/rando_config.cpp
         src/ui/ui.cpp
+        src/ui/tracker.cpp
 )
 
 # Embed the generator's YAML data into the mod library. Paths are relative to this

@@ -2,8 +2,11 @@
 
 #include "dolphin/types.h"
 #include "../generator/logic/item_pool.hpp"
+#include "../generator/utility/yaml.hpp"
 #include "SSystem/SComponent/c_xyz.h"
 #include "SSystem/SComponent/c_sxyz.h"
+
+#include <string>
 
 namespace randomizer::logic::location {
 class Location;
@@ -41,6 +44,7 @@ randomizer::logic::item_pool::ItemPool getSaveItemPool(randomizer::logic::world:
  * Finds locations relevant flag in save (using its metadata) and checks if it's been set.
  */
 bool isLocationObtained(randomizer::logic::location::Location* location);
+bool isLocationMetadataObtained(const YAML::Node& locationMeta, const std::string& locationName);
 
 /*
  * Pulls location item data from rando context using locations metadata.

@@ -12,6 +12,7 @@
 
 #include "rando_seed_generation.hpp"
 #include "config_store.hpp"
+#include "tracker.hpp"
 
 #include <algorithm>
 #include <thread>
@@ -352,6 +353,15 @@ void add_number_setting(UiElementHandle pane, const char* label, const char* key
     desc.max = max;
     desc.step = 1;
     session::svc_mng.ui->pane_add_control(session::svc_mng.mod_ctx, pane, &desc, out_handle);
+}
+
+void add_group(UiElementHandle leftPane, UiElementHandle rightPane, const char* label,
+    UiGroupBuildFn buildFn, UiElementHandle* out_handle = nullptr)
+{
+    UiGroupDesc group = UI_GROUP_DESC_INIT;
+    group.label = label;
+    group.build = buildFn;
+    session::svc_mng.ui->pane_add_group(mod_ctx, leftPane, rightPane, &group, out_handle);
 }
 
 // Presets
@@ -1375,9 +1385,161 @@ ModResult updateExcludedLocationsTab(ModContext* ctx, void*, ModError*) {
     return MOD_OK;
 }
 
+// Tracker Tab
+ModResult add_location_list(UiElementHandle pane, const std::vector<std::string>& regions, UiListHandle* outList = nullptr) {
+    const auto& items = g_tracker.getLocationListItems(regions);
+    UiListDesc list = UI_LIST_DESC_INIT;
+    list.items = items.data();
+    list.item_count = items.size();
+    list.on_pressed = [](ModContext*, UiListHandle, uint64_t, void*) {};
+    list.is_disabled = [](ModContext*, UiListHandle, uint64_t key, void*) {
+        return g_tracker.isLocationObtained(key);
+    };
+    return session::svc_mng.ui->pane_add_list(mod_ctx, pane, &list, outList);
+};
+
+ModResult buildTrackerTab(ModContext* ctx, UiWindowHandle, UiElementHandle leftPane,
+    UiElementHandle rightPane, void*, ModError*) {
+    g_tracker.generateLocationInfo();
+    add_section(leftPane, "Locations");
+
+    add_group(leftPane, rightPane,
+        "Ordon",
+        [](ModContext*, UiElementHandle pane, void*, ModError*) {
+            return add_location_list(pane, {"Ordona Province"});
+        });
+
+    add_group(leftPane, rightPane,
+        "Faron",
+        [](ModContext*, UiElementHandle pane, void*, ModError*) {
+            return add_location_list(pane,
+                {
+                "Faron Province",
+                "Faron Woods",
+                "Hyrule Field - Faron Province",
+                "Sacred Grove",
+                });
+        });
+
+    add_group(leftPane, rightPane,
+        "Eldin",
+        [](ModContext*, UiElementHandle pane, void*, ModError*) {
+            return add_location_list(pane,
+                {
+                "Eldin Province",
+                "Hyrule Field - Eldin",
+                "Hyrule Field - Eldin Province",
+                "Eldin Lantern Cave",
+                "Eldin Stockcave",
+                "Death Mountain",
+                "Kakariko Village",
+                "Kakariko Graveyard",
+                });
+        });
+
+    add_group(leftPane, rightPane,
+        "Lanayru",
+        [](ModContext*, UiElementHandle pane, void*, ModError*) {
+            return add_location_list(pane,
+                {
+                "Lanayru Province",
+                "Hyrule Field - Lanayru",
+                "Hyrule Field - Lanayru Province",
+                "Castle Town",
+                "Fishing Hole",
+                "Lake Hylia",
+                "Lake Lantern Cave",
+                "Upper Zoras River",
+                "Zoras Domain",
+                });
+        });
+
+    add_group(leftPane, rightPane,
+        "Gerudo Desert",
+        [](ModContext*, UiElementHandle pane, void*, ModError*) {
+            return add_location_list(pane,
+                {
+                "Gerudo Desert",
+                "Bulblin Camp",
+                "Mirror Chamber",
+                "Cave Of Ordeals",
+                });
+        });
+
+    add_group(leftPane, rightPane,
+        "Snowpeak",
+        [](ModContext*, UiElementHandle pane, void*, ModError*) {
+            return add_location_list(pane,
+                {
+                "Snowpeak Province",
+                "Snowpeak",
+                });
+        });
+
+    add_group(leftPane, rightPane,
+        "Forest Temple",
+        [](ModContext*, UiElementHandle pane, void*, ModError*) {
+            return add_location_list(pane, {"Forest Temple"});
+        });
+
+    add_group(leftPane, rightPane,
+        "Goron Mines",
+        [](ModContext*, UiElementHandle pane, void*, ModError*) {
+            return add_location_list(pane, {"Goron Mines"});
+        });
+
+    add_group(leftPane, rightPane,
+        "Lakebed Temple",
+        [](ModContext*, UiElementHandle pane, void*, ModError*) {
+            return add_location_list(pane, {"Lakebed Temple"});
+        });
+
+    add_group(leftPane, rightPane,
+        "Arbiter's Grounds",
+        [](ModContext*, UiElementHandle pane, void*, ModError*) {
+            return add_location_list(pane, {"Arbiters Grounds"});
+        });
+
+    add_group(leftPane, rightPane,
+        "Snowpeak Ruins",
+        [](ModContext*, UiElementHandle pane, void*, ModError*) {
+            return add_location_list(pane, {"Snowpeak Ruins"});
+        });
+
+    add_group(leftPane, rightPane,
+        "Temple of Time",
+        [](ModContext*, UiElementHandle pane, void*, ModError*) {
+            return add_location_list(pane, {"Temple of Time"});
+        });
+
+    add_group(leftPane, rightPane,
+        "City in the Sky",
+        [](ModContext*, UiElementHandle pane, void*, ModError*) {
+            return add_location_list(pane, {"City in the Sky"});
+        });
+
+    add_group(leftPane, rightPane,
+        "Palace of Twilight",
+        [](ModContext*, UiElementHandle pane, void*, ModError*) {
+            return add_location_list(pane, {"Palace of Twilight"});
+        });
+
+    add_group(leftPane, rightPane,
+        "Hyrule Castle",
+        [](ModContext*, UiElementHandle pane, void*, ModError*) {
+            return add_location_list(pane, {"Hyrule Castle"});
+        });
+
+    return MOD_OK;
+}
+
+ModResult updateTrackerTab(ModContext* ctx, void*, ModError*) {
+    return MOD_OK;
+}
+
 // Menu Tab
 void OnMenuTabSelected(ModContext* ctx, void*) {
-    UiTabDesc tabs[5]{};
+    UiTabDesc tabs[6]{};
 
     tabs[0].struct_size = sizeof(UiTabDesc);
     tabs[0].title = "Seed Management";
@@ -1402,9 +1564,16 @@ void OnMenuTabSelected(ModContext* ctx, void*) {
     tabs[4].build = buildExcludedLocationsTab;
     tabs[4].update = updateExcludedLocationsTab;
 
+    if (session::g_seedActivated) {
+        tabs[5].struct_size = sizeof(UiTabDesc);
+        tabs[5].title = "Tracker";
+        tabs[5].build = buildTrackerTab;
+        tabs[5].update = updateTrackerTab;
+    }
+
     UiWindowDesc desc = UI_WINDOW_DESC_INIT;
     desc.tabs = tabs;
-    desc.tab_count = 5;
+    desc.tab_count = session::g_seedActivated ? 6 : 5;  // don't show tracker if seed isn't loaded
     UiWindowHandle window{};
     session::svc_mng.ui->window_push(ctx, &desc, &window);
 }

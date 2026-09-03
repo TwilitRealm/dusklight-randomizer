@@ -30,37 +30,37 @@
 - Name: Hyrule Barrier Fused Shadows
   Need In Game: True
   Tracker Important: True
-  Default Option: 1
+  Default Option: 3
   Options:
     - 1-3: No description available.
 
 - Name: Hyrule Barrier Mirror Shards
   Need In Game: True
   Tracker Important: True
-  Default Option: 1
+  Default Option: 4
   Options:
     - 1-4: No description available.
 
 - Name: Hyrule Barrier Dungeons
   Need In Game: True
   Tracker Important: True
-  Default Option: 1
+  Default Option: 5
   Options:
     - 1-8: No description available.
 
 - Name: Hyrule Barrier Poe Souls
   Need In Game: True
   Tracker Important: True
-  Default Option: 1
+  Default Option: 20
   Options:
     - 1-60: No description available.
 
 - Name: Hyrule Barrier Hearts
   Need In Game: True
   Tracker Important: True
-  Default Option: 4
+  Default Option: 10
   Options:
-    - 4-20: No description available. # Hehe 420
+    - 4-20: No description available.
 
 - Name: Palace of Twilight Requirements
   Need In Game: True
@@ -232,37 +232,37 @@
 - Name: Hyrule Castle Big Key Fused Shadows
   Need In Game: True
   Tracker Important: True
-  Default Option: 1
+  Default Option: 3
   Options:
     - 1-3: No description available.
 
 - Name: Hyrule Castle Big Key Mirror Shards
   Need In Game: True
   Tracker Important: True
-  Default Option: 1
+  Default Option: 4
   Options:
     - 1-4: No description available.
 
 - Name: Hyrule Castle Big Key Dungeons
   Need In Game: True
   Tracker Important: True
-  Default Option: 1
+  Default Option: 5
   Options:
     - 1-8: No description available.
 
 - Name: Hyrule Castle Big Key Poe Souls
   Need In Game: True
   Tracker Important: True
-  Default Option: 1
+  Default Option: 20
   Options:
     - 1-60: No description available.
 
 - Name: Hyrule Castle Big Key Hearts
   Need In Game: True
   Tracker Important: True
-  Default Option: 4
+  Default Option: 10
   Options:
-    - 4-20: No description available. # Hehe 420
+    - 4-20: No description available.
 
 - Name: Dungeon Rewards Can Be Anywhere
   Default Option: "Off"

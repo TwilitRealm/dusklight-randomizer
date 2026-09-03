@@ -11,5 +11,6 @@ seedgen::config::Config& GetRandomizerConfig();
 void SaveRandomizerConfig();
 seedgen::settings::Setting* FindSetting(const std::string& key);
 bool TryCreateRandomSeed();
+void CheckAndSetForcedOptions();
 
 }  // namespace randomizer::ui

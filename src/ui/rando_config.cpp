@@ -22,20 +22,6 @@
 
 namespace randomizer::ui {
 
-seedgen::settings::Setting* FindSetting(const std::string& key) {
-    if (key.empty()) {
-        mods::log::error("Key is empty! Unable to find setting.");
-    }
-
-    // TODO: handle multi-world selection
-    auto& settings = GetRandomizerConfig().GetSettings();
-    try {
-        return &settings.GetMap().at(key);
-    } catch (std::exception e) {
-        mods::log::error("Failed to get Settings Key: {}", key);
-    }
-}
-
 const std::vector<std::pair<std::string, std::string>>& GetStartingInventoryLayoutOrder() {
     static const std::vector<std::pair<std::string, std::string>> layoutOrder = {
         // { display name , logic item name }
@@ -212,7 +198,7 @@ void add_number_input(UiElementHandle pane, const char* label, const char* help_
     session::svc_mng.ui->pane_add_control(session::svc_mng.mod_ctx, pane, &desc, out_handle);
 }
 
-void add_select_setting(UiElementHandle pane, const char* key, UiElementHandle* out_handle = nullptr)
+void add_select_setting(UiElementHandle pane, const char* key, UiPredicateFn isDisabledFn = nullptr, UiElementHandle* out_handle = nullptr)
 {
     auto setting = FindSetting(key);
     auto info = setting->GetInfo();
@@ -245,6 +231,7 @@ void add_select_setting(UiElementHandle pane, const char* key, UiElementHandle* 
 
         if (value->int_value >= 0 && value->int_value < options.size()) {
             setting->SetCurrentOption(options[value->int_value]);
+            CheckAndSetForcedOptions();
             SaveRandomizerConfig();
         }
     };
@@ -256,6 +243,7 @@ void add_select_setting(UiElementHandle pane, const char* key, UiElementHandle* 
     desc.binding = UI_BINDING_CALLBACKS;
     desc.get = getFn;
     desc.set = setFn;
+    desc.is_disabled = isDisabledFn;
     desc.user_data = (void*)key;
     desc.options = optionsList.data();
     desc.option_count = optionsList.size();
@@ -885,11 +873,67 @@ ModResult buildSeedOptionsTab(ModContext* ctx, UiWindowHandle, UiElementHandle l
     add_select_setting(leftPane, "Unrequired Dungeons Are Barren");
 
     add_section(leftPane, "Timesavers");
-    add_select_setting(leftPane, "Skip Prologue");
-    add_select_setting(leftPane, "Faron Twilight Cleared");
-    add_select_setting(leftPane, "Eldin Twilight Cleared");
-    add_select_setting(leftPane, "Lanayru Twilight Cleared");
-    add_select_setting(leftPane, "Skip Midna's Desperate Hour");
+    add_select_setting(
+        leftPane,
+        "Skip Prologue",
+        [](ModContext*, void*) {
+            bool randomizedStartingSpawn = *FindSetting("Randomize Starting Spawn") != "Off";
+            bool randomizedDungeonEntrances = *FindSetting("Randomize Dungeon Entrances") != "Off";
+            bool randomizedBossEntrances = *FindSetting("Randomize Boss Entrances") != "Off";
+            bool randomizedGrottoEntrances = *FindSetting("Randomize Grotto Entrances") != "Off";
+            bool randomizedCaveEntrances = *FindSetting("Randomize Cave Entrances") != "Off";
+            bool randomizedInteriorEntrances = *FindSetting("Randomize Interior Entrances") != "Off";
+            bool randomizedOverworldEntrances = *FindSetting("Randomize Overworld Entrances") != "Off";
+            bool wolfStart = *FindSetting("Starting Form") == "Wolf";
+
+            // Prologue is not compatible with wolf start or any ER
+            return wolfStart || randomizedStartingSpawn || randomizedDungeonEntrances || randomizedBossEntrances ||
+                    randomizedGrottoEntrances || randomizedCaveEntrances || randomizedInteriorEntrances || randomizedOverworldEntrances;
+        });
+    add_select_setting(
+        leftPane,
+        "Faron Twilight Cleared",
+        [](ModContext*, void*) {
+            bool randomizedCaveEntrances = *FindSetting("Randomize Cave Entrances") != "Off";
+            bool randomizedOverworldEntrances = *FindSetting("Randomize Overworld Entrances") != "Off";
+
+            // Faron Twilight is not compatible with Cave or Overworld ER
+            return randomizedCaveEntrances || randomizedOverworldEntrances;
+        });
+    add_select_setting(
+        leftPane,
+        "Eldin Twilight Cleared",
+        [](ModContext*, void*) {
+            bool randomizedOverworldEntrances = *FindSetting("Randomize Overworld Entrances") != "Off";
+
+            // Eldin Twilight is not compatible with Overworld ER
+            return randomizedOverworldEntrances;
+        });
+    add_select_setting(
+        leftPane,
+        "Lanayru Twilight Cleared",
+        [](ModContext*, void*) {
+            bool randomizedOverworldEntrances = *FindSetting("Randomize Overworld Entrances") != "Off";
+
+            // Lanayru Twilight is not compatible with Overworld ER
+            return randomizedOverworldEntrances;
+        });
+    add_select_setting(
+        leftPane,
+        "Skip Midna's Desperate Hour",
+        [](ModContext*, void*) {
+            bool randomizedStartingSpawn = *FindSetting("Randomize Starting Spawn") != "Off";
+            bool randomizedDungeonEntrances = *FindSetting("Randomize Dungeon Entrances") != "Off";
+            bool randomizedBossEntrances = *FindSetting("Randomize Boss Entrances") != "Off";
+            bool randomizedGrottoEntrances = *FindSetting("Randomize Grotto Entrances") != "Off";
+            bool randomizedCaveEntrances = *FindSetting("Randomize Cave Entrances") != "Off";
+            bool randomizedInteriorEntrances = *FindSetting("Randomize Interior Entrances") != "Off";
+            bool randomizedOverworldEntrances = *FindSetting("Randomize Overworld Entrances") != "Off";
+
+            // MDH is not compatible with any ER
+            return randomizedStartingSpawn || randomizedDungeonEntrances || randomizedBossEntrances ||
+                    randomizedGrottoEntrances || randomizedCaveEntrances || randomizedInteriorEntrances || randomizedOverworldEntrances;
+        });
     add_select_setting(leftPane, "Skip Minor Cutscenes");
     add_select_setting(leftPane, "Skip Major Cutscenes");
     add_select_setting(leftPane, "Unlock Map Regions");

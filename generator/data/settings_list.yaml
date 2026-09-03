@@ -581,50 +581,50 @@
   Default Option: "Off"
   Options:
     - "Off": "Link will start outside his house."
-    - "On": "Link will start in a random area."
+    - "On": "Link will start in a random area. Turning this on will force the Skip Prologue and Skip Midna's Desperate Hour settings to be turned on."
 
 - Name: Randomize Dungeon Entrances
   Tracker Important: True
   Default Option: "Off"
   Options:
     - "Off": "Entering a dungeon will lead to the vanilla dungeon."
-    - "On": "Entering a dungeon will lead to a random dungeon."
-    - "On + Hyrule Castle": "Entering a dungeon will lead to a random dungeon. Hyrule Castle's entrance will be shuffled as well."
+    - "On": "Entering a dungeon will lead to a random dungeon. Turning this on will force the Skip Prologue and Skip Midna's Desperate Hour settings to be turned on."
+    - "On + Hyrule Castle": "Entering a dungeon will lead to a random dungeon. Hyrule Castle's entrance will be shuffled as well. Turning this on will force the Skip Prologue and Skip Midna's Desperate Hour settings to be turned on."
 
 - Name: Randomize Boss Entrances
   Tracker Important: True
   Default Option: "Off"
   Options:
     - "Off": "Entering a boss door will lead to the intended boss."
-    - "On": "Entering a boss door will lead to a random boss."
+    - "On": "Entering a boss door will lead to a random boss. Turning this on will force the Skip Prologue and Skip Midna's Desperate Hour settings to be turned on."
 
 - Name: Randomize Grotto Entrances
   Tracker Important: True
   Default Option: "Off"
   Options:
     - "Off": "Entering a grotto will lead to the intended grotto."
-    - "On": "Entering a grotto will lead to a random grotto."
+    - "On": "Entering a grotto will lead to a random grotto. Turning this on will force the Skip Prologue and Skip Midna's Desperate Hour settings to be turned on."
 
 - Name: Randomize Cave Entrances
   Tracker Important: True
   Default Option: "Off"
   Options:
     - "Off": "Entering a door or loadzone that leads to a cave area will lead to the intended cave."
-    - "On": "Entering a door or loadzone that leads to a cave area will lead to a random cave."
+    - "On": "Entering a door or loadzone that leads to a cave area will lead to a random cave. Turning this on will force the Skip Prologue, Faron Twilight Cleared, and Skip Midna's Desperate Hour settings to be turned on."
 
 - Name: Randomize Interior Entrances
   Tracker Important: True
   Default Option: "Off"
   Options:
     - "Off": "Entering a door or loadzone that leads to an interior area will lead to the intended area."
-    - "On": "Entering a door or loadzone that leads to an interior area will lead to a random intended area."
+    - "On": "Entering a door or loadzone that leads to an interior area will lead to a random intended area. Turning this on will force the Skip Prologue and Skip Midna's Desperate Hour settings to be turned on."
 
 - Name: Randomize Overworld Entrances
   Tracker Important: True
   Default Option: "Off"
   Options:
     - "Off": "Entering a loadzone that leads to an overworld area will lead to the intended area."
-    - "On": "Entering a loadzone that leads to an overworld area will lead to a random area."
+    - "On": "Entering a loadzone that leads to an overworld area will lead to a random area. Turning this on will force the Skip Prologue, Skip Midna's Desperate Hour, and all Twilight Cleared settings to be turned on."
 
 - Name: Decouple Double Door Entrances
   Tracker Important: True

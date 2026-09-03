@@ -25,16 +25,6 @@ public:
     bool isLocationObtained(const LocationInfo& location);
     bool isLocationObtained(uint64_t key);
 
-    struct LocationTrackerInfo {
-        std::string locationName;
-        bool collected = false;
-    };
-
-    struct TrackerAreaGroup {
-        std::vector<LocationTrackerInfo> locations;
-        int num;
-    };
-
     std::vector<LocationInfo> m_LocationInfo;
     std::vector<UiListItem> m_listItems;
 };

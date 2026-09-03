@@ -11,6 +11,7 @@
 #include "seedgen/config.hpp"
 #include "seedgen/settings.hpp"
 #include "utility/time.hpp"
+#include "utility/progress.hpp"
 
 #include <iostream>
 
@@ -98,6 +99,7 @@ namespace randomizer
         utility::platform::Log(std::string("Hash: ") + hash);
 
         // Build all worlds
+        UPDATE_STATUS_MESSAGE("Building Worlds...")
         int worldId = 1;
         for (const auto& settings : this->_config.GetSettingsList())
         {
@@ -125,7 +127,8 @@ namespace randomizer
             world->PerformPreEntranceShuffleTasks();
         }
 
-        utility::platform::Log("Shuffling Entrances...");
+        UPDATE_PROGRESS_PERCENT(10.0);
+        UPDATE_STATUS_MESSAGE("Shuffling Entrances...")
         for (auto& world : this->_worlds)
         {
             logic::entrance_shuffle::ShuffleWorldEntrances(world.get());
@@ -138,12 +141,15 @@ namespace randomizer
         }
         logic::fill::CacheExitTimeForms(this->_worlds);
 
+
         // Flattens down the requirements for each location and entrance into a single statement.
         // This is used for calculating hint importance.
-        utility::platform::Log("Flattening...");
+        UPDATE_PROGRESS_PERCENT(20.0);
+        UPDATE_STATUS_MESSAGE("Flattening... (This sometimes takes a bit)");
         FlattenSearch search = FlattenSearch(this->_worlds.at(0).get());
         search.doSearch();
 
+        UPDATE_PROGRESS_PERCENT(50.0);
         // Set chain locations once the flatten search is done
         for (auto& world : this->_worlds) {
             for (auto& location : world->GetAllLocations()) {
@@ -153,7 +159,8 @@ namespace randomizer
             }
         }
 
-        utility::platform::Log("Filling Worlds...");
+        UPDATE_PROGRESS_PERCENT(60.0);
+        UPDATE_STATUS_MESSAGE("Filling Worlds...");
         logic::fill::FillWorlds(this->_worlds);
 
         // Post Fill Tasks
@@ -162,12 +169,18 @@ namespace randomizer
             world->PerformPostFillTasks();
         }
 
+        UPDATE_PROGRESS_PERCENT(70.0);
+        UPDATE_STATUS_MESSAGE("Generating Playthrough...")
         // Generate Playthrough
         logic::search::GeneratePlaythrough(this);
 
+        UPDATE_PROGRESS_PERCENT(80.0);
+        UPDATE_STATUS_MESSAGE("Generating Hints...")
         // Generate Hints
         logic::hints::GenerateAllHints(this->_worlds);
 
+        UPDATE_PROGRESS_PERCENT(90.0);
+        UPDATE_STATUS_MESSAGE("Writing Data...")
         // Write Logs
         if (this->_config.IsGeneratingSpoilerLog())
         {

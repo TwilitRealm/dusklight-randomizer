@@ -573,14 +573,13 @@ namespace randomizer::logic::search
     void GeneratePlaythrough(Randomizer* randomizer)
     {
         auto& worlds = randomizer->GetWorlds();
-        LOG_TO_DEBUG("Generating Playthrough");
         // Generate Initial Playthrough
         auto playthroughSearch = Search::Playthrough(&worlds);
         playthroughSearch.SearchWorlds();
 
         auto& playthroughSpheres = playthroughSearch._playthroughSpheres;
 
-        // Keep track of all locations we temporaily take items away from so we can give them back after playthrough calculation
+        // Keep track of all locations we temporarily take items away from so we can give them back after playthrough calculation
         std::unordered_map<location::Location*, item::Item*> tempEmptyLocations = {};
         // Keep track of all the locations that appear in the playthrough
         std::unordered_set<location::Location*> playthroughLocationsSet = {};

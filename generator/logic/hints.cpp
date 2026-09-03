@@ -1113,8 +1113,6 @@ namespace randomizer::logic::hints {
 
     void GenerateAllHints(world::WorldPool& worlds) {
 
-        utility::platform::Log("Generating Hints...");
-
         GenerateAgithaSignHint(worlds);
 
         CalculatePossiblePathLocations(worlds);

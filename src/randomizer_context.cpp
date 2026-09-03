@@ -7,6 +7,7 @@
 #include "stages.h"
 #include "verify_item_functions.h"
 #include "item_ids.h"
+#include "ui/rando_seed_generation.hpp"
 #include "../generator/utility/crc32.hpp"
 #include "../generator/utility/endian.hpp"
 #include "../generator/utility/yaml.hpp"
@@ -1761,12 +1762,13 @@ static void DeleteFailedGenerationFiles(randomizer::Randomizer& rando) {
     }
 }
 
-bool GenerateAndWriteSeed(std::string& generationStatusMsg) {
+bool GenerateAndWriteSeed() {
     auto r = randomizer::Randomizer{::randomizer::paths::GetRandomizerPath()};
 
     auto generationResult = r.Generate();
     if (generationResult.has_value()) {
-        generationStatusMsg = fmt::format("Failed to generate seed. Reason:\n{}", generationResult.value());
+        randomizer::ui::UpdateGenerationStatusMsg(
+            fmt::format("Failed to generate seed. Reason:\n{}", generationResult.value()));
         DeleteFailedGenerationFiles(r);
         return false;
     }
@@ -1776,8 +1778,8 @@ bool GenerateAndWriteSeed(std::string& generationStatusMsg) {
     try {
         randoData = WriteSeedData(world);
     } catch (const std::runtime_error& e) {
-        generationStatusMsg =
-            fmt::format("Failed to write seed data. Reason:\n{}", e.what());
+        randomizer::ui::UpdateGenerationStatusMsg(
+            fmt::format("Failed to write seed data. Reason:\n{}", e.what()));
         DeleteFailedGenerationFiles(r);
         return false;
     }
@@ -1785,12 +1787,13 @@ bool GenerateAndWriteSeed(std::string& generationStatusMsg) {
     randoData.mHash = r.GetConfig().GetHash();
     auto writeToFileResult = randoData.WriteToFile();
     if (writeToFileResult.has_value()) {
-        generationStatusMsg =
-            fmt::format("Failed to write seed data to file. Reason:\n{}", writeToFileResult.value());
+        randomizer::ui::UpdateGenerationStatusMsg(
+            fmt::format("Failed to write seed data to file. Reason:\n{}", writeToFileResult.value()));
         DeleteFailedGenerationFiles(r);
         return false;
     }
 
-    generationStatusMsg = fmt::format("Seed generated! Hash: {}", randoData.mHash);
+    randomizer::ui::UpdateGenerationStatusMsg(
+        fmt::format("Seed generated! Hash: {}", randoData.mHash));
     return true;
 }

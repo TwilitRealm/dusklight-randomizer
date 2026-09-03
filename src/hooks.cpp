@@ -1469,7 +1469,6 @@ HookAction hookPre_daAlink_c__create(ModContext*, void* args, void* retval, void
 
 HookAction hookPreDecideDoStatus(ModContext*, void* args, void* retval, void*) {
     daAlink_c* i_this = mods::arg<daAlink_c*>(args, 0);
-    bool set_status = false;
 
     if (i_this->mAttList != NULL) {
         s16 actor_name = fopAcM_GetName(i_this->field_0x27f4);
@@ -1479,14 +1478,10 @@ HookAction hookPreDecideDoStatus(ModContext*, void* args, void* retval, void*) {
             // Separate check for striking sword into the pedestal for randomizer
             if (!i_this->checkEquipAnime() && randomizer_checkTempleOfTimeRequirement()) {
                 i_this->setDoStatus(BUTTON_STATUS_STRIKE);
-                set_status = true;
             }
+            i_this->decideCommonDoStatus();
+            return HOOK_SKIP_ORIGINAL;
         }
-    }
-
-    if (set_status) {
-        i_this->decideCommonDoStatus();
-        return HOOK_SKIP_ORIGINAL;
     }
 
     return HOOK_CONTINUE;

@@ -36,6 +36,7 @@ struct ServiceManager {
 
 extern ServiceManager svc_mng;
 extern std::string g_pending_seed_hash;
+extern bool g_seedActivated;
 
 ModResult initialize(const ServiceManager& services);
 void update();

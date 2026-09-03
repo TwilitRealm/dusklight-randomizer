@@ -27,6 +27,7 @@
 namespace randomizer::session {
 ServiceManager svc_mng;
 std::string g_pending_seed_hash{};
+bool g_seedActivated = false;
 
 SaveObserverHandle s_save_observer{};
 ItemCheckHandle s_check_resolver{};
@@ -222,6 +223,7 @@ bool activateSeed(const char* hash) {
 
     registerStageEdits();    
     mods::log::info("activated seed {}", ctx.mHash);
+    g_seedActivated = true;
     return true;
 }
 
@@ -245,6 +247,7 @@ void deactivateSeed() {
     item::restore_item_data_tables();
     randomizer_GetContext() = RandomizerContext{};
     g_randomizerState = RandomizerState{};
+    g_seedActivated = false;
 }
 
 void setupRandomizerFile() {

@@ -577,46 +577,49 @@ std::string nameLookupOverride(const std::string& locationName) {
 }
 
 bool isLocationObtained(randomizer::logic::location::Location* location) {
-    auto& locationMeta = location->GetMetadata();
-    if (auto& chestNode = locationMeta["Chest"]) {
+    return isLocationMetadataObtained(location->GetMetadata(), location->GetName());
+}
+
+bool isLocationMetadataObtained(const YAML::Node& locationMeta, const std::string& locationName) {
+    if (auto chestNode = locationMeta["Chest"]) {
         auto tboxId = chestNode[0]["Tbox Id"].as<u8>();
         auto stageId = getStageSaveId(chestNode[0]["Stage"].as<u8>());
         return dComIfGs_isStageTbox(stageId, tboxId);
     }
-    if (auto& poeNode = locationMeta["Poe"]) {
+    if (auto poeNode = locationMeta["Poe"]) {
         auto flag = poeNode[0]["Flag"].as<u8>();
         auto stageId = getStageSaveId(poeNode[0]["Stage"].as<u8>());
         return tracker_isStageSwitch(stageId, flag);
     }
-    if (auto& freeStandingItemNode = locationMeta["Freestanding Item"]) {
+    if (auto freeStandingItemNode = locationMeta["Freestanding Item"]) {
         auto flag = freeStandingItemNode[0]["Flag"].as<u8>();
         auto stageId = getStageSaveId(freeStandingItemNode[0]["Stage"].as<u8>());
         // big baba uses tbox, hardcode this edge case
-        if (location->GetName() == "Forest Temple Big Baba Key") {
+        if (locationName == "Forest Temple Big Baba Key") {
             return dComIfGs_isStageTbox(stageId, flag);
         }else {
             return tracker_isStageItem(stageId, flag);
         }
     }
-    if (auto& eventFlagNode = locationMeta["Event Flag"]) {
+    if (auto eventFlagNode = locationMeta["Event Flag"]) {
         auto flag = eventFlagNode.as<u16>();
         return tracker_isEventBit(flag);
     }
-    if (auto& wolfNode = locationMeta["Golden Wolf"]) {
+    if (auto wolfNode = locationMeta["Golden Wolf"]) {
         auto flag = wolfNode[0]["Flag"].as<u16>();
         return tracker_isEventBit(flag);
     }
-    if (auto& switchFlagNode = locationMeta["Switch Flag"]) {
+    if (auto switchFlagNode = locationMeta["Switch Flag"]) {
         auto flag = switchFlagNode["Flag"].as<u8>();
         auto stageId = getStageSaveId(switchFlagNode["Stage"].as<u8>());
         return tracker_isStageSwitch(stageId, flag);
     }
-    if (auto& itemFlagNode = locationMeta["Item Flag"]) {
+    if (auto itemFlagNode = locationMeta["Item Flag"]) {
         auto flag = itemFlagNode["Flag"].as<u8>();
         auto stageId = getStageSaveId(itemFlagNode["Stage"].as<u8>());
         return tracker_isStageItem(stageId, flag);
     }
-    if (auto& twilitInsectNode = locationMeta["Twilit Insect"]) {
+    if (auto twilitInsectNode = locationMeta["Twilit Insect"]) {
         auto flag = twilitInsectNode[0]["Flag"].as<u8>();
         auto stageId = getStageSaveId(twilitInsectNode[0]["Stage"].as<u8>());
         return dComIfGs_isStageTbox(stageId, flag);

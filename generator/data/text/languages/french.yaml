@@ -1538,6 +1538,14 @@ Mirror Chamber:
   Cryptic:
     Text: a {chamber of chains}
 
+Snowpeak Mountain:
+  Standard:
+    Text: Snowpeak Mountain
+  Pretty:
+    Text: "{Snowpeak Mountain}"
+  Cryptic:
+    Text: a {snowy mountain}
+
 Forest Temple:
   Standard:
     Text: Forest Temple

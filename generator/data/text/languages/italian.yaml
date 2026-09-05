@@ -2354,7 +2354,12 @@ Midna Hints Required Dungeons Intro Zero Dungeons:
     Text: |-
       There are <red>0<white> required dungeons.
 
-Midna Hints Required Dungeons Intro At Least One Dungeon:
+Midna Hints Required Dungeons Intro One Dungeon:
+  Standard:
+    Text: |-
+      There is <red>1<white> required dungeon:
+
+Midna Hints Required Dungeons Intro At Least Two Dungeons:
   Standard:
     Text: |-
       There are <red><required dungeon count><white> required dungeons:

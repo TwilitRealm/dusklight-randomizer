@@ -2306,7 +2306,12 @@ Midna Hints Required Dungeons Intro Zero Dungeons:
     Text: |-
       必須ダンジョンが　ないらしい
 
-Midna Hints Required Dungeons Intro At Least One Dungeon:
+Midna Hints Required Dungeons Intro One Dungeon:
+  Standard:
+    Text: |-
+      必須ダンジョンが　<red>1つ<white>ある・・・
+
+Midna Hints Required Dungeons Intro At Least Two Dungeons:
   Standard:
     Text: |-
       必須ダンジョンが　<red><required dungeon count>つ<white>ある・・・

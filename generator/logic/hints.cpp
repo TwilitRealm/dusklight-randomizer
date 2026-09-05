@@ -1039,8 +1039,13 @@ namespace randomizer::logic::hints {
 
             // Set the text for the number of required dungeons
             if (numRequiredDungeons > 0) {
-                midnaHintText += getTextObject("Midna Hints Required Dungeons Intro At Least One Dungeon");
-                midnaHintText.Replace("<required dungeon count>", std::to_string(numRequiredDungeons));
+                if (numRequiredDungeons == 1) {
+                    midnaHintText += getTextObject("Midna Hints Required Dungeons Intro One Dungeon");
+                } else {
+                    midnaHintText += getTextObject("Midna Hints Required Dungeons Intro At Least Two Dungeons");
+                    midnaHintText.Replace("<required dungeon count>", std::to_string(numRequiredDungeons));
+                }
+
                 midnaHintText.PadToNextBox();
 
                 // Then loop through again to add the dungeon names.

@@ -46,6 +46,14 @@ namespace randomizer::logic::hints {
         return nullptr;
     }
 
+    static const Text& GetLocationTextObject(location::Location* location, Text::Type type) {
+        // If this location has the same name as an item, add the "Check" text to the end of the key
+        if (location->GetName() == location->GetOriginalItem()->GetName()) {
+            return getTextObject(location->GetName() + " Check", type);
+        }
+        return getTextObject(location->GetName(), type);
+    }
+
     static void GenerateAgithaSignHint(world::WorldPool& worlds) {
         for (auto& world : worlds) {
             if (world->Setting("Agitha Hints") == "On") {
@@ -440,9 +448,10 @@ namespace randomizer::logic::hints {
         // TODO: Cryptic Text
         auto textType = Text::PRETTY;
         const auto& itemText = addColor(getTextObject(location->GetCurrentItem()->GetName(), textType), Text::GREEN);
+        const auto& locationText = addColor(GetLocationTextObject(location, textType), Text::RED);
         Text fullText = getTextObject("Location Hint");
         fullText.Replace("<Item Pretty or Cryptic Name>", itemText);
-        fullText.Replace("<Location Name>", addColor(Text{location->GetName()}, Text::RED));
+        fullText.Replace("<Location Pretty or Cryptic Name>", locationText);
 
         return fullText;
     }

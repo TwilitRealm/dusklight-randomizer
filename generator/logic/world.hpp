@@ -59,6 +59,7 @@ namespace randomizer::logic::world
         void BuildLocationTable();
         void LoadLogicMacros();
         void LoadWorldGraph();
+        void VerifyHintData();
         bool EvaluateSettingCondition(const std::string& condition);
 
         /**

@@ -1345,6 +1345,5480 @@ Progressive Sky Book x7:
   Standard:
     Text: Sky Book (6/6 Characters)
 
+# LOCATION NAMES
+# NOTE: Location names which are identical to item names (i.e. Ordon Shield) need
+# to have "Check" appended to their key for text data
+# TODO: Cryptic text for all locations
+Wooden Sword Chest:
+  Standard:
+    Text: Wooden Sword Chest
+  Pretty:
+    Text: the {Wooden Sword Chest}
+  Cryptic:
+    Text: the {Wooden Sword Chest}
+
+Links Basement Chest:
+  Standard:
+    Text: Links Basement Chest
+  Pretty:
+    Text: "{Links Basement Chest}"
+  Cryptic:
+    Text: "{Links Basement Chest}"
+
+Uli Cradle Delivery:
+  Standard:
+    Text: Uli Cradle Delivery
+  Pretty:
+    Text: "{Uli Cradle Delivery}"
+  Cryptic:
+    Text: "{Uli Cradle Delivery}"
+
+Ordon Cat Rescue:
+  Standard:
+    Text: Ordon Cat Rescue
+  Pretty:
+    Text: the {Ordon Cat Rescue}
+  Cryptic:
+    Text: the {Ordon Cat Rescue}
+
+Sera Shop Slingshot:
+  Standard:
+    Text: Sera Shop Slingshot
+  Pretty:
+    Text: buying the {Sera Shop Slingshot}
+  Cryptic:
+    Text: buying the {Sera Shop Slingshot}
+
+Ordon Shield Check:
+  Standard:
+    Text: Ordon Shield
+  Pretty:
+    Text: the {Ordon Shield}
+  Cryptic:
+    Text: the {Ordon Shield}
+
+Ordon Sword:
+  Standard:
+    Text: Ordon Sword
+  Pretty:
+    Text: the {Ordon Sword}
+  Cryptic:
+    Text: the {Ordon Sword}
+
+Wrestling With Bo:
+  Standard:
+    Text: Wrestling With Bo
+  Pretty:
+    Text: "{Wrestling With Bo}"
+  Cryptic:
+    Text: pushing a middle-aged man
+
+Ordon Bo Cliff Rupee:
+  Standard:
+    Text: Ordon Bo Cliff Rupee
+  Pretty:
+    Text: the {Ordon Bo Cliff Rupee}
+  Cryptic:
+    Text: the {Ordon Bo Cliff Rupee}
+
+Ordon Bo Roof Rupee:
+  Standard:
+    Text: Ordon Bo Roof Rupee
+  Pretty:
+    Text: the {Ordon Bo Roof Rupee}
+  Cryptic:
+    Text: the {Ordon Bo Roof Rupee}
+
+Ordon Bo Window Rupee 1:
+  Standard:
+    Text: Ordon Bo Window Rupee 1
+  Pretty:
+    Text: "{Ordon Bo Window Rupee 1}"
+  Cryptic:
+    Text: "{Ordon Bo Window Rupee 1}"
+
+Ordon Bo Window Rupee 2:
+  Standard:
+    Text: Ordon Bo Window Rupee 2
+  Pretty:
+    Text: "{Ordon Bo Window Rupee 2}"
+  Cryptic:
+    Text: "{Ordon Bo Window Rupee 2}"
+
+Ordon Hidden Rusl House Rupee:
+  Standard:
+    Text: Ordon Hidden Rusl House Rupee
+  Pretty:
+    Text: the {Ordon Hidden Rusl House Rupee}
+  Cryptic:
+    Text: the {Ordon Hidden Rusl House Rupee}
+
+Ordon Rupee In Grass By Bo:
+  Standard:
+    Text: Ordon Rupee In Grass By Bo
+  Pretty:
+    Text: the {Ordon Rupee In Grass By Bo}
+  Cryptic:
+    Text: the {Ordon Rupee In Grass By Bo}
+
+Ordon Rupee In River 1:
+  Standard:
+    Text: Ordon Rupee In River 1
+  Pretty:
+    Text: "{Ordon Rupee In River 1}"
+  Cryptic:
+    Text: "{Ordon Rupee In River 1}"
+
+Ordon Rupee In River 2:
+  Standard:
+    Text: Ordon Rupee In River 2
+  Pretty:
+    Text: "{Ordon Rupee In River 2}"
+  Cryptic:
+    Text: "{Ordon Rupee In River 2}"
+
+Ordon Rupee Under Bridge:
+  Standard:
+    Text: Ordon Rupee Under Bridge
+  Pretty:
+    Text: the {Ordon Rupee Under Bridge}
+  Cryptic:
+    Text: the {Ordon Rupee Under Bridge}
+
+Ordon Rupee Under Tall Tree 1:
+  Standard:
+    Text: Ordon Rupee Under Tall Tree 1
+  Pretty:
+    Text: "{Ordon Rupee Under Tall Tree 1}"
+  Cryptic:
+    Text: "{Ordon Rupee Under Tall Tree 1}"
+
+Ordon Rupee Under Tall Tree 2:
+  Standard:
+    Text: Ordon Rupee Under Tall Tree 2
+  Pretty:
+    Text: "{Ordon Rupee Under Tall Tree 2}"
+  Cryptic:
+    Text: "{Ordon Rupee Under Tall Tree 2}"
+
+Ordon Rusl House Roof Rupee 1:
+  Standard:
+    Text: Ordon Rusl House Roof Rupee 1
+  Pretty:
+    Text: "{Ordon Rusl House Roof Rupee 1}"
+  Cryptic:
+    Text: "{Ordon Rusl House Roof Rupee 1}"
+
+Ordon Rusl House Roof Rupee 2:
+  Standard:
+    Text: Ordon Rusl House Roof Rupee 2
+  Pretty:
+    Text: "{Ordon Rusl House Roof Rupee 2}"
+  Cryptic:
+    Text: "{Ordon Rusl House Roof Rupee 2}"
+
+Ordon Shield House Ledge Grass Rupee:
+  Standard:
+    Text: Ordon Shield House Ledge Grass Rupee
+  Pretty:
+    Text: the {Ordon Shield House Ledge Grass Rupee}
+  Cryptic:
+    Text: the {Ordon Shield House Ledge Grass Rupee}
+
+Ordon Tree Long Branch Rupee:
+  Standard:
+    Text: Ordon Tree Long Branch Rupee
+  Pretty:
+    Text: the {Ordon Tree Long Branch Rupee}
+  Cryptic:
+    Text: the {Ordon Tree Long Branch Rupee}
+
+Ordon Tree Short Branch Rupee:
+  Standard:
+    Text: Ordon Tree Short Branch Rupee
+  Pretty:
+    Text: the {Ordon Tree Short Branch Rupee}
+  Cryptic:
+    Text: the {Ordon Tree Short Branch Rupee}
+
+Herding Goats Reward:
+  Standard:
+    Text: Herding Goats Reward
+  Pretty:
+    Text: the {Herding Goats Reward}
+  Cryptic:
+    Text: the {Herding Goats Reward}
+
+Ordon Ranch Grotto Lantern Chest:
+  Standard:
+    Text: Ordon Ranch Grotto Lantern Chest
+  Pretty:
+    Text: the {Ordon Ranch Grotto Lantern Chest}
+  Cryptic:
+    Text: the {Ordon Ranch Grotto Lantern Chest}
+
+Ordon Spring Golden Wolf:
+  Standard:
+    Text: Ordon Spring Golden Wolf
+  Pretty:
+    Text: the {Ordon Spring Golden Wolf}
+  Cryptic:
+    Text: the {Ordon Spring Golden Wolf}
+
+Ordon Spring Warp Portal:
+  Standard:
+    Text: Ordon Spring Warp Portal
+  Pretty:
+    Text: the {Ordon Spring Warp Portal}
+  Cryptic:
+    Text: the {Ordon Spring Warp Portal}
+
+South Faron Woods Twilit Insect in Tunnel 1:
+  Standard:
+    Text: South Faron Woods Twilit Insect in Tunnel 1
+  Pretty:
+    Text: "{South Faron Woods Twilit Insect in Tunnel 1}"
+  Cryptic:
+    Text: "{South Faron Woods Twilit Insect in Tunnel 1}"
+
+South Faron Woods Twilit Insect in Tunnel 2:
+  Standard:
+    Text: South Faron Woods Twilit Insect in Tunnel 2
+  Pretty:
+    Text: "{South Faron Woods Twilit Insect in Tunnel 2}"
+  Cryptic:
+    Text: "{South Faron Woods Twilit Insect in Tunnel 2}"
+
+Faron Woods Coros House Interior Twilit Insect 1:
+  Standard:
+    Text: Faron Woods Coros House Interior Twilit Insect 1
+  Pretty:
+    Text: "{Faron Woods Coros House Interior Twilit Insect 1}"
+  Cryptic:
+    Text: "{Faron Woods Coros House Interior Twilit Insect 1}"
+
+Faron Woods Coros House Interior Twilit Insect 2:
+  Standard:
+    Text: Faron Woods Coros House Interior Twilit Insect 2
+  Pretty:
+    Text: "{Faron Woods Coros House Interior Twilit Insect 2}"
+  Cryptic:
+    Text: "{Faron Woods Coros House Interior Twilit Insect 2}"
+
+South Faron Woods Coros House Exterior Twilit Insect:
+  Standard:
+    Text: South Faron Woods Coros House Exterior Twilit Insect
+  Pretty:
+    Text: the {South Faron Woods Coros House Exterior Twilit Insect}
+  Cryptic:
+    Text: the {South Faron Woods Coros House Exterior Twilit Insect}
+
+South Faron Woods Twilit Insect Behind Gate 1:
+  Standard:
+    Text: South Faron Woods Twilit Insect Behind Gate 1
+  Pretty:
+    Text: "{South Faron Woods Twilit Insect Behind Gate 1}"
+  Cryptic:
+    Text: "{South Faron Woods Twilit Insect Behind Gate 1}"
+
+South Faron Woods Twilit Insect Behind Gate 2:
+  Standard:
+    Text: South Faron Woods Twilit Insect Behind Gate 2
+  Pretty:
+    Text: "{South Faron Woods Twilit Insect Behind Gate 2}"
+  Cryptic:
+    Text: "{South Faron Woods Twilit Insect Behind Gate 2}"
+
+Faron Mist Twilit Insect on Wall 1:
+  Standard:
+    Text: Faron Mist Twilit Insect on Wall 1
+  Pretty:
+    Text: "{Faron Mist Twilit Insect on Wall 1}"
+  Cryptic:
+    Text: "{Faron Mist Twilit Insect on Wall 1}"
+
+Faron Mist Twilit Insect on Wall 2:
+  Standard:
+    Text: Faron Mist Twilit Insect on Wall 2
+  Pretty:
+    Text: "{Faron Mist Twilit Insect on Wall 2}"
+  Cryptic:
+    Text: "{Faron Mist Twilit Insect on Wall 2}"
+
+Faron Mist Twilit Insect on Center Stump 1:
+  Standard:
+    Text: Faron Mist Twilit Insect on Center Stump 1
+  Pretty:
+    Text: "{Faron Mist Twilit Insect on Center Stump 1}"
+  Cryptic:
+    Text: "{Faron Mist Twilit Insect on Center Stump 1}"
+
+Faron Mist Twilit Insect on Center Stump 2:
+  Standard:
+    Text: Faron Mist Twilit Insect on Center Stump 2
+  Pretty:
+    Text: "{Faron Mist Twilit Insect on Center Stump 2}"
+  Cryptic:
+    Text: "{Faron Mist Twilit Insect on Center Stump 2}"
+
+Faron Mist Twilit Insect on Center Stump 3:
+  Standard:
+    Text: Faron Mist Twilit Insect on Center Stump 3
+  Pretty:
+    Text: "{Faron Mist Twilit Insect on Center Stump 3}"
+  Cryptic:
+    Text: "{Faron Mist Twilit Insect on Center Stump 3}"
+
+Faron Mist Burrowing Twilit Insect 1:
+  Standard:
+    Text: Faron Mist Burrowing Twilit Insect 1
+  Pretty:
+    Text: "{Faron Mist Burrowing Twilit Insect 1}"
+  Cryptic:
+    Text: "{Faron Mist Burrowing Twilit Insect 1}"
+
+Faron Mist Burrowing Twilit Insect 2:
+  Standard:
+    Text: Faron Mist Burrowing Twilit Insect 2
+  Pretty:
+    Text: "{Faron Mist Burrowing Twilit Insect 2}"
+  Cryptic:
+    Text: "{Faron Mist Burrowing Twilit Insect 2}"
+
+North Faron Woods Twilit Insect 1:
+  Standard:
+    Text: North Faron Woods Twilit Insect 1
+  Pretty:
+    Text: "{North Faron Woods Twilit Insect 1}"
+  Cryptic:
+    Text: "{North Faron Woods Twilit Insect 1}"
+
+North Faron Woods Twilit Insect 2:
+  Standard:
+    Text: North Faron Woods Twilit Insect 2
+  Pretty:
+    Text: "{North Faron Woods Twilit Insect 2}"
+  Cryptic:
+    Text: "{North Faron Woods Twilit Insect 2}"
+
+South Faron Warp Portal:
+  Standard:
+    Text: South Faron Warp Portal
+  Pretty:
+    Text: the {South Faron Warp Portal}
+  Cryptic:
+    Text: the {South Faron Warp Portal}
+
+Coro Lantern:
+  Standard:
+    Text: Coro Lantern
+  Pretty:
+    Text: the {Coro Lantern}
+  Cryptic:
+    Text: the {Coro Lantern}
+
+Coro Gate Key:
+  Standard:
+    Text: Coro Gate Key
+  Pretty:
+    Text: the {Coro Gate Key}
+  Cryptic:
+    Text: the {Coro Gate Key}
+
+Coro Bottle:
+  Standard:
+    Text: Coro Bottle
+  Pretty:
+    Text: buying the {Coro Bottle}
+  Cryptic:
+    Text: buying the {Coro Bottle}
+
+Faron Woods Coro Boulder Rupee 1:
+  Standard:
+    Text: Faron Woods Coro Boulder Rupee 1
+  Pretty:
+    Text: "{Faron Woods Coro Boulder Rupee 1}"
+  Cryptic:
+    Text: "{Faron Woods Coro Boulder Rupee 1}"
+
+Faron Woods Coro Boulder Rupee 2:
+  Standard:
+    Text: Faron Woods Coro Boulder Rupee 2
+  Pretty:
+    Text: "{Faron Woods Coro Boulder Rupee 2}"
+  Cryptic:
+    Text: "{Faron Woods Coro Boulder Rupee 2}"
+
+Faron Woods Coro Boulder Rupee 3:
+  Standard:
+    Text: Faron Woods Coro Boulder Rupee 3
+  Pretty:
+    Text: "{Faron Woods Coro Boulder Rupee 3}"
+  Cryptic:
+    Text: "{Faron Woods Coro Boulder Rupee 3}"
+
+Faron Woods Coro Boulder Rupee 4:
+  Standard:
+    Text: Faron Woods Coro Boulder Rupee 4
+  Pretty:
+    Text: "{Faron Woods Coro Boulder Rupee 4}"
+  Cryptic:
+    Text: "{Faron Woods Coro Boulder Rupee 4}"
+
+South Faron Cave Chest:
+  Standard:
+    Text: South Faron Cave Chest
+  Pretty:
+    Text: the {South Faron Cave Chest}
+  Cryptic:
+    Text: the {South Faron Cave Chest}
+
+Faron Mist South Chest:
+  Standard:
+    Text: Faron Mist South Chest
+  Pretty:
+    Text: the {Faron Mist South Chest}
+  Cryptic:
+    Text: the {Faron Mist South Chest}
+
+Faron Mist Stump Chest:
+  Standard:
+    Text: Faron Mist Stump Chest
+  Pretty:
+    Text: the {Faron Mist Stump Chest}
+  Cryptic:
+    Text: the {Faron Mist Stump Chest}
+
+Faron Mist North Chest:
+  Standard:
+    Text: Faron Mist North Chest
+  Pretty:
+    Text: the {Faron Mist North Chest}
+  Cryptic:
+    Text: the {Faron Mist North Chest}
+
+Faron Mist Poe:
+  Standard:
+    Text: Faron Mist Poe
+  Pretty:
+    Text: the {Faron Mist Poe}
+  Cryptic:
+    Text: the {Faron Mist Poe}
+
+Faron Mist Cave Open Chest:
+  Standard:
+    Text: Faron Mist Cave Open Chest
+  Pretty:
+    Text: the {Faron Mist Cave Open Chest}
+  Cryptic:
+    Text: the {Faron Mist Cave Open Chest}
+
+Faron Mist Cave Lantern Chest:
+  Standard:
+    Text: Faron Mist Cave Lantern Chest
+  Pretty:
+    Text: the {Faron Mist Cave Lantern Chest}
+  Cryptic:
+    Text: the {Faron Mist Cave Lantern Chest}
+
+North Faron Warp Portal:
+  Standard:
+    Text: North Faron Warp Portal
+  Pretty:
+    Text: the {North Faron Warp Portal}
+  Cryptic:
+    Text: the {North Faron Warp Portal}
+
+Faron Woods Golden Wolf:
+  Standard:
+    Text: Faron Woods Golden Wolf
+  Pretty:
+    Text: the {Faron Woods Golden Wolf}
+  Cryptic:
+    Text: the {Faron Woods Golden Wolf}
+
+North Faron Woods Deku Baba Chest:
+  Standard:
+    Text: North Faron Woods Deku Baba Chest
+  Pretty:
+    Text: the {North Faron Woods Deku Baba Chest}
+  Cryptic:
+    Text: the {North Faron Woods Deku Baba Chest}
+
+Faron Woods Owl Statue Sky Character:
+  Standard:
+    Text: Faron Woods Owl Statue Sky Character
+  Pretty:
+    Text: the {Faron Woods Owl Statue Sky Character}
+  Cryptic:
+    Text: the {Faron Woods Owl Statue Sky Character}
+
+Faron Woods Owl Statue Chest:
+  Standard:
+    Text: Faron Woods Owl Statue Chest
+  Pretty:
+    Text: the {Faron Woods Owl Statue Chest}
+  Cryptic:
+    Text: the {Faron Woods Owl Statue Chest}
+
+Faron Field Bridge Chest:
+  Standard:
+    Text: Faron Field Bridge Chest
+  Pretty:
+    Text: the {Faron Field Bridge Chest}
+  Cryptic:
+    Text: the {Faron Field Bridge Chest}
+
+# HD Only Location
+# Faron Field Corner Grotto Main Chest:
+#   Standard:
+#     Text: Faron Field Corner Grotto Main Chest
+#   Pretty:
+#     Text: the {Faron Field Corner Grotto Main Chest}
+#   Cryptic:
+#     Text: the {Faron Field Corner Grotto Main Chest}
+
+Faron Field Corner Grotto Left Chest:
+  Standard:
+    Text: Faron Field Corner Grotto Left Chest
+  Pretty:
+    Text: the {Faron Field Corner Grotto Left Chest}
+  Cryptic:
+    Text: the {Faron Field Corner Grotto Left Chest}
+
+Faron Field Corner Grotto Rear Chest:
+  Standard:
+    Text: Faron Field Corner Grotto Rear Chest
+  Pretty:
+    Text: the {Faron Field Corner Grotto Rear Chest}
+  Cryptic:
+    Text: the {Faron Field Corner Grotto Rear Chest}
+
+Faron Field Corner Grotto Right Chest:
+  Standard:
+    Text: Faron Field Corner Grotto Right Chest
+  Pretty:
+    Text: the {Faron Field Corner Grotto Right Chest}
+  Cryptic:
+    Text: the {Faron Field Corner Grotto Right Chest}
+
+Faron Field Female Beetle:
+  Standard:
+    Text: Faron Field Female Beetle
+  Pretty:
+    Text: the {Faron Field Female Beetle}
+  Cryptic:
+    Text: the {Faron Field Female Beetle}
+
+Faron Field Male Beetle:
+  Standard:
+    Text: Faron Field Male Beetle
+  Pretty:
+    Text: the {Faron Field Male Beetle}
+  Cryptic:
+    Text: the {Faron Field Male Beetle}
+
+Faron Field Poe:
+  Standard:
+    Text: Faron Field Poe
+  Pretty:
+    Text: the {Faron Field Poe}
+  Cryptic:
+    Text: the {Faron Field Poe}
+
+Faron Field Tree Heart Piece:
+  Standard:
+    Text: Faron Field Tree Heart Piece
+  Pretty:
+    Text: the {Faron Field Tree Heart Piece}
+  Cryptic:
+    Text: the {Faron Field Tree Heart Piece}
+
+Lost Woods Boulder Poe:
+  Standard:
+    Text: Lost Woods Boulder Poe
+  Pretty:
+    Text: the {Lost Woods Boulder Poe}
+  Cryptic:
+    Text: the {Lost Woods Boulder Poe}
+
+Lost Woods Lantern Chest:
+  Standard:
+    Text: Lost Woods Lantern Chest
+  Pretty:
+    Text: the {Lost Woods Lantern Chest}
+  Cryptic:
+    Text: the {Lost Woods Lantern Chest}
+
+Lost Woods Waterfall Poe:
+  Standard:
+    Text: Lost Woods Waterfall Poe
+  Pretty:
+    Text: the {Lost Woods Waterfall Poe}
+  Cryptic:
+    Text: the {Lost Woods Waterfall Poe}
+
+Sacred Grove Baba Serpent Grotto Chest:
+  Standard:
+    Text: Sacred Grove Baba Serpent Grotto Chest
+  Pretty:
+    Text: the {Sacred Grove Baba Serpent Grotto Chest}
+  Cryptic:
+    Text: the {Sacred Grove Baba Serpent Grotto Chest}
+
+Sacred Grove Spinner Chest:
+  Standard:
+    Text: Sacred Grove Spinner Chest
+  Pretty:
+    Text: the {Sacred Grove Spinner Chest}
+  Cryptic:
+    Text: the {Sacred Grove Spinner Chest}
+
+Sacred Grove Warp Portal:
+  Standard:
+    Text: Sacred Grove Warp Portal
+  Pretty:
+    Text: the {Sacred Grove Warp Portal}
+  Cryptic:
+    Text: the {Sacred Grove Warp Portal}
+
+Sacred Grove Pedestal Master Sword:
+  Standard:
+    Text: Sacred Grove Pedestal Master Sword
+  Pretty:
+    Text: the {Master Sword Pedestal}
+  Cryptic:
+    Text: the {Master Sword Pedestal}
+
+Sacred Grove Pedestal Shadow Crystal:
+  Standard:
+    Text: Sacred Grove Pedestal Shadow Crystal
+  Pretty:
+    Text: the {Master Sword Pedestal}
+  Cryptic:
+    Text: the {Master Sword Pedestal}
+
+Sacred Grove Master Sword Poe:
+  Standard:
+    Text: Sacred Grove Master Sword Poe
+  Pretty:
+    Text: the {Sacred Grove Master Sword Poe}
+  Cryptic:
+    Text: the {Sacred Grove Master Sword Poe}
+
+Sacred Grove Female Snail:
+  Standard:
+    Text: Sacred Grove Female Snail
+  Pretty:
+    Text: the {Sacred Grove Female Snail}
+  Cryptic:
+    Text: the {Sacred Grove Female Snail}
+
+Sacred Grove Male Snail:
+  Standard:
+    Text: Sacred Grove Male Snail
+  Pretty:
+    Text: the {Sacred Grove Male Snail}
+  Cryptic:
+    Text: the {Sacred Grove Male Snail}
+
+Sacred Grove Past Owl Statue Chest:
+  Standard:
+    Text: Sacred Grove Past Owl Statue Chest
+  Pretty:
+    Text: the {Sacred Grove Past Owl Statue Chest}
+  Cryptic:
+    Text: the {Sacred Grove Past Owl Statue Chest}
+
+Sacred Grove Temple of Time Owl Statue Poe:
+  Standard:
+    Text: Sacred Grove Temple of Time Owl Statue Poe
+  Pretty:
+    Text: the {Sacred Grove Temple of Time Owl Statue Poe}
+  Cryptic:
+    Text: the {Sacred Grove Temple of Time Owl Statue Poe}
+
+Sanctuary Basement Twilit Insect 1:
+  Standard:
+    Text: Sanctuary Basement Twilit Insect 1
+  Pretty:
+    Text: "{Sanctuary Basement Twilit Insect 1}"
+  Cryptic:
+    Text: "{Sanctuary Basement Twilit Insect 1}"
+
+Sanctuary Basement Twilit Insect 2:
+  Standard:
+    Text: Sanctuary Basement Twilit Insect 2
+  Pretty:
+    Text: "{Sanctuary Basement Twilit Insect 2}"
+  Cryptic:
+    Text: "{Sanctuary Basement Twilit Insect 2}"
+
+Sanctuary Basement Twilit Insect 3:
+  Standard:
+    Text: Sanctuary Basement Twilit Insect 3
+  Pretty:
+    Text: "{Sanctuary Basement Twilit Insect 3}"
+  Cryptic:
+    Text: "{Sanctuary Basement Twilit Insect 3}"
+
+Kakariko Graveyard Twilit Insect:
+  Standard:
+    Text: Kakariko Graveyard Twilit Insect
+  Pretty:
+    Text: the {Kakariko Graveyard Twilit Insect}
+  Cryptic:
+    Text: the {Kakariko Graveyard Twilit Insect}
+
+Kakariko Malo Mart Twilit Insect:
+  Standard:
+    Text: Kakariko Malo Mart Twilit Insect
+  Pretty:
+    Text: the {Kakariko Malo Mart Twilit Insect}
+  Cryptic:
+    Text: the {Kakariko Malo Mart Twilit Insect}
+
+Kakariko Inn Pipe Twilit Insect:
+  Standard:
+    Text: Kakariko Inn Pipe Twilit Insect
+  Pretty:
+    Text: the {Kakariko Inn Pipe Twilit Insect}
+  Cryptic:
+    Text: the {Kakariko Inn Pipe Twilit Insect}
+
+Kakariko Inn Bedroom Twilit Insect:
+  Standard:
+    Text: Kakariko Inn Bedroom Twilit Insect
+  Pretty:
+    Text: the {Kakariko Inn Bedroom Twilit Insect}
+  Cryptic:
+    Text: the {Kakariko Inn Bedroom Twilit Insect}
+
+Kakariko Bug House Twilit Insect:
+  Standard:
+    Text: Kakariko Bug House Twilit Insect
+  Pretty:
+    Text: the {Kakariko Bug House Twilit Insect}
+  Cryptic:
+    Text: the {Kakariko Bug House Twilit Insect}
+
+Barnes Bomb Shop Twilit Insect:
+  Standard:
+    Text: Barnes Bomb Shop Twilit Insect
+  Pretty:
+    Text: the {Barnes Bomb Shop Twilit Insect}
+  Cryptic:
+    Text: the {Barnes Bomb Shop Twilit Insect}
+
+Kakariko Destroyed Building Twilit Insect 1:
+  Standard:
+    Text: Kakariko Destroyed Building Twilit Insect 1
+  Pretty:
+    Text: "{Kakariko Destroyed Building Twilit Insect 1}"
+  Cryptic:
+    Text: "{Kakariko Destroyed Building Twilit Insect 1}"
+
+Kakariko Destroyed Building Twilit Insect 2:
+  Standard:
+    Text: Kakariko Destroyed Building Twilit Insect 2
+  Pretty:
+    Text: "{Kakariko Destroyed Building Twilit Insect 2}"
+  Cryptic:
+    Text: "{Kakariko Destroyed Building Twilit Insect 2}"
+
+Kakariko Destroyed Building Twilit Insect 3:
+  Standard:
+    Text: Kakariko Destroyed Building Twilit Insect 3
+  Pretty:
+    Text: "{Kakariko Destroyed Building Twilit Insect 3}"
+  Cryptic:
+    Text: "{Kakariko Destroyed Building Twilit Insect 3}"
+
+Kakariko Watchtower Twilit Insect:
+  Standard:
+    Text: Kakariko Watchtower Twilit Insect
+  Pretty:
+    Text: the {Kakariko Watchtower Twilit Insect}
+  Cryptic:
+    Text: the {Kakariko Watchtower Twilit Insect}
+
+Death Mountain Trail Twilit Insect Near Howling Stone:
+  Standard:
+    Text: Death Mountain Trail Twilit Insect Near Howling Stone
+  Pretty:
+    Text: the {Death Mountain Trail Twilit Insect Near Howling Stone}
+  Cryptic:
+    Text: the {Death Mountain Trail Twilit Insect Near Howling Stone}
+
+Death Mountain Trail Twilit Insect on Wall:
+  Standard:
+    Text: Death Mountain Trail Twilit Insect on Wall
+  Pretty:
+    Text: the {Death Mountain Trail Twilit Insect on Wall}
+  Cryptic:
+    Text: the {Death Mountain Trail Twilit Insect on Wall}
+
+Death Mountain Trail Twilit Insect in Hot Spring:
+  Standard:
+    Text: Death Mountain Trail Twilit Insect in Hot Spring
+  Pretty:
+    Text: the {Death Mountain Trail Twilit Insect in Hot Spring}
+  Cryptic:
+    Text: the {Death Mountain Trail Twilit Insect in Hot Spring}
+
+Kakariko Gorge Warp Portal:
+  Standard:
+    Text: Kakariko Gorge Warp Portal
+  Pretty:
+    Text: the {Kakariko Gorge Warp Portal}
+  Cryptic:
+    Text: the {Kakariko Gorge Warp Portal}
+
+Kakariko Gorge Female Pill Bug:
+  Standard:
+    Text: Kakariko Gorge Female Pill Bug
+  Pretty:
+    Text: the {Kakariko Gorge Female Pill Bug}
+  Cryptic:
+    Text: the {Kakariko Gorge Female Pill Bug}
+
+Kakariko Gorge Male Pill Bug:
+  Standard:
+    Text: Kakariko Gorge Male Pill Bug
+  Pretty:
+    Text: the {Kakariko Gorge Male Pill Bug}
+  Cryptic:
+    Text: the {Kakariko Gorge Male Pill Bug}
+
+Kakariko Gorge Owl Statue Chest:
+  Standard:
+    Text: Kakariko Gorge Owl Statue Chest
+  Pretty:
+    Text: the {Kakariko Gorge Owl Statue Chest}
+  Cryptic:
+    Text: the {Kakariko Gorge Owl Statue Chest}
+
+Kakariko Gorge Owl Statue Sky Character:
+  Standard:
+    Text: Kakariko Gorge Owl Statue Sky Character
+  Pretty:
+    Text: the {Kakariko Gorge Owl Statue Sky Character}
+  Cryptic:
+    Text: the {Kakariko Gorge Owl Statue Sky Character}
+
+Kakariko Gorge Owl Statue Boulder Rupee:
+  Standard:
+    Text: Kakariko Gorge Owl Statue Boulder Rupee
+  Pretty:
+    Text: the {Kakariko Gorge Owl Statue Boulder Rupee}
+  Cryptic:
+    Text: the {Kakariko Gorge Owl Statue Boulder Rupee}
+
+Kakariko Gorge Poe:
+  Standard:
+    Text: Kakariko Gorge Poe
+  Pretty:
+    Text: the {Kakariko Gorge Poe}
+  Cryptic:
+    Text: the {Kakariko Gorge Poe}
+
+Kakariko Gorge Spire Heart Piece:
+  Standard:
+    Text: Kakariko Gorge Spire Heart Piece
+  Pretty:
+    Text: the {Kakariko Gorge Spire Heart Piece}
+  Cryptic:
+    Text: the {Kakariko Gorge Spire Heart Piece}
+
+Kakariko Gorge Double Clawshot Chest:
+  Standard:
+    Text: Kakariko Gorge Double Clawshot Chest
+  Pretty:
+    Text: the {Kakariko Gorge Double Clawshot Chest}
+  Cryptic:
+    Text: the {Kakariko Gorge Double Clawshot Chest}
+
+Kakariko Gorge Spire Boulder Rupee:
+  Standard:
+    Text: Kakariko Gorge Spire Boulder Rupee
+  Pretty:
+    Text: the {Kakariko Gorge Spire Boulder Rupee}
+  Cryptic:
+    Text: the {Kakariko Gorge Spire Boulder Rupee}
+
+Eldin Lantern Cave First Chest:
+  Standard:
+    Text: Eldin Lantern Cave First Chest
+  Pretty:
+    Text: the {Eldin Lantern Cave First Chest}
+  Cryptic:
+    Text: the {Eldin Lantern Cave First Chest}
+
+Eldin Lantern Cave Second Chest:
+  Standard:
+    Text: Eldin Lantern Cave Second Chest
+  Pretty:
+    Text: the {Eldin Lantern Cave Second Chest}
+  Cryptic:
+    Text: the {Eldin Lantern Cave Second Chest}
+
+Eldin Lantern Cave Lantern Chest:
+  Standard:
+    Text: Eldin Lantern Cave Lantern Chest
+  Pretty:
+    Text: the {Eldin Lantern Cave Lantern Chest}
+  Cryptic:
+    Text: the {Eldin Lantern Cave Lantern Chest}
+
+Eldin Lantern Cave Poe:
+  Standard:
+    Text: Eldin Lantern Cave Poe
+  Pretty:
+    Text: the {Eldin Lantern Cave Poe}
+  Cryptic:
+    Text: the {Eldin Lantern Cave Poe}
+
+Kakariko Village Warp Portal:
+  Standard:
+    Text: Kakariko Village Warp Portal
+  Pretty:
+    Text: the {Kakariko Village Warp Portal}
+  Cryptic:
+    Text: the {Kakariko Village Warp Portal}
+
+Eldin Spring Underwater Chest:
+  Standard:
+    Text: Eldin Spring Underwater Chest
+  Pretty:
+    Text: the {Eldin Spring Underwater Chest}
+  Cryptic:
+    Text: the {Eldin Spring Underwater Chest}
+
+Eldin Spring Underwater Boulder Rupee:
+  Standard:
+    Text: Eldin Spring Underwater Boulder Rupee
+  Pretty:
+    Text: the {Eldin Spring Underwater Boulder Rupee}
+  Cryptic:
+    Text: the {Eldin Spring Underwater Boulder Rupee}
+
+Kakariko Village Bomb Rock Spire Heart Piece:
+  Standard:
+    Text: Kakariko Village Bomb Rock Spire Heart Piece
+  Pretty:
+    Text: the {Kakariko Village Bomb Rock Spire Heart Piece}
+  Cryptic:
+    Text: the {Kakariko Village Bomb Rock Spire Heart Piece}
+
+Kakariko Village Bell Rupee:
+  Standard:
+    Text: Kakariko Village Bell Rupee
+  Pretty:
+    Text: the {Kakariko Village Bell Rupee}
+  Cryptic:
+    Text: the {Kakariko Village Bell Rupee}
+
+Kakariko Village Hot Spring Ledge Box Rupee:
+  Standard:
+    Text: Kakariko Village Hot Spring Ledge Box Rupee
+  Pretty:
+    Text: the {Kakariko Village Hot Spring Ledge Box Rupee}
+  Cryptic:
+    Text: the {Kakariko Village Hot Spring Ledge Box Rupee}
+
+Kakariko Village Spring Shortcut Box Rupee 1:
+  Standard:
+    Text: Kakariko Village Spring Shortcut Box Rupee 1
+  Pretty:
+    Text: "{Kakariko Village Spring Shortcut Box Rupee 1}"
+  Cryptic:
+    Text: "{Kakariko Village Spring Shortcut Box Rupee 1}"
+
+Kakariko Village Spring Shortcut Box Rupee 2:
+  Standard:
+    Text: Kakariko Village Spring Shortcut Box Rupee 2
+  Pretty:
+    Text: "{Kakariko Village Spring Shortcut Box Rupee 2}"
+  Cryptic:
+    Text: "{Kakariko Village Spring Shortcut Box Rupee 2}"
+
+Kakariko Village Malo Mart Hawkeye:
+  Standard:
+    Text: Kakariko Village Malo Mart Hawkeye
+  Pretty:
+    Text: buying the {Kakariko Village Malo Mart Hawkeye}
+  Cryptic:
+    Text: buying the {Kakariko Village Malo Mart Hawkeye}
+
+Kakariko Village Malo Mart Hylian Shield:
+  Standard:
+    Text: Kakariko Village Malo Mart Hylian Shield
+  Pretty:
+    Text: buying the {Kakariko Village Malo Mart Hylian Shield}
+  Cryptic:
+    Text: buying the {Kakariko Village Malo Mart Hylian Shield}
+
+Kakariko Village Malo Mart Red Potion:
+  Standard:
+    Text: Kakariko Village Malo Mart Red Potion
+  Pretty:
+    Text: buying the {Kakariko Village Malo Mart Red Potion}
+  Cryptic:
+    Text: buying the {Kakariko Village Malo Mart Red Potion}
+
+Kakariko Village Malo Mart Wooden Shield:
+  Standard:
+    Text: Kakariko Village Malo Mart Wooden Shield
+  Pretty:
+    Text: buying the {Kakariko Village Malo Mart Wooden Shield}
+  Cryptic:
+    Text: buying the {Kakariko Village Malo Mart Wooden Shield}
+
+Kakariko Inn Chest:
+  Standard:
+    Text: Kakariko Inn Chest
+  Pretty:
+    Text: the {Kakariko Inn Chest}
+  Cryptic:
+    Text: the {Kakariko Inn Chest}
+
+Kakariko Village Female Ant:
+  Standard:
+    Text: Kakariko Village Female Ant
+  Pretty:
+    Text: the {Kakariko Village Female Ant}
+  Cryptic:
+    Text: the {Kakariko Village Female Ant}
+
+Kakariko Village Ant House Ledge Box Rupee:
+  Standard:
+    Text: Kakariko Village Ant House Ledge Box Rupee
+  Pretty:
+    Text: the {Kakariko Village Ant House Ledge Box Rupee}
+  Cryptic:
+    Text: the {Kakariko Village Ant House Ledge Box Rupee}
+
+Barnes Bomb Bag:
+  Standard:
+    Text: Barnes Bomb Bag
+  Pretty:
+    Text: the {Barnes Bomb Bag}
+  Cryptic:
+    Text: the {Barnes Bomb Bag}
+
+Kakariko Village Bomb Shop Poe:
+  Standard:
+    Text: Kakariko Village Bomb Shop Poe
+  Pretty:
+    Text: the {Kakariko Village Bomb Shop Poe}
+  Cryptic:
+    Text: the {Kakariko Village Bomb Shop Poe}
+
+Kakariko Village Watchtower Poe:
+  Standard:
+    Text: Kakariko Village Watchtower Poe
+  Pretty:
+    Text: the {Kakariko Village Watchtower Poe}
+  Cryptic:
+    Text: the {Kakariko Village Watchtower Poe}
+
+Kakariko Watchtower Alcove Chest:
+  Standard:
+    Text: Kakariko Watchtower Alcove Chest
+  Pretty:
+    Text: the {Kakariko Watchtower Alcove Chest}
+  Cryptic:
+    Text: the {Kakariko Watchtower Alcove Chest}
+
+Kakariko Watchtower Chest:
+  Standard:
+    Text: Kakariko Watchtower Chest
+  Pretty:
+    Text: the {Kakariko Watchtower Chest}
+  Cryptic:
+    Text: the {Kakariko Watchtower Chest}
+
+Talo Sharpshooting:
+  Standard:
+    Text: Talo Sharpshooting
+  Pretty:
+    Text: the {Talo Sharpshooting} minigame
+  Cryptic:
+    Text: the {Talo Sharpshooting} minigame
+
+Renados Letter Check:
+  Standard:
+    Text: Renados Letter
+  Pretty:
+    Text: "{Renados Letter}"
+  Cryptic:
+    Text: "{Renados Letter}"
+
+Ilia Memory Reward:
+  Standard:
+    Text: Ilia Memory Reward
+  Pretty:
+    Text: "{Ilia Memory Reward}"
+  Cryptic:
+    Text: "{Ilia Memory Reward}"
+
+Shad Dominion Rod:
+  Standard:
+    Text: Shad Dominion Rod
+  Pretty:
+    Text: "{Shad Dominion Rod}"
+  Cryptic:
+    Text: "{Shad Dominion Rod}"
+
+Rutelas Blessing:
+  Standard:
+    Text: Rutelas Blessing
+  Pretty:
+    Text: "{Rutelas Blessing}"
+  Cryptic:
+    Text: "{Rutelas Blessing}"
+
+Gift From Ralis:
+  Standard:
+    Text: Gift From Ralis
+  Pretty:
+    Text: the {Gift From Ralis}
+  Cryptic:
+    Text: the {Gift From Ralis}
+
+Kakariko Graveyard Lantern Chest:
+  Standard:
+    Text: Kakariko Graveyard Lantern Chest
+  Pretty:
+    Text: the {Kakariko Graveyard Lantern Chest}
+  Cryptic:
+    Text: the {Kakariko Graveyard Lantern Chest}
+
+Kakariko Graveyard Male Ant:
+  Standard:
+    Text: Kakariko Graveyard Male Ant
+  Pretty:
+    Text: the {Kakariko Graveyard Male Ant}
+  Cryptic:
+    Text: the {Kakariko Graveyard Male Ant}
+
+Kakariko Graveyard Underwater Boulder Rupee:
+  Standard:
+    Text: Kakariko Graveyard Underwater Boulder Rupee
+  Pretty:
+    Text: the {Kakariko Graveyard Underwater Boulder Rupee}
+  Cryptic:
+    Text: the {Kakariko Graveyard Underwater Boulder Rupee}
+
+Kakariko Graveyard Golden Wolf:
+  Standard:
+    Text: Kakariko Graveyard Golden Wolf
+  Pretty:
+    Text: the {Kakariko Graveyard Golden Wolf}
+  Cryptic:
+    Text: the {Kakariko Graveyard Golden Wolf}
+
+Kakariko Graveyard Open Poe:
+  Standard:
+    Text: Kakariko Graveyard Open Poe
+  Pretty:
+    Text: the {Kakariko Graveyard Open Poe}
+  Cryptic:
+    Text: the {Kakariko Graveyard Open Poe}
+
+Kakariko Graveyard Grave Poe:
+  Standard:
+    Text: Kakariko Graveyard Grave Poe
+  Pretty:
+    Text: the {Kakariko Graveyard Grave Poe}
+  Cryptic:
+    Text: the {Kakariko Graveyard Grave Poe}
+
+Death Mountain Warp Portal:
+  Standard:
+    Text: Death Mountain Warp Portal
+  Pretty:
+    Text: the {Death Mountain Warp Portal}
+  Cryptic:
+    Text: the {Death Mountain Warp Portal}
+
+Death Mountain Alcove Chest:
+  Standard:
+    Text: Death Mountain Alcove Chest
+  Pretty:
+    Text: the {Death Mountain Alcove Chest}
+  Cryptic:
+    Text: the {Death Mountain Alcove Chest}
+
+Death Mountain Volcano Ledge Rupee 1:
+  Standard:
+    Text: Death Mountain Volcano Ledge Rupee 1
+  Pretty:
+    Text: "{Death Mountain Volcano Ledge Rupee 1}"
+  Cryptic:
+    Text: "{Death Mountain Volcano Ledge Rupee 1}"
+
+Death Mountain Volcano Ledge Rupee 2:
+  Standard:
+    Text: Death Mountain Volcano Ledge Rupee 2
+  Pretty:
+    Text: "{Death Mountain Volcano Ledge Rupee 2}"
+  Cryptic:
+    Text: "{Death Mountain Volcano Ledge Rupee 2}"
+
+Death Mountain Volcano Ledge Rupee 3:
+  Standard:
+    Text: Death Mountain Volcano Ledge Rupee 3
+  Pretty:
+    Text: "{Death Mountain Volcano Ledge Rupee 3}"
+  Cryptic:
+    Text: "{Death Mountain Volcano Ledge Rupee 3}"
+
+Death Mountain Volcano Pipe Ledge Rock Rupee:
+  Standard:
+    Text: Death Mountain Volcano Pipe Ledge Rock Rupee
+  Pretty:
+    Text: the {Death Mountain Volcano Pipe Ledge Rock Rupee}
+  Cryptic:
+    Text: the {Death Mountain Volcano Pipe Ledge Rock Rupee}
+
+Death Mountain Trail Poe:
+  Standard:
+    Text: Death Mountain Trail Poe
+  Pretty:
+    Text: the {Death Mountain Trail Poe}
+  Cryptic:
+    Text: the {Death Mountain Trail Poe}
+
+Eldin Field Bomb Rock Chest:
+  Standard:
+    Text: Eldin Field Bomb Rock Chest
+  Pretty:
+    Text: the {Eldin Field Bomb Rock Chest}
+  Cryptic:
+    Text: the {Eldin Field Bomb Rock Chest}
+
+Eldin Field Bomskit Grotto Lantern Chest:
+  Standard:
+    Text: Eldin Field Bomskit Grotto Lantern Chest
+  Pretty:
+    Text: the {Eldin Field Bomskit Grotto Lantern Chest}
+  Cryptic:
+    Text: the {Eldin Field Bomskit Grotto Lantern Chest}
+
+Eldin Field Bomskit Grotto Left Chest:
+  Standard:
+    Text: Eldin Field Bomskit Grotto Left Chest
+  Pretty:
+    Text: the {Eldin Field Bomskit Grotto Left Chest}
+  Cryptic:
+    Text: the {Eldin Field Bomskit Grotto Left Chest}
+
+Eldin Field Female Grasshopper:
+  Standard:
+    Text: Eldin Field Female Grasshopper
+  Pretty:
+    Text: the {Eldin Field Female Grasshopper}
+  Cryptic:
+    Text: the {Eldin Field Female Grasshopper}
+
+Eldin Field Male Grasshopper:
+  Standard:
+    Text: Eldin Field Male Grasshopper
+  Pretty:
+    Text: the {Eldin Field Male Grasshopper}
+  Cryptic:
+    Text: the {Eldin Field Male Grasshopper}
+
+Goron Springwater Rush:
+  Standard:
+    Text: Goron Springwater Rush
+  Pretty:
+    Text: the {Goron Springwater Rush}
+  Cryptic:
+    Text: the {Goron Springwater Rush}
+
+Eldin Field Water Bomb Fish Grotto Chest:
+  Standard:
+    Text: Eldin Field Water Bomb Fish Grotto Chest
+  Pretty:
+    Text: the {Eldin Field Water Bomb Fish Grotto Chest}
+  Cryptic:
+    Text: the {Eldin Field Water Bomb Fish Grotto Chest}
+
+Bridge of Eldin Warp Portal:
+  Standard:
+    Text: Bridge of Eldin Warp Portal
+  Pretty:
+    Text: the {Bridge of Eldin Warp Portal}
+  Cryptic:
+    Text: the {Bridge of Eldin Warp Portal}
+
+Bridge of Eldin Female Phasmid:
+  Standard:
+    Text: Bridge of Eldin Female Phasmid
+  Pretty:
+    Text: the {Bridge of Eldin Female Phasmid}
+  Cryptic:
+    Text: the {Bridge of Eldin Female Phasmid}
+
+Bridge of Eldin Male Phasmid:
+  Standard:
+    Text: Bridge of Eldin Male Phasmid
+  Pretty:
+    Text: the {Bridge of Eldin Male Phasmid}
+  Cryptic:
+    Text: the {Bridge of Eldin Male Phasmid}
+
+Bridge of Eldin Owl Statue Chest:
+  Standard:
+    Text: Bridge of Eldin Owl Statue Chest
+  Pretty:
+    Text: the {Bridge of Eldin Owl Statue Chest}
+  Cryptic:
+    Text: the {Bridge of Eldin Owl Statue Chest}
+
+Bridge of Eldin Owl Statue Sky Character:
+  Standard:
+    Text: Bridge of Eldin Owl Statue Sky Character
+  Pretty:
+    Text: the {Bridge of Eldin Owl Statue Sky Character}
+  Cryptic:
+    Text: the {Bridge of Eldin Owl Statue Sky Character}
+
+Bridge of Eldin Boulder Rupee:
+  Standard:
+    Text: Bridge of Eldin Boulder Rupee
+  Pretty:
+    Text: the {Bridge of Eldin Boulder Rupee}
+  Cryptic:
+    Text: the {Bridge of Eldin Boulder Rupee}
+
+Eldin Stockcave Upper Chest:
+  Standard:
+    Text: Eldin Stockcave Upper Chest
+  Pretty:
+    Text: the {Eldin Stockcave Upper Chest}
+  Cryptic:
+    Text: the {Eldin Stockcave Upper Chest}
+
+Eldin Stockcave Lantern Chest:
+  Standard:
+    Text: Eldin Stockcave Lantern Chest
+  Pretty:
+    Text: the {Eldin Stockcave Lantern Chest}
+  Cryptic:
+    Text: the {Eldin Stockcave Lantern Chest}
+
+Eldin Stockcave Lowest Chest:
+  Standard:
+    Text: Eldin Stockcave Lowest Chest
+  Pretty:
+    Text: the {Eldin Stockcave Lowest Chest}
+  Cryptic:
+    Text: the {Eldin Stockcave Lowest Chest}
+
+Eldin Field Stalfos Grotto Left Small Chest:
+  Standard:
+    Text: Eldin Field Stalfos Grotto Left Small Chest
+  Pretty:
+    Text: the {Eldin Field Stalfos Grotto Left Small Chest}
+  Cryptic:
+    Text: the {Eldin Field Stalfos Grotto Left Small Chest}
+
+Eldin Field Stalfos Grotto Right Small Chest:
+  Standard:
+    Text: Eldin Field Stalfos Grotto Right Small Chest
+  Pretty:
+    Text: the {Eldin Field Stalfos Grotto Right Small Chest}
+  Cryptic:
+    Text: the {Eldin Field Stalfos Grotto Right Small Chest}
+
+Eldin Field Stalfos Grotto Stalfos Chest:
+  Standard:
+    Text: Eldin Field Stalfos Grotto Stalfos Chest
+  Pretty:
+    Text: the {Eldin Field Stalfos Grotto Stalfos Chest}
+  Cryptic:
+    Text: the {Eldin Field Stalfos Grotto Stalfos Chest}
+
+Skybook From Impaz:
+  Standard:
+    Text: Skybook From Impaz
+  Pretty:
+    Text: the {Skybook From Impaz}
+  Cryptic:
+    Text: the {Skybook From Impaz}
+
+Cats Hide and Seek Minigame:
+  Standard:
+    Text: Cats Hide and Seek Minigame
+  Pretty:
+    Text: the {Cats Hide and Seek Minigame}
+  Cryptic:
+    Text: the {Cats Hide and Seek Minigame}
+
+Hidden Village Poe:
+  Standard:
+    Text: Hidden Village Poe
+  Pretty:
+    Text: the {Hidden Village Poe}
+  Cryptic:
+    Text: the {Hidden Village Poe}
+
+Ilia Charm:
+  Standard:
+    Text: Ilia Charm
+  Pretty:
+    Text: "{Ilia Charm}"
+  Cryptic:
+    Text: "{Ilia Charm}"
+
+Castle Town Twilit Insect:
+  Standard:
+    Text: Castle Town Twilit Insect
+  Pretty:
+    Text: the {Castle Town Twilit Insect}
+  Cryptic:
+    Text: the {Castle Town Twilit Insect}
+
+Lake Hylia Twilit Insect Between Bridges:
+  Standard:
+    Text: Lake Hylia Twilit Insect Between Bridges
+  Pretty:
+    Text: the {Lake Hylia Twilit Insect Between Bridges}
+  Cryptic:
+    Text: the {Lake Hylia Twilit Insect Between Bridges}
+
+Lake Hylia Burrowing Twilit Insect:
+  Standard:
+    Text: Lake Hylia Burrowing Twilit Insect
+  Pretty:
+    Text: the {Lake Hylia Burrowing Twilit Insect}
+  Cryptic:
+    Text: the {Lake Hylia Burrowing Twilit Insect}
+
+Lake Hylia Twilit Insect Behind Canon:
+  Standard:
+    Text: Lake Hylia Twilit Insect Behind Canon
+  Pretty:
+    Text: the {Lake Hylia Twilit Insect Behind Canon}
+  Cryptic:
+    Text: the {Lake Hylia Twilit Insect Behind Canon}
+
+Lake Hylia Twilit Insect on Docks:
+  Standard:
+    Text: Lake Hylia Twilit Insect on Docks
+  Pretty:
+    Text: the {Lake Hylia Twilit Insect on Docks}
+  Cryptic:
+    Text: the {Lake Hylia Twilit Insect on Docks}
+
+Lake Hylia Twilit Bloat:
+  Standard:
+    Text: Lake Hylia Twilit Bloat
+  Pretty:
+    Text: the {Lake Hylia Twilit Bloat}
+  Cryptic:
+    Text: the {Lake Hylia Twilit Bloat}
+
+Zoras River Twilit Insect 1:
+  Standard:
+    Text: Zoras River Twilit Insect 1
+  Pretty:
+    Text: "{Zoras River Twilit Insect 1}"
+  Cryptic:
+    Text: "{Zoras River Twilit Insect 1}"
+
+Zoras River Twilit Insect 2:
+  Standard:
+    Text: Zoras River Twilit Insect 2
+  Pretty:
+    Text: "{Zoras River Twilit Insect 2}"
+  Cryptic:
+    Text: "{Zoras River Twilit Insect 3}"
+
+Zoras River Twilit Insect 3:
+  Standard:
+    Text: Zoras River Twilit Insect 3
+  Pretty:
+    Text: "{Zoras River Twilit Insect 3}"
+  Cryptic:
+    Text: "{Zoras River Twilit Insect 3}"
+
+Zoras River Twilit Insect 4:
+  Standard:
+    Text: Zoras River Twilit Insect 4
+  Pretty:
+    Text: "{Zoras River Twilit Insect 4}"
+  Cryptic:
+    Text: "{Zoras River Twilit Insect 4}"
+
+Upper Zoras River Twilit Insect:
+  Standard:
+    Text: Upper Zoras River Twilit Insect
+  Pretty:
+    Text: the {Upper Zoras River Twilit Insect}
+  Cryptic:
+    Text: the {Upper Zoras River Twilit Insect}
+
+Zoras Domain Twilit Insect near Lilypads 1:
+  Standard:
+    Text: Zoras Domain Twilit Insect near Lilypads 1
+  Pretty:
+    Text: "{Zoras Domain Twilit Insect near Lilypads 1}"
+  Cryptic:
+    Text: "{Zoras Domain Twilit Insect near Lilypads 1}"
+
+Zoras Domain Twilit Insect near Lilypads 2:
+  Standard:
+    Text: Zoras Domain Twilit Insect near Lilypads 2
+  Pretty:
+    Text: "{Zoras Domain Twilit Insect near Lilypads 2}"
+  Cryptic:
+    Text: "{Zoras Domain Twilit Insect near Lilypads 2}"
+
+Zoras Domain Burrowing Twilit Insect:
+  Standard:
+    Text: Zoras Domain Burrowing Twilit Insect
+  Pretty:
+    Text: the {Zoras Domain Burrowing Twilit Insect}
+  Cryptic:
+    Text: the {Zoras Domain Burrowing Twilit Insect}
+
+Zoras Domain Twilit Insect on West Ledge:
+  Standard:
+    Text: Zoras Domain Twilit Insect on West Ledge
+  Pretty:
+    Text: the {Zoras Domain Twilit Insect on West Ledge}
+  Cryptic:
+    Text: the {Zoras Domain Twilit Insect on West Ledge}
+
+Zoras Domain Throne Room Twilit Insect:
+  Standard:
+    Text: Zoras Domain Throne Room Twilit Insect
+  Pretty:
+    Text: the {Zoras Domain Throne Room Twilit Insect}
+  Cryptic:
+    Text: the {Zoras Domain Throne Room Twilit Insect}
+
+Lanayru Field Behind Gate Underwater Chest:
+  Standard:
+    Text: Lanayru Field Behind Gate Underwater Chest
+  Pretty:
+    Text: the {Lanayru Field Behind Gate Underwater Chest}
+  Cryptic:
+    Text: the {Lanayru Field Behind Gate Underwater Chest}
+
+Lanayru Field North Underwater Boulder Rupee:
+  Standard:
+    Text: Lanayru Field North Underwater Boulder Rupee
+  Pretty:
+    Text: the {Lanayru Field North Underwater Boulder Rupee}
+  Cryptic:
+    Text: the {Lanayru Field North Underwater Boulder Rupee}
+
+Lanayru Field South Underwater Boulder Rupee:
+  Standard:
+    Text: Lanayru Field South Underwater Boulder Rupee
+  Pretty:
+    Text: the {Lanayru Field South Underwater Boulder Rupee}
+  Cryptic:
+    Text: the {Lanayru Field South Underwater Boulder Rupee}
+
+Lanayru Field Tree Boulder Rupee:
+  Standard:
+    Text: Lanayru Field Tree Boulder Rupee
+  Pretty:
+    Text: the {Lanayru Field Tree Boulder Rupee}
+  Cryptic:
+    Text: the {Lanayru Field Tree Boulder Rupee}
+
+Lanayru Field Bridge Poe:
+  Standard:
+    Text: Lanayru Field Bridge Poe
+  Pretty:
+    Text: the {Lanayru Field Bridge Poe}
+  Cryptic:
+    Text: the {Lanayru Field Bridge Poe}
+
+Lanayru Field Female Stag Beetle:
+  Standard:
+    Text: Lanayru Field Female Stag Beetle
+  Pretty:
+    Text: the {Lanayru Field Female Stag Beetle}
+  Cryptic:
+    Text: the {Lanayru Field Female Stag Beetle}
+
+Lanayru Field Male Stag Beetle:
+  Standard:
+    Text: Lanayru Field Male Stag Beetle
+  Pretty:
+    Text: the {Lanayru Field Male Stag Beetle}
+  Cryptic:
+    Text: the {Lanayru Field Male Stag Beetle}
+
+# HD Only Location
+# Lanayru Field Chu Grotto Chest:
+#   Standard:
+#     Text: Lanayru Field Chu Grotto Chest
+#   Pretty:
+#     Text: the {Lanayru Field Chu Grotto Chest}
+#   Cryptic:
+#     Text: the {Lanayru Field Chu Grotto Chest}
+
+Lanayru Field Poe Grotto Left Poe:
+  Standard:
+    Text: Lanayru Field Poe Grotto Left Poe
+  Pretty:
+    Text: the {Lanayru Field Poe Grotto Left Poe}
+  Cryptic:
+    Text: the {Lanayru Field Poe Grotto Left Poe}
+
+Lanayru Field Poe Grotto Right Poe:
+  Standard:
+    Text: Lanayru Field Poe Grotto Right Poe
+  Pretty:
+    Text: the {Lanayru Field Poe Grotto Right Poe}
+  Cryptic:
+    Text: the {Lanayru Field Poe Grotto Right Poe}
+
+Lanayru Field Skulltula Grotto Chest:
+  Standard:
+    Text: Lanayru Field Skulltula Grotto Chest
+  Pretty:
+    Text: the {Lanayru Field Skulltula Grotto Chest}
+  Cryptic:
+    Text: the {Lanayru Field Skulltula Grotto Chest}
+
+Lanayru Ice Block Puzzle Cave Chest:
+  Standard:
+    Text: Lanayru Ice Block Puzzle Cave Chest
+  Pretty:
+    Text: the {Lanayru Ice Block Puzzle Cave Chest}
+  Cryptic:
+    Text: the {Lanayru Ice Block Puzzle Cave Chest}
+
+Lanayru Field Spinner Track Chest:
+  Standard:
+    Text: Lanayru Field Spinner Track Chest
+  Pretty:
+    Text: the {Lanayru Field Spinner Track Chest}
+  Cryptic:
+    Text: the {Lanayru Field Spinner Track Chest}
+
+Lanayru Field North Spinner Track Boulder Rupee:
+  Standard:
+    Text: Lanayru Field North Spinner Track Boulder Rupee
+  Pretty:
+    Text: the {Lanayru Field North Spinner Track Boulder Rupee}
+  Cryptic:
+    Text: the {Lanayru Field North Spinner Track Boulder Rupee}
+
+Lanayru Field South Spinner Track Boulder Rupee:
+  Standard:
+    Text: Lanayru Field South Spinner Track Boulder Rupee
+  Pretty:
+    Text: the {Lanayru Field South Spinner Track Boulder Rupee}
+  Cryptic:
+    Text: the {Lanayru Field South Spinner Track Boulder Rupee}
+
+Castle Town Warp Portal:
+  Standard:
+    Text: Castle Town Warp Portal
+  Pretty:
+    Text: the {Castle Town Warp Portal}
+  Cryptic:
+    Text: the {Castle Town Warp Portal}
+
+West Hyrule Field Female Butterfly:
+  Standard:
+    Text: West Hyrule Field Female Butterfly
+  Pretty:
+    Text: the {West Hyrule Field Female Butterfly}
+  Cryptic:
+    Text: the {West Hyrule Field Female Butterfly}
+
+West Hyrule Field Male Butterfly:
+  Standard:
+    Text: West Hyrule Field Male Butterfly
+  Pretty:
+    Text: the {West Hyrule Field Male Butterfly}
+  Cryptic:
+    Text: the {West Hyrule Field Male Butterfly}
+
+West Hyrule Field Northern Boulder Rupee:
+  Standard:
+    Text: West Hyrule Field Northern Boulder Rupee
+  Pretty:
+    Text: the {West Hyrule Field Northern Boulder Rupee}
+  Cryptic:
+    Text: the {West Hyrule Field Northern Boulder Rupee}
+
+West Hyrule Field Southern Boulder Rupee:
+  Standard:
+    Text: West Hyrule Field Southern Boulder Rupee
+  Pretty:
+    Text: the {West Hyrule Field Southern Boulder Rupee}
+  Cryptic:
+    Text: the {West Hyrule Field Southern Boulder Rupee}
+
+West Hyrule Field Helmasaur Grotto Chest:
+  Standard:
+    Text: West Hyrule Field Helmasaur Grotto Chest
+  Pretty:
+    Text: the {West Hyrule Field Helmasaur Grotto Chest}
+  Cryptic:
+    Text: the {West Hyrule Field Helmasaur Grotto Chest}
+
+West Hyrule Field Golden Wolf:
+  Standard:
+    Text: West Hyrule Field Golden Wolf
+  Pretty:
+    Text: the {West Hyrule Field Golden Wolf}
+  Cryptic:
+    Text: the {West Hyrule Field Golden Wolf}
+
+Hyrule Field Amphitheater Owl Statue Chest:
+  Standard:
+    Text: Hyrule Field Amphitheater Owl Statue Chest
+  Pretty:
+    Text: the {Hyrule Field Amphitheater Owl Statue Chest}
+  Cryptic:
+    Text: the {Hyrule Field Amphitheater Owl Statue Chest}
+
+Hyrule Field Amphitheater Owl Statue Sky Character:
+  Standard:
+    Text: Hyrule Field Amphitheater Owl Statue Sky Character
+  Pretty:
+    Text: the {Hyrule Field Amphitheater Owl Statue Sky Character}
+  Cryptic:
+    Text: the {Hyrule Field Amphitheater Owl Statue Sky Character}
+
+Hyrule Field Amphitheater Poe:
+  Standard:
+    Text: Hyrule Field Amphitheater Poe
+  Pretty:
+    Text: the {Hyrule Field Amphitheater Poe}
+  Cryptic:
+    Text: the {Hyrule Field Amphitheater Poe}
+
+Charlo Donation Blessing:
+  Standard:
+    Text: Charlo Donation Blessing
+  Pretty:
+    Text: "{Charlo Donation Blessing}"
+  Cryptic:
+    Text: "{Charlo Donation Blessing}"
+
+STAR Prize 1:
+  Standard:
+    Text: STAR Prize 1
+  Pretty:
+    Text: "{STAR Prize 1}"
+  Cryptic:
+    Text: "{STAR Prize 1}"
+
+STAR Prize 2:
+  Standard:
+    Text: STAR Prize 2
+  Pretty:
+    Text: "{STAR Prize 2}"
+  Cryptic:
+    Text: "{STAR Prize 2}"
+
+Castle Town Goron Shop Red Potion:
+  Standard:
+    Text: Castle Town Goron Shop Red Potion
+  Pretty:
+    Text: buying the {Castle Town Goron Shop Red Potion}
+  Cryptic:
+    Text: buying the {Castle Town Goron Shop Red Potion}
+
+Castle Town Goron Shop Lantern Oil:
+  Standard:
+    Text: Castle Town Goron Shop Lantern Oil
+  Pretty:
+    Text: buying the {Castle Town Goron Shop Lantern Oil}
+  Cryptic:
+    Text: buying the {Castle Town Goron Shop Lantern Oil}
+
+Castle Town Goron Shop Hylian Shield:
+  Standard:
+    Text: Castle Town Goron Shop Hylian Shield
+  Pretty:
+    Text: buying the {Castle Town Goron Shop Hylian Shield}
+  Cryptic:
+    Text: buying the {Castle Town Goron Shop Hylian Shield}
+
+Castle Town Goron Shop Arrow Refill:
+  Standard:
+    Text: Castle Town Goron Shop Arrow Refill
+  Pretty:
+    Text: buying the {Castle Town Goron Shop Arrow Refill}
+  Cryptic:
+    Text: buying the {Castle Town Goron Shop Arrow Refill}
+
+Castle Town Malo Mart Magic Armor:
+  Standard:
+    Text: Castle Town Malo Mart Magic Armor
+  Pretty:
+    Text: buying the {Castle Town Malo Mart Magic Armor}
+  Cryptic:
+    Text: buying the {Castle Town Malo Mart Magic Armor}
+
+# HD Only Location
+# Castle Town Malo Mart Stamp:
+#   Standard:
+#     Text: Castle Town Malo Mart Stamp
+#   Pretty:
+#     Text: buying the {Castle Town Malo Mart Stamp}
+#   Cryptic:
+#     Text: buying the {Castle Town Malo Mart Stamp}
+
+North Castle Town Golden Wolf:
+  Standard:
+    Text: North Castle Town Golden Wolf
+  Pretty:
+    Text: the {North Castle Town Golden Wolf}
+  Cryptic:
+    Text: the {North Castle Town Golden Wolf}
+
+Doctors Office Balcony Chest:
+  Standard:
+    Text: Doctors Office Balcony Chest
+  Pretty:
+    Text: the {Doctors Office Balcony Chest}
+  Cryptic:
+    Text: the {Doctors Office Balcony Chest}
+
+East Castle Town Bridge Poe:
+  Standard:
+    Text: East Castle Town Bridge Poe
+  Pretty:
+    Text: the {East Castle Town Bridge Poe}
+  Cryptic:
+    Text: the {East Castle Town Bridge Poe}
+
+Jovani 20 Poe Soul Reward:
+  Standard:
+    Text: Jovani 20 Poe Soul Reward
+  Pretty:
+    Text: giving {Jovani 20 Poe Souls}
+  Cryptic:
+    Text: giving {Jovani 20 Poe Souls}
+
+Jovani 60 Poe Soul Reward:
+  Standard:
+    Text: Jovani 60 Poe Soul Reward
+  Pretty:
+    Text: giving {Jovani 60 Poe Souls}
+  Cryptic:
+    Text: giving {Jovani 60 Poe Souls}
+
+# HD Only Location
+# Gengle 60 Poe Soul Reward:
+#   Standard:
+#     Text: Gengle 60 Poe Soul Reward
+#   Pretty:
+#     Text: "{Gengle}"
+#   Cryptic:
+#     Text: "{Gengle}"
+
+Jovani House Poe:
+  Standard:
+    Text: Jovani House Poe
+  Pretty:
+    Text: the {Jovani House Poe}
+  Cryptic:
+    Text: the {Jovani House Poe}
+
+Telma Invoice:
+  Standard:
+    Text: Telma Invoice
+  Pretty:
+    Text: the {Telma Invoice}
+  Cryptic:
+    Text: the {Telma Invoice}
+
+Agitha Male Beetle Reward:
+  Standard:
+    Text: Agitha Male Beetle Reward
+  Pretty:
+    Text: bringing {Agitha} the {Male Beetle}
+  Cryptic:
+    Text: bringing {Agitha} the {Male Beetle}
+
+Agitha Female Beetle Reward:
+  Standard:
+    Text: Agitha Female Beetle Reward
+  Pretty:
+    Text: bringing {Agitha} the {Female Beetle}
+  Cryptic:
+    Text: bringing {Agitha} the {Female Beetle}
+
+Agitha Male Butterfly Reward:
+  Standard:
+    Text: Agitha Male Butterfly Reward
+  Pretty:
+    Text: bringing {Agitha} the {Male Butterfly}
+  Cryptic:
+    Text: bringing {Agitha} the {Male Butterfly}
+
+Agitha Female Butterfly Reward:
+  Standard:
+    Text: Agitha Female Butterfly Reward
+  Pretty:
+    Text: bringing {Agitha} the {Female Butterfly}
+  Cryptic:
+    Text: bringing {Agitha} the {Female Butterfly}
+
+Agitha Male Stag Beetle Reward:
+  Standard:
+    Text: Agitha Male Stag Beetle Reward
+  Pretty:
+    Text: bringing {Agitha} the {Male Stag Beetle}
+  Cryptic:
+    Text: bringing {Agitha} the {Male Stag Beetle}
+
+Agitha Female Stag Beetle Reward:
+  Standard:
+    Text: Agitha Female Stag Beetle Reward
+  Pretty:
+    Text: bringing {Agitha} the {Female Stag Beetle}
+  Cryptic:
+    Text: bringing {Agitha} the {Female Stag Beetle}
+
+Agitha Male Grasshopper Reward:
+  Standard:
+    Text: Agitha Male Grasshopper Reward
+  Pretty:
+    Text: bringing {Agitha} the {Male Grasshopper}
+  Cryptic:
+    Text: bringing {Agitha} the {Male Grasshopper}
+
+Agitha Female Grasshopper Reward:
+  Standard:
+    Text: Agitha Female Grasshopper Reward
+  Pretty:
+    Text: bringing {Agitha} the {Female Grasshopper}
+  Cryptic:
+    Text: bringing {Agitha} the {Female Grasshopper}
+
+Agitha Male Phasmid Reward:
+  Standard:
+    Text: Agitha Male Phasmid Reward
+  Pretty:
+    Text: bringing {Agitha} the {Male Phasmid}
+  Cryptic:
+    Text: bringing {Agitha} the {Male Phasmid}
+
+Agitha Female Phasmid Reward:
+  Standard:
+    Text: Agitha Female Phasmid Reward
+  Pretty:
+    Text: bringing {Agitha} the {Female Phasmid}
+  Cryptic:
+    Text: bringing {Agitha} the {Female Phasmid}
+
+Agitha Male Pill Bug Reward:
+  Standard:
+    Text: Agitha Male Pill Bug Reward
+  Pretty:
+    Text: bringing {Agitha} the {Male Pill Bug}
+  Cryptic:
+    Text: bringing {Agitha} the {Male Pill Bug}
+
+Agitha Female Pill Bug Reward:
+  Standard:
+    Text: Agitha Female Pill Bug Reward
+  Pretty:
+    Text: bringing {Agitha} the {Female Pill Bug}
+  Cryptic:
+    Text: bringing {Agitha} the {Female Pill Bug}
+
+Agitha Male Mantis Reward:
+  Standard:
+    Text: Agitha Male Mantis Reward
+  Pretty:
+    Text: bringing {Agitha} the {Male Mantis}
+  Cryptic:
+    Text: bringing {Agitha} the {Male Mantis}
+
+Agitha Female Mantis Reward:
+  Standard:
+    Text: Agitha Female Mantis Reward
+  Pretty:
+    Text: bringing {Agitha} the {Female Mantis}
+  Cryptic:
+    Text: bringing {Agitha} the {Female Mantis}
+
+Agitha Male Ladybug Reward:
+  Standard:
+    Text: Agitha Male Ladybug Reward
+  Pretty:
+    Text: bringing {Agitha} the {Male Ladybug}
+  Cryptic:
+    Text: bringing {Agitha} the {Male Ladybug}
+
+Agitha Female Ladybug Reward:
+  Standard:
+    Text: Agitha Female Ladybug Reward
+  Pretty:
+    Text: bringing {Agitha} the {Female Ladybug}
+  Cryptic:
+    Text: bringing {Agitha} the {Female Ladybug}
+
+Agitha Male Snail Reward:
+  Standard:
+    Text: Agitha Male Snail Reward
+  Pretty:
+    Text: bringing {Agitha} the {Male Snail}
+  Cryptic:
+    Text: bringing {Agitha} the {Male Snail}
+
+Agitha Female Snail Reward:
+  Standard:
+    Text: Agitha Female Snail Reward
+  Pretty:
+    Text: bringing {Agitha} the {Female Snail}
+  Cryptic:
+    Text: bringing {Agitha} the {Female Snail}
+
+Agitha Male Dragonfly Reward:
+  Standard:
+    Text: Agitha Male Dragonfly Reward
+  Pretty:
+    Text: bringing {Agitha} the {Male Dragonfly}
+  Cryptic:
+    Text: bringing {Agitha} the {Male Dragonfly}
+
+Agitha Female Dragonfly Reward:
+  Standard:
+    Text: Agitha Female Dragonfly Reward
+  Pretty:
+    Text: bringing {Agitha} the {Female Dragonfly}
+  Cryptic:
+    Text: bringing {Agitha} the {Female Dragonfly}
+
+Agitha Male Ant Reward:
+  Standard:
+    Text: Agitha Male Ant Reward
+  Pretty:
+    Text: bringing {Agitha} the {Male Ant}
+  Cryptic:
+    Text: bringing {Agitha} the {Male Ant}
+
+Agitha Female Ant Reward:
+  Standard:
+    Text: Agitha Female Ant Reward
+  Pretty:
+    Text: bringing {Agitha} the {Female Ant}
+  Cryptic:
+    Text: bringing {Agitha} the {Female Ant}
+
+Agitha Male Dayfly Reward:
+  Standard:
+    Text: Agitha Male Dayfly Reward
+  Pretty:
+    Text: bringing {Agitha} the {Male Dayfly}
+  Cryptic:
+    Text: bringing {Agitha} the {Male Dayfly}
+
+Agitha Female Dayfly Reward:
+  Standard:
+    Text: Agitha Female Dayfly Reward
+  Pretty:
+    Text: bringing {Agitha} the {Female Dayfly}
+  Cryptic:
+    Text: bringing {Agitha} the {Female Dayfly}
+
+# HD Only Location
+# Agitha 12 Golden Bugs Reward:
+#   Standard:
+#     Text: Agitha 12 Golden Bugs Reward
+#   Pretty:
+#     Text: bringing {Agitha 12 Golden Bugs}
+#   Cryptic:
+#     Text: bringing {Agitha 12 Golden Bugs}
+
+Outside South Castle Town Tightrope Chest:
+  Standard:
+    Text: Outside South Castle Town Tightrope Chest
+  Pretty:
+    Text: the {Outside South Castle Town Tightrope Chest}
+  Cryptic:
+    Text: the {Outside South Castle Town Tightrope Chest}
+
+Outside South Castle Town Fountain Chest:
+  Standard:
+    Text: Outside South Castle Town Fountain Chest
+  Pretty:
+    Text: the {Outside South Castle Town Fountain Chest}
+  Cryptic:
+    Text: the {Outside South Castle Town Fountain Chest}
+
+Outside South Castle Town Male Ladybug:
+  Standard:
+    Text: Outside South Castle Town Male Ladybug
+  Pretty:
+    Text: the {Outside South Castle Town Male Ladybug}
+  Cryptic:
+    Text: the {Outside South Castle Town Male Ladybug}
+
+Outside South Castle Town Female Ladybug:
+  Standard:
+    Text: Outside South Castle Town Female Ladybug
+  Pretty:
+    Text: the {Outside South Castle Town Female Ladybug}
+  Cryptic:
+    Text: the {Outside South Castle Town Female Ladybug}
+
+Outside South Castle Town Poe:
+  Standard:
+    Text: Outside South Castle Town Poe
+  Pretty:
+    Text: the {Outside South Castle Town Poe}
+  Cryptic:
+    Text: the {Outside South Castle Town Poe}
+
+Outside South Castle Town Tektite Grotto Chest:
+  Standard:
+    Text: Outside South Castle Town Tektite Grotto Chest
+  Pretty:
+    Text: the {Outside South Castle Town Tektite Grotto Chest}
+  Cryptic:
+    Text: the {Outside South Castle Town Tektite Grotto Chest}
+
+Outside South Castle Town Golden Wolf:
+  Standard:
+    Text: Outside South Castle Town Golden Wolf
+  Pretty:
+    Text: the {Outside South Castle Town Golden Wolf}
+  Cryptic:
+    Text: the {Outside South Castle Town Golden Wolf}
+
+Outside South Castle Town Double Clawshot Chasm Chest:
+  Standard:
+    Text: Outside South Castle Town Double Clawshot Chasm Chest
+  Pretty:
+    Text: the {Outside South Castle Town Double Clawshot Chasm Chest}
+  Cryptic:
+    Text: the {Outside South Castle Town Double Clawshot Chasm Chest}
+
+Outside South Castle Town Boulder Rupee:
+  Standard:
+    Text: Outside South Castle Town Boulder Rupee
+  Pretty:
+    Text: the {Outside South Castle Town Boulder Rupee}
+  Cryptic:
+    Text: the {Outside South Castle Town Boulder Rupee}
+
+Wooden Statue Check:
+  Standard:
+    Text: Wooden Statue
+  Pretty:
+    Text: the {Wooden Statue}
+  Cryptic:
+    Text: the {Wooden Statue}
+
+Lake Hylia Bridge Owl Statue Chest:
+  Standard:
+    Text: Lake Hylia Bridge Owl Statue Chest
+  Pretty:
+    Text: the {Lake Hylia Bridge Owl Statue Chest}
+  Cryptic:
+    Text: the {Lake Hylia Bridge Owl Statue Chest}
+
+Lake Hylia Bridge Owl Statue Sky Character:
+  Standard:
+    Text: Lake Hylia Bridge Owl Statue Sky Character
+  Pretty:
+    Text: the {Lake Hylia Bridge Owl Statue Sky Character}
+  Cryptic:
+    Text: the {Lake Hylia Bridge Owl Statue Sky Character}
+
+Lake Hylia Bridge Owl Statue Boulder Rupee:
+  Standard:
+    Text: Lake Hylia Bridge Owl Statue Boulder Rupee
+  Pretty:
+    Text: the {Lake Hylia Bridge Owl Statue Boulder Rupee}
+  Cryptic:
+    Text: the {Lake Hylia Bridge Owl Statue Boulder Rupee}
+
+Lake Hylia Bridge Vines Chest:
+  Standard:
+    Text: Lake Hylia Bridge Vines Chest
+  Pretty:
+    Text: the {Lake Hylia Bridge Vines Chest}
+  Cryptic:
+    Text: the {Lake Hylia Bridge Vines Chest}
+
+Lake Hylia Bridge Female Mantis:
+  Standard:
+    Text: Lake Hylia Bridge Female Mantis
+  Pretty:
+    Text: the {Lake Hylia Bridge Female Mantis}
+  Cryptic:
+    Text: the {Lake Hylia Bridge Female Mantis}
+
+Lake Hylia Bridge Male Mantis:
+  Standard:
+    Text: Lake Hylia Bridge Male Mantis
+  Pretty:
+    Text: the {Lake Hylia Bridge Male Mantis}
+  Cryptic:
+    Text: the {Lake Hylia Bridge Male Mantis}
+
+Lake Hylia Bridge Cliff Chest:
+  Standard:
+    Text: Lake Hylia Bridge Cliff Chest
+  Pretty:
+    Text: the {Lake Hylia Bridge Cliff Chest}
+  Cryptic:
+    Text: the {Lake Hylia Bridge Cliff Chest}
+
+Lake Hylia Bridge Cliff Poe:
+  Standard:
+    Text: Lake Hylia Bridge Cliff Poe
+  Pretty:
+    Text: the {Lake Hylia Bridge Cliff Poe}
+  Cryptic:
+    Text: the {Lake Hylia Bridge Cliff Poe}
+
+Lake Hylia Bridge Bubble Grotto Chest:
+  Standard:
+    Text: Lake Hylia Bridge Bubble Grotto Chest
+  Pretty:
+    Text: the {Lake Hylia Bridge Bubble Grotto Chest}
+  Cryptic:
+    Text: the {Lake Hylia Bridge Bubble Grotto Chest}
+
+Lake Hylia Bridge Faron Boulder Rupee:
+  Standard:
+    Text: Lake Hylia Bridge Faron Boulder Rupee
+  Pretty:
+    Text: the {Lake Hylia Bridge Faron Boulder Rupee}
+  Cryptic:
+    Text: the {Lake Hylia Bridge Faron Boulder Rupee}
+
+Lake Hylia Warp Portal:
+  Standard:
+    Text: Lake Hylia Warp Portal
+  Pretty:
+    Text: the {Lake Hylia Warp Portal}
+  Cryptic:
+    Text: the {Lake Hylia Warp Portal}
+
+Auru Gift To Fyer:
+  Standard:
+    Text: Auru Gift To Fyer
+  Pretty:
+    Text: the {Auru Gift To Fyer}
+  Cryptic:
+    Text: the {Auru Gift To Fyer}
+
+Lake Hylia Tower Poe:
+  Standard:
+    Text: Lake Hylia Tower Poe
+  Pretty:
+    Text: the {Lake Hylia Tower Poe}
+  Cryptic:
+    Text: the {Lake Hylia Tower Poe}
+
+Lake Hylia Water Toadpoli Grotto Chest:
+  Standard:
+    Text: Lake Hylia Water Toadpoli Grotto Chest
+  Pretty:
+    Text: the {Lake Hylia Water Toadpoli Grotto Chest}
+  Cryptic:
+    Text: the {Lake Hylia Water Toadpoli Grotto Chest}
+
+Lake Lantern Cave First Chest:
+  Standard:
+    Text: Lake Lantern Cave First Chest
+  Pretty:
+    Text: the {Lake Lantern Cave First Chest}
+  Cryptic:
+    Text: the {Lake Lantern Cave First Chest}
+
+Lake Lantern Cave Second Chest:
+  Standard:
+    Text: Lake Lantern Cave Second Chest
+  Pretty:
+    Text: the {Lake Lantern Cave Second Chest}
+  Cryptic:
+    Text: the {Lake Lantern Cave Second Chest}
+
+Lake Lantern Cave Third Chest:
+  Standard:
+    Text: Lake Lantern Cave Third Chest
+  Pretty:
+    Text: the {Lake Lantern Cave Third Chest}
+  Cryptic:
+    Text: the {Lake Lantern Cave Third Chest}
+
+Lake Lantern Cave Fourth Chest:
+  Standard:
+    Text: Lake Lantern Cave Fourth Chest
+  Pretty:
+    Text: the {Lake Lantern Cave Fourth Chest}
+  Cryptic:
+    Text: the {Lake Lantern Cave Fourth Chest}
+
+Lake Lantern Cave Fifth Chest:
+  Standard:
+    Text: Lake Lantern Cave Fifth Chest
+  Pretty:
+    Text: the {Lake Lantern Cave Fifth Chest}
+  Cryptic:
+    Text: the {Lake Lantern Cave Fifth Chest}
+
+Lake Lantern Cave Sixth Chest:
+  Standard:
+    Text: Lake Lantern Cave Sixth Chest
+  Pretty:
+    Text: the {Lake Lantern Cave Sixth Chest}
+  Cryptic:
+    Text: the {Lake Lantern Cave Sixth Chest}
+
+Lake Lantern Cave Seventh Chest:
+  Standard:
+    Text: Lake Lantern Cave Seventh Chest
+  Pretty:
+    Text: the {Lake Lantern Cave Seventh Chest}
+  Cryptic:
+    Text: the {Lake Lantern Cave Seventh Chest}
+
+Lake Lantern Cave Eighth Chest:
+  Standard:
+    Text: Lake Lantern Cave Eighth Chest
+  Pretty:
+    Text: the {Lake Lantern Cave Eighth Chest}
+  Cryptic:
+    Text: the {Lake Lantern Cave Eighth Chest}
+
+Lake Lantern Cave Ninth Chest:
+  Standard:
+    Text: Lake Lantern Cave Ninth Chest
+  Pretty:
+    Text: the {Lake Lantern Cave Ninth Chest}
+  Cryptic:
+    Text: the {Lake Lantern Cave Ninth Chest}
+
+Lake Lantern Cave Tenth Chest:
+  Standard:
+    Text: Lake Lantern Cave Tenth Chest
+  Pretty:
+    Text: the {Lake Lantern Cave Tenth Chest}
+  Cryptic:
+    Text: the {Lake Lantern Cave Tenth Chest}
+
+Lake Lantern Cave Eleventh Chest:
+  Standard:
+    Text: Lake Lantern Cave Eleventh Chest
+  Pretty:
+    Text: the {Lake Lantern Cave Eleventh Chest}
+  Cryptic:
+    Text: the {Lake Lantern Cave Eleventh Chest}
+
+Lake Lantern Cave Twelfth Chest:
+  Standard:
+    Text: Lake Lantern Cave Twelfth Chest
+  Pretty:
+    Text: the {Lake Lantern Cave Twelfth Chest}
+  Cryptic:
+    Text: the {Lake Lantern Cave Twelfth Chest}
+
+Lake Lantern Cave Thirteenth Chest:
+  Standard:
+    Text: Lake Lantern Cave Thirteenth Chest
+  Pretty:
+    Text: the {Lake Lantern Cave Thirteenth Chest}
+  Cryptic:
+    Text: the {Lake Lantern Cave Thirteenth Chest}
+
+Lake Lantern Cave Fourteenth Chest:
+  Standard:
+    Text: Lake Lantern Cave Fourteenth Chest
+  Pretty:
+    Text: the {Lake Lantern Cave Fourteenth Chest}
+  Cryptic:
+    Text: the {Lake Lantern Cave Fourteenth Chest}
+
+Lake Lantern Cave End Lantern Chest:
+  Standard:
+    Text: Lake Lantern Cave End Lantern Chest
+  Pretty:
+    Text: the {Lake Lantern Cave End Lantern Chest}
+  Cryptic:
+    Text: the {Lake Lantern Cave End Lantern Chest}
+
+Lake Lantern Cave First Poe:
+  Standard:
+    Text: Lake Lantern Cave First Poe
+  Pretty:
+    Text: the {Lake Lantern Cave First Poe}
+  Cryptic:
+    Text: the {Lake Lantern Cave First Poe}
+
+Lake Lantern Cave Second Poe:
+  Standard:
+    Text: Lake Lantern Cave Second Poe
+  Pretty:
+    Text: the {Lake Lantern Cave Second Poe}
+  Cryptic:
+    Text: the {Lake Lantern Cave Second Poe}
+
+Lake Lantern Cave Final Poe:
+  Standard:
+    Text: Lake Lantern Cave Final Poe
+  Pretty:
+    Text: the {Lake Lantern Cave Final Poe}
+  Cryptic:
+    Text: the {Lake Lantern Cave Final Poe}
+
+Lake Hylia Underwater Chest:
+  Standard:
+    Text: Lake Hylia Underwater Chest
+  Pretty:
+    Text: the {Lake Hylia Underwater Chest}
+  Cryptic:
+    Text: the {Lake Hylia Underwater Chest}
+
+Lake Hylia Left Underwater Boulder Rupee:
+  Standard:
+    Text: Lake Hylia Left Underwater Boulder Rupee
+  Pretty:
+    Text: the {Lake Hylia Left Underwater Boulder Rupee}
+  Cryptic:
+    Text: the {Lake Hylia Left Underwater Boulder Rupee}
+
+Lake Hylia Left Underwater Pillar Rupee:
+  Standard:
+    Text: Lake Hylia Left Underwater Pillar Rupee
+  Pretty:
+    Text: the {Lake Hylia Left Underwater Pillar Rupee}
+  Cryptic:
+    Text: the {Lake Hylia Left Underwater Pillar Rupee}
+
+Lake Hylia Right Underwater Boulder Rupee:
+  Standard:
+    Text: Lake Hylia Right Underwater Boulder Rupee
+  Pretty:
+    Text: the {Lake Hylia Right Underwater Boulder Rupee}
+  Cryptic:
+    Text: the {Lake Hylia Right Underwater Boulder Rupee}
+
+Lake Hylia Right Underwater Pillar Rupee:
+  Standard:
+    Text: Lake Hylia Right Underwater Pillar Rupee
+  Pretty:
+    Text: the {Lake Hylia Right Underwater Pillar Rupee}
+  Cryptic:
+    Text: the {Lake Hylia Right Underwater Pillar Rupee}
+
+Lake Hylia Alcove Poe:
+  Standard:
+    Text: Lake Hylia Alcove Poe
+  Pretty:
+    Text: the {Lake Hylia Alcove Poe}
+  Cryptic:
+    Text: the {Lake Hylia Alcove Poe}
+
+Flight By Fowl Top Platform Reward:
+  Standard:
+    Text: Flight By Fowl Top Platform Reward
+  Pretty:
+    Text: the {Flight By Fowl Top Platform Chest}
+  Cryptic:
+    Text: the {Flight By Fowl Top Platform Chest}
+
+Flight By Fowl Second Platform Chest:
+  Standard:
+    Text: Flight By Fowl Second Platform Chest
+  Pretty:
+    Text: the {Flight By Fowl Second Platform Chest}
+  Cryptic:
+    Text: the {Flight By Fowl Second Platform Chest}
+
+Flight By Fowl Third Platform Chest:
+  Standard:
+    Text: Flight By Fowl Third Platform Chest
+  Pretty:
+    Text: the {Flight By Fowl Third Platform Chest}
+  Cryptic:
+    Text: the {Flight By Fowl Third Platform Chest}
+
+Flight By Fowl Fourth Platform Chest:
+  Standard:
+    Text: Flight By Fowl Fourth Platform Chest
+  Pretty:
+    Text: the {Flight By Fowl Fourth Platform Chest}
+  Cryptic:
+    Text: the {Flight By Fowl Fourth Platform Chest}
+
+Flight By Fowl Fifth Platform Chest:
+  Standard:
+    Text: Flight By Fowl Fifth Platform Chest
+  Pretty:
+    Text: the {Flight By Fowl Fifth Platform Chest}
+  Cryptic:
+    Text: the {Flight By Fowl Fifth Platform Chest}
+
+Isle of Riches Poe:
+  Standard:
+    Text: Isle of Riches Poe
+  Pretty:
+    Text: the {Isle of Riches Poe}
+  Cryptic:
+    Text: the {Isle of Riches Poe}
+
+Flight By Fowl Ledge Poe:
+  Standard:
+    Text: Flight By Fowl Ledge Poe
+  Pretty:
+    Text: the {Flight By Fowl Ledge Poe}
+  Cryptic:
+    Text: the {Flight By Fowl Ledge Poe}
+
+Lake Hylia Shell Blade Grotto Chest:
+  Standard:
+    Text: Lake Hylia Shell Blade Grotto Chest
+  Pretty:
+    Text: the {Lake Hylia Shell Blade Grotto Chest}
+  Cryptic:
+    Text: the {Lake Hylia Shell Blade Grotto Chest}
+
+Lake Hylia Dock Poe:
+  Standard:
+    Text: Lake Hylia Dock Poe
+  Pretty:
+    Text: the {Lake Hylia Dock Poe}
+  Cryptic:
+    Text: the {Lake Hylia Dock Poe}
+
+Outside Lanayru Spring Left Statue Chest:
+  Standard:
+    Text: Outside Lanayru Spring Left Statue Chest
+  Pretty:
+    Text: the {Outside Lanayru Spring Left Statue Chest}
+  Cryptic:
+    Text: the {Outside Lanayru Spring Left Statue Chest}
+
+Outside Lanayru Spring Right Statue Chest:
+  Standard:
+    Text: Outside Lanayru Spring Right Statue Chest
+  Pretty:
+    Text: the {Outside Lanayru Spring Right Statue Chest}
+  Cryptic:
+    Text: the {Outside Lanayru Spring Right Statue Chest}
+
+Lanayru Spring Back Room Lantern Chest:
+  Standard:
+    Text: Lanayru Spring Back Room Lantern Chest
+  Pretty:
+    Text: the {Lanayru Spring Back Room Lantern Chest}
+  Cryptic:
+    Text: the {Lanayru Spring Back Room Lantern Chest}
+
+Lanayru Spring Back Room Left Chest:
+  Standard:
+    Text: Lanayru Spring Back Room Left Chest
+  Pretty:
+    Text: the {Lanayru Spring Back Room Left Chest}
+  Cryptic:
+    Text: the {Lanayru Spring Back Room Left Chest}
+
+Lanayru Spring Back Room Right Chest:
+  Standard:
+    Text: Lanayru Spring Back Room Right Chest
+  Pretty:
+    Text: the {Lanayru Spring Back Room Right Chest}
+  Cryptic:
+    Text: the {Lanayru Spring Back Room Right Chest}
+
+Lanayru Spring East Double Clawshot Chest:
+  Standard:
+    Text: Lanayru Spring East Double Clawshot Chest
+  Pretty:
+    Text: the {Lanayru Spring East Double Clawshot Chest}
+  Cryptic:
+    Text: the {Lanayru Spring East Double Clawshot Chest}
+
+Lanayru Spring West Double Clawshot Chest:
+  Standard:
+    Text: Lanayru Spring West Double Clawshot Chest
+  Pretty:
+    Text: the {Lanayru Spring West Double Clawshot Chest}
+  Cryptic:
+    Text: the {Lanayru Spring West Double Clawshot Chest}
+
+Lanayru Spring Underwater Left Chest:
+  Standard:
+    Text: Lanayru Spring Underwater Left Chest
+  Pretty:
+    Text: the {Lanayru Spring Underwater Left Chest}
+  Cryptic:
+    Text: the {Lanayru Spring Underwater Left Chest}
+
+Lanayru Spring Underwater Right Chest:
+  Standard:
+    Text: Lanayru Spring Underwater Right Chest
+  Pretty:
+    Text: the {Lanayru Spring Underwater Right Chest}
+  Cryptic:
+    Text: the {Lanayru Spring Underwater Right Chest}
+
+Lanayru Spring Lower Underwater Boulder Rupee:
+  Standard:
+    Text: Lanayru Spring Lower Underwater Boulder Rupee
+  Pretty:
+    Text: the {Lanayru Spring Lower Underwater Boulder Rupee}
+  Cryptic:
+    Text: the {Lanayru Spring Lower Underwater Boulder Rupee}
+
+Lanayru Spring Upper Underwater Boulder Rupee:
+  Standard:
+    Text: Lanayru Spring Upper Underwater Boulder Rupee
+  Pretty:
+    Text: the {Lanayru Spring Upper Underwater Boulder Rupee}
+  Cryptic:
+    Text: the {Lanayru Spring Upper Underwater Boulder Rupee}
+
+Plumm Fruit Balloon Minigame:
+  Standard:
+    Text: Plumm Fruit Balloon Minigame
+  Pretty:
+    Text: the {Plumm Fruit Balloon Minigame}
+  Cryptic:
+    Text: the {Plumm Fruit Balloon Minigame}
+
+Upper Zoras River Warp Portal:
+  Standard:
+    Text: Upper Zoras River Warp Portal
+  Pretty:
+    Text: the {Upper Zoras River Warp Portal}
+  Cryptic:
+    Text: the {Upper Zoras River Warp Portal}
+
+Upper Zoras River Female Dragonfly:
+  Standard:
+    Text: Upper Zoras River Female Dragonfly
+  Pretty:
+    Text: the {Upper Zoras River Female Dragonfly}
+  Cryptic:
+    Text: the {Upper Zoras River Female Dragonfly}
+
+Upper Zoras River Central Underwater Boulder Rupee:
+  Standard:
+    Text: Upper Zoras River Central Underwater Boulder Rupee
+  Pretty:
+    Text: the {Upper Zoras River Central Underwater Boulder Rupee}
+  Cryptic:
+    Text: the {Upper Zoras River Central Underwater Boulder Rupee}
+
+Upper Zoras River East Underwater Boulder Rupee:
+  Standard:
+    Text: Upper Zoras River East Underwater Boulder Rupee
+  Pretty:
+    Text: the {Upper Zoras River East Underwater Boulder Rupee}
+  Cryptic:
+    Text: the {Upper Zoras River East Underwater Boulder Rupee}
+
+Upper Zoras River Ledge Boulder Rupee:
+  Standard:
+    Text: Upper Zoras River Ledge Boulder Rupee
+  Pretty:
+    Text: the {Upper Zoras River Ledge Boulder Rupee}
+  Cryptic:
+    Text: the {Upper Zoras River Ledge Boulder Rupee}
+
+Upper Zoras River West Underwater Boulder Rupee:
+  Standard:
+    Text: Upper Zoras River West Underwater Boulder Rupee
+  Pretty:
+    Text: the {Upper Zoras River West Underwater Boulder Rupee}
+  Cryptic:
+    Text: the {Upper Zoras River West Underwater Boulder Rupee}
+
+Upper Zoras River Poe:
+  Standard:
+    Text: Upper Zoras River Poe
+  Pretty:
+    Text: the {Upper Zoras River Poe}
+  Cryptic:
+    Text: the {Upper Zoras River Poe}
+
+Iza Helping Hand:
+  Standard:
+    Text: Iza Helping Hand
+  Pretty:
+    Text: being {Iza's Helping Hand}
+  Cryptic:
+    Text: being {Iza's Helping Hand}
+
+Iza Raging Rapids Minigame:
+  Standard:
+    Text: Iza Raging Rapids Minigame
+  Pretty:
+    Text: the {Iza Raging Rapids Minigame}
+  Cryptic:
+    Text: the {Iza Raging Rapids Minigame}
+
+Fishing Hole Bottle:
+  Standard:
+    Text: Fishing Hole Bottle
+  Pretty:
+    Text: the {Fishing Hole Bottle}
+  Cryptic:
+    Text: the {Fishing Hole Bottle}
+
+Fishing Hole Heart Piece:
+  Standard:
+    Text: Fishing Hole Heart Piece
+  Pretty:
+    Text: the {Fishing Hole Heart Piece}
+  Cryptic:
+    Text: the {Fishing Hole Heart Piece}
+
+Zoras Domain Warp Portal:
+  Standard:
+    Text: Zoras Domain Warp Portal
+  Pretty:
+    Text: the {Zoras Domain Warp Portal}
+  Cryptic:
+    Text: the {Zoras Domain Warp Portal}
+
+Zoras Domain Male Dragonfly:
+  Standard:
+    Text: Zoras Domain Male Dragonfly
+  Pretty:
+    Text: the {Zoras Domain Male Dragonfly}
+  Cryptic:
+    Text: the {Zoras Domain Male Dragonfly}
+
+Zoras Domain Mother and Child Isle Poe:
+  Standard:
+    Text: Zoras Domain Mother and Child Isle Poe
+  Pretty:
+    Text: the {Zoras Domain Mother and Child Isle Poe}
+  Cryptic:
+    Text: the {Zoras Domain Mother and Child Isle Poe}
+
+Zoras Domain Chest Behind Waterfall:
+  Standard:
+    Text: Zoras Domain Chest Behind Waterfall
+  Pretty:
+    Text: the {Zoras Domain Chest Behind Waterfall}
+  Cryptic:
+    Text: the {Zoras Domain Chest Behind Waterfall}
+
+Zoras Domain Chest By Mother and Child Isles:
+  Standard:
+    Text: Zoras Domain Chest By Mother and Child Isles
+  Pretty:
+    Text: the {Zoras Domain Chest By Mother and Child Isles}
+  Cryptic:
+    Text: the {Zoras Domain Chest By Mother and Child Isles}
+
+Zoras Domain Waterfall Poe:
+  Standard:
+    Text: Zoras Domain Waterfall Poe
+  Pretty:
+    Text: the {Zoras Domain Waterfall Poe}
+  Cryptic:
+    Text: the {Zoras Domain Waterfall Poe}
+
+Zoras Domain Behind Waterfall Rupee:
+  Standard:
+    Text: Zoras Domain Behind Waterfall Rupee
+  Pretty:
+    Text: the {Zoras Domain Behind Waterfall Rupee}
+  Cryptic:
+    Text: the {Zoras Domain Behind Waterfall Rupee}
+
+Zoras Domain Central Underwater Boulder Rupee:
+  Standard:
+    Text: Zoras Domain Central Underwater Boulder Rupee
+  Pretty:
+    Text: the {Zoras Domain Central Underwater Boulder Rupee}
+  Cryptic:
+    Text: the {Zoras Domain Central Underwater Boulder Rupee}
+
+Zoras Domain North Underwater Boulder Rupee:
+  Standard:
+    Text: Zoras Domain North Underwater Boulder Rupee
+  Pretty:
+    Text: the {Zoras Domain North Underwater Boulder Rupee}
+  Cryptic:
+    Text: the {Zoras Domain North Underwater Boulder Rupee}
+
+Zoras Domain Shortcut Ledge Rupee:
+  Standard:
+    Text: Zoras Domain Shortcut Ledge Rupee
+  Pretty:
+    Text: the {Zoras Domain Shortcut Ledge Rupee}
+  Cryptic:
+    Text: the {Zoras Domain Shortcut Ledge Rupee}
+
+Zoras Domain Shortcut Lower Boulder Rupee:
+  Standard:
+    Text: Zoras Domain Shortcut Lower Boulder Rupee
+  Pretty:
+    Text: the {Zoras Domain Shortcut Lower Boulder Rupee}
+  Cryptic:
+    Text: the {Zoras Domain Shortcut Lower Boulder Rupee}
+
+Zoras Domain Shortcut Upper Boulder Rupee:
+  Standard:
+    Text: Zoras Domain Shortcut Upper Boulder Rupee
+  Pretty:
+    Text: the {Zoras Domain Shortcut Upper Boulder Rupee}
+  Cryptic:
+    Text: the {Zoras Domain Shortcut Upper Boulder Rupee}
+
+Zoras Domain Top Ledge Rupee:
+  Standard:
+    Text: Zoras Domain Top Ledge Rupee
+  Pretty:
+    Text: the {Zoras Domain Top Ledge Rupee}
+  Cryptic:
+    Text: the {Zoras Domain Top Ledge Rupee}
+
+Zoras Domain Vine Ledge Rupee:
+  Standard:
+    Text: Zoras Domain Vine Ledge Rupee
+  Pretty:
+    Text: the {Zoras Domain Vine Ledge Rupee}
+  Cryptic:
+    Text: the {Zoras Domain Vine Ledge Rupee}
+
+Zoras Domain Waterfall Ledge Rupee:
+  Standard:
+    Text: Zoras Domain Waterfall Ledge Rupee
+  Pretty:
+    Text: the {Zoras Domain Waterfall Ledge Rupee}
+  Cryptic:
+    Text: the {Zoras Domain Waterfall Ledge Rupee}
+
+Zoras Domain Extinguish All Torches Chest:
+  Standard:
+    Text: Zoras Domain Extinguish All Torches Chest
+  Pretty:
+    Text: the {Zoras Domain Extinguish All Torches Chest}
+  Cryptic:
+    Text: the {Zoras Domain Extinguish All Torches Chest}
+
+Zoras Domain Light All Torches Chest:
+  Standard:
+    Text: Zoras Domain Light All Torches Chest
+  Pretty:
+    Text: the {Zoras Domain Light All Torches Chest}
+  Cryptic:
+    Text: the {Zoras Domain Light All Torches Chest}
+
+Zoras Domain Underwater Goron:
+  Standard:
+    Text: Zoras Domain Underwater Goron
+  Pretty:
+    Text: the {Zoras Domain Underwater Goron}
+  Cryptic:
+    Text: the {Zoras Domain Underwater Goron}
+
+Zoras Domain Throne East Gate Underwater Rupee:
+  Standard:
+    Text: Zoras Domain Throne East Gate Underwater Rupee
+  Pretty:
+    Text: the {Zoras Domain Throne East Gate Underwater Rupee}
+  Cryptic:
+    Text: the {Zoras Domain Throne East Gate Underwater Rupee}
+
+Zoras Domain Throne East Underwater Rupee:
+  Standard:
+    Text: Zoras Domain Throne East Underwater Rupee
+  Pretty:
+    Text: the {Zoras Domain Throne East Underwater Rupee}
+  Cryptic:
+    Text: the {Zoras Domain Throne East Underwater Rupee}
+
+Zoras Domain Throne Northwest Underwater Rupee:
+  Standard:
+    Text: Zoras Domain Throne Northwest Underwater Rupee
+  Pretty:
+    Text: the {Zoras Domain Throne Northwest Underwater Rupee}
+  Cryptic:
+    Text: the {Zoras Domain Throne Northwest Underwater Rupee}
+
+Zoras Domain Throne South Underwater Rupee:
+  Standard:
+    Text: Zoras Domain Throne South Underwater Rupee
+  Pretty:
+    Text: the {Zoras Domain Throne South Underwater Rupee}
+  Cryptic:
+    Text: the {Zoras Domain Throne South Underwater Rupee}
+
+Zoras Domain Throne West Gate Underwater Rupee:
+  Standard:
+    Text: Zoras Domain Throne West Gate Underwater Rupee
+  Pretty:
+    Text: the {Zoras Domain Throne West Gate Underwater Rupee}
+  Cryptic:
+    Text: the {Zoras Domain Throne West Gate Underwater Rupee}
+
+Zoras Domain Throne West Underwater Rupee:
+  Standard:
+    Text: Zoras Domain Throne West Underwater Rupee
+  Pretty:
+    Text: the {Zoras Domain Throne West Underwater Rupee}
+  Cryptic:
+    Text: the {Zoras Domain Throne West Underwater Rupee}
+
+Snowpeak Warp Portal:
+  Standard:
+    Text: Snowpeak Warp Portal
+  Pretty:
+    Text: the {Snowpeak Warp Portal}
+  Cryptic:
+    Text: the {Snowpeak Warp Portal}
+
+Ashei Sketch:
+  Standard:
+    Text: Ashei Sketch
+  Pretty:
+    Text: "{Ashei Sketch}"
+  Cryptic:
+    Text: "{Ashei Sketch}"
+
+Snowpeak Blizzard Poe:
+  Standard:
+    Text: Snowpeak Blizzard Poe
+  Pretty:
+    Text: the {Snowpeak Blizzard Poe}
+  Cryptic:
+    Text: the {Snowpeak Blizzard Poe}
+
+Snowpeak Above Freezard Grotto Poe:
+  Standard:
+    Text: Snowpeak Above Freezard Grotto Poe
+  Pretty:
+    Text: the {Snowpeak Above Freezard Grotto Poe}
+  Cryptic:
+    Text: the {Snowpeak Above Freezard Grotto Poe}
+
+Snowpeak Poe Among Trees:
+  Standard:
+    Text: Snowpeak Poe Among Trees
+  Pretty:
+    Text: the {Snowpeak Poe Among Trees}
+  Cryptic:
+    Text: the {Snowpeak Poe Among Trees}
+
+Snowpeak Freezard Grotto Chest:
+  Standard:
+    Text: Snowpeak Freezard Grotto Chest
+  Pretty:
+    Text: the {Snowpeak Freezard Grotto Chest}
+  Cryptic:
+    Text: the {Snowpeak Freezard Grotto Chest}
+
+Snowpeak Cave Ice Lantern Chest:
+  Standard:
+    Text: Snowpeak Cave Ice Lantern Chest
+  Pretty:
+    Text: the {Snowpeak Cave Ice Lantern Chest}
+  Cryptic:
+    Text: the {Snowpeak Cave Ice Lantern Chest}
+
+Snowpeak Cave Ice Poe:
+  Standard:
+    Text: Snowpeak Cave Ice Poe
+  Pretty:
+    Text: the {Snowpeak Cave Ice Poe}
+  Cryptic:
+    Text: the {Snowpeak Cave Ice Poe}
+
+Snowpeak Icy Summit Poe:
+  Standard:
+    Text: Snowpeak Icy Summit Poe
+  Pretty:
+    Text: the {Snowpeak Icy Summit Poe}
+  Cryptic:
+    Text: the {Snowpeak Icy Summit Poe}
+
+Snowboard Racing Prize:
+  Standard:
+    Text: Snowboard Racing Prize
+  Pretty:
+    Text: the {Snowboard Racing Prize}
+  Cryptic:
+    Text: the {Snowboard Racing Prize}
+
+Snowboarding Bridge Ledge Bottom Rupee:
+  Standard:
+    Text: Snowboarding Bridge Ledge Bottom Rupee
+  Pretty:
+    Text: the {Snowboarding Bridge Ledge Bottom Rupee}
+  Cryptic:
+    Text: the {Snowboarding Bridge Ledge Bottom Rupee}
+
+Snowboarding Bridge Ledge Middle Rupee:
+  Standard:
+    Text: Snowboarding Bridge Ledge Middle Rupee
+  Pretty:
+    Text: the {Snowboarding Bridge Ledge Middle Rupee}
+  Cryptic:
+    Text: the {Snowboarding Bridge Ledge Middle Rupee}
+
+Snowboarding Bridge Ledge Upper Rupee:
+  Standard:
+    Text: Snowboarding Bridge Ledge Upper Rupee
+  Pretty:
+    Text: the {Snowboarding Bridge Ledge Upper Rupee}
+  Cryptic:
+    Text: the {Snowboarding Bridge Ledge Upper Rupee}
+
+Snowboarding Shortcut Rupee 1:
+  Standard:
+    Text: Snowboarding Shortcut Rupee 1
+  Pretty:
+    Text: "{Snowboarding Shortcut Rupee 1}"
+  Cryptic:
+    Text: "{Snowboarding Shortcut Rupee 1}"
+
+Snowboarding Shortcut Rupee 2:
+  Standard:
+    Text: Snowboarding Shortcut Rupee 2
+  Pretty:
+    Text: "{Snowboarding Shortcut Rupee 2}"
+  Cryptic:
+    Text: "{Snowboarding Shortcut Rupee 2}"
+
+Snowboarding Shortcut Rupee 3:
+  Standard:
+    Text: Snowboarding Shortcut Rupee 3
+  Pretty:
+    Text: "{Snowboarding Shortcut Rupee 3}"
+  Cryptic:
+    Text: "{Snowboarding Shortcut Rupee 3}"
+
+Snowboarding Shortcut Rupee 4:
+  Standard:
+    Text: Snowboarding Shortcut Rupee 4
+  Pretty:
+    Text: "{Snowboarding Shortcut Rupee 4}"
+  Cryptic:
+    Text: "{Snowboarding Shortcut Rupee 4}"
+
+Snowboarding Shortcut Rupee 5:
+  Standard:
+    Text: Snowboarding Shortcut Rupee 5
+  Pretty:
+    Text: "{Snowboarding Shortcut Rupee 5}"
+  Cryptic:
+    Text: "{Snowboarding Shortcut Rupee 5}"
+
+Snowboarding Shortcut Rupee 6:
+  Standard:
+    Text: Snowboarding Shortcut Rupee 6
+  Pretty:
+    Text: "{Snowboarding Shortcut Rupee 6}"
+  Cryptic:
+    Text: "{Snowboarding Shortcut Rupee 6}"
+
+Snowboarding Shortcut Rupee 7:
+  Standard:
+    Text: Snowboarding Shortcut Rupee 7
+  Pretty:
+    Text: "{Snowboarding Shortcut Rupee 7}"
+  Cryptic:
+    Text: "{Snowboarding Shortcut Rupee 7}"
+
+Snowboarding Shortcut Rupee 8:
+  Standard:
+    Text: Snowboarding Shortcut Rupee 8
+  Pretty:
+    Text: "{Snowboarding Shortcut Rupee 8}"
+  Cryptic:
+    Text: "{Snowboarding Shortcut Rupee 8}"
+
+Snowboarding Shortcut Rupee 9:
+  Standard:
+    Text: Snowboarding Shortcut Rupee 9
+  Pretty:
+    Text: "{Snowboarding Shortcut Rupee 9}"
+  Cryptic:
+    Text: "{Snowboarding Shortcut Rupee 9}"
+
+Snowboarding Shortcut Rupee 10:
+  Standard:
+    Text: Snowboarding Shortcut Rupee 10
+  Pretty:
+    Text: "{Snowboarding Shortcut Rupee 10}"
+  Cryptic:
+    Text: "{Snowboarding Shortcut Rupee 10}"
+
+Snowboarding Shortcut Rupee 11:
+  Standard:
+    Text: Snowboarding Shortcut Rupee 11
+  Pretty:
+    Text: "{Snowboarding Shortcut Rupee 11}"
+  Cryptic:
+    Text: "{Snowboarding Shortcut Rupee 11}"
+
+Snowboarding Snowy Tree Top Rupee 1:
+  Standard:
+    Text: Snowboarding Snowy Tree Top Rupee 1
+  Pretty:
+    Text: "{Snowboarding Snowy Tree Top Rupee 1}"
+  Cryptic:
+    Text: "{Snowboarding Snowy Tree Top Rupee 1}"
+
+Snowboarding Snowy Tree Top Rupee 2:
+  Standard:
+    Text: Snowboarding Snowy Tree Top Rupee 2
+  Pretty:
+    Text: "{Snowboarding Snowy Tree Top Rupee 2}"
+  Cryptic:
+    Text: "{Snowboarding Snowy Tree Top Rupee 2}"
+
+Snowboarding Snowy Tree Top Rupee 3:
+  Standard:
+    Text: Snowboarding Snowy Tree Top Rupee 3
+  Pretty:
+    Text: "{Snowboarding Snowy Tree Top Rupee 3}"
+  Cryptic:
+    Text: "{Snowboarding Snowy Tree Top Rupee 3}"
+
+Snowboarding Top Left Rupee:
+  Standard:
+    Text: Snowboarding Top Left Rupee
+  Pretty:
+    Text: the {Snowboarding Top Left Rupee}
+  Cryptic:
+    Text: the {Snowboarding Top Left Rupee}
+
+Snowboarding Top Right Rupee:
+  Standard:
+    Text: Snowboarding Top Right Rupee
+  Pretty:
+    Text: the {Snowboarding Top Right Rupee}
+  Cryptic:
+    Text: the {Snowboarding Top Right Rupee}
+
+Gerudo Desert Warp Portal:
+  Standard:
+    Text: Gerudo Desert Warp Portal
+  Pretty:
+    Text: the {Gerudo Desert Warp Portal}
+  Cryptic:
+    Text: the {Gerudo Desert Warp Portal}
+
+Gerudo Desert East Poe:
+  Standard:
+    Text: Gerudo Desert East Poe
+  Pretty:
+    Text: the {Gerudo Desert East Poe}
+  Cryptic:
+    Text: the {Gerudo Desert East Poe}
+
+Gerudo Desert Skulltula Grotto Chest:
+  Standard:
+    Text: Gerudo Desert Skulltula Grotto Chest
+  Pretty:
+    Text: the {Gerudo Desert Skulltula Grotto Chest}
+  Cryptic:
+    Text: the {Gerudo Desert Skulltula Grotto Chest}
+
+Gerudo Desert Peahat Ledge Chest:
+  Standard:
+    Text: Gerudo Desert Peahat Ledge Chest
+  Pretty:
+    Text: the {Gerudo Desert Peahat Ledge Chest}
+  Cryptic:
+    Text: the {Gerudo Desert Peahat Ledge Chest}
+
+Gerudo Desert East Canyon Chest:
+  Standard:
+    Text: Gerudo Desert East Canyon Chest
+  Pretty:
+    Text: the {Gerudo Desert East Canyon Chest}
+  Cryptic:
+    Text: the {Gerudo Desert East Canyon Chest}
+
+Gerudo Desert South Chest Behind Wooden Gates:
+  Standard:
+    Text: Gerudo Desert South Chest Behind Wooden Gates
+  Pretty:
+    Text: the {Gerudo Desert South Chest Behind Wooden Gates}
+  Cryptic:
+    Text: the {Gerudo Desert South Chest Behind Wooden Gates}
+
+Gerudo Desert Lone Small Chest:
+  Standard:
+    Text: Gerudo Desert Lone Small Chest
+  Pretty:
+    Text: the {Gerudo Desert Lone Small Chest}
+  Cryptic:
+    Text: the {Gerudo Desert Lone Small Chest}
+
+Gerudo Desert Male Dayfly:
+  Standard:
+    Text: Gerudo Desert Male Dayfly
+  Pretty:
+    Text: the {Gerudo Desert Male Dayfly}
+  Cryptic:
+    Text: the {Gerudo Desert Male Dayfly}
+
+Gerudo Desert Female Dayfly:
+  Standard:
+    Text: Gerudo Desert Female Dayfly
+  Pretty:
+    Text: the {Gerudo Desert Female Dayfly}
+  Cryptic:
+    Text: the {Gerudo Desert Female Dayfly}
+
+Gerudo Desert Owl Statue Chest:
+  Standard:
+    Text: Gerudo Desert Owl Statue Chest
+  Pretty:
+    Text: the {Gerudo Desert Owl Statue Chest}
+  Cryptic:
+    Text: the {Gerudo Desert Owl Statue Chest}
+
+Gerudo Desert Owl Statue Sky Character:
+  Standard:
+    Text: Gerudo Desert Owl Statue Sky Character
+  Pretty:
+    Text: the {Gerudo Desert Owl Statue Sky Character}
+  Cryptic:
+    Text: the {Gerudo Desert Owl Statue Sky Character}
+
+Gerudo Desert Poe Above Cave of Ordeals:
+  Standard:
+    Text: Gerudo Desert Poe Above Cave of Ordeals
+  Pretty:
+    Text: the {Gerudo Desert Poe Above Cave of Ordeals}
+  Cryptic:
+    Text: the {Gerudo Desert Poe Above Cave of Ordeals}
+
+Gerudo Desert West Canyon Chest:
+  Standard:
+    Text: Gerudo Desert West Canyon Chest
+  Pretty:
+    Text: the {Gerudo Desert West Canyon Chest}
+  Cryptic:
+    Text: the {Gerudo Desert West Canyon Chest}
+
+Gerudo Desert North Peahat Poe:
+  Standard:
+    Text: Gerudo Desert North Peahat Poe
+  Pretty:
+    Text: the {Gerudo Desert North Peahat Poe}
+  Cryptic:
+    Text: the {Gerudo Desert North Peahat Poe}
+
+Gerudo Desert Rock Grotto First Poe:
+  Standard:
+    Text: Gerudo Desert Rock Grotto First Poe
+  Pretty:
+    Text: the {Gerudo Desert Rock Grotto First Poe}
+  Cryptic:
+    Text: the {Gerudo Desert Rock Grotto First Poe}
+
+Gerudo Desert Rock Grotto Second Poe:
+  Standard:
+    Text: Gerudo Desert Rock Grotto Second Poe
+  Pretty:
+    Text: the {Gerudo Desert Rock Grotto Second Poe}
+  Cryptic:
+    Text: the {Gerudo Desert Rock Grotto Second Poe}
+
+Gerudo Desert Rock Grotto Lantern Chest:
+  Standard:
+    Text: Gerudo Desert Rock Grotto Lantern Chest
+  Pretty:
+    Text: the {Gerudo Desert Rock Grotto Lantern Chest}
+  Cryptic:
+    Text: the {Gerudo Desert Rock Grotto Lantern Chest}
+
+Gerudo Desert Campfire East Chest:
+  Standard:
+    Text: Gerudo Desert Campfire East Chest
+  Pretty:
+    Text: the {Gerudo Desert Campfire East Chest}
+  Cryptic:
+    Text: the {Gerudo Desert Campfire East Chest}
+
+Gerudo Desert Campfire North Chest:
+  Standard:
+    Text: Gerudo Desert Campfire North Chest
+  Pretty:
+    Text: the {Gerudo Desert Campfire North Chest}
+  Cryptic:
+    Text: the {Gerudo Desert Campfire North Chest}
+
+Gerudo Desert Campfire West Chest:
+  Standard:
+    Text: Gerudo Desert Campfire West Chest
+  Pretty:
+    Text: the {Gerudo Desert Campfire West Chest}
+  Cryptic:
+    Text: the {Gerudo Desert Campfire West Chest}
+
+Gerudo Desert Northeast Chest Behind Gates:
+  Standard:
+    Text: Gerudo Desert Northeast Chest Behind Gates
+  Pretty:
+    Text: the {Gerudo Desert Northeast Chest Behind Gates}
+  Cryptic:
+    Text: the {Gerudo Desert Northeast Chest Behind Gates}
+
+Gerudo Desert Northwest Chest Behind Gates:
+  Standard:
+    Text: Gerudo Desert Northwest Chest Behind Gates
+  Pretty:
+    Text: the {Gerudo Desert Northwest Chest Behind Gates}
+  Cryptic:
+    Text: the {Gerudo Desert Northwest Chest Behind Gates}
+
+Gerudo Desert North Small Chest Before Bulblin Camp:
+  Standard:
+    Text: Gerudo Desert North Small Chest Before Bulblin Camp
+  Pretty:
+    Text: the {Gerudo Desert North Small Chest Before Bulblin Camp}
+  Cryptic:
+    Text: the {Gerudo Desert North Small Chest Before Bulblin Camp}
+
+Gerudo Desert Golden Wolf:
+  Standard:
+    Text: Gerudo Desert Golden Wolf
+  Pretty:
+    Text: the {Gerudo Desert Golden Wolf}
+  Cryptic:
+    Text: the {Gerudo Desert Golden Wolf}
+
+Outside Bulblin Camp Poe:
+  Standard:
+    Text: Outside Bulblin Camp Poe
+  Pretty:
+    Text: the {Outside Bulblin Camp Poe}
+  Cryptic:
+    Text: the {Outside Bulblin Camp Poe}
+
+Bulblin Camp First Chest Under Tower At Entrance:
+  Standard:
+    Text: Bulblin Camp First Chest Under Tower At Entrance
+  Pretty:
+    Text: the {Bulblin Camp First Chest Under Tower At Entrance}
+  Cryptic:
+    Text: the {Bulblin Camp First Chest Under Tower At Entrance}
+
+Bulblin Camp Small Chest in Back of Camp:
+  Standard:
+    Text: Bulblin Camp Small Chest in Back of Camp
+  Pretty:
+    Text: the {Bulblin Camp Small Chest in Back of Camp}
+  Cryptic:
+    Text: the {Bulblin Camp Small Chest in Back of Camp}
+
+Bulblin Camp Roasted Boar:
+  Standard:
+    Text: Bulblin Camp Roasted Boar
+  Pretty:
+    Text: the {Bulblin Camp Roasted Boar}
+  Cryptic:
+    Text: the {Bulblin Camp Roasted Boar}
+
+Bulblin Guard Key:
+  Standard:
+    Text: Bulblin Guard Key
+  Pretty:
+    Text: the {Bulblin Guard Key}
+  Cryptic:
+    Text: the {Bulblin Guard Key}
+
+Bulblin Camp Poe:
+  Standard:
+    Text: Bulblin Camp Poe
+  Pretty:
+    Text: the {Bulblin Camp Poe}
+  Cryptic:
+    Text: the {Bulblin Camp Poe}
+
+Outside Arbiters Grounds Lantern Chest:
+  Standard:
+    Text: Outside Arbiters Grounds Lantern Chest
+  Pretty:
+    Text: the {Outside Arbiters Grounds Lantern Chest}
+  Cryptic:
+    Text: the {Outside Arbiters Grounds Lantern Chest}
+
+Outside Arbiters Grounds Poe:
+  Standard:
+    Text: Outside Arbiters Grounds Poe
+  Pretty:
+    Text: the {Outside Arbiters Grounds Poe}
+  Cryptic:
+    Text: the {Outside Arbiters Grounds Poe}
+
+# HD Only Locations
+# Cave of Ordeals Floor 10 Chest:
+#   Standard:
+#     Text: Cave of Ordeals Floor 10 Chest
+#   Pretty:
+#     Text: the {Cave of Ordeals Floor 10 Chest}
+#   Cryptic:
+#     Text: the {Cave of Ordeals Floor 10 Chest}
+
+# Cave of Ordeals Floor 20 Chest:
+#   Standard:
+#     Text: Cave of Ordeals Floor 20 Chest
+#   Pretty:
+#     Text: the {Cave of Ordeals Floor 20 Chest}
+#   Cryptic:
+#     Text: the {Cave of Ordeals Floor 20 Chest}
+
+# Cave of Ordeals Floor 30 Chest:
+#   Standard:
+#     Text: Cave of Ordeals Floor 30 Chest
+#   Pretty:
+#     Text: the {Cave of Ordeals Floor 30 Chest}
+#   Cryptic:
+#     Text: the {Cave of Ordeals Floor 30 Chest}
+
+# Cave of Ordeals Floor 40 Chest:
+#   Standard:
+#     Text: Cave of Ordeals Floor 40 Chest
+#   Pretty:
+#     Text: the {Cave of Ordeals Floor 40 Chest}
+#   Cryptic:
+#     Text: the {Cave of Ordeals Floor 40 Chest}
+
+# Cave of Ordeals Floor 50 Chest:
+#   Standard:
+#     Text: Cave of Ordeals Floor 50 Chest
+#   Pretty:
+#     Text: the {Cave of Ordeals Floor 50 Chest}
+#   Cryptic:
+#     Text: the {Cave of Ordeals Floor 50 Chest}
+
+Cave of Ordeals Floor 17 Poe:
+  Standard:
+    Text: Cave of Ordeals Floor 17 Poe
+  Pretty:
+    Text: the {Cave of Ordeals Floor 17 Poe}
+  Cryptic:
+    Text: the {Cave of Ordeals Floor 17 Poe}
+
+Cave of Ordeals Floor 33 Poe:
+  Standard:
+    Text: Cave of Ordeals Floor 33 Poe
+  Pretty:
+    Text: the {Cave of Ordeals Floor 33 Poe}
+  Cryptic:
+    Text: the {Cave of Ordeals Floor 33 Poe}
+
+Cave of Ordeals Floor 44 Poe:
+  Standard:
+    Text: Cave of Ordeals Floor 44 Poe
+  Pretty:
+    Text: the {Cave of Ordeals Floor 44 Poe}
+  Cryptic:
+    Text: the {Cave of Ordeals Floor 44 Poe}
+
+Cave of Ordeals Great Fairy Reward:
+  Standard:
+    Text: Cave of Ordeals Great Fairy Reward
+  Pretty:
+    Text: visiting the {Cave of Ordeals Great Fairy}
+  Cryptic:
+    Text: visiting the {Cave of Ordeals Great Fairy}
+
+Mirror Chamber Warp Portal:
+  Standard:
+    Text: Mirror Chamber Warp Portal
+  Pretty:
+    Text: the {Mirror Chamber Warp Portal}
+  Cryptic:
+    Text: the {Mirror Chamber Warp Portal}
+
+Forest Temple Entrance Vines Chest:
+  Standard:
+    Text: Forest Temple Entrance Vines Chest
+  Pretty:
+    Text: the {Forest Temple Entrance Vines Chest}
+  Cryptic:
+    Text: the {Forest Temple Entrance Vines Chest}
+
+Forest Temple Central Chest Hanging From Web:
+  Standard:
+    Text: Forest Temple Central Chest Hanging From Web
+  Pretty:
+    Text: the {Forest Temple Central Chest Hanging From Web}
+  Cryptic:
+    Text: the {Forest Temple Central Chest Hanging From Web}
+
+Forest Temple Central Chest Behind Stairs:
+  Standard:
+    Text: Forest Temple Central Chest Behind Stairs
+  Pretty:
+    Text: the {Forest Temple Central Chest Behind Stairs}
+  Cryptic:
+    Text: the {Forest Temple Central Chest Behind Stairs}
+
+Forest Temple Central North Chest:
+  Standard:
+    Text: Forest Temple Central North Chest
+  Pretty:
+    Text: the {Forest Temple Central North Chest}
+  Cryptic:
+    Text: the {Forest Temple Central North Chest}
+
+Forest Temple West Deku Like Chest:
+  Standard:
+    Text: Forest Temple West Deku Like Chest
+  Pretty:
+    Text: the {Forest Temple West Deku Like Chest}
+  Cryptic:
+    Text: the {Forest Temple West Deku Like Chest}
+
+Forest Temple Big Baba Key:
+  Standard:
+    Text: Forest Temple Big Baba Key
+  Pretty:
+    Text: the {Forest Temple Big Baba Key}
+  Cryptic:
+    Text: the {Forest Temple Big Baba Key}
+
+Forest Temple Totem Pole Chest:
+  Standard:
+    Text: Forest Temple Totem Pole Chest
+  Pretty:
+    Text: the {Forest Temple Totem Pole Chest}
+  Cryptic:
+    Text: the {Forest Temple Totem Pole Chest}
+
+Forest Temple West Tile Worm Chest Behind Stairs:
+  Standard:
+    Text: Forest Temple West Tile Worm Chest Behind Stairs
+  Pretty:
+    Text: the {Forest Temple West Tile Worm Chest Behind Stairs}
+  Cryptic:
+    Text: the {Forest Temple West Tile Worm Chest Behind Stairs}
+
+Forest Temple West Tile Worm Room Vines Chest:
+  Standard:
+    Text: Forest Temple West Tile Worm Room Vines Chest
+  Pretty:
+    Text: the {Forest Temple West Tile Worm Room Vines Chest}
+  Cryptic:
+    Text: the {Forest Temple West Tile Worm Room Vines Chest}
+
+Forest Temple Gale Boomerang:
+  Standard:
+    Text: Forest Temple Gale Boomerang
+  Pretty:
+    Text: the {Forest Temple Gale Boomerang}
+  Cryptic:
+    Text: the {Forest Temple Gale Boomerang}
+
+Forest Temple Big Key Chest:
+  Standard:
+    Text: Forest Temple Big Key Chest
+  Pretty:
+    Text: the {Forest Temple Big Key Chest}
+  Cryptic:
+    Text: the {Forest Temple Big Key Chest}
+
+Forest Temple East Water Cave Chest:
+  Standard:
+    Text: Forest Temple East Water Cave Chest
+  Pretty:
+    Text: the {Forest Temple East Water Cave Chest}
+  Cryptic:
+    Text: the {Forest Temple East Water Cave Chest}
+
+Forest Temple Second Monkey Under Bridge Chest:
+  Standard:
+    Text: Forest Temple Second Monkey Under Bridge Chest
+  Pretty:
+    Text: the {Forest Temple Second Monkey Under Bridge Chest}
+  Cryptic:
+    Text: the {Forest Temple Second Monkey Under Bridge Chest}
+
+Forest Temple Windless Bridge Chest:
+  Standard:
+    Text: Forest Temple Windless Bridge Chest
+  Pretty:
+    Text: the {Forest Temple Windless Bridge Chest}
+  Cryptic:
+    Text: the {Forest Temple Windless Bridge Chest}
+
+Forest Temple East Tile Worm Chest:
+  Standard:
+    Text: Forest Temple East Tile Worm Chest
+  Pretty:
+    Text: the {Forest Temple East Tile Worm Chest}
+  Cryptic:
+    Text: the {Forest Temple East Tile Worm Chest}
+
+Forest Temple North Deku Like Chest:
+  Standard:
+    Text: Forest Temple North Deku Like Chest
+  Pretty:
+    Text: the {Forest Temple North Deku Like Chest}
+  Cryptic:
+    Text: the {Forest Temple North Deku Like Chest}
+
+Forest Temple Diababa Heart Container:
+  Standard:
+    Text: Forest Temple Diababa Heart Container
+  Pretty:
+    Text: the {Forest Temple Diababa Heart Container}
+  Cryptic:
+    Text: the {Forest Temple Diababa Heart Container}
+
+Forest Temple Dungeon Reward:
+  Standard:
+    Text: Forest Temple Dungeon Reward
+  Pretty:
+    Text: the {Forest Temple Dungeon Reward}
+  Cryptic:
+    Text: the {Forest Temple Dungeon Reward}
+
+Goron Mines Entrance Chest:
+  Standard:
+    Text: Goron Mines Entrance Chest
+  Pretty:
+    Text: the {Goron Mines Entrance Chest}
+  Cryptic:
+    Text: the {Goron Mines Entrance Chest}
+
+Goron Mines Main Magnet Room Bottom Chest:
+  Standard:
+    Text: Goron Mines Main Magnet Room Bottom Chest
+  Pretty:
+    Text: the {Goron Mines Main Magnet Room Bottom Chest}
+  Cryptic:
+    Text: the {Goron Mines Main Magnet Room Bottom Chest}
+
+Goron Mines Gor Amato Key Shard:
+  Standard:
+    Text: Goron Mines Gor Amato Key Shard
+  Pretty:
+    Text: the {Goron Mines Gor Amato Key Shard}
+  Cryptic:
+    Text: the {Goron Mines Gor Amato Key Shard}
+
+Goron Mines Gor Amato Chest:
+  Standard:
+    Text: Goron Mines Gor Amato Chest
+  Pretty:
+    Text: the {Goron Mines Gor Amato Chest}
+  Cryptic:
+    Text: the {Goron Mines Gor Amato Chest}
+
+Goron Mines Gor Amato Small Chest:
+  Standard:
+    Text: Goron Mines Gor Amato Small Chest
+  Pretty:
+    Text: the {Goron Mines Gor Amato Small Chest}
+  Cryptic:
+    Text: the {Goron Mines Gor Amato Small Chest}
+
+Goron Mines Magnet Maze Chest:
+  Standard:
+    Text: Goron Mines Magnet Maze Chest
+  Pretty:
+    Text: the {Goron Mines Magnet Maze Chest}
+  Cryptic:
+    Text: the {Goron Mines Magnet Maze Chest}
+
+Goron Mines Crystal Switch Room Underwater Chest:
+  Standard:
+    Text: Goron Mines Crystal Switch Room Underwater Chest
+  Pretty:
+    Text: the {Goron Mines Crystal Switch Room Underwater Chest}
+  Cryptic:
+    Text: the {Goron Mines Crystal Switch Room Underwater Chest}
+
+Goron Mines Crystal Switch Room Small Chest:
+  Standard:
+    Text: Goron Mines Crystal Switch Room Small Chest
+  Pretty:
+    Text: the {Goron Mines Crystal Switch Room Small Chest}
+  Cryptic:
+    Text: the {Goron Mines Crystal Switch Room Small Chest}
+
+Goron Mines After Crystal Switch Room Magnet Wall Chest:
+  Standard:
+    Text: Goron Mines After Crystal Switch Room Magnet Wall Chest
+  Pretty:
+    Text: the {Goron Mines After Crystal Switch Room Magnet Wall Chest}
+  Cryptic:
+    Text: the {Goron Mines After Crystal Switch Room Magnet Wall Chest}
+
+Goron Mines Outside Beamos Chest:
+  Standard:
+    Text: Goron Mines Outside Beamos Chest
+  Pretty:
+    Text: the {Goron Mines Outside Beamos Chest}
+  Cryptic:
+    Text: the {Goron Mines Outside Beamos Chest}
+
+Goron Mines Outside Underwater Chest:
+  Standard:
+    Text: Goron Mines Outside Underwater Chest
+  Pretty:
+    Text: the {Goron Mines Outside Underwater Chest}
+  Cryptic:
+    Text: the {Goron Mines Outside Underwater Chest}
+
+Goron Mines Outside Clawshot Chest:
+  Standard:
+    Text: Goron Mines Outside Clawshot Chest
+  Pretty:
+    Text: the {Goron Mines Outside Clawshot Chest}
+  Cryptic:
+    Text: the {Goron Mines Outside Clawshot Chest}
+
+Goron Mines Gor Ebizo Key Shard:
+  Standard:
+    Text: Goron Mines Gor Ebizo Key Shard
+  Pretty:
+    Text: the {Goron Mines Gor Ebizo Key Shard}
+  Cryptic:
+    Text: the {Goron Mines Gor Ebizo Key Shard}
+
+Goron Mines Gor Ebizo Chest:
+  Standard:
+    Text: Goron Mines Gor Ebizo Chest
+  Pretty:
+    Text: the {Goron Mines Gor Ebizo Chest}
+  Cryptic:
+    Text: the {Goron Mines Gor Ebizo Chest}
+
+Goron Mines Chest Before Dangoro:
+  Standard:
+    Text: Goron Mines Chest Before Dangoro
+  Pretty:
+    Text: the {Goron Mines Chest Before Dangoro}
+  Cryptic:
+    Text: the {Goron Mines Chest Before Dangoro}
+
+Goron Mines Dangoro Chest:
+  Standard:
+    Text: Goron Mines Dangoro Chest
+  Pretty:
+    Text: the {Goron Mines Dangoro Chest}
+  Cryptic:
+    Text: the {Goron Mines Dangoro Chest}
+
+Goron Mines Beamos Room Chest:
+  Standard:
+    Text: Goron Mines Beamos Room Chest
+  Pretty:
+    Text: the {Goron Mines Beamos Room Chest}
+  Cryptic:
+    Text: the {Goron Mines Beamos Room Chest}
+
+Goron Mines Gor Liggs Key Shard:
+  Standard:
+    Text: Goron Mines Gor Liggs Key Shard
+  Pretty:
+    Text: the {Goron Mines Gor Liggs Key Shard}
+  Cryptic:
+    Text: the {Goron Mines Gor Liggs Key Shard}
+
+Goron Mines Gor Liggs Chest:
+  Standard:
+    Text: Goron Mines Gor Liggs Chest
+  Pretty:
+    Text: the {Goron Mines Gor Liggs Chest}
+  Cryptic:
+    Text: the {Goron Mines Gor Liggs Chest}
+
+Goron Mines Main Magnet Room Top Chest:
+  Standard:
+    Text: Goron Mines Main Magnet Room Top Chest
+  Pretty:
+    Text: the {Goron Mines Main Magnet Room Top Chest}
+  Cryptic:
+    Text: the {Goron Mines Main Magnet Room Top Chest}
+
+Goron Mines Fyrus Heart Container:
+  Standard:
+    Text: Goron Mines Fyrus Heart Container
+  Pretty:
+    Text: the {Goron Mines Fyrus Heart Container}
+  Cryptic:
+    Text: the {Goron Mines Fyrus Heart Container}
+
+Goron Mines Dungeon Reward:
+  Standard:
+    Text: Goron Mines Dungeon Reward
+  Pretty:
+    Text: the {Goron Mines Dungeon Reward}
+  Cryptic:
+    Text: the {Goron Mines Dungeon Reward}
+
+Lakebed Temple Lobby Left Chest:
+  Standard:
+    Text: Lakebed Temple Lobby Left Chest
+  Pretty:
+    Text: the {Lakebed Temple Lobby Left Chest}
+  Cryptic:
+    Text: the {Lakebed Temple Lobby Left Chest}
+
+Lakebed Temple Lobby Rear Chest:
+  Standard:
+    Text: Lakebed Temple Lobby Rear Chest
+  Pretty:
+    Text: the {Lakebed Temple Lobby Rear Chest}
+  Cryptic:
+    Text: the {Lakebed Temple Lobby Rear Chest}
+
+Lakebed Temple Stalactite Room Chest:
+  Standard:
+    Text: Lakebed Temple Stalactite Room Chest
+  Pretty:
+    Text: the {Lakebed Temple Stalactite Room Chest}
+  Cryptic:
+    Text: the {Lakebed Temple Stalactite Room Chest}
+
+Lakebed Temple Chandelier Chest:
+  Standard:
+    Text: Lakebed Temple Chandelier Chest
+  Pretty:
+    Text: the {Lakebed Temple Chandelier Chest}
+  Cryptic:
+    Text: the {Lakebed Temple Chandelier Chest}
+
+Lakebed Temple Central Room Spire Chest:
+  Standard:
+    Text: Lakebed Temple Central Room Spire Chest
+  Pretty:
+    Text: the {Lakebed Temple Central Room Spire Chest}
+  Cryptic:
+    Text: the {Lakebed Temple Central Room Spire Chest}
+
+Lakebed Temple Central Room Chest:
+  Standard:
+    Text: Lakebed Temple Central Room Chest
+  Pretty:
+    Text: the {Lakebed Temple Central Room Chest}
+  Cryptic:
+    Text: the {Lakebed Temple Central Room Chest}
+
+Lakebed Temple Central Room Small Chest:
+  Standard:
+    Text: Lakebed Temple Central Room Small Chest
+  Pretty:
+    Text: the {Lakebed Temple Central Room Small Chest}
+  Cryptic:
+    Text: the {Lakebed Temple Central Room Small Chest}
+
+Lakebed Temple East Lower Waterwheel Stalactite Chest:
+  Standard:
+    Text: Lakebed Temple East Lower Waterwheel Stalactite Chest
+  Pretty:
+    Text: the {Lakebed Temple East Lower Waterwheel Stalactite Chest}
+  Cryptic:
+    Text: the {Lakebed Temple East Lower Waterwheel Stalactite Chest}
+
+Lakebed Temple East Lower Waterwheel Bridge Chest:
+  Standard:
+    Text: Lakebed Temple East Lower Waterwheel Bridge Chest
+  Pretty:
+    Text: the {Lakebed Temple East Lower Waterwheel Bridge Chest}
+  Cryptic:
+    Text: the {Lakebed Temple East Lower Waterwheel Bridge Chest}
+
+Lakebed Temple East Second Floor Southeast Chest:
+  Standard:
+    Text: Lakebed Temple East Second Floor Southeast Chest
+  Pretty:
+    Text: the {Lakebed Temple East Second Floor Southeast Chest}
+  Cryptic:
+    Text: the {Lakebed Temple East Second Floor Southeast Chest}
+
+Lakebed Temple East Second Floor Southwest Chest:
+  Standard:
+    Text: Lakebed Temple East Second Floor Southwest Chest
+  Pretty:
+    Text: the {Lakebed Temple East Second Floor Southwest Chest}
+  Cryptic:
+    Text: the {Lakebed Temple East Second Floor Southwest Chest}
+
+Lakebed Temple East Water Supply Small Chest:
+  Standard:
+    Text: Lakebed Temple East Water Supply Small Chest
+  Pretty:
+    Text: the {Lakebed Temple East Water Supply Small Chest}
+  Cryptic:
+    Text: the {Lakebed Temple East Water Supply Small Chest}
+
+Lakebed Temple East Water Supply Clawshot Chest:
+  Standard:
+    Text: Lakebed Temple East Water Supply Clawshot Chest
+  Pretty:
+    Text: the {Lakebed Temple East Water Supply Clawshot Chest}
+  Cryptic:
+    Text: the {Lakebed Temple East Water Supply Clawshot Chest}
+
+Lakebed Temple Before Deku Toad Alcove Chest:
+  Standard:
+    Text: Lakebed Temple Before Deku Toad Alcove Chest
+  Pretty:
+    Text: the {Lakebed Temple Before Deku Toad Alcove Chest}
+  Cryptic:
+    Text: the {Lakebed Temple Before Deku Toad Alcove Chest}
+
+Lakebed Temple Before Deku Toad Underwater Left Chest:
+  Standard:
+    Text: Lakebed Temple Before Deku Toad Underwater Left Chest
+  Pretty:
+    Text: the {Lakebed Temple Before Deku Toad Underwater Left Chest}
+  Cryptic:
+    Text: the {Lakebed Temple Before Deku Toad Underwater Left Chest}
+
+Lakebed Temple Before Deku Toad Underwater Right Chest:
+  Standard:
+    Text: Lakebed Temple Before Deku Toad Underwater Right Chest
+  Pretty:
+    Text: the {Lakebed Temple Before Deku Toad Underwater Right Chest}
+  Cryptic:
+    Text: the {Lakebed Temple Before Deku Toad Underwater Right Chest}
+
+Lakebed Temple Deku Toad Chest:
+  Standard:
+    Text: Lakebed Temple Deku Toad Chest
+  Pretty:
+    Text: the {Lakebed Temple Deku Toad Chest}
+  Cryptic:
+    Text: the {Lakebed Temple Deku Toad Chest}
+
+Lakebed Temple West Lower Small Chest:
+  Standard:
+    Text: Lakebed Temple West Lower Small Chest
+  Pretty:
+    Text: the {Lakebed Temple West Lower Small Chest}
+  Cryptic:
+    Text: the {Lakebed Temple West Lower Small Chest}
+
+Lakebed Temple West Second Floor Central Small Chest:
+  Standard:
+    Text: Lakebed Temple West Second Floor Central Small Chest
+  Pretty:
+    Text: the {Lakebed Temple West Second Floor Central Small Chest}
+  Cryptic:
+    Text: the {Lakebed Temple West Second Floor Central Small Chest}
+
+Lakebed Temple West Second Floor Northeast Chest:
+  Standard:
+    Text: Lakebed Temple West Second Floor Northeast Chest
+  Pretty:
+    Text: the {Lakebed Temple West Second Floor Northeast Chest}
+  Cryptic:
+    Text: the {Lakebed Temple West Second Floor Northeast Chest}
+
+Lakebed Temple West Second Floor Southeast Chest:
+  Standard:
+    Text: Lakebed Temple West Second Floor Southeast Chest
+  Pretty:
+    Text: the {Lakebed Temple West Second Floor Southeast Chest}
+  Cryptic:
+    Text: the {Lakebed Temple West Second Floor Southeast Chest}
+
+Lakebed Temple West Second Floor Southwest Underwater Chest:
+  Standard:
+    Text: Lakebed Temple West Second Floor Southwest Underwater Chest
+  Pretty:
+    Text: the {Lakebed Temple West Second Floor Southwest Underwater Chest}
+  Cryptic:
+    Text: the {Lakebed Temple West Second Floor Southwest Underwater Chest}
+
+Lakebed Temple West Water Supply Small Chest:
+  Standard:
+    Text: Lakebed Temple West Water Supply Small Chest
+  Pretty:
+    Text: the {Lakebed Temple West Water Supply Small Chest}
+  Cryptic:
+    Text: the {Lakebed Temple West Water Supply Small Chest}
+
+Lakebed Temple West Water Supply Chest:
+  Standard:
+    Text: Lakebed Temple West Water Supply Chest
+  Pretty:
+    Text: the {Lakebed Temple West Water Supply Chest}
+  Cryptic:
+    Text: the {Lakebed Temple West Water Supply Chest}
+
+Lakebed Temple Underwater Maze Small Chest:
+  Standard:
+    Text: Lakebed Temple Underwater Maze Small Chest
+  Pretty:
+    Text: the {Lakebed Temple Underwater Maze Small Chest}
+  Cryptic:
+    Text: the {Lakebed Temple Underwater Maze Small Chest}
+
+Lakebed Temple Big Key Chest:
+  Standard:
+    Text: Lakebed Temple Big Key Chest
+  Pretty:
+    Text: the {Lakebed Temple Big Key Chest}
+  Cryptic:
+    Text: the {Lakebed Temple Big Key Chest}
+
+Lakebed Temple Morpheel Heart Container:
+  Standard:
+    Text: Lakebed Temple Morpheel Heart Container
+  Pretty:
+    Text: the {Lakebed Temple Morpheel Heart Container}
+  Cryptic:
+    Text: the {Lakebed Temple Morpheel Heart Container}
+
+Lakebed Temple Dungeon Reward:
+  Standard:
+    Text: Lakebed Temple Dungeon Reward
+  Pretty:
+    Text: the {Lakebed Temple Dungeon Reward}
+  Cryptic:
+    Text: the {Lakebed Temple Dungeon Reward}
+
+Arbiters Grounds Entrance Chest:
+  Standard:
+    Text: Arbiters Grounds Entrance Chest
+  Pretty:
+    Text: the {Arbiters Grounds Entrance Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds Entrance Chest}
+
+Arbiters Grounds Torch Room Poe:
+  Standard:
+    Text: Arbiters Grounds Torch Room Poe
+  Pretty:
+    Text: the {Arbiters Grounds Torch Room Poe}
+  Cryptic:
+    Text: the {Arbiters Grounds Torch Room Poe}
+
+Arbiters Grounds Torch Room East Chest:
+  Standard:
+    Text: Arbiters Grounds Torch Room East Chest
+  Pretty:
+    Text: the {Arbiters Grounds Torch Room East Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds Torch Room East Chest}
+
+Arbiters Grounds Torch Room West Chest:
+  Standard:
+    Text: Arbiters Grounds Torch Room West Chest
+  Pretty:
+    Text: the {Arbiters Grounds Torch Room West Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds Torch Room West Chest}
+
+Arbiters Grounds West Small Chest Behind Block:
+  Standard:
+    Text: Arbiters Grounds West Small Chest Behind Block
+  Pretty:
+    Text: the {Arbiters Grounds West Small Chest Behind Block}
+  Cryptic:
+    Text: the {Arbiters Grounds West Small Chest Behind Block}
+
+Arbiters Grounds East Lower Turnable Redead Chest:
+  Standard:
+    Text: Arbiters Grounds East Lower Turnable Redead Chest
+  Pretty:
+    Text: the {Arbiters Grounds East Lower Turnable Redead Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds East Lower Turnable Redead Chest}
+
+Arbiters Grounds East Turning Room Poe:
+  Standard:
+    Text: Arbiters Grounds East Turning Room Poe
+  Pretty:
+    Text: the {Arbiters Grounds East Turning Room Poe}
+  Cryptic:
+    Text: the {Arbiters Grounds East Turning Room Poe}
+
+Arbiters Grounds East Upper Turnable Chest:
+  Standard:
+    Text: Arbiters Grounds East Upper Turnable Chest
+  Pretty:
+    Text: the {Arbiters Grounds East Upper Turnable Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds East Upper Turnable Chest}
+
+Arbiters Grounds East Upper Turnable Redead Chest:
+  Standard:
+    Text: Arbiters Grounds East Upper Turnable Redead Chest
+  Pretty:
+    Text: the {Arbiters Grounds East Upper Turnable Redead Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds East Upper Turnable Redead Chest}
+
+Arbiters Grounds Hidden Wall Poe:
+  Standard:
+    Text: Arbiters Grounds Hidden Wall Poe
+  Pretty:
+    Text: the {Arbiters Grounds Hidden Wall Poe}
+  Cryptic:
+    Text: the {Arbiters Grounds Hidden Wall Poe}
+
+Arbiters Grounds Ghoul Rat Room Chest:
+  Standard:
+    Text: Arbiters Grounds Ghoul Rat Room Chest
+  Pretty:
+    Text: the {Arbiters Grounds Ghoul Rat Room Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds Ghoul Rat Room Chest}
+
+Arbiters Grounds West Chandelier Chest:
+  Standard:
+    Text: Arbiters Grounds West Chandelier Chest
+  Pretty:
+    Text: the {Arbiters Grounds West Chandelier Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds West Chandelier Chest}
+
+Arbiters Grounds West Stalfos Northeast Chest:
+  Standard:
+    Text: Arbiters Grounds West Stalfos Northeast Chest
+  Pretty:
+    Text: the {Arbiters Grounds West Stalfos Northeast Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds West Stalfos Northeast Chest}
+
+Arbiters Grounds West Stalfos West Chest:
+  Standard:
+    Text: Arbiters Grounds West Stalfos West Chest
+  Pretty:
+    Text: the {Arbiters Grounds West Stalfos West Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds West Stalfos West Chest}
+
+Arbiters Grounds West Poe:
+  Standard:
+    Text: Arbiters Grounds West Poe
+  Pretty:
+    Text: the {Arbiters Grounds West Poe}
+  Cryptic:
+    Text: the {Arbiters Grounds West Poe}
+
+Arbiters Grounds North Turning Room Chest:
+  Standard:
+    Text: Arbiters Grounds North Turning Room Chest
+  Pretty:
+    Text: the {Arbiters Grounds North Turning Room Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds North Turning Room Chest}
+
+Arbiters Grounds Death Sword Chest:
+  Standard:
+    Text: Arbiters Grounds Death Sword Chest
+  Pretty:
+    Text: the {Arbiters Grounds Death Sword Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds Death Sword Chest}
+
+Arbiters Grounds Spinner Room First Small Chest:
+  Standard:
+    Text: Arbiters Grounds Spinner Room First Small Chest
+  Pretty:
+    Text: the {Arbiters Grounds Spinner Room First Small Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds Spinner Room First Small Chest}
+
+Arbiters Grounds Spinner Room Second Small Chest:
+  Standard:
+    Text: Arbiters Grounds Spinner Room Second Small Chest
+  Pretty:
+    Text: the {Arbiters Grounds Spinner Room Second Small Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds Spinner Room Second Small Chest}
+
+Arbiters Grounds Spinner Room Lower Central Small Chest:
+  Standard:
+    Text: Arbiters Grounds Spinner Room Lower Central Small Chest
+  Pretty:
+    Text: the {Arbiters Grounds Spinner Room Lower Central Small Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds Spinner Room Lower Central Small Chest}
+
+Arbiters Grounds Spinner Room Stalfos Alcove Chest:
+  Standard:
+    Text: Arbiters Grounds Spinner Room Stalfos Alcove Chest
+  Pretty:
+    Text: the {Arbiters Grounds Spinner Room Stalfos Alcove Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds Spinner Room Stalfos Alcove Chest}
+
+Arbiters Grounds Spinner Room Lower North Chest:
+  Standard:
+    Text: Arbiters Grounds Spinner Room Lower North Chest
+  Pretty:
+    Text: the {Arbiters Grounds Spinner Room Lower North Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds Spinner Room Lower North Chest}
+
+Arbiters Grounds Big Key Chest:
+  Standard:
+    Text: Arbiters Grounds Big Key Chest
+  Pretty:
+    Text: the {Arbiters Grounds Big Key Chest}
+  Cryptic:
+    Text: the {Arbiters Grounds Big Key Chest}
+
+Arbiters Grounds Stallord Heart Container:
+  Standard:
+    Text: Arbiters Grounds Stallord Heart Container
+  Pretty:
+    Text: the {Arbiters Grounds Stallord Heart Container}
+  Cryptic:
+    Text: the {Arbiters Grounds Stallord Heart Container}
+
+Arbiters Grounds Dungeon Reward:
+  Standard:
+    Text: Arbiters Grounds Dungeon Reward
+  Pretty:
+    Text: the {Arbiters Grounds Dungeon Reward}
+  Cryptic:
+    Text: the {Arbiters Grounds Dungeon Reward}
+
+Snowpeak Ruins Lobby West Armor Chest:
+  Standard:
+    Text: Snowpeak Ruins Lobby West Armor Chest
+  Pretty:
+    Text: the {Snowpeak Ruins Lobby West Armor Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins Lobby West Armor Chest}
+
+Snowpeak Ruins Lobby East Armor Chest:
+  Standard:
+    Text: Snowpeak Ruins Lobby East Armor Chest
+  Pretty:
+    Text: the {Snowpeak Ruins Lobby East Armor Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins Lobby East Armor Chest}
+
+Snowpeak Ruins Lobby Armor Poe:
+  Standard:
+    Text: Snowpeak Ruins Lobby Armor Poe
+  Pretty:
+    Text: the {Snowpeak Ruins Lobby Armor Poe}
+  Cryptic:
+    Text: the {Snowpeak Ruins Lobby Armor Poe}
+
+Snowpeak Ruins Lobby Poe:
+  Standard:
+    Text: Snowpeak Ruins Lobby Poe
+  Pretty:
+    Text: the {Snowpeak Ruins Lobby Poe}
+  Cryptic:
+    Text: the {Snowpeak Ruins Lobby Poe}
+
+Snowpeak Ruins Lobby Chandelier Chest:
+  Standard:
+    Text: Snowpeak Ruins Lobby Chandelier Chest
+  Pretty:
+    Text: the {Snowpeak Ruins Lobby Chandelier Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins Lobby Chandelier Chest}
+
+Snowpeak Ruins Mansion Map:
+  Standard:
+    Text: Snowpeak Ruins Mansion Map
+  Pretty:
+    Text: the {Snowpeak Ruins Mansion Map}
+  Cryptic:
+    Text: the {Snowpeak Ruins Mansion Map}
+
+Snowpeak Ruins East Courtyard Chest:
+  Standard:
+    Text: Snowpeak Ruins East Courtyard Chest
+  Pretty:
+    Text: the {Snowpeak Ruins East Courtyard Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins East Courtyard Chest}
+
+Snowpeak Ruins East Courtyard Buried Chest:
+  Standard:
+    Text: Snowpeak Ruins East Courtyard Buried Chest
+  Pretty:
+    Text: the {Snowpeak Ruins East Courtyard Buried Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins East Courtyard Buried Chest}
+
+Snowpeak Ruins Ordon Pumpkin Chest:
+  Standard:
+    Text: Snowpeak Ruins Ordon Pumpkin Chest
+  Pretty:
+    Text: the {Snowpeak Ruins Ordon Pumpkin Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins Ordon Pumpkin Chest}
+
+Snowpeak Ruins Courtyard Central Chest:
+  Standard:
+    Text: Snowpeak Ruins Courtyard Central Chest
+  Pretty:
+    Text: the {Snowpeak Ruins Courtyard Central Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins Courtyard Central Chest}
+
+Snowpeak Ruins West Courtyard Buried Chest:
+  Standard:
+    Text: Snowpeak Ruins West Courtyard Buried Chest
+  Pretty:
+    Text: the {Snowpeak Ruins West Courtyard Buried Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins West Courtyard Buried Chest}
+
+Snowpeak Ruins West Cannon Room Central Chest:
+  Standard:
+    Text: Snowpeak Ruins West Cannon Room Central Chest
+  Pretty:
+    Text: the {Snowpeak Ruins West Cannon Room Central Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins West Cannon Room Central Chest}
+
+Snowpeak Ruins West Cannon Room Corner Chest:
+  Standard:
+    Text: Snowpeak Ruins West Cannon Room Corner Chest
+  Pretty:
+    Text: the {Snowpeak Ruins West Cannon Room Corner Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins West Cannon Room Corner Chest}
+
+Snowpeak Ruins Wooden Beam Central Chest:
+  Standard:
+    Text: Snowpeak Ruins Wooden Beam Central Chest
+  Pretty:
+    Text: the {Snowpeak Ruins Wooden Beam Central Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins Wooden Beam Central Chest}
+
+Snowpeak Ruins Wooden Beam Chandelier Chest:
+  Standard:
+    Text: Snowpeak Ruins Wooden Beam Chandelier Chest
+  Pretty:
+    Text: the {Snowpeak Ruins Wooden Beam Chandelier Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins Wooden Beam Chandelier Chest}
+
+Snowpeak Ruins Wooden Beam Northwest Chest:
+  Standard:
+    Text: Snowpeak Ruins Wooden Beam Northwest Chest
+  Pretty:
+    Text: the {Snowpeak Ruins Wooden Beam Northwest Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins Wooden Beam Northwest Chest}
+
+Snowpeak Ruins Ball and Chain:
+  Standard:
+    Text: Snowpeak Ruins Ball and Chain
+  Pretty:
+    Text: the {Snowpeak Ruins Ball and Chain} pickup
+  Cryptic:
+    Text: the {Snowpeak Ruins Ball and Chain} pickup
+
+Snowpeak Ruins Chest After Darkhammer:
+  Standard:
+    Text: Snowpeak Ruins Chest After Darkhammer
+  Pretty:
+    Text: the {Snowpeak Ruins Chest After Darkhammer}
+  Cryptic:
+    Text: the {Snowpeak Ruins Chest After Darkhammer}
+
+Snowpeak Ruins Broken Floor Chest:
+  Standard:
+    Text: Snowpeak Ruins Broken Floor Chest
+  Pretty:
+    Text: the {Snowpeak Ruins Broken Floor Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins Broken Floor Chest}
+
+Snowpeak Ruins Ice Room Poe:
+  Standard:
+    Text: Snowpeak Ruins Ice Room Poe
+  Pretty:
+    Text: the {Snowpeak Ruins Ice Room Poe}
+  Cryptic:
+    Text: the {Snowpeak Ruins Ice Room Poe}
+
+Snowpeak Ruins Northeast Chandelier Chest:
+  Standard:
+    Text: Snowpeak Ruins Northeast Chandelier Chest
+  Pretty:
+    Text: the {Snowpeak Ruins Northeast Chandelier Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins Northeast Chandelier Chest}
+
+Snowpeak Ruins Chapel Chest:
+  Standard:
+    Text: Snowpeak Ruins Chapel Chest
+  Pretty:
+    Text: the {Snowpeak Ruins Chapel Chest}
+  Cryptic:
+    Text: the {Snowpeak Ruins Chapel Chest}
+
+Snowpeak Ruins Blizzeta Heart Container:
+  Standard:
+    Text: Snowpeak Ruins Blizzeta Heart Container
+  Pretty:
+    Text: the {Snowpeak Ruins Blizzeta Heart Container}
+  Cryptic:
+    Text: the {Snowpeak Ruins Blizzeta Heart Container}
+
+Snowpeak Ruins Dungeon Reward:
+  Standard:
+    Text: Snowpeak Ruins Dungeon Reward
+  Pretty:
+    Text: the {Snowpeak Ruins Dungeon Reward}
+  Cryptic:
+    Text: the {Snowpeak Ruins Dungeon Reward}
+
+Temple of Time Lobby Lantern Chest:
+  Standard:
+    Text: Temple of Time Lobby Lantern Chest
+  Pretty:
+    Text: the {Temple of Time Lobby Lantern Chest}
+  Cryptic:
+    Text: the {Temple of Time Lobby Lantern Chest}
+
+Temple of Time First Staircase Gohma Gate Chest:
+  Standard:
+    Text: Temple of Time First Staircase Gohma Gate Chest
+  Pretty:
+    Text: the {Temple of Time First Staircase Gohma Gate Chest}
+  Cryptic:
+    Text: the {Temple of Time First Staircase Gohma Gate Chest}
+
+Temple of Time First Staircase Window Chest:
+  Standard:
+    Text: Temple of Time First Staircase Window Chest
+  Pretty:
+    Text: the {Temple of Time First Staircase Window Chest}
+  Cryptic:
+    Text: the {Temple of Time First Staircase Window Chest}
+
+Temple of Time First Staircase Armos Chest:
+  Standard:
+    Text: Temple of Time First Staircase Armos Chest
+  Pretty:
+    Text: the {Temple of Time First Staircase Armos Chest}
+  Cryptic:
+    Text: the {Temple of Time First Staircase Armos Chest}
+
+Temple of Time Poe Behind Gate:
+  Standard:
+    Text: Temple of Time Poe Behind Gate
+  Pretty:
+    Text: the {Temple of Time Poe Behind Gate}
+  Cryptic:
+    Text: the {Temple of Time Poe Behind Gate}
+
+Temple of Time Armos Antechamber East Chest:
+  Standard:
+    Text: Temple of Time Armos Antechamber East Chest
+  Pretty:
+    Text: the {Temple of Time Armos Antechamber East Chest}
+  Cryptic:
+    Text: the {Temple of Time Armos Antechamber East Chest}
+
+Temple of Time Armos Antechamber North Chest:
+  Standard:
+    Text: Temple of Time Armos Antechamber North Chest
+  Pretty:
+    Text: the {Temple of Time Armos Antechamber North Chest}
+  Cryptic:
+    Text: the {Temple of Time Armos Antechamber North Chest}
+
+Temple of Time Armos Antechamber Statue Chest:
+  Standard:
+    Text: Temple of Time Armos Antechamber Statue Chest
+  Pretty:
+    Text: the {Temple of Time Armos Antechamber Statue Chest}
+  Cryptic:
+    Text: the {Temple of Time Armos Antechamber Statue Chest}
+
+Temple of Time Moving Wall Beamos Room Chest:
+  Standard:
+    Text: Temple of Time Moving Wall Beamos Room Chest
+  Pretty:
+    Text: the {Temple of Time Moving Wall Beamos Room Chest}
+  Cryptic:
+    Text: the {Temple of Time Moving Wall Beamos Room Chest}
+
+Temple of Time Moving Wall Dinalfos Room Chest:
+  Standard:
+    Text: Temple of Time Moving Wall Dinalfos Room Chest
+  Pretty:
+    Text: the {Temple of Time Moving Wall Dinalfos Room Chest}
+  Cryptic:
+    Text: the {Temple of Time Moving Wall Dinalfos Room Chest}
+
+Temple of Time Scales Gohma Chest:
+  Standard:
+    Text: Temple of Time Scales Gohma Chest
+  Pretty:
+    Text: the {Temple of Time Scales Gohma Chest}
+  Cryptic:
+    Text: the {Temple of Time Scales Gohma Chest}
+
+Temple of Time Scales Upper Chest:
+  Standard:
+    Text: Temple of Time Scales Upper Chest
+  Pretty:
+    Text: the {Temple of Time Scales Upper Chest}
+  Cryptic:
+    Text: the {Temple of Time Scales Upper Chest}
+
+Temple of Time Poe Above Scales:
+  Standard:
+    Text: Temple of Time Poe Above Scales
+  Pretty:
+    Text: the {Temple of Time Poe Above Scales}
+  Cryptic:
+    Text: the {Temple of Time Poe Above Scales}
+
+Temple of Time Floor Switch Puzzle Room Upper Chest:
+  Standard:
+    Text: Temple of Time Floor Switch Puzzle Room Upper Chest
+  Pretty:
+    Text: the {Temple of Time Floor Switch Puzzle Room Upper Chest}
+  Cryptic:
+    Text: the {Temple of Time Floor Switch Puzzle Room Upper Chest}
+
+Temple of Time Big Key Chest:
+  Standard:
+    Text: Temple of Time Big Key Chest
+  Pretty:
+    Text: the {Temple of Time Big Key Chest}
+  Cryptic:
+    Text: the {Temple of Time Big Key Chest}
+
+Temple of Time Gilloutine Chest:
+  Standard:
+    Text: Temple of Time Gilloutine Chest
+  Pretty:
+    Text: the {Temple of Time Gilloutine Chest}
+  Cryptic:
+    Text: the {Temple of Time Gilloutine Chest}
+
+Temple of Time Chest Before Darknut:
+  Standard:
+    Text: Temple of Time Chest Before Darknut
+  Pretty:
+    Text: the {Temple of Time Chest Before Darknut}
+  Cryptic:
+    Text: the {Temple of Time Chest Before Darknut}
+
+Temple of Time Darknut Chest:
+  Standard:
+    Text: Temple of Time Darknut Chest
+  Pretty:
+    Text: the {Temple of Time Darknut Chest}
+  Cryptic:
+    Text: the {Temple of Time Darknut Chest}
+
+Temple of Time Armogohma Heart Container:
+  Standard:
+    Text: Temple of Time Armogohma Heart Container
+  Pretty:
+    Text: the {Temple of Time Armogohma Heart Container}
+  Cryptic:
+    Text: the {Temple of Time Armogohma Heart Container}
+
+Temple of Time Dungeon Reward:
+  Standard:
+    Text: Temple of Time Dungeon Reward
+  Pretty:
+    Text: the {Temple of Time Dungeon Reward}
+  Cryptic:
+    Text: the {Temple of Time Dungeon Reward}
+
+City in the Sky Underwater East Chest:
+  Standard:
+    Text: City in the Sky Underwater East Chest
+  Pretty:
+    Text: the {City in the Sky Underwater East Chest}
+  Cryptic:
+    Text: the {City in the Sky Underwater East Chest}
+
+City in the Sky Underwater West Chest:
+  Standard:
+    Text: City in the Sky Underwater West Chest
+  Pretty:
+    Text: the {City in the Sky Underwater West Chest}
+  Cryptic:
+    Text: the {City in the Sky Underwater West Chest}
+
+City in the Sky West Wing First Chest:
+  Standard:
+    Text: City in the Sky West Wing First Chest
+  Pretty:
+    Text: the {City in the Sky West Wing First Chest}
+  Cryptic:
+    Text: the {City in the Sky West Wing First Chest}
+
+City in the Sky West Wing Baba Balcony Chest:
+  Standard:
+    Text: City in the Sky West Wing Baba Balcony Chest
+  Pretty:
+    Text: the {City in the Sky West Wing Baba Balcony Chest}
+  Cryptic:
+    Text: the {City in the Sky West Wing Baba Balcony Chest}
+
+City in the Sky West Wing Narrow Ledge Chest:
+  Standard:
+    Text: City in the Sky West Wing Narrow Ledge Chest
+  Pretty:
+    Text: the {City in the Sky West Wing Narrow Ledge Chest}
+  Cryptic:
+    Text: the {City in the Sky West Wing Narrow Ledge Chest}
+
+City in the Sky West Wing Tile Worm Chest:
+  Standard:
+    Text: City in the Sky West Wing Tile Worm Chest
+  Pretty:
+    Text: the {City in the Sky West Wing Tile Worm Chest}
+  Cryptic:
+    Text: the {City in the Sky West Wing Tile Worm Chest}
+
+City in the Sky Baba Tower Top Small Chest:
+  Standard:
+    Text: City in the Sky Baba Tower Top Small Chest
+  Pretty:
+    Text: the {City in the Sky Baba Tower Top Small Chest}
+  Cryptic:
+    Text: the {City in the Sky Baba Tower Top Small Chest}
+
+City in the Sky Baba Tower Narrow Ledge Chest:
+  Standard:
+    Text: City in the Sky Baba Tower Narrow Ledge Chest
+  Pretty:
+    Text: the {City in the Sky Baba Tower Narrow Ledge Chest}
+  Cryptic:
+    Text: the {City in the Sky Baba Tower Narrow Ledge Chest}
+
+City in the Sky Baba Tower Alcove Chest:
+  Standard:
+    Text: City in the Sky Baba Tower Alcove Chest
+  Pretty:
+    Text: the {City in the Sky Baba Tower Alcove Chest}
+  Cryptic:
+    Text: the {City in the Sky Baba Tower Alcove Chest}
+
+City in the Sky West Garden Corner Chest:
+  Standard:
+    Text: City in the Sky West Garden Corner Chest
+  Pretty:
+    Text: the {City in the Sky West Garden Corner Chest}
+  Cryptic:
+    Text: the {City in the Sky West Garden Corner Chest}
+
+City in the Sky West Garden Lone Island Chest:
+  Standard:
+    Text: City in the Sky West Garden Lone Island Chest
+  Pretty:
+    Text: the {City in the Sky West Garden Lone Island Chest}
+  Cryptic:
+    Text: the {City in the Sky West Garden Lone Island Chest}
+
+City in the Sky Garden Island Poe:
+  Standard:
+    Text: City in the Sky Garden Island Poe
+  Pretty:
+    Text: the {City in the Sky Garden Island Poe}
+  Cryptic:
+    Text: the {City in the Sky Garden Island Poe}
+
+City in the Sky West Garden Lower Chest:
+  Standard:
+    Text: City in the Sky West Garden Lower Chest
+  Pretty:
+    Text: the {City in the Sky West Garden Lower Chest}
+  Cryptic:
+    Text: the {City in the Sky West Garden Lower Chest}
+
+City in the Sky West Garden Ledge Chest:
+  Standard:
+    Text: City in the Sky West Garden Ledge Chest
+  Pretty:
+    Text: the {City in the Sky West Garden Ledge Chest}
+  Cryptic:
+    Text: the {City in the Sky West Garden Ledge Chest}
+
+City in the Sky Central Outside Ledge Chest:
+  Standard:
+    Text: City in the Sky Central Outside Ledge Chest
+  Pretty:
+    Text: the {City in the Sky Central Outside Ledge Chest}
+  Cryptic:
+    Text: the {City in the Sky Central Outside Ledge Chest}
+
+City in the Sky Central Outside Poe Island Chest:
+  Standard:
+    Text: City in the Sky Central Outside Poe Island Chest
+  Pretty:
+    Text: the {City in the Sky Central Outside Poe Island Chest}
+  Cryptic:
+    Text: the {City in the Sky Central Outside Poe Island Chest}
+
+City in the Sky Poe Above Central Fan:
+  Standard:
+    Text: City in the Sky Poe Above Central Fan
+  Pretty:
+    Text: the {City in the Sky Poe Above Central Fan}
+  Cryptic:
+    Text: the {City in the Sky Poe Above Central Fan}
+
+City in the Sky Big Key Chest:
+  Standard:
+    Text: City in the Sky Big Key Chest
+  Pretty:
+    Text: the {City in the Sky Big Key Chest}
+  Cryptic:
+    Text: the {City in the Sky Big Key Chest}
+
+City in the Sky Chest Below Big Key Chest:
+  Standard:
+    Text: City in the Sky Chest Below Big Key Chest
+  Pretty:
+    Text: the {City in the Sky Chest Below Big Key Chest}
+  Cryptic:
+    Text: the {City in the Sky Chest Below Big Key Chest}
+
+City in the Sky East First Wing Chest After Fans:
+  Standard:
+    Text: City in the Sky East First Wing Chest After Fans
+  Pretty:
+    Text: the {City in the Sky East First Wing Chest After Fans}
+  Cryptic:
+    Text: the {City in the Sky East First Wing Chest After Fans}
+
+City in the Sky East Tile Worm Small Chest:
+  Standard:
+    Text: City in the Sky East Tile Worm Small Chest
+  Pretty:
+    Text: the {City in the Sky East Tile Worm Small Chest}
+  Cryptic:
+    Text: the {City in the Sky East Tile Worm Small Chest}
+
+City in the Sky East Wing After Dinalfos Alcove Chest:
+  Standard:
+    Text: City in the Sky East Wing After Dinalfos Alcove Chest
+  Pretty:
+    Text: the {City in the Sky East Wing After Dinalfos Alcove Chest}
+  Cryptic:
+    Text: the {City in the Sky East Wing After Dinalfos Alcove Chest}
+
+City in the Sky East Wing After Dinalfos Ledge Chest:
+  Standard:
+    Text: City in the Sky East Wing After Dinalfos Ledge Chest
+  Pretty:
+    Text: the {City in the Sky East Wing After Dinalfos Ledge Chest}
+  Cryptic:
+    Text: the {City in the Sky East Wing After Dinalfos Ledge Chest}
+
+City in the Sky East Wing Lower Level Chest:
+  Standard:
+    Text: City in the Sky East Wing Lower Level Chest
+  Pretty:
+    Text: the {City in the Sky East Wing Lower Level Chest}
+  Cryptic:
+    Text: the {City in the Sky East Wing Lower Level Chest}
+
+City in the Sky Aeralfos Chest:
+  Standard:
+    Text: City in the Sky Aeralfos Chest
+  Pretty:
+    Text: the {City in the Sky Aeralfos Chest}
+  Cryptic:
+    Text: the {City in the Sky Aeralfos Chest}
+
+City in the Sky Chest Behind North Fan:
+  Standard:
+    Text: City in the Sky Chest Behind North Fan
+  Pretty:
+    Text: the {City in the Sky Chest Behind North Fan}
+  Cryptic:
+    Text: the {City in the Sky Chest Behind North Fan}
+
+City in the Sky Argorok Heart Container:
+  Standard:
+    Text: City in the Sky Argorok Heart Container
+  Pretty:
+    Text: the {City in the Sky Argorok Heart Container}
+  Cryptic:
+    Text: the {City in the Sky Argorok Heart Container}
+
+City in the Sky Dungeon Reward:
+  Standard:
+    Text: City in the Sky Dungeon Reward
+  Pretty:
+    Text: the {City in the Sky Dungeon Reward}
+  Cryptic:
+    Text: the {City in the Sky Dungeon Reward}
+
+Palace of Twilight West Wing First Room Central Chest:
+  Standard:
+    Text: Palace of Twilight West Wing First Room Central Chest
+  Pretty:
+    Text: the {Palace of Twilight West Wing First Room Central Chest}
+  Cryptic:
+    Text: the {Palace of Twilight West Wing First Room Central Chest}
+
+Palace of Twilight West Wing Chest Behind Wall of Darkness:
+  Standard:
+    Text: Palace of Twilight West Wing Chest Behind Wall of Darkness
+  Pretty:
+    Text: the {Palace of Twilight West Wing Chest Behind Wall of Darkness}
+  Cryptic:
+    Text: the {Palace of Twilight West Wing Chest Behind Wall of Darkness}
+
+Palace of Twilight West Wing Second Room Central Chest:
+  Standard:
+    Text: Palace of Twilight West Wing Second Room Central Chest
+  Pretty:
+    Text: the {Palace of Twilight West Wing Second Room Central Chest}
+  Cryptic:
+    Text: the {Palace of Twilight West Wing Second Room Central Chest}
+
+Palace of Twilight West Wing Second Room Lower South Chest:
+  Standard:
+    Text: Palace of Twilight West Wing Second Room Lower South Chest
+  Pretty:
+    Text: the {Palace of Twilight West Wing Second Room Lower South Chest}
+  Cryptic:
+    Text: the {Palace of Twilight West Wing Second Room Lower South Chest}
+
+Palace of Twilight West Wing Second Room Southeast Chest:
+  Standard:
+    Text: Palace of Twilight West Wing Second Room Southeast Chest
+  Pretty:
+    Text: the {Palace of Twilight West Wing Second Room Southeast Chest}
+  Cryptic:
+    Text: the {Palace of Twilight West Wing Second Room Southeast Chest}
+
+Palace of Twilight East Wing First Room Zant Head Chest:
+  Standard:
+    Text: Palace of Twilight East Wing First Room Zant Head Chest
+  Pretty:
+    Text: the {Palace of Twilight East Wing First Room Zant Head Chest}
+  Cryptic:
+    Text: the {Palace of Twilight East Wing First Room Zant Head Chest}
+
+Palace of Twilight East Wing First Room East Alcove Chest:
+  Standard:
+    Text: Palace of Twilight East Wing First Room East Alcove Chest
+  Pretty:
+    Text: the {Palace of Twilight East Wing First Room East Alcove Chest}
+  Cryptic:
+    Text: the {Palace of Twilight East Wing First Room East Alcove Chest}
+
+Palace of Twilight East Wing First Room North Small Chest:
+  Standard:
+    Text: Palace of Twilight East Wing First Room North Small Chest
+  Pretty:
+    Text: the {Palace of Twilight East Wing First Room North Small Chest}
+  Cryptic:
+    Text: the {Palace of Twilight East Wing First Room North Small Chest}
+
+Palace of Twilight East Wing First Room West Alcove Chest:
+  Standard:
+    Text: Palace of Twilight East Wing First Room West Alcove Chest
+  Pretty:
+    Text: the {Palace of Twilight East Wing First Room West Alcove Chest}
+  Cryptic:
+    Text: the {Palace of Twilight East Wing First Room West Alcove Chest}
+
+Palace of Twilight East Wing Second Room Northeast Chest:
+  Standard:
+    Text: Palace of Twilight East Wing Second Room Northeast Chest
+  Pretty:
+    Text: the {Palace of Twilight East Wing Second Room Northeast Chest}
+  Cryptic:
+    Text: the {Palace of Twilight East Wing Second Room Northeast Chest}
+
+Palace of Twilight East Wing Second Room Northwest Chest:
+  Standard:
+    Text: Palace of Twilight East Wing Second Room Northwest Chest
+  Pretty:
+    Text: the {Palace of Twilight East Wing Second Room Northwest Chest}
+  Cryptic:
+    Text: the {Palace of Twilight East Wing Second Room Northwest Chest}
+
+Palace of Twilight East Wing Second Room Southeast Chest:
+  Standard:
+    Text: Palace of Twilight East Wing Second Room Southeast Chest
+  Pretty:
+    Text: the {Palace of Twilight East Wing Second Room Southeast Chest}
+  Cryptic:
+    Text: the {Palace of Twilight East Wing Second Room Southeast Chest}
+
+Palace of Twilight East Wing Second Room Southwest Chest:
+  Standard:
+    Text: Palace of Twilight East Wing Second Room Southwest Chest
+  Pretty:
+    Text: the {Palace of Twilight East Wing Second Room Southwest Chest}
+  Cryptic:
+    Text: the {Palace of Twilight East Wing Second Room Southwest Chest}
+
+Palace of Twilight Collect Both Sols:
+  Standard:
+    Text: Palace of Twilight Collect Both Sols
+  Pretty:
+    Text: the {Palace of Twilight Collect Both Sols}
+  Cryptic:
+    Text: the {Palace of Twilight Collect Both Sols}
+
+Palace of Twilight Central First Room Chest:
+  Standard:
+    Text: Palace of Twilight Central First Room Chest
+  Pretty:
+    Text: the {Palace of Twilight Central First Room Chest}
+  Cryptic:
+    Text: the {Palace of Twilight Central First Room Chest}
+
+Palace of Twilight Central Outdoor Chest:
+  Standard:
+    Text: Palace of Twilight Central Outdoor Chest
+  Pretty:
+    Text: the {Palace of Twilight Central Outdoor Chest}
+  Cryptic:
+    Text: the {Palace of Twilight Central Outdoor Chest}
+
+Palace of Twilight Big Key Chest:
+  Standard:
+    Text: Palace of Twilight Big Key Chest
+  Pretty:
+    Text: the {Palace of Twilight Big Key Chest}
+  Cryptic:
+    Text: the {Palace of Twilight Big Key Chest}
+
+Palace of Twilight Central Tower Chest:
+  Standard:
+    Text: Palace of Twilight Central Tower Chest
+  Pretty:
+    Text: the {Palace of Twilight Central Tower Chest}
+  Cryptic:
+    Text: the {Palace of Twilight Central Tower Chest}
+
+Palace of Twilight Zant Heart Container:
+  Standard:
+    Text: Palace of Twilight Zant Heart Container
+  Pretty:
+    Text: the {Palace of Twilight Zant Heart Container}
+  Cryptic:
+    Text: the {Palace of Twilight Zant Heart Container}
+
+Hyrule Castle West Courtyard Central Small Chest:
+  Standard:
+    Text: Hyrule Castle West Courtyard Central Small Chest
+  Pretty:
+    Text: the {Hyrule Castle West Courtyard Central Small Chest}
+  Cryptic:
+    Text: the {Hyrule Castle West Courtyard Central Small Chest}
+
+Hyrule Castle West Courtyard North Small Chest:
+  Standard:
+    Text: Hyrule Castle West Courtyard North Small Chest
+  Pretty:
+    Text: the {Hyrule Castle West Courtyard North Small Chest}
+  Cryptic:
+    Text: the {Hyrule Castle West Courtyard North Small Chest}
+
+Hyrule Castle King Bulblin Key:
+  Standard:
+    Text: Hyrule Castle King Bulblin Key
+  Pretty:
+    Text: the {Hyrule Castle King Bulblin Key}
+  Cryptic:
+    Text: the {Hyrule Castle King Bulblin Key}
+
+Hyrule Castle East Wing Boomerang Puzzle Chest:
+  Standard:
+    Text: Hyrule Castle East Wing Boomerang Puzzle Chest
+  Pretty:
+    Text: the {Hyrule Castle East Wing Boomerang Puzzle Chest}
+  Cryptic:
+    Text: the {Hyrule Castle East Wing Boomerang Puzzle Chest}
+
+Hyrule Castle East Wing Balcony Chest:
+  Standard:
+    Text: Hyrule Castle East Wing Balcony Chest
+  Pretty:
+    Text: the {Hyrule Castle East Wing Balcony Chest}
+  Cryptic:
+    Text: the {Hyrule Castle East Wing Balcony Chest}
+
+Hyrule Castle Graveyard Grave Switch Room Back Left Chest:
+  Standard:
+    Text: Hyrule Castle Graveyard Grave Switch Room Back Left Chest
+  Pretty:
+    Text: the {Hyrule Castle Graveyard Grave Switch Room Back Left Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Graveyard Grave Switch Room Back Left Chest}
+
+Hyrule Castle Graveyard Grave Switch Room Front Left Chest:
+  Standard:
+    Text: Hyrule Castle Graveyard Grave Switch Room Front Left Chest
+  Pretty:
+    Text: the {Hyrule Castle Graveyard Grave Switch Room Front Left Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Graveyard Grave Switch Room Front Left Chest}
+
+Hyrule Castle Graveyard Grave Switch Room Right Chest:
+  Standard:
+    Text: Hyrule Castle Graveyard Grave Switch Room Right Chest
+  Pretty:
+    Text: the {Hyrule Castle Graveyard Grave Switch Room Right Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Graveyard Grave Switch Room Right Chest}
+
+Hyrule Castle Graveyard Owl Statue Chest:
+  Standard:
+    Text: Hyrule Castle Graveyard Owl Statue Chest
+  Pretty:
+    Text: the {Hyrule Castle Graveyard Owl Statue Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Graveyard Owl Statue Chest}
+
+Hyrule Castle Main Hall Northeast Chest:
+  Standard:
+    Text: Hyrule Castle Main Hall Northeast Chest
+  Pretty:
+    Text: the {Hyrule Castle Main Hall Northeast Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Main Hall Northeast Chest}
+
+Hyrule Castle Main Hall Northwest Chest:
+  Standard:
+    Text: Hyrule Castle Main Hall Northwest Chest
+  Pretty:
+    Text: the {Hyrule Castle Main Hall Northwest Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Main Hall Northwest Chest}
+
+Hyrule Castle Main Hall Southwest Chest:
+  Standard:
+    Text: Hyrule Castle Main Hall Southwest Chest
+  Pretty:
+    Text: the {Hyrule Castle Main Hall Southwest Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Main Hall Southwest Chest}
+
+Hyrule Castle Lantern Staircase Chest:
+  Standard:
+    Text: Hyrule Castle Lantern Staircase Chest
+  Pretty:
+    Text: the {Hyrule Castle Lantern Staircase Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Lantern Staircase Chest}
+
+Hyrule Castle Southeast Balcony Tower Chest:
+  Standard:
+    Text: Hyrule Castle Southeast Balcony Tower Chest
+  Pretty:
+    Text: the {Hyrule Castle Southeast Balcony Tower Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Southeast Balcony Tower Chest}
+
+Hyrule Castle Big Key Chest:
+  Standard:
+    Text: Hyrule Castle Big Key Chest
+  Pretty:
+    Text: the {Hyrule Castle Big Key Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Big Key Chest}
+
+Hyrule Castle Treasure Room First Chest:
+  Standard:
+    Text: Hyrule Castle Treasure Room First Chest
+  Pretty:
+    Text: the {Hyrule Castle Treasure Room First Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Treasure Room First Chest}
+
+Hyrule Castle Treasure Room Second Chest:
+  Standard:
+    Text: Hyrule Castle Treasure Room Second Chest
+  Pretty:
+    Text: the {Hyrule Castle Treasure Room Second Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Treasure Room Second Chest}
+
+Hyrule Castle Treasure Room Third Chest:
+  Standard:
+    Text: Hyrule Castle Treasure Room Third Chest
+  Pretty:
+    Text: the {Hyrule Castle Treasure Room Third Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Treasure Room Third Chest}
+
+Hyrule Castle Treasure Room Fourth Chest:
+  Standard:
+    Text: Hyrule Castle Treasure Room Fourth Chest
+  Pretty:
+    Text: the {Hyrule Castle Treasure Room Fourth Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Treasure Room Fourth Chest}
+
+Hyrule Castle Treasure Room Fifth Chest:
+  Standard:
+    Text: Hyrule Castle Treasure Room Fifth Chest
+  Pretty:
+    Text: the {Hyrule Castle Treasure Room Fifth Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Treasure Room Fifth Chest}
+
+Hyrule Castle Treasure Room First Small Chest:
+  Standard:
+    Text: Hyrule Castle Treasure Room First Small Chest
+  Pretty:
+    Text: the {Hyrule Castle Treasure Room First Small Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Treasure Room First Small Chest}
+
+Hyrule Castle Treasure Room Second Small Chest:
+  Standard:
+    Text: Hyrule Castle Treasure Room Second Small Chest
+  Pretty:
+    Text: the {Hyrule Castle Treasure Room Second Small Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Treasure Room Second Small Chest}
+
+Hyrule Castle Treasure Room Third Small Chest:
+  Standard:
+    Text: Hyrule Castle Treasure Room Third Small Chest
+  Pretty:
+    Text: the {Hyrule Castle Treasure Room Third Small Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Treasure Room Third Small Chest}
+
+Hyrule Castle Treasure Room Fourth Small Chest:
+  Standard:
+    Text: Hyrule Castle Treasure Room Fourth Small Chest
+  Pretty:
+    Text: the {Hyrule Castle Treasure Room Fourth Small Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Treasure Room Fourth Small Chest}
+
+Hyrule Castle Treasure Room Fifth Small Chest:
+  Standard:
+    Text: Hyrule Castle Treasure Room Fifth Small Chest
+  Pretty:
+    Text: the {Hyrule Castle Treasure Room Fifth Small Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Treasure Room Fifth Small Chest}
+
+Hyrule Castle Treasure Room Sixth Small Chest:
+  Standard:
+    Text: Hyrule Castle Treasure Room Sixth Small Chest
+  Pretty:
+    Text: the {Hyrule Castle Treasure Room Sixth Small Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Treasure Room Sixth Small Chest}
+
+Hyrule Castle Treasure Room Seventh Small Chest:
+  Standard:
+    Text: Hyrule Castle Treasure Room Seventh Small Chest
+  Pretty:
+    Text: the {Hyrule Castle Treasure Room Seventh Small Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Treasure Room Seventh Small Chest}
+
+Hyrule Castle Treasure Room Eighth Small Chest:
+  Standard:
+    Text: Hyrule Castle Treasure Room Eighth Small Chest
+  Pretty:
+    Text: the {Hyrule Castle Treasure Room Eighth Small Chest}
+  Cryptic:
+    Text: the {Hyrule Castle Treasure Room Eighth Small Chest}
+
+Defeat Ganondorf:
+  Standard:
+    Text: Defeat Ganondorf
+  Pretty:
+    Text: "{Defeat Ganondorf}"
+  Cryptic:
+    Text: "{Defeat Ganondorf}"
+
+Ordon Hint Sign:
+  Standard:
+    Text: Ordon Hint Sign
+  Pretty:
+    Text: the {Ordon Hint Sign}
+  Cryptic:
+    Text: the {Ordon Hint Sign}
+
+South Faron Woods Hint Sign:
+  Standard:
+    Text: South Faron Woods Hint Sign
+  Pretty:
+    Text: the {South Faron Woods Hint Sign}
+  Cryptic:
+    Text: the {South Faron Woods Hint Sign}
+
+Sacred Grove Hint Sign:
+  Standard:
+    Text: Sacred Grove Hint Sign
+  Pretty:
+    Text: the {Sacred Grove Hint Sign}
+  Cryptic:
+    Text: the {Sacred Grove Hint Sign}
+
+Faron Field Hint Sign:
+  Standard:
+    Text: Faron Field Hint Sign
+  Pretty:
+    Text: the {Faron Field Hint Sign}
+  Cryptic:
+    Text: the {Faron Field Hint Sign}
+
+Kakariko Gorge Hint Sign:
+  Standard:
+    Text: Kakariko Gorge Hint Sign
+  Pretty:
+    Text: the {Kakariko Gorge Hint Sign}
+  Cryptic:
+    Text: the {Kakariko Gorge Hint Sign}
+
+Kakariko Village Hint Sign:
+  Standard:
+    Text: Kakariko Village Hint Sign
+  Pretty:
+    Text: the {Kakariko Village Hint Sign}
+  Cryptic:
+    Text: the {Kakariko Village Hint Sign}
+
+Kakariko Graveyard Hint Sign:
+  Standard:
+    Text: Kakariko Graveyard Hint Sign
+  Pretty:
+    Text: the {Kakariko Graveyard Hint Sign}
+  Cryptic:
+    Text: the {Kakariko Graveyard Hint Sign}
+
+Eldin Field Hint Sign:
+  Standard:
+    Text: Eldin Field Hint Sign
+  Pretty:
+    Text: the {Eldin Field Hint Sign}
+  Cryptic:
+    Text: the {Eldin Field Hint Sign}
+
+North Eldin Field Hint Sign:
+  Standard:
+    Text: North Eldin Field Hint Sign
+  Pretty:
+    Text: the {North Eldin Field Hint Sign}
+  Cryptic:
+    Text: the {North Eldin Field Hint Sign}
+
+Hidden Village Hint Sign:
+  Standard:
+    Text: Hidden Village Hint Sign
+  Pretty:
+    Text: the {Hidden Village Hint Sign}
+  Cryptic:
+    Text: the {Hidden Village Hint Sign}
+
+Lanayru Field Hint Sign:
+  Standard:
+    Text: Lanayru Field Hint Sign
+  Pretty:
+    Text: the {Lanayru Field Hint Sign}
+  Cryptic:
+    Text: the {Lanayru Field Hint Sign}
+
+Beside Castle Town Hint Sign:
+  Standard:
+    Text: Beside Castle Town Hint Sign
+  Pretty:
+    Text: the {Beside Castle Town Hint Sign}
+  Cryptic:
+    Text: the {Beside Castle Town Hint Sign}
+
+Castle Town Center Hint Sign:
+  Standard:
+    Text: Castle Town Center Hint Sign
+  Pretty:
+    Text: the {Castle Town Center Hint Sign}
+  Cryptic:
+    Text: the {Castle Town Center Hint Sign}
+
+Outside South Castle Town Hint Sign:
+  Standard:
+    Text: Outside South Castle Town Hint Sign
+  Pretty:
+    Text: the {Outside South Castle Town Hint Sign}
+  Cryptic:
+    Text: the {Outside South Castle Town Hint Sign}
+
+Lake Hylia Bridge Hint Sign:
+  Standard:
+    Text: Lake Hylia Bridge Hint Sign
+  Pretty:
+    Text: the {Lake Hylia Bridge Hint Sign}
+  Cryptic:
+    Text: the {Lake Hylia Bridge Hint Sign}
+
+Lake Hylia Hint Sign:
+  Standard:
+    Text: Lake Hylia Hint Sign
+  Pretty:
+    Text: the {Lake Hylia Hint Sign}
+  Cryptic:
+    Text: the {Lake Hylia Hint Sign}
+
+Lanayru Spring Hint Sign:
+  Standard:
+    Text: Lanayru Spring Hint Sign
+  Pretty:
+    Text: the {Lanayru Spring Hint Sign}
+  Cryptic:
+    Text: the {Lanayru Spring Hint Sign}
+
+Lake Lantern Cave Hint Sign:
+  Standard:
+    Text: Lake Lantern Cave Hint Sign
+  Pretty:
+    Text: the {Lake Lantern Cave Hint Sign}
+  Cryptic:
+    Text: the {Lake Lantern Cave Hint Sign}
+
+Fishing Hole Hint Sign:
+  Standard:
+    Text: Fishing Hole Hint Sign
+  Pretty:
+    Text: the {Fishing Hole Hint Sign}
+  Cryptic:
+    Text: the {Fishing Hole Hint Sign}
+
+Zoras Domain Hint Sign:
+  Standard:
+    Text: Zoras Domain Hint Sign
+  Pretty:
+    Text: the {Zoras Domain Hint Sign}
+  Cryptic:
+    Text: the {Zoras Domain Hint Sign}
+
+Snowpeak Hint Sign:
+  Standard:
+    Text: Snowpeak Hint Sign
+  Pretty:
+    Text: the {Snowpeak Hint Sign}
+  Cryptic:
+    Text: the {Snowpeak Hint Sign}
+
+Gerudo Desert Hint Sign:
+  Standard:
+    Text: Gerudo Desert Hint Sign
+  Pretty:
+    Text: the {Gerudo Desert Hint Sign}
+  Cryptic:
+    Text: the {Gerudo Desert Hint Sign}
+
+Bulblin Camp Hint Sign:
+  Standard:
+    Text: Bulblin Camp Hint Sign
+  Pretty:
+    Text: the {Bulblin Camp Hint Sign}
+  Cryptic:
+    Text: the {Bulblin Camp Hint Sign}
+
+Forest Temple Hint Sign:
+  Standard:
+    Text: Forest Temple Hint Sign
+  Pretty:
+    Text: the {Forest Temple Hint Sign}
+  Cryptic:
+    Text: the {Forest Temple Hint Sign}
+
+Goron Mines Hint Sign:
+  Standard:
+    Text: Goron Mines Hint Sign
+  Pretty:
+    Text: the {Goron Mines Hint Sign}
+  Cryptic:
+    Text: the {Goron Mines Hint Sign}
+
+Lakebed Temple Hint Sign:
+  Standard:
+    Text: Lakebed Temple Hint Sign
+  Pretty:
+    Text: the {Lakebed Temple Hint Sign}
+  Cryptic:
+    Text: the {Lakebed Temple Hint Sign}
+
+Arbiters Grounds Hint Sign:
+  Standard:
+    Text: Arbiters Grounds Hint Sign
+  Pretty:
+    Text: the {Arbiters Grounds Hint Sign}
+  Cryptic:
+    Text: the {Arbiters Grounds Hint Sign}
+
+Snowpeak Ruins Hint Sign:
+  Standard:
+    Text: Snowpeak Ruins Hint Sign
+  Pretty:
+    Text: the {Snowpeak Ruins Hint Sign}
+  Cryptic:
+    Text: the {Snowpeak Ruins Hint Sign}
+
+Temple of Time First Hint Sign:
+  Standard:
+    Text: Temple of Time First Hint Sign
+  Pretty:
+    Text: the {Temple of Time First Hint Sign}
+  Cryptic:
+    Text: the {Temple of Time First Hint Sign}
+
+Temple of Time Second Hint Sign:
+  Standard:
+    Text: Temple of Time Second Hint Sign
+  Pretty:
+    Text: the {Temple of Time Second Hint Sign}
+  Cryptic:
+    Text: the {Temple of Time Second Hint Sign}
+
+City in the Sky Hint Sign:
+  Standard:
+    Text: City in the Sky Hint Sign
+  Pretty:
+    Text: the {City in the Sky Hint Sign}
+  Cryptic:
+    Text: the {City in the Sky Hint Sign}
+
+Palace of Twilight Hint Sign:
+  Standard:
+    Text: Palace of Twilight Hint Sign
+  Pretty:
+    Text: the {Palace of Twilight Hint Sign}
+  Cryptic:
+    Text: the {Palace of Twilight Hint Sign}
+
+Hyrule Castle Hint Sign:
+  Standard:
+    Text: Hyrule Castle Hint Sign
+  Pretty:
+    Text: the {Hyrule Castle Hint Sign}
+  Cryptic:
+    Text: the {Hyrule Castle Hint Sign}
+
+Cave of Ordeals Hint Sign:
+  Standard:
+    Text: Cave of Ordeals Hint Sign
+  Pretty:
+    Text: the {Cave of Ordeals Hint Sign}
+  Cryptic:
+    Text: the {Cave of Ordeals Hint Sign}
+
 # HINT REGION NAMES
 Ordon:
   Standard:
@@ -1670,7 +7144,7 @@ Item Hint:
 
 Location Hint:
   Standard:
-    Text: <fast>They say that the reward for <Location Name> is <Item Pretty or Cryptic Name>.
+    Text: <fast>They say that the reward for <Location Pretty or Cryptic Name> is <Item Pretty or Cryptic Name>.
 
 # NO REQUIRED DUNGEON TEXT
 No Required Dungeons Text:

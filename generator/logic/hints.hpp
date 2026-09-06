@@ -4,10 +4,16 @@
 
 #include <memory>
 #include <vector>
+#include <unordered_set>
 
 namespace randomizer::logic::world {
 class World;
 using WorldPool = std::vector<std::unique_ptr<World>>;
+}
+
+namespace randomizer::logic::location {
+class Location;
+using LocationPool = std::vector<Location*>;
 }
 
 namespace randomizer::logic::hints {
@@ -22,6 +28,9 @@ public:
     void GenerateRemoteLocationHints();
     void GenerateLocationHints();
     void DistributeHints();
+    bool CheckAvailableSign(location::Location* location, const std::string& setting);
+    void ReserveLimitedAvailabilityHint(location::Location* location, const std::string& setting, Hint& hint);
+    void AssignHintSignHints(const location::LocationPool& hintSigns, std::vector<Hint> hints);
     void FinalizeHintSignText();
 
 private:
@@ -30,6 +39,8 @@ private:
     std::vector<Hint> _barrenHints{};
     std::vector<Hint> _itemHints{};
     std::vector<Hint> _locationHints{};
+
+    std::unordered_set<location::Location*> _reservedSigns{};
 };
 
 void GenerateAllHints(world::WorldPool& worldPool);

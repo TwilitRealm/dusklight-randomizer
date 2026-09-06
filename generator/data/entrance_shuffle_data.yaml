@@ -447,11 +447,11 @@
     Parameters: "F01F"
     State: -1
   Return:
-    Connection: Mirror Chamber Lower -> Arbiters Grounds Boss Room
+    Connection: Arbiters Grounds Boss Room -> Mirror Chamber Lower
     Alias: Arbiters Grounds Boss Room -> Mirror Chamber
-    Stage: 25
-    Room: 50
-    Spawn: 3
+    Stage: 60
+    Room: 4
+    Spawn: 0
     Spawn Type: "10"
     Parameters: "501F"
     State: -1
@@ -2265,26 +2265,25 @@
     Parameters: "F09F"
     State: -1
 
-# Disabled until we use stage service to create a spawn in graveyard
-# - Type: Overworld
-#   Forward:
-#     Connection: Kakariko Graveyard Pond -> Lake Hylia
-#     Alias: Kakariko Graveyard -> Lake Hylia
-#     Stage: 52
-#     Room: 0
-#     Spawn: 25
-#     Spawn Type: "D0"
-#     Parameters: "00FF"
-#     State: -1
-  # Return:
-  #   Connection: Lake Hylia -> Kakariko Graveyard Pond
-  #   Alias: Lake Hylia -> Kakariko Graveyard
-  #   Stage: -1
-  #   Room: -1
-  #   Spawn: 
-  #   Spawn Type: ""
-  #   Parameters: ""
-  #   State: -1
+- Type: Overworld
+  Forward:
+    Connection: Kakariko Graveyard Pond -> Lake Hylia
+    Alias: Kakariko Graveyard -> Lake Hylia
+    Stage: 52
+    Room: 0
+    Spawn: 25
+    Spawn Type: "D0"
+    Parameters: "00FF"
+    State: -1
+  Return:
+    Connection: Lake Hylia -> Kakariko Graveyard Pond
+    Alias: Lake Hylia -> Kakariko Graveyard
+    Stage: 48
+    Room: 0
+    Spawn: 5000 # Custom spawn added in object_patches
+    Spawn Type: ""
+    Parameters: ""
+    State: -1
 
 - Type: Overworld
   Forward:
@@ -2384,24 +2383,23 @@
     Parameters: "F01F"
     State: -1
 
-# Disabled until we use stage service to create a spawn in Upper Zoras River
-# - Type: Overworld
-#   Forward:
-#     Connection: Upper Zoras River -> Lanayru Field
-#     Stage: 56
-#     Room: 10
-#     Spawn: 2
-#     Spawn Type: D0""
-#     Parameters: "00FF"
-#     State: -1
-  # Return:
-  #   Connection: Lanayru Field -> Upper Zoras River 
-  #   Stage: 
-  #   Room: 
-  #   Spawn: 
-  #   Spawn Type: ""
-  #   Parameters: ""
-  #   State: -1
+- Type: Overworld
+  Forward:
+    Connection: Upper Zoras River -> Lanayru Field
+    Stage: 56
+    Room: 10
+    Spawn: 2
+    Spawn Type: "D0"
+    Parameters: "00FF"
+    State: -1
+  Return:
+    Connection: Lanayru Field -> Upper Zoras River 
+    Stage: 61
+    Room: 0
+    Spawn: 5000
+    Spawn Type: ""
+    Parameters: ""
+    State: -1
 
 - Type: Overworld
   Entrance Couple Tag: Zoras Domain From Upper Zoras River
@@ -2788,24 +2786,23 @@
     Parameters: "F09F"
     State: -1
 
-# Disabled until we use stage service to create a spawn Outside Castle Town
-# - Type: Overworld
-#   Forward:
-#     Connection: Outside Castle Town South -> Lake Hylia
-#     Stage: 57
-#     Room: 16
-#     Spawn: 1
-#     Spawn Type: "05"
-#     Parameters: "F09F"
-#     State: -1
-  # Return:
-  #   Connection: Lake Hylia -> Outside Castle Town South
-  #   Stage: -1
-  #   Room: -1
-  #   Spawn: 
-  #   Spawn Type: ""
-  #   Parameters: ""
-  #   State: -1
+- Type: Overworld
+  Forward:
+    Connection: Outside Castle Town South -> Lake Hylia
+    Stage: 57
+    Room: 16
+    Spawn: 1
+    Spawn Type: "05"
+    Parameters: "F09F"
+    State: -1
+  Return:
+    Connection: Lake Hylia -> Outside Castle Town South
+    Stage: 57
+    Room: 16
+    Spawn: 5000
+    Spawn Type: ""
+    Parameters: ""
+    State: -1
 
 - Type: Overworld
   Forward:
@@ -2825,24 +2822,23 @@
     Parameters: "F09F"
     State: -1
 
-# Disabled until we use stage service to create a spawn in Lake Hylia
-# - Type: Overworld
-#   Forward:
-#     Connection: Lake Hylia -> Gerudo Desert
-#     Stage: 59
-#     Room: 0
-#     Spawn: 0
-#     Spawn Type: "00"
-#     Parameters: "F018"
-#     State: -1
-  # Return:
-  #   Connection: Gerudo Desert -> Lake Hylia
-  #   Stage: 
-  #   Room: 
-  #   Spawn: 
-  #   Spawn Type: ""
-  #   Parameters: ""
-  #   State: -1
+- Type: Overworld
+  Forward:
+    Connection: Lake Hylia -> Gerudo Desert
+    Stage: 59
+    Room: 0
+    Spawn: 0
+    Spawn Type: "00"
+    Parameters: "F018"
+    State: -1
+  Return:
+    Connection: Gerudo Desert -> Lake Hylia
+    Stage: 52
+    Room: 0
+    Spawn: 5000
+    Spawn Type: ""
+    Parameters: ""
+    State: -1
 
 - Type: Overworld
   Forward:

@@ -926,6 +926,25 @@ F_SP111:
         - 2
         - 3
         - 14
+    
+    # Add entrance coming from lake hylia (entrance ID 5000)
+    - action: add
+      name: Link
+      parameters: 0xFF00503F
+      position:
+        x: 20398.7070
+        y: -338.5464
+        z: -1529.3252
+      angle:
+        x: 0
+        y: 0xFCF9
+        z: 0x1388
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 2
+        - 3
+        - 14
 
 # Zora's Domain
 F_SP113:
@@ -1991,6 +2010,26 @@ F_SP115:
         x: 0
         y: 0x64B5
         z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 1
+        - 2
+        - 3
+        - 13
+        - 14
+
+    # Add entrance coming from gerudo desert (entrance ID 5000)
+    - action: add
+      name: Link
+      parameters: 0xFF00503F
+      position:
+        x: -123720.9766
+        y: -10350
+        z: 48253.5781
+      angle:
+        x: 0
+        y: 0x43C5
+        z: 0x1388
       set id: 0xFFFF
       layers:
         - 1
@@ -4168,6 +4207,26 @@ F_SP122:
         - 6
         - 13
         - 14
+    
+    # Add entrance coming from lake hylia (entrance ID 5000)
+    - action: add
+      name: Link
+      parameters: 0xFF00503F
+      position:
+        x: -57371.1445
+        y: -6250
+        z: 30071.6152
+      angle:
+        x: 0
+        y: 0x41FD
+        z: 0x1388
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 4
+        - 6
+        - 13
+        - 14
 
 # Gerudo Desert
 F_SP124:
@@ -4820,6 +4879,25 @@ F_SP126:
         # Take away the unique flag from this rupee so it doesn't conflict
         # with the one randomizer rupee nearby
         parameters: 0x1367FF01
+      layers:
+        - 0
+        - 1
+        - 13
+        - 14
+    
+    # Add entrance coming from hyrule field (entrance ID 5000)
+    - action: add
+      name: Link
+      parameters: 0xFF00D03F
+      position:
+        x: -1203.5564
+        y: -20
+        z: 1532.9963
+      angle:
+        x: 0
+        y: 0x622D
+        z: 0x1388
+      set id: 0xFFFF
       layers:
         - 0
         - 1

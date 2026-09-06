@@ -143,18 +143,24 @@ target_compile_definitions(randomizer_generator PRIVATE
         RANDO_DATA_PATH="generator/data/"
         SOURCE_PATH_SIZE=${RANDOMIZER_SOURCE_PATH_SIZE}
         RANDO_SAVE_PATH="${CMAKE_BINARY_DIR}/randomizer/"
-        RANDOMIZER_ONLY)
+        RANDOMIZER_ONLY
+        RANDO_DEBUG)
 
 # standalone tests
 add_executable(randomizer_generator_tests ${CMAKE_CURRENT_SOURCE_DIR}/generator/test/test.cpp ${RANDOMIZER_GENERATOR_SOURCES})
 target_link_libraries(randomizer_generator_tests PRIVATE
         dusklight_mod_api yaml-cpp::yaml-cpp base64pp fmt::fmt randomizer_embeds)
+set(RANDO_LOGIC_TESTS_PATH "${CMAKE_SOURCE_DIR}/mods/randomizer/generator/data/tests/logic")
+if (NOT EXISTS "${RANDO_LOGIC_TESTS_PATH}")
+    set(RANDO_LOGIC_TESTS_PATH "${CMAKE_SOURCE_DIR}/generator/data/tests/logic")
+endif()
+
 target_compile_definitions(randomizer_generator_tests PRIVATE
         RANDOMIZER_VERSION="1.0.0"
         RANDO_DATA_PATH="generator/data/"
         SOURCE_PATH_SIZE=${RANDOMIZER_SOURCE_PATH_SIZE}
-        RANDO_SAVE_PATH="${CMAKE_BINARY_DIR}/randomizer/"
-        RANDO_LOGIC_TESTS_PATH="${CMAKE_SOURCE_DIR}/mods/randomizer/generator/data/tests/logic"
-        SETTINGS_PATH="${RANDO_SAVE_PATH}/randomizer_settings.yaml.test"
-        PREFERENCES_PATH="${RANDO_SAVE_PATH}/randomizer_preferences.yaml.test"
+        RANDO_SAVE_PATH="${CMAKE_BINARY_DIR}/randomizer tests/"
+        RANDO_LOGIC_TESTS_PATH="${RANDO_LOGIC_TESTS_PATH}"
+        SETTINGS_PATH="${CMAKE_BINARY_DIR}/randomizer tests/settings.yaml"
+        PREFERENCES_PATH="${CMAKE_BINARY_DIR}/randomizer tests/preferences.yaml"
         RANDOMIZER_ONLY)

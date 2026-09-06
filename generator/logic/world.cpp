@@ -4,7 +4,6 @@
 #include "search.hpp"
 #include "../randomizer.hpp"
 #include "../utility/exception.hpp"
-#include "../utility/file.hpp"
 #include "../utility/general.hpp"
 #include "../utility/log.hpp"
 #include "../utility/platform.hpp"
@@ -12,8 +11,6 @@
 #include "../utility/string.hpp"
 #include "../utility/yaml.hpp"
 
-#include <filesystem>
-#include <iostream>
 #include <ranges>
 #include <unordered_set>
 
@@ -82,7 +79,7 @@ namespace randomizer::logic::world
         this->BuildLocationTable();
         this->LoadLogicMacros();
         this->LoadWorldGraph();
-        // TODO: Verify Hint Data
+        this->VerifyHintData();
         this->GenerateItemPools();
     }
 
@@ -479,6 +476,42 @@ namespace randomizer::logic::world
             for (const auto& exit : area->GetExits())
             {
                 exit->GetConnectedArea()->AddEntrance(exit);
+            }
+        }
+    }
+
+    void World::VerifyHintData() {
+        const auto& textDatabase = getTextDatabase();
+        for (const auto& itemName : this->_itemTable | std::views::keys) {
+            if (!textDatabase.contains(itemName)) {
+                throw std::runtime_error("Item \"" + itemName + "\" does not have associated "
+                      "text data in language files.");
+            }
+            const auto& itemTextData = getTextObject(itemName);
+            for (auto language : supportedLanguages) {
+                if (itemTextData.mText[language].empty()) {
+                    throw std::runtime_error("Item \"" + itemName + "\" does not have "
+                          "associated text data in " + languageToString(language) + " language file.");
+                }
+            }
+        }
+
+        for (const auto& locationName : this->_locationTable | std::views::keys) {
+            auto nameForDatabase = locationName;
+            if (this->_itemTable.contains(locationName)) {
+                nameForDatabase += " Check";
+            }
+
+            if (!textDatabase.contains(nameForDatabase)) {
+                throw std::runtime_error("Location \"" + locationName + "\" does not have associated text data in language files.");
+            }
+
+            const auto& locationTextData = getTextObject(nameForDatabase);
+            for (auto language : supportedLanguages) {
+                if (locationTextData.mText[language].empty()) {
+                    throw std::runtime_error("Location \"" + locationName + "\" does not have "
+                          "associated text data in " + languageToString(language) + " language file.");
+                }
             }
         }
     }

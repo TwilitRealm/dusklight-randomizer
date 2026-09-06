@@ -46,6 +46,14 @@ namespace randomizer::logic::hints {
         return nullptr;
     }
 
+    static const Text& GetLocationTextObject(location::Location* location, Text::Type type) {
+        // If this location has the same name as an item, add the "Check" text to the end of the key
+        if (location->GetName() == location->GetOriginalItem()->GetName()) {
+            return getTextObject(location->GetName() + " Check", type);
+        }
+        return getTextObject(location->GetName(), type);
+    }
+
     static void GenerateAgithaSignHint(world::WorldPool& worlds) {
         for (auto& world : worlds) {
             if (world->Setting("Agitha Hints") == "On") {
@@ -440,9 +448,10 @@ namespace randomizer::logic::hints {
         // TODO: Cryptic Text
         auto textType = Text::PRETTY;
         const auto& itemText = addColor(getTextObject(location->GetCurrentItem()->GetName(), textType), Text::GREEN);
+        const auto& locationText = addColor(GetLocationTextObject(location, textType), Text::RED);
         Text fullText = getTextObject("Location Hint");
         fullText.Replace("<Item Pretty or Cryptic Name>", itemText);
-        fullText.Replace("<Location Name>", addColor(Text{location->GetName()}, Text::RED));
+        fullText.Replace("<Location Pretty or Cryptic Name>", locationText);
 
         return fullText;
     }
@@ -489,28 +498,12 @@ namespace randomizer::logic::hints {
             // Collect all valid path locations to hint for this location
             std::vector<location::Location*> validPathLocations{};
             for (auto location : goalLocation->GetPathLocations()) {
-                // Don't choose locations which have expected items or that are already hinted
-                if (location->HasExpectedItem() || location->IsHinted()) {
+                // Don't choose locations which have expected items or that are already hinted or
+                // which can't possibly be placed on any hint signs
+                if (location->HasExpectedItem() || location->IsHinted() ||
+                    !CheckAvailableSign(location, "Path Hints on Hint Signs"))
+                {
                     continue;
-                }
-
-                // This is unlikely, but also don't choose any locations which are logically
-                // necessary for accessing *every* possible hint sign if we're placing path hints
-                // on hint signs.
-                if (this->_world->Setting("Path Hints on Hint Signs") != "Off") {
-                    // Get a list of all hint signs where we can place path hints to use later
-                    auto possiblePathHintSigns = search::GetPossibleHintSigns(location);
-                    // Remove the ones which wouldn't be relevant
-                    std::erase_if(possiblePathHintSigns, [](location::Location* loc) {
-                        const auto& hintSignPlacement = loc->GetWorld()->Setting("Path Hints on Hint Signs");
-                        return (hintSignPlacement == "Overworld" && loc->HasCategories("Dungeon")) ||
-                               (hintSignPlacement == "Dungeon" && loc->HasCategories("Overworld"));
-                    });
-
-                    // If none are left, then don't choose this location
-                    if (possiblePathHintSigns.empty()) {
-                        continue;
-                    }
                 }
 
                 validPathLocations.push_back(location);
@@ -527,7 +520,8 @@ namespace randomizer::logic::hints {
             hintLocation->SetHinted(true);
             LOG_TO_DEBUG("Chose " + hintLocation->GetName() + " as path hint for " + goalLocation->GetName());
             auto hintText = GeneratePathHintText(hintLocation, goalLocation);
-            this->_pathHints.emplace_back(hintText, PathHint{goalLocation, hintLocation});
+            auto& hint = this->_pathHints.emplace_back(hintText, PathHint{goalLocation, hintLocation});
+            ReserveLimitedAvailabilityHint(hintLocation, "Path Hints on Hint Signs", hint);
         }
     }
 
@@ -607,7 +601,8 @@ namespace randomizer::logic::hints {
                 location->GetCurrentItem()->IsMajor() &&
                !location->HasExpectedItem() &&
                !location->IsHinted() &&
-                itemHintItems.contains(location->GetCurrentItem()->GetName()))
+                itemHintItems.contains(location->GetCurrentItem()->GetName()) &&
+                CheckAvailableSign(location, "Item Hints on Hint Signs"))
             {
                 possibleItemHintLocations.push_back(location);
             }
@@ -623,9 +618,15 @@ namespace randomizer::logic::hints {
             }
             auto hintLocation = possibleItemHintLocations.back();
             possibleItemHintLocations.pop_back();
+            // If a previous hint took a sign that this one needed, skip this hint
+            if (!CheckAvailableSign(hintLocation, "Item Hints on Hint Signs")) {
+                i--;
+                continue;
+            }
             hintLocation->SetHinted(true);
             auto hintText = GenerateItemHintText(hintLocation);
-            this->_itemHints.emplace_back(hintText, ItemHint{hintLocation});
+            auto& hint = this->_itemHints.emplace_back(hintText, ItemHint{hintLocation});
+            ReserveLimitedAvailabilityHint(hintLocation, "Item Hints on Hint Signs", hint);
             LOG_TO_DEBUG("Chose " + hintLocation->GetName() + ": " + hintLocation->GetCurrentItem()->GetName() + " as item hint location")
         }
     }
@@ -641,7 +642,7 @@ namespace randomizer::logic::hints {
         for (auto location : this->_world->GetAllLocations()) {
             if (location->IsProgression() &&
                 location->HasCategories("Remote Location") &&
-               !location->IsHinted())
+               !location->IsHinted() && CheckAvailableSign(location, "Location Hints on Hint Signs"))
             {
                 remoteLocations.push_back(location);
             }
@@ -658,9 +659,15 @@ namespace randomizer::logic::hints {
                 break;
             }
             auto hintLocation = remoteLocations[i];
+            // If a previous hint took a sign that this one needed, skip this hint
+            if (!CheckAvailableSign(hintLocation, "Location Hints on Hint Signs")) {
+                i--;
+                continue;
+            }
             hintLocation->SetHinted(true);
             auto hintText = GenerateLocationHintText(hintLocation);
-            this->_locationHints.emplace_back(hintText, LocationHint{hintLocation});
+            auto& hint = this->_locationHints.emplace_back(hintText, LocationHint{hintLocation});
+            ReserveLimitedAvailabilityHint(hintLocation, "Location Hints on Hint Signs", hint);
             LOG_TO_DEBUG("Chose " + hintLocation->GetName() + " as remote location hint location")
         }
     }
@@ -669,7 +676,9 @@ namespace randomizer::logic::hints {
         // Collect all possible locations to hint
         std::vector<location::Location*> possibleLocationHintLocations{};
         for (auto location : this->_world->GetAllLocations()) {
-            if (location->IsProgression() && !location->IsHinted() && !location->HasExpectedItem()) {
+            if (location->IsProgression() && !location->IsHinted() && !location->HasExpectedItem() &&
+                CheckAvailableSign(location, "Location Hints on Hint Signs"))
+            {
                 possibleLocationHintLocations.push_back(location);
             }
         }
@@ -697,6 +706,11 @@ namespace randomizer::logic::hints {
             }
             auto hintLocation = possibleLocationHintLocations.back();
             possibleLocationHintLocations.pop_back();
+            // If a previous hint took a sign that this one needed, skip this hint
+            if (!CheckAvailableSign(hintLocation, "Location Hints on Hint Signs")) {
+                i--;
+                continue;
+            }
             hintLocation->SetHinted(true);
             auto hintText = GenerateLocationHintText(hintLocation);
             this->_locationHints.emplace_back(hintText, LocationHint{hintLocation});
@@ -704,15 +718,74 @@ namespace randomizer::logic::hints {
         }
     }
 
-    static void AssignHintSignHints(const location::LocationPool& hintSigns, std::vector<Hint> hints, world::World* world) {
+    bool HintGenerator::CheckAvailableSign(location::Location* location, const std::string& setting) {
+        // Verify that there is an available hint sign to place the hint of this location
+        if (this->_world->Setting(setting) != "Off") {
+            // Get a list of all hint signs where we can place path hints to use later
+            auto possiblehintSigns = search::GetPossibleHintSigns(location);
+            // Remove the ones which wouldn't be relevant
+            std::erase_if(possiblehintSigns, [=](location::Location* loc) {
+                const auto& hintSignPlacement = loc->GetWorld()->Setting(setting);
+                return (hintSignPlacement == "Overworld" && loc->HasCategories("Dungeon")) ||
+                       (hintSignPlacement == "Dungeon" && loc->HasCategories("Overworld"));
+            });
+
+            // Remove any which are reserved
+            for (const auto reservedSign : this->_reservedSigns) {
+                utility::container::Erase(possiblehintSigns, reservedSign);
+            }
+
+            // If none are left, then don't choose this location
+            if (possiblehintSigns.empty()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    void HintGenerator::ReserveLimitedAvailabilityHint(location::Location* location, const std::string& setting, Hint& hint) {
+        // Verify that there is an available hint sign to place the hint of this location
+        if (this->_world->Setting(setting) != "Off") {
+            // Get a list of all hint signs where we can place path hints to use later
+            auto possiblehintSigns = search::GetPossibleHintSigns(location);
+            // Remove the ones which wouldn't be relevant
+            std::erase_if(possiblehintSigns, [=](location::Location* loc) {
+                const auto& hintSignPlacement = loc->GetWorld()->Setting(setting);
+                return (hintSignPlacement == "Overworld" && loc->HasCategories("Dungeon")) ||
+                       (hintSignPlacement == "Dungeon" && loc->HasCategories("Overworld"));
+            });
+
+            // Remove any which are reserved
+            for (const auto reservedSign : this->_reservedSigns) {
+                utility::container::Erase(possiblehintSigns, reservedSign);
+            }
+
+            // If there's only one or two places this hint can be placed, reserve one of those signs
+            if (possiblehintSigns.size() <= 2) {
+                auto reservedSign = utility::random::RandomElement(possiblehintSigns);
+                hint.reservedSign = reservedSign;
+                this->_reservedSigns.insert(reservedSign);
+            }
+        }
+    }
+
+    void HintGenerator::AssignHintSignHints(const location::LocationPool& hintSigns, std::vector<Hint> hints) {
         size_t hintsPerSign = std::ceil(static_cast<double>(hints.size()) / static_cast<double>(hintSigns.size()));
         // Don't bother placing hints if there are none
         if (hintsPerSign == 0) {
             return;
         }
-        auto& worlds = world->GetRandomizer()->GetWorlds();
-        auto& hintSignHints = world->GetHintSignHints();
+        auto& worlds = this->_world->GetRandomizer()->GetWorlds();
+        auto& hintSignHints = this->_world->GetHintSignHints();
         auto hintSignHintsOriginal = hintSignHints;
+
+        // Assign hints that are reserved for a specific sign
+        for (auto& hint : hints) {
+            if (hint.reservedSign != nullptr) {
+                hintSignHints[hint.reservedSign].push_back(hint);
+            }
+        }
 
         // Keep trying to place hints until all have been logically placed at least once
         bool successfullyPlaceHints = false;
@@ -906,13 +979,13 @@ namespace randomizer::logic::hints {
         // If no hints have to be constrained to either overworld or dungeon signs,
         // then distribute all hints over all signs
         if (overworldSignHints.empty() && dungeonSignHints.empty()) {
-            AssignHintSignHints(this->_world->GetHintSignLocations(), anySignHints, this->_world);
+            AssignHintSignHints(this->_world->GetHintSignLocations(), anySignHints);
         }
         if (!overworldSignHints.empty()) {
-            AssignHintSignHints(overworldSignLocations, overworldSignHints, this->_world);
+            AssignHintSignHints(overworldSignLocations, overworldSignHints);
         }
         if (!dungeonSignHints.empty()) {
-            AssignHintSignHints(dungeonSignLocations, dungeonSignHints, this->_world);
+            AssignHintSignHints(dungeonSignLocations, dungeonSignHints);
         }
     }
 
@@ -1039,8 +1112,13 @@ namespace randomizer::logic::hints {
 
             // Set the text for the number of required dungeons
             if (numRequiredDungeons > 0) {
-                midnaHintText += getTextObject("Midna Hints Required Dungeons Intro At Least One Dungeon");
-                midnaHintText.Replace("<required dungeon count>", std::to_string(numRequiredDungeons));
+                if (numRequiredDungeons == 1) {
+                    midnaHintText += getTextObject("Midna Hints Required Dungeons Intro One Dungeon");
+                } else {
+                    midnaHintText += getTextObject("Midna Hints Required Dungeons Intro At Least Two Dungeons");
+                    midnaHintText.Replace("<required dungeon count>", std::to_string(numRequiredDungeons));
+                }
+
                 midnaHintText.PadToNextBox();
 
                 // Then loop through again to add the dungeon names.
@@ -1082,7 +1160,7 @@ namespace randomizer::logic::hints {
                 if (!hints.empty()) {
                     midnaHintText += getTextObject("Midna Hints " + type + " Intro");
                     midnaHintText.PadToNextBox();
-                    for (auto& [text, data] : hints) {
+                    for (auto& [text, data, _] : hints) {
                         midnaHintText += text;
                         midnaHintText.PadToNextBox();
                     }
@@ -1095,7 +1173,7 @@ namespace randomizer::logic::hints {
             if (!midnaBarrenHints.empty()) {
                 midnaHintText += getTextObject("Midna Hints Barren Hints Intro");
                 midnaHintText.PadToNextBox();
-                for (auto& [text, data] : midnaBarrenHints) {
+                for (auto& [text, data, _] : midnaBarrenHints) {
                     midnaHintText += addColor(getTextObject(std::get<BarrenHint>(data).region), Text::PURPLE) + "\n";
                 }
                 midnaHintText.PadToNextBox();

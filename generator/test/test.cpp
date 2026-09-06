@@ -27,12 +27,10 @@ int main()
                 std::cout << "Error Message: " << e.what() << std::endl;
                 return 1;
             }
-
-            std::filesystem::remove(SETTINGS_PATH);
         }
     }
-    // Remove test preferences
-    std::filesystem::remove(PREFERENCES_PATH);
+    // Remove test directory
+    std::filesystem::remove_all(RANDO_SAVE_PATH);
 
     std::cout << "All Settings Tests passed" << std::endl;
 

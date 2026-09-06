@@ -36,6 +36,7 @@ using HintData = std::variant<std::monostate, PathHint, BarrenHint, ItemHint, Lo
 struct Hint {
     Text text{};
     HintData data;
+    location::Location* reservedSign = nullptr;
 
     bool operator==(const Hint&) const = default;
 };

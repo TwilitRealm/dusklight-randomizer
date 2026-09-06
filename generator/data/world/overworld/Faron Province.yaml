@@ -53,7 +53,7 @@
   Exits:
     South Faron Woods Coros Ledge: Can_Midna_Jump or Twilight
     Faron Woods Coros House Lower: Can_Open_Doors
-    South Faron Woods Behind Gate: Can_Dig or Faron_Woods_Coro_Key or Small_Keys == Keysy
+    South Faron Woods Behind Gate: Can_Dig or Faron_Woods_Coro_Key or Small_Keys == Keysy or Twilight
     South Faron Woods Owl Statue Area: Can_Smash
     Faron Field: Can_Clear_Forest
     Ordon Bridge: Nothing
@@ -118,7 +118,7 @@
     South Faron Woods Twilit Insect Behind Gate 2: Can_Defeat_Faron_Twilit_Insect
   Exits:
     Faron Woods Cave South: Nothing
-    South Faron Woods: Can_Dig or Faron_Woods_Coro_Key or Small_Keys == Keysy
+    South Faron Woods: Can_Dig or Faron_Woods_Coro_Key or Small_Keys == Keysy or Twilight
 
 # FARON WOODS CAVE
 

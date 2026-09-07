@@ -162,6 +162,8 @@ namespace randomizer::logic::entrance
         void SetGameInfo(const YAML::Node& node);
         void SetCoupledEntrances(const std::vector<int16_t>& entrances) { _coupledEntrances = entrances; }
         const std::vector<int16_t>& GetCoupledEntrances() const { return _coupledEntrances; }
+        void SetFollowerEntrances(const YAML::Node& followerList);
+        const std::list<Entrance*>& GetFollowerEntrances() const { return _followerEntrances; }
 
        private:
         int _id = -1;
@@ -225,6 +227,9 @@ namespace randomizer::logic::entrance
 
         // If the entrance is a coupled door, this is the other door's point to override
         std::vector<int16_t> _coupledEntrances = {};
+
+        // Entrances that are to follow where this one leads if it's randomized
+        std::list<Entrance*> _followerEntrances = {};
     };
 
     using EntrancePool = std::vector<Entrance*>;

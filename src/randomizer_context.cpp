@@ -17,9 +17,10 @@
 #include "../generator/logic/entrance_shuffle.hpp"
 
 #include <fstream>
+#include <mods/svc/log.hpp>
+#include <ranges>
 #include <type_traits>
 #include <unordered_set>
-#include <mods/svc/log.hpp>
 
 #include "d/actor/d_a_alink.h"
 #include "d/d_com_inf_game.h"
@@ -1730,26 +1731,40 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
         }
     }
 
+    // Set exiting the Arbiter's Grounds Boss Room to spawn at the Arbiter's Grounds entrance
+    // if mirror chamber access is closed
     if (world->Setting("Mirror Chamber Access") == "Closed") {
-        // Set exiting the Arbiter's Grounds Boss Room to spawn at the Arbiter's Grounds entrance
-        // if mirror chamber access is closed
-        RandomizerContext::EntranceOverride original = {
+
+        RandomizerContext::EntranceOverride mirrorChamberEntrance = {
             .stageId = StageIDs::Mirror_Chamber,
             .roomNo = 4,
             .mapLayer = -1,
             .pointNo = 0,
         };
 
-        RandomizerContext::EntranceOverride override = {
+        RandomizerContext::EntranceOverride bulblinCampFromAG = {
             .stageId = StageIDs::Bulblin_Camp,
             .roomNo = 3,
             .mapLayer = -1,
             .pointNo = 3,
         };
 
-        // Check if we are already overriding the bulblin camp entrance, and correctly override the entrance
-        const auto& it = randoData.mEntranceOverrides.find(override);
-        randoData.mEntranceOverrides[original] = (it != randoData.mEntranceOverrides.end()) ? it->second : override;
+        // Check if we are already overriding the bulblin camp entrance
+        const auto& it = randoData.mEntranceOverrides.find(bulblinCampFromAG);
+        auto mirrorChamberOverride = (it != randoData.mEntranceOverrides.end()) ? it->second : bulblinCampFromAG;
+
+        // If boss entrance rando is off, then we set this manually
+        if (world->Setting("Randomize Boss Entrances") == "Off") {
+            randoData.mEntranceOverrides[mirrorChamberEntrance] = mirrorChamberOverride;
+        } else {
+            // If boss entrances are randomized, then loop through and change all overrides which match
+            // the mirror chamber entrance (this could be multiple if bosses are mixed with doors).
+            for (auto& override : randoData.mEntranceOverrides | std::views::values) {
+                if (override == mirrorChamberEntrance) {
+                    override = mirrorChamberOverride;
+                }
+            }
+        }
     }
 
     return std::move(randoData);

@@ -446,6 +446,8 @@
     Spawn Type: "60"
     Parameters: "F01F"
     State: -1
+    Follower Entrances:
+      - Mirror Chamber Lower -> Arbiters Grounds Boss Room
   Return:
     Connection: Arbiters Grounds Boss Room -> Mirror Chamber Lower
     Alias: Arbiters Grounds Boss Room -> Mirror Chamber
@@ -456,26 +458,18 @@
     Parameters: "501F"
     State: -1
 
-# Leave disabled for now: Mirror Chamber is the return location from Arbiters Grounds Boss
-# - Type: Overworld
-#   Forward:
-#     Connection: Arbiters Grounds Boss Room -> Mirror Chamber Lower
-#     Alias: Arbiters Grounds Boss Room -> Mirror Chamber
-#     Stage: 60
-#     Room: 4
-#     Spawn: 0
-#     Spawn Type: "10"
-#     Parameters: "501F"
-#     State: -1
-#   Return:
-#     Connection: Mirror Chamber Lower -> Arbiters Grounds Boss Room
-#     Alias: Arbiters Grounds Boss Room -> Mirror Chamber
-#     Stage: 25
-#     Room: 50
-#     Spawn: 3
-#     Spawn Type: "10"
-#     Parameters: "501F"
-#     State: -1
+# Define data for Mirror Chamber Lower -> Arbiters Grounds Boss Room so that it can follow
+# Arbiters Grounds -> Arbiters Grounds Boss Room
+- Type: None
+  Forward:
+    Connection: Mirror Chamber Lower -> Arbiters Grounds Boss Room
+    Alias: Mirror Chamber -> Arbiters Grounds Boss Room
+    Stage: 25
+    Room: 50
+    Spawn: 3
+    Spawn Type: "10"
+    Parameters: "501F"
+    State: -1
 
 - Type: Boss
   Forward:

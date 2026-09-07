@@ -85,6 +85,9 @@ namespace randomizer::logic::entrance_shuffle
             forwardEntrance->SetPrimary(true);
             forwardEntrance->SetAlias(
                 forwardEntry["Alias"] ? forwardEntry["Alias"].as<std::string>() : "");
+            if (forwardEntry["Follower Entrances"]) {
+                forwardEntrance->SetFollowerEntrances(forwardEntry["Follower Entrances"]);
+            }
 
             if (entranceDataNode["Return"])
             {
@@ -98,6 +101,10 @@ namespace randomizer::logic::entrance_shuffle
                 returnEntrance->SetAlias(
                     returnEntry["Alias"] ? returnEntry["Alias"].as<std::string>() : "");
                 forwardEntrance->BindTwoWay(returnEntrance);
+
+                if (returnEntry["Follower Entrances"]) {
+                    returnEntrance->SetFollowerEntrances(returnEntry["Follower Entrances"]);
+                }
 
                 // Add coupled entrances to their respective tag group
                 if (entranceDataNode["Entrance Couple Tag"])

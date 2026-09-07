@@ -221,6 +221,9 @@ namespace randomizer::logic::entrance
     void Entrance::SetShuffled(const bool& shuffled)
     {
         this->_shuffled = shuffled;
+        for (auto follower : this->_followerEntrances) {
+            follower->SetShuffled(shuffled);
+        }
     }
 
     bool Entrance::IsShuffled() const
@@ -231,6 +234,9 @@ namespace randomizer::logic::entrance
     void Entrance::SetDecoupled(const bool& decoupled)
     {
         this->_decoupled = decoupled;
+        for (auto follower : this->_followerEntrances) {
+            follower->SetDecoupled(decoupled);
+        }
     }
 
     bool Entrance::IsDecoupled() const
@@ -273,6 +279,9 @@ namespace randomizer::logic::entrance
     void Entrance::SetReplaces(Entrance* replaces)
     {
         this->_replaces = replaces;
+        for (auto follower : this->_followerEntrances) {
+            follower->SetReplaces(replaces);
+        }
     }
 
     Entrance* Entrance::GetReplaces() const
@@ -295,10 +304,20 @@ namespace randomizer::logic::entrance
         return this->_assumed;
     }
 
+    void Entrance::SetFollowerEntrances(const YAML::Node& followerList) {
+        for (const auto& follower : followerList) {
+            auto entrance = this->_world->GetEntrance(follower.as<std::string>());
+            this->_followerEntrances.push_back(entrance);
+        }
+    }
+
     void Entrance::Connect(area::Area* newConnectedArea)
     {
         this->_connectedArea = newConnectedArea;
         newConnectedArea->AddEntrance(this);
+        for (auto follower : this->_followerEntrances) {
+            follower->Connect(newConnectedArea);
+        }
     }
 
     area::Area* Entrance::Disconnect()
@@ -306,6 +325,9 @@ namespace randomizer::logic::entrance
         this->_connectedArea->RemoveEntrance(this);
         auto previouslyConnected = this->_connectedArea;
         this->_connectedArea = nullptr;
+        for (auto follower : this->_followerEntrances) {
+            follower->Disconnect();
+        }
         return previouslyConnected;
     }
 

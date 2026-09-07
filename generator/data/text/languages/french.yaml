@@ -7748,6 +7748,10 @@ Agithas Castle Some Items Sign Text:
       
       <green><Items>
 
+Agithas Castle Counter Text:
+  Standard:
+    Text: <Item> x<count>
+
 Coro Bottle Offer 1 Text Template:
   Standard:
     Text: |-

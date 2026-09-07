@@ -78,10 +78,13 @@ namespace randomizer::logic::hints {
                     std::vector<Text> agithaItemTexts{};
                     for (const auto& [item, count] : agithaItems) {
                         auto itemText = getTextObject(item->GetName());
-                        if (count > 1) {
-                            itemText += " x" + std::to_string(count);
-                        }
                         itemText.Replace(getTextObject("Progressive Item Prefix"), "");
+                        if (count > 1) {
+                            auto counterText = getTextObject("Agithas Castle Counter Text");
+                            counterText.Replace("<Item>", itemText);
+                            counterText.Replace("<count>", std::to_string(count));
+                            itemText = counterText;
+                        }
                         agithaItemTexts.push_back(itemText);
                     }
 

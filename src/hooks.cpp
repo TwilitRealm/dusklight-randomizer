@@ -1957,6 +1957,29 @@ void hookPostEmkDemoCameraEnd(ModContext*, void* args, void* retval, void*) {
     }
 }
 
+HookAction hookPreChangeScene4Event(ModContext*, void*, void*, void*) {
+    auto evtControl = dComIfGp_getEvent();
+    if (evtControl == NULL) {
+        return HOOK_CONTINUE;
+    }
+
+    auto mapData = evtControl->getStageEventDt();
+    if (mapData == NULL) {
+        return HOOK_CONTINUE;
+    }
+
+    // If the game is trying to set an entrance after a dungeon save prompt, don't override it
+    std::string_view eventName = mapData->data.event_name;
+    std::string_view lastStage = dComIfGp_getLastPlayStageName();
+    if (lastStage.starts_with("D_MN") && lastStage.ends_with("A") &&
+        eventName.starts_with("SAVEREQ"))
+    {
+        randomizer_dontOverrideNextEntrance();
+    }
+
+    return HOOK_CONTINUE;
+}
+
 void hookPostChangeScene4Event(ModContext*, void* args, void* retval, void*) {
     int i_exitId = mods::arg<int>(args, 0);
     s8 room_no = mods::arg<s8>(args, 1);
@@ -3344,6 +3367,7 @@ ModResult initialize() {
 
     ADD_HOOK_POST(e_mk_demo_camera_end, hookPostEmkDemoCameraEnd);
 
+    ADD_HOOK_PRE(changeScene4Event, hookPreChangeScene4Event);
     ADD_HOOK_POST(changeScene4Event, hookPostChangeScene4Event);
     ADD_HOOK_PRE(stage_playerInit, hookPreStagePlayerInit);
 

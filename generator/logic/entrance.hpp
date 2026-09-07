@@ -24,6 +24,7 @@ namespace randomizer::logic::entrance
     enum Type
     {
         INVALID = 0,
+        NONE,
         // The order of this enum is also the order in which the different types of entrances
         // will be shuffled. So this ordering is important. Generally we want to shuffle entrances
         // near the "outside" of the world graph first (dungeon entrances/grottos) and then follow that
@@ -160,7 +161,7 @@ namespace randomizer::logic::entrance
         int16_t GetPointNo() const { return _pointNo; }
         void SetGameInfo(const YAML::Node& node);
         void SetCoupledEntrances(const std::vector<int16_t>& entrances) { _coupledEntrances = entrances; }
-        const std::vector<int16_t>& getCoupledEntrances() const { return _coupledEntrances; }
+        const std::vector<int16_t>& GetCoupledEntrances() const { return _coupledEntrances; }
 
        private:
         int _id = -1;

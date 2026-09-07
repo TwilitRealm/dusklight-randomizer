@@ -43,7 +43,7 @@ namespace randomizer::logic::entrance_shuffle
     void SetAllEntrancesData(world::World* world)
     {
         // Keep track of which entrances are together
-        std::unordered_map<std::string, std::list<entrance::Entrance*>> coupledEntrances = {};
+        std::unordered_map<std::string, std::list<Entrance*>> coupledEntrances = {};
 
         auto entranceDataTree = LOAD_EMBED_YAML(RANDO_DATA_PATH "entrance_shuffle_data.yaml");
         for (const auto& entranceDataNode : entranceDataTree)
@@ -52,8 +52,8 @@ namespace randomizer::logic::entrance_shuffle
             YAMLVerifyFields(entranceDataNode, "Type", "Forward");
 
             auto typeStr = entranceDataNode["Type"].as<std::string>();
-            auto type = entrance::TypeFromStr(typeStr);
-            if (type == entrance::Type::INVALID)
+            auto type = TypeFromStr(typeStr);
+            if (type == INVALID)
             {
                 throw std::runtime_error("Unknown entrance type \"" + typeStr + "\" in entrance shuffle node:\n" +
                                          YAML::Dump(entranceDataNode));
@@ -76,7 +76,7 @@ namespace randomizer::logic::entrance_shuffle
             }
 
             // Check to make sure all required fields are present for the forward entry
-            YAMLVerifyFields(forwardEntry, "Connection" /*, "Info" */);
+            YAMLVerifyFields(forwardEntry, "Connection", "Stage", "Room", "Spawn", "Spawn Type", "Parameters", "State");
 
             auto forwardEntrance = world->GetEntrance(forwardEntry["Connection"].as<std::string>());
             forwardEntrance->SetType(type);
@@ -89,7 +89,7 @@ namespace randomizer::logic::entrance_shuffle
             if (entranceDataNode["Return"])
             {
                 auto& returnEntry = entranceDataNode["Return"];
-                YAMLVerifyFields(returnEntry, "Connection" /*, "Info" */);
+                YAMLVerifyFields(returnEntry, "Connection", "Stage", "Room", "Spawn", "Spawn Type", "Parameters", "State");
 
                 auto returnEntrance = world->GetEntrance(returnEntry["Connection"].as<std::string>());
                 returnEntrance->SetType(type);
@@ -155,69 +155,69 @@ namespace randomizer::logic::entrance_shuffle
         // Spawn
         if (world->Setting("Randomize Starting Spawn") == "On")
         {
-            entrancePools[Type::SPAWN] = world->GetShuffleableEntrances(Type::SPAWN);
+            entrancePools[SPAWN] = world->GetShuffleableEntrances(SPAWN);
         }
 
         // Dungeon Entrances
         if (world->Setting("Randomize Dungeon Entrances") >= "On")
         {
-            entrancePools[Type::DUNGEON] = world->GetShuffleableEntrances(Type::DUNGEON, /*onlyPrimary = */ true);
+            entrancePools[DUNGEON] = world->GetShuffleableEntrances(DUNGEON, /*onlyPrimary = */ true);
 
             // Remove Hyrule Castle if it's not being shuffled
             if (world->Setting("Randomize Dungeon Entrances") != "On + Hyrule Castle")
             {
-                std::erase_if(entrancePools[Type::DUNGEON], [](const auto& entrance) {
+                std::erase_if(entrancePools[DUNGEON], [](const auto& entrance) {
                     return entrance->GetOriginalName() == "Castle Town North Inside Barrier -> Hyrule Castle Entrance";
                 });
             }
 
             if (world->Setting("Decouple Entrances") == "On")
             {
-                entrancePools[Type::DUNGEON_REVERSE] = GetReverseEntrances(entrancePools[Type::DUNGEON]);
+                entrancePools[DUNGEON_REVERSE] = GetReverseEntrances(entrancePools[DUNGEON]);
             }
         }
 
         // Boss Entrances
         if (world->Setting("Randomize Boss Entrances") == "On")
         {
-            entrancePools[Type::BOSS] = world->GetShuffleableEntrances(Type::BOSS, /*onlyPrimary = */ true);
+            entrancePools[BOSS] = world->GetShuffleableEntrances(BOSS, /*onlyPrimary = */ true);
 
             if (world->Setting("Decouple Entrances") == "On")
             {
-                entrancePools[Type::BOSS_REVERSE] = GetReverseEntrances(entrancePools[Type::BOSS]);
+                entrancePools[BOSS_REVERSE] = GetReverseEntrances(entrancePools[BOSS]);
             }
         }
 
         // Grotto Entrances
         if (world->Setting("Randomize Grotto Entrances") == "On")
         {
-            entrancePools[Type::GROTTO] = world->GetShuffleableEntrances(Type::GROTTO, /*onlyPrimary = */ true);
+            entrancePools[GROTTO] = world->GetShuffleableEntrances(GROTTO, /*onlyPrimary = */ true);
 
             if (world->Setting("Decouple Entrances") == "On")
             {
-                entrancePools[Type::GROTTO_REVERSE] = GetReverseEntrances(entrancePools[Type::GROTTO]);
+                entrancePools[GROTTO_REVERSE] = GetReverseEntrances(entrancePools[GROTTO]);
             }
         }
 
         // Cave Entrances
         if (world->Setting("Randomize Cave Entrances") == "On")
         {
-            entrancePools[Type::CAVE] = world->GetShuffleableEntrances(Type::CAVE, /*onlyPrimary = */ true);
+            entrancePools[CAVE] = world->GetShuffleableEntrances(CAVE, /*onlyPrimary = */ true);
 
             if (world->Setting("Decouple Entrances") == "On")
             {
-                entrancePools[Type::CAVE_REVERSE] = GetReverseEntrances(entrancePools[Type::CAVE]);
+                entrancePools[CAVE_REVERSE] = GetReverseEntrances(entrancePools[CAVE]);
             }
         }
 
         // Interior Entrances
         if (world->Setting("Randomize Interior Entrances") == "On")
         {
-            entrancePools[Type::INTERIOR] = world->GetShuffleableEntrances(Type::INTERIOR, /*onlyPrimary = */ true);
+            entrancePools[INTERIOR] = world->GetShuffleableEntrances(INTERIOR, /*onlyPrimary = */ true);
 
             if (world->Setting("Decouple Entrances") == "On")
             {
-                entrancePools[Type::INTERIOR_REVERSE] = GetReverseEntrances(entrancePools[Type::INTERIOR]);
+                entrancePools[INTERIOR_REVERSE] = GetReverseEntrances(entrancePools[INTERIOR]);
             }
         }
 
@@ -233,10 +233,10 @@ namespace randomizer::logic::entrance_shuffle
             bool excludeOverworldReverse =
                  world->Setting("Decouple Entrances") == "Off" &&
                  std::ranges::any_of(mixedPools, [](const auto& pool) {
-                     return randomizer::utility::container::ElementInContainer(pool, "Overworld");
+                     return utility::container::ElementInContainer(pool, "Overworld");
                  }); /*Overworld in a mixed pool*/
-            entrancePools[Type::OVERWORLD] =
-                world->GetShuffleableEntrances(Type::OVERWORLD, /*onlyPrimary = */ excludeOverworldReverse);
+            entrancePools[OVERWORLD] =
+                world->GetShuffleableEntrances(OVERWORLD, /*onlyPrimary = */ excludeOverworldReverse);
         }
 
         // Match pool types
@@ -252,17 +252,17 @@ namespace randomizer::logic::entrance_shuffle
 
         // Set appropriate types as decoupled
         auto potentiallyDecoupledTypes = {
-            Type::DUNGEON,
-            Type::DUNGEON_REVERSE,
-            Type::BOSS,
-            Type::BOSS_REVERSE,
-            Type::GROTTO,
-            Type::GROTTO_REVERSE,
-            Type::CAVE,
-            Type::CAVE_REVERSE,
-            Type::INTERIOR,
-            Type::INTERIOR_REVERSE,
-            Type::OVERWORLD,
+            DUNGEON,
+            DUNGEON_REVERSE,
+            BOSS,
+            BOSS_REVERSE,
+            GROTTO,
+            GROTTO_REVERSE,
+            CAVE,
+            CAVE_REVERSE,
+            INTERIOR,
+            INTERIOR_REVERSE,
+            OVERWORLD,
         };
         if (world->Setting("Decouple Entrances") == "On")
         {
@@ -287,7 +287,7 @@ namespace randomizer::logic::entrance_shuffle
             for (const auto& typeStr : mixedPool)
             {
                 auto type = TypeFromStr(typeStr);
-                if (type == Type::INVALID)
+                if (type == INVALID)
                 {
                     throw std::runtime_error("Unknown entrance type \"" + typeStr + "\" in mixed pools");
                 }
@@ -321,12 +321,12 @@ namespace randomizer::logic::entrance_shuffle
         EntrancePools targetEntrancePools = {};
         for (auto& [type, entrancePool] : entrancePools)
         {
-            if (type == Type::SPAWN)
+            if (type == SPAWN)
             {
                 EntrancePool spawnPool = {};
                 auto world = entrancePool[0]->GetWorld();
                 // Get all the entrances of these types to use as spawn targets
-                for (const auto& typeForSpawn : {Type::SPAWN, Type::INTERIOR, Type::CAVE, Type::OVERWORLD, Type::GROTTO})
+                for (const auto& typeForSpawn : {SPAWN, INTERIOR, CAVE, OVERWORLD, GROTTO})
                 {
                     for (const auto& entrance : world->GetShuffleableEntrances(typeForSpawn))
                     {
@@ -383,12 +383,12 @@ namespace randomizer::logic::entrance_shuffle
             auto entranceType = plandoEntrance->GetType();
 
             // Throw error if entrance/target types are not shuffleable
-            if (entranceType == Type::INVALID)
+            if (entranceType == INVALID)
             {
                 throw std::runtime_error(entranceToConnect->GetOriginalName() +
                                          " is not an entrance that can be shuffled");
             }
-            if (plandoTarget->GetType() == Type::INVALID)
+            if (plandoTarget->GetType() == INVALID)
             {
                 throw std::runtime_error(plandoTarget->GetOriginalName() +
                                          " is not an entrance that can be shuffled");
@@ -447,7 +447,7 @@ namespace randomizer::logic::entrance_shuffle
                     }
                 }
 
-                // If we found our target, delete the entrance and it's now connected target from their respective pools
+                // If we found our target, delete the entrance and its now connected target from their respective pools
                 if (validTargetFound)
                 {
                     utility::container::Erase(entrancePool, entranceToConnect);

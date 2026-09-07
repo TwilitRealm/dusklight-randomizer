@@ -1723,7 +1723,7 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
             randoData.mEntranceOverrides[forward] = replaces;
 
             // Set overrides for all coupled entrances
-            for (const auto& point : entrance->getCoupledEntrances()) {
+            for (const auto& point : entrance->GetCoupledEntrances()) {
                 RandomizerContext::EntranceOverride coupled = {.stageId = entrance->GetStageId(), .roomNo = entrance->GetRoomNo(), .mapLayer = entrance->GetLayerNo(), .pointNo = point};
                 randoData.mEntranceOverrides[coupled] = replaces;
             }

@@ -1159,7 +1159,7 @@
   Entrance Couple Tag: Renados Sanctuary Front Door
   Forward:
     Connection: Renados Sanctuary Front East Door Exterior -> Renados Sanctuary Front East Door Interior
-    Alias: Kakriko Village -> Renados Sanctuary Front East Door
+    Alias: Kakariko Village -> Renados Sanctuary Front East Door
     Stage: 68
     Room: 0
     Spawn: 6
@@ -1180,7 +1180,7 @@
   Entrance Couple Tag: Renados Sanctuary Front Door
   Forward:
     Connection: Renados Sanctuary Front West Door Exterior -> Renados Sanctuary Front West Door Interior
-    Alias: Kakriko Village -> Renados Sanctuary Front West Door
+    Alias: Kakariko Village -> Renados Sanctuary Front West Door
     Stage: 68
     Room: 0
     Spawn: 5
@@ -1201,7 +1201,7 @@
   Entrance Couple Tag: Renados Sanctuary Back Door
   Forward:
     Connection: Renados Sanctuary Back East Door Exterior -> Renados Sanctuary Back East Door Interior
-    Alias: Kakriko Village -> Renados Sanctuary Back East Door
+    Alias: Kakariko Village -> Renados Sanctuary Back East Door
     Stage: 68
     Room: 0
     Spawn: 8
@@ -1222,7 +1222,7 @@
   Entrance Couple Tag: Renados Sanctuary Back Door
   Forward:
     Connection: Renados Sanctuary Back West Door Exterior -> Renados Sanctuary Back West Door Interior
-    Alias: Kakriko Village -> Renados Sanctuary Back West Door
+    Alias: Kakariko Village -> Renados Sanctuary Back West Door
     Stage: 68
     Room: 0
     Spawn: 7

@@ -10,23 +10,26 @@ namespace randomizer::logic::entrance
 
     Type TypeFromStr(const std::string& str)
     {
-        std::unordered_map<std::string, Type> types = {{"Spawn", Type::SPAWN},
-                                                       {"Warp Portal", Type::WARP_PORTAL},
-                                                       {"Dungeon", Type::DUNGEON},
-                                                       {"Boss", Type::BOSS},
-                                                       {"Grotto", Type::GROTTO},
-                                                       {"Mixed Pool 1", Type::MIXED_POOL_1},
-                                                       {"Mixed Pool 2", Type::MIXED_POOL_2},
-                                                       {"Mixed Pool 3", Type::MIXED_POOL_3},
-                                                       {"Mixed Pool 4", Type::MIXED_POOL_4},
-                                                       {"Mixed Pool 5", Type::MIXED_POOL_5},
-                                                       {"Cave", Type::CAVE},
-                                                       {"Interior", Type::INTERIOR},
-                                                       {"Overworld", Type::OVERWORLD}};
+        std::unordered_map<std::string, Type> types = {
+            {"None", NONE},
+            {"Spawn", SPAWN},
+            {"Warp Portal", WARP_PORTAL},
+            {"Dungeon", DUNGEON},
+            {"Boss", BOSS},
+            {"Grotto", GROTTO},
+            {"Mixed Pool 1", MIXED_POOL_1},
+            {"Mixed Pool 2", MIXED_POOL_2},
+            {"Mixed Pool 3", MIXED_POOL_3},
+            {"Mixed Pool 4", MIXED_POOL_4},
+            {"Mixed Pool 5", MIXED_POOL_5},
+            {"Cave", CAVE},
+            {"Interior", INTERIOR},
+            {"Overworld", OVERWORLD}
+        };
 
         if (!types.contains(str))
         {
-            return Type::INVALID;
+            return INVALID;
         }
 
         return types.at(str);
@@ -34,24 +37,26 @@ namespace randomizer::logic::entrance
 
     std::string TypeToStr(const Type& type)
     {
-        std::unordered_map<Type, std::string> types = {{Type::SPAWN, "Spawn"},
-                                                       {Type::WARP_PORTAL, "Warp Portal"},
-                                                       {Type::DUNGEON, "Dungeon"},
-                                                       {Type::DUNGEON_REVERSE, "Dungeon Reverse"},
-                                                       {Type::BOSS, "Boss"},
-                                                       {Type::BOSS_REVERSE, "Boss Reverse"},
-                                                       {Type::GROTTO, "Grotto"},
-                                                       {Type::GROTTO_REVERSE, "Grotto Reverse"},
-                                                       {Type::MIXED_POOL_1, "Mixed Pool 1"},
-                                                       {Type::MIXED_POOL_2, "Mixed Pool 2"},
-                                                       {Type::MIXED_POOL_3, "Mixed Pool 3"},
-                                                       {Type::MIXED_POOL_4, "Mixed Pool 4"},
-                                                       {Type::MIXED_POOL_5, "Mixed Pool 5"},
-                                                       {Type::CAVE, "Cave"},
-                                                       {Type::CAVE_REVERSE, "Cave Reverse"},
-                                                       {Type::INTERIOR, "Interior"},
-                                                       {Type::INTERIOR_REVERSE, "Interior Reverse"},
-                                                       {Type::OVERWORLD, "Overworld"}};
+        std::unordered_map<Type, std::string> types = {
+            {NONE, "None"},
+            {SPAWN, "Spawn"},
+            {WARP_PORTAL, "Warp Portal"},
+            {DUNGEON, "Dungeon"},
+            {DUNGEON_REVERSE, "Dungeon Reverse"},
+            {BOSS, "Boss"},
+            {BOSS_REVERSE, "Boss Reverse"},
+            {GROTTO, "Grotto"},
+            {GROTTO_REVERSE, "Grotto Reverse"},
+            {MIXED_POOL_1, "Mixed Pool 1"},
+            {MIXED_POOL_2, "Mixed Pool 2"},
+            {MIXED_POOL_3, "Mixed Pool 3"},
+            {MIXED_POOL_4, "Mixed Pool 4"},
+            {MIXED_POOL_5, "Mixed Pool 5"},
+            {CAVE, "Cave"},
+            {CAVE_REVERSE, "Cave Reverse"},
+            {INTERIOR, "Interior"},
+            {INTERIOR_REVERSE, "Interior Reverse"},
+            {OVERWORLD, "Overworld"}};
 
         if (!types.contains(type))
         {
@@ -63,22 +68,23 @@ namespace randomizer::logic::entrance
 
     Type TypeToReverse(const Type& type)
     {
-        std::unordered_map<Type, Type> reverse = {{Type::DUNGEON, Type::DUNGEON_REVERSE},
-                                                  {Type::DUNGEON_REVERSE, Type::DUNGEON},
-                                                  {Type::BOSS, Type::BOSS_REVERSE},
-                                                  {Type::BOSS_REVERSE, Type::BOSS},
-                                                  {Type::GROTTO, Type::GROTTO_REVERSE},
-                                                  {Type::GROTTO_REVERSE, Type::GROTTO},
-                                                  {Type::CAVE, Type::CAVE_REVERSE},
-                                                  {Type::CAVE_REVERSE, Type::CAVE},
-                                                  {Type::INTERIOR, Type::INTERIOR_REVERSE},
-                                                  {Type::INTERIOR_REVERSE, Type::INTERIOR},
-                                                  // Yes, this is intentional for the overworld type
-                                                  {Type::OVERWORLD, Type::OVERWORLD}};
+        std::unordered_map<Type, Type> reverse = {
+            {DUNGEON, DUNGEON_REVERSE},
+            {DUNGEON_REVERSE, DUNGEON},
+            {BOSS, BOSS_REVERSE},
+            {BOSS_REVERSE, BOSS},
+            {GROTTO, GROTTO_REVERSE},
+            {GROTTO_REVERSE, GROTTO},
+            {CAVE, CAVE_REVERSE},
+            {CAVE_REVERSE, CAVE},
+            {INTERIOR, INTERIOR_REVERSE},
+            {INTERIOR_REVERSE, INTERIOR},
+            // Yes, this is intentional for the overworld type
+            {OVERWORLD, OVERWORLD}};
 
         if (!reverse.contains(type))
         {
-            return Type::INVALID;
+            return INVALID;
         }
 
         return reverse.at(type);
@@ -144,8 +150,8 @@ namespace randomizer::logic::entrance
 
     void Entrance::GeneralizeName()
     {
-        randomizer::utility::str::Erase(this->_originalName, " North", " South", " East", " West", " Right", " Left");
-        randomizer::utility::str::Erase(this->_alias, " North", " South", " East", " West", " Right", " Left");
+        utility::str::Erase(this->_originalName, " North", " South", " East", " West", " Right", " Left");
+        utility::str::Erase(this->_alias, " North", " South", " East", " West", " Right", " Left");
     }
 
     area::Area* Entrance::GetParentArea() const
@@ -166,7 +172,7 @@ namespace randomizer::logic::entrance
     void Entrance::SetType(const Type& type)
     {
         this->_type = type;
-        if (this->_originalType == Type::INVALID)
+        if (this->_originalType == INVALID)
         {
             this->_originalType = type;
         }
@@ -336,13 +342,13 @@ namespace randomizer::logic::entrance
     {
         std::string parentAreaName;
         std::string connectedAreaName;
-        if (randomizer::utility::str::Contains(originalName, " -> "))
+        if (utility::str::Contains(originalName, " -> "))
         {
             auto separatorIndex = originalName.find(" -> ");
             parentAreaName = originalName.substr(0, separatorIndex);
             connectedAreaName = originalName.substr(separatorIndex + 4);
         }
-        else if (randomizer::utility::str::Contains(originalName, " from "))
+        else if (utility::str::Contains(originalName, " from "))
         {
             auto separatorIndex = originalName.find(" from ");
             connectedAreaName = originalName.substr(0, separatorIndex);

@@ -270,7 +270,7 @@ namespace randomizer::logic::spoiler_log
             for (const auto& [hintSign, hintsOnSign] : hintSignHints) {
                 for (const auto& hint : hintsOnSign) {
                     // Format the hints so they appear nice in the spoiler log
-                    auto hintText = hint.text.mText[Text::ENGLISH];
+                    auto hintText = hint.text.mEntries[Text::ENGLISH].str;
                     hintText = utility::str::Replace(hintText, "\n", "\n                ");
                     // If this is a path hint, also include the location and item it's referring to
                     if (auto pathHint = std::get_if<hints::PathHint>(&hint.data)) {

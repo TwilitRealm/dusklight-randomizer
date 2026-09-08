@@ -489,7 +489,7 @@ namespace randomizer::logic::world
             }
             const auto& itemTextData = getTextObject(itemName);
             for (auto language : supportedLanguages) {
-                if (itemTextData.mText[language].empty()) {
+                if (itemTextData.mEntries[language].str.empty()) {
                     throw std::runtime_error("Item \"" + itemName + "\" does not have "
                           "associated text data in " + languageToString(language) + " language file.");
                 }
@@ -508,7 +508,7 @@ namespace randomizer::logic::world
 
             const auto& locationTextData = getTextObject(nameForDatabase);
             for (auto language : supportedLanguages) {
-                if (locationTextData.mText[language].empty()) {
+                if (locationTextData.mEntries[language].str.empty()) {
                     throw std::runtime_error("Location \"" + locationName + "\" does not have "
                           "associated text data in " + languageToString(language) + " language file.");
                 }

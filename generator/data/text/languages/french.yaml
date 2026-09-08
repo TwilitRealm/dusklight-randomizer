@@ -1,12 +1,15 @@
-# This file contains all custom French text for the dusklight randomizer
+# This file contains all custom English text for the dusklight randomizer
 
 # NOTES FOR TRANSLATORS:
-# - You should only be translating the "Text" fields for each element in this file. Do not translate the
+# - You should only be translating the "Text" fields for each element in this file.
 # - Text being surrounded by braces '{}' means that the text will be colored. If a text field begins with a brace,
 #   the entire field must be surrounded with quotation marks.
 # - Below each text element, you can specify a given text's gender and/or plurality. If you need additional
 #   specifiers for pieces of text, let us know. If no gender is provided, the assumption is no gender. If no
 #   plurality is provided, the assumed plurality is singular.
+# - Below the Standard, Pretty, and Cryptic types you can optionally specify Template Overrides which can allow
+#   for different translations depending on which template the text is being inserted into. See the Cave of Ordeals
+#   Great Fairy Reward in the english yaml for an example.
 
 # ITEM NAMES
 Green Rupee:
@@ -4831,9 +4834,9 @@ Cave of Ordeals Great Fairy Reward:
   Standard:
     Text: Cave of Ordeals Great Fairy Reward
   Pretty:
-    Text: visiting the {Cave of Ordeals Great Fairy}
+    Text: the {Cave of Ordeals Great Fairy Reward}
   Cryptic:
-    Text: visiting the {Cave of Ordeals Great Fairy}
+    Text: the {Cave of Ordeals Great Fairy Reward}
 
 Mirror Chamber Warp Portal:
   Standard:

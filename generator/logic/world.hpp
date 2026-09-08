@@ -158,11 +158,11 @@ namespace randomizer::logic::world
 
         TextDatabase& GetTextDatabase() { return this->_textDatabase; }
         const std::string& GetText(const std::string& name, Text::Type type = Text::STANDARD, Text::Language language = Text::ENGLISH) {
-            if (!this->_textDatabase.at(name).at(type).mText.at(language).empty()) {
-                return this->_textDatabase.at(name).at(type).mText.at(language);
+            if (!this->_textDatabase.at(name).at(type).mEntries.at(language).str.empty()) {
+                return this->_textDatabase.at(name).at(type).mEntries.at(language).str;
             }
 
-            return this->_textDatabase.at(name).at(type).mText.at(Text::ENGLISH);
+            return this->_textDatabase.at(name).at(type).mEntries.at(Text::ENGLISH).str;
         }
 
         Text& GetTextObject(const std::string& name, Text::Type type = Text::STANDARD) {

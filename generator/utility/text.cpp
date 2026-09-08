@@ -33,43 +33,43 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
 }  // namespace
 
     Text::Text(const std::string& str) {
-        for (auto& text : mText) {
-            text = str;
+        for (auto& entry : mEntries) {
+            entry.str = str;
         }
     }
 
     void Text::Replace(const std::string& oldText, const Text& replacementText, uint32_t count/* = max*/) {
-        for (size_t i = 0; i < mText.size(); ++i) {
-            auto& curString = mText[i];
-            curString = utility::str::Replace(curString, oldText, replacementText.mText[i], count);
+        for (size_t i = 0; i < mEntries.size(); ++i) {
+            auto& curString = mEntries[i].str;
+            curString = utility::str::Replace(curString, oldText, replacementText.mEntries[i].str, count);
         }
     }
 
     void Text::Replace(const std::string& oldText, const std::string& replacementText, uint32_t count/* = max*/) {
-        for (auto& text : mText) {
-            text = utility::str::Replace(text, oldText, replacementText, count);
+        for (auto& text : mEntries) {
+            text.str = utility::str::Replace(text.str, oldText, replacementText, count);
         }
     }
 
     void Text::Replace(const Text& oldText, const std::string& replacementText, uint32_t count /* = max*/) {
-        for (size_t i = 0; i < mText.size(); ++i) {
-            auto& curString = mText[i];
-            auto& oldString = oldText.mText[i];
+        for (size_t i = 0; i < mEntries.size(); ++i) {
+            auto& curString = mEntries[i].str;
+            auto& oldString = oldText.mEntries[i].str;
             curString = utility::str::Replace(curString, oldString, replacementText, count);
         }
     }
 
     void Text::PopBack() {
-        for (auto& text : mText) {
-            if (!text.empty()) {
-                text.pop_back();
+        for (auto& entry : mEntries) {
+            if (!entry.str.empty()) {
+                entry.str.pop_back();
             }
         }
     }
 
     void Text::Clear() {
-        for (auto& text : mText) {
-            text.clear();
+        for (auto& entry : mEntries) {
+            entry.str.clear();
         }
     }
 
@@ -84,49 +84,49 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
 
             static const std::locale latin1Locale(localeName);
 
-            for (size_t lang = 0; lang < mText.size(); ++lang) {
-                auto& text = mText[lang];
-                if (!text.empty() && lang != JAPANESE) {
-                    text[0] = std::toupper(text[0], latin1Locale);
+            for (size_t lang = 0; lang < mEntries.size(); ++lang) {
+                auto& entry = mEntries[lang];
+                if (!entry.str.empty() && lang != JAPANESE) {
+                    entry.str[0] = std::toupper(entry.str[0], latin1Locale);
                 }
             }
         } catch (const std::runtime_error&) {
             // Fallback incase the system completely lacks the requested locale definition
-            for (size_t lang = 0; lang < mText.size(); ++lang) {
-                auto& text = mText[lang];
-                if (!text.empty() && lang != JAPANESE) {
-                    text[0] = static_cast<char>(std::toupper(static_cast<unsigned char>(text[0])));
+            for (size_t lang = 0; lang < mEntries.size(); ++lang) {
+                auto& entry = mEntries[lang];
+                if (!entry.str.empty() && lang != JAPANESE) {
+                    entry.str[0] = static_cast<char>(std::toupper(static_cast<unsigned char>(entry.str[0])));
                 }
             }
         }
     }
 
     void Text::BreakLines(float maxLineWidth /*= MAX_LINE_WIDTH_ITEM_TEXTBOX*/) {
-        for (size_t lang = 0; lang < mText.size(); ++lang) {
-            auto& text = mText[lang];
-            breakLines(text, maxLineWidth, lang);
+        for (size_t lang = 0; lang < mEntries.size(); ++lang) {
+            auto& entry = mEntries[lang];
+            breakLines(entry.str, maxLineWidth, lang);
         }
     }
 
     void Text::PadToNextBox() {
         BreakLines();
-        for (size_t lang = 0; lang < mText.size(); ++lang) {
-            auto& text = mText[lang];
+        for (size_t lang = 0; lang < mEntries.size(); ++lang) {
+            auto& entry = mEntries[lang];
             auto linesPerBox = mLinesPerBox;
             if (lang == JAPANESE) {
                 linesPerBox = mLinesPerBoxJP;
             }
-            size_t numNewLines = std::ranges::count_if(text, [](char c){return c == '\n';});
-            while (numNewLines == 0 || text.back() != '\n' || numNewLines % linesPerBox != 0) {
-                text += '\n';
+            size_t numNewLines = std::ranges::count_if(entry.str, [](char c){return c == '\n';});
+            while (numNewLines == 0 || entry.str.back() != '\n' || numNewLines % linesPerBox != 0) {
+                entry.str += '\n';
                 ++numNewLines;
             }
         }
     }
 
     bool Text::Empty() const {
-        for (auto& text : mText) {
-            if (!text.empty()) {
+        for (auto& entry : mEntries) {
+            if (!entry.str.empty()) {
                 return false;
             }
         }
@@ -134,8 +134,8 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
     }
 
     bool Text::IsTooLong() const {
-        for (auto& text : mText) {
-            auto numNewLines = std::ranges::count_if(text, [](char c){return c == '\n';});
+        for (auto& entry : mEntries) {
+            auto numNewLines = std::ranges::count_if(entry.str, [](char c){return c == '\n';});
             if (numNewLines > mNewLinesPerMessage) {
                 return true;
             }
@@ -150,8 +150,8 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
         if (this->IsTooLong()) {
             // Figure out how many new text objects we need to fit all the text
             size_t numTextObjects{1};
-            for (auto& text : mText) {
-                double numNewLines = std::ranges::count_if(text, [](char c){return c == '\n';});
+            for (auto& entry : mEntries) {
+                double numNewLines = std::ranges::count_if(entry.str, [](char c){return c == '\n';});
                 auto curTextSplitAmount = static_cast<size_t>(std::ceil(numNewLines / mNewLinesPerMessage));
                 numTextObjects = std::max(curTextSplitAmount, numTextObjects);
             }
@@ -164,15 +164,15 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
             }
 
             // Split each string into the appropriate number of objects
-            for (size_t textIdx = 0; textIdx < mText.size(); ++textIdx) {
-                auto& textStr = mText[textIdx];
+            for (size_t textIdx = 0; textIdx < mEntries.size(); ++textIdx) {
+                auto& textEntry = mEntries[textIdx];
                 auto linesPerBox = mLinesPerBox;
                 if (textIdx == JAPANESE) {
                     linesPerBox = mLinesPerBoxJP;
                 }
                 // Calculate how many newlines we're allowing in this string per message
                 // Different languages may have different amounts of newlines
-                double numNewLines = std::ranges::count_if(textStr, [](char c){return c == '\n';});
+                double numNewLines = std::ranges::count_if(textEntry.str, [](char c){return c == '\n';});
                 auto newLinesPerMessage  = static_cast<size_t>(std::ceil(numNewLines / numTextObjects));
                 // Keep the number of lines as a multiple of how many lines are in a box so we don't split in the middle of a textbox
                 while (newLinesPerMessage % linesPerBox != 0) {
@@ -186,7 +186,7 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
                         pos = std::string::npos;
                     }
                     for (int i = 0; i < newLinesPerMessage; ++i) {
-                        pos = textStr.find('\n', pos);
+                        pos = textEntry.str.find('\n', pos);
                         if (pos == std::string::npos) {
                             break;
                         }
@@ -194,19 +194,19 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
                     }
 
                     // Get the current split of the string
-                    auto curSplit = textStr.substr(0, pos);
+                    auto curSplit = textEntry.str.substr(0, pos);
                     // Pop off the last newline since it's unnecessary
                     if (curSplit.back() == '\n') {
                         curSplit.pop_back();
                     }
-                    splitText.at(splitIdx).mText[textIdx] = curSplit;
+                    splitText.at(splitIdx).mEntries[textIdx].str = curSplit;
                     ++splitIdx;
                     if (pos == std::string::npos) {
-                        textStr.clear();
+                        textEntry.str.clear();
                     } else {
-                        textStr = textStr.substr(pos);
+                        textEntry.str = textEntry.str.substr(pos);
                     }
-                } while (!textStr.empty());
+                } while (!textEntry.str.empty());
             }
 
             // Recopy the front element to this object
@@ -218,9 +218,9 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
             // Add the split message prefix to every box
             if (!mSplitMessagePrefix.empty()) {
                 for (auto& textObj : splitText) {
-                    for (auto& text : textObj.mText) {
-                        text = mSplitMessagePrefix + text;
-                        applyMessageCodes(text);
+                    for (auto& entry : textObj.mEntries) {
+                        entry.str = mSplitMessagePrefix + entry.str;
+                        applyMessageCodes(entry.str);
                     }
                 }
             }
@@ -231,15 +231,15 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
     }
 
     Text& Text::operator+=(const Text& rhs) {
-        for (size_t i = 0; i < mText.size(); ++i) {
-            mText[i] += rhs.mText[i];
+        for (size_t i = 0; i < mEntries.size(); ++i) {
+            mEntries[i].str += rhs.mEntries[i].str;
         }
         return *this;
     }
 
     Text& Text::operator+=(const std::string& rhs) {
-        for (auto& text : mText) {
-            text += rhs;
+        for (auto& entry : mEntries) {
+            entry.str += rhs;
         }
         return *this;
     }
@@ -250,8 +250,8 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
     }
 
     Text operator+(Text lhs, const std::string& rhs) {
-        for (auto& text : lhs.mText) {
-            text += rhs;
+        for (auto& entry : lhs.mEntries) {
+            entry.str += rhs;
         }
         return lhs;
     }
@@ -442,25 +442,67 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
             {"japanese", GET_EMBED_DATA(RANDO_DATA_PATH "text/languages/japanese.yaml")},
         });
 
+        // Helper function for inserting the text
+        auto insertTextIntoDB = [&tb](Text::Type type, const YAML::Node& typeData, Text::Language language, const std::string& name) {
+            const auto& text = typeData["Text"].as<std::string>();
+            auto& entry = tb[name][type].mEntries[language];
+            if (language != Text::JAPANESE) {
+                entry.str = UTF8ToLatin1(text);
+            } else {
+                entry.str = UTF8ToShiftJIS(text);
+            }
+            if (typeData["Gender"]) {
+                entry.gender = stringToGender(typeData["Gender"].as<std::string>());
+            }
+            if (typeData["Plurality"]) {
+                entry.plurality = stringToPlurality(typeData["Plurality"].as<std::string>());
+            }
+        };
+
         for (const auto& file : files) {
             auto language = stringToLanguage(file.language);
             auto textData = LOAD_EMBED_DATA(file.languageData);
+
+            // Get names of all fields to verify for template overrides
+            std::set<std::string> allKeys{};
+            for (const auto& textNode : textData) {
+                allKeys.insert(textNode.first.as<std::string>());
+            }
+
             for (const auto& textNode : textData) {
                 const auto& name = textNode.first.as<std::string>();
                 for (const auto& typeNode : textNode.second) {
-                    auto type = stringToType(typeNode.first.as<std::string>());
+                    const auto& typeStr = typeNode.first.as<std::string>();
+                    if (typeStr == "Template Overrides") {
+                        continue;
+                    }
+                    auto type = stringToType(typeStr);
                     auto typeData = typeNode.second;
-                    const auto& text = typeData["Text"].as<std::string>();
-                    if (language != Text::JAPANESE) {
-                        tb[name][type].mText[language] = UTF8ToLatin1(text);
-                    } else {
-                        tb[name][type].mText[language] = UTF8ToShiftJIS(text);
-                    }
-                    if (typeData["Gender"]) {
-                        tb[name][type].mGender[language] = stringToGender(typeData["Gender"].as<std::string>());
-                    }
-                    if (typeData["Plurality"]) {
-                        tb[name][type].mPlurality[language] = stringToPlurality(typeData["Plurality"].as<std::string>());
+                    insertTextIntoDB(type, typeData, language, name);
+                }
+
+                if (textNode.second["Template Overrides"]) {
+                    for (const auto& overrideNode : textNode.second["Template Overrides"]) {
+                        YAMLVerifyFields(overrideNode, "Keys");
+                        std::list<std::string> keys{};
+                        for (const auto& keyNode : overrideNode["Keys"]) {
+                            const auto& key = keyNode.as<std::string>();
+                            if (!allKeys.contains(key)) {
+                                throw std::runtime_error(name + " Template Override key \"" + key + "\" does not exist. Please check the spelling.");
+                            }
+                            keys.push_back(name + key);
+                        }
+                        for (const auto& typeNode : overrideNode) {
+                            const auto& typeStr = typeNode.first.as<std::string>();
+                            if (typeStr == "Keys") {
+                                continue;
+                            }
+                            auto type = stringToType(typeStr);
+                            auto typeData = typeNode.second;
+                            for (const auto& key : keys) {
+                                insertTextIntoDB(type, typeData, language, key);
+                            }
+                        }
                     }
                 }
             }
@@ -491,6 +533,24 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
         return tb.at(name).at(type);
     }
 
+    Text getTextObjectForTemplate(const std::string& name, Text::Type type, const std::string& textTemplate) {
+        auto text = getTextObject(name, type);
+        auto nameTemplate = name + textTemplate;
+        if (!textObjectExists(nameTemplate) || textTemplate.empty()) {
+            return text;
+        }
+
+        const auto& templateText = getTextObject(nameTemplate, type);
+        for (size_t i = 0; i < text.mEntries.size(); i++) {
+            // If an override is found, copy over its entry
+            if (!templateText.mEntries[i].str.empty()) {
+                text.mEntries[i] = templateText.mEntries[i];
+            }
+        }
+
+        return text;
+    }
+
     const std::string& getTextStr(const std::string& name,
                         Text::Type type /*= Text::STANDARD*/,
                         Text::Language language /*= Text::ENGLISH*/)
@@ -500,12 +560,12 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
             throw std::runtime_error("Text name \"" + name + "\" is not recognized.");
         }
 
-        if (!tb.at(name).at(type).mText.at(language).empty()) {
-            return tb.at(name).at(type).mText.at(language);
+        if (!tb.at(name).at(type).mEntries.at(language).str.empty()) {
+            return tb.at(name).at(type).mEntries.at(language).str;
         }
 
         // Return english if the other language's string is empty
-        return tb.at(name).at(type).mText.at(language);
+        return tb.at(name).at(type).mEntries.at(language).str;
     }
 
     Text addColor(const Text& t, Text::Color color, int count /* = 1*/) {
@@ -531,13 +591,13 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
         }
 
         Text text = t;
-        for (auto& langText : text.mText) {
+        for (auto& entry : text.mEntries) {
             // If we don't have brackets indicating color, then surround the entire text
-            if (langText.find('{') == std::string::npos && langText.find('}') == std::string::npos) {
-                langText = colorStrings.at(color) + langText + colorStrings.at(Text::WHITE);
+            if (entry.str.find('{') == std::string::npos && entry.str.find('}') == std::string::npos) {
+                entry.str = colorStrings.at(color) + entry.str + colorStrings.at(Text::WHITE);
             } else {
-                langText = utility::str::Replace(langText, "{", colorStrings.at(color), count);
-                langText = utility::str::Replace(langText, "}", colorStrings.at(Text::WHITE), count);
+                entry.str = utility::str::Replace(entry.str, "{", colorStrings.at(color), count);
+                entry.str = utility::str::Replace(entry.str, "}", colorStrings.at(Text::WHITE), count);
             }
         }
 
@@ -722,43 +782,43 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
 
             // English rules. Move other languages out of english when we have their rules
             if (i == 0) {
-                english += text.mText[Text::ENGLISH];
-                french += text.mText[Text::FRENCH];
-                german += text.mText[Text::GERMAN];
-                italian += text.mText[Text::ITALIAN];
-                spanish += text.mText[Text::SPANISH];
-                japanese += text.mText[Text::JAPANESE];
+                english += text.mEntries[Text::ENGLISH].str;
+                french += text.mEntries[Text::FRENCH].str;
+                german += text.mEntries[Text::GERMAN].str;
+                italian += text.mEntries[Text::ITALIAN].str;
+                spanish += text.mEntries[Text::SPANISH].str;
+                japanese += text.mEntries[Text::JAPANESE].str;
             } else if (i == texts.size() - 1 && texts.size() == 2) {
-                english += " and " + text.mText[Text::ENGLISH];
-                french += " and " + text.mText[Text::FRENCH];
-                german += " and " + text.mText[Text::GERMAN];
-                italian += " and " + text.mText[Text::ITALIAN];
-                spanish += " and " + text.mText[Text::SPANISH];
-                japanese += " and " + text.mText[Text::JAPANESE];
+                english += " and " + text.mEntries[Text::ENGLISH].str;
+                french += " and " + text.mEntries[Text::FRENCH].str;
+                german += " and " + text.mEntries[Text::GERMAN].str;
+                italian += " and " + text.mEntries[Text::ITALIAN].str;
+                spanish += " and " + text.mEntries[Text::SPANISH].str;
+                japanese += " and " + text.mEntries[Text::JAPANESE].str;
             } else if (i == texts.size() - 1) {
-                english += ", and " + text.mText[Text::ENGLISH];
-                french += ", and " + text.mText[Text::FRENCH];
-                german += ", and " + text.mText[Text::GERMAN];
-                italian += ", and " + text.mText[Text::ITALIAN];
-                spanish += ", and " + text.mText[Text::SPANISH];
-                japanese += ", and " + text.mText[Text::JAPANESE];
+                english += ", and " + text.mEntries[Text::ENGLISH].str;
+                french += ", and " + text.mEntries[Text::FRENCH].str;
+                german += ", and " + text.mEntries[Text::GERMAN].str;
+                italian += ", and " + text.mEntries[Text::ITALIAN].str;
+                spanish += ", and " + text.mEntries[Text::SPANISH].str;
+                japanese += ", and " + text.mEntries[Text::JAPANESE].str;
             } else {
-                english += ", " + text.mText[Text::ENGLISH];
-                french += ", " + text.mText[Text::FRENCH];
-                german += ", " + text.mText[Text::GERMAN];
-                italian += ", " + text.mText[Text::ITALIAN];
-                spanish += ", " + text.mText[Text::SPANISH];
-                japanese += ", " + text.mText[Text::JAPANESE];
+                english += ", " + text.mEntries[Text::ENGLISH].str;
+                french += ", " + text.mEntries[Text::FRENCH].str;
+                german += ", " + text.mEntries[Text::GERMAN].str;
+                italian += ", " + text.mEntries[Text::ITALIAN].str;
+                spanish += ", " + text.mEntries[Text::SPANISH].str;
+                japanese += ", " + text.mEntries[Text::JAPANESE].str;
             }
         }
 
         Text listingText{};
-        listingText.mText[Text::ENGLISH] = english;
-        listingText.mText[Text::FRENCH] = french;
-        listingText.mText[Text::GERMAN] = german;
-        listingText.mText[Text::ITALIAN] = italian;
-        listingText.mText[Text::SPANISH] = spanish;
-        listingText.mText[Text::JAPANESE] = japanese;
+        listingText.mEntries[Text::ENGLISH].str = english;
+        listingText.mEntries[Text::FRENCH].str = french;
+        listingText.mEntries[Text::GERMAN].str = german;
+        listingText.mEntries[Text::ITALIAN].str = italian;
+        listingText.mEntries[Text::SPANISH].str = spanish;
+        listingText.mEntries[Text::JAPANESE].str = japanese;
         return listingText;
     }
 }; // namespace Text

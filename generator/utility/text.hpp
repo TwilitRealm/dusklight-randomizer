@@ -2,7 +2,7 @@
 
 #include <string>
 #include <array>
-#include <unordered_map>
+#include <map>
 #include <limits>
 #include <vector>
 #include <cstdint>
@@ -18,8 +18,8 @@ namespace randomizer {
             SPANISH,
             ITALIAN,
             // End of ordering for dSv_config_language
-            DUTCH,
-            JAPANESE, // Not supported yet
+            DUTCH, // Unused by the game
+            JAPANESE,
             LANGUAGE_MAX
         };
 
@@ -70,9 +70,15 @@ namespace randomizer {
         Text() = default;
         explicit Text(const std::string& str);
 
-        std::array<std::string, LANGUAGE_MAX> mText{};
-        std::array<Gender, LANGUAGE_MAX> mGender{};
-        std::array<Plurality, LANGUAGE_MAX> mPlurality{};
+        struct Entry {
+            std::string str{};
+            Gender gender{};
+            Plurality plurality{};
+
+            bool operator==(const Entry&) const = default;
+        };
+
+        std::array<Entry, LANGUAGE_MAX> mEntries{};
         float mLineWidth = MAX_LINE_WIDTH_NORMAL_TEXTBOX;
         size_t mNewLinesPerMessage = MAX_NEWLINES_PER_MESSAGE;
         size_t mLinesPerBox = LINES_PER_BOX_LATIN;
@@ -126,12 +132,13 @@ namespace randomizer {
     Text::Plurality stringToPlurality(const std::string& str);
 
     // Retrieval of Text objects keyed by name and type (standard, pretty, cryptic)
-    using TextDatabase = std::unordered_map<std::string, std::array<Text, Text::TYPE_MAX>>;
+    using TextDatabase = std::map<std::string, std::array<Text, Text::TYPE_MAX>>;
 
     const TextDatabase& getTextDatabase();
 
     bool textObjectExists(const std::string& name);
     const Text& getTextObject(const std::string& name, Text::Type type = Text::STANDARD);
+    Text getTextObjectForTemplate(const std::string& name, Text::Type type, const std::string& textTemplate);
     const std::string& getTextStr(const std::string& name, Text::Type type = Text::STANDARD, Text::Language language = Text::ENGLISH);
 
     Text addColor(const Text& t, Text::Color color, int count = 1);

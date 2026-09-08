@@ -54,6 +54,14 @@ namespace randomizer::logic::hints {
         return getTextObject(location->GetName(), type);
     }
 
+    static Text GetLocationTextObjectForTemplate(location::Location* location, Text::Type type, const std::string& textTemplate) {
+        // If this location has the same name as an item, add the "Check" text to the end of the key
+        if (location->GetName() == location->GetOriginalItem()->GetName()) {
+            return getTextObjectForTemplate(location->GetName() + " Check", type, textTemplate);
+        }
+        return getTextObjectForTemplate(location->GetName(), type, textTemplate);
+    }
+
     static void GenerateAgithaSignHint(world::WorldPool& worlds) {
         for (auto& world : worlds) {
             if (world->Setting("Agitha Hints") == "On") {
@@ -366,6 +374,8 @@ namespace randomizer::logic::hints {
     }
 
     static Text GeneratePathHintText(location::Location* location, location::Location* goalLocation) {
+        std::string textTemplate = "Path Hint";
+
         // Collect all the hint regions this location is in
         std::set<std::string> hintRegionNames{};
         for (const auto& locAcc : location->GetAccessList()) {
@@ -377,7 +387,7 @@ namespace randomizer::logic::hints {
         // Get the text object for each region and surround it with the color red
         std::vector<Text> hintRegionText{};
         std::ranges::transform(hintRegionNames, std::back_inserter(hintRegionText), [&](const std::string& region) {
-           return addColor(getTextObject(region), Text::RED);
+           return addColor(getTextObjectForTemplate(region, Text::STANDARD, textTemplate), Text::RED);
         });
 
         // Make the regions into a listing
@@ -386,17 +396,17 @@ namespace randomizer::logic::hints {
         // Get the goal name and apply its color
         const auto& goalName = goalLocation->GetGoalName();
         const auto& goalColor = bossColors.at(goalName);
-        Text goalNameText = goalColor + getTextObject(goalName) + "<white>";
+        Text goalNameText = goalColor + getTextObjectForTemplate(goalName, Text::STANDARD, textTemplate) + "<white>";
 
         // Construct the full text
-        Text fullText = getTextObject("Path Hint");
+        Text fullText = getTextObject(textTemplate);
         fullText.Replace("<regions>", hintRegionListing);
         fullText.Replace("<goal name>", goalNameText);
 
         // Handle plurality if necessary
-        for (auto& langText : fullText.mText) {
-            if (!langText.empty() && utility::str::Contains(langText, '|')) {
-                langText = ProcessHintPlurality(langText, hintRegionNames.size() > 1);
+        for (auto& langText : fullText.mEntries) {
+            if (!langText.str.empty() && utility::str::Contains(langText.str, '|')) {
+                langText.str = ProcessHintPlurality(langText.str, hintRegionNames.size() > 1);
             }
         }
 
@@ -404,13 +414,16 @@ namespace randomizer::logic::hints {
     }
 
     static Text GenerateBarrenHintText(const std::string& region) {
-        auto fullText = getTextObject("Barren Hint");
-        auto regionText = addColor(getTextObject(region), Text::PURPLE);
+        std::string textTemplate = "Barren Hint";
+        auto regionText = addColor(getTextObjectForTemplate(region, Text::STANDARD, textTemplate), Text::PURPLE);
+        auto fullText = getTextObject(textTemplate);
         fullText.Replace("<region>", regionText);
         return fullText;
     }
 
     static Text GenerateItemHintText(location::Location* location) {
+        std::string textTemplate = "Item Hint";
+
         // Collect all the hint regions this location is in
         std::set<std::string> hintRegionNames{};
         for (const auto& locAcc : location->GetAccessList()) {
@@ -422,25 +435,27 @@ namespace randomizer::logic::hints {
         // Get the text object for each region and surround it with the color red
         std::vector<Text> hintRegionText{};
         std::ranges::transform(hintRegionNames, std::back_inserter(hintRegionText), [&](const std::string& region) {
-           return addColor(getTextObject(region, Text::PRETTY), Text::RED);
+           return addColor(getTextObjectForTemplate(region, Text::PRETTY, textTemplate), Text::RED);
         });
 
         // Make the regions into a listing
         Text hintRegionListing = makeTextListing(hintRegionText);
-        // Get item text with color added
+
+        // Get item text and add color
         auto textType = Text::PRETTY;
-        Text itemText = addColor(getTextObject(location->GetCurrentItem()->GetName(), textType), Text::GREEN);
+        auto itemTextObject = getTextObjectForTemplate(location->GetCurrentItem()->GetName(), textType, textTemplate);
+        Text itemText = addColor(itemTextObject, Text::GREEN);
 
         // TODO: Cryptic Text
 
-        Text fullText = getTextObject("Item Hint");
+        Text fullText = getTextObject(textTemplate);
         fullText.Replace("<regions>", hintRegionListing);
         fullText.Replace("<Item Pretty or Cryptic Name>", itemText);
 
         // Handle plurality if necessary
-        for (auto& langText : fullText.mText) {
-            if (!langText.empty() && utility::str::Contains(langText, '|')) {
-                langText = ProcessHintPlurality(langText, hintRegionNames.size() > 1);
+        for (auto& langText : fullText.mEntries) {
+            if (!langText.str.empty() && utility::str::Contains(langText.str, '|')) {
+                langText.str = ProcessHintPlurality(langText.str, hintRegionNames.size() > 1);
             }
         }
 
@@ -449,12 +464,24 @@ namespace randomizer::logic::hints {
 
     static Text GenerateLocationHintText(location::Location* location) {
         // TODO: Cryptic Text
+        std::string textTemplate = "Location Hint";
         auto textType = Text::PRETTY;
-        const auto& itemText = addColor(getTextObject(location->GetCurrentItem()->GetName(), textType), Text::GREEN);
-        const auto& locationText = addColor(GetLocationTextObject(location, textType), Text::RED);
-        Text fullText = getTextObject("Location Hint");
+        auto itemTextObject = getTextObjectForTemplate(location->GetCurrentItem()->GetName(), textType, textTemplate);
+        auto locationTextObject = GetLocationTextObjectForTemplate(location, textType, textTemplate);
+        const auto& itemText = addColor(itemTextObject, Text::GREEN);
+        const auto& locationText = addColor(locationTextObject, Text::RED);
+        Text fullText = getTextObject(textTemplate);
         fullText.Replace("<Item Pretty or Cryptic Name>", itemText);
         fullText.Replace("<Location Pretty or Cryptic Name>", locationText);
+
+        // Handle plurality if necessary based on the item name
+        for (size_t lang = 0; lang < fullText.mEntries.size(); ++lang) {
+            auto& langText = fullText.mEntries.at(lang);
+            if (!langText.str.empty() && utility::str::Contains(langText.str, '|')) {
+                langText.str = ProcessHintPlurality(langText.str,
+                    itemText.mEntries[lang].plurality == Text::PLURAL);
+            }
+        }
 
         return fullText;
     }
@@ -832,7 +859,7 @@ namespace randomizer::logic::hints {
                 }
 
                 if (availableHintSigns.empty()) {
-                    LOG_TO_DEBUG("No available hint signs to place hint " + hint.text.mText[Text::ENGLISH]);
+                    LOG_TO_DEBUG("No available hint signs to place hint " + hint.text.mEntries[Text::ENGLISH].str);
                     if (hintLocation != nullptr) {
                         hintLocation->SetCurrentItem(itemAtHintLocation);
                     }
@@ -882,7 +909,7 @@ namespace randomizer::logic::hints {
             }
 
             if (chosenSign == nullptr) {
-                LOG_TO_DEBUG("Could not find any gossip stones to place hint " + hint.text.mText[Text::ENGLISH] + " Trying a different hint.")
+                LOG_TO_DEBUG("Could not find any gossip stones to place hint " + hint.text.mEntries[Text::ENGLISH].str + " Trying a different hint.")
                 continue;
             }
 
@@ -1004,8 +1031,8 @@ namespace randomizer::logic::hints {
             }
 
             // pop off last '\n' so we don't have an extra blank textbox
-            for (auto& text : signText.mText) {
-                text.pop_back();
+            for (auto& entry : signText.mEntries) {
+                entry.str.pop_back();
             }
         }
     }
@@ -1037,11 +1064,12 @@ namespace randomizer::logic::hints {
                                       const std::list<std::string>& textNames,
                                       Text::Color color) {
         auto itemName = world->GetLocation(locationName)->GetCurrentItem()->GetName();
-        auto itemStandardName = addColor(getTextObject(itemName), color);
-        auto itemPrettyName = addColor(getTextObject(itemName, Text::PRETTY), color);
         for (const auto& textName : textNames) {
+            auto textTemplate = textName + " Template";
             auto& text = world->AddNewText(textName);
-            text = getTextObject(textName + " Template");
+            auto itemStandardName = addColor(getTextObjectForTemplate(itemName, Text::STANDARD, textTemplate), color);
+            auto itemPrettyName = addColor(getTextObjectForTemplate(itemName, Text::PRETTY, textTemplate), color);
+            text = getTextObject(textTemplate);
             text.Replace("<Item Standard Name>", itemStandardName);
             text.Replace("<Item Pretty Name>", itemPrettyName);
             text.Capitalize();
@@ -1186,8 +1214,8 @@ namespace randomizer::logic::hints {
             addHintsToMidnaText(midnaLocationHints, "Location Hints");
 
             // pop off the last new line so we don't get an extra blank textbox
-            for (auto& text : midnaHintText.mText) {
-                text.pop_back();
+            for (auto& entry : midnaHintText.mEntries) {
+                entry.str.pop_back();
             }
         }
     }

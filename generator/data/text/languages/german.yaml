@@ -1,4 +1,4 @@
-# This file contains all custom English text for the dusklight randomizer
+# This file contains all custom German text for the dusklight randomizer
 
 # NOTES FOR TRANSLATORS:
 # - You should only be translating the "Text" fields for each element in this file.
@@ -14,522 +14,963 @@
 # ITEM NAMES
 Green Rupee:
   Standard:
-    Text: Green Rupee
+    Text: Grüner Rubin
   Pretty:
-    Text: a {Green Rupee}
+    Text: ein {grüner Rubin}
   Cryptic:
-    Text: a {penny}
+    Text: ein {Pfennig}
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen grünen Rubin
+      Pretty:
+        Text: einen {grünen Rubin}
+      Cryptic:
+        Text: einen {Pfennig}
 
 Blue Rupee:
   Standard:
-    Text: Blue Rupee
+    Text: Blauer Rubin
   Pretty:
-    Text: a {Blue Rupee}
+    Text: ein {blauer Rubin}
   Cryptic:
-    Text: a {fiver}
+    Text: ein {Fünfer}
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen blauen Rubin
+      Pretty:
+        Text: einen {blauen Rubin}
+      Cryptic:
+        Text: einen {Fünfer}
 
 Yellow Rupee:
   Standard:
-    Text: Yellow Rupee
+    Text: Gelber Rubin
   Pretty:
-    Text: a {Yellow Rupee}
+    Text: ein {gelber Rubin}
   Cryptic:
-    Text: some {change}
+    Text: etwas {Wechselgeld}
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen gelben Rubin
+      Pretty:
+        Text: einen {gelben Rubin}
+      Cryptic:
+        Text: etwas {Wechselgeld}
 
 Red Rupee:
   Standard:
-    Text: Red Rupee
+    Text: Roter Rubin
   Pretty:
-    Text: a {Red Rupee}
+    Text: ein {roter Rubin}
   Cryptic:
-    Text: "{couch cash}"
+    Text: "{Notgroschen}"
+    Plurality: Plural
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen roten Rubin
+      Pretty:
+        Text: einen {roten Rubin}
+      Cryptic:
+        Text: einen {Notgroschen}
 
 Purple Rupee:
   Standard:
-    Text: Purple Rupee
+    Text: Violetter Rubin
   Pretty:
-    Text: a {Purple Rupee}
+    Text: ein {violetter Rubin}
   Cryptic:
-    Text: a {good sum}
+    Text: ein {stattlicher Betrag}
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen violetten Rubin
+      Pretty:
+        Text: einen {violetten Rubin}
+      Cryptic:
+        Text: einen {stattlichen Betrag}
 
 Orange Rupee:
   Standard:
-    Text: Orange Rupee
+    Text: Oranger Rubin
   Pretty:
-    Text: an {Orange Rupee}
+    Text: ein {oranger Rubin}
   Cryptic:
-    Text: a {payday}
+    Text: ein {Zahltag}
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen orangen Rubin
+      Pretty:
+        Text: einen {orangen Rubin}
+      Cryptic:
+        Text: einen {Zahltag}
 
 Silver Rupee:
   Standard:
-    Text: Silver Rupee
+    Text: Silberner Rubin
   Pretty:
-    Text: a {Silver Rupee}
+    Text: ein {silberner Rubin}
   Cryptic:
-    Text: "{many riches}"
+    Text: ein {Vermögen}
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen silbernen Rubin
+      Pretty:
+        Text: einen {silbernen Rubin}
+      Cryptic:
+        Text: ein {Vermögen}
 
 Bombs 5:
   Standard:
-    Text: Bombs 5
+    Text: 5 Bomben
   Pretty:
-    Text: "{Bombs (5)}"
+    Text: "{5 Bomben}"
     Plurality: Plural
   Cryptic:
-    Text: some {regular explosives}
-    Plurality: Plural
+    Text: ein wenig {Sprengstoff}
 
 Bombs 10:
   Standard:
-    Text: Bombs 10
+    Text: 10 Bomben
   Pretty:
-    Text: "{Bombs (10)}"
+    Text: "{10 Bomben}"
     Plurality: Plural
   Cryptic:
-    Text: some {regular explosives}
-    Plurality: Plural
+    Text: ein bisschen {Sprengstoff}
 
 Bombs 20:
   Standard:
-    Text: Bombs 20
+    Text: 20 Bomben
   Pretty:
-    Text: "{Bombs (20)}"
+    Text: "{20 Bomben}"
     Plurality: Plural
   Cryptic:
-    Text: some {regular explosives}
-    Plurality: Plural
+    Text: etwas {Sprengstoff}
 
 Bombs 30:
   Standard:
-    Text: Bombs 30
+    Text: 30 Bomben
   Pretty:
-    Text: "{Bombs (30)}"
+    Text: "{30 Bomben}"
     Plurality: Plural
   Cryptic:
-    Text: some {regular explosives}
-    Plurality: Plural
+    Text: einiges an {Sprengstoff}
 
 Arrows 10:
   Standard:
-    Text: Arrows 10
+    Text: 10 Pfeile
   Pretty:
-    Text: "{Arrows (10)}"
+    Text: "{10 Pfeile}"
     Plurality: Plural
   Cryptic:
-    Text: some {thin ammo}
+    Text: ein bisschen {dünne Monition}
 
 Arrows 20:
   Standard:
-    Text: Arrows 20
+    Text: 20 Pfeile
   Pretty:
-    Text: "{Arrows (20)}"
+    Text: "{20 Pfeile}"
     Plurality: Plural
   Cryptic:
-    Text: some {thin ammo}
+    Text: etwas {dünne Monition}
 
 Arrows 30:
   Standard:
-    Text: Arrows 30
+    Text: 30 Pfeile
   Pretty:
-    Text: "{Arrows (30)}"
+    Text: "{30 Pfeile}"
     Plurality: Plural
   Cryptic:
-    Text: some {thin ammo}
+    Text: einiges an {dünner Monition}
 
 Seeds 50:
   Standard:
-    Text: Seeds 50
+    Text: 50 Kerne
   Pretty:
-    Text: "{Seeds (50)}"
+    Text: "{50 Kerne}"
     Plurality: Plural
   Cryptic:
-    Text: some {pellets}
+    Text: einige {Pellets}
     Plurality: Plural
 
 Foolish Item:
   Standard:
-    Text: Foolish Item
+    Text: Törichtes Item
   Pretty:
-    Text: a {Foolish Item}
+    Text: ein {törichtes Item}
   Cryptic:
-    Text: a {chilly surprise}
+    Text: eine {kühle Überraschung}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: törichtes Item
+      Pretty:
+        Text: törichtes Item
+      Cryptic:
+        Text: kühle Überraschung
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: ein törichtes Item
 
 Ordon Spring Portal:
   Standard:
-    Text: Ordon Spring Portal
+    Text: Portal (Ordon-Quelle)
   Pretty:
-    Text: the {Ordon Spring Portal}
+    Text: das {Portal (Ordon-Quelle)}
   Cryptic:
-    Text: a {portal to home}
+    Text: das {Portal nach Hause}
 
 South Faron Portal:
   Standard:
-    Text: South Faron Portal
+    Text: Portal (Phirone-Wald Süd)
   Pretty:
-    Text: the {South Faron Portal}
+    Text: das {Portal (Phirone-Wald Süd)}
   Cryptic:
-    Text: a {portal to a forest clearing}
+    Text: das {Portal zu einer Waldlichtung}
 
 Water Bombs 5:
   Standard:
-    Text: Water Bombs 5
+    Text: 5 Wasserbomben
   Pretty:
-    Text: "{Water Bombs (5)}"
+    Text: "{5 Wasserbomben}"
     Plurality: Plural
   Cryptic:
-    Text: some {water explosives}
-    Plurality: Plural
+    Text: ein wenig {Wassersprengstoff}
 
 Water Bombs 10:
   Standard:
-    Text: Water Bombs 10
+    Text: 10 Wasserbomben
   Pretty:
-    Text: "{Water Bombs (10)}"
+    Text: "{10 Wasserbomben}"
     Plurality: Plural
   Cryptic:
-    Text: some {water explosives}
-    Plurality: Plural
+    Text: etwas {Wassersprengstoff}
 
 Water Bombs 15:
   Standard:
-    Text: Water Bombs 15
+    Text: 15 Wasserbomben
   Pretty:
-    Text: "{Water Bombs (15)}"
+    Text: "{15 Wasserbomben}"
     Plurality: Plural
   Cryptic:
-    Text: some {water explosives}
-    Plurality: Plural
+    Text: einiges an {Wassersprengstoff}
 
 Bomblings 5:
   Standard:
-    Text: Bomblings 5
+    Text: 5 Bombenkäfer
   Pretty:
-    Text: "{Bomblings (5)}"
+    Text: "{5 Bombenkäfer}"
     Plurality: Plural
   Cryptic:
-    Text: some {crawling explosives}
-    Plurality: Plural
+    Text: ein wenig {kriechender Sprengstoff}
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Fishing Hole Sign Text Template
+      Pretty:
+        Text: "{5 Bombenkäfer}"
+      Cryptic:
+        Text: ein wenig {kriechenden Sprengstoff}
 
 Bomblings 10:
   Standard:
-    Text: Bomblings 10
+    Text: 10 Bombenkäfer
   Pretty:
-    Text: "{Bomblings (10)}"
+    Text: "{10 Bombenkäfer}"
     Plurality: Plural
   Cryptic:
-    Text: some {crawling explosives}
-    Plurality: Plural
+    Text: etwas {kriechender Sprengstoff}
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Fishing Hole Sign Text Template
+      Pretty:
+        Text: "{10 Bombenkäfer}"
+      Cryptic:
+        Text: etwas {kriechenden Sprengstoff}
 
 Piece of Heart:
   Standard:
-    Text: Piece of Heart
+    Text: Herzteil
   Pretty:
-    Text: a {Piece of Heart}
+    Text: ein {Herzteil}
   Cryptic:
-    Text: some {love}
+    Text: etwas {Liebe}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Herzteil
+      Pretty:
+        Text: Herzteil
+      Cryptic:
+        Text: etwas Liebe
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: ein Herzteil
 
 Heart Container:
   Standard:
-    Text: Heart Container
+    Text: Herzcontainer
   Pretty:
-    Text: a {Heart Container}
+    Text: ein {Herzcontainer}
   Cryptic:
-    Text: a {lot of love}
+    Text: eine {Menge Liebe}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Herzcontainer
+      Pretty:
+        Text: Herzcontainer
+      Cryptic:
+        Text: eine Menge Liebe
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen Herzcontainer
+      Pretty:
+        Text: einen {Herzcontainer}
+      Cryptic:
+        Text: eine {Menge Liebe}
 
 Ordon Shield:
   Standard:
-    Text: Ordon Shield
+    Text: Ordon-Schild
   Pretty:
-    Text: the {Ordon Shield}
+    Text: ein {Ordon-Schild}
   Cryptic:
-    Text: a {sturdy reminder of home}
+    Text: "{beständige Erinnerungen an deine Heimat}"
+    Plurality: Plural
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Ordon-Schild
+      Pretty:
+        Text: Ordon-Schild
+      Cryptic:
+        Text: beständige Erinnerungen an deine Heimat
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: ein Ordon-Schild
+      Pretty:
+        Text: einen {Ordon-Schild}
+      Cryptic:
+        Text: "{beständige Erinnerungen an deine Heimat}"
 
 Wooden Shield:
   Standard:
-    Text: Wooden Shield
+    Text: Holzschild
   Pretty:
-    Text: a {Wooden Shield}
+    Text: ein {Holzschild}
   Cryptic:
-    Text: a {wood protector}
+    Text: ein {hölzerner Schutz}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Holzschild
+      Pretty:
+        Text: Holzschild
+      Cryptic:
+        Text: hölzerner Schutz
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: ein Holzschild
+      Pretty:
+        Text: einen {Holzschild}
+      Cryptic:
+        Text: einen {hölzernen Schutz}
 
 Hylian Shield:
   Standard:
-    Text: Hylian Shield
+    Text: Hylia-Schild
   Pretty:
-    Text: the {Hylian Shield}
+    Text: ein {Hylia-Schild}
   Cryptic:
-    Text: an {unbreakable shield}
+    Text: ein {unzerbrechlicher Schild}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Hylia-Schild
+      Pretty:
+        Text: Hylia-Schild
+      Cryptic:
+        Text: unzerbrechlicher Schild
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: ein Hylia-Schild
+      Pretty:
+        Text: einen {Hylia-Schild}
+      Cryptic:
+        Text: einen {unzerbrechlichen Schild}
 
 Magic Armor:
   Standard:
-    Text: Magic Armor
+    Text: Magie-Rüstung
   Pretty:
-    Text: the {Magic Armor}
+    Text: die {Magie-Rüstung}
   Cryptic:
-    Text: "{magical clothing}"
+    Text: "{magische Kleidung}"
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Magie-Rüstung
+      Pretty:
+        Text: Magie-Rüstung
+      Cryptic:
+        Text: magische Kleidung
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: die Magie-Rüstung
+      Pretty:
+        Text: die {Magie-Rüstung}
+      Cryptic:
+        Text: "{magische Kleidung}"
 
 Zora Armor:
   Standard:
-    Text: Zora Armor
+    Text: Zora-Gewand
   Pretty:
-    Text: the {Zora Armor}
+    Text: das {Zora-Gewand}
   Cryptic:
-    Text: the {fish suit}
+    Text: ein {Fischanzug}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Zora-Gewand
+      Pretty:
+        Text: Zora-Gewand
+      Cryptic:
+        Text: Fischanzug
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: das Zora-Gewand
+      Pretty:
+        Text: das {Zora-Gewand}
+      Cryptic:
+        Text: einen {Fischanzug}
 
 Shadow Crystal:
   Standard:
-    Text: Shadow Crystal
+    Text: Schattenkristall
   Pretty:
-    Text: the {Shadow Crystal}
+    Text: ein {Schattenkristall}
   Cryptic:
-    Text: a {crystal of dark power}
+    Text: ein {Kristall dunkler Macht}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Schattenkristall
+      Pretty:
+        Text: Schattenkristall
+      Cryptic:
+        Text: Kristall dunkler Macht
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen Schattenkristall
+      Pretty:
+        Text: einen {Schattenkristall}
+      Cryptic:
+        Text: einen {Kristall dunkler Macht}
 
 Progressive Wallet:
   Standard:
-    Text: Progressive Wallet
+    Text: Progressive Geldbörse
   Pretty:
-    Text: a {Wallet}
+    Text: eine {Geldbörse}
   Cryptic:
-    Text: a {money bag}
-# English overrides the exact text used for the Agitha hint sign
-# Feel free to use if necessary
-#  Template Overrides:
-#    - Keys:
-#        - Agithas Castle Some Items Sign Text
-#      Pretty:
-#        Text:
-#      Cryptic:
-#        Text:
+    Text: eine {Geldtasche}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Geldbörse
+      Pretty:
+        Text: Geldbörse
+      Cryptic:
+        Text: Geldtasche
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: eine Geldbörse
 
 Upper Zoras River Portal:
   Standard:
-    Text: Upper Zoras River Portal
+    Text: Portal (Zora-Fluss)
   Pretty:
-    Text: the {Upper Zoras River Portal}
+    Text: das {Portal (Zora-Fluss)}
   Cryptic:
-    Text: a {portal to some raging rapids}
+    Text: das {Portal zu reißenden Stromschnellen}
 
 Castle Town Portal:
   Standard:
-    Text: Castle Town Portal
+    Text: Portal (West Hyrule-Stadt)
   Pretty:
-    Text: the {Castle Town Portal}
+    Text: das {Portal (West Hyrule-Stadt)}
   Cryptic:
-    Text: a {portal to the city}
+    Text: das {Portal zur Stadt}
 
 Gerudo Desert Portal:
   Standard:
-    Text: Gerudo Desert Portal
+    Text: Portal (Gerudo-Wüste)
   Pretty:
-    Text: the {Gerudo Desert Portal}
+    Text: das {Portal (Gerudo-Wüste)}
   Cryptic:
-    Text: a {portal to a challenging cave}
+    Text: das {Portal zu einer herausfordernden Höhle}
 
 North Faron Portal:
   Standard:
-    Text: North Faron Portal
+    Text: Portal (Phirone-Wald Nord)
   Pretty:
-    Text: the {North Faron Portal}
+    Text: das {Portal (Phirone-Wald Nord)}
   Cryptic:
-    Text: a {portal to a forest clearing}
+    Text: das {Portal zu einer Waldlichtung}
 
 Hawkeye:
   Standard:
-    Text: Hawkeye
+    Text: Falkenauge
   Pretty:
-    Text: the {Hawkeye}
+    Text: das {Falkenauge}
   Cryptic:
-    Text: the {zoom-and-enhance}
+    Text: eine {Zoom-Verbesserung}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Falkenauge
+      Pretty:
+        Text: Falkenauge
+      Cryptic:
+        Text: Zoom-Verbesserung
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: das Falkenauge
 
 Progressive Sword:
   Standard:
-    Text: Progressive Sword
+    Text: Progressives Schwert
   Pretty:
-    Text: a {Sword}
+    Text: ein {Schwert}
   Cryptic:
-    Text: a {sharp weapon}
-# English overrides the exact text used for the Agitha hint sign
-# Feel free to use if necessary
-#  Template Overrides:
-#    - Keys:
-#        - Agithas Castle Some Items Sign Text
-#      Pretty:
-#        Text:
-#      Cryptic:
-#        Text:
+    Text: eine {scharfe Waffe}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Schwert
+      Pretty:
+        Text: Schwert
+      Cryptic:
+        Text: scharfe Waffe
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: ein Schwert
 
 Gale Boomerang:
   Standard:
-    Text: Gale Boomerang
+    Text: Sturmbumerang
   Pretty:
-    Text: the {Gale Boomerang}
+    Text: der {Sturmbumerang}
   Cryptic:
-    Text: the {fairy of winds}
+    Text: die {Fee des Windes}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Sturmbumerang
+      Pretty:
+        Text: Sturmbumerang
+      Cryptic:
+        Text: Fee des Windes
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Sturmbumerang
+      Pretty:
+        Text: den {Sturmbumerang}
+      Cryptic:
+        Text: die {Fee des Windes}
 
 Spinner:
   Standard:
-    Text: Spinner
+    Text: Gleiter
   Pretty:
-    Text: the {Spinner}
+    Text: der {Gleiter}
   Cryptic:
-    Text: the {gear rotator}
+    Text: eine {Zahnraddrehvorrichtung}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Gleiter
+      Pretty:
+        Text: Gleiter
+      Cryptic:
+        Text: Zahnraddrehvorrichtung
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Gleiter
+      Pretty:
+        Text: den {Gleiter}
+      Cryptic:
+        Text: eine {Zahnraddrehvorrichtung}
 
 Ball and Chain:
   Standard:
-    Text: Ball and Chain
+    Text: Morgenstern
   Pretty:
-    Text: the {Ball and Chain}
+    Text: der {Morgenstern}
   Cryptic:
-    Text: the {iron weight}
+    Text: ein {Eisengewicht}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Morgenstern
+      Pretty:
+        Text: Morgenstern
+      Cryptic:
+        Text: Eisengewicht
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Morgenstern
+      Pretty:
+        Text: den {Morgenstern}
+      Cryptic:
+        Text: ein {Eisengewicht}
 
 Progressive Bow:
   Standard:
-    Text: Progressive Bow
+    Text: Progressiver Bogen
   Pretty:
-    Text: a {Bow}
+    Text: ein {Bogen}
   Cryptic:
-    Text: an {arrow launcher}
-# English overrides the exact text used for the Agitha hint sign
-# Feel free to use if necessary
-#  Template Overrides:
-#    - Keys:
-#        - Agithas Castle Some Items Sign Text
-#      Pretty:
-#        Text:
-#      Cryptic:
-#        Text:
+    Text: ein {Pfeilwerfer}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Bogen
+      Pretty:
+        Text: Bogen
+      Cryptic:
+        Text: Pfeilwerfer
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen Bogen
+      Pretty:
+        Text: einen {Bogen}
+      Cryptic:
+        Text: einen {Pfeilwerfer}
 
 Progressive Clawshot:
   Standard:
-    Text: Progressive Clawshot
+    Text: Progressiver Greifhaken
   Pretty:
-    Text: a {Clawshot}
+    Text: ein {Greifhaken}
   Cryptic:
-    Text: a {chain launcher}
-# English overrides the exact text used for the Agitha hint sign
-# Feel free to use if necessary
-#  Template Overrides:
-#    - Keys:
-#        - Agithas Castle Some Items Sign Text
-#      Pretty:
-#        Text:
-#      Cryptic:
-#        Text:
+    Text: ein {Kettenwerfer}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Greifhaken
+      Pretty:
+        Text: Greifhaken
+      Cryptic:
+        Text: Kettenwerfer
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen Greifhaken
+      Pretty:
+        Text: einen {Greifhaken}
+      Cryptic:
+        Text: einen {Kettenwerfer}
 
 Iron Boots:
   Standard:
-    Text: Iron Boots
+    Text: Eisenstiefel
   Pretty:
-    Text: the {Iron Boots}
+    Text: die {Eisenstiefel}
     Plurality: Plural
   Cryptic:
-    Text: the {heavy shoes}
+    Text: "{schwere Stiefel}"
     Plurality: Plural
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Eisenstiefel
+      Pretty:
+        Text: Eisenstiefel
+      Cryptic:
+        Text: schwere Stiefel
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: die Eisenstiefel
 
 Progressive Dominion Rod:
   Standard:
-    Text: Dominion Rod
+    Text: Kopierstab
   Pretty:
-    Text: a {Dominion Rod}
+    Text: ein {Kopierstab}
   Cryptic:
-    Text: a {rod of control}
-# English overrides the exact text used for the Agitha hint sign
-# Feel free to use if necessary
-#  Template Overrides:
-#    - Keys:
-#        - Agithas Castle Some Items Sign Text
-#      Pretty:
-#        Text:
-#      Cryptic:
-#        Text:
+    Text: eine {Rute der Kontrolle}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kopierstab
+      Pretty:
+        Text: Kopierstab
+      Cryptic:
+        Text: Rute der Kontrolle
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen Kopierstab
+      Pretty:
+        Text: einen {Kopierstab}
+      Cryptic:
+        Text: eine {Rute der Kontrolle}
 
 Lantern:
   Standard:
-    Text: Lantern
+    Text: Lampe
   Pretty:
-    Text: the {Lantern}
+    Text: die {Lampe}
   Cryptic:
-    Text: the {small light}
+    Text: ein {kleines Licht}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Lampe
+      Pretty:
+        Text: Lampe
+      Cryptic:
+        Text: kleines Licht
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: die Lampe
 
 Progressive Fishing Rod:
   Standard:
-    Text: Progressive Fishing Rod
+    Text: Progressive Angel
   Pretty:
-    Text: a {Fishing Rod}
+    Text: eine {Angel}
   Cryptic:
-    Text: a {rod of patience}
-# English overrides the exact text used for the Agitha hint sign
-# Feel free to use if necessary
-#  Template Overrides:
-#    - Keys:
-#        - Agithas Castle Some Items Sign Text
-#      Pretty:
-#        Text:
-#      Cryptic:
-#        Text:
+    Text: eine {Rute der Geduld}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Angel
+      Pretty:
+        Text: Angel
+      Cryptic:
+        Text: Rute der Geduld
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: eine Angel
 
 Slingshot:
   Standard:
-    Text: Slingshot
+    Text: Schleuder
   Pretty:
-    Text: the {Slingshot}
+    Text: eine {Schleuder}
   Cryptic:
-    Text: the {child's toy}
+    Text: ein {Kinderspielzeug}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Schleuder
+      Pretty:
+        Text: Schleuder
+      Cryptic:
+        Text: Kinderspielzeug
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: die Schleuder
 
 Kakariko Gorge Portal:
   Standard:
-    Text: Kakariko Gorge Portal
+    Text: Portal (Kakariko-Tal)
   Pretty:
-    Text: the {Kakariko Gorge Portal}
+    Text: das {Portal (Kakariko-Tal)}
   Cryptic:
-    Text: a {portal to a big gap}
+    Text: das {Portal zu einem großen Spalt}
 
 Kakariko Village Portal:
   Standard:
-    Text: Kakariko Village Portal
+    Text: Portal (Kakariko)
   Pretty:
-    Text: the {Kakariko Village Portal}
+    Text: das {Portal (Kakariko)}
   Cryptic:
-    Text: a {portal to a village}
+    Text: das {Portal zu einem Dorf}
 
 Giant Bomb Bag:
   Standard:
-    Text: Giant Bomb Bag
+    Text: Riesige Bombentasche
   Pretty:
-    Text: a {Giant Bomb Bag}
+    Text: eine {riesige Bombentasche}
   Cryptic:
-    Text: an {explosive capacity upgrade}
+    Text: ein {Sprengkraft-Upgrade}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: riesige Bombentasche
+      Pretty:
+        Text: riesige Bombentasche
+      Cryptic:
+        Text: Sprengkraft-Upgrade
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: eine riesige Bombentasche
 
 Bomb Bag:
   Standard:
-    Text: Bomb Bag
+    Text: Bombentasche
   Pretty:
-    Text: a {Bomb Bag}
+    Text: eine {Bombentasche}
   Cryptic:
-    Text: a {bag for explosions}
+    Text: eine {Tasche mit Sprengstoff}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Bombentasche
+      Pretty:
+        Text: Bombentasche
+      Cryptic:
+        Text: Tasche mit Sprengstoff
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: eine Bombentasche
 
 Death Mountain Portal:
   Standard:
-    Text: Death Mountain Portal
+    Text: Portal (Feuerberg)
   Pretty:
-    Text: the {Death Mountain Portal}
+    Text: das {Portal (Feuerberg)}
   Cryptic:
-    Text: a {portal to a volcano}
+    Text: das {Portal zu einem Vulkan}
 
 Zoras Domain Portal:
   Standard:
-    Text: Zoras Domain Portal
+    Text: Portal (Zora-Höhle)
   Pretty:
-    Text: the {Zora's Domain Portal}
+    Text: das {Portal (Zora-Höhle)}
   Cryptic:
-    Text: a {portal to water}
+    Text: das {Portal ins Wasser}
 
 Empty Bottle:
   Standard:
-    Text: Empty Bottle
+    Text: Leere Flasche
   Pretty:
-    Text: an {Empty Bottle}
+    Text: eine {leere Flasche}
   Cryptic:
-    Text:
+    Text: ein {leerer Glasbehälter}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: leere Flasche
+      Pretty:
+        Text: leere Flasche
+      Cryptic:
+        Text: leerer Glasbehälter
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: eine leere Flasche
+      Pretty:
+        Text: eine {leere Flasche}
+      Cryptic:
+        Text: einen {leeren Glasbehälter}
 
 Red Potion Shop:
   Standard:
@@ -549,778 +990,1772 @@ Blue Potion Shop:
 
 Bottle with Half Milk:
   Standard:
-    Text: Bottle with Half Milk
+    Text: Flasche mit Milch (halb voll)
   Pretty:
-    Text: a {Bottle with Half Milk}
+    Text: eine {Flasche mit Milch (halb voll)}
   Cryptic:
-    Text: a {baby bottle}
+    Text: eine {Baby-Flasche}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Flasche mit Milch (halb voll)
+      Pretty:
+        Text: Flasche mit Milch (halb voll)
+      Cryptic:
+        Text: Baby-Flasche
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: eine Flasche mit Milch (halb voll)
 
 Lantern Oil Shop:
   Standard:
-    Text: Lantern Oil Shop
+    Text: Lampen Öl Shop
   Pretty:
-    Text: some {Lantern Oil}
+    Text: etwas {Lampen Öl}
   Cryptic:
-    Text: an {oil refill}
+    Text: etwas {Nachschub}
 
 Fairy Tears:
   Standard:
-    Text: Fairy Tears
+    Text: Feentau
   Pretty:
-    Text: some {Fairy Tears}
-    Plurality: Plural
+    Text: etwas {Feentau}
   Cryptic:
-    Text: a {refill of great power}
+    Text: etwas {Nachschub an großer Kraft}
 
 Bottle with Great Fairies Tears:
   Standard:
-    Text: Bottle with Great Fairies Tears
+    Text: Flasche mit Feentau
   Pretty:
-    Text: a {Bottle with Great Fairies Tears}
+    Text: eine {Flasche mit Feentau}
   Cryptic:
-    Text: a {bottle of great power}
+    Text: eine {Flasche mit großer Kraft}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Flasche mit Feentau
+      Pretty:
+        Text: Flasche mit Feentau
+      Cryptic:
+        Text: Flasche mit großer Kraft
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: eine Flasche mit Feentau
 
 Renados Letter:
   Standard:
-    Text: Renados Letter
+    Text: Renados Brief
   Pretty:
-    Text: "{Renado's Letter}"
+    Text: "{Renados Brief}"
   Cryptic:
-    Text: a {letter from a concerned shaman}
+    Text: ein {Brief eines besorgten Schamanen}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Renados Brief
+      Pretty:
+        Text: Renados Brief
+      Cryptic:
+        Text: Brief eines besorgten Schamanen
 
 Invoice:
   Standard:
-    Text: Invoice
+    Text: Rechnung
   Pretty:
-    Text: the {Invoice}
+    Text: die {Rechnung}
   Cryptic:
-    Text: the {bill for the doctor}
+    Text: die {Rechnung an den Doktor}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Rechnung
+      Pretty:
+        Text: Rechnung
+      Cryptic:
+        Text: Rechnung an den Doktor
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: die Rechnung
 
 Wooden Statue:
   Standard:
-    Text: Wooden Statue
+    Text: Holz-Statue
   Pretty:
-    Text: the {Wooden Statue}
+    Text: die {Holz-Statue}
   Cryptic:
-    Text: "{memories of home}"
+    Text: "{Erinnerungen an Zuhause}"
     Plurality: Plural
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Holz-Statue
+      Pretty:
+        Text: Holz-Statue
+      Cryptic:
+        Text: Erinnerungen an Zuhause
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: die Holz-Statue
 
 Ilias Charm:
   Standard:
-    Text: Ilias Charm
+    Text: Ilyas Anhänger
   Pretty:
-    Text: "{Ilias Charm}"
+    Text: "{Ilyas Anhänger}"
   Cryptic:
-    Text: a {friend's item}
+    Text: der {Anhänger einer Freundin}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Ilyas Anhänger
+      Pretty:
+        Text: Ilyas Anhänger
+      Cryptic:
+        Text: Anhänger einer Freundin
 
 Horse Call:
   Standard:
-    Text: Horse Call
+    Text: Tönerne Flöte
   Pretty:
-    Text: the {Horse Call}
+    Text: die {tönerne Flöte}
   Cryptic:
-    Text: the {horse beckoner}
+    Text: der {Pferdeflüsterer}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Tönerne Flöte
+      Pretty:
+        Text: Tönerne Flöte
+      Cryptic:
+        Text: Pferdeflüsterer
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: die tönerne Flöte
 
 Forest Temple Small Key:
   Standard:
-    Text: Forest Temple Small Key
+    Text: Kleiner Schlüssel (Waldschrein)
   Pretty:
-    Text: a {Forest Temple Small Key}
+    Text: ein {Kleiner Schlüssel (Waldschrein)}
   Cryptic:
-    Text: a {key for a deep forest}
+    Text: ein {Schlüssel zu einem tiefen Wald}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kleiner Schlüssel (Waldschrein)
+      Pretty:
+        Text: Kleiner Schlüssel (Waldschrein)
+      Cryptic:
+        Text: Schlüssel zu einem tiefen Wald
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen kleinen Schlüssel (Waldschrein)
+      Pretty:
+        Text: einen {kleinen Schlüssel (Waldschrein)}
+      Cryptic:
+        Text: einen {Schlüssel zu einem tiefen Wald}
 
 Goron Mines Small Key:
   Standard:
-    Text: Goron Mines Small Key
+    Text: Kleiner Schlüssel (Mine der Goronen)
   Pretty:
-    Text: a {Goron Mines Small Key}
+    Text: ein {Kleiner Schlüssel (Mine der Goronen)}
   Cryptic:
-    Text: a {key for a volcanic mine}
+    Text: ein {Schlüssel für eine vulkanische Mine}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kleiner Schlüssel (Mine der Goronen)
+      Pretty:
+        Text: Kleiner Schlüssel (Mine der Goronen)
+      Cryptic:
+        Text: Schlüssel für eine vulkanische Mine
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen kleinen Schlüssel (Mine der Goronen)
+      Pretty:
+        Text: einen {kleinen Schlüssel (Mine der Goronen)}
+      Cryptic:
+        Text: einen {Schlüssel für eine vulkanische Mine}
 
 Lakebed Temple Small Key:
   Standard:
-    Text: Lakebed Temple Small Key
+    Text: Kleiner Schlüssel (Seeschrein)
   Pretty:
-    Text: a {Lakebed Temple Small Key}
+    Text: ein {Kleiner Schlüssel (Seeschrein)}
   Cryptic:
-    Text: a {key for an underground lake}
+    Text: ein {Schlüssel für einen unterirdischen See}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kleiner Schlüssel (Seeschrein)
+      Pretty:
+        Text: Kleiner Schlüssel (Seeschrein)
+      Cryptic:
+        Text: Schlüssel für einen unterirdischen See
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen kleinen Schlüssel (Seeschrein)
+      Pretty:
+        Text: einen {kleinen Schlüssel (Seeschrein)}
+      Cryptic:
+        Text: einen {Schlüssel für einen unterirdischen See}
 
 Arbiters Grounds Small Key:
   Standard:
-    Text: Arbiters Grounds Small Key
+    Text: Kleiner Schlüssel (Wüstenburg)
   Pretty:
-    Text: an {Arbiters Grounds Small Key}
+    Text: ein {Kleiner Schlüssel (Wüstenburg)}
   Cryptic:
-    Text: a {key for an ancient prison}
+    Text: ein {Schlüssel für ein antikes Gefängnis}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kleiner Schlüssel (Wüstenburg)
+      Pretty:
+        Text: Kleiner Schlüssel (Wüstenburg)
+      Cryptic:
+        Text: Schlüssel für ein antikes Gefängnis
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen kleinen Schlüssel (Wüstenburg)
+      Pretty:
+        Text: einen {kleinen Schlüssel (Wüstenburg)}
+      Cryptic:
+        Text: einen {Schlüssel für ein antikes Gefängnis}
 
 Snowpeak Ruins Small Key:
   Standard:
-    Text: Snowpeak Ruins Small Key
+    Text: Kleiner Schlüssel (Bergruine)
   Pretty:
-    Text: a {Snowpeak Ruins Small Key}
+    Text: ein {Kleiner Schlüssel (Bergruine)}
   Cryptic:
-    Text: a {key for a snowy mansion}
+    Text: ein {Schlüssel für ein verschneites Anwesen}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kleiner Schlüssel (Bergruine)
+      Pretty:
+        Text: Kleiner Schlüssel (Bergruine)
+      Cryptic:
+        Text: Schlüssel für ein verschneites Anwesen
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen kleinen Schlüssel (Bergruine)
+      Pretty:
+        Text: einen {kleinen Schlüssel (Bergruine)}
+      Cryptic:
+        Text: einen {Schlüssel für ein verschneites Anwesen}
 
 Temple of Time Small Key:
   Standard:
-    Text: Temple of Time Small Key
+    Text: Kleiner Schlüssel (Zeitschrein)
   Pretty:
-    Text: a {Temple of Time Small Key}
+    Text: ein {Kleiner Schlüssel (Zeitschrein)}
   Cryptic:
-    Text: a {key for the past}
+    Text: ein {Schlüssel für die Vergangenheit}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kleiner Schlüssel (Zeitschrein)
+      Pretty:
+        Text: Kleiner Schlüssel (Zeitschrein)
+      Cryptic:
+        Text: Schlüssel für die Vergangenheit
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen kleinen Schlüssel (Zeitschrein)
+      Pretty:
+        Text: einen {kleinen Schlüssel (Zeitschrein)}
+      Cryptic:
+        Text: einen {Schlüssel für die Vergangenheit}
 
 City in the Sky Small Key:
   Standard:
-    Text: City in the Sky Small Key
+    Text: Kleiner Schlüssel (Kumula)
   Pretty:
-    Text: the {City in the Sky Small Key}
+    Text: ein {Kleiner Schlüssel (Kumula)}
   Cryptic:
-    Text: a {key for the skies above}
+    Text: ein {Schlüssel für die Wolken über uns}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kleiner Schlüssel (Kumula)
+      Pretty:
+        Text: Kleiner Schlüssel (Kumula)
+      Cryptic:
+        Text: Schlüssel für die Wolken über uns
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen kleinen Schlüssel (Kumula)
+      Pretty:
+        Text: einen {kleinen Schlüssel (Kumula)}
+      Cryptic:
+        Text: einen {Schlüssel für die Wolken über uns}
 
 Palace of Twilight Small Key:
   Standard:
-    Text: Palace of Twilight Small Key
+    Text: Kleiner Schlüssel (Schattenpalast)
   Pretty:
-    Text: a {Palace of Twilight Small Key}
+    Text: ein {Kleiner Schlüssel (Schattenpalast)}
   Cryptic:
-    Text: a {key for a another realm}
+    Text: ein {Schlüssel für ein anderes Reich}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kleiner Schlüssel (Schattenpalast)
+      Pretty:
+        Text: Kleiner Schlüssel (Schattenpalast)
+      Cryptic:
+        Text: Schlüssel für ein anderes Reich
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen kleinen Schlüssel (Schattenpalast)
+      Pretty:
+        Text: einen {kleinen Schlüssel (Schattenpalast)}
+      Cryptic:
+        Text: einen {Schlüssel für ein anderes Reich}
 
 Hyrule Castle Small Key:
   Standard:
-    Text: Hyrule Castle Small Key
+    Text: Kleiner Schlüssel (Schloss Hyrule)
   Pretty:
-    Text: a {Hyrule Castle Small Key}
+    Text: ein {Kleiner Schlüssel (Schloss Hyrule)}
   Cryptic:
-    Text: a {key for a kingdom's castle}
+    Text: ein {Schlüssel für das Schloss eines Königreichs}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kleiner Schlüssel (Schloss Hyrule)
+      Pretty:
+        Text: Kleiner Schlüssel (Schloss Hyrule)
+      Cryptic:
+        Text: Schlüssel für das Schloss eines Königreichs
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen kleinen Schlüssel (Schloss Hyrule)
+      Pretty:
+        Text: einen {kleinen Schlüssel (Schloss Hyrule)}
+      Cryptic:
+        Text: einen {Schlüssel für das Schloss eines Königreichs}
 
 Gerudo Desert Bulblin Camp Key:
   Standard:
-    Text: Gerudo Bulblin Camp Small Key
+    Text: Kleiner Schlüssel (Bulblin-Lager)
   Pretty:
-    Text: the {Gerudo Desert Bulblin Camp Key}
+    Text: der {kleine Schlüssel (Bulblin-Lager)}
   Cryptic:
-    Text: the {key for a desert tent}
+    Text: der {Schlüssel für ein Wüstenzelt}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kleiner Schlüssel (Bulblin-Lager)
+      Pretty:
+        Text: Kleiner Schlüssel (Bulblin-Lager)
+      Cryptic:
+        Text: Schlüssel für ein Wüstenzelt
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den kleinen Schlüssel (Bulblin-Lager)
+      Pretty:
+        Text: den {kleinen Schlüssel (Bulblin-Lager)}
+      Cryptic:
+        Text: den {Schlüssel für ein Wüstenzelt}
 
 Lake Hylia Portal:
   Standard:
-    Text: Lake Hylia Portal
+    Text: Portal (Hylia-See)
   Pretty:
-    Text: the {Lake Hylia Portal}
+    Text: das {Portal (Hylia-See)}
   Cryptic:
-    Text: a {portal to a vast lake}
+    Text: das {Portal zu einem riesigen See}
 
 Aurus Memo:
   Standard:
     Text: Aurus Memo
   Pretty:
-    Text: "{Auru's Memo}"
+    Text: "{Aurus Memo}"
   Cryptic:
-    Text: a {friend's favor}
+    Text: ein {Gefallen eines Freundes}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Aurus Memo
+      Pretty:
+        Text: Aurus Memo
+      Cryptic:
+        Text: Gefallen eines Freundes
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Fishing Hole Sign Text Template
+      Pretty:
+        Text: "{Aurus Memo}"
+      Cryptic:
+        Text: einen {Gefallen eines Freundes}
 
 Asheis Sketch:
   Standard:
-    Text: Asheis Sketch
+    Text: Ashleys Zeichnung
   Pretty:
-    Text: "{Ashei's Sketch}"
+    Text: "{Ashleys Zeichnung}"
   Cryptic:
-    Text: a {sketch of a horrific beast}
+    Text: "{Zeichnung eines Wilden}"
 
 Forest Temple Big Key:
   Standard:
-    Text: Forest Temple Big Key
+    Text: Master-Schlüssel (Waldschrein)
   Pretty:
-    Text: the {Forest Temple Big Key}
+    Text: der {Master-Schlüssel (Waldschrein)}
   Cryptic:
-    Text: the {key to the twilit parasite}
+    Text: der {Schlüssel zum Nachtschattenparasit}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Master-Schlüssel (Waldschrein)
+      Pretty:
+        Text: Master-Schlüssel (Waldschrein)
+      Cryptic:
+        Text: Schlüssel zum Nachtschattenparasit
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Master-Schlüssel (Waldschrein)
+      Pretty:
+        Text: den {Master-Schlüssel (Waldschrein)}
+      Cryptic:
+        Text: den {Schlüssel zum Nachtschattenparasit}
 
 Lakebed Temple Big Key:
   Standard:
-    Text: Lakebed Temple Big Key
+    Text: Master-Schlüssel (Seeschrein)
   Pretty:
-    Text: the {Lakebed Temple Big Key}
+    Text: der {Master-Schlüssel (Seeschrein)}
   Cryptic:
-    Text: the {key to the twilit aquatic}
+    Text: der {Schlüssel zum Urzeitfisch}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Master-Schlüssel (Seeschrein)
+      Pretty:
+        Text: Master-Schlüssel (Seeschrein)
+      Cryptic:
+        Text: Schlüssel zum Urzeitfisch
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Master-Schlüssel (Seeschrein)
+      Pretty:
+        Text: den {Master-Schlüssel (Seeschrein)}
+      Cryptic:
+        Text: den {Schlüssel zum Urzeitfisch}
 
 Arbiters Grounds Big Key:
   Standard:
-    Text: Arbiters Grounds Big Key
+    Text: Master-Schlüssel (Wüstenburg)
   Pretty:
-    Text: the {Arbiters Grounds Big Key}
+    Text: der {Master-Schlüssel (Wüstenburg)}
   Cryptic:
-    Text: the {key to the twilit fossil}
+    Text: der {Schlüssel zur Riesenfossilbestie}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Master-Schlüssel (Wüstenburg)
+      Pretty:
+        Text: Master-Schlüssel (Wüstenburg)
+      Cryptic:
+        Text: Schlüssel zur Riesenfossilbestie
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Master-Schlüssel (Wüstenburg)
+      Pretty:
+        Text: den {Master-Schlüssel (Wüstenburg)}
+      Cryptic:
+        Text: den {Schlüssel zur Riesenfossilbestie}
 
 Temple of Time Big Key:
   Standard:
-    Text: Temple of Time Big Key
+    Text: Master-Schlüssel (Zeitschrein)
   Pretty:
-    Text: the {Temple of Time Big Key}
+    Text: der {Master-Schlüssel (Zeitschrein)}
   Cryptic:
-    Text: the {key to the twilit arachnid}
+    Text: der {Schlüssel zur Spinnenstatue}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Master-Schlüssel (Zeitschrein)
+      Pretty:
+        Text: Master-Schlüssel (Zeitschrein)
+      Cryptic:
+        Text: Schlüssel zur Spinnenstatue
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Master-Schlüssel (Zeitschrein)
+      Pretty:
+        Text: den {Master-Schlüssel (Zeitschrein)}
+      Cryptic:
+        Text: den {Schlüssel zur Spinnenstatue}
 
 City in the Sky Big Key:
   Standard:
-    Text: City in the Sky Big Key
+    Text: Master-Schlüssel (Kumula)
   Pretty:
-    Text: the {City in the Sky Big Key}
+    Text: der {Master-Schlüssel (Kumula)}
   Cryptic:
-    Text: the {key to the twilit dragon}
+    Text: der {Schlüssel zum Feuerdrache}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Master-Schlüssel (Kumula)
+      Pretty:
+        Text: Master-Schlüssel (Kumula)
+      Cryptic:
+        Text: Schlüssel zum Feuerdrache
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Master-Schlüssel (Kumula)
+      Pretty:
+        Text: den {Master-Schlüssel (Kumula)}
+      Cryptic:
+        Text: den {Schlüssel zum Feuerdrache}
 
 Palace of Twilight Big Key:
   Standard:
-    Text: Palace of Twilight Big Key
+    Text: Master-Schlüssel (Schattenpalast)
   Pretty:
-    Text: the {Palace of Twilight Big Key}
+    Text: der {Master-Schlüssel (Schattenpalast)}
   Cryptic:
-    Text: the {key to the usurper king}
+    Text: der {Schlüssel zum Usurpator}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Master-Schlüssel (Schattenpalast)
+      Pretty:
+        Text: Master-Schlüssel (Schattenpalast)
+      Cryptic:
+        Text: Schlüssel zum Usurpator
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Master-Schlüssel (Schattenpalast)
+      Pretty:
+        Text: den {Master-Schlüssel (Schattenpalast)}
+      Cryptic:
+        Text: den {Schlüssel zum Usurpator}
 
 Hyrule Castle Big Key:
   Standard:
-    Text: Hyrule Castle Big Key
+    Text: Master-Schlüssel (Schloss Hyrule)
   Pretty:
-    Text: a {Hyrule Castle Big Key}
+    Text: der {Master-Schlüssel (Schloss Hyrule)}
   Cryptic:
-    Text: the {key to the castle throne room}
+    Text: der {Schlüssel zum Thronsaal}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Master-Schlüssel (Schloss Hyrule)
+      Pretty:
+        Text: Master-Schlüssel (Schloss Hyrule)
+      Cryptic:
+        Text: Schlüssel zum Thronsaal
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Master-Schlüssel (Schloss Hyrule)
+      Pretty:
+        Text: den {Master-Schlüssel (Schloss Hyrule)}
+      Cryptic:
+        Text: den {Schlüssel zum Thronsaal}
 
 Forest Temple Compass:
   Standard:
-    Text: Forest Temple Compass
+    Text: Kompass (Waldschrein)
   Pretty:
-    Text: the {Forest Temple Compass}
+    Text: der {Kompass (Waldschrein)}
   Cryptic:
-    Text: the {pointer for a deep forest}
+    Text: der {Wegweiser für einen tiefen Wald}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kompass (Waldschrein)
+      Pretty:
+        Text: Kompass (Waldschrein)
+      Cryptic:
+        Text: Wegweiser für einen tiefen Wald
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Kompass (Waldschrein)
+      Pretty:
+        Text: den {Kompass (Waldschrein)}
+      Cryptic:
+        Text: den {Wegweiser für einen tiefen Wald}
 
 Goron Mines Compass:
   Standard:
-    Text: Goron Mines Compass
+    Text: Kompass (Mine der Goronen)
   Pretty:
-    Text: the {Goron Mines Compass}
+    Text: der {Kompass (Mine der Goronen)}
   Cryptic:
-    Text: the {pointer for a volcano}
+    Text: der {Wegweiser für einen Vulkan}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kompass (Mine der Goronen)
+      Pretty:
+        Text: Kompass (Mine der Goronen)
+      Cryptic:
+        Text: Wegweiser für einen Vulkan
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Kompass (Mine der Goronen)
+      Pretty:
+        Text: den {Kompass (Mine der Goronen)}
+      Cryptic:
+        Text: den {Wegweiser für einen Vulkan}
 
 Lakebed Temple Compass:
   Standard:
-    Text: Lakebed Temple Compass
+    Text: Kompass (Seeschrein)
   Pretty:
-    Text: the {Lakebed Temple Compass}
+    Text: der {Kompass (Seeschrein)}
   Cryptic:
-    Text: the {pointer for an underground lake}
+    Text: der {Wegweiser für einen unterirdischen See}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kompass (Seeschrein)
+      Pretty:
+        Text: Kompass (Seeschrein)
+      Cryptic:
+        Text: Wegweiser für einen unterirdischen See
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Kompass (Seeschrein)
+      Pretty:
+        Text: den {Kompass (Seeschrein)}
+      Cryptic:
+        Text: den {Wegweiser für einen unterirdischen See}
 
 Bottle with Lantern Oil:
   Standard:
-    Text: Bottle with Lantern Oil
+    Text: Flasche mit Lampen Öl
   Pretty:
-    Text: a {Bottle with Lantern Oil}
+    Text: eine {Flasche mit Lampen Öl}
   Cryptic:
-    Text: a {bottle with lighter fluid}
+    Text: eine {Flasche mit leichter Flüssigkeit}
 
 Progressive Mirror Shard:
   Standard:
-    Text: Progressive Mirror Shard
+    Text: Progressive Spiegelscherbe
   Pretty:
-    Text: a {Mirror Shard}
+    Text: eine {Spiegelscherbe}
   Cryptic:
-    Text: a {reflective shard of power}
-# English overrides the exact text used for the Agitha hint sign
-# Feel free to use if necessary
-#  Template Overrides:
-#    - Keys:
-#        - Agithas Castle Some Items Sign Text
-#      Pretty:
-#        Text:
-#      Cryptic:
-#        Text:
+    Text: eine {reflektierende Scherbe der Macht}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Spiegelscherbe
+      Pretty:
+        Text: Spiegelscherbe
+      Cryptic:
+        Text: reflektierende Scherbe der Macht
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: eine Spiegelscherbe
 
 Arbiters Grounds Compass:
   Standard:
-    Text: Arbiters Grounds Compass
+    Text: Kompass (Wüstenburg)
   Pretty:
-    Text: the {Arbiters Grounds Compass}
+    Text: der {Kompass (Wüstenburg)}
   Cryptic:
-    Text: the {pointer for an ancient prison}
+    Text: der {Wegweiser für ein antikes Gefängnis}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kompass (Wüstenburg)
+      Pretty:
+        Text: Kompass (Wüstenburg)
+      Cryptic:
+        Text: Wegweiser für ein antikes Gefängnis
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Kompass (Wüstenburg)
+      Pretty:
+        Text: den {Kompass (Wüstenburg)}
+      Cryptic:
+        Text: den {Wegweiser für ein antikes Gefängnis}
 
 Snowpeak Ruins Compass:
   Standard:
-    Text: Snowpeak Ruins Compass
+    Text: Kompass (Bergruine)
   Pretty:
-    Text: the {Snowpeak Ruins Compass}
+    Text: der {Kompass (Bergruine)}
   Cryptic:
-    Text: the {pointer for a snowy mansion}
+    Text: der {Wegweiser für ein verschneites Anwesen}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kompass (Bergruine)
+      Pretty:
+        Text: Kompass (Bergruine)
+      Cryptic:
+        Text: Wegweiser für ein verschneites Anwesen
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Kompass (Bergruine)
+      Pretty:
+        Text: den {Kompass (Bergruine)}
+      Cryptic:
+        Text: den {Wegweiser für ein verschneites Anwesen}
 
 Temple of Time Compass:
   Standard:
-    Text: Temple of Time Compass
+    Text: Kompass (Zeitschrein)
   Pretty:
-    Text: the {Temple of Time Compass}
+    Text: der {Kompass (Zeitschrein)}
   Cryptic:
-    Text: the {pointer for the past}
+    Text: der {Wegweiser für die Vergangenheit}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kompass (Zeitschrein)
+      Pretty:
+        Text: Kompass (Zeitschrein)
+      Cryptic:
+        Text: Wegweiser für die Vergangenheit
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Kompass (Zeitschrein)
+      Pretty:
+        Text: den {Kompass (Zeitschrein)}
+      Cryptic:
+        Text: den {Wegweiser für die Vergangenheit}
 
 City in the Sky Compass:
   Standard:
-    Text: City in the Sky Compass
+    Text: Kompass (Kumula)
   Pretty:
-    Text: the {City in the Sky Compass}
+    Text: der {Kompass (Kumula)}
   Cryptic:
-    Text: the {pointer for the skies above}
+    Text: der {Wegweiser für die Wolken über uns}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kompass (Kumula)
+      Pretty:
+        Text: Kompass (Kumula)
+      Cryptic:
+        Text: Wegweiser für die Wolken über uns
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Kompass (Kumula)
+      Pretty:
+        Text: den {Kompass (Kumula)}
+      Cryptic:
+        Text: den {Wegweiser für die Wolken über uns}
 
 Palace of Twilight Compass:
   Standard:
-    Text: Palace of Twilight Compass
+    Text: Kompass (Schattenpalast)
   Pretty:
-    Text: the {Palace of Twilight Compass}
+    Text: der {Kompass (Schattenpalast)}
   Cryptic:
-    Text: the {pointer for another realm}
+    Text: der {Wegweiser für ein anderes Reich}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kompass (Schattenpalast)
+      Pretty:
+        Text: Kompass (Schattenpalast)
+      Cryptic:
+        Text: Wegweiser für ein anderes Reich
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Kompass (Schattenpalast)
+      Pretty:
+        Text: den {Kompass (Schattenpalast)}
+      Cryptic:
+        Text: den {Wegweiser für ein anderes Reich}
 
 Hyrule Castle Compass:
   Standard:
-    Text: Hyrule Castle Compass
+    Text: Kompass (Schloss Hyrule)
   Pretty:
-    Text: a {Hyrule Castle Compass}
+    Text: der {Kompass (Schloss Hyrule)}
   Cryptic:
-    Text: the {pointer for the kingdom's castle}
+    Text: der {Wegweiser für das Schloss eines Königreichs}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Kompass (Schloss Hyrule)
+      Pretty:
+        Text: Kompass (Schloss Hyrule)
+      Cryptic:
+        Text: Wegweiser für das Schloss eines Königreichs
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Kompass (Schloss Hyrule)
+      Pretty:
+        Text: den {Kompass (Schloss Hyrule)}
+      Cryptic:
+        Text: den {Wegweiser für das Schloss eines Königreichs}
 
 Mirror Chamber Portal:
   Standard:
-    Text: Mirror Chamber Portal
+    Text: Portal (Spiegelkammer)
   Pretty:
-    Text: the {Mirror Chamber Portal}
+    Text: das {Portal (Spiegelkammer)}
   Cryptic:
-    Text: a {portal to a coliseum}
+    Text: das {Portal zu einem Kolosseum}
 
 Snowpeak Portal:
   Standard:
-    Text: Snowpeak Portal
+    Text: Portal (Schneeberge)
   Pretty:
-    Text: the {Snowpeak Portal}
+    Text: das {Portal (Schneeberge)}
   Cryptic:
-    Text: a {portal to a snowy mountain}
+    Text: das {Portal zu einem verschneiten Berg}
 
 Forest Temple Dungeon Map:
   Standard:
-    Text: Forest Temple Dungeon Map
+    Text: Dungeon-Karte (Waldschrein)
   Pretty:
-    Text: the {Forest Temple Dungeon Map}
+    Text: die {Dungeon-Karte (Waldschrein)}
   Cryptic:
-    Text: the {map for a deep forest}
+    Text: die {Karte für einen tiefen Wald}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Dungeon-Karte (Waldschrein)
+      Pretty:
+        Text: Dungeon-Karte (Waldschrein)
+      Cryptic:
+        Text: Karte für einen tiefen Wald
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: die Dungeon-Karte (Waldschrein)
 
 Goron Mines Dungeon Map:
   Standard:
-    Text: Goron Mines Dungeon Map
+    Text: Dungeon-Karte (Mine der Goronen)
   Pretty:
-    Text: the {Goron Mines Dungeon Map}
+    Text: die {Dungeon-Karte (Mine der Goronen)}
   Cryptic:
-    Text: the {map for a volcano}
+    Text: die {Karte für einen Vulkan}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Dungeon-Karte (Mine der Goronen)
+      Pretty:
+        Text: Dungeon-Karte (Mine der Goronen)
+      Cryptic:
+        Text: Karte für einen Vulkan
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: die Dungeon-Karte (Mine der Goronen)
 
 Lakebed Temple Dungeon Map:
   Standard:
-    Text: Lakebed Temple Dungeon Map
+    Text: Dungeon-Karte (Seeschrein)
   Pretty:
-    Text: the {Lakebed Temple Dungeon Map}
+    Text: die {Dungeon-Karte (Seeschrein)}
   Cryptic:
-    Text: the {map for an underground lake}
+    Text: die {Karte für einen unterirdischen See}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Dungeon-Karte (Seeschrein)
+      Pretty:
+        Text: Dungeon-Karte (Seeschrein)
+      Cryptic:
+        Text: Karte für einen unterirdischen See
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: die Dungeon-Karte (Seeschrein)
 
 Arbiters Grounds Dungeon Map:
   Standard:
-    Text: Arbiters Grounds Dungeon Map
+    Text: Dungeon-Karte (Wüstenburg)
   Pretty:
-    Text: the {Arbiters Grounds Dungeon Map}
+    Text: die {Dungeon-Karte (Wüstenburg)}
   Cryptic:
-    Text: the {map for an ancient prison}
+    Text: die {Karte für ein antikes Gefängnis}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Dungeon-Karte (Wüstenburg)
+      Pretty:
+        Text: Dungeon-Karte (Wüstenburg)
+      Cryptic:
+        Text: Karte für ein antikes Gefängnis
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: die Dungeon-Karte (Wüstenburg)
 
 Snowpeak Ruins Dungeon Map:
   Standard:
-    Text: Snowpeak Ruins Dungeon Map
+    Text: Dungeon-Karte (Bergruine)
   Pretty:
-    Text: the {Snowpeak Ruins Dungeon Map}
+    Text: die {Dungeon-Karte (Bergruine)}
   Cryptic:
-    Text: the {map for a snowy mansion}
+    Text: die {Karte für ein verschneites Anwesen}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Dungeon-Karte (Bergruine)
+      Pretty:
+        Text: Dungeon-Karte (Bergruine)
+      Cryptic:
+        Text: Karte für ein verschneites Anwesen
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: die Dungeon-Karte (Bergruine)
 
 Temple of Time Dungeon Map:
   Standard:
-    Text: Temple of Time Dungeon Map
+    Text: Dungeon-Karte (Zeitschrein)
   Pretty:
-    Text: the {Temple of Time Dungeon Map}
+    Text: die {Dungeon-Karte (Zeitschrein)}
   Cryptic:
-    Text: the {map for the past}
+    Text: die {Karte für die Vergangenheit}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Dungeon-Karte (Zeitschrein)
+      Pretty:
+        Text: Dungeon-Karte (Zeitschrein)
+      Cryptic:
+        Text: Karte für die Vergangenheit
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: die Dungeon-Karte (Zeitschrein)
 
 City in the Sky Dungeon Map:
   Standard:
-    Text: City in the Sky Dungeon Map
+    Text: Dungeon-Karte (Kumula)
   Pretty:
-    Text: the {City in the Sky Dungeon Map}
+    Text: die {Dungeon-Karte (Kumula)}
   Cryptic:
-    Text: the {map for the skies above}
+    Text: die {Karte für die Wolken über uns}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Dungeon-Karte (Kumula)
+      Pretty:
+        Text: Dungeon-Karte (Kumula)
+      Cryptic:
+        Text: Karte für die Wolken über uns
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: die Dungeon-Karte (Kumula)
 
 Palace of Twilight Dungeon Map:
   Standard:
-    Text: Palace of Twilight Dungeon Map
+    Text: Dungeon-Karte (Schattenpalast)
   Pretty:
-    Text: the {Palace of Twilight Dungeon Map}
+    Text: die {Dungeon-Karte (Schattenpalast)}
   Cryptic:
-    Text: the {map for another realm}
+    Text: die {Karte für ein anderes Reich}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Dungeon-Karte (Schattenpalast)
+      Pretty:
+        Text: Dungeon-Karte (Schattenpalast)
+      Cryptic:
+        Text: Karte für ein anderes Reich
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: die Dungeon-Karte (Schattenpalast)
 
 Hyrule Castle Dungeon Map:
   Standard:
-    Text: Hyrule Castle Dungeon Map
+    Text: Dungeon-Karte (Schloss Hyrule)
   Pretty:
-    Text: a {Hyrule Castle Dungeon Map}
+    Text: die {Dungeon-Karte (Schloss Hyrule)}
   Cryptic:
-    Text: the {map for the kingdom's castle}
+    Text: die {Karte für das Schloss eines Königreichs}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Dungeon-Karte (Schloss Hyrule)
+      Pretty:
+        Text: Dungeon-Karte (Schloss Hyrule)
+      Cryptic:
+        Text: Karte für das Schloss eines Königreichs
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: die Dungeon-Karte (Schloss Hyrule)
 
 Sacred Grove Portal:
   Standard:
-    Text: Sacred Grove Portal
+    Text: Portal (Heiliger Hain)
   Pretty:
-    Text: the {Sacred Grove Portal}
+    Text: das {Portal (Heiliger Hain)}
   Cryptic:
-    Text: a {portal to an ancient forest}
+    Text: das {Portal zu einem antiken Wald}
 
 Male Beetle:
   Standard:
     Text: Male Beetle
   Pretty:
-    Text: the {<male>Beetle}
+    Text: ein {<male>Beetle}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
 
 Female Beetle:
   Standard:
     Text: Female Beetle
   Pretty:
-    Text: the {<female>Beetle}
+    Text: ein {<female>Beetle}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
 
 Male Butterfly:
   Standard:
-    Text: Male Butterfly
+    Text: Männlicher Schmetterling
   Pretty:
-    Text: the {<male>Butterfly}
+    Text: ein {<male>Schmetterling}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen Schmetterling
+      Pretty:
+        Text: einen {<male>Schmetterling}
+      Cryptic:
+        Text: ein {glänzendes Insekt}
 
 Female Butterfly:
   Standard:
-    Text: Female Butterfly
+    Text: Weiblicher Schmetterling
   Pretty:
-    Text: the {<female>Butterfly}
+    Text: ein {<female>Schmetterling}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen Schmetterling
+      Pretty:
+        Text: einen {<female>Schmetterling}
+      Cryptic:
+        Text: ein {glänzendes Insekt}
 
 Male Stag Beetle:
   Standard:
-    Text: Male Stag Beetle
+    Text: Männlicher Hirschkäfer
   Pretty:
-    Text: the {<male>Stag Beetle}
+    Text: ein {<male>Hirschkäfer}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen Hirschkäfer
+      Pretty:
+        Text: einen {<male>Hirschkäfer}
+      Cryptic:
+        Text: ein {glänzendes Insekt}
 
 Female Stag Beetle:
   Standard:
-    Text: Female Stag Beetle
+    Text: Weiblicher Hirschkäfer
   Pretty:
-    Text: the {<female>Stag Beetle}
+    Text: ein {<female>Hirschkäfer}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen Hirschkäfer
+      Pretty:
+        Text: einen {<female>Hirschkäfer}
+      Cryptic:
+        Text: ein {glänzendes Insekt}
 
 Male Grasshopper:
   Standard:
     Text: Male Grasshopper
   Pretty:
-    Text: the {<male>Grasshopper}
+    Text: ein {<male>Grasshopper}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
 
 Female Grasshopper:
   Standard:
     Text: Female Grasshopper
   Pretty:
-    Text: the {<female>Grasshopper}
+    Text: ein {<female>Grasshopper}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
 
 Male Phasmid:
   Standard:
     Text: Male Phasmid
   Pretty:
-    Text: the {<male>Phasmid}
+    Text: ein {<male>Phasmid}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
 
 Female Phasmid:
   Standard:
     Text: Female Phasmid
   Pretty:
-    Text: the {<female>Phasmid}
+    Text: ein {<female>Phasmid}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
 
 Male Pill Bug:
   Standard:
     Text: Male Pill Bug
   Pretty:
-    Text: the {<male>Pill Bug}
+    Text: ein {<male>Pill Bug}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
 
 Female Pill Bug:
   Standard:
     Text: Female Pill Bug
   Pretty:
-    Text: the {<female>Pill Bug}
+    Text: ein {<female>Pill Bug}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
 
 Male Mantis:
   Standard:
     Text: Male Mantis
   Pretty:
-    Text: the {<male>Mantis}
+    Text: ein {<male>Mantis}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
 
 Female Mantis:
   Standard:
     Text: Female Mantis
   Pretty:
-    Text: the {<female>Mantis}
+    Text: ein {<female>Mantis}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
 
 Male Ladybug:
   Standard:
-    Text: Male Ladybug
+    Text: Männlicher Marienkäfer
   Pretty:
-    Text: the {<male>Ladybug}
+    Text: ein {<male>Marienkäfer}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen Marienkäfer
+      Pretty:
+        Text: einen {<male>Marienkäfer}
+      Cryptic:
+        Text: ein {glänzendes Insekt}
 
 Female Ladybug:
   Standard:
-    Text: Female Ladybug
+    Text: Weiblicher Marienkäfer
   Pretty:
-    Text: the {<female>Ladybug}
+    Text: ein {<female>Marienkäfer}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen Marienkäfer
+      Pretty:
+        Text: einen {<female>Marienkäfer}
+      Cryptic:
+        Text: ein {glänzendes Insekt}
 
 Male Snail:
   Standard:
-    Text: Male Snail
+    Text: Männliche Schnecke
   Pretty:
-    Text: the {<male>Snail}
+    Text: eine {<male>Schnecke}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
+  Template Overrides:
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: eine Schnecke
 
 Female Snail:
   Standard:
-    Text: Female Snail
+    Text: Weibliche Schnecke
   Pretty:
-    Text: the {<female>Snail}
+    Text: eine {<female>Schnecke}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
+  Template Overrides:
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: eine Schnecke
 
 Male Dragonfly:
   Standard:
-    Text: Male Dragonfly
+    Text: Männliche Libelle
   Pretty:
-    Text: the {<male>Dragonfly}
+    Text: eine {<male>Libelle}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
+  Template Overrides:
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: eine Libelle
 
 Female Dragonfly:
   Standard:
-    Text: Female Dragonfly
+    Text: Weibliche Libelle
   Pretty:
-    Text: the {<female>Dragonfly}
+    Text: eine {<female>Libelle}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
+  Template Overrides:
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: eine Libelle
 
 Male Ant:
   Standard:
-    Text: Male Ant
+    Text: Männliche Ameise
   Pretty:
-    Text: the {<male>Ant}
+    Text: eine {<male>Ameise}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
+  Template Overrides:
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: eine Ameise
 
 Female Ant:
   Standard:
-    Text: Female Ant
+    Text: Weibliche Ameise
   Pretty:
-    Text: the {<female>Ant}
+    Text: eine {<female>Ameise}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
+  Template Overrides:
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: eine Ameise
 
 Male Dayfly:
   Standard:
     Text: Male Dayfly
   Pretty:
-    Text: the {<male>Dayfly}
+    Text: ein {<male>Dayfly}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
 
 Female Dayfly:
   Standard:
     Text: Female Dayfly
   Pretty:
-    Text: the {<female>Dayfly}
+    Text: ein {<female>Dayfly}
   Cryptic:
-    Text: a {shiny insect}
+    Text: ein {glänzendes Insekt}
 
 Progressive Fused Shadow:
   Standard:
-    Text: Progressive Fused Shadow
+    Text: Progressiver Schattenkristall
   Pretty:
-    Text: a {Fused Shadow}
+    Text: ein {Schattenkristall}
   Cryptic:
-    Text: a {shadow of ultimate power}
-# English overrides the exact text used for the Agitha hint sign
-# Feel free to use if necessary
-#  Template Overrides:
-#    - Keys:
-#        - Agithas Castle Some Items Sign Text
-#      Pretty:
-#        Text:
-#      Cryptic:
-#        Text:
+    Text: ein {Schatten ultimativer Macht}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Schattenkristall
+      Pretty:
+        Text: Schattenkristall
+      Cryptic:
+        Text: Schatten ultimativer Macht
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen Schattenkristall
+      Pretty:
+        Text: einen {Schattenkristall}
+      Cryptic:
+        Text: einen {Schatten ultimativer Macht}
 
 Poe Soul:
   Standard:
-    Text: Poe Soul
+    Text: Geisterseele
   Pretty:
-    Text: a {Poe Soul}
+    Text: eine {Geisterseele}
   Cryptic:
-    Text: a {soul of the dead}
+    Text: eine {Seele der Verstorbenen}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Geisterseele
+      Pretty:
+        Text: Geisterseele
+      Cryptic:
+        Text: Seele der Verstorbenen
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: eine Geisterseele
 
 Progressive Hidden Skill:
   Standard:
-    Text: Progressive Hidden Skill
+    Text: Progressive Okkulte Kunst
   Pretty:
-    Text: a {Hidden Skill}
+    Text: eine {okkulte Kunst}
   Cryptic:
-    Text: a {forgotten technique}
-# English overrides the exact text used for the Agitha hint sign
-# Feel free to use if necessary
-#  Template Overrides:
-#    - Keys:
-#        - Agithas Castle Some Items Sign Text
-#      Pretty:
-#        Text:
-#      Cryptic:
-#        Text:
+    Text: eine {vergessene Technik}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Okkulte Kunst
+      Pretty:
+        Text: Okkulte Kunst
+      Cryptic:
+        Text: vergessene Technik
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: eine okkulte Kunst
 
 Bridge of Eldin Portal:
   Standard:
-    Text: Bridge of Eldin Portal
+    Text: Portal (Eldin Brücke)
   Pretty:
-    Text: the {Bridge of Eldin Portal}
+    Text: das {Portal (Eldin Brücke)}
   Cryptic:
-    Text: a {portal to a long bridge}
+    Text: das {Portal zu einer langen Brücke}
 
 Progressive Sky Book:
   Standard:
-    Text: Progressive Sky Book
+    Text: Progressives Kumulanisches Zeichen
   Pretty:
-    Text: a {Sky Character}
+    Text: ein {kumulanisches Zeichen}
   Cryptic:
-    Text: a {glyph of the heavens}
-# English overrides the exact text used for the Agitha hint sign
-# Feel free to use if necessary
-#  Template Overrides:
-#    - Keys:
-#        - Agithas Castle Some Items Sign Text
-#      Pretty:
-#        Text:
-#      Cryptic:
-#        Text:
+    Text: eine {himmlische Glyphe}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: kumulanisches Zeichen
+      Pretty:
+        Text: kumulanisches Zeichen
+      Cryptic:
+        Text: himmlische Glyphe
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: ein kumulanisches Zeichen
 
 Purple Rupee Links House:
   Standard:
-    Text: Purple Rupee Links House
+    Text: Violetter Rubin in Links Haus
   Pretty:
-    Text: the {Purple Rupee from your basement}
+    Text: der {violette Rubin aus deinem Keller}
   Cryptic:
-    Text: "{your savings}"
-    Plurality: Plural
+    Text: "{deine Ersparnisse}"
+  Template Overrides:
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den violetten Rubin aus deinem Keller
+      Pretty:
+        Text: den {violetten Rubin aus deinem Keller}
+      Cryptic:
+        Text: "{deine Ersparnisse}"
 
 North Faron Woods Gate Key:
   Standard:
-    Text: North Faron Woods Gate Key
+    Text: Phirone-Wald Nord Torschlüssel
   Pretty:
-    Text: the {North Faron Woods Gate Key}
+    Text: der {Phirone-Wald Nord Torschlüssel}
   Cryptic:
-    Text: a {key to a northern forest}
+    Text: der {Schlüssel zu einem nördlichen Wald}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Phirone-Wald Nord Torschlüssel
+      Pretty:
+        Text: Phirone-Wald Nord Torschlüssel
+      Cryptic:
+        Text: Schlüssel zu einem nördlichen Wald
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Phirone-Wald Nord Torschlüssel
+      Pretty:
+        Text: den {Phirone-Wald Nord Torschlüssel}
+      Cryptic:
+        Text: den {Schlüssel zu einem nördlichen Wald}
 
 Gate Keys:
   Standard:
-    Text: Gate Keys
+    Text: Torschlüssel
   Pretty:
-    Text: the {Gate Keys}
-    Plurality: Plural
+    Text: der {Torschlüssel}
   Cryptic:
-    Text: "{King Bulblin's keys}"
-    Plurality: Plural
+    Text: "{König Bulblins Schlüssel}"
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Torschlüssel
+      Pretty:
+        Text: Torschlüssel
+      Cryptic:
+        Text: König Bulblins Schlüssel
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Torschlüssel
+      Pretty:
+        Text: den {Torschlüssel}
+      Cryptic:
+        Text: "{König Bulblins Schlüssel}"
 
 Ordon Pumpkin:
   Standard:
-    Text: Ordon Pumpkin
+    Text: Ordon Kürbis
   Pretty:
-    Text: the {Ordon Pumpkin}
+    Text: ein {Ordon Kürbis}
   Cryptic:
-    Text: a {soup ingredient}
+    Text: eine {Suppen-Zutat}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Ordon Kürbis
+      Pretty:
+        Text: Ordon Kürbis
+      Cryptic:
+        Text: Suppen-Zutat
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen Ordon Kürbis
+      Pretty:
+        Text: einen {Ordon Kürbis}
+      Cryptic:
+        Text: eine {Suppen-Zutat}
 
 Ordon Cheese:
   Standard:
-    Text: Ordon Cheese
+    Text: Ordoner Ziegenkäse
   Pretty:
-    Text: some {Ordon Cheese}
+    Text: ein {Ordoner Ziegenkäse}
   Cryptic:
-    Text: a {soup ingredient}
+    Text: eine {Suppen-Zutat}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Ordoner Ziegenkäse
+      Pretty:
+        Text: Ordoner Ziegenkäse
+      Cryptic:
+        Text: Suppen-Zutat
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen Ordoner Ziegenkäse
+      Pretty:
+        Text: einen {Ordoner Ziegenkäse}
+      Cryptic:
+        Text: eine {Suppen-Zutat}
 
 Snowpeak Ruins Bedroom Key:
   Standard:
-    Text: Snowpeak Ruins Bedroom Key
+    Text: Schlafzimmer-Schlüssel
   Pretty:
-    Text: the {Snowpeak Ruins Bedroom Key}
+    Text: der {Schlafzimmer-Schlüssel}
   Cryptic:
-    Text: the {key to a snowy bedroom}
+    Text: der {Schlüssel zu einem verschneiten Schlafzimmer}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Schlafzimmer-Schlüssel
+      Pretty:
+        Text: Schlafzimmer-Schlüssel
+      Cryptic:
+        Text: Schlüssel zu einem verschneiten Schlafzimmer
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den Schlafzimmer-Schlüssel
+      Pretty:
+        Text: den {Schlafzimmer-Schlüssel}
+      Cryptic:
+        Text: den {Schlüssel zu einem verschneiten Schlafzimmer}
 
 Goron Mines Key Shard:
   Standard:
-    Text: Goron Mines Key Shard
+    Text: Schlüsselfragment
   Pretty:
-    Text: a {Goron Mines Key Shard}
+    Text: ein {Schlüsselfragment}
   Cryptic:
-    Text: "{one third of a key}"
+    Text: ein {Drittel eines Schlüssels}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Schlüsselfragment
+      Pretty:
+        Text: Schlüsselfragment
+      Cryptic:
+        Text: 1/3 eines Schlüssels
+    - Keys:
+        - Coro Bottle Offer 3 Text Template
+      Standard:
+        Text: ein Schlüsselfragment
 
 Faron Woods Coro Key:
   Standard:
-    Text: Faron Woods Coro Key
+    Text: Coros Schlüssel
   Pretty:
-    Text: "{Coro's Key}"
+    Text: "{Coros Schlüssel}"
   Cryptic:
-    Text: a {key to a forest cave}
+    Text: ein {Schlüssel zu einer Waldhöhle}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Coros Schlüssel
+      Pretty:
+        Text: Coros Schlüssel
+      Cryptic:
+        Text: Schlüssel zu einer Waldhöhle
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: Coros Schlüssel
+      Pretty:
+        Text: "{Coros Schlüssel}"
+      Cryptic:
+        Text: einen {Schlüssel zu einer Waldhöhle}
 
 Game Beatable:
   Standard:
-    Text: Game Beatable
+    Text: Spielentscheidendes Item
   Pretty:
-    Text: "{Game Beatable}"
+    Text: das {spielentscheidende Item}
   Cryptic:
-    Text: the {game-winning item}
+    Text: ein {spielentscheidendes Item}
 
 Hint:
   Standard:
-    Text: Hint
+    Text: Hinweis
   Pretty:
-    Text: a {Hint}
+    Text: ein {Hinweis}
   Cryptic:
-    Text: a {piece of knowledge}
+    Text: eine {Erkenntnis}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Hinweis
+      Pretty:
+        Text: Hinweis
+      Cryptic:
+        Text: Erkenntnis
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: einen Hinweis
+      Pretty:
+        Text: einen {Hinweis}
+      Cryptic:
+        Text: eine {Erkenntnis}
 
 Faron Twilight Tear:
   Standard:
-    Text: Faron Twilight Tear
+    Text: Phirone Twilight Tear
   Pretty:
-    Text: a {Faron Twilight Tear}
+    Text: a {Phirone Twilight Tear}
   Cryptic:
     Text: a {tear of a forest spirit}
 
@@ -1334,104 +2769,104 @@ Eldin Twilight Tear:
 
 Lanayru Twilight Tear:
   Standard:
-    Text: Lanayru Twilight Tear
+    Text: Ranelle Twilight Tear
   Pretty:
-    Text: a {Lanayru Twilight Tear}
+    Text: a {Ranelle Twilight Tear}
   Cryptic:
     Text: a {tear of a lake spirit}
 
 # ITEM NAMES FOR PROGRESSIVE ITEMS
 Progressive Wallet x0:
   Standard:
-    Text: Small Wallet
+    Text: Kleine Geldbörse
 
 Progressive Wallet x1:
   Standard:
-    Text: Large Wallet
+    Text: Große Geldbörse
 
 Progressive Wallet x2:
   Standard:
-    Text: Giant's Wallet
+    Text: Riesige Geldbörse
 
 Progressive Sword x1:
   Standard:
-    Text: Wooden Sword
+    Text: Holzschwert
 
 Progressive Sword x2:
   Standard:
-    Text: Ordon Sword
+    Text: Ordon-Schwert
 
 Progressive Sword x3:
   Standard:
-    Text: Master Sword
+    Text: Master-Schwert
 
 Progressive Sword x4:
   Standard:
-    Text: Light Sword
+    Text: Lichtschwert
 
 Progressive Bow x1:
   Standard:
-    Text: Bow (30 Arrows)
+    Text: Bogen (30 Pfeile)
 
 Progressive Bow x2:
   Standard:
-    Text: Bow (60 Arrows)
+    Text: Bogen (60 Pfeile)
 
 Progressive Bow x3:
   Standard:
-    Text: Bow (100 Arrows)
+    Text: Bogen (100 Pfeile)
 
 Progressive Clawshot x1:
   Standard:
-    Text: Clawshot
+    Text: Greifhaken
 
 Progressive Clawshot x2:
   Standard:
-    Text: Double Clawshots
+    Text: Doppelhaken
 
 Progressive Dominion Rod x1:
   Standard:
-    Text: Dominion Rod
+    Text: Kopierstab
 
 Progressive Dominion Rod x2:
   Standard:
-    Text: Restored Dominion Rod
+    Text: Wiederhergestellter Kopierstab
 
 Progressive Fishing Rod x1:
   Standard:
-    Text: Fishing Rod
+    Text: Angel
 
 Progressive Fishing Rod x2:
   Standard:
-    Text: Corral Earring
+    Text: Angel mit Ohrring
 
 Progressive Sky Book x1:
   Standard:
-    Text: Sky Book (0/6 Characters)
+    Text: Kumulaner-Dokument (0/6 Zeichen)
 
 Progressive Sky Book x2:
   Standard:
-    Text: Sky Book (1/6 Characters)
+    Text: Kumulaner-Dokument (1/6 Zeichen)
 
 Progressive Sky Book x3:
   Standard:
-    Text: Sky Book (2/6 Characters)
+    Text: Kumulaner-Dokument (2/6 Zeichen)
 
 Progressive Sky Book x4:
   Standard:
-    Text: Sky Book (3/6 Characters)
+    Text: Kumulaner-Dokument (3/6 Zeichen)
 
 Progressive Sky Book x5:
   Standard:
-    Text: Sky Book (4/6 Characters)
+    Text: Kumulaner-Dokument (4/6 Zeichen)
 
 Progressive Sky Book x6:
   Standard:
-    Text: Sky Book (5/6 Characters)
+    Text: Kumulaner-Dokument (5/6 Zeichen)
 
 Progressive Sky Book x7:
   Standard:
-    Text: Sky Book (6/6 Characters)
+    Text: Kumulaner-Dokument (6/6 Zeichen)
 
 # LOCATION NAMES
 # NOTE: Location names which are identical to item names (i.e. Ordon Shield) need
@@ -1439,19 +2874,19 @@ Progressive Sky Book x7:
 # TODO: Cryptic text for all locations
 Wooden Sword Chest:
   Standard:
-    Text: Wooden Sword Chest
+    Text: Holzschwert-Truhe
   Pretty:
-    Text: the {Wooden Sword Chest}
+    Text: die {Holzschwert-Truhe}
   Cryptic:
-    Text: the {Wooden Sword Chest}
+    Text: die {Holzschwert-Truhe}
 
 Links Basement Chest:
   Standard:
-    Text: Links Basement Chest
+    Text: Links Keller-Truhe
   Pretty:
-    Text: "{Links Basement Chest}"
+    Text: "{Links Keller-Truhe}"
   Cryptic:
-    Text: "{Links Basement Chest}"
+    Text: "{Links Keller-Truhe}"
 
 Uli Cradle Delivery:
   Standard:
@@ -1463,75 +2898,75 @@ Uli Cradle Delivery:
 
 Ordon Cat Rescue:
   Standard:
-    Text: Ordon Cat Rescue
+    Text: Ordons Katzenrettung
   Pretty:
-    Text: the {Ordon Cat Rescue}
+    Text: "{Ordons Katzenrettung}"
   Cryptic:
-    Text: the {Ordon Cat Rescue}
+    Text: "{Ordons Katzenrettung}"
 
 Sera Shop Slingshot:
   Standard:
-    Text: Sera Shop Slingshot
+    Text: Sera Shop Schleuder
   Pretty:
-    Text: buying the {Sera Shop Slingshot}
+    Text: buying the {Sera Shop Schleuder}
   Cryptic:
-    Text: buying the {Sera Shop Slingshot}
+    Text: buying the {Sera Shop Schleuder}
 
 Ordon Shield Check:
   Standard:
-    Text: Ordon Shield
+    Text: Ordon-Schild
   Pretty:
-    Text: the {Ordon Shield}
+    Text: das {Ordon-Schild}
   Cryptic:
-    Text: the {Ordon Shield}
+    Text: das {Ordon-Schild}
 
 Ordon Sword:
   Standard:
-    Text: Ordon Sword
+    Text: Ordon-Schwert
   Pretty:
-    Text: the {Ordon Sword}
+    Text: das {Ordon-Schwert}
   Cryptic:
-    Text: the {Ordon Sword}
+    Text: das {Ordon-Schwert}
 
 Wrestling With Bo:
   Standard:
-    Text: Wrestling With Bo
+    Text: Ringkampf mit Bo
   Pretty:
-    Text: "{Wrestling With Bo}"
+    Text: "den {Ringkampf mit Bo}"
   Cryptic:
     Text: pushing a middle-aged man
 
 Ordon Bo Cliff Rupee:
   Standard:
-    Text: Ordon Bo Cliff Rupee
+    Text: Ordon Bo Klippen-Rubin
   Pretty:
-    Text: the {Ordon Bo Cliff Rupee}
+    Text: den {Ordon Bo Klippen-Rubin}
   Cryptic:
-    Text: the {Ordon Bo Cliff Rupee}
+    Text: den {Ordon Bo Klippen-Rubin}
 
 Ordon Bo Roof Rupee:
   Standard:
-    Text: Ordon Bo Roof Rupee
+    Text: Ordon Bo Dach-Rubin
   Pretty:
-    Text: the {Ordon Bo Roof Rupee}
+    Text: den {Ordon Bo Dach-Rubin}
   Cryptic:
-    Text: the {Ordon Bo Roof Rupee}
+    Text: den {Ordon Bo Dach-Rubin}
 
 Ordon Bo Window Rupee 1:
   Standard:
-    Text: Ordon Bo Window Rupee 1
+    Text: Ordon Bo Fenster-Rubin 1
   Pretty:
-    Text: "{Ordon Bo Window Rupee 1}"
+    Text: "den {Ordon Bo Fenster-Rubin 1}"
   Cryptic:
-    Text: "{Ordon Bo Window Rupee 1}"
+    Text: "den {Ordon Bo Fenster-Rubin 1}"
 
 Ordon Bo Window Rupee 2:
   Standard:
-    Text: Ordon Bo Window Rupee 2
+    Text: Ordon Bo Fenster-Rubin 2
   Pretty:
-    Text: "{Ordon Bo Window Rupee 2}"
+    Text: "den {Ordon Bo Fenster-Rubin 2}"
   Cryptic:
-    Text: "{Ordon Bo Window Rupee 2}"
+    Text: "den {Ordon Bo Fenster-Rubin 2}"
 
 Ordon Hidden Rusl House Rupee:
   Standard:
@@ -1551,43 +2986,43 @@ Ordon Rupee In Grass By Bo:
 
 Ordon Rupee In River 1:
   Standard:
-    Text: Ordon Rupee In River 1
+    Text: Ordon Rubin im Fluss 1
   Pretty:
-    Text: "{Ordon Rupee In River 1}"
+    Text: "den {Ordon Rubin im Fluss 1}"
   Cryptic:
-    Text: "{Ordon Rupee In River 1}"
+    Text: "den {Ordon Rubin im Fluss 1}"
 
 Ordon Rupee In River 2:
   Standard:
-    Text: Ordon Rupee In River 2
+    Text: Ordon Rubin im Fluss 2
   Pretty:
-    Text: "{Ordon Rupee In River 2}"
+    Text: "den {Ordon Rubin im Fluss 2}"
   Cryptic:
-    Text: "{Ordon Rupee In River 2}"
+    Text: "den {Ordon Rubin im Fluss 2}"
 
 Ordon Rupee Under Bridge:
   Standard:
-    Text: Ordon Rupee Under Bridge
+    Text: Ordon Rubin unter der Brücke
   Pretty:
-    Text: the {Ordon Rupee Under Bridge}
+    Text: den {Ordon Rubin unter der Brücke}
   Cryptic:
-    Text: the {Ordon Rupee Under Bridge}
+    Text: den {Ordon Rubin unter der Brücke}
 
 Ordon Rupee Under Tall Tree 1:
   Standard:
-    Text: Ordon Rupee Under Tall Tree 1
+    Text: Ordon Rubin unter dem großen Baum 1
   Pretty:
-    Text: "{Ordon Rupee Under Tall Tree 1}"
+    Text: "den {Ordon Rubin unter dem großen Baum 1}"
   Cryptic:
-    Text: "{Ordon Rupee Under Tall Tree 1}"
+    Text: "den {Ordon Rubin unter dem großen Baum 1}"
 
 Ordon Rupee Under Tall Tree 2:
   Standard:
-    Text: Ordon Rupee Under Tall Tree 2
+    Text: Ordon Rubin unter dem großen Baum 2
   Pretty:
-    Text: "{Ordon Rupee Under Tall Tree 2}"
+    Text: "den {Ordon Rubin unter dem großen Baum 2}"
   Cryptic:
-    Text: "{Ordon Rupee Under Tall Tree 2}"
+    Text: "den {Ordon Rubin unter dem großen Baum 2}"
 
 Ordon Rusl House Roof Rupee 1:
   Standard:
@@ -1631,11 +3066,11 @@ Ordon Tree Short Branch Rupee:
 
 Herding Goats Reward:
   Standard:
-    Text: Herding Goats Reward
+    Text: Ziegenhüten
   Pretty:
-    Text: the {Herding Goats Reward}
+    Text: das {Ziegenhüten}
   Cryptic:
-    Text: the {Herding Goats Reward}
+    Text: das {Ziegenhüten}
 
 Ordon Ranch Grotto Lantern Chest:
   Standard:
@@ -1655,11 +3090,11 @@ Ordon Spring Golden Wolf:
 
 Ordon Spring Warp Portal:
   Standard:
-    Text: Ordon Spring Warp Portal
+    Text: Warp-Portal (Quelle von Ordon)
   Pretty:
-    Text: the {Ordon Spring Warp Portal}
+    Text: das {Warp-Portal (Quelle von Ordon)}
   Cryptic:
-    Text: the {Ordon Spring Warp Portal}
+    Text: das {Warp-Portal (Quelle von Ordon)}
 
 South Faron Woods Twilit Insect in Tunnel 1:
   Standard:
@@ -1823,139 +3258,139 @@ Coro Bottle:
 
 Faron Woods Coro Boulder Rupee 1:
   Standard:
-    Text: Faron Woods Coro Boulder Rupee 1
+    Text: Phirone Woods Coro Boulder Rupee 1
   Pretty:
-    Text: "{Faron Woods Coro Boulder Rupee 1}"
+    Text: "{Phirone Woods Coro Boulder Rupee 1}"
   Cryptic:
-    Text: "{Faron Woods Coro Boulder Rupee 1}"
+    Text: "{Phirone Woods Coro Boulder Rupee 1}"
 
 Faron Woods Coro Boulder Rupee 2:
   Standard:
-    Text: Faron Woods Coro Boulder Rupee 2
+    Text: Phirone Woods Coro Boulder Rupee 2
   Pretty:
-    Text: "{Faron Woods Coro Boulder Rupee 2}"
+    Text: "{Phirone Woods Coro Boulder Rupee 2}"
   Cryptic:
-    Text: "{Faron Woods Coro Boulder Rupee 2}"
+    Text: "{Phirone Woods Coro Boulder Rupee 2}"
 
 Faron Woods Coro Boulder Rupee 3:
   Standard:
-    Text: Faron Woods Coro Boulder Rupee 3
+    Text: Phirone Woods Coro Boulder Rupee 3
   Pretty:
-    Text: "{Faron Woods Coro Boulder Rupee 3}"
+    Text: "{Phirone Woods Coro Boulder Rupee 3}"
   Cryptic:
-    Text: "{Faron Woods Coro Boulder Rupee 3}"
+    Text: "{Phirone Woods Coro Boulder Rupee 3}"
 
 Faron Woods Coro Boulder Rupee 4:
   Standard:
-    Text: Faron Woods Coro Boulder Rupee 4
+    Text: Phirone Woods Coro Boulder Rupee 4
   Pretty:
-    Text: "{Faron Woods Coro Boulder Rupee 4}"
+    Text: "{Phirone Woods Coro Boulder Rupee 4}"
   Cryptic:
-    Text: "{Faron Woods Coro Boulder Rupee 4}"
+    Text: "{Phirone Woods Coro Boulder Rupee 4}"
 
 South Faron Cave Chest:
   Standard:
-    Text: South Faron Cave Chest
+    Text: South Phirone Cave Chest
   Pretty:
-    Text: the {South Faron Cave Chest}
+    Text: the {South Phirone Cave Chest}
   Cryptic:
-    Text: the {South Faron Cave Chest}
+    Text: the {South Phirone Cave Chest}
 
 Faron Mist South Chest:
   Standard:
-    Text: Faron Mist South Chest
+    Text: Phirone Mist South Chest
   Pretty:
-    Text: the {Faron Mist South Chest}
+    Text: the {Phirone Mist South Chest}
   Cryptic:
-    Text: the {Faron Mist South Chest}
+    Text: the {Phirone Mist South Chest}
 
 Faron Mist Stump Chest:
   Standard:
-    Text: Faron Mist Stump Chest
+    Text: Phirone Mist Stump Chest
   Pretty:
-    Text: the {Faron Mist Stump Chest}
+    Text: the {Phirone Mist Stump Chest}
   Cryptic:
-    Text: the {Faron Mist Stump Chest}
+    Text: the {Phirone Mist Stump Chest}
 
 Faron Mist North Chest:
   Standard:
-    Text: Faron Mist North Chest
+    Text: Phirone Mist North Chest
   Pretty:
-    Text: the {Faron Mist North Chest}
+    Text: the {Phirone Mist North Chest}
   Cryptic:
-    Text: the {Faron Mist North Chest}
+    Text: the {Phirone Mist North Chest}
 
 Faron Mist Poe:
   Standard:
-    Text: Faron Mist Poe
+    Text: Phirone Mist Poe
   Pretty:
-    Text: the {Faron Mist Poe}
+    Text: the {Phirone Mist Poe}
   Cryptic:
-    Text: the {Faron Mist Poe}
+    Text: the {Phirone Mist Poe}
 
 Faron Mist Cave Open Chest:
   Standard:
-    Text: Faron Mist Cave Open Chest
+    Text: Phirone Mist Cave Open Chest
   Pretty:
-    Text: the {Faron Mist Cave Open Chest}
+    Text: the {Phirone Mist Cave Open Chest}
   Cryptic:
-    Text: the {Faron Mist Cave Open Chest}
+    Text: the {Phirone Mist Cave Open Chest}
 
 Faron Mist Cave Lantern Chest:
   Standard:
-    Text: Faron Mist Cave Lantern Chest
+    Text: Phirone Mist Cave Lantern Chest
   Pretty:
-    Text: the {Faron Mist Cave Lantern Chest}
+    Text: the {Phirone Mist Cave Lantern Chest}
   Cryptic:
-    Text: the {Faron Mist Cave Lantern Chest}
+    Text: the {Phirone Mist Cave Lantern Chest}
 
 North Faron Warp Portal:
   Standard:
-    Text: North Faron Warp Portal
+    Text: North Phirone Warp Portal
   Pretty:
-    Text: the {North Faron Warp Portal}
+    Text: the {North Phirone Warp Portal}
   Cryptic:
-    Text: the {North Faron Warp Portal}
+    Text: the {North Phirone Warp Portal}
 
 Faron Woods Golden Wolf:
   Standard:
-    Text: Faron Woods Golden Wolf
+    Text: Phirone Woods Golden Wolf
   Pretty:
-    Text: the {Faron Woods Golden Wolf}
+    Text: the {Phirone Woods Golden Wolf}
   Cryptic:
-    Text: the {Faron Woods Golden Wolf}
+    Text: the {Phirone Woods Golden Wolf}
 
 North Faron Woods Deku Baba Chest:
   Standard:
-    Text: North Faron Woods Deku Baba Chest
+    Text: North Phirone Woods Deku Baba Chest
   Pretty:
-    Text: the {North Faron Woods Deku Baba Chest}
+    Text: the {North Phirone Woods Deku Baba Chest}
   Cryptic:
-    Text: the {North Faron Woods Deku Baba Chest}
+    Text: the {North Phirone Woods Deku Baba Chest}
 
 Faron Woods Owl Statue Sky Character:
   Standard:
-    Text: Faron Woods Owl Statue Sky Character
+    Text: Phirone Woods Owl Statue Sky Character
   Pretty:
-    Text: the {Faron Woods Owl Statue Sky Character}
+    Text: the {Phirone Woods Owl Statue Sky Character}
   Cryptic:
-    Text: the {Faron Woods Owl Statue Sky Character}
+    Text: the {Phirone Woods Owl Statue Sky Character}
 
 Faron Woods Owl Statue Chest:
   Standard:
-    Text: Faron Woods Owl Statue Chest
+    Text: Phirone Woods Owl Statue Chest
   Pretty:
-    Text: the {Faron Woods Owl Statue Chest}
+    Text: the {Phirone Woods Owl Statue Chest}
   Cryptic:
-    Text: the {Faron Woods Owl Statue Chest}
+    Text: the {Phirone Woods Owl Statue Chest}
 
 Faron Field Bridge Chest:
   Standard:
-    Text: Faron Field Bridge Chest
+    Text: Phirone Field Bridge Chest
   Pretty:
-    Text: the {Faron Field Bridge Chest}
+    Text: the {Phirone Field Bridge Chest}
   Cryptic:
-    Text: the {Faron Field Bridge Chest}
+    Text: the {Phirone Field Bridge Chest}
 
 # HD Only Location
 # Faron Field Corner Grotto Main Chest:
@@ -1968,59 +3403,59 @@ Faron Field Bridge Chest:
 
 Faron Field Corner Grotto Left Chest:
   Standard:
-    Text: Faron Field Corner Grotto Left Chest
+    Text: Phirone Field Corner Grotto Left Chest
   Pretty:
-    Text: the {Faron Field Corner Grotto Left Chest}
+    Text: the {Phirone Field Corner Grotto Left Chest}
   Cryptic:
-    Text: the {Faron Field Corner Grotto Left Chest}
+    Text: the {Phirone Field Corner Grotto Left Chest}
 
 Faron Field Corner Grotto Rear Chest:
   Standard:
-    Text: Faron Field Corner Grotto Rear Chest
+    Text: Phirone Field Corner Grotto Rear Chest
   Pretty:
-    Text: the {Faron Field Corner Grotto Rear Chest}
+    Text: the {Phirone Field Corner Grotto Rear Chest}
   Cryptic:
-    Text: the {Faron Field Corner Grotto Rear Chest}
+    Text: the {Phirone Field Corner Grotto Rear Chest}
 
 Faron Field Corner Grotto Right Chest:
   Standard:
-    Text: Faron Field Corner Grotto Right Chest
+    Text: Phirone Field Corner Grotto Right Chest
   Pretty:
-    Text: the {Faron Field Corner Grotto Right Chest}
+    Text: the {Phirone Field Corner Grotto Right Chest}
   Cryptic:
-    Text: the {Faron Field Corner Grotto Right Chest}
+    Text: the {Phirone Field Corner Grotto Right Chest}
 
 Faron Field Female Beetle:
   Standard:
-    Text: Faron Field Female Beetle
+    Text: Phirone Field Female Beetle
   Pretty:
-    Text: the {Faron Field Female Beetle}
+    Text: the {Phirone Field Female Beetle}
   Cryptic:
-    Text: the {Faron Field Female Beetle}
+    Text: the {Phirone Field Female Beetle}
 
 Faron Field Male Beetle:
   Standard:
-    Text: Faron Field Male Beetle
+    Text: Phirone Field Male Beetle
   Pretty:
-    Text: the {Faron Field Male Beetle}
+    Text: the {Phirone Field Male Beetle}
   Cryptic:
-    Text: the {Faron Field Male Beetle}
+    Text: the {Phirone Field Male Beetle}
 
 Faron Field Poe:
   Standard:
-    Text: Faron Field Poe
+    Text: Phirone Field Poe
   Pretty:
-    Text: the {Faron Field Poe}
+    Text: the {Phirone Field Poe}
   Cryptic:
-    Text: the {Faron Field Poe}
+    Text: the {Phirone Field Poe}
 
 Faron Field Tree Heart Piece:
   Standard:
-    Text: Faron Field Tree Heart Piece
+    Text: Phirone Field Tree Heart Piece
   Pretty:
-    Text: the {Faron Field Tree Heart Piece}
+    Text: the {Phirone Field Tree Heart Piece}
   Cryptic:
-    Text: the {Faron Field Tree Heart Piece}
+    Text: the {Phirone Field Tree Heart Piece}
 
 Lost Woods Boulder Poe:
   Standard:
@@ -2056,35 +3491,35 @@ Sacred Grove Baba Serpent Grotto Chest:
 
 Sacred Grove Spinner Chest:
   Standard:
-    Text: Sacred Grove Spinner Chest
+    Text: Heiliger Hain - Gleiter-Truhe
   Pretty:
-    Text: the {Sacred Grove Spinner Chest}
+    Text: die {Gleiter-Truhe im heiligen Hain}
   Cryptic:
-    Text: the {Sacred Grove Spinner Chest}
+    Text: die {Gleiter-Truhe im heiligen Hain}
 
 Sacred Grove Warp Portal:
   Standard:
-    Text: Sacred Grove Warp Portal
+    Text: Warp-Portal (Heiliger Hain)
   Pretty:
-    Text: the {Sacred Grove Warp Portal}
+    Text: das {Warp-Portal (Heiliger Hain)}
   Cryptic:
-    Text: the {Sacred Grove Warp Portal}
+    Text: das {Warp-Portal (Heiliger Hain)}
 
 Sacred Grove Pedestal Master Sword:
   Standard:
-    Text: Sacred Grove Pedestal Master Sword
+    Text: Heiliger Hain Sockel - Master-Schwert
   Pretty:
-    Text: the {Master Sword Pedestal}
+    Text: der {Master-Schwert-Sockel}
   Cryptic:
-    Text: the {Master Sword Pedestal}
+    Text: der {Master-Schwert-Sockel}
 
 Sacred Grove Pedestal Shadow Crystal:
   Standard:
-    Text: Sacred Grove Pedestal Shadow Crystal
+    Text: Heiliger Hain Sockel - Nachtkristall
   Pretty:
-    Text: the {Master Sword Pedestal}
+    Text: der {Master-Schwert-Sockel}
   Cryptic:
-    Text: the {Master Sword Pedestal}
+    Text: der {Master-Schwert-Sockel}
 
 Sacred Grove Master Sword Poe:
   Standard:
@@ -2376,11 +3811,11 @@ Kakariko Village Warp Portal:
 
 Eldin Spring Underwater Chest:
   Standard:
-    Text: Eldin Spring Underwater Chest
+    Text: Quelle von Eldin - Unterwasser-Truhe
   Pretty:
-    Text: the {Eldin Spring Underwater Chest}
+    Text: die {Unterwasser-Truhe in der Quelle von Eldin}
   Cryptic:
-    Text: the {Eldin Spring Underwater Chest}
+    Text: die {Unterwasser-Truhe in der Quelle von Eldin}
 
 Eldin Spring Underwater Boulder Rupee:
   Standard:
@@ -2488,11 +3923,11 @@ Kakariko Village Ant House Ledge Box Rupee:
 
 Barnes Bomb Bag:
   Standard:
-    Text: Barnes Bomb Bag
+    Text: Barnes Bombentasche
   Pretty:
-    Text: the {Barnes Bomb Bag}
+    Text: die {Barnes Bombentasche}
   Cryptic:
-    Text: the {Barnes Bomb Bag}
+    Text: die {Barnes Bombentasche}
 
 Kakariko Village Bomb Shop Poe:
   Standard:
@@ -2536,19 +3971,19 @@ Talo Sharpshooting:
 
 Renados Letter Check:
   Standard:
-    Text: Renados Letter
+    Text: Renados Brief
   Pretty:
-    Text: "{Renados Letter}"
+    Text: "{Renados Brief}"
   Cryptic:
-    Text: "{Renados Letter}"
+    Text: "{Renados Brief}"
 
 Ilia Memory Reward:
   Standard:
-    Text: Ilia Memory Reward
+    Text: Ilya Memory Reward
   Pretty:
-    Text: "{Ilia Memory Reward}"
+    Text: "{Ilya Memory Reward}"
   Cryptic:
-    Text: "{Ilia Memory Reward}"
+    Text: "{Ilya Memory Reward}"
 
 Shad Dominion Rod:
   Standard:
@@ -2576,11 +4011,11 @@ Gift From Ralis:
 
 Kakariko Graveyard Lantern Chest:
   Standard:
-    Text: Kakariko Graveyard Lantern Chest
+    Text: Friedhof Lampen-Truhe
   Pretty:
-    Text: the {Kakariko Graveyard Lantern Chest}
+    Text: die {Friedhof Lampen-Truhe}
   Cryptic:
-    Text: the {Kakariko Graveyard Lantern Chest}
+    Text: die {Friedhof Lampen-Truhe}
 
 Kakariko Graveyard Male Ant:
   Standard:
@@ -2624,11 +4059,11 @@ Kakariko Graveyard Grave Poe:
 
 Death Mountain Warp Portal:
   Standard:
-    Text: Death Mountain Warp Portal
+    Text: Warp-Portal (Feuerberg)
   Pretty:
-    Text: the {Death Mountain Warp Portal}
+    Text: das {Warp-Portal (Feuerberg)}
   Cryptic:
-    Text: the {Death Mountain Warp Portal}
+    Text: das {Warp-Portal (Feuerberg)}
 
 Death Mountain Alcove Chest:
   Standard:
@@ -2856,11 +4291,11 @@ Hidden Village Poe:
 
 Ilia Charm:
   Standard:
-    Text: Ilia Charm
+    Text: Ilyas Anhänger
   Pretty:
-    Text: "{Ilia Charm}"
+    Text: "{Ilyas Anhänger}"
   Cryptic:
-    Text: "{Ilia Charm}"
+    Text: "{Ilyas Anhänger}"
 
 Castle Town Twilit Insect:
   Standard:
@@ -3323,11 +4758,11 @@ Jovani House Poe:
 
 Telma Invoice:
   Standard:
-    Text: Telma Invoice
+    Text: Telmas Rechnung
   Pretty:
-    Text: the {Telma Invoice}
+    Text: "{Telmas Rechnung}"
   Cryptic:
-    Text: the {Telma Invoice}
+    Text: "{Telmas Rechnung}"
 
 Agitha Male Beetle Reward:
   Standard:
@@ -3604,11 +5039,11 @@ Outside South Castle Town Boulder Rupee:
 
 Wooden Statue Check:
   Standard:
-    Text: Wooden Statue
+    Text: Holz-Statue
   Pretty:
-    Text: the {Wooden Statue}
+    Text: die {Holz-Statue}
   Cryptic:
-    Text: the {Wooden Statue}
+    Text: die {Holz-Statue}
 
 Lake Hylia Bridge Owl Statue Chest:
   Standard:
@@ -3724,147 +5159,147 @@ Lake Hylia Water Toadpoli Grotto Chest:
 
 Lake Lantern Cave First Chest:
   Standard:
-    Text: Lake Lantern Cave First Chest
+    Text: Hylia-See Lampen Höhle - erste Truhe
   Pretty:
-    Text: the {Lake Lantern Cave First Chest}
+    Text: die {erste Truhe in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave First Chest}
+    Text: die {erste Truhe in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave Second Chest:
   Standard:
-    Text: Lake Lantern Cave Second Chest
+    Text: Hylia-See Lampen Höhle - zweite Truhe
   Pretty:
-    Text: the {Lake Lantern Cave Second Chest}
+    Text: die {zweite Truhe in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave Second Chest}
+    Text: die {zweite Truhe in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave Third Chest:
   Standard:
-    Text: Lake Lantern Cave Third Chest
+    Text: Hylia-See Lampen Höhle - dritte Truhe
   Pretty:
-    Text: the {Lake Lantern Cave Third Chest}
+    Text: die {dritte Truhe in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave Third Chest}
+    Text: die {dritte Truhe in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave Fourth Chest:
   Standard:
-    Text: Lake Lantern Cave Fourth Chest
+    Text: Hylia-See Lampen Höhle - vierte Truhe
   Pretty:
-    Text: the {Lake Lantern Cave Fourth Chest}
+    Text: die {vierte Truhe in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave Fourth Chest}
+    Text: die {vierte Truhe in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave Fifth Chest:
   Standard:
-    Text: Lake Lantern Cave Fifth Chest
+    Text: Hylia-See Lampen Höhle - fünfte Truhe
   Pretty:
-    Text: the {Lake Lantern Cave Fifth Chest}
+    Text: die {fünfte Truhe in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave Fifth Chest}
+    Text: die {fünfte Truhe in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave Sixth Chest:
   Standard:
-    Text: Lake Lantern Cave Sixth Chest
+    Text: Hylia-See Lampen Höhle - sechste Truhe
   Pretty:
-    Text: the {Lake Lantern Cave Sixth Chest}
+    Text: die {sechste Truhe in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave Sixth Chest}
+    Text: die {sechste Truhe in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave Seventh Chest:
   Standard:
-    Text: Lake Lantern Cave Seventh Chest
+    Text: Hylia-See Lampen Höhle - siebte Truhe
   Pretty:
-    Text: the {Lake Lantern Cave Seventh Chest}
+    Text: die {siebte Truhe in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave Seventh Chest}
+    Text: die {siebte Truhe in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave Eighth Chest:
   Standard:
-    Text: Lake Lantern Cave Eighth Chest
+    Text: Hylia-See Lampen Höhle - achte Truhe
   Pretty:
-    Text: the {Lake Lantern Cave Eighth Chest}
+    Text: die {achte Truhe in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave Eighth Chest}
+    Text: die {achte Truhe in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave Ninth Chest:
   Standard:
-    Text: Lake Lantern Cave Ninth Chest
+    Text: Hylia-See Lampen Höhle - neunte Truhe
   Pretty:
-    Text: the {Lake Lantern Cave Ninth Chest}
+    Text: die {neunte Truhe in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave Ninth Chest}
+    Text: die {neunte Truhe in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave Tenth Chest:
   Standard:
-    Text: Lake Lantern Cave Tenth Chest
+    Text: Hylia-See Lampen Höhle - zehnte Truhe
   Pretty:
-    Text: the {Lake Lantern Cave Tenth Chest}
+    Text: die {zehnte Truhe in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave Tenth Chest}
+    Text: die {zehnte Truhe in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave Eleventh Chest:
   Standard:
-    Text: Lake Lantern Cave Eleventh Chest
+    Text: Hylia-See Lampen Höhle - elfte Truhe
   Pretty:
-    Text: the {Lake Lantern Cave Eleventh Chest}
+    Text: die {elfte Truhe in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave Eleventh Chest}
+    Text: die {elfte Truhe in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave Twelfth Chest:
   Standard:
-    Text: Lake Lantern Cave Twelfth Chest
+    Text: Hylia-See Lampen Höhle - zwölfte Truhe
   Pretty:
-    Text: the {Lake Lantern Cave Twelfth Chest}
+    Text: die {zwölfte Truhe in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave Twelfth Chest}
+    Text: die {zwölfte Truhe in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave Thirteenth Chest:
   Standard:
-    Text: Lake Lantern Cave Thirteenth Chest
+    Text: Hylia-See Lampen Höhle - dreizehnte Truhe
   Pretty:
-    Text: the {Lake Lantern Cave Thirteenth Chest}
+    Text: die {dreizehnte Truhe in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave Thirteenth Chest}
+    Text: die {dreizehnte Truhe in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave Fourteenth Chest:
   Standard:
-    Text: Lake Lantern Cave Fourteenth Chest
+    Text: Hylia-See Lampen Höhle - vierzehnte Truhe
   Pretty:
-    Text: the {Lake Lantern Cave Fourteenth Chest}
+    Text: die {vierzehnte Truhe in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave Fourteenth Chest}
+    Text: die {vierzehnte Truhe in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave End Lantern Chest:
   Standard:
-    Text: Lake Lantern Cave End Lantern Chest
+    Text: Hylia-See Lampen Höhle - Lampen-Truhe
   Pretty:
-    Text: the {Lake Lantern Cave End Lantern Chest}
+    Text: die {Lampen-Truhe in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave End Lantern Chest}
+    Text: die {Lampen-Truhe in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave First Poe:
   Standard:
-    Text: Lake Lantern Cave First Poe
+    Text: Hylia-See Lampen Höhle - erster Geist
   Pretty:
-    Text: the {Lake Lantern Cave First Poe}
+    Text: den {ersten Geist in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave First Poe}
+    Text: den {ersten Geist in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave Second Poe:
   Standard:
-    Text: Lake Lantern Cave Second Poe
+    Text: Hylia-See Lampen Höhle - zweiter Geist
   Pretty:
-    Text: the {Lake Lantern Cave Second Poe}
+    Text: den {zweiten Geist in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave Second Poe}
+    Text: den {zweiten Geist in der Hylia-See Lampen Höhle}
 
 Lake Lantern Cave Final Poe:
   Standard:
-    Text: Lake Lantern Cave Final Poe
+    Text: Hylia-See Lampen Höhle - letzter Geist
   Pretty:
-    Text: the {Lake Lantern Cave Final Poe}
+    Text: den {letzten Geist in der Hylia-See Lampen Höhle}
   Cryptic:
-    Text: the {Lake Lantern Cave Final Poe}
+    Text: den {letzten Geist in der Hylia-See Lampen Höhle}
 
 Lake Hylia Underwater Chest:
   Standard:
@@ -4028,35 +5463,35 @@ Lanayru Spring Back Room Right Chest:
 
 Lanayru Spring East Double Clawshot Chest:
   Standard:
-    Text: Lanayru Spring East Double Clawshot Chest
+    Text: Quelle von Ranelle - Doppelhaken-Truhe Osten
   Pretty:
-    Text: the {Lanayru Spring East Double Clawshot Chest}
+    Text: die {Doppelhaken-Truhe Osten in der Quelle von Ranelle}
   Cryptic:
-    Text: the {Lanayru Spring East Double Clawshot Chest}
+    Text: die {Doppelhaken-Truhe Osten in der Quelle von Ranelle}
 
 Lanayru Spring West Double Clawshot Chest:
   Standard:
-    Text: Lanayru Spring West Double Clawshot Chest
+    Text: Quelle von Ranelle - Doppelhaken-Truhe Westen
   Pretty:
-    Text: the {Lanayru Spring West Double Clawshot Chest}
+    Text: die {Doppelhaken-Truhe Westen in der Quelle von Ranelle}
   Cryptic:
-    Text: the {Lanayru Spring West Double Clawshot Chest}
+    Text: die {Doppelhaken-Truhe Westen in der Quelle von Ranelle}
 
 Lanayru Spring Underwater Left Chest:
   Standard:
-    Text: Lanayru Spring Underwater Left Chest
+    Text: Quelle von Ranelle - Unterwasser-Truhe Links
   Pretty:
-    Text: the {Lanayru Spring Underwater Left Chest}
+    Text: die {linke Unterwasser-Truhe in der Quelle von Ranelle}
   Cryptic:
-    Text: the {Lanayru Spring Underwater Left Chest}
+    Text: die {linke Unterwasser-Truhe in der Quelle von Ranelle}
 
 Lanayru Spring Underwater Right Chest:
   Standard:
-    Text: Lanayru Spring Underwater Right Chest
+    Text: Quelle von Ranelle - Unterwasser-Truhe Rechts
   Pretty:
-    Text: the {Lanayru Spring Underwater Right Chest}
+    Text: die {rechte Unterwasser-Truhe in der Quelle von Ranelle}
   Cryptic:
-    Text: the {Lanayru Spring Underwater Right Chest}
+    Text: die {rechte Unterwasser-Truhe in der Quelle von Ranelle}
 
 Lanayru Spring Lower Underwater Boulder Rupee:
   Standard:
@@ -4140,19 +5575,19 @@ Upper Zoras River Poe:
 
 Iza Helping Hand:
   Standard:
-    Text: Iza Helping Hand
+    Text: Izas helfende Hand
   Pretty:
-    Text: being {Iza's Helping Hand}
+    Text: "{Izas helfende Hand}"
   Cryptic:
-    Text: being {Iza's Helping Hand}
+    Text: "{Izas helfende Hand}"
 
 Iza Raging Rapids Minigame:
   Standard:
-    Text: Iza Raging Rapids Minigame
+    Text: Izas Reißende Stromschnellen Minispiel
   Pretty:
-    Text: the {Iza Raging Rapids Minigame}
+    Text: "{Izas Reißende Stromschnellen Minispiel}"
   Cryptic:
-    Text: the {Iza Raging Rapids Minigame}
+    Text: "{Izas Reißende Stromschnellen Minispiel}"
 
 Fishing Hole Bottle:
   Standard:
@@ -4164,19 +5599,19 @@ Fishing Hole Bottle:
 
 Fishing Hole Heart Piece:
   Standard:
-    Text: Fishing Hole Heart Piece
+    Text: Angelteich Herzteil
   Pretty:
-    Text: the {Fishing Hole Heart Piece}
+    Text: das {Angelteich Herzteil}
   Cryptic:
-    Text: the {Fishing Hole Heart Piece}
+    Text: das {Angelteich Herzteil}
 
 Zoras Domain Warp Portal:
   Standard:
-    Text: Zoras Domain Warp Portal
+    Text: Warp-Portal (Zora-Höhle)
   Pretty:
-    Text: the {Zoras Domain Warp Portal}
+    Text: das {Warp-Portal (Zora-Höhle)}
   Cryptic:
-    Text: the {Zoras Domain Warp Portal}
+    Text: das {Warp-Portal (Zora-Höhle)}
 
 Zoras Domain Male Dragonfly:
   Standard:
@@ -4372,11 +5807,11 @@ Snowpeak Warp Portal:
 
 Ashei Sketch:
   Standard:
-    Text: Ashei Sketch
+    Text: Ashleys Zeichnung
   Pretty:
-    Text: "{Ashei Sketch}"
+    Text: "{Ashleys Zeichnung}"
   Cryptic:
-    Text: "{Ashei Sketch}"
+    Text: "{Ashleys Zeichnung}"
 
 Snowpeak Blizzard Poe:
   Standard:
@@ -4828,27 +6263,27 @@ Bulblin Guard Key:
 
 Bulblin Camp Poe:
   Standard:
-    Text: Bulblin Camp Poe
+    Text: Geist im Bulblin-Lager
   Pretty:
-    Text: the {Bulblin Camp Poe}
+    Text: den {Geist im Bulblin-Lager}
   Cryptic:
-    Text: the {Bulblin Camp Poe}
+    Text: den {Geist im Bulblin-Lager}
 
 Outside Arbiters Grounds Lantern Chest:
   Standard:
-    Text: Outside Arbiters Grounds Lantern Chest
+    Text: Lampen-Truhe vor der Wüstenburg
   Pretty:
-    Text: the {Outside Arbiters Grounds Lantern Chest}
+    Text: die {Lampen-Truhe vor der Wüstenburg}
   Cryptic:
-    Text: the {Outside Arbiters Grounds Lantern Chest}
+    Text: die {Lampen-Truhe vor der Wüstenburg}
 
 Outside Arbiters Grounds Poe:
   Standard:
-    Text: Outside Arbiters Grounds Poe
+    Text: Geist vor der Wüstenburg
   Pretty:
-    Text: the {Outside Arbiters Grounds Poe}
+    Text: den {Geist vor der Wüstenburg}
   Cryptic:
-    Text: the {Outside Arbiters Grounds Poe}
+    Text: den {Geist vor der Wüstenburg}
 
 # HD Only Locations
 # Cave of Ordeals Floor 10 Chest:
@@ -4893,31 +6328,31 @@ Outside Arbiters Grounds Poe:
 
 Cave of Ordeals Floor 17 Poe:
   Standard:
-    Text: Cave of Ordeals Floor 17 Poe
+    Text: Drillhöhle Ebene 17 - Geist
   Pretty:
-    Text: the {Cave of Ordeals Floor 17 Poe}
+    Text: der {Geist auf Ebene 17 in der Drillhöhle}
   Cryptic:
-    Text: the {Cave of Ordeals Floor 17 Poe}
+    Text: der {Geist auf Ebene 17 in der Drillhöhle}
 
 Cave of Ordeals Floor 33 Poe:
   Standard:
-    Text: Cave of Ordeals Floor 33 Poe
+    Text: Drillhöhle Ebene 33 - Geist
   Pretty:
-    Text: the {Cave of Ordeals Floor 33 Poe}
+    Text: der {Geist auf Ebene 33 in der Drillhöhle}
   Cryptic:
-    Text: the {Cave of Ordeals Floor 33 Poe}
+    Text: der {Geist auf Ebene 33 in der Drillhöhle}
 
 Cave of Ordeals Floor 44 Poe:
   Standard:
-    Text: Cave of Ordeals Floor 44 Poe
+    Text: Drillhöhle Ebene 44 - Geist
   Pretty:
-    Text: the {Cave of Ordeals Floor 44 Poe}
+    Text: der {Geist auf Ebene 44 in der Drillhöhle}
   Cryptic:
-    Text: the {Cave of Ordeals Floor 44 Poe}
+    Text: der {Geist auf Ebene 44 in der Drillhöhle}
 
 Cave of Ordeals Great Fairy Reward:
   Standard:
-    Text: Cave of Ordeals Great Fairy Reward
+    Text: Drillhöhle - Belohung der großen Fee
   Pretty:
     Text: the {Cave of Ordeals Great Fairy Reward}
   Cryptic:
@@ -4925,19 +6360,19 @@ Cave of Ordeals Great Fairy Reward:
 
 Mirror Chamber Warp Portal:
   Standard:
-    Text: Mirror Chamber Warp Portal
+    Text: Warp-Portal (Spiegelkammer)
   Pretty:
-    Text: the {Mirror Chamber Warp Portal}
+    Text: das {Warp-Portal (Spiegelkammer)}
   Cryptic:
-    Text: the {Mirror Chamber Warp Portal}
+    Text: das {Warp-Portal (Spiegelkammer)}
 
 Forest Temple Entrance Vines Chest:
   Standard:
-    Text: Forest Temple Entrance Vines Chest
+    Text: Waldschrein - Ranken-Truhe am Eingang
   Pretty:
-    Text: the {Forest Temple Entrance Vines Chest}
+    Text: die {Ranken-Truhe am Eingang vom Waldschrein}
   Cryptic:
-    Text: the {Forest Temple Entrance Vines Chest}
+    Text: die {Ranken-Truhe am Eingang vom Waldschrein}
 
 Forest Temple Central Chest Hanging From Web:
   Standard:
@@ -5005,19 +6440,19 @@ Forest Temple West Tile Worm Room Vines Chest:
 
 Forest Temple Gale Boomerang:
   Standard:
-    Text: Forest Temple Gale Boomerang
+    Text: Waldschrein - Sturmbumerang
   Pretty:
-    Text: the {Forest Temple Gale Boomerang}
+    Text: der {Waldschrein Sturmbumerang}
   Cryptic:
-    Text: the {Forest Temple Gale Boomerang}
+    Text: der {Waldschrein Sturmbumerang}
 
 Forest Temple Big Key Chest:
   Standard:
-    Text: Forest Temple Big Key Chest
+    Text: Waldschrein - Master-Schlüssel-Truhe
   Pretty:
-    Text: the {Forest Temple Big Key Chest}
+    Text: die {Waldschrein Master-Schlüssel-Truhe}
   Cryptic:
-    Text: the {Forest Temple Big Key Chest}
+    Text: die {Waldschrein Master-Schlüssel-Truhe}
 
 Forest Temple East Water Cave Chest:
   Standard:
@@ -5077,11 +6512,11 @@ Forest Temple Dungeon Reward:
 
 Goron Mines Entrance Chest:
   Standard:
-    Text: Goron Mines Entrance Chest
+    Text: Mine der Goronen - Truhe am Eingang
   Pretty:
-    Text: the {Goron Mines Entrance Chest}
+    Text: die {Truhe am Eingang der Mine der Goronen}
   Cryptic:
-    Text: the {Goron Mines Entrance Chest}
+    Text: die {Truhe am Eingang der Mine der Goronen}
 
 Goron Mines Main Magnet Room Bottom Chest:
   Standard:
@@ -6029,19 +7464,19 @@ Temple of Time Dungeon Reward:
 
 City in the Sky Underwater East Chest:
   Standard:
-    Text: City in the Sky Underwater East Chest
+    Text: Kumula - Unterwasser-Truhe Osten
   Pretty:
-    Text: the {City in the Sky Underwater East Chest}
+    Text: die {Unterwasser-Truhe Osten in Kumula}
   Cryptic:
-    Text: the {City in the Sky Underwater East Chest}
+    Text: die {Unterwasser-Truhe Osten in Kumula}
 
 City in the Sky Underwater West Chest:
   Standard:
-    Text: City in the Sky Underwater West Chest
+    Text: Kumula - Unterwasser-Truhe Westen
   Pretty:
-    Text: the {City in the Sky Underwater West Chest}
+    Text: die {Unterwasser-Truhe Westen in Kumula}
   Cryptic:
-    Text: the {City in the Sky Underwater West Chest}
+    Text: die {Unterwasser-Truhe Westen in Kumula}
 
 City in the Sky West Wing First Chest:
   Standard:
@@ -6421,11 +7856,11 @@ Hyrule Castle West Courtyard North Small Chest:
 
 Hyrule Castle King Bulblin Key:
   Standard:
-    Text: Hyrule Castle King Bulblin Key
+    Text: Schloss Hyrule - König Bulblins Schlüssel
   Pretty:
-    Text: the {Hyrule Castle King Bulblin Key}
+    Text: "{König Bulblins Schlüssel in Schloss Hyrule}"
   Cryptic:
-    Text: the {Hyrule Castle King Bulblin Key}
+    Text: "{König Bulblins Schlüssel in Schloss Hyrule}"
 
 Hyrule Castle East Wing Boomerang Puzzle Chest:
   Standard:
@@ -6629,35 +8064,35 @@ Hyrule Castle Treasure Room Eighth Small Chest:
 
 Defeat Ganondorf:
   Standard:
-    Text: Defeat Ganondorf
+    Text: Ganondorf besiegen
   Pretty:
-    Text: "{Defeat Ganondorf}"
+    Text: das {Besiegen von Ganondorf}
   Cryptic:
-    Text: "{Defeat Ganondorf}"
+    Text: das {Besiegen von Ganondorf}
 
 Ordon Hint Sign:
   Standard:
-    Text: Ordon Hint Sign
+    Text: Ordon Hinweis-Schild
   Pretty:
-    Text: the {Ordon Hint Sign}
+    Text: das {Ordon Hinweis-Schild}
   Cryptic:
-    Text: the {Ordon Hint Sign}
+    Text: das {Ordon Hinweis-Schild}
 
 South Faron Woods Hint Sign:
   Standard:
-    Text: South Faron Woods Hint Sign
+    Text: Phirone-Wald Süd Hinweis-Schild
   Pretty:
-    Text: the {South Faron Woods Hint Sign}
+    Text: das {Phirone-Wald Süd Hinweis-Schild}
   Cryptic:
-    Text: the {South Faron Woods Hint Sign}
+    Text: das {Phirone-Wald Süd Hinweis-Schild}
 
 Sacred Grove Hint Sign:
   Standard:
-    Text: Sacred Grove Hint Sign
+    Text: Heiliger Hain Hinweis-Schild
   Pretty:
-    Text: the {Sacred Grove Hint Sign}
+    Text: das {Heiliger Hain Hinweis-Schild}
   Cryptic:
-    Text: the {Sacred Grove Hint Sign}
+    Text: das {Heiliger Hain Hinweis-Schild}
 
 Faron Field Hint Sign:
   Standard:
@@ -6669,27 +8104,27 @@ Faron Field Hint Sign:
 
 Kakariko Gorge Hint Sign:
   Standard:
-    Text: Kakariko Gorge Hint Sign
+    Text: Kakariko-Tal Hinweis-Schild
   Pretty:
-    Text: the {Kakariko Gorge Hint Sign}
+    Text: das {Kakariko-Tal Hinweis-Schild}
   Cryptic:
-    Text: the {Kakariko Gorge Hint Sign}
+    Text: das {Kakariko-Tal Hinweis-Schild}
 
 Kakariko Village Hint Sign:
   Standard:
-    Text: Kakariko Village Hint Sign
+    Text: Kakariko Hinweis-Schild
   Pretty:
-    Text: the {Kakariko Village Hint Sign}
+    Text: das {Kakariko Hinweis-Schild}
   Cryptic:
-    Text: the {Kakariko Village Hint Sign}
+    Text: das {Kakariko Hinweis-Schild}
 
 Kakariko Graveyard Hint Sign:
   Standard:
-    Text: Kakariko Graveyard Hint Sign
+    Text: Friedhof Hinweis-Schild
   Pretty:
-    Text: the {Kakariko Graveyard Hint Sign}
+    Text: das {Friedhof Hinweis-Schild}
   Cryptic:
-    Text: the {Kakariko Graveyard Hint Sign}
+    Text: das {Friedhof Hinweis-Schild}
 
 Eldin Field Hint Sign:
   Standard:
@@ -6733,11 +8168,11 @@ Beside Castle Town Hint Sign:
 
 Castle Town Center Hint Sign:
   Standard:
-    Text: Castle Town Center Hint Sign
+    Text: Hyrule-Stadt Zentrum Hinweis-Schild
   Pretty:
-    Text: the {Castle Town Center Hint Sign}
+    Text: das {Hyrule-Stadt Zentrum Hinweis-Schild}
   Cryptic:
-    Text: the {Castle Town Center Hint Sign}
+    Text: das {Hyrule-Stadt Zentrum Hinweis-Schild}
 
 Outside South Castle Town Hint Sign:
   Standard:
@@ -6749,27 +8184,27 @@ Outside South Castle Town Hint Sign:
 
 Lake Hylia Bridge Hint Sign:
   Standard:
-    Text: Lake Hylia Bridge Hint Sign
+    Text: Hylia-Brücke Hinweis-Schild
   Pretty:
-    Text: the {Lake Hylia Bridge Hint Sign}
+    Text: das {Hylia-Brücke Hinweis-Schild}
   Cryptic:
-    Text: the {Lake Hylia Bridge Hint Sign}
+    Text: das {Hylia-Brücke Hinweis-Schild}
 
 Lake Hylia Hint Sign:
   Standard:
-    Text: Lake Hylia Hint Sign
+    Text: Hylia-See Hinweis-Schild
   Pretty:
-    Text: the {Lake Hylia Hint Sign}
+    Text: das {Hylia-See Hinweis-Schild}
   Cryptic:
-    Text: the {Lake Hylia Hint Sign}
+    Text: das {Hylia-See Hinweis-Schild}
 
 Lanayru Spring Hint Sign:
   Standard:
-    Text: Lanayru Spring Hint Sign
+    Text: Quelle von Ranelle Hinweis-Schild
   Pretty:
-    Text: the {Lanayru Spring Hint Sign}
+    Text: das {Quelle von Ranelle Hinweis-Schild}
   Cryptic:
-    Text: the {Lanayru Spring Hint Sign}
+    Text: das {Quelle von Ranelle Hinweis-Schild}
 
 Lake Lantern Cave Hint Sign:
   Standard:
@@ -6781,11 +8216,11 @@ Lake Lantern Cave Hint Sign:
 
 Fishing Hole Hint Sign:
   Standard:
-    Text: Fishing Hole Hint Sign
+    Text: Angelteich Hinweis-Schild
   Pretty:
-    Text: the {Fishing Hole Hint Sign}
+    Text: das {Angelteich Hinweis-Schild}
   Cryptic:
-    Text: the {Fishing Hole Hint Sign}
+    Text: das {Angelteich Hinweis-Schild}
 
 Zoras Domain Hint Sign:
   Standard:
@@ -6805,19 +8240,19 @@ Snowpeak Hint Sign:
 
 Gerudo Desert Hint Sign:
   Standard:
-    Text: Gerudo Desert Hint Sign
+    Text: Gerudo-Wüste Hinweis-Schild
   Pretty:
-    Text: the {Gerudo Desert Hint Sign}
+    Text: das {Gerudo-Wüste Hinweis-Schild}
   Cryptic:
-    Text: the {Gerudo Desert Hint Sign}
+    Text: das {Gerudo-Wüste Hinweis-Schild}
 
 Bulblin Camp Hint Sign:
   Standard:
-    Text: Bulblin Camp Hint Sign
+    Text: Bulblin-Lager Hinweis-Schild
   Pretty:
-    Text: the {Bulblin Camp Hint Sign}
+    Text: das {Bulblin-Lager Hinweis-Schild}
   Cryptic:
-    Text: the {Bulblin Camp Hint Sign}
+    Text: das {Bulblin-Lager Hinweis-Schild}
 
 Forest Temple Hint Sign:
   Standard:
@@ -6893,19 +8328,19 @@ Palace of Twilight Hint Sign:
 
 Hyrule Castle Hint Sign:
   Standard:
-    Text: Hyrule Castle Hint Sign
+    Text: Schloss Hyrule Hinweis-Schild
   Pretty:
-    Text: the {Hyrule Castle Hint Sign}
+    Text: das {Schloss Hyrule Hinweis-Schild}
   Cryptic:
-    Text: the {Hyrule Castle Hint Sign}
+    Text: das {Schloss Hyrule Hinweis-Schild}
 
 Cave of Ordeals Hint Sign:
   Standard:
-    Text: Cave of Ordeals Hint Sign
+    Text: Drillhöhle Hinweis-Schild
   Pretty:
-    Text: the {Cave of Ordeals Hint Sign}
+    Text: das {Drillhöhle Hinweis-Schild}
   Cryptic:
-    Text: the {Cave of Ordeals Hint Sign}
+    Text: das {Drillhöhle Hinweis-Schild}
 
 # HINT REGION NAMES
 Ordon:
@@ -6914,472 +8349,947 @@ Ordon:
   Pretty:
     Text: "{Ordon}"
   Cryptic:
-    Text: a {quaint village}
+    Text: ein {idyllisches Dorf}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in {Ordon}
+      Pretty:
+        Text: in {Ordon}
+      Cryptic:
+        Text: im {idyllischen Dorf}
 
 Faron Woods:
   Standard:
-    Text: Faron Woods
+    Text: Wald von Phirone
   Pretty:
-    Text: "{Faron Woods}"
+    Text: der {Wald von Phirone}
   Cryptic:
-    Text: a {forest}
+    Text: ein {Wald}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: im {Wald von Phirone}
+      Pretty:
+        Text: im {Wald von Phirone}
+      Cryptic:
+        Text: im {Wald}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: der Wald von Phirone
 
 Sacred Grove:
   Standard:
-    Text: Sacred Grove
+    Text: Heiliger Hain
   Pretty:
-    Text: the {Sacred Grove}
+    Text: der {heilige Hain}
   Cryptic:
-    Text: a {hidden grove}
+    Text: ein {verstecktes Heiligtum}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: im {heiligen Hain}
+      Pretty:
+        Text: im {heiligen Hain}
+      Cryptic:
+        Text: im {versteckten Heiligtum}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: der heilige Hain
 
 Faron Field:
   Standard:
-    Text: Faron Field
+    Text: Hyrule-Ebene (Phirone)
   Pretty:
-    Text: "{Faron Field}"
+    Text: die {Hyrule-Ebene (Phirone)}
   Cryptic:
-    Text: a {field near the forest}
+    Text: ein {Feld nahe des Waldes}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in der {Hyrule-Ebene (Phirone)}
+      Pretty:
+        Text: in der {Hyrule-Ebene (Phirone)}
+      Cryptic:
+        Text: im {Feld nahe des Waldes}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: die Hyrule-Ebene (Phirone)
 
 Kakariko Gorge:
   Standard:
-    Text: Kakariko Gorge
+    Text: Kakariko-Tal
   Pretty:
-    Text: "{Kakariko Gorge}"
+    Text: das {Kakariko-Tal}
   Cryptic:
-    Text: a {field with a large chasm}
+    Text: ein {Feld mit einem riesigen Abgrund}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: im {Kakariko-Tal}
+      Pretty:
+        Text: im {Kakariko-Tal}
+      Cryptic:
+        Text: im {Feld mit einem riesigen Abgrund}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: das Kakariko-Tal
 
 Kakariko Village:
   Standard:
-    Text: Kakariko Village
+    Text: Kakariko
   Pretty:
-    Text: "{Kakariko Village}"
+    Text: "{Kakariko}"
   Cryptic:
-    Text: a {charming village}
+    Text: ein {charmantes Dorf}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in {Kakariko}
+      Pretty:
+        Text: in {Kakariko}
+      Cryptic:
+        Text: im {charmanten Dorf}
 
 Kakariko Graveyard:
   Standard:
-    Text: Kakariko Graveyard
+    Text: Friedhof
   Pretty:
-    Text: the {Kakariko Graveyard}
+    Text: der {Friedhof}
   Cryptic:
-    Text: a {yard for the dead}
+    Text: eine {Begräbnisstätte}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: im {Friedhof}
+      Pretty:
+        Text: im {Friedhof}
+      Cryptic:
+        Text: in der {Begräbnisstätte}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: der Friedhof
 
 Death Mountain:
   Standard:
-    Text: Death Mountain
+    Text: Feuerberg
   Pretty:
-    Text: "{Death Mountain}"
+    Text: der {Feuerberg}
   Cryptic:
-    Text: a {volcano path}
+    Text: ein {vulkanischer Pfad}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: am {Feuerberg}
+      Pretty:
+        Text: am {Feuerberg}
+      Cryptic:
+        Text: am {vulkanischen Pfad}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: der Feuerberg
 
 Eldin Field:
   Standard:
-    Text: Eldin Field
+    Text: Hyrule-Ebene (Eldin)
   Pretty:
-    Text: "{Eldin Field}"
+    Text: die {Hyrule-Ebene (Eldin)}
   Cryptic:
-    Text: a {field near a volcano}
+    Text: ein {Feld nahe eines Vulkans}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in der {Hyrule-Ebene (Eldin)}
+      Pretty:
+        Text: in der {Hyrule-Ebene (Eldin)}
+      Cryptic:
+        Text: im {Feld nahe eines Vulkans}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: die Hyrule-Ebene (Eldin)
 
 North Eldin:
   Standard:
-    Text: North Eldin
+    Text: Nord Eldin
   Pretty:
-    Text: "{North Eldin}"
+    Text: "{Nord Eldin}"
   Cryptic:
-    Text: a {narrow gray field}
+    Text: ein {schmales graues Feld}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in {Nord Eldin}
+      Pretty:
+        Text: in {Nord Eldin}
+      Cryptic:
+        Text: des {schmalen grauen Feldes}
 
 Hidden Village:
   Standard:
-    Text: Hidden Village
+    Text: Verstecktes Dorf
   Pretty:
-    Text: the {Hidden Village}
+    Text: das {versteckte Dorf}
   Cryptic:
-    Text: a {secluded settlement}
+    Text: eine {abgelegene Siedlung}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: im {versteckten Dorf}
+      Pretty:
+        Text: im {versteckten Dorf}
+      Cryptic:
+        Text: in eine {abgelegene Siedlung}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: das versteckte Dorf
 
 Lanayru Field:
   Standard:
-    Text: Lanayru Field
+    Text: Hyrule-Ebene (Ranelle)
   Pretty:
-    Text: "{Lanayru Field}"
+    Text: die {Hyrule-Ebene (Ranelle)}
   Cryptic:
-    Text: a {field with a river}
+    Text: ein {Feld mit einem Fluss}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in der {Hyrule-Ebene (Ranelle)}
+      Pretty:
+        Text: in der {Hyrule-Ebene (Ranelle)}
+      Cryptic:
+        Text: im {Feld mit einem Fluss}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: die Hyrule-Ebene (Ranelle)
 
 Beside Castle Town:
   Standard:
-    Text: Beside Castle Town
+    Text: Hyrule-Ebene (West Hyrule-Stadt)
   Pretty:
-    Text: "{Beside Castle Town}"
+    Text: die {Hyrule-Ebene (West Hyrule-Stadt)}
   Cryptic:
-    Text: a {field beside a city}
+    Text: ein {Feld westlich der Stadt}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in der {Hyrule-Ebene (West Hyrule-Stadt)}
+      Pretty:
+        Text: in der {Hyrule-Ebene (West Hyrule-Stadt)}
+      Cryptic:
+        Text: im {Feld westlich der Stadt}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: die Hyrule-Ebene (West Hyrule-Stadt)
 
 Castle Town:
   Standard:
-    Text: Castle Town
+    Text: Hyrule-Stadt
   Pretty:
-    Text: "{Castle Town}"
+    Text: "{Hyrule-Stadt}"
   Cryptic:
-    Text: a {city}
+    Text: eine {Stadt}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in {Hyrule-Stadt}
+      Pretty:
+        Text: in {Hyrule-Stadt}
+      Cryptic:
+        Text: die {Stadt}
 
 South of Castle Town:
   Standard:
-    Text: South of Castle Town
+    Text: Hyrule-Ebene (Süd Hyrule-Stadt)
   Pretty:
-    Text: "{South of Castle Town}"
+    Text: die {Hyrule-Ebene (Süd Hyrule-Stadt)}
   Cryptic:
-    Text: a {field south of a city}
+    Text: ein {Feld südlich der Stadt}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in der {Hyrule-Ebene (Süd Hyrule-Stadt)}
+      Pretty:
+        Text: in der {Hyrule-Ebene (Süd Hyrule-Stadt)}
+      Cryptic:
+        Text: im {Feld südlich der Stadt}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: die Hyrule-Ebene (Süd Hyrule-Stadt)
 
 Great Bridge of Hylia:
   Standard:
-    Text: Great Bridge of Hylia
+    Text: Hylia-Brücke
   Pretty:
-    Text: the {Great Bridge of Hylia}
+    Text: die {Hylia-Brücke}
   Cryptic:
-    Text: a {path along a great bridge}
+    Text: ein {Pfad entlang der großen Brücke}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: auf der {Hylia-Brücke}
+      Pretty:
+        Text: auf der {Hylia-Brücke}
+      Cryptic:
+        Text: am {Pfad entlang der großen Brücke}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: die Hylia-Brücke
 
 Lake Hylia:
   Standard:
-    Text: Lake Hylia
+    Text: Hylia-See
   Pretty:
-    Text: "{Lake Hylia}"
+    Text: der {Hylia-See}
   Cryptic:
-    Text: a {vast lake}
+    Text: ein {großer See}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: am {Hylia-See}
+      Pretty:
+        Text: am {Hylia-See}
+      Cryptic:
+        Text: am {großen See}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: der Hylia-See
 
 Lanayru Spring:
   Standard:
-    Text: Lanayru Spring
+    Text: Quelle von Ranelle
   Pretty:
-    Text: the {Lanayru Spring}
+    Text: die {Quelle von Ranelle}
   Cryptic:
-    Text: a {cavernous spring}
+    Text: eine {Höhlenquelle}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in der {Quelle von Ranelle}
+      Pretty:
+        Text: in der {Quelle von Ranelle}
+      Cryptic:
+        Text: in der {Höhlenquelle}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: die Quelle von Ranelle
 
 Upper Zoras River:
   Standard:
-    Text: Upper Zoras River
+    Text: Oberlauf Zora-Fluss
   Pretty:
-    Text: "{Upper Zoras River}"
+    Text: der {Oberlauf Zora-Fluss}
   Cryptic:
-    Text: a {fork in the river}
+    Text: eine {Flussgabelung}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: am {Oberlauf Zora-Fluss}
+      Pretty:
+        Text: am {Oberlauf Zora-Fluss}
+      Cryptic:
+        Text: an der {Flussgabelung}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: der Oberlauf Zora-Fluss
 
 Zoras Domain:
   Standard:
-    Text: Zoras Domain
+    Text: Zora-Höhle
   Pretty:
-    Text: "{Zoras Domain}"
+    Text: die {Zora-Höhle}
   Cryptic:
-    Text: the {home of a grand waterfall}
+    Text: der {Ort eines gewaltigen Wasserfalls}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in der {Zora-Höhle}
+      Pretty:
+        Text: in der {Zora-Höhle}
+      Cryptic:
+        Text: am {Ort eines gewaltigen Wasserfalls}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: die Zora-Höhle
 
 South Gerudo Desert:
   Standard:
-    Text: South Gerudo Desert
+    Text: Süd Gerudo-Wüste
   Pretty:
-    Text: "{South Gerudo Desert}"
+    Text: die {Süd Gerudo-Wüste}
   Cryptic:
-    Text: the {southern desert}
+    Text: die {südliche Wüste}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in der {Süd Gerudo-Wüste}
+      Pretty:
+        Text: in der {Süd Gerudo-Wüste}
+      Cryptic:
+        Text: in der {südlichen Wüste}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: die Süd Gerudo-Wüste
 
 North Gerudo Desert:
   Standard:
-    Text: North Gerudo Desert
+    Text: Nord Gerudo-Wüste
   Pretty:
-    Text: "{North Gerudo Desert}"
+    Text: die {Nord Gerudo-Wüste}
   Cryptic:
-    Text: the {northern desert}
+    Text: die {nördliche Wüste}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in der {Nord Gerudo-Wüste}
+      Pretty:
+        Text: in der {Nord Gerudo-Wüste}
+      Cryptic:
+        Text: in der {nördlichen Wüste}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: die Nord Gerudo-Wüste
 
 Bulblin Camp:
   Standard:
-    Text: Bulblin Camp
+    Text: Bulblin-Lager
   Pretty:
-    Text: "{Bulblin Camp}"
+    Text: das {Bulblin-Lager}
   Cryptic:
-    Text: a {camp of enemies}
+    Text: ein {feindliches Lager}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: im {Bulblin-Lager}
+      Pretty:
+        Text: im {Bulblin-Lager}
+      Cryptic:
+        Text: in einem {feindlichen Lager}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: das Bulblin-Lager
 
 Mirror Chamber:
   Standard:
-    Text: Mirror Chamber
+    Text: Spiegelkammer
   Pretty:
-    Text: the {Mirror Chamber}
+    Text: die {Spiegelkammer}
   Cryptic:
-    Text: a {chamber of chains}
+    Text: eine {Kammer aus Ketten}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in der {Spiegelkammer}
+      Pretty:
+        Text: in der {Spiegelkammer}
+      Cryptic:
+        Text: in der {Kammer aus Ketten}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: die Spiegelkammer
 
 Snowpeak Mountain:
   Standard:
-    Text: Snowpeak Mountain
+    Text: Schneeberge
   Pretty:
-    Text: "{Snowpeak Mountain}"
+    Text: die {Schneeberge}
+    Plurality: Plural
   Cryptic:
-    Text: a {snowy mountain}
+    Text: ein {verschneiter Berg}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+      Standard:
+        Text: in die {Schneeberge}
+      Pretty:
+        Text: in die {Schneeberge}
+      Cryptic:
+        Text: in die {verschneiten Berge}
+    - Keys:
+        - Item Hint
+      Standard:
+        Text: in den {Schneebergen}
+      Pretty:
+        Text: in den {Schneebergen}
+      Cryptic:
+        Text: am {verschneiten Berg}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: die Schneeberge
 
 Forest Temple:
   Standard:
-    Text: Forest Temple
+    Text: Waldschrein
   Pretty:
-    Text: the {Forest Temple}
+    Text: der {Waldschrein}
   Cryptic:
-    Text: a {deep forest}
+    Text: ein {tiefer Wald}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: im {Waldschrein}
+      Pretty:
+        Text: im {Waldschrein}
+      Cryptic:
+        Text: im {teifen Wald}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: der Waldschrein
 
 Goron Mines:
   Standard:
-    Text: Goron Mines
+    Text: Mine der Goronen
   Pretty:
-    Text: "{Goron Mines}"
+    Text: die {Mine der Goronen}
   Cryptic:
-    Text: a {volcanic mine}
+    Text: eine {vulkanische Mine}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in der {Mine der Goronen}
+      Pretty:
+        Text: in der {Mine der Goronen}
+      Cryptic:
+        Text: in der {vulkanischen Mine}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: die Mine der Goronen
 
 Lakebed Temple:
   Standard:
-    Text: Lakebed Temple
+    Text: Seeschrein
   Pretty:
-    Text: "{Lakebed Temple}"
+    Text: der {Seeschrein}
   Cryptic:
-    Text: an {underground lake}
+    Text: ein {unterirdischer See}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: im {Seeschrein}
+      Pretty:
+        Text: im {Seeschrein}
+      Cryptic:
+        Text: im {unterirdischen See}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: der Seeschrein
 
 Arbiters Grounds:
   Standard:
-    Text: Arbiters Grounds
+    Text: Wüstenburg
   Pretty:
-    Text: the {Arbiters Grounds}
+    Text: die {Wüstenburg}
   Cryptic:
-    Text: an {ancient prison}
+    Text: ein {antikes Gefängnis}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in der {Wüstenburg}
+      Pretty:
+        Text: in der {Wüstenburg}
+      Cryptic:
+        Text: im {antiken Gefängnis}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: die Wüstenburg
 
 Snowpeak Ruins:
   Standard:
-    Text: Snowpeak Ruins
+    Text: Bergruine
   Pretty:
-    Text: "{Snowpeak Ruins}"
+    Text: die {Bergruine}
   Cryptic:
-    Text: a {snowy mansion}
+    Text: ein {verschneites Anwesen}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in der {Bergruine}
+      Pretty:
+        Text: in der {Bergruine}
+      Cryptic:
+        Text: im {verschneiten Anwesen}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: die Bergruine
 
 Temple of Time:
   Standard:
-    Text: Temple of Time
+    Text: Zeitschrein
   Pretty:
-    Text: the {Temple of Time}
+    Text: der {Zeitschrein}
   Cryptic:
-    Text: the {past}
+    Text: die {Vergangenheit}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+      Standard:
+        Text: im {Zeitschrein}
+      Pretty:
+        Text: im {Zeitschrein}
+      Cryptic:
+        Text: der {Vergangenheit}
+    - Keys:
+        - Item Hint
+      Standard:
+        Text: im {Zeitschrein}
+      Pretty:
+        Text: im {Zeitschrein}
+      Cryptic:
+        Text: in der {Vergangenheit}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: der Zeitschrein
 
 City in the Sky:
   Standard:
-    Text: City in the Sky
+    Text: Kumula
   Pretty:
-    Text: "{City in the Sky}"
+    Text: "{Kumula}"
   Cryptic:
-    Text: the {skies above}
+    Text: die {Wolken über uns}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in {Kumula}
+      Pretty:
+        Text: in {Kumula}
+      Cryptic:
+        Text: in den {Wolken über uns}
 
 Palace of Twilight:
   Standard:
-    Text: Palace of Twilight
+    Text: Schattenpalast
   Pretty:
-    Text: the {Palace of Twilight}
+    Text: der {Schattenpalast}
   Cryptic:
-    Text: "{another realm}"
+    Text: das {andere Reich}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: im {Schattenpalast}
+      Pretty:
+        Text: im {Schattenpalast}
+      Cryptic:
+        Text: im {anderen Reich}
+    - Keys:
+        - Path Hint
+      Standard:
+        Text: der Schattenpalast
 
 Hyrule Castle:
   Standard:
-    Text: Hyrule Castle
+    Text: Schloss Hyrule
   Pretty:
-    Text: "{Hyrule Castle}"
+    Text: das {Schloss Hyrule}
   Cryptic:
-    Text: the {kingdom's castle}
+    Text: das {Schloss eines Königreichs}
+  Template Overrides:
+    - Keys:
+        - Barren Hint
+        - Item Hint
+      Standard:
+        Text: in {Schloss Hyrule}
+      Pretty:
+        Text: in {Schloss Hyrule}
+      Cryptic:
+        Text: im {Schloss eines Königreichs}
 
 # BOSS/GOAL NAMES
 Diababa:
   Standard:
-    Text: Diababa
+    # Waldschrein: Nachtschattenparasit Plantainferna
+    Text: Plantainferna
 
 Fyrus:
   Standard:
-    Text: Fyrus
+    # Mine der Goronen: Flammende Bestie Flammatron
+    Text: Flammatron
 
 Morpheel:
   Standard:
-    Text: Morpheel
+    # Seeschrein: Urzeitfisch Oktapesco
+    Text: Oktapesco
 
 Stallord:
   Standard:
-    Text: Stallord
+    # Wüstenburg: Riesenfossilbestie Skeletulor
+    Text: Skeletulor
 
 Blizzeta:
   Standard:
-    Text: Blizzeta
+    # Bergruine: Rieseneisklotz Matronia
+    Text: Matronia
 
 Armogohma:
   Standard:
+    # Zeitschrein: Spinnenstatue Armogohma
     Text: Armogohma
 
 Argorok:
   Standard:
+    # Kumula: Feuerdrache Argorok
     Text: Argorok
 
 Zant:
   Standard:
-    Text: Zant
+    # Schattenpalast: Usurpator Zanto
+    Text: Zanto
 
 Ganondorf:
   Standard:
+    # Schattenfürst GANONDORF
     Text: Ganondorf
 
 # HINT TEMPLATES
 Path Hint:
   Standard:
-    Text: <fast>They say that <regions> |is/are| on the path to <goal name>.
+    Text: <fast>Man erzählt sich, dass <regions> auf dem Weg zu <goal name> |liegt/liegen|.
 
 Barren Hint:
   Standard:
-    Text: <fast>They say that visiting <region> is a foolish choice.
+    Text: <fast>Man erzählt sich, dass ein Besuch <region> eine törichte Entscheidung ist.
 
 Item Hint:
   Standard:
-    Text: <fast>They say that <Item Pretty or Cryptic Name> can be found at <regions>.
+    Text: <fast>Man erzählt sich, dass <Item Pretty or Cryptic Name> <regions> gefunden werden |kann/können|.
 
 Location Hint:
   Standard:
-    Text: <fast>They say that the reward for <Location Pretty or Cryptic Name> is <Item Pretty or Cryptic Name>.
+    Text: <fast>Man erzählt sich, dass die Belohnung für <Location Pretty or Cryptic Name> <Item Pretty or Cryptic Name> |ist/sind|.
 
 # NO REQUIRED DUNGEON TEXT
 No Required Dungeons Text:
   Standard:
-    Text: No Required Dungeons
+    Text: Keine benötigten Dungeons
 
 # ITEM GET TEXT
 Foolish Get Item Text:
   Standard:
     Text: |-
-      <fast>a <light blue>cold<white> wind blows...
+      <fast>Ein <light blue>kalter<white> Wind bläst...
 
 Shadow Crystal Get Item Text:
   Standard:
     Text: |-
       <slow>Du erhältst den <red>Nachtkristall<white>!
-      Diese dunkle Manifestation
-      derMacht <red>Zantos<white> erlaubt es dir, 
-      dichnach Belieben zu verwandeln!
+      Diese dunkle Manifestation der Macht <red>Zantos<white>
+      erlaubt es dir, dich nach Belieben zu verwandeln!
 
 Restored Dominion Rod Text:
   Standard:
     Text: |-
       <fast>Power has been restored to
-      the <red>Dominion Rod<white>! Now it can
+      the <red>Kopierstab<white>! Now it can
       be used to imbue statues
       with life in the present!
 
 Forest Temple Small Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got a <red>Small Key<white> for the
-      <green>Forest Temple<white>!
+      <fast>Du hast einen <red>Kleinen Schlüssel<white>
+      für den <green>Waldschrein<white> erhalten!
 
 Goron Mines Small Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got a <red>Small Key<white> for
-      <red>Goron Mines<white>!
+      <fast>Du hast einen <red>Kleinen Schlüssel<white>
+      für die <red>Mine der Goronen<white> erhalten!
 
 Lakebed Temple Small Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got a <red>Small Key<white> for the
-      <blue>Lakebed Temple<white>!
+      <fast>Du hast einen <red>Kleinen Schlüssel<white>
+      für den <blue>Seeschrein<white> erhalten!
 
 Arbiters Grounds Small Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got a <red>Small Key<white> for
-      <orange>Arbiter's Grounds<white>!
+      <fast>Du hast einen <red>Kleinen Schlüssel<white>
+      für die <orange>Wüstenburg<white> erhalten!
 
 Snowpeak Ruins Small Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got a <red>Small Key<white> for
-      <light blue>Snowpeak Ruins<white>!
+      <fast>Du hast einen <red>Kleinen Schlüssel<white>
+      für die <light blue>Bergruine<white> erhalten!
 
 Temple of Time Small Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got a <red>Small Key<white> for the
-      <dark green>Temple of Time<white>!
+      <fast>Du hast einen <red>Kleinen Schlüssel<white>
+      für den <dark green>Zeitschrein<white> erhalten!
 
 City in the Sky Small Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got a <red>Small Key<white> for the
-      <yellow>City in the Sky<white>!
+      <fast>Du hast einen <red>Kleinen Schlüssel<white>
+      für <yellow>Kumula<white> erhalten!
 
 Palace of Twilight Small Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got a <red>Small Key<white> for the
-      <purple>Palace of Twilight<white>!
+      <fast>Du hast einen <red>Kleinen Schlüssel<white>
+      für den <purple>Schattenpalast<white> erhalten!
 
 Hyrule Castle Small Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got a <red>Small Key<white> for
-      <silver>Hyrule Castle<white>!
+      <fast>Du hast einen <red>Kleinen Schlüssel<white>
+      für das <silver>Schloss Hyrule<white> erhalten!
 
 Bulblin Camp Small Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got a <red>Small Key<white> for the
-      <orange>Bulblin Camp<white>!
+      <fast>Du hast einen <red>Kleinen Schlüssel<white>
+      für das <orange>Bulblin-Lager<white> erhalten!
 
 Forest Temple Big Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Big Key<white> for the
-      <green>Forest Temple<white>!
+      <fast>Du hast den <red>Master-Schlüssel<white>
+      für den <green>Waldschrein<white> erhalten!
 
 Lakebed Temple Big Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Big Key<white> for the
-      <blue>Lakebed Temple<white>!
+      <fast>Du hast den <red>Master-Schlüssel<white>
+      für den <blue>Seeschrein<white> erhalten!
 
 Arbiters Grounds Big Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Big Key<white> for
-      <orange>Arbiter's Grounds<white>!
+      <fast>Du hast den <red>Master-Schlüssel<white>
+      für die <orange>Wüstenburg<white> erhalten!
 
 Temple of Time Big Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Big Key<white> for the
-      <dark green>Temple of Time<white>!
+      <fast>Du hast den <red>Master-Schlüssel<white>
+      für den <dark green>Zeitschrein<white> erhalten!
 
 City in the Sky Big Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Big Key<white> for the
-      <yellow>City in the Sky<white>!
+      <fast>Du hast den <red>Master-Schlüssel<white>
+      für <yellow>Kumula<white> erhalten!
 
 Palace of Twilight Big Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Big Key<white> for the
-      <purple>Palace of Twilight<white>!
+      <fast>Du hast den <red>Master-Schlüssel<white>
+      für den <purple>Schattenpalast<white> erhalten!
 
 Hyrule Castle Big Key Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Big Key<white> for
-      <silver>Hyrule Castle<white>!
+      <fast>Du hast den <red>Master-Schlüssel<white>
+      für das <silver>Schloss Hyrule<white> erhalten!
 
 Forest Temple Compass Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Compass<white> for the
-      <green>Forest Temple<white>!
+      <fast>Du hast den <red>Kompass<white> für den
+      <green>Waldschrein<white> erhalten!
 
 Goron Mines Compass Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Compass<white> for
-      <red>Goron Mines<white>!
+      <fast>Du hast den <red>Kompass<white> für die
+      <red>Mine der Goronen<white> erhalten!
 
 Lakebed Temple Compass Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Compass<white> for the
-      <blue>Lakebed Temple<white>!
+      <fast>Du hast den <red>Kompass<white> für den
+      <blue>Seeschrein<white> erhalten!
 
 Mirror Shard 2 Get item Text:
   Standard:
@@ -7407,115 +9317,115 @@ Mirror Shard 4 Get item Text:
 Arbiters Grounds Compass Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Compass<white> for
-      <orange>Arbiter's Grounds<white>!
+      <fast>Du hast den <red>Kompass<white> für die
+      <orange>Wüstenburg<white> erhalten!
 
 Snowpeak Ruins Compass Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Compass<white> for
-      <light blue>Snowpeak Ruins<white>!
+      <fast>Du hast den <red>Kompass<white> für die
+      <light blue>Bergruine<white> erhalten!
 
 Temple of Time Compass Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Compass<white> for the
-      <dark green>Temple of Time<white>!
+      <fast>Du hast den <red>Kompass<white> für den
+      <dark green>Zeitschrein<white> erhalten!
 
 City in the Sky Compass Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Compass<white> for the
-      <yellow>City in the Sky<white>!
+      <fast>Du hast den <red>Kompass<white> für
+      <yellow>Kumula<white> erhalten!
 
 Palace of Twilight Compass Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Compass<white> for the
-      <purple>Palace of Twilight<white>!
+      <fast>Du hast den <red>Kompass<white> für den
+      <purple>Schattenpalast<white> erhalten!
 
 Hyrule Castle Compass Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Compass<white> for
-      <silver>Hyrule Castle<white>!
+      <fast>Du hast den <red>Kompass<white> für das
+      <silver>Schloss Hyrule<white> erhalten!
       <fast>
 #
 Forest Temple Dungeon Map Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Dungeon Map<white> for the
-      <green>Forest Temple<white>!
+      <fast>Du hast die <red>Dungeon-Karte<white> für
+      den <green>Waldschrein<white> erhalten!
 
 Goron Mines Dungeon Map Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Dungeon Map<white> for
-      <red>Goron Mines<white>!
+      <fast>Du hast die <red>Dungeon-Karte<white> für
+      die <red>Mine der Goronen<white> erhalten!
 
 Lakebed Temple Dungeon Map Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Dungeon Map<white> for the
-      <blue>Lakebed Temple<white>!
+      <fast>Du hast die <red>Dungeon-Karte<white> für
+      den <blue>Seeschrein<white> erhalten!
 
 Snowpeak Ruins Dungeon Map Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Dungeon Map<white> for
-      <light blue>Snowpeak Ruins<white>!
+      <fast>Du hast die <red>Dungeon-Karte<white> für
+      die <light blue>Bergruine<white> erhalten!
 
 Arbiters Grounds Dungeon Map Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Dungeon Map<white> for
-      <orange>Arbiter's Grounds<white>!
+      <fast>Du hast die <red>Dungeon-Karte<white> für
+      die <orange>Wüstenburg<white> erhalten!
 
 Temple of Time Dungeon Map Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Dungeon Map<white> for the
-      <dark green>Temple of Time<white>!
+      <fast>Du hast die <red>Dungeon-Karte<white> für
+      den <dark green>Zeitschrein<white> erhalten!
 
 City in the Sky Dungeon Map Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Dungeon Map<white> for the
-      <yellow>City in the Sky<white>!
+      <fast>Du hast die <red>Dungeon-Karte<white> für
+      <yellow>Kumula<white> erhalten!
 
 Palace of Twilight Dungeon Map Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Dungeon Map<white> for the
-      <purple>Palace of Twilight<white>!
+      <fast>Du hast die <red>Dungeon-Karte<white> für
+      den <purple>Schattenpalast<white> erhalten!
 
 Hyrule Castle Dungeon Map Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the <red>Dungeon Map<white> for
-      <silver>Hyrule Castle<white>!
+      <fast>Du hast die <red>Dungeon-Karte<white> für
+      das <silver>Schloss Hyrule<white> erhalten!
       <fast>
 
 Fused Shadow 1 Get Item Text:
   Standard:
     Text: |-
-      <fast>You got a <red>Fused Shadow<white>!
-      It seems to have some <green>moss<white>
-      growing on it...
+      <fast>Du hast einen <red>Schattenkristall<white>
+      erhalten! It seems to have some
+      <green>moss<white> growing on it...
 
 Fused Shadow 2 Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the second <red>Fused
-      Shadow<white>! It feels <red>warm<white> to
-      the touch...
+      <fast>Du hast den zweiten
+      <red>Schattenkristall<white> erhalten! It feels <red>warm<white>
+      to the touch...
 
 Fused Shadow 3 Get Item Text:
   Standard:
     Text: |-
-      <fast>You got the final <red>Fused
-      Shadow<white>! It feels <blue>wet<white> and
-      smells like fish...
+      <fast>Du hast den letzten
+      <red>Schattenkristall<white> erhalten! It feels <blue>wet<white>
+      and smells like fish...
 
 Mirror Shard 1 Get Item Text:
   Standard:
@@ -7527,86 +9437,88 @@ Mirror Shard 1 Get Item Text:
 Poe Soul Get Item Text:
   Standard:
     Text: |-
-      <fast>You got a <red>Poe's Soul<white>!
-      You've collected <red>{}<white> so far.
+      <fast>Du hast eine <red>Geisterseele<white>
+      erhalten! Du hast bereits <red>{}<white>
+      davon gesammelt.
 
 Ending Blow Get Item Text:
   Standard:
     Text: |-
-      <fast>You learned the <red>Ending Blow<white>!
+      <fast>Du hast den <red>Fangstoß<white> erlernt!
 
 Shield Attack Get Item Text:
   Standard:
     Text: |-
-      <fast>You learned the <red>Shield Attack<white>!
+      <fast>Du hast die <red>Schildattacke<white> erlernt!
 
 Back Slice Get Item Text:
   Standard:
     Text: |-
-      <fast>You learned the <red>Back Slice<white>!
+      <fast>Du hast den <red>Rundumhieb<white> erlernt!
 
 Helm Splitter Get Item Text:
   Standard:
     Text: |-
-      <fast>You learned the <red>Helm Splitter<white>!
+      <fast>Du hast den <red>Helmspalter<white> erlernt!
 
 Mortal Draw Get Item Text:
   Standard:
     Text: |-
-      <fast>You learned the <red>Mortal Draw<white>!
+      <fast>Du hast das <red>Blankziehen<white> erlernt!
 
 Jump Strike Get Item Text:
   Standard:
     Text: |-
-      <fast>You learned the <red>Jump Strike<white>!
+      <fast>Du hast die <red>Riesensprungattacke<white> erlernt!
 
 Great Spin Get Item Text:
   Standard:
     Text: |-
-      <fast>You learned the <red>Great Spin<white>!
+      <fast>Du hast die <red>Riesenwirbelattacke<white> erlernt!
 
 Partially Filled Sky Book Get Item Text:
   Standard:
     Text: |-
-      <fast>You got a <red>Sky Character<white>!
-      You've collected <red>{}<white> so far.
+      <fast>Du entdeckst
+      ein <red>kumunalisches Zeichen<white>!
+      Du hast bereits <red>{}<white> davon gesammelt.
 
 Midna Call As Human Two Choice:
   Standard:
     Text: |-
-      <2 way choice 1>Transform into wolf
-      <2 way choice 2>Something else
+      <2 way choice 1>Zum Wolf werden.
+      <2 way choice 2>Etwas anderes.
 
 Midna Call As Wolf Two Choice:
   Standard:
     Text: |-
-      <2 way choice 1>Transform into human
-      <2 way choice 2>Something else
+      <2 way choice 1>Zum Menschen werden.
+      <2 way choice 2>Etwas anderes.
 
 Midna Call As Wolf No Shadow Crystal Two Choice:
   Standard:
     Text: |-
-      <2 way choice 1>Warp
-      <2 way choice 2>Something else
+      <2 way choice 1>Warpen.
+      <2 way choice 2>Etwas anderes.
 
 Midna Call As Human Three Choice:
   Standard:
     Text: |-
-      <3 way choice 1>Transform into wolf
-      <3 way choice 2>Warp
-      <3 way choice 3>Something else
+      <3 way choice 1>Zum Wolf werden.
+      <3 way choice 2>Warpen.
+      <3 way choice 3>Etwas anderes.
 
 Midna Call As Wolf Three Choice:
   Standard:
     Text: |-
-      <3 way choice 1>Transform into human
-      <3 way choice 2>Warp
-      <3 way choice 3>Something else
+      <3 way choice 1>Zum Menschen werden.
+      <3 way choice 2>Warpen.
+      <3 way choice 3>Etwas anderes.
 
 Slingshot Shop Text Template:
   Standard:
     Text: |-
-      <Item Standard Name>: <purple>30 Rupees<white>
+      <Item Standard Name>: <purple>30 Rubine<white>
 #      I got this in for the kids. It's just a
 #      toy, but it stings something AWFUL
 #      when you get hit by it!
@@ -7614,12 +9526,12 @@ Slingshot Shop Text Template:
 Slingshot Shop Too Expensive Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> is <purple>30 Rupees<white>. If you want it, bring some money with you, all right, m'dear?
+      <Item Pretty Name> kostet <purple>30 Rubine<white>. If you want it, bring some money with you, all right, m'dear?
 
 Slingshot Shop Purchase Confirmation Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> is <purple>30 Rupees<white>. Do you want to buy it, m'dear?<begin choice>
+      <Item Pretty Name> kostet <purple>30 Rubine<white>. Do you want to buy it, m'dear?<begin choice>
 
 Slingshot Shop After Purchase Text Template:
   Standard:
@@ -7629,27 +9541,27 @@ Slingshot Shop After Purchase Text Template:
 Barnes Special Offer Text Template:
   Standard:
     Text: |-
-      I've got a special offer goin' right now: <Item Pretty Name>, just <purple>120 Rupees<white>! How 'bout that?<begin choice>
+      I've got a special offer goin' right now: <Item Pretty Name>, just <purple>120 Rubine<white>! How 'bout that?<begin choice>
 
 Kakariko Malo Mart Wooden Shield Purchase Confirmation Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> will cost you <purple>50 Rupees<white>. Want one or not?<begin choice>
+      <Item Pretty Name> wird dich <purple>50 Rubine<white> kosten. Want one or not?<begin choice>
 
 Kakariko Malo Mart Wooden Shield Too Expensive Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> will cost you <purple>50 Rupees<white>, but you can't afford it. Don't expect a discount just because we're from the same town.
+      <Item Pretty Name> will cost you <purple>50 Rubine<white>, but you can't afford it. Don't expect a discount just because we're from the same town.
 
 Kakariko Malo Mart Hylian Shield Purchase Confirmation Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> will cost you <purple>200 Rupees<white>. Want one or not?<begin choice>
+      <Item Pretty Name> wird dich <purple>200 Rubine<white> kosten. Want one or not?<begin choice>
 
 Kakariko Malo Mart Hylian Shield Too Expensive Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> will run you <purple>200 Rupees<white>...but if you have that much, I'll eat my hat. And I don't even HAVE a hat.
+      <Item Pretty Name> will run you <purple>200 Rubine<white>...but if you have that much, I'll eat my hat. And I don't even HAVE a hat.
 
 Kakariko Malo Mart Hylian Shield After Purchase Text Template:
   Standard:
@@ -7659,12 +9571,12 @@ Kakariko Malo Mart Hylian Shield After Purchase Text Template:
 Kakariko Malo Mart Hawkeye Purchase Confirmation Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> is <purple>100 Rupees<white>. You want it or not?<begin choice>
+      <Item Pretty Name> kostet <purple>100 Rubine<white>. You want it or not?<begin choice>
 
 Kakariko Malo Mart Hawkeye Too Expensive Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> costs <purple>100 Rupees<white>... but there are people with enough Rupees, and then there's you. The guy with not enough.
+      <Item Pretty Name> kostet <purple>100 Rubine<white>... but there are people with enough Rupees, and then there's you. The guy with not enough.
 
 Kakariko Malo Mart Hawkeye After Purchase Text Template:
   Standard:
@@ -7674,17 +9586,17 @@ Kakariko Malo Mart Hawkeye After Purchase Text Template:
 Kakariko Malo Mart Red Potion Too Expensive Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> will cost you <purple>30 Rupees<white>, but I won't be donating it to the poor, sorry.
+      <Item Pretty Name> will cost you <purple>30 Rubine<white>, but I won't be donating it to the poor, sorry.
 
 Kakariko Malo Mart Red Potion Purchase Confirmation Text Template:
   Standard:
     Text: |-
-      <Item Pretty Name> will cost you <purple>30 Rupees<white>. Want some or not?<begin choice>
+      <Item Pretty Name> will cost you <purple>30 Rubine<white>. Want some or not?<begin choice>
 
 Kakariko Malo Mart Red Potion Text Template:
   Standard:
     Text: |-
-      <Item Standard Name>: <purple>30 Rupees<white>
+      <Item Standard Name>: <purple>30 Rubine<white>
 #      This potion replenishes your
 #      life energy. Keep it in an <red>empty
 #      bottle<white>.
@@ -7692,24 +9604,24 @@ Kakariko Malo Mart Red Potion Text Template:
 Kakariko Malo Mart Hawkeye Coming Soon Text Template:
   Standard:
     Text: |-
-      <Item Standard Name>: <orange>COMING SOON
+      <Item Standard Name>: <orange>BALD ERHÄLTLICH
 
 Kakariko Malo Mart Hawkeye Text Template:
   Standard:
     Text: |-
-      <Item Standard Name>: <purple>100 Rupees<white>
+      <Item Standard Name>: <purple>100 Rubine<white>
 #      This eyewear allows you to see
 #      distant objects as if with the eyes
 #      of a hawk.
 
 Kakariko Malo Mart Sold Out Text:
   Standard:
-    Text: <orange>SOLD OUT
+    Text: <orange>AUSVERKAUFT
 
 Kakariko Malo Mart Wooden Shield Text Template:
   Standard:
     Text: |-
-      <Item Standard Name>: <purple>50 Rupees<white>
+      <Item Standard Name>: <purple>50 Rubine<white>
 #      This is a simple shield. It's made of
 #      wood, so it will burn away if
 #      touched by fire.
@@ -7717,7 +9629,7 @@ Kakariko Malo Mart Wooden Shield Text Template:
 Kakariko Malo Mart Hylian Shield Text Template:
   Standard:
     Text: |-
-      <Item Standard Name>: <purple>200 Rupees<white>
+      <Item Standard Name>: <purple>200 Rubine<white>
 #              LIMITED SUPPLY!
 #      Don't let them sell out before you
 #      buy one!
@@ -7738,7 +9650,7 @@ Castle Town Malo Mart Magic Armor After Purchase Text Template:
 Castle Town Malo Mart Magic Armor Text Template:
   Standard:
     Text: |-
-      <Item Standard Name> <red>!Special! <purple>598 Rupees<white>
+      <Item Standard Name> <red>!Sonderangebot! <purple>598 Rubine<white>
 #      This is quite a bargain when you
 #      think of how valuable your life is.
 #      What's a few Rupees to stay alive?
@@ -7747,41 +9659,41 @@ Castle Town Malo Mart Magic Armor Sold Out Text Template:
   Standard:
     Text: |-
       <Item Standard Name>
-      -SOLD OUT-
-      *This item has been discontinued.
+      -AUSVERKAUFT-
+      *Dieses Item ist nicht mehr erhältlich.
 
 Charlo Donation Choice Text:
   Standard:
     Text: |-
-      <3 way choice 1>100 Rupees
-      <3 way choice 2>50 Rupees
-      <3 way choice 3>Sorry...
+      <3 way choice 1>100 Rubine
+      <3 way choice 2>50 Rubine
+      <3 way choice 3>Tut mir leid...
 
 Charlo Donation Ask Text Template:
   Standard:
     Text: |-
-      For <Item Pretty Name>...
-      Would you please make a donation?<begin choice>
+      Für <Item Pretty Name>...
+      Würdest du bitte etwas spenden?<begin choice>
 
 Castle Town Goron Red Potion Confirmation Initial Text Template:
   Standard:
     Text: |-
-      You can buy <Item Pretty Name> for only <purple>40 Rupees<white>!<begin choice>
+      Du kannst <Item Pretty Name> für nur <purple>40 Rubine<white> kaufen!<begin choice>
 
 Castle Town Goron Red Potion Confirmation Later Text Template:
   Standard:
     Text: |-
-      Buy it Brother! I am talking about <Item Pretty Name> for <purple>40 Rupees<white>!<begin choice>
+      Buy it Brother! I am talking about <Item Pretty Name> for <purple>40 Rubine<white>!<begin choice>
 
 Castle Town Goron Lantern Oil Confirmation Initial Text Template:
   Standard:
     Text: |-
-      So, Brother, would you buy <Item Pretty Name> from me for <purple>30 Rupees<white>?<begin choice>
+      So, Brother, would you buy <Item Pretty Name> from me for <purple>30 Rubine<white>?<begin choice>
 
 Castle Town Goron Lantern Oil Confirmation Later Text Template:
   Standard:
     Text: |-
-      Just buy <Item Pretty Name> from me for <purple>30 Rupees<white>, OK?<begin choice>
+      Just buy <Item Pretty Name> from me for <purple>30 Rubine<white>, OK?<begin choice>
 
 Castle Town Goron Arrow Refill Secret Text Template:
   Standard:
@@ -7792,7 +9704,7 @@ Castle Town Goron Arrow Refill Secret Text Template:
 Castle Town Goron Arrow Refill Confirmation Initial Text Template:
   Standard:
     Text: |-
-      So... Would you want to buy <Item Pretty Name> for <purple>40 Rupees<white>?<begin choice>
+      So... Would you want to buy <Item Pretty Name> for <purple>40 Rubine<white>?<begin choice>
 
 Castle Town Goron Arrow Refill Embarrassing Text Template:
   Standard:
@@ -7810,349 +9722,355 @@ Castle Town Goron Arrow Refill Let Me Know Text Template:
 Castle Town Goron Arrow Refill Confirmation Later Text Template:
   Standard:
     Text: |-
-      So... Would you want to buy <Item Pretty Name> for <purple>40 Rupees<white>?<begin choice>
+      So... Would you want to buy <Item Pretty Name> for <purple>40 Rubine<white>?<begin choice>
 
 Castle Town Goron Hylian Shield Confirmation Initial Text Template:
   Standard:
     Text: |-
-      Anyway... Would you want <Item Pretty Name> for <purple>210 Rupees<white>?<begin choice>
+      Anyway... Would you want <Item Pretty Name> for <purple>210 Rubine<white>?<begin choice>
 
 Castle Town Goron Hylian Shield Confirmation Later Text Template:
   Standard:
     Text: |-
-      Would you want <Item Pretty Name> for <purple>210 Rupees<white>?<begin choice>
+      Would you want <Item Pretty Name> for <purple>210 Rubine<white>?<begin choice>
 
 Agithas Castle Zero Items Sign Text:
   Standard:
     Text: |-
-      <font size 48>Please bring <purple>golden bugs<white> you find to Agitha's Castle.
+      <font size 48>Bitte bringe <purple>goldene Käfer<white> die du findest zu
+      Agnethas Schloss.
       
-      And tell them the princess awaits!
+      Und richte ihnen aus, dass die Prinzessin
+      auf sie wartet!
 
 Agithas Castle Some Items Sign Text:
   Standard:
     Text: |-
-      <font size 48>Please bring <yellow>golden bugs<white> you find to Agitha's Castle. I'll share <red>GREAT happiness<white> with you:
+      <font size 48>Bitte bringe <purple>goldene Käfer<white> die du findest zu
+      Agnethas Schloss. Ich werde <red>GROSSE FREUDE<white> mit dir teilen:
       
       <green><Items>
 
 Agithas Castle Counter Text:
   Standard:
-    Text: <Item> x<count>
+    Text: <Item> (<count>)
 
 Coro Bottle Offer 1 Text Template:
   Standard:
     Text: |-
       And check this out! I have a special,
-      one-time offer of <Item Pretty Name> for only <purple>100 Rupees<white>! How 'bout it, guy? What a bargain!<begin choice>
+      one-time offer of <Item Pretty Name> for only <purple>100 Rubine<white>! How 'bout it, guy? What a bargain!<begin choice>
 
 Coro Bottle Offer 2 Text Template:
   Standard:
     Text: |-
       I have a special, one-time offer of
-      <Item Pretty Name> for only <purple>100 Rupees<white>. How 'bout it, guy?<begin choice>
+      <Item Pretty Name> for only <purple>100 Rubine<white>. How 'bout it, guy?<begin choice>
 
 Coro Bottle Offer 3 Text Template:
   Standard:
     Text: |-
-      Right now we have a <purple>100-Rupee<white>
-      <Item Standard Name> and <purple>20-Rupee<white> <red>refills<white> to choose from!<begin choice>
+      Gerade haben wir <Item Standard Name>
+      für <purple>100 Rubine<white> und <red>Nachschub<white>
+      für <purple>20 Rubine<white> zur Auswahl!<begin choice>
 
 Coro Bottle Offer 4 Text Template:
   Standard:
     Text: |-
       And check this out! I have a special,
-      one-time offer of <Item Pretty Name> for only <purple>100 Rupees<white>! How 'bout it, guy? What a bargain!<begin choice>
+      one-time offer of <Item Pretty Name> for only <purple>100 Rubine<white>! How 'bout it, guy? What a bargain!<begin choice>
 
+# TODO: template override for proper German grammar
 Fishing Hole Sign Text Template:
   Standard:
     Text: |-
-      <red>           DON'T LITTER!
-      <white>Do NOT toss empty bottles or
-      <Item Pretty Name> here! The fish are CRYING!
+      <red>Haltet die Natur sauber!
+      <white>Wirf KEINE leeren Flaschen oder
+      <Item Pretty Name> hier rein!
+      Die Fische WEINEN!
 
-      Keep the fishing hole clean!
+      Haltet den Angelteich sauber!
 
 Custom Midna Call Need Something Text:
   Standard:
     Text: |-
-      Need Something?<begin choice>
+      Was ist los?<begin choice>
 
 Custom Midna Call 3 Choice Text:
   Standard:
     Text: |-
-      <3 way choice 1>Hints
-      <3 way choice 2>Change time of day
-      <3 way choice 3>Return to spawn
+      <3 way choice 1>Hinweise.
+      <3 way choice 2>Tageszeit ändern.
+      <3 way choice 3>Zum Spawn zurückkehren.
 
 Custom Midna Call 2 Choice Text:
   Standard:
     Text: |-
-      <2 way choice 1>Hints
-      <2 way choice 2>Return to spawn
+      <2 way choice 1>Hinweise.
+      <2 way choice 2>Zum Spawn zurückkehren.
 
 Custom Midna Call Hints Text:
   Standard:
     Text: |-
-      I have no hints to give.
+      Ich habe keine Hinweise.
 
 Return to Spawn Dungeon Intro Text:
   Standard:
     Text: |-
-      I'll get you out of here. 
-      Where do you want to go?<begin choice>
+      Ich bringe dich von hier weg. 
+      Wohin willst du?<begin choice>
 
 Return to Spawn Dungeon Choice Text:
   Standard:
     Text: |-
-      <3 way choice 1>Dungeon entrance
-      <3 way choice 2>Nevermind
-      <3 way choice 3>Spawn
+      <3 way choice 1>Eingang.
+      <3 way choice 2>Egal.
+      <3 way choice 3>Spawn.
 
 Return to Spawn Dungeon No Choice Text:
   Standard:
     Text: |-
-      <2 way choice 1>Nevermind
-      <2 way choice 2>Spawn
+      <2 way choice 1>Egal.
+      <2 way choice 2>Spawn.
 
 Midna Hints Required Dungeons Intro Zero Dungeons:
   Standard:
     Text: |-
-      There are <red>0<white> required dungeons.
+      Es gibt <red>keine<white> erforderlichen Dungeons.
 
 Midna Hints Required Dungeons Intro One Dungeon:
   Standard:
     Text: |-
-      There is <red>1<white> required dungeon:
+      Es gibt <red>einen<white> erforderlichen Dungeon:
 
 Midna Hints Required Dungeons Intro At Least Two Dungeons:
   Standard:
     Text: |-
-      There are <red><required dungeon count><white> required dungeons:
+      Es gibt <red><required dungeon count><white> erforderliche Dungeons:
 
 Midna Hints Path Hints Intro:
   Standard:
     Text: |-
-      The following <red>paths<white> lie before you:
+      Die folgenden <red>Pfade<white> liegen vor dir:
 
 Midna Hints Barren Hints Intro:
   Standard:
     Text: |-
-      There is <purple>nothing<white> to be found in these regions:
+      In diesen Regionen ist <purple>nichts<white> zu finden:
 
 Midna Hints Item Hints Intro:
   Standard:
     Text: |-
-      These <green>items<white> may be of use to you:
+      Diese <green>Items<white> könnten dir nützlich sein:
 
 Midna Hints Location Hints Intro:
   Standard:
     Text: |-
-      These <red>locations<white> are known to me:
+      Diese <red>Orte<white> sind mir bekannt:
 
 Ordon Hint Sign Text:
   Standard:
     Text: |-
-      Ordon Hint Sign.
-      There are no hints placed here.
+      Ordon Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 South Faron Woods Hint Sign Text:
   Standard:
     Text: |-
-      South Faron Woods Hint Sign.
-      There are no hints placed here.
+      South Phirone Woods Hint Sign.
+      Hier sind keine Hinweise platziert.
 
 Sacred Grove Hint Sign Text:
   Standard:
     Text: |-
-      Sacred Grove Hint Sign.
-      There are no hints placed here.
+      Heiliger Hain Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Faron Field Hint Sign Text:
   Standard:
     Text: |-
-      Faron Field Hint Sign.
-      There are no hints placed here.
+      Hyrule-Ebene (Phirone) Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Kakariko Gorge Hint Sign Text:
   Standard:
     Text: |-
-      Kakariko Gorge Hint Sign.
-      There are no hints placed here.
+      Kakariko-Tal Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Kakariko Village Hint Sign Text:
   Standard:
     Text: |-
-      Kakariko Village Hint Sign.
-      There are no hints placed here.
+      Kakariko Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Kakariko Graveyard Hint Sign Text:
   Standard:
     Text: |-
-      Kakariko Graveyard Hint Sign.
-      There are no hints placed here.
+      Friedhof Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Eldin Field Hint Sign Text:
   Standard:
     Text: |-
       Eldin Field Hint Sign.
-      There are no hints placed here.
+      Hier sind keine Hinweise platziert.
 
 North Eldin Field Hint Sign Text:
   Standard:
     Text: |-
       North Eldin Field Hint Sign.
-      There are no hints placed here.
+      Hier sind keine Hinweise platziert.
 
 Hidden Village Hint Sign Text:
   Standard:
     Text: |-
-      Hidden Village Hint Sign.
-      There are no hints placed here.
+      Verstecktes Dorf Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Lanayru Field Hint Sign Text:
   Standard:
     Text: |-
-      Lanayru Field Hint Sign.
-      There are no hints placed here.
+      Hyrule-Ebene (Ranelle) Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Beside Castle Town Hint Sign Text:
   Standard:
     Text: |-
       Beside Castle Town Hint Sign.
-      There are no hints placed here.
+      Hier sind keine Hinweise platziert.
 
 Castle Town Center Hint Sign Text:
   Standard:
     Text: |-
-      Castle Town Center Hint Sign.
-      There are no hints placed here.
+      Hyrule-Stadt Zentrum Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Outside South Castle Town Hint Sign Text:
   Standard:
     Text: |-
       Outside South Castle Town Hint Sign.
-      There are no hints placed here.
+      Hier sind keine Hinweise platziert.
 
 Lake Hylia Bridge Hint Sign Text:
   Standard:
     Text: |-
-      Lake Hylia Bridge Hint Sign.
-      There are no hints placed here.
+      Hylia-Brücke Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Lake Hylia Hint Sign Text:
   Standard:
     Text: |-
-      Lake Hylia Hint Sign.
-      There are no hints placed here.
+      Hylia-See Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Lanayru Spring Hint Sign Text:
   Standard:
     Text: |-
-      Lanayru Spring Hint Sign.
-      There are no hints placed here.
+      Quelle von Ranelle Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Lake Lantern Cave Hint Sign Text:
   Standard:
     Text: |-
-      Lake Lantern Cave Hint Sign.
-      There are no hints placed here.
+      Hylia-See Lampen Höhle Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Fishing Hole Hint Sign Text:
   Standard:
     Text: |-
-      Fishing Hole Hint Sign.
-      There are no hints placed here.
+      Angelteich Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Zoras Domain Hint Sign Text:
   Standard:
     Text: |-
-      Zoras Domain Hint Sign.
-      There are no hints placed here.
+      Zora-Höhle Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Snowpeak Hint Sign Text:
   Standard:
     Text: |-
-      Snowpeak Hint Sign.
-      There are no hints placed here.
+      Bergruine Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Gerudo Desert Hint Sign Text:
   Standard:
     Text: |-
-      Gerudo Desert Hint Sign.
-      There are no hints placed here.
+      Gerudo-Wüste Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Bulblin Camp Hint Sign Text:
   Standard:
     Text: |-
-      Bulblin Camp Hint Sign.
-      There are no hints placed here.
+      Bulblin-Lager Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Forest Temple Hint Sign Text:
   Standard:
     Text: |-
-      Forest Temple Hint Sign.
-      There are no hints placed here.
+      Waldschrein Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Goron Mines Hint Sign Text:
   Standard:
     Text: |-
-      Goron Mines Hint Sign.
-      There are no hints placed here.
+      Mine der Goronen Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Lakebed Temple Hint Sign Text:
   Standard:
     Text: |-
-      Lakebed Temple Hint Sign.
-      There are no hints placed here.
+      Seeschrein Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Arbiters Grounds Hint Sign Text:
   Standard:
     Text: |-
-      Arbiters Grounds Hint Sign.
-      There are no hints placed here.
+      Wüstenburg Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Snowpeak Ruins Hint Sign Text:
   Standard:
     Text: |-
-      Snowpeak Ruins Hint Sign.
-      There are no hints placed here.
+      Bergruine Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Temple of Time First Hint Sign Text:
   Standard:
     Text: |-
-      Temple of Time First Hint Sign.
-      There are no hints placed here.
+      Erstes Zeitschrein Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Temple of Time Second Hint Sign Text:
   Standard:
     Text: |-
-      Temple of Time Second Hint Sign.
-      There are no hints placed here.
+      Zweites Zeitschrein Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 City in the Sky Hint Sign Text:
   Standard:
     Text: |-
-      City in the Sky Hint Sign.
-      There are no hints placed here.
+      Kumula Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Palace of Twilight Hint Sign Text:
   Standard:
     Text: |-
-      Palace of Twilight Hint Sign.
-      There are no hints placed here.
+      Schattenpalast Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Hyrule Castle Hint Sign Text:
   Standard:
     Text: |-
-      Hyrule Castle Hint Sign.
-      There are no hints placed here.
+      Schloss Hyrule Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 Cave of Ordeals Hint Sign Text:
   Standard:
     Text: |-
-      Cave of Ordeals Hint Sign.
-      There are no hints placed here.
+      Drillhöhle Hinweis-Schild.
+      Hier sind keine Hinweise platziert.
 
 # STATIC IN-GAME TEXT
 Dungeon Item Additional Info Text:
@@ -8175,11 +10093,11 @@ Dungeon Item Inventory Text:
       Bergruine
       Zeitschrein
       Kumula
-      Palast
-      Hyrule
-      Wüste
-      Phirone Tor
-      Coro Tor
+      Schattenpalast
+      Schloss Hyrule
+      Bulblin-Lager
+      Phirone-Tor
+      Coro-Tor
       Torschlüssel
 
 Dungeon Item Inventory Yes Text:

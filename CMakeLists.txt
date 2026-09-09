@@ -41,8 +41,8 @@ FetchContent_Declare(
 message(STATUS "randomizer: Fetching battery-embed")
 FetchContent_Declare(
         battery-embed
-        GIT_REPOSITORY https://github.com/batterycenter/embed.git
-        GIT_TAG        fdbae3f
+        GIT_REPOSITORY https://github.com/TwilitRealm/embed.git
+        GIT_TAG        twilit-v2
 )
 
 FetchContent_MakeAvailable(yaml-cpp base64pp battery-embed)

@@ -290,6 +290,13 @@ Progressive Wallet:
     Text: a {Wallet}
   Cryptic:
     Text: a {money bag}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Pretty:
+        Text: Wallet
+      Cryptic:
+        Text: money bag
 
 Upper Zoras River Portal:
   Standard:
@@ -338,6 +345,13 @@ Progressive Sword:
     Text: a {Sword}
   Cryptic:
     Text: a {sharp weapon}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Pretty:
+        Text: Sword
+      Cryptic:
+        Text: sharp weapon
 
 Gale Boomerang:
   Standard:
@@ -370,6 +384,13 @@ Progressive Bow:
     Text: a {Bow}
   Cryptic:
     Text: an {arrow launcher}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Pretty:
+        Text: Bow
+      Cryptic:
+        Text: arrow launcher
 
 Progressive Clawshot:
   Standard:
@@ -378,6 +399,13 @@ Progressive Clawshot:
     Text: a {Clawshot}
   Cryptic:
     Text: a {chain launcher}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Pretty:
+        Text: Clawshot
+      Cryptic:
+        Text: chain launcher
 
 Iron Boots:
   Standard:
@@ -395,7 +423,14 @@ Progressive Dominion Rod:
   Pretty:
     Text: a {Dominion Rod}
   Cryptic:
-    Text: a {rod of control}
+    Text: a {control stick}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Pretty:
+        Text: Dominion Rod
+      Cryptic:
+        Text: control stick
 
 Lantern:
   Standard:
@@ -412,6 +447,13 @@ Progressive Fishing Rod:
     Text: a {Fishing Rod}
   Cryptic:
     Text: a {rod of patience}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Pretty:
+        Text: Fishing Rod
+      Cryptic:
+        Text: rod of patience
 
 Slingshot:
   Standard:
@@ -766,6 +808,13 @@ Progressive Mirror Shard:
     Text: a {Mirror Shard}
   Cryptic:
     Text: a {reflective shard of power}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Pretty:
+        Text: Mirror Shard
+      Cryptic:
+        Text: reflective shard of power
 
 Arbiters Grounds Compass:
   Standard:
@@ -1110,6 +1159,13 @@ Progressive Fused Shadow:
     Text: a {Fused Shadow}
   Cryptic:
     Text: a {shadow of ultimate power}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Pretty:
+        Text: Fused Shadow
+      Cryptic:
+        Text: shadow of ultimate power
 
 Poe Soul:
   Standard:
@@ -1126,7 +1182,13 @@ Progressive Hidden Skill:
     Text: a {Hidden Skill}
   Cryptic:
     Text: a {forgotten technique}
-
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Pretty:
+        Text: Hidden Skill
+      Cryptic:
+        Text: forgotten technique
 
 Bridge of Eldin Portal:
   Standard:
@@ -1143,6 +1205,13 @@ Progressive Sky Book:
     Text: a {Sky Character}
   Cryptic:
     Text: a {glyph of the heavens}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Pretty:
+        Text: Sky Character
+      Cryptic:
+        Text: glyph of the heavens
 
 Purple Rupee Links House:
   Standard:
@@ -1250,10 +1319,6 @@ Lanayru Twilight Tear:
     Text: a {Lanayru Twilight Tear}
   Cryptic:
     Text: a {tear of a lake spirit}
-
-Progressive Item Prefix:
-  Standard:
-    Text: "Progressive "
 
 # ITEM NAMES FOR PROGRESSIVE ITEMS
 Progressive Wallet x0:

@@ -81,12 +81,12 @@ namespace randomizer::logic::hints {
                 if (agithaItems.empty()) {
                     agithaSignText += getTextObject("Agithas Castle Zero Items Sign Text");
                 } else {
-                    agithaSignText += getTextObject("Agithas Castle Some Items Sign Text");
+                    std::string textTemplate = "Agithas Castle Some Items Sign Text";
+                    agithaSignText += getTextObject(textTemplate);
 
                     std::vector<Text> agithaItemTexts{};
                     for (const auto& [item, count] : agithaItems) {
-                        auto itemText = getTextObject(item->GetName());
-                        itemText.Replace(getTextObject("Progressive Item Prefix"), "");
+                        auto itemText = getTextObjectForTemplate(item->GetName(), Text::PRETTY, textTemplate);
                         if (count > 1) {
                             auto counterText = getTextObject("Agithas Castle Counter Text");
                             counterText.Replace("<Item>", itemText);

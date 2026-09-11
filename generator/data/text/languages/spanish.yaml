@@ -289,6 +289,15 @@ Progressive Wallet:
     Text: a {Wallet}
   Cryptic:
     Text: a {money bag}
+# English overrides the exact text used for the Agitha hint sign
+# Feel free to use if necessary
+#  Template Overrides:
+#    - Keys:
+#        - Agithas Castle Some Items Sign Text
+#      Pretty:
+#        Text:
+#      Cryptic:
+#        Text:
 
 Upper Zoras River Portal:
   Standard:
@@ -337,6 +346,15 @@ Progressive Sword:
     Text: a {Sword}
   Cryptic:
     Text: a {sharp weapon}
+# English overrides the exact text used for the Agitha hint sign
+# Feel free to use if necessary
+#  Template Overrides:
+#    - Keys:
+#        - Agithas Castle Some Items Sign Text
+#      Pretty:
+#        Text:
+#      Cryptic:
+#        Text:
 
 Gale Boomerang:
   Standard:
@@ -369,6 +387,15 @@ Progressive Bow:
     Text: a {Bow}
   Cryptic:
     Text: an {arrow launcher}
+# English overrides the exact text used for the Agitha hint sign
+# Feel free to use if necessary
+#  Template Overrides:
+#    - Keys:
+#        - Agithas Castle Some Items Sign Text
+#      Pretty:
+#        Text:
+#      Cryptic:
+#        Text:
 
 Progressive Clawshot:
   Standard:
@@ -377,6 +404,15 @@ Progressive Clawshot:
     Text: a {Clawshot}
   Cryptic:
     Text: a {chain launcher}
+# English overrides the exact text used for the Agitha hint sign
+# Feel free to use if necessary
+#  Template Overrides:
+#    - Keys:
+#        - Agithas Castle Some Items Sign Text
+#      Pretty:
+#        Text:
+#      Cryptic:
+#        Text:
 
 Iron Boots:
   Standard:
@@ -395,6 +431,15 @@ Progressive Dominion Rod:
     Text: a {Dominion Rod}
   Cryptic:
     Text: a {rod of control}
+# English overrides the exact text used for the Agitha hint sign
+# Feel free to use if necessary
+#  Template Overrides:
+#    - Keys:
+#        - Agithas Castle Some Items Sign Text
+#      Pretty:
+#        Text:
+#      Cryptic:
+#        Text:
 
 Lantern:
   Standard:
@@ -411,6 +456,15 @@ Progressive Fishing Rod:
     Text: a {Fishing Rod}
   Cryptic:
     Text: a {rod of patience}
+# English overrides the exact text used for the Agitha hint sign
+# Feel free to use if necessary
+#  Template Overrides:
+#    - Keys:
+#        - Agithas Castle Some Items Sign Text
+#      Pretty:
+#        Text:
+#      Cryptic:
+#        Text:
 
 Slingshot:
   Standard:
@@ -765,6 +819,15 @@ Progressive Mirror Shard:
     Text: a {Mirror Shard}
   Cryptic:
     Text: a {reflective shard of power}
+# English overrides the exact text used for the Agitha hint sign
+# Feel free to use if necessary
+#  Template Overrides:
+#    - Keys:
+#        - Agithas Castle Some Items Sign Text
+#      Pretty:
+#        Text:
+#      Cryptic:
+#        Text:
 
 Arbiters Grounds Compass:
   Standard:
@@ -1109,6 +1172,15 @@ Progressive Fused Shadow:
     Text: a {Fused Shadow}
   Cryptic:
     Text: a {shadow of ultimate power}
+# English overrides the exact text used for the Agitha hint sign
+# Feel free to use if necessary
+#  Template Overrides:
+#    - Keys:
+#        - Agithas Castle Some Items Sign Text
+#      Pretty:
+#        Text:
+#      Cryptic:
+#        Text:
 
 Poe Soul:
   Standard:
@@ -1125,7 +1197,15 @@ Progressive Hidden Skill:
     Text: a {Hidden Skill}
   Cryptic:
     Text: a {forgotten technique}
-
+# English overrides the exact text used for the Agitha hint sign
+# Feel free to use if necessary
+#  Template Overrides:
+#    - Keys:
+#        - Agithas Castle Some Items Sign Text
+#      Pretty:
+#        Text:
+#      Cryptic:
+#        Text:
 
 Bridge of Eldin Portal:
   Standard:
@@ -1142,6 +1222,15 @@ Progressive Sky Book:
     Text: a {Sky Character}
   Cryptic:
     Text: a {glyph of the heavens}
+# English overrides the exact text used for the Agitha hint sign
+# Feel free to use if necessary
+#  Template Overrides:
+#    - Keys:
+#        - Agithas Castle Some Items Sign Text
+#      Pretty:
+#        Text:
+#      Cryptic:
+#        Text:
 
 Purple Rupee Links House:
   Standard:
@@ -1249,10 +1338,6 @@ Lanayru Twilight Tear:
     Text: a {Lanayru Twilight Tear}
   Cryptic:
     Text: a {tear of a lake spirit}
-
-Progressive Item Prefix:
-  Standard:
-    Text: "Progressive "
 
 # ITEM NAMES FOR PROGRESSIVE ITEMS
 Progressive Wallet x0:

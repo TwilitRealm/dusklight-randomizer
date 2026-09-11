@@ -503,6 +503,68 @@ F_SP103:
       layers:
         - 0
 
+    # Delete the wolf link jump tags that allow access
+    # to the top of the room
+    - action: delete
+      name: Wljump
+      parameters: 0x000F2145
+      position:
+        x: 1918.64562988281
+        y: 91.4042053222656
+        z: 949.460327148438
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+
+    - action: delete
+      name: Wljump
+      parameters: 0x000F1F43
+      position:
+        x: 1902.27380371094
+        y: 91.4042053222656
+        z: 1075.05554199219
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+
+    - action: delete
+      name: Wljump
+      parameters: 0x000F2141
+      position:
+        x: 1945.95544433594
+        y: 91.4042053222656
+        z: 888.771606445313
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+
   # Room 1 - Outside Link's House
   1:
     # Delete 2nd Beth actor

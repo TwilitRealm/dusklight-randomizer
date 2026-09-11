@@ -8068,3 +8068,40 @@ Cave of Ordeals Hint Sign Text:
     Text: |-
       Cave of Ordeals Hint Sign.
       There are no hints placed here.
+
+# STATIC IN-GAME TEXT
+Dungeon Item Additional Info Text:
+  Standard:
+    Text: |-
+      Press Start
+      to toggle
+      additional
+      data
+
+Dungeon Item Inventory Text:
+  Standard:
+    Text: |-
+      Shadows: %d/3        Key Legend:
+      Shards: %d/4         Current (Total)
+      
+      Forest
+      Mines
+      Lakebed
+      Arbiters
+      Snowpeak
+      Time
+      City
+      Palace
+      Hyrule
+      Desert
+      Faron Gate
+      Coro Gate
+      Gate Keys
+
+Dungeon Item Inventory Yes Text:
+  Standard:
+    Text: Yes
+
+Dungeon Item Inventory No Text:
+  Standard:
+    Text: No

@@ -4,7 +4,7 @@
 #include "d/actor/d_a_alink.h"
 #include "d/d_com_inf_game.h"
 #include "d/d_item.h"
-#include "d/d_item_data.h"
+#include "d/d_msg_object.h"
 #include "f_op/f_op_actor_mng.h"
 #include "item_ids.h"
 #include "randomizer_context.hpp"
@@ -875,8 +875,20 @@ u8 getAreaKeyNum(int i_stageNo) {
 }
 
 const char* getYesNoText(bool flag) {
+    std::string text = "Dungeon Item Inventory No Text";
     if (flag) {
-        return "Yes";
+        text = "Dungeon Item Inventory Yes Text";
     }
-    return "No";
+    return getTextStr(text,
+            randomizer::Text::STANDARD,
+            static_cast<randomizer::Text::Language>(getCurrentLanguage())).c_str();;
+}
+
+int getCurrentLanguage() {
+    // Hacky way to check for JPN
+    if (g_MsgObject_HIO_c.mBoxTalkScaleX == 1.1f) {
+        return MESSAGE_LANGUAGE_JAPANESE;
+    }
+
+    return dComIfGs_getPalLanguage();
 }

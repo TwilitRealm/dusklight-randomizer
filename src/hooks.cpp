@@ -9,6 +9,7 @@
 #include "item.hpp"
 #include "item_ids.h"
 #include "verify_item_functions.h"
+#include "../generator/utility/text.hpp"
 
 #include <mods/svc/hook.hpp>
 #include <mods/svc/log.hpp>
@@ -2603,8 +2604,9 @@ void hookPostMenuRingCreate(ModContext*, void*, void*, void*) {
     bool hasGateKey = haveItem(dItemNo_BOSSRIDER_KEY_e);
 
     // Create and set the text strings
+    const char* unformattedText = getTextStr("Dungeon Item Inventory Text", Text::STANDARD, static_cast<Text::Language>(getCurrentLanguage())).c_str();
     char itemWheelTextBuf[300];
-    snprintf(itemWheelTextBuf, sizeof(itemWheelTextBuf), "Shadows: %d/3        Key Legend:\nShards: %d/4         Current (Total)\n\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n", shadowsCount, shardsCount, "Forest", "Mines", "Lakebed", "Arbiters", "Snowpeak", "Time", "City", "Palace", "Hyrule", "Desert", "Faron Gate", "Coro Gate", "Gate Keys");
+    snprintf(itemWheelTextBuf, sizeof(itemWheelTextBuf), unformattedText, shadowsCount, shardsCount);
     itemWheelDunText->setString(itemWheelTextBuf);
 
     snprintf(itemWheelTextBuf, sizeof(itemWheelTextBuf), "\n\n\n%d (%d)\n%d (%d)\n%d (%d)\n%d (%d)\n%d (%d)\n%d (%d)\n%d (%d)\n%d (%d)\n%d (%d)\n%d (%d)\n%s\n%s\n%s\n", ftKeyNum, ftTotalKeyNum, gmKeyNum, gmTotalKeyNum, lbtKeyNum, lbtTotalKeyNum, agKeyNum, agTotalKeyNum, sprKeyNum, sprTotalKeyNum, totKeyNum, totTotalKeyNum, citsKeyNum, citsTotalKeyNum, potKeyNum, potTotalKeyNum, hcKeyNum, hcTotalKeyNum, campKeyNum, campTotalKeyNum, getYesNoText(hasFaronGateKey), getYesNoText(hasCoroGateKey),getYesNoText(hasGateKey));
@@ -2627,7 +2629,9 @@ HookAction hookPreMenuRingDraw(ModContext*, void* args, void*, void*) {
     textbox.setFont(itemWheelTextFont);
     textbox.setFontSize(16.f, 16.f);
     textbox.setLineSpace(16.f);
-    textbox.setString("Press Start\nto toggle\nadditional\ndata");
+    textbox.setString(getTextStr("Dungeon Item Additional Info Text",
+        Text::STANDARD,
+        static_cast<Text::Language>(getCurrentLanguage())).c_str());
     textbox.setCharColor(white);
     textbox.setGradColor(white);
     textbox.draw(menuRing->mCenterPosX + 465.f, menuRing->mCenterPosY + 157.f);

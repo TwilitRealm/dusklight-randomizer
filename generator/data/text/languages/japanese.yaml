@@ -8020,3 +8020,38 @@ Cave of Ordeals Hint Sign Text:
     Text: |-
       Cave of Ordeals Hint Sign.
       There are no hints placed here.
+
+# STATIC IN-GAME TEXT
+Dungeon Item Additional Info Text:
+  Standard:
+    Text: |-
+      Sボタン押すと
+      情報が表示される
+
+Dungeon Item Inventory Text:
+  Standard:
+    Text: |-
+      影の結晶石: %d/3        Key Legend:
+      陰りの鏡: %d/4         Current (Total)
+      
+      森の神殿
+      ゴロン鉱山
+      湖底の神殿
+      砂漠の処刑場
+      雪山の廃
+      時の神殿
+      天空都市
+      影の宮殿
+      ハイラル城
+      ブルブリンの要塞
+      Faron Gate
+      Coro Gate
+      門の小さなカギ
+
+Dungeon Item Inventory Yes Text:
+  Standard:
+    Text: あり
+
+Dungeon Item Inventory No Text:
+  Standard:
+    Text: ない

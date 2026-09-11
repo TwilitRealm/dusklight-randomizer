@@ -71,3 +71,4 @@ bool tracker_isStageSwitch(int stage, int flag);
 bool tracker_isStageItem(int stage, int flag);
 
 const char* getYesNoText(bool flag);
+int getCurrentLanguage();

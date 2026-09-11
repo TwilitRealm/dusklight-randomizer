@@ -1,13 +1,14 @@
 #include "text.hpp"
 
+#include "shiftjis_table.hpp"
 #include "string.hpp"
 #include "yaml.hpp"
-#include "shiftjis_table.hpp"
 
 #include <mods/svc/flow.hpp>
 
 #include <fmt/format.h>
 
+#include <mutex>
 #include <ranges>
 #include <unordered_map>
 
@@ -511,6 +512,10 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
 
     const TextDatabase& getTextDatabase() {
         static TextDatabase tb{};
+
+        // Use a mutex here so that we can load up the text database on a separate thread if desired
+        static std::mutex textDbMutex;
+        std::lock_guard lock{textDbMutex};
 
         // If database is empty, load it up
         if (tb.empty()) {

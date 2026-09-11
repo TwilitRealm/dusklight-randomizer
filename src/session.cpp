@@ -12,6 +12,7 @@
 #include "item.hpp"
 #include "messages.hpp"
 #include "verify_item_functions.h"
+#include "../generator/utility/text.hpp"
 
 #include "d/d_com_inf_game.h"
 #include "d/d_item.h"
@@ -23,6 +24,7 @@
 #include <cstring>
 #include <optional>
 #include <string_view>
+#include <thread>
 
 namespace randomizer::session {
 ServiceManager svc_mng;
@@ -456,6 +458,10 @@ ModResult onGameModeActivated(void*, ModError* error) {
     if (result != MOD_OK) {
         return mods::set_error(error, result, "failed to initialize ui");
     }
+
+    // Load text database now so that we don't hitch when opening up the item wheel the first time
+    std::thread loadTextThread{getTextDatabase};
+    loadTextThread.detach();
 
     mods::log::info("randomizer game mode activated");
     return MOD_OK;

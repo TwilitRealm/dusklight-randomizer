@@ -197,7 +197,7 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
                     // Get the current split of the string
                     auto curSplit = textEntry.str.substr(0, pos);
                     // Pop off the last newline since it's unnecessary
-                    if (curSplit.back() == '\n') {
+                    if (!curSplit.empty() && curSplit.back() == '\n') {
                         curSplit.pop_back();
                     }
                     splitText.at(splitIdx).mEntries[textIdx].str = curSplit;

@@ -1727,7 +1727,7 @@ South Faron Woods Twilit Insect Behind Gate 2:
   Standard:
     Text: insecte des ombres 2 derrière le portail de la forêt de Firone - S
   Pretty:
-    Text: {insecte des ombres 2 derrière le portail de la forêt de Firone - S}
+    Text: l'{insecte des ombres 2 derrière le portail de la forêt de Firone - S}
   Cryptic:
     Text: "{South Faron Woods Twilit Insect Behind Gate 2}"
 
@@ -6663,7 +6663,7 @@ South Faron Woods Hint Sign:
   Standard:
     Text: panneau d'indice de la forêt de Firone - S
   Pretty:
-    Text: {panneau d'indice de la forêt de Firone - S}
+    Text: le {panneau d'indice de la forêt de Firone - S}
   Cryptic:
     Text: the {South Faron Woods panneau d'indice}
 
@@ -6671,7 +6671,7 @@ Sacred Grove Hint Sign:
   Standard:
     Text: panneau d'indice du Sanctuaire de la forêt
   Pretty:
-    Text: {panneau d'indice du Sanctuaire de la forêt}
+    Text: le {panneau d'indice du Sanctuaire de la forêt}
   Cryptic:
     Text: the {Sacred Grove panneau d'indice}
 
@@ -6823,7 +6823,7 @@ Gerudo Desert Hint Sign:
   Standard:
     Text: panneau d'indice du Désert Gerudo
   Pretty:
-    Text: {panneau d'indice du Désert Gerudo}
+    Text: le {panneau d'indice du Désert Gerudo}
   Cryptic:
     Text: the {Gerudo Desert panneau d'indice}
 

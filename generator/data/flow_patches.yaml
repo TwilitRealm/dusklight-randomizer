@@ -353,12 +353,6 @@
     message: 0xC5
     next: 0xB4
 
-  # Patch Coro waking up to jump to one of our flow entry points
-  - index: 0x78
-    type: message
-    message: 0xCD
-    next: 0x1C2
-
 #7: # zel_07.bmg
 8: # zel_08.bmg - HF, Outside CT, LH, UZR, Zora's River, KB2, Title Screen
   # Skip over the node which deletes auru's memo from the inventory after showing it to Fyer

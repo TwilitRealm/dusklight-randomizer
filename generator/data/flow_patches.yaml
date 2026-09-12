@@ -17,6 +17,7 @@
       - 0x1C9
       - 0x14A
       - 0x210
+      - 0x1F4
     type: event
     event: no-op
     parameters: 0x00000000

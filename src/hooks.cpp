@@ -23,6 +23,7 @@
 #include "d/actor/d_a_door_shutter.h"
 #include "d/actor/d_a_e_md.h"
 #include "d/actor/d_a_e_mk.h"
+#include "d/actor/d_a_horse.h"
 #include "d/actor/d_a_kytag08.h"
 #include "d/actor/d_a_mg_rod.h"
 #include "d/actor/d_a_npc4.h"
@@ -2006,6 +2007,11 @@ void hookPostChangeScene4Event(ModContext*, void* args, void* retval, void*) {
     {
         dKy_set_nexttime(15.0f * randomizer_GetContext().mStartHour);
         g_randomizerState.mUpdateTracker = true;
+
+        // Change Epona's position so that she isn't visible until called by the player
+        dComIfGp_getHorseActor()->onStateFlg0(daHorse_c::FLG0_NO_DRAW_WAIT);
+        cXyz eponaPos = {0.f, -100000.f, 0.f};
+        dComIfGs_setHorseRestart("F_SP104", eponaPos, 0, -1);
     }
 }
 

@@ -2759,27 +2759,84 @@ Hint:
 
 Faron Twilight Tear:
   Standard:
-    Text: Phirone Twilight Tear
+    Text: Tiegel des Lichts (Phirone)
   Pretty:
-    Text: a {Phirone Twilight Tear}
+    Text: der {Tiegel des Lichts (Phirone)}
   Cryptic:
-    Text: a {tear of a forest spirit}
+    Text: der {Tiegel eines Waldgeistes}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Tiegel des Lichts (Phirone)
+      Pretty:
+        Text: Tiegel des Lichts (Phirone)
+      Cryptic:
+        Text: Tiegel eines Waldgeistes
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den {Tiegel des Lichts (Phirone)}
+      Pretty:
+        Text: den {Tiegel des Lichts (Phirone)}
+      Cryptic:
+        Text: den {Tiegel eines Waldgeistes}
 
 Eldin Twilight Tear:
   Standard:
-    Text: Eldin Twilight Tear
+    Text: Tiegel des Lichts (Eldin)
   Pretty:
-    Text: an {Eldin Twilight Tear}
+    Text: der {Tiegel des Lichts (Eldin)}
   Cryptic:
-    Text: a {tear of a volcano spirit}
+    Text: der {Tiegel eines vulkanischen Geistes}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Tiegel des Lichts (Eldin)
+      Pretty:
+        Text: Tiegel des Lichts (Eldin)
+      Cryptic:
+        Text: Tiegel eines vulkanischen Geistes
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den {Tiegel des Lichts (Eldin)}
+      Pretty:
+        Text: den {Tiegel des Lichts (Eldin)}
+      Cryptic:
+        Text: den {Tiegel eines vulkanischen Geistes}
 
 Lanayru Twilight Tear:
   Standard:
-    Text: Ranelle Twilight Tear
+    Text: Tiegel des Lichts (Ranelle)
   Pretty:
-    Text: a {Ranelle Twilight Tear}
+    Text: der {Tiegel des Lichts (Ranelle)}
   Cryptic:
-    Text: a {tear of a lake spirit}
+    Text: der {Tiegel eines Seegeistes}
+  Template Overrides:
+    - Keys:
+        - Agithas Castle Some Items Sign Text
+      Standard:
+        Text: Tiegel des Lichts (Ranelle)
+      Pretty:
+        Text: Tiegel des Lichts (Ranelle)
+      Cryptic:
+        Text: Tiegel eines Seegeistes
+    - Keys:
+        - Charlo Donation Ask Text Template
+        - Coro Bottle Offer 3 Text Template
+        - Fishing Hole Sign Text Template
+      Standard:
+        Text: den {Tiegel des Lichts (Ranelle)}
+      Pretty:
+        Text: den {Tiegel des Lichts (Ranelle)}
+      Cryptic:
+        Text: den {Tiegel eines Seegeistes}
 
 # ITEM NAMES FOR PROGRESSIVE ITEMS
 Progressive Wallet x0:
@@ -2936,59 +2993,59 @@ Ordon Sword:
 
 Wrestling With Bo:
   Standard:
-    Text: Ringkampf mit Bo
+    Text: Ringkampf mit Boro
   Pretty:
-    Text: den {Ringkampf mit Bo}
+    Text: den {Ringkampf mit Boro}
   Cryptic:
     Text: pushing a middle-aged man
 
 Ordon Bo Cliff Rupee:
   Standard:
-    Text: Ordon Bo Klippen-Rubin
+    Text: Ordon Boro Klippen-Rubin
   Pretty:
-    Text: den {Ordon Bo Klippen-Rubin}
+    Text: den {Ordon Boro Klippen-Rubin}
   Cryptic:
-    Text: den {Ordon Bo Klippen-Rubin}
+    Text: den {Ordon Boro Klippen-Rubin}
 
 Ordon Bo Roof Rupee:
   Standard:
-    Text: Ordon Bo Dach-Rubin
+    Text: Ordon Boro Dach-Rubin
   Pretty:
-    Text: den {Ordon Bo Dach-Rubin}
+    Text: den {Ordon Boro Dach-Rubin}
   Cryptic:
-    Text: den {Ordon Bo Dach-Rubin}
+    Text: den {Ordon Boro Dach-Rubin}
 
 Ordon Bo Window Rupee 1:
   Standard:
-    Text: Ordon Bo Fenster-Rubin 1
+    Text: Ordon Boro Fenster-Rubin 1
   Pretty:
-    Text: den {Ordon Bo Fenster-Rubin 1}
+    Text: den {Ordon Boro Fenster-Rubin 1}
   Cryptic:
-    Text: den {Ordon Bo Fenster-Rubin 1}
+    Text: den {Ordon Boro Fenster-Rubin 1}
 
 Ordon Bo Window Rupee 2:
   Standard:
-    Text: Ordon Bo Fenster-Rubin 2
+    Text: Ordon Boro Fenster-Rubin 2
   Pretty:
-    Text: den {Ordon Bo Fenster-Rubin 2}
+    Text: den {Ordon Boro Fenster-Rubin 2}
   Cryptic:
-    Text: den {Ordon Bo Fenster-Rubin 2}
+    Text: den {Ordon Boro Fenster-Rubin 2}
 
 Ordon Hidden Rusl House Rupee:
   Standard:
-    Text: Ordon Hidden Rusl House Rupee
+    Text: Ordon Hidden Moe House Rupee
   Pretty:
-    Text: the {Ordon Hidden Rusl House Rupee}
+    Text: the {Ordon Hidden Moe House Rupee}
   Cryptic:
-    Text: the {Ordon Hidden Rusl House Rupee}
+    Text: the {Ordon Hidden Moe House Rupee}
 
 Ordon Rupee In Grass By Bo:
   Standard:
-    Text: Ordon Rupee In Grass By Bo
+    Text: Ordon Rupee In Grass By Boro
   Pretty:
-    Text: the {Ordon Rupee In Grass By Bo}
+    Text: the {Ordon Rupee In Grass By Boro}
   Cryptic:
-    Text: the {Ordon Rupee In Grass By Bo}
+    Text: the {Ordon Rupee In Grass By Boro}
 
 Ordon Rupee In River 1:
   Standard:
@@ -3032,19 +3089,19 @@ Ordon Rupee Under Tall Tree 2:
 
 Ordon Rusl House Roof Rupee 1:
   Standard:
-    Text: Ordon Rusl House Roof Rupee 1
+    Text: Ordon Moe House Roof Rupee 1
   Pretty:
-    Text: "{Ordon Rusl House Roof Rupee 1}"
+    Text: "{Ordon Moe House Roof Rupee 1}"
   Cryptic:
-    Text: "{Ordon Rusl House Roof Rupee 1}"
+    Text: "{Ordon Moe House Roof Rupee 1}"
 
 Ordon Rusl House Roof Rupee 2:
   Standard:
-    Text: Ordon Rusl House Roof Rupee 2
+    Text: Ordon Moe House Roof Rupee 2
   Pretty:
-    Text: "{Ordon Rusl House Roof Rupee 2}"
+    Text: "{Ordon Moe House Roof Rupee 2}"
   Cryptic:
-    Text: "{Ordon Rusl House Roof Rupee 2}"
+    Text: "{Ordon Moe House Roof Rupee 2}"
 
 Ordon Shield House Ledge Grass Rupee:
   Standard:
@@ -4273,11 +4330,11 @@ Eldin Field Stalfos Grotto Stalfos Chest:
 
 Skybook From Impaz:
   Standard:
-    Text: Kumulaner-Dokument von Impaz
+    Text: Kumulaner-Dokument von Grayna
   Pretty:
-    Text: das {Kumulaner-Dokument von Impaz}
+    Text: das {Kumulaner-Dokument von Grayna}
   Cryptic:
-    Text: das {Kumulaner-Dokument von Impaz}
+    Text: das {Kumulaner-Dokument von Grayna}
 
 Cats Hide and Seek Minigame:
   Standard:
@@ -7258,11 +7315,11 @@ Snowpeak Ruins Ball and Chain:
 
 Snowpeak Ruins Chest After Darkhammer:
   Standard:
-    Text: Snowpeak Ruins Chest After Darkhammer
+    Text: Snowpeak Ruins Chest After Armoralfos
   Pretty:
-    Text: the {Snowpeak Ruins Chest After Darkhammer}
+    Text: the {Snowpeak Ruins Chest After Armoralfos}
   Cryptic:
-    Text: the {Snowpeak Ruins Chest After Darkhammer}
+    Text: the {Snowpeak Ruins Chest After Armoralfos}
 
 Snowpeak Ruins Broken Floor Chest:
   Standard:

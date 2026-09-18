@@ -8470,7 +8470,7 @@ Sacred Grove:
     - Keys:
         - Path Hint
       Standard:
-        Text: der heilige Hain
+        Text: der {heilige Hain}
 
 Faron Field:
   Standard:
@@ -8492,7 +8492,7 @@ Faron Field:
     - Keys:
         - Path Hint
       Standard:
-        Text: die Hyrule-Ebene (Phirone)
+        Text: die {Hyrule-Ebene (Phirone)}
 
 Kakariko Gorge:
   Standard:
@@ -8514,7 +8514,7 @@ Kakariko Gorge:
     - Keys:
         - Path Hint
       Standard:
-        Text: das Kakariko-Tal
+        Text: das {Kakariko-Tal}
 
 Kakariko Village:
   Standard:
@@ -8554,7 +8554,7 @@ Kakariko Graveyard:
     - Keys:
         - Path Hint
       Standard:
-        Text: der Friedhof
+        Text: der {Friedhof}
 
 Death Mountain:
   Standard:
@@ -8576,7 +8576,7 @@ Death Mountain:
     - Keys:
         - Path Hint
       Standard:
-        Text: der Feuerberg
+        Text: der {Feuerberg}
 
 Eldin Field:
   Standard:
@@ -8598,7 +8598,7 @@ Eldin Field:
     - Keys:
         - Path Hint
       Standard:
-        Text: die Hyrule-Ebene (Eldin)
+        Text: die {Hyrule-Ebene (Eldin)}
 
 North Eldin:
   Standard:
@@ -8638,7 +8638,7 @@ Hidden Village:
     - Keys:
         - Path Hint
       Standard:
-        Text: das versteckte Dorf
+        Text: das {versteckte Dorf}
 
 Lanayru Field:
   Standard:
@@ -8660,7 +8660,7 @@ Lanayru Field:
     - Keys:
         - Path Hint
       Standard:
-        Text: die Hyrule-Ebene (Ranelle)
+        Text: die {Hyrule-Ebene (Ranelle)}
 
 Beside Castle Town:
   Standard:
@@ -8682,7 +8682,7 @@ Beside Castle Town:
     - Keys:
         - Path Hint
       Standard:
-        Text: die Hyrule-Ebene (West Hyrule-Stadt)
+        Text: die {Hyrule-Ebene (West Hyrule-Stadt)}
 
 Castle Town:
   Standard:
@@ -8722,7 +8722,7 @@ South of Castle Town:
     - Keys:
         - Path Hint
       Standard:
-        Text: die Hyrule-Ebene (Süd Hyrule-Stadt)
+        Text: die {Hyrule-Ebene (Süd Hyrule-Stadt)}
 
 Great Bridge of Hylia:
   Standard:
@@ -8744,7 +8744,7 @@ Great Bridge of Hylia:
     - Keys:
         - Path Hint
       Standard:
-        Text: die Hylia-Brücke
+        Text: die {Hylia-Brücke}
 
 Lake Hylia:
   Standard:
@@ -8766,7 +8766,7 @@ Lake Hylia:
     - Keys:
         - Path Hint
       Standard:
-        Text: der Hylia-See
+        Text: der {Hylia-See}
 
 Lanayru Spring:
   Standard:
@@ -8788,7 +8788,7 @@ Lanayru Spring:
     - Keys:
         - Path Hint
       Standard:
-        Text: die Quelle von Ranelle
+        Text: die {Quelle von Ranelle}
 
 Upper Zoras River:
   Standard:
@@ -8810,7 +8810,7 @@ Upper Zoras River:
     - Keys:
         - Path Hint
       Standard:
-        Text: der Oberlauf Zora-Fluss
+        Text: der {Oberlauf Zora-Fluss}
 
 Zoras Domain:
   Standard:
@@ -8832,7 +8832,7 @@ Zoras Domain:
     - Keys:
         - Path Hint
       Standard:
-        Text: die Zora-Höhle
+        Text: die {Zora-Höhle}
 
 South Gerudo Desert:
   Standard:
@@ -8854,7 +8854,7 @@ South Gerudo Desert:
     - Keys:
         - Path Hint
       Standard:
-        Text: die Süd Gerudo-Wüste
+        Text: die {Süd Gerudo-Wüste}
 
 North Gerudo Desert:
   Standard:
@@ -8876,7 +8876,7 @@ North Gerudo Desert:
     - Keys:
         - Path Hint
       Standard:
-        Text: die Nord Gerudo-Wüste
+        Text: die {Nord Gerudo-Wüste}
 
 Bulblin Camp:
   Standard:
@@ -8898,7 +8898,7 @@ Bulblin Camp:
     - Keys:
         - Path Hint
       Standard:
-        Text: das Bulblin-Lager
+        Text: das {Bulblin-Lager}
 
 Mirror Chamber:
   Standard:
@@ -8920,7 +8920,7 @@ Mirror Chamber:
     - Keys:
         - Path Hint
       Standard:
-        Text: die Spiegelkammer
+        Text: die {Spiegelkammer}
 
 Snowpeak Mountain:
   Standard:
@@ -8950,7 +8950,7 @@ Snowpeak Mountain:
     - Keys:
         - Path Hint
       Standard:
-        Text: die Schneeberge
+        Text: die {Schneeberge}
 
 Forest Temple:
   Standard:
@@ -8972,7 +8972,7 @@ Forest Temple:
     - Keys:
         - Path Hint
       Standard:
-        Text: der Waldschrein
+        Text: der {Waldschrein}
 
 Goron Mines:
   Standard:
@@ -8994,7 +8994,7 @@ Goron Mines:
     - Keys:
         - Path Hint
       Standard:
-        Text: die Mine der Goronen
+        Text: die {Mine der Goronen}
 
 Lakebed Temple:
   Standard:
@@ -9016,7 +9016,7 @@ Lakebed Temple:
     - Keys:
         - Path Hint
       Standard:
-        Text: der Seeschrein
+        Text: der {Seeschrein}
 
 Arbiters Grounds:
   Standard:
@@ -9038,7 +9038,7 @@ Arbiters Grounds:
     - Keys:
         - Path Hint
       Standard:
-        Text: die Wüstenburg
+        Text: die {Wüstenburg}
 
 Snowpeak Ruins:
   Standard:
@@ -9060,7 +9060,7 @@ Snowpeak Ruins:
     - Keys:
         - Path Hint
       Standard:
-        Text: die Bergruine
+        Text: die {Bergruine}
 
 Temple of Time:
   Standard:
@@ -9089,7 +9089,7 @@ Temple of Time:
     - Keys:
         - Path Hint
       Standard:
-        Text: der Zeitschrein
+        Text: der {Zeitschrein}
 
 City in the Sky:
   Standard:
@@ -9129,7 +9129,7 @@ Palace of Twilight:
     - Keys:
         - Path Hint
       Standard:
-        Text: der Schattenpalast
+        Text: der {Schattenpalast}
 
 Hyrule Castle:
   Standard:

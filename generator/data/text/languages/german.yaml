@@ -11,6 +11,12 @@
 #   for different translations depending on which template the text is being inserted into. See the Cave of Ordeals
 #   Great Fairy Reward in the english yaml for an example.
 
+# TRANSLATOR NOTES AND GERMAN VERSION NOTES:
+# - all choices end with a dot except "Charlo Donation Choice Text"
+# - items with quantity options use the format "X Item Name" (e.g., "5 Bomben")
+#   - "Agithas Castle Some Items Sign Text" uses the format "Item Name (X)" due to pluralization limitations (used for poe souls, etc.)
+
+
 # ITEM NAMES
 Green Rupee:
   Standard:
@@ -1011,7 +1017,7 @@ Bottle with Half Milk:
 
 Lantern Oil Shop:
   Standard:
-    Text: Lampen Öl Shop
+    Text: Lampen Öl Laden
   Pretty:
     Text: etwas {Lampen Öl}
   Cryptic:
@@ -2691,18 +2697,18 @@ Goron Mines Key Shard:
 
 Faron Woods Coro Key:
   Standard:
-    Text: Coros Schlüssel
+    Text: Coros Torschlüssel
   Pretty:
-    Text: "{Coros Schlüssel}"
+    Text: "{Coros Torschlüssel}"
   Cryptic:
     Text: ein {Schlüssel zu einer Waldhöhle}
   Template Overrides:
     - Keys:
         - Agithas Castle Some Items Sign Text
       Standard:
-        Text: Coros Schlüssel
+        Text: Coros Torschlüssel
       Pretty:
-        Text: Coros Schlüssel
+        Text: Coros Torschlüssel
       Cryptic:
         Text: Schlüssel zu einer Waldhöhle
     - Keys:
@@ -2710,9 +2716,9 @@ Faron Woods Coro Key:
         - Coro Bottle Offer 3 Text Template
         - Fishing Hole Sign Text Template
       Standard:
-        Text: Coros Schlüssel
+        Text: Coros Torschlüssel
       Pretty:
-        Text: "{Coros Schlüssel}"
+        Text: "{Coros Torschlüssel}"
       Cryptic:
         Text: einen {Schlüssel zu einer Waldhöhle}
 
@@ -2890,11 +2896,11 @@ Links Basement Chest:
 
 Uli Cradle Delivery:
   Standard:
-    Text: Uli Cradle Delivery
+    Text: Ulinas Wiegenzustellung
   Pretty:
-    Text: "{Uli Cradle Delivery}"
+    Text: "{Ulinas Wiegenzustellung}"
   Cryptic:
-    Text: "{Uli Cradle Delivery}"
+    Text: "{Ulinas Wiegenzustellung}"
 
 Ordon Cat Rescue:
   Standard:
@@ -2906,11 +2912,11 @@ Ordon Cat Rescue:
 
 Sera Shop Slingshot:
   Standard:
-    Text: Sera Shop Schleuder
+    Text: Zeiras Laden Schleuder
   Pretty:
-    Text: buying the {Sera Shop Schleuder}
+    Text: die {Schleuder aus Zeiras Laden}
   Cryptic:
-    Text: buying the {Sera Shop Schleuder}
+    Text: die {Schleuder aus Zeiras Laden}
 
 Ordon Shield Check:
   Standard:
@@ -3082,11 +3088,11 @@ Ordon Ranch Grotto Lantern Chest:
 
 Ordon Spring Golden Wolf:
   Standard:
-    Text: Ordon Spring Golden Wolf
+    Text: Goldener Wolf (Quelle von Ordon)
   Pretty:
-    Text: the {Ordon Spring Golden Wolf}
+    Text: den {goldenen Wolf (Quelle von Ordon)}
   Cryptic:
-    Text: the {Ordon Spring Golden Wolf}
+    Text: den {goldenen Wolf (Quelle von Ordon)}
 
 Ordon Spring Warp Portal:
   Standard:
@@ -3354,11 +3360,11 @@ North Faron Warp Portal:
 
 Faron Woods Golden Wolf:
   Standard:
-    Text: Phirone Woods Golden Wolf
+    Text: Goldener Wolf (Wald von Phirone)
   Pretty:
-    Text: the {Phirone Woods Golden Wolf}
+    Text: den {goldenen Wolf (Wald von Phirone)}
   Cryptic:
-    Text: the {Phirone Woods Golden Wolf}
+    Text: den {goldenen Wolf (Wald von Phirone)}
 
 North Faron Woods Deku Baba Chest:
   Standard:
@@ -3923,19 +3929,19 @@ Kakariko Village Ant House Ledge Box Rupee:
 
 Barnes Bomb Bag:
   Standard:
-    Text: Barnes Bombentasche
+    Text: Burns Bombentasche
   Pretty:
-    Text: die {Barnes Bombentasche}
+    Text: die "{Bombentasche von Burns}"
   Cryptic:
-    Text: die {Barnes Bombentasche}
+    Text: die "{Bombentasche von Burns}"
 
 Kakariko Village Bomb Shop Poe:
   Standard:
-    Text: Kakariko - Geist vor Barnes Haus
+    Text: Kakariko - Geist vor Burns Haus
   Pretty:
-    Text: den {Geist vor Barnes Haus}
+    Text: den {Geist vor Burns Haus}
   Cryptic:
-    Text: den {Geist vor Barnes Haus}
+    Text: den {Geist vor Burns Haus}
 
 Kakariko Village Watchtower Poe:
   Standard:
@@ -4035,11 +4041,11 @@ Kakariko Graveyard Underwater Boulder Rupee:
 
 Kakariko Graveyard Golden Wolf:
   Standard:
-    Text: Kakariko Graveyard Golden Wolf
+    Text: Goldener Wolf (Friedhof)
   Pretty:
-    Text: the {Kakariko Graveyard Golden Wolf}
+    Text: den {goldenen Wolf (Friedhof)}
   Cryptic:
-    Text: the {Kakariko Graveyard Golden Wolf}
+    Text: den {goldenen Wolf (Friedhof)}
 
 Kakariko Graveyard Open Poe:
   Standard:
@@ -4051,11 +4057,11 @@ Kakariko Graveyard Open Poe:
 
 Kakariko Graveyard Grave Poe:
   Standard:
-    Text: Kakariko Graveyard Grave Poe
+    Text: Friedhof Grabstein-Geist
   Pretty:
-    Text: the {Kakariko Graveyard Grave Poe}
+    Text: den {Friedhof Grabstein-Geist}
   Cryptic:
-    Text: the {Kakariko Graveyard Grave Poe}
+    Text: den {Friedhof Grabstein-Geist}
 
 Death Mountain Warp Portal:
   Standard:
@@ -4067,11 +4073,11 @@ Death Mountain Warp Portal:
 
 Death Mountain Alcove Chest:
   Standard:
-    Text: Death Mountain Alcove Chest
+    Text: Feuerberg Wandnischen-Truhe
   Pretty:
-    Text: the {Death Mountain Alcove Chest}
+    Text: die {Feuerberg Wandnischen-Truhe}
   Cryptic:
-    Text: the {Death Mountain Alcove Chest}
+    Text: die {Feuerberg Wandnischen-Truhe}
 
 Death Mountain Volcano Ledge Rupee 1:
   Standard:
@@ -4596,11 +4602,11 @@ West Hyrule Field Helmasaur Grotto Chest:
 
 West Hyrule Field Golden Wolf:
   Standard:
-    Text: West Hyrule Field Golden Wolf
+    Text: Goldener Wolf (West Hyrule-Stadt)
   Pretty:
-    Text: the {West Hyrule Field Golden Wolf}
+    Text: den {goldenen Wolf (West Hyrule-Stadt)}
   Cryptic:
-    Text: the {West Hyrule Field Golden Wolf}
+    Text: den {goldenen Wolf (West Hyrule-Stadt)}
 
 Hyrule Field Amphitheater Owl Statue Chest:
   Standard:
@@ -4701,11 +4707,11 @@ Castle Town Malo Mart Magic Armor:
 
 North Castle Town Golden Wolf:
   Standard:
-    Text: North Castle Town Golden Wolf
+    Text: Goldener Wolf (Nord Hyrule-Stadt)
   Pretty:
-    Text: the {North Castle Town Golden Wolf}
+    Text: den {goldenen Wolf (Nord Hyrule-Stadt)}
   Cryptic:
-    Text: the {North Castle Town Golden Wolf}
+    Text: den {goldenen Wolf (Nord Hyrule-Stadt)}
 
 Doctors Office Balcony Chest:
   Standard:
@@ -4725,7 +4731,7 @@ East Castle Town Bridge Poe:
 
 Jovani 20 Poe Soul Reward:
   Standard:
-    Text: Giovannis Belohung für 20 Geisterseelen
+    Text: Giovannis Belohnung für 20 Geisterseelen
   Pretty:
     # translator note: compromise to avoid refactoring the location hint template
     Text: "{20 Geisterseelen (Giovanni)}"
@@ -4734,7 +4740,7 @@ Jovani 20 Poe Soul Reward:
 
 Jovani 60 Poe Soul Reward:
   Standard:
-    Text: Giovannis Belohung für 20 Geisterseelen
+    Text: Giovannis Belohnung für 20 Geisterseelen
   Pretty:
     Text: "{60 Geisterseelen (Giovanni)}"
   Cryptic:
@@ -5016,11 +5022,11 @@ Outside South Castle Town Tektite Grotto Chest:
 
 Outside South Castle Town Golden Wolf:
   Standard:
-    Text: Outside South Castle Town Golden Wolf
+    Text: Goldener Wolf (Süd Hyrule-Stadt)
   Pretty:
-    Text: the {Outside South Castle Town Golden Wolf}
+    Text: den {goldenen Wolf (Süd Hyrule-Stadt)}
   Cryptic:
-    Text: the {Outside South Castle Town Golden Wolf}
+    Text: den {goldenen Wolf (Süd Hyrule-Stadt)}
 
 Outside South Castle Town Double Clawshot Chasm Chest:
   Standard:
@@ -6216,11 +6222,11 @@ Gerudo Desert North Small Chest Before Bulblin Camp:
 
 Gerudo Desert Golden Wolf:
   Standard:
-    Text: Gerudo Desert Golden Wolf
+    Text: Goldener Wolf (Gerudo-Wüste)
   Pretty:
-    Text: the {Gerudo Desert Golden Wolf}
+    Text: den {goldenen Wolf (Gerudo-Wüste)}
   Cryptic:
-    Text: the {Gerudo Desert Golden Wolf}
+    Text: den {goldenen Wolf (Gerudo-Wüste)}
 
 Outside Bulblin Camp Poe:
   Standard:
@@ -6353,14 +6359,14 @@ Cave of Ordeals Floor 44 Poe:
 
 Cave of Ordeals Great Fairy Reward:
   Standard:
-    Text: Drillhöhle - Belohung der großen Fee
+    Text: Drillhöhle - Belohnung der großen Fee
   Pretty:
-    # translator note: integrating "Belohung der großen Fee" into the regular prose
+    # translator note: integrating "Belohnung der großen Fee" into the regular prose
     # doesn't produce a coherent sentence without refactoring all location hints.
     # it is assumed that beating the cave leads to this reward; keep a hint in parenthesis.
-    Text: die {Drillhöhle (Belohung der großen Fee)}
+    Text: die {Drillhöhle (Belohnung der großen Fee)}
   Cryptic:
-    Text: die {Drillhöhle (Belohung der großen Fee)}
+    Text: die {Drillhöhle (Belohnung der großen Fee)}
 
 Mirror Chamber Warp Portal:
   Standard:
@@ -6444,19 +6450,19 @@ Forest Temple West Tile Worm Room Vines Chest:
 
 Forest Temple Gale Boomerang:
   Standard:
-    Text: Waldschrein - Sturmbumerang
+    Text: Sturmbumerang (Waldschrein)
   Pretty:
-    Text: der {Waldschrein Sturmbumerang}
+    Text: den {Sturmbumerang (Waldschrein)}
   Cryptic:
-    Text: der {Waldschrein Sturmbumerang}
+    Text: den {Sturmbumerang (Waldschrein)}
 
 Forest Temple Big Key Chest:
   Standard:
-    Text: Waldschrein Master-Schlüssel-Truhe
+    Text: Master-Schlüssel-Truhe (Waldschrein)
   Pretty:
-    Text: die {Waldschrein Master-Schlüssel-Truhe}
+    Text: die {Master-Schlüssel-Truhe (Waldschrein)}
   Cryptic:
-    Text: die {Waldschrein Master-Schlüssel-Truhe}
+    Text: die {Master-Schlüssel-Truhe (Waldschrein)}
 
 Forest Temple East Water Cave Chest:
   Standard:
@@ -6500,19 +6506,19 @@ Forest Temple North Deku Like Chest:
 
 Forest Temple Diababa Heart Container:
   Standard:
-    Text: Forest Temple Diababa Heart Container
+    Text: Plantainfernas Herzcontainer
   Pretty:
-    Text: the {Forest Temple Diababa Heart Container}
+    Text: "{Plantainferna}"
   Cryptic:
-    Text: the {Forest Temple Diababa Heart Container}
+    Text: "{Plantainferna}"
 
 Forest Temple Dungeon Reward:
   Standard:
-    Text: Forest Temple Dungeon Reward
+    Text: Waldschrein Dungeon-Belohnung
   Pretty:
-    Text: the {Forest Temple Dungeon Reward}
+    Text: den {Waldschrein}
   Cryptic:
-    Text: the {Forest Temple Dungeon Reward}
+    Text: den {Waldschrein}
 
 Goron Mines Entrance Chest:
   Standard:
@@ -6636,11 +6642,11 @@ Goron Mines Chest Before Dangoro:
 
 Goron Mines Dangoro Chest:
   Standard:
-    Text: Goron Mines Dangoro Chest
+    Text: Dangoros Truhe (Mine der Goronen)
   Pretty:
-    Text: the {Goron Mines Dangoro Chest}
+    Text: "{Dangoros Truhe (Mine der Goronen)}"
   Cryptic:
-    Text: the {Goron Mines Dangoro Chest}
+    Text: "{Dangoros Truhe (Mine der Goronen)}"
 
 Goron Mines Beamos Room Chest:
   Standard:
@@ -6676,19 +6682,19 @@ Goron Mines Main Magnet Room Top Chest:
 
 Goron Mines Fyrus Heart Container:
   Standard:
-    Text: Goron Mines Fyrus Heart Container
+    Text: Flammatrons Herzcontainer
   Pretty:
-    Text: the {Goron Mines Fyrus Heart Container}
+    Text: "{Flammatron}"
   Cryptic:
-    Text: the {Goron Mines Fyrus Heart Container}
+    Text: "{Flammatron}"
 
 Goron Mines Dungeon Reward:
   Standard:
-    Text: Goron Mines Dungeon Reward
+    Text: Mine der Goronen Dungeon-Belohnung
   Pretty:
-    Text: the {Goron Mines Dungeon Reward}
+    Text: die {Mine der Goronen}
   Cryptic:
-    Text: the {Goron Mines Dungeon Reward}
+    Text: die {Mine der Goronen}
 
 Lakebed Temple Lobby Left Chest:
   Standard:
@@ -6820,11 +6826,11 @@ Lakebed Temple Before Deku Toad Underwater Right Chest:
 
 Lakebed Temple Deku Toad Chest:
   Standard:
-    Text: Lakebed Temple Deku Toad Chest
+    Text: Truhe der Deku-Kröte (Seeschrein)
   Pretty:
-    Text: the {Lakebed Temple Deku Toad Chest}
+    Text: die {Truhe der Deku-Kröte (Seeschrein)}
   Cryptic:
-    Text: the {Lakebed Temple Deku Toad Chest}
+    Text: die {Truhe der Deku-Kröte (Seeschrein)}
 
 Lakebed Temple West Lower Small Chest:
   Standard:
@@ -6892,27 +6898,27 @@ Lakebed Temple Underwater Maze Small Chest:
 
 Lakebed Temple Big Key Chest:
   Standard:
-    Text: Seeschrein Master-Schlüssel-Truhe
+    Text: Master-Schlüssel-Truhe (Seeschrein)
   Pretty:
-    Text: die {Seeschrein Master-Schlüssel-Truhe}
+    Text: die {Master-Schlüssel-Truhe (Seeschrein)}
   Cryptic:
-    Text: die {Seeschrein Master-Schlüssel-Truhe}
+    Text: die {Master-Schlüssel-Truhe (Seeschrein)}
 
 Lakebed Temple Morpheel Heart Container:
   Standard:
-    Text: Lakebed Temple Morpheel Heart Container
+    Text: Oktapescos Herzcontainer
   Pretty:
-    Text: the {Lakebed Temple Morpheel Heart Container}
+    Text: "{Oktapesco}"
   Cryptic:
-    Text: the {Lakebed Temple Morpheel Heart Container}
+    Text: "{Oktapesco}"
 
 Lakebed Temple Dungeon Reward:
   Standard:
-    Text: Lakebed Temple Dungeon Reward
+    Text: Seeschrein Dungeon-Belohnung
   Pretty:
-    Text: the {Lakebed Temple Dungeon Reward}
+    Text: den {Seeschrein}
   Cryptic:
-    Text: the {Lakebed Temple Dungeon Reward}
+    Text: den {Seeschrein}
 
 Arbiters Grounds Entrance Chest:
   Standard:
@@ -7044,11 +7050,11 @@ Arbiters Grounds North Turning Room Chest:
 
 Arbiters Grounds Death Sword Chest:
   Standard:
-    Text: Arbiters Grounds Death Sword Chest
+    Text: Truhe der Todesklinge (Wüstenburg)
   Pretty:
-    Text: the {Arbiters Grounds Death Sword Chest}
+    Text: die {Truhe der Todesklinge (Wüstenburg)}
   Cryptic:
-    Text: the {Arbiters Grounds Death Sword Chest}
+    Text: die {Truhe der Todesklinge (Wüstenburg)}
 
 Arbiters Grounds Spinner Room First Small Chest:
   Standard:
@@ -7092,27 +7098,27 @@ Arbiters Grounds Spinner Room Lower North Chest:
 
 Arbiters Grounds Big Key Chest:
   Standard:
-    Text: Wüstenburg Master-Schlüssel-Truhe
+    Text: Master-Schlüssel-Truhe (Wüstenburg)
   Pretty:
-    Text: die {Wüstenburg Master-Schlüssel-Truhe}
+    Text: die {Master-Schlüssel-Truhe (Wüstenburg)}
   Cryptic:
-    Text: die {Wüstenburg Master-Schlüssel-Truhe}
+    Text: die {Master-Schlüssel-Truhe (Wüstenburg)}
 
 Arbiters Grounds Stallord Heart Container:
   Standard:
-    Text: Arbiters Grounds Stallord Heart Container
+    Text: Skeletulors Herzcontainer
   Pretty:
-    Text: the {Arbiters Grounds Stallord Heart Container}
+    Text: "{Skeletulor}"
   Cryptic:
-    Text: the {Arbiters Grounds Stallord Heart Container}
+    Text: "{Skeletulor}"
 
 Arbiters Grounds Dungeon Reward:
   Standard:
-    Text: Arbiters Grounds Dungeon Reward
+    Text: Wüstenburg Dungeon-Belohnung
   Pretty:
-    Text: the {Arbiters Grounds Dungeon Reward}
+    Text: die {Wüstenburg}
   Cryptic:
-    Text: the {Arbiters Grounds Dungeon Reward}
+    Text: die {Wüstenburg}
 
 Snowpeak Ruins Lobby West Armor Chest:
   Standard:
@@ -7244,11 +7250,11 @@ Snowpeak Ruins Wooden Beam Northwest Chest:
 
 Snowpeak Ruins Ball and Chain:
   Standard:
-    Text: Snowpeak Ruins Ball and Chain
+    Text: Morgenstern (Bergruine)
   Pretty:
-    Text: the {Snowpeak Ruins Ball and Chain} pickup
+    Text: den {Morgenstern (Bergruine)}
   Cryptic:
-    Text: the {Snowpeak Ruins Ball and Chain} pickup
+    Text: den {Morgenstern (Bergruine)}
 
 Snowpeak Ruins Chest After Darkhammer:
   Standard:
@@ -7292,19 +7298,19 @@ Snowpeak Ruins Chapel Chest:
 
 Snowpeak Ruins Blizzeta Heart Container:
   Standard:
-    Text: Snowpeak Ruins Blizzeta Heart Container
+    Text: Matronias Herzcontainer
   Pretty:
-    Text: the {Snowpeak Ruins Blizzeta Heart Container}
+    Text: "{Matronia}"
   Cryptic:
-    Text: the {Snowpeak Ruins Blizzeta Heart Container}
+    Text: "{Matronia}"
 
 Snowpeak Ruins Dungeon Reward:
   Standard:
-    Text: Snowpeak Ruins Dungeon Reward
+    Text: Bergruine Dungeon-Belohnung
   Pretty:
-    Text: the {Snowpeak Ruins Dungeon Reward}
+    Text: die {Bergruine}
   Cryptic:
-    Text: the {Snowpeak Ruins Dungeon Reward}
+    Text: die {Bergruine}
 
 Temple of Time Lobby Lantern Chest:
   Standard:
@@ -7420,11 +7426,11 @@ Temple of Time Floor Switch Puzzle Room Upper Chest:
 
 Temple of Time Big Key Chest:
   Standard:
-    Text: Zeitschrein Master-Schlüssel-Truhe
+    Text: Master-Schlüssel-Truhe (Zeitschrein)
   Pretty:
-    Text: die {Zeitschrein Master-Schlüssel-Truhe}
+    Text: die {Master-Schlüssel-Truhe (Zeitschrein)}
   Cryptic:
-    Text: die {Zeitschrein Master-Schlüssel-Truhe}
+    Text: die {Master-Schlüssel-Truhe (Zeitschrein)}
 
 Temple of Time Gilloutine Chest:
   Standard:
@@ -7436,51 +7442,51 @@ Temple of Time Gilloutine Chest:
 
 Temple of Time Chest Before Darknut:
   Standard:
-    Text: Temple of Time Chest Before Darknut
+    Text: Truhe vor der Schattengarde (Zeitschrein)
   Pretty:
-    Text: the {Temple of Time Chest Before Darknut}
+    Text: die {Truhe vor der Schattengarde (Zeitschrein)}
   Cryptic:
-    Text: the {Temple of Time Chest Before Darknut}
+    Text: die {Truhe vor der Schattengarde (Zeitschrein)}
 
 Temple of Time Darknut Chest:
   Standard:
-    Text: Temple of Time Darknut Chest
+    Text: Truhe der Schattengarde (Zeitschrein)
   Pretty:
-    Text: the {Temple of Time Darknut Chest}
+    Text: die {Truhe der Schattengarde (Zeitschrein)}
   Cryptic:
-    Text: the {Temple of Time Darknut Chest}
+    Text: die {Truhe der Schattengarde (Zeitschrein)}
 
 Temple of Time Armogohma Heart Container:
   Standard:
-    Text: Temple of Time Armogohma Heart Container
+    Text: Armogohmas Herzcontainer
   Pretty:
-    Text: the {Temple of Time Armogohma Heart Container}
+    Text: "{Armogohma}"
   Cryptic:
-    Text: the {Temple of Time Armogohma Heart Container}
+    Text: "{Armogohma}"
 
 Temple of Time Dungeon Reward:
   Standard:
-    Text: Temple of Time Dungeon Reward
+    Text: Zeitschrein Dungeon-Belohnung
   Pretty:
-    Text: the {Temple of Time Dungeon Reward}
+    Text: den {Zeitschrein}
   Cryptic:
-    Text: the {Temple of Time Dungeon Reward}
+    Text: den {Zeitschrein}
 
 City in the Sky Underwater East Chest:
   Standard:
     Text: Kumula - Unterwasser-Truhe Osten
   Pretty:
-    Text: die {Unterwasser-Truhe Osten in Kumula}
+    Text: die {östliche Unterwasser-Truhe in Kumula}
   Cryptic:
-    Text: die {Unterwasser-Truhe Osten in Kumula}
+    Text: die {östliche Unterwasser-Truhe in Kumula}
 
 City in the Sky Underwater West Chest:
   Standard:
     Text: Kumula - Unterwasser-Truhe Westen
   Pretty:
-    Text: die {Unterwasser-Truhe Westen in Kumula}
+    Text: die {westliche Unterwasser-Truhe in Kumula}
   Cryptic:
-    Text: die {Unterwasser-Truhe Westen in Kumula}
+    Text: die {westliche Unterwasser-Truhe in Kumula}
 
 City in the Sky West Wing First Chest:
   Standard:
@@ -7604,11 +7610,11 @@ City in the Sky Poe Above Central Fan:
 
 City in the Sky Big Key Chest:
   Standard:
-    Text: Kumula Master-Schlüssel-Truhe
+    Text: Master-Schlüssel-Truhe (Kumula)
   Pretty:
-    Text: die {Kumula Master-Schlüssel-Truhe}
+    Text: die {Master-Schlüssel-Truhe (Kumula)}
   Cryptic:
-    Text: die {Kumula Master-Schlüssel-Truhe}
+    Text: die {Master-Schlüssel-Truhe (Kumula)}
 
 City in the Sky Chest Below Big Key Chest:
   Standard:
@@ -7660,11 +7666,11 @@ City in the Sky East Wing Lower Level Chest:
 
 City in the Sky Aeralfos Chest:
   Standard:
-    Text: City in the Sky Aeralfos Chest
+    Text: Truhe von Aeralfos (Kumula)
   Pretty:
-    Text: the {City in the Sky Aeralfos Chest}
+    Text: die {Truhe von Aeralfos (Kumula)}
   Cryptic:
-    Text: the {City in the Sky Aeralfos Chest}
+    Text: die {Truhe von Aeralfos (Kumula)}
 
 City in the Sky Chest Behind North Fan:
   Standard:
@@ -7676,19 +7682,19 @@ City in the Sky Chest Behind North Fan:
 
 City in the Sky Argorok Heart Container:
   Standard:
-    Text: City in the Sky Argorok Heart Container
+    Text: Argoroks Herzcontainer
   Pretty:
-    Text: the {City in the Sky Argorok Heart Container}
+    Text: "{Argorok}"
   Cryptic:
-    Text: the {City in the Sky Argorok Heart Container}
+    Text: "{Argorok}"
 
 City in the Sky Dungeon Reward:
   Standard:
-    Text: City in the Sky Dungeon Reward
+    Text: Kumula Dungeon-Belohnung
   Pretty:
-    Text: the {City in the Sky Dungeon Reward}
+    Text: "{Kumula}"
   Cryptic:
-    Text: the {City in the Sky Dungeon Reward}
+    Text: "{Kumula}"
 
 Palace of Twilight West Wing First Room Central Chest:
   Standard:
@@ -7796,11 +7802,11 @@ Palace of Twilight East Wing Second Room Southwest Chest:
 
 Palace of Twilight Collect Both Sols:
   Standard:
-    Text: Palace of Twilight Collect Both Sols
+    Text: Schattenpalast - beide Sola zurückbringen
   Pretty:
-    Text: the {Palace of Twilight Collect Both Sols}
+    Text: die {Schattenpalast Sola}
   Cryptic:
-    Text: the {Palace of Twilight Collect Both Sols}
+    Text: die {Schattenpalast Sola}
 
 Palace of Twilight Central First Room Chest:
   Standard:
@@ -7820,11 +7826,11 @@ Palace of Twilight Central Outdoor Chest:
 
 Palace of Twilight Big Key Chest:
   Standard:
-    Text: Schattenpalast Master-Schlüssel-Truhe
+    Text: Master-Schlüssel-Truhe (Schattenpalast)
   Pretty:
-    Text: die {Schattenpalast Master-Schlüssel-Truhe}
+    Text: die {Master-Schlüssel-Truhe (Schattenpalast)}
   Cryptic:
-    Text: die {Schattenpalast Master-Schlüssel-Truhe}
+    Text: die {Master-Schlüssel-Truhe (Schattenpalast)}
 
 Palace of Twilight Central Tower Chest:
   Standard:
@@ -7836,11 +7842,11 @@ Palace of Twilight Central Tower Chest:
 
 Palace of Twilight Zant Heart Container:
   Standard:
-    Text: Palace of Twilight Zant Heart Container
+    Text: Zantos Herzcontainer
   Pretty:
-    Text: the {Palace of Twilight Zant Heart Container}
+    Text: "{Zanto}"
   Cryptic:
-    Text: the {Palace of Twilight Zant Heart Container}
+    Text: "{Zanto}"
 
 Hyrule Castle West Courtyard Central Small Chest:
   Standard:
@@ -7956,11 +7962,11 @@ Hyrule Castle Southeast Balcony Tower Chest:
 
 Hyrule Castle Big Key Chest:
   Standard:
-    Text: Schloss Hyrule Master-Schlüssel-Truhe
+    Text: Master-Schlüssel-Truhe (Schloss Hyrule)
   Pretty:
-    Text: die {Schloss Hyrule Master-Schlüssel-Truhe}
+    Text: die {Master-Schlüssel-Truhe (Schloss Hyrule)}
   Cryptic:
-    Text: die {Schloss Hyrule Master-Schlüssel-Truhe}
+    Text: die {Master-Schlüssel-Truhe (Schloss Hyrule)}
 
 Hyrule Castle Treasure Room First Chest:
   Standard:
@@ -9784,7 +9790,6 @@ Coro Bottle Offer 4 Text Template:
       And check this out! I have a special,
       one-time offer of <Item Pretty Name> for only <purple>100 Rubine<white>! How 'bout it, guy? What a bargain!<begin choice>
 
-# TODO: template override for proper German grammar
 Fishing Hole Sign Text Template:
   Standard:
     Text: |-
@@ -10087,12 +10092,13 @@ Dungeon Item Additional Info Text:
 Quest Item Switch Toggle Text:
   Standard:
     Text: |-
-      Press A
-      to switch
-      quest items
+      Drücke A um
+      Quest-Items
+      umzuschalten
 
 Dungeon Item Inventory Text:
   Standard:
+    # translator note: whitespace difference is due to font alignment reasons
     Text: |-
       Schatten: %d/3         Schlüssel:
       Spiegel:   %d/4         Aktuell (Gesamt)

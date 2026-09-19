@@ -1125,10 +1125,12 @@ void deactivate() {
     g_phase = Phase::Idle;
 }
 
-void tick() {
+void update() {
     g_client.poll();
     tick_generation();
+}
 
+void tick() {
     if (g_armedFrames > 0) {
         --g_armedFrames;
     }

@@ -4,6 +4,7 @@
 
 #include "item.hpp"
 #include "session.hpp"
+#include "ap/ap_mode.hpp"
 
 DEFINE_MOD();
 IMPORT_SERVICE(HostService, svc_host);
@@ -51,6 +52,7 @@ MOD_EXPORT ModResult mod_initialize(ModError* error) {
 }
 
 MOD_EXPORT ModResult mod_update(ModError*) {
+    ap::update();
     // we register update function with game mode service, so no need to do anything here
     return MOD_OK;
 }

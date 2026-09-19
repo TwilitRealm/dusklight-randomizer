@@ -14,6 +14,8 @@ GameModeDesc game_mode_desc();
 ModResult activate();
 void deactivate();
 void tick();
+// Every host frame, even while the game is paused behind a UI window (network, seed build).
+void update();
 
 // Replaces the randomizer's new-file seed gate: connect to the server, build the seed from
 // slot data, then continue to name entry.

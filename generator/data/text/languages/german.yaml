@@ -153,6 +153,14 @@ Foolish Item:
   Cryptic:
     Text: a {chilly surprise}
 
+Archipelago Item:
+  Standard:
+    Text: Archipelago-Gegenstand
+  Pretty:
+    Text: "ein {Archipelago-Gegenstand}"
+  Cryptic:
+    Text: "ein {Gegenstand aus einer anderen Welt}"
+
 Ordon Spring Portal:
   Standard:
     Text: Ordon Spring Portal

@@ -1,7 +1,7 @@
 {
   "id": "com.noahsmaximum.dusklight_archipelago",
   "name": "Dusklight Archipelago",
-  "version": "@ARCHIPELAGO_VERSION@",
+  "version": "0.1.0",
   "author": "noahsmaximum (built on the Twilit Realm randomizer)",
   "description": "Archipelago multiworld for Dusklight. Built on the official randomizer: connect to a server from the Archipelago game mode and the whole seed is rebuilt in-game."
 }

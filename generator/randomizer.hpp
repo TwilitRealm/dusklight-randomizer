@@ -6,6 +6,11 @@
 
 namespace randomizer
 {
+    // Set while generating a seed from Archipelago slot data. Every item location is
+    // plandomized from the multiworld, so local logic verification and filling are skipped:
+    // other worlds' items are opaque here and logic was already validated by Archipelago.
+    inline bool g_archipelagoMode = false;
+
     class Randomizer
     {
     public:

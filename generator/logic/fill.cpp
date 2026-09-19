@@ -1,4 +1,5 @@
 #include "fill.hpp"
+#include "../randomizer.hpp"
 
 #include "item_pool.hpp"
 #include "search.hpp"
@@ -58,6 +59,10 @@ namespace randomizer::logic::fill
         FastFill(itemPool, locationPool);
 
         // Verify that all logic is satisfied
+        if (g_archipelagoMode)
+        {
+            return;
+        }
         auto verifyLogicError = search::VerifyLogic(&worlds);
         if (verifyLogicError.has_value())
         {

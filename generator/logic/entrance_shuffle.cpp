@@ -761,6 +761,13 @@ namespace randomizer::logic::entrance_shuffle
                        Entrance* entrance,
                        const item_pool::ItemPool& completeItemPool)
     {
+        // Archipelago seeds carry every placement and entrance from the multiworld; the local
+        // world alone can't satisfy logic (its items are spread across other games).
+        if (g_archipelagoMode)
+        {
+            return;
+        }
+
         // Validate that all logic is still satisfied
         auto& worlds = world->GetRandomizer()->GetWorlds();
         auto verifyLogicError = search::VerifyLogic(&worlds, completeItemPool);

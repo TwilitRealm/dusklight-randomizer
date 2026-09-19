@@ -45,7 +45,14 @@ FetchContent_Declare(
         GIT_TAG        twilit-v2
 )
 
-FetchContent_MakeAvailable(yaml-cpp base64pp battery-embed)
+message(STATUS "randomizer: Fetching nlohmann_json")
+FetchContent_Declare(
+        nlohmann_json
+        URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz
+        DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+)
+
+FetchContent_MakeAvailable(yaml-cpp base64pp battery-embed nlohmann_json)
 
 set(RANDOMIZER_GENERATOR_SOURCES
         generator/logic/area.cpp
@@ -99,6 +106,8 @@ set(RANDOMIZER_SOURCES
         src/ui/rando_config.cpp
         src/ui/ui.cpp
         src/ui/tracker.cpp
+        src/ap/ap_client.cpp
+        src/ap/ap_mode.cpp
 )
 
 # Embed the generator's YAML data into the mod library. Paths are relative to this
@@ -119,6 +128,7 @@ endforeach ()
 
 # Versioning
 set(RANDOMIZER_VERSION "1.0.4")
+set(ARCHIPELAGO_VERSION "0.1.0")
 find_package(Git QUIET)
 if(GIT_FOUND)
     execute_process(
@@ -161,7 +171,7 @@ configure_file(
         NEWLINE_STYLE LF
 )
 
-add_mod(randomizer
+add_mod(archipelago
     FEATURES game fmt
     SOURCES  src/mod.cpp ${RANDOMIZER_GENERATOR_SOURCES} ${RANDOMIZER_SOURCES}
     MOD_JSON mod.json
@@ -169,10 +179,10 @@ add_mod(randomizer
     BUNDLE
 )
 
-target_link_libraries(randomizer PRIVATE yaml-cpp::yaml-cpp base64pp randomizer_embeds)
+target_link_libraries(archipelago PRIVATE yaml-cpp::yaml-cpp base64pp randomizer_embeds nlohmann_json::nlohmann_json)
 
 string(LENGTH "${CMAKE_CURRENT_SOURCE_DIR}/" RANDOMIZER_SOURCE_PATH_SIZE)
-target_compile_definitions(randomizer PRIVATE
+target_compile_definitions(archipelago PRIVATE
         FULL_RANDOMIZER_VERSION="${FULL_RANDOMIZER_VERSION}"
         RANDO_DATA_PATH="generator/data/"
         SOURCE_PATH_SIZE=${RANDOMIZER_SOURCE_PATH_SIZE}
@@ -207,4 +217,15 @@ target_compile_definitions(randomizer_generator_tests PRIVATE
         RANDO_LOGIC_TESTS_PATH="${RANDO_LOGIC_TESTS_PATH}"
         SETTINGS_PATH="${CMAKE_BINARY_DIR}/randomizer tests/settings.yaml"
         PREFERENCES_PATH="${CMAKE_BINARY_DIR}/randomizer tests/preferences.yaml"
+        RANDOMIZER_ONLY)
+
+# Offline test: rebuild a seed from Archipelago slot_data exactly like the mod does.
+add_executable(ap_gen_test ${CMAKE_CURRENT_SOURCE_DIR}/tools/ap_gen_test.cpp ${RANDOMIZER_GENERATOR_SOURCES})
+target_link_libraries(ap_gen_test PRIVATE
+        dusklight_mod_api yaml-cpp::yaml-cpp base64pp fmt::fmt randomizer_embeds nlohmann_json::nlohmann_json)
+target_compile_definitions(ap_gen_test PRIVATE
+        FULL_RANDOMIZER_VERSION="${FULL_RANDOMIZER_VERSION}"
+        RANDO_DATA_PATH="generator/data/"
+        SOURCE_PATH_SIZE=${RANDOMIZER_SOURCE_PATH_SIZE}
+        RANDO_SAVE_PATH="${CMAKE_BINARY_DIR}/randomizer/"
         RANDOMIZER_ONLY)

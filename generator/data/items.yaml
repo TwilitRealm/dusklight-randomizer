@@ -918,9 +918,9 @@
 #  Importance: Junk
 #  Id: 0xDB
 
-#- Name: Unused
-#  Importance: Junk
-#  Id: 0xDC
+- Name: Archipelago Item # Another player's item (Archipelago)
+  Importance: Junk
+  Id: 0xDC
 
 #- Name: Unused
 #  Importance: Junk

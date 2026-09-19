@@ -14,6 +14,7 @@
 #include "messages.hpp"
 #include "verify_item_functions.h"
 #include "../generator/utility/text.hpp"
+#include "ap/ap_mode.hpp"
 
 #include "d/d_com_inf_game.h"
 #include "d/d_item.h"
@@ -38,11 +39,6 @@ ItemGiveHandle s_check_observer{};
 std::vector<StageActorHandle> s_stage_edits{};
 
 constexpr const char* kSeedHashBlobName = "seed_hash";
-
-struct DerivedKey {
-    int stage_id;
-    u16 key;
-};
 
 std::optional<int> parse_stage_check(const char* name, std::string_view prefix) {
     if (std::strncmp(name, prefix.data(), prefix.size()) != 0) {
@@ -466,9 +462,9 @@ ModResult onGameModeActivated(void*, ModError* error) {
         return mods::set_error(error, result, "failed to register texture replacement");
     }
 
-    result = ui::initialize();
+    result = ap::activate();
     if (result != MOD_OK) {
-        return mods::set_error(error, result, "failed to initialize ui");
+        return mods::set_error(error, result, "failed to initialize archipelago");
     }
 
     // Preload certain data to prevent hitching that would happen if loading the data as necessary
@@ -480,9 +476,9 @@ ModResult onGameModeActivated(void*, ModError* error) {
 }
 
 void shutdown() {
+    ap::deactivate();
     deactivateSeed();
     hooks::uninstall();
-    ui::shutdown();
     svc_mng.save->unobserve_saves(mod_ctx, s_save_observer);
     svc_mng.texture->unregister(mod_ctx, logoTexHandle);
 }
@@ -495,8 +491,8 @@ ModResult onGameModeDeactivated(void*, ModError*) {
 }
 
 ModResult onGameModeUpdate(void*, ModError*) {
-    ui::update();
     session::update();
+    ap::tick();
     return MOD_OK;
 }
 
@@ -508,18 +504,10 @@ ModResult initialize(const ServiceManager& services) {
         return result;
     }
 
-    constexpr GameModeDesc gameModeDesc{
-        .struct_size = sizeof(GameModeDesc),
-        .game_mode_id = "randomizer",
-        .full_name = "Randomizer",
-        .save_name = "randomizer",
-        .user_data = nullptr,
-        .on_activated = onGameModeActivated,
-        .on_deactivated = onGameModeDeactivated,
-        .on_save_loaded = onSaveLoaded,
-        .on_new_save = onNewSave,
-        .on_tick = onGameModeUpdate,
-    };
+    GameModeDesc gameModeDesc = ap::game_mode_desc();
+    gameModeDesc.on_activated = onGameModeActivated;
+    gameModeDesc.on_deactivated = onGameModeDeactivated;
+    gameModeDesc.on_tick = onGameModeUpdate;
     result = svc_game_mode->register_game_mode(mod_ctx, &gameModeDesc);
     if (result != MOD_OK) {
         return result;
@@ -528,7 +516,8 @@ ModResult initialize(const ServiceManager& services) {
     UiModsPanelDesc panelDesc = UI_MODS_PANEL_DESC_INIT;
     panelDesc.build = [](ModContext* ctx, UiElementHandle pane, void*, ModError*) -> ModResult {
         return svc_ui->pane_add_text(ctx, pane,
-            "To play, select \"Randomizer\" from the Dusklight menu, then create a new save.",
+            "To play, select \"Archipelago\" from the Dusklight menu, create a new save and enter "
+            "your server, slot name and password. Existing saves reconnect automatically.",
             nullptr);
     };
     result = svc_ui->register_mods_panel(mod_ctx, &panelDesc);

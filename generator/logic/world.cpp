@@ -671,6 +671,14 @@ namespace randomizer::logic::world
             utility::container::Erase(this->_itemPool, item);
         }
 
+        if (g_archipelagoMode)
+        {
+            // Every location is placed by Archipelago; whatever junk padding is left over has
+            // nowhere to go.
+            this->_itemPool.clear();
+            return;
+        }
+
         // If no world has entrance randomizer enabled, check to see if our plandomized item placements work
         if (std::ranges::none_of(this->GetRandomizer()->GetWorlds(), [](const auto& world) {
             return world->AnyEntranceRandomizerEnabled();

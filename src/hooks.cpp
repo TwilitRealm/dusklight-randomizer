@@ -1,4 +1,5 @@
 #include "hooks.hpp"
+#include "ap/ap_mode.hpp"
 #include "session.hpp"
 #include "randomizer_context.hpp"
 #include "ui/rando_config.hpp"
@@ -1865,6 +1866,7 @@ HookAction hookPreSetGetSubBgm(ModContext*, void* args, void*, void*) {
 
 HookAction hookPreProcCoGetItem(ModContext*, void* args, void*, void*) {
     auto* i_this = mods::arg<daAlink_c*>(args, 0);
+    ap::on_get_item_demo(i_this);
     if (i_this->field_0x32cc != 0 || i_this->mProcVar2.field_0x300c != dItemNo_Randomizer_POU_SPIRIT_e) {
         return HOOK_CONTINUE;
     }

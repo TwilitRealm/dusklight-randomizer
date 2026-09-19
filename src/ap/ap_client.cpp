@@ -67,10 +67,10 @@ void Client::connect(const ConnectInfo& info) {
         }
         // Plain ws:// is only allowed to loopback by the host; everything else must be TLS
         // (archipelago.gg serves wss).
-        if (is_local_host(server)) {
-            mUrls.push_back("ws://" + server);
-            mUrls.push_back("wss://" + server);
-        } else {
+        // Plain ws:// first: it uses our own WebSocket client, which can keep sending for
+        // the whole session. wss:// falls back to the host service (TLS, but send-limited).
+        mUrls.push_back("ws://" + server);
+        if (!is_local_host(server)) {
             mUrls.push_back("wss://" + server);
         }
     }
@@ -79,6 +79,26 @@ void Client::connect(const ConnectInfo& info) {
 
 void Client::open(const std::string& url) {
     mods::log::info("archipelago: connecting to {}", url);
+    mUseTcp = url.starts_with("ws://");
+    if (mUseTcp) {
+        std::string rest = url.substr(5);
+        std::string path = "/";
+        const auto slash = rest.find('/');
+        if (slash != std::string::npos) {
+            path = rest.substr(slash);
+            rest = rest.substr(0, slash);
+        }
+        uint16_t port = 38281;
+        const auto colon = rest.rfind(':');
+        const auto bracket = rest.rfind(']');
+        if (colon != std::string::npos && (bracket == std::string::npos || bracket < colon)) {
+            port = static_cast<uint16_t>(std::strtoul(rest.c_str() + colon + 1, nullptr, 10));
+            rest = rest.substr(0, colon);
+        }
+        mHandle = 0;
+        mState = mTcp.connect(rest, port, path) ? State::Connecting : State::Disconnected;
+        return;
+    }
     mods::ws::Options opts;
     opts.url = url;
     opts.connectTimeoutMs = 8000;
@@ -96,6 +116,7 @@ void Client::open(const std::string& url) {
 }
 
 void Client::disconnect() {
+    mTcp.close();
     if (s_conn) {
         s_conn->close(1000, "bye");
         s_conn.reset();
@@ -107,17 +128,81 @@ void Client::disconnect() {
 }
 
 void Client::send(const json& packets) {
+    const std::string text = packets.dump(-1, ' ', false, json::error_handler_t::replace);
+    if (mUseTcp) {
+        if (!mTcp.send_text(text)) {
+            mods::log::error("archipelago: send failed for {} bytes", text.size());
+        }
+        return;
+    }
     if (!s_conn || !*s_conn) {
         return;
     }
-    const std::string text = packets.dump(-1, ' ', false, json::error_handler_t::replace);
     const ModResult r = s_conn->send_text(text);
     if (r != MOD_OK) {
         mods::log::error("archipelago: send failed ({}) for {} bytes", static_cast<int>(r), text.size());
     }
 }
 
+void Client::on_open() {
+    mods::log::info("archipelago: socket open");
+    mState = State::Handshaking;
+}
+
+void Client::on_message(std::string_view text) {
+    json packets = json::parse(text, nullptr, false);
+    if (packets.is_discarded() || !packets.is_array()) {
+        mods::log::warn("archipelago: malformed packet");
+        return;
+    }
+    for (const auto& p : packets) {
+        try {
+            handle(p);
+        } catch (const std::exception& e) {
+            mods::log::error("archipelago: error handling {}: {}", p.value("cmd", "?"), e.what());
+        }
+    }
+}
+
+void Client::on_closed(std::string reason) {
+    if (mState == State::Connecting && mUrlIndex + 1 < mUrls.size()) {
+        open(mUrls[++mUrlIndex]);
+        return;
+    }
+    if (reason.empty()) {
+        reason = "connection closed";
+    }
+    mods::log::info("archipelago: socket closed ({})", reason);
+    if (mState != State::Refused) {
+        mState = State::Disconnected;
+        mLastError = std::move(reason);
+    }
+    if (onDisconnected) {
+        onDisconnected(mLastError);
+    }
+}
+
 void Client::poll() {
+    if (mUseTcp) {
+        TcpWebSocket::Event tev;
+        while (mTcp.poll(tev)) {
+            switch (tev.type) {
+            case TcpWebSocket::EventType::Open:
+                on_open();
+                break;
+            case TcpWebSocket::EventType::Message:
+                on_message(tev.text);
+                break;
+            case TcpWebSocket::EventType::Closed:
+                on_closed(tev.error);
+                break;
+            default:
+                break;
+            }
+        }
+        return;
+    }
+
     mods::ws::Event ev;
     while (mods::ws::poll(ev)) {
         if (ev.handle != mHandle) {
@@ -125,47 +210,15 @@ void Client::poll() {
         }
         switch (ev.type) {
         case WEBSOCKET_EVENT_OPEN:
-            mods::log::info("archipelago: socket open");
-            mState = State::Handshaking;
+            on_open();
             break;
-        case WEBSOCKET_EVENT_MESSAGE: {
-            const std::string_view text{reinterpret_cast<const char*>(ev.data.data()), ev.data.size()};
-            json packets = json::parse(text, nullptr, false);
-            if (packets.is_discarded() || !packets.is_array()) {
-                mods::log::warn("archipelago: malformed packet");
-                break;
-            }
-            for (const auto& p : packets) {
-                try {
-                    handle(p);
-                } catch (const std::exception& e) {
-                    mods::log::error("archipelago: error handling {}: {}", p.value("cmd", "?"), e.what());
-                }
-            }
+        case WEBSOCKET_EVENT_MESSAGE:
+            on_message({reinterpret_cast<const char*>(ev.data.data()), ev.data.size()});
             break;
-        }
         case WEBSOCKET_EVENT_CLOSED: {
             s_conn.reset();
             mHandle = 0;
-            const bool neverOpened = mState == State::Connecting;
-            if (neverOpened && mUrlIndex + 1 < mUrls.size()) {
-                open(mUrls[++mUrlIndex]);
-                break;
-            }
-            mods::log::info("archipelago: socket closed (state {}, code {}, error {}, '{}' / '{}')",
-                static_cast<int>(mState), ev.closeCode, static_cast<int>(ev.error), ev.message,
-                ev.closeReason);
-            std::string reason = std::string(ev.message.empty() ? ev.closeReason : ev.message);
-            if (reason.empty()) {
-                reason = "connection closed";
-            }
-            if (mState != State::Refused) {
-                mState = State::Disconnected;
-                mLastError = reason;
-            }
-            if (onDisconnected) {
-                onDisconnected(mLastError);
-            }
+            on_closed(std::string(ev.message.empty() ? ev.closeReason : ev.message));
             break;
         }
         default:

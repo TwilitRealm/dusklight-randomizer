@@ -3,6 +3,8 @@
 // Minimal Archipelago network protocol client over the host's WebSocketService.
 // Runs entirely on the game thread: call poll() once per frame.
 
+#include "ws_tcp.hpp"
+
 #include <nlohmann/json.hpp>
 
 #include <cstdint>
@@ -65,6 +67,9 @@ public:
 
 private:
     void open(const std::string& url);
+    void on_open();
+    void on_message(std::string_view text);
+    void on_closed(std::string reason);
     void handle(const json& packet);
     void send(const json& packets);
     std::string nextUrl();
@@ -75,6 +80,8 @@ private:
     std::vector<std::string> mUrls;
     size_t mUrlIndex = 0;
     uint64_t mHandle = 0;
+    bool mUseTcp = false;   // ws:// goes through our own client; wss:// through the host
+    TcpWebSocket mTcp;
     int mSlot = -1;
     std::string mSeedName;
     std::vector<std::string> mPlayerNames;

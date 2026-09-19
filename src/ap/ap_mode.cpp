@@ -32,6 +32,7 @@
 #include <atomic>
 #include <cstring>
 #include <filesystem>
+#include <cstdio>
 #include <fstream>
 #include <mutex>
 #include <thread>
@@ -141,6 +142,19 @@ ConfigVarHandle g_cfgModelScale = 0;
 
 // ---------------------------------------------------------------------------------------
 // Helpers
+
+// Flushed debug trail next to the mod's data; the host log buffers too much to debug with.
+void ap_log(const std::string& line) {
+    const char* dir = nullptr;
+    if (svc_mng.host->data_dir(svc_mng.mod_ctx, &dir) != MOD_OK || dir == nullptr) {
+        return;
+    }
+    if (std::FILE* f = std::fopen((std::filesystem::path(dir) / "ap_debug.log").string().c_str(), "a")) {
+        std::fputs(line.c_str(), f);
+        std::fputc('\n', f);
+        std::fclose(f);
+    }
+}
 
 std::unordered_map<int, std::string> g_itemNames;
 
@@ -454,6 +468,8 @@ void on_connected(const json& p) {
         g_checked.insert(id.get<int64_t>());
     }
 
+    ap_log(fmt::format("connected in phase {}: {} locations, {} ap placements",
+        static_cast<int>(g_phase), g_locationIds.size(), g_apItemText.size()));
     if (g_phase == Phase::NewSave) {
         g_status = "Connected. Building your seed...";
         g_phase = Phase::Generating;
@@ -474,6 +490,7 @@ void on_connected(const json& p) {
             start_generation(slotData, g_client.info().slot);
             return;
         }
+        g_client.sendSync();  // also proves the transport can send after the handshake
         toast("Archipelago", status_line(), "success", 3000);
         if (g_state.goal) {
             g_client.sendGoal();
@@ -535,7 +552,9 @@ bool resolve_check(ModContext*, const ItemCheckInfo* info, ItemCheckResolution*,
 
 void report_locations(const std::vector<std::string>& locs) {
     for (const auto& loc : locs) {
-        if (const auto it = g_locationIds.find(loc); it != g_locationIds.end()) {
+        const auto it = g_locationIds.find(loc);
+        ap_log(fmt::format("report_location '{}' known={}", loc, it != g_locationIds.end()));
+        {
             if (!g_checked.contains(it->second)) {
                 g_toSend.push_back(it->second);
                 g_checked.insert(it->second);
@@ -545,6 +564,8 @@ void report_locations(const std::vector<std::string>& locs) {
 }
 
 void observe_give(ModContext*, const ItemGiveInfo* info, void*) {
+    ap_log(fmt::format("give item=0x{:02X} origin={} check='{}'", info->item, info->origin,
+        info->check_name != nullptr ? info->check_name : "(none)"));
     if (info->check_name != nullptr) {
         const auto locs = locations_for_check(info->check_name);
         report_locations(locs);
@@ -660,6 +681,7 @@ void scan_locations() {
 
 void flush_checks() {
     if (!g_toSend.empty() && g_client.state() == State::Connected) {
+        ap_log(fmt::format("sending {} location check(s)", g_toSend.size()));
         g_client.sendLocations(g_toSend);
         g_toSend.clear();
     }
@@ -895,6 +917,7 @@ ModResult on_new_save(void* ud, ModError* err) {
     g_needsRegen = false;
     g_outstanding = -1;
     g_phase = Phase::Playing;
+    ap_log(fmt::format("new save created, hash {}, scan list {}", g_loadedHash, g_scan.size()));
     after_seed_activated();
     return MOD_OK;
 }

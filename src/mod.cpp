@@ -1,6 +1,7 @@
 #include "mods/service.hpp"
 #include "mods/svc/log.h"
 #include "mods/svc/websocket.h"
+#include "mods/svc/net.h"
 
 #include "item.hpp"
 #include "session.hpp"
@@ -22,6 +23,7 @@ IMPORT_SERVICE(GameModeService, svc_game_mode);
 IMPORT_SERVICE(TextureService, svc_texture);
 IMPORT_SERVICE(FileService, svc_file);
 IMPORT_SERVICE(WebSocketService, svc_websocket);
+IMPORT_SERVICE(NetService, svc_net);
 
 extern "C" {
 

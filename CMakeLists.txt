@@ -107,6 +107,7 @@ set(RANDOMIZER_SOURCES
         src/ui/ui.cpp
         src/ui/tracker.cpp
         src/ap/ap_client.cpp
+        src/ap/ws_tcp.cpp
         src/ap/ap_mode.cpp
 )
 

@@ -249,7 +249,8 @@ HookAction hookPreSelectDataNameMove(ModContext*, void* args, void* retval, void
     if (ui::g_dialogSelectModeState == ui::SelectReady && isHeaderTxtChange == true && isFileRecScale == true && isModoruTxtDisp == true) {
         ui::g_dialogSelectModeState = ui::SelectWait;
 
-        ModResult rt = ui::buildFileSelectGateMenu(i_this);
+        // Archipelago: the seed comes from the multiworld, so the gate is just "connect".
+        ModResult rt = ap::open_connect_gate(i_this);
         if (rt != MOD_OK) {
             mods::log::error("Failed to build menu");
             return HOOK_CONTINUE;

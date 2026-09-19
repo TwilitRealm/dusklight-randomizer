@@ -10,12 +10,14 @@
 #include "../session.hpp"
 #include "../stages.h"
 #include "../tools.h"
+#include "../ui/rando_config.hpp"
 #include "../verify_item_functions.h"
 
 #include "d/actor/d_a_alink.h"
 #include "d/actor/d_a_demo_item.h"
 #include "d/actor/d_a_obj_item.h"
 #include "d/d_com_inf_game.h"
+#include "d/d_file_select.h"
 #include "d/d_stage.h"
 #include "m_Do/m_Do_audio.h"
 
@@ -109,7 +111,6 @@ int g_outstanding = -1;
 std::string g_outstandingDesc;
 
 // New-save UI
-GameModeNewSaveState* g_newSaveState = nullptr;
 UiWindowHandle g_window = 0;
 UiElementHandle g_statusText = 0;
 std::string g_status = "Enter your Archipelago connection, then press Connect.";
@@ -730,10 +731,8 @@ void tick_generation() {
     randomizer::session::g_pending_seed_hash = hash;
     g_status = "Seed ready!";
     g_phase = Phase::AwaitNewSave;
-    if (g_newSaveState != nullptr) {
-        *g_newSaveState = GAME_MODE_STATE_PROCEED;
-        g_newSaveState = nullptr;
-    }
+    randomizer::ui::g_file_select_window_ctx.is_proceed = true;  // continue to name entry
+    mDoAud_seStartMenu(Z2SE_SY_NEW_FILE);
     if (g_window != 0) {
         const auto w = g_window;
         g_window = 0;
@@ -832,23 +831,34 @@ ModResult update_new_save_tab(ModContext* ctx, void*, ModError*) {
     return MOD_OK;
 }
 
+void* g_fileSelect = nullptr;
+
 void new_save_window_closed(ModContext*, UiWindowHandle, void*) {
     g_window = 0;
     g_statusText = 0;
-    if (g_newSaveState != nullptr && *g_newSaveState == GAME_MODE_STATE_PENDING) {
-        *g_newSaveState = GAME_MODE_STATE_RETURN;
-        g_newSaveState = nullptr;
-        g_client.disconnect();
-        g_phase = Phase::Idle;
+    randomizer::ui::g_dialogSelectModeState = randomizer::ui::SelectReady;
+    if (randomizer::ui::g_file_select_window_ctx.is_proceed) {
+        return;
     }
+    // Backed out: return the file-select menu to the data list, and drop the connection.
+    if (auto* fs = static_cast<dFile_select_c*>(g_fileSelect)) {
+        fs->headerTxtSet(0x43, 1, 0);
+        fs->fileRecScaleAnmInitSet2(0.0f, 1.0f);
+        fs->nameMoveAnmInitSet(0xd29, 0xd1f);
+        fs->modoruTxtDispAnmInit(0);
+        fs->mDataSelProc = dFile_select_c::DATASELPROC_NAME_TO_DATA_SELECT_MOVE;
+    }
+    g_client.disconnect();
+    g_phase = Phase::Idle;
 }
 
-ModResult on_new_save_select(void*, GameModeNewSaveState* state, ModError* err) {
-    g_newSaveState = state;
+ModResult open_gate_window(void* fileSelect) {
+    g_fileSelect = fileSelect;
+    randomizer::ui::g_file_select_window_ctx.is_proceed = false;
     g_phase = Phase::NewSave;
     g_haveSlot = false;
     g_serverItems.clear();
-    g_status = "Enter your Archipelago connection, then press Connect.";
+    g_status = "Connect to your Archipelago room. Your seed is built from the server's data.";
     g_inServer = config_string(g_cfgServer);
     if (g_inServer.empty()) {
         g_inServer = "archipelago.gg:38281";
@@ -857,18 +867,14 @@ ModResult on_new_save_select(void*, GameModeNewSaveState* state, ModError* err) 
     g_inPassword.clear();
 
     static UiTabDesc tab = UI_TAB_DESC_INIT;
-    tab.title = "Connect";
+    tab.title = "Archipelago";
     tab.build = build_new_save_tab;
     tab.update = update_new_save_tab;
     UiWindowDesc desc = UI_WINDOW_DESC_INIT;
     desc.tabs = &tab;
     desc.tab_count = 1;
     desc.on_closed = new_save_window_closed;
-    const ModResult r = svc_mng.ui->window_push(svc_mng.mod_ctx, &desc, &g_window);
-    if (r != MOD_OK) {
-        return mods::set_error(err, r, "failed to open Archipelago connection window");
-    }
-    return MOD_OK;
+    return svc_mng.ui->window_push(svc_mng.mod_ctx, &desc, &g_window);
 }
 
 // ---------------------------------------------------------------------------------------
@@ -1054,7 +1060,6 @@ GameModeDesc game_mode_desc() {
         .user_data = nullptr,
         .on_save_loaded = on_save_loaded,
         .on_new_save = on_new_save,
-        .on_new_save_select = on_new_save_select,
         .on_game_reset = on_game_reset,
     };
 }
@@ -1142,6 +1147,10 @@ void tick() {
         flush_checks();
         deliver_items();
     }
+}
+
+ModResult open_connect_gate(void* fileSelect) {
+    return open_gate_window(fileSelect);
 }
 
 void on_get_item_demo(void* link) {

@@ -121,6 +121,7 @@ void Client::poll() {
         }
         switch (ev.type) {
         case WEBSOCKET_EVENT_OPEN:
+            mods::log::info("archipelago: socket open");
             mState = State::Handshaking;
             break;
         case WEBSOCKET_EVENT_MESSAGE: {
@@ -143,6 +144,9 @@ void Client::poll() {
                 open(mUrls[++mUrlIndex]);
                 break;
             }
+            mods::log::info("archipelago: socket closed (state {}, code {}, error {}, '{}' / '{}')",
+                static_cast<int>(mState), ev.closeCode, static_cast<int>(ev.error), ev.message,
+                ev.closeReason);
             std::string reason = std::string(ev.message.empty() ? ev.closeReason : ev.message);
             if (reason.empty()) {
                 reason = "connection closed";
@@ -164,6 +168,7 @@ void Client::poll() {
 
 void Client::handle(const json& p) {
     const std::string cmd = p.value("cmd", "");
+    mods::log::debug("archipelago: <- {}", cmd);
     if (cmd == "RoomInfo") {
         mSeedName = p.value("seed_name", "");
         json games = p.value("games", json::array());

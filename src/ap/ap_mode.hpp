@@ -15,6 +15,10 @@ ModResult activate();
 void deactivate();
 void tick();
 
+// Replaces the randomizer's new-file seed gate: connect to the server, build the seed from
+// slot data, then continue to name entry.
+ModResult open_connect_gate(void* fileSelect);
+
 // Called by the randomizer's procCoGetItem hook: lets AP items use custom get-item text.
 void on_get_item_demo(void* link);
 

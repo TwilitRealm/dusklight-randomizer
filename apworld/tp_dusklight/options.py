@@ -9,8 +9,8 @@ import re
 from dataclasses import make_dataclass
 from typing import Any
 
-from Options import (Choice, DeathLink, DefaultOnToggle, PerGameCommonOptions, Range,
-                     StartInventoryPool, Toggle)
+from Options import (Choice, DefaultOnToggle, PerGameCommonOptions, Range, StartInventoryPool,
+                     Toggle)
 
 from . import data
 
@@ -87,11 +87,6 @@ for _info in data.settings().values():
     _fields.append((_key, _make_option(_info)))
 
 
-class DeathLinkOption(DeathLink):
-    """When you die, everyone who enabled death link dies. Of course, the reverse is true too."""
-
-
-_fields.append(("death_link", DeathLinkOption))
 _fields.append(("start_inventory_from_pool", StartInventoryPool))
 
 TPOptions = make_dataclass("TPOptions", _fields, bases=(PerGameCommonOptions,))

@@ -13,7 +13,6 @@ from typing import Any, ClassVar
 
 from BaseClasses import (CollectionState, Entrance, Item, ItemClassification, Location,
                          LocationProgressType, MultiWorld, Region, Tutorial)
-from Fill import fill_restrictive
 from worlds.AutoWorld import WebWorld, World
 from worlds.LauncherComponents import Component, Type, components
 
@@ -426,6 +425,7 @@ class TPWorld(World):
 
     def pre_fill(self) -> None:
         """Place restricted items (dungeon rewards, own/any-dungeon/overworld keys) like the rando's fill."""
+        from Fill import fill_restrictive  # imported here: Fill imports worlds at module level
         mw, p = self.multiworld, self.player
         groups: list[tuple[list[str], list[TPLocation]]] = []
         unfilled = [self.get_location(n) for n in self._real_location_names
@@ -522,7 +522,6 @@ class TPWorld(World):
             "placements": placements,
             "location_ids": location_ids,
             "item_id_base": data.ITEM_ID_BASE,
-            "death_link": bool(self.options.death_link.value),
         }
 
     def write_spoiler_header(self, spoiler_handle) -> None:

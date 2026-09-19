@@ -139,12 +139,20 @@ UiElementHandle g_statusWindowText = 0;
 ConfigVarHandle g_cfgServer = 0;
 ConfigVarHandle g_cfgSlot = 0;
 ConfigVarHandle g_cfgModelScale = 0;
+ConfigVarHandle g_cfgDebugLog = 0;
 
 // ---------------------------------------------------------------------------------------
 // Helpers
 
 // Flushed debug trail next to the mod's data; the host log buffers too much to debug with.
 void ap_log(const std::string& line) {
+    bool enabled = false;
+    if (g_cfgDebugLog != 0) {
+        svc_mng.config->get_bool(svc_mng.mod_ctx, g_cfgDebugLog, &enabled);
+    }
+    if (!enabled) {
+        return;
+    }
     const char* dir = nullptr;
     if (svc_mng.host->data_dir(svc_mng.mod_ctx, &dir) != MOD_OK || dir == nullptr) {
         return;
@@ -1109,6 +1117,11 @@ ModResult activate() {
         d.type = CONFIG_VAR_FLOAT;
         d.default_float = 0.6;
         svc_mng.config->register_var(svc_mng.mod_ctx, &d, &g_cfgModelScale);
+        ConfigVarDesc debug = CONFIG_VAR_DESC_INIT;
+        debug.name = "debugLog";
+        debug.type = CONFIG_VAR_BOOL;
+        debug.default_bool = false;
+        svc_mng.config->register_var(svc_mng.mod_ctx, &debug, &g_cfgDebugLog);
     }
 
     svc_mng.item->observe_gives(svc_mng.mod_ctx, observe_give, nullptr, &g_observer);

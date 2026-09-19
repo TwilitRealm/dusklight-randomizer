@@ -400,6 +400,7 @@ bool generate_seed(const json& slotData, const std::string& slot, std::string& o
         }
         RandomizerContext ctx = WriteSeedData(rando.GetWorld());
         ctx.mHash = rando.GetConfig().GetHash();
+        fs::create_directories(ctx.GetSeedDataPath().parent_path());
         if (auto werr = ctx.WriteToFile(); werr.has_value()) {
             outError = *werr;
             return false;

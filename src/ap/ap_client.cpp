@@ -110,7 +110,11 @@ void Client::send(const json& packets) {
     if (!s_conn || !*s_conn) {
         return;
     }
-    s_conn->send_text(packets.dump(-1, ' ', false, json::error_handler_t::replace));
+    const std::string text = packets.dump(-1, ' ', false, json::error_handler_t::replace);
+    const ModResult r = s_conn->send_text(text);
+    if (r != MOD_OK) {
+        mods::log::error("archipelago: send failed ({}) for {} bytes", static_cast<int>(r), text.size());
+    }
 }
 
 void Client::poll() {
@@ -132,7 +136,11 @@ void Client::poll() {
                 break;
             }
             for (const auto& p : packets) {
-                handle(p);
+                try {
+                    handle(p);
+                } catch (const std::exception& e) {
+                    mods::log::error("archipelago: error handling {}: {}", p.value("cmd", "?"), e.what());
+                }
             }
             break;
         }
@@ -172,7 +180,7 @@ void Client::handle(const json& p) {
     if (cmd == "RoomInfo") {
         mSeedName = p.value("seed_name", "");
         json games = p.value("games", json::array());
-        send(json::array({{{"cmd", "GetDataPackage"}, {"games", games}}}));
+        // One frame for both: Connect first, then the names for PrintJSON.
         send(json::array({{
             {"cmd", "Connect"},
             {"password", mInfo.password},
@@ -185,7 +193,7 @@ void Client::handle(const json& p) {
             {"items_handling", 0b101},
             {"tags", json::array()},
             {"slot_data", true},
-        }}));
+        }, {{"cmd", "GetDataPackage"}, {"games", games}}}));
     } else if (cmd == "Connected") {
         mSlot = p.value("slot", -1);
         mPlayerNames.clear();

@@ -14,6 +14,7 @@
 #include "../verify_item_functions.h"
 
 #include "d/actor/d_a_alink.h"
+#include "d/actor/d_a_b_gnd.h"
 #include "d/actor/d_a_demo_item.h"
 #include "d/actor/d_a_obj_item.h"
 #include "d/d_com_inf_game.h"
@@ -635,6 +636,8 @@ bool ap_item_text(ModContext*, const MessageOverrideContext*, MessageTextData* o
 DEFINE_HOOK(&daDitem_c::set_mtx, ApDitemSetMtx);
 DEFINE_HOOK(&daItem_c::setBaseMtx, ApItemSetBaseMtx);
 DEFINE_HOOK(dStage_changeScene, ApChangeScene);
+// Ganondorf's execute is file-local; hook it by translation unit alias.
+DEFINE_HOOK_SYMBOL("src/d/actor/d_a_b_gnd.cpp#daB_GND_Execute", int(b_gnd_class*), ApGanondorf);
 
 float model_scale() {
     double s = 0.6;
@@ -673,14 +676,34 @@ void post_item_set_base_mtx(ModContext*, void* args, void*, void*) {
     }
 }
 
+void complete_goal(const char* how) {
+    if (g_state.goal) {
+        return;
+    }
+    g_state.goal = true;
+    write_state();
+    g_client.sendGoal();
+    ap_log(fmt::format("goal complete ({})", how));
+    toast("Archipelago", "Goal complete!", "success", 6000);
+}
+
+void post_ganondorf_execute(ModContext*, void* args, void*, void*) {
+    // The ending plays out inside the arena (no stage or scene change), so watch Ganondorf
+    // himself: the finishing blow puts him in the end action with the ending camera running.
+    constexpr s16 kActionEnd = 22;   // ACTION_END in d_a_b_gnd.cpp
+    constexpr s16 kEndingCamera = 60;
+    auto* gnd = mods::arg<b_gnd_class*>(args, 0);
+    if (gnd != nullptr && gnd->mActionMode == kActionEnd && gnd->mDemoCamMode >= kEndingCamera) {
+        complete_goal("Ganondorf defeated");
+    }
+}
+
 HookAction pre_change_scene(ModContext*, void*, void*, void*) {
-    // The only scene change out of Dark Lord Ganondorf's arena is the ending after his defeat.
-    if (g_phase == Phase::Playing && !g_state.goal &&
-        std::strcmp(dComIfGp_getStartStageName(), "D_MN09C") == 0)
-    {
-        g_state.goal = true;
-        write_state();
-        g_client.sendGoal();
+    const char* stage = dComIfGp_getStartStageName();
+    ap_log(fmt::format("changeScene from stage '{}'", stage != nullptr ? stage : "?"));
+    // Leaving Dark Lord Ganondorf's arena only happens through the ending.
+    if (g_phase == Phase::Playing && stage != nullptr && std::strcmp(stage, "D_MN09C") == 0) {
+        complete_goal("left D_MN09C");
     }
     return HOOK_CONTINUE;
 }
@@ -691,6 +714,15 @@ HookAction pre_change_scene(ModContext*, void*, void*, void*) {
 bool in_gameplay() {
     return g_phase == Phase::Playing && !g_needsRegen && randomizer_IsActive() &&
            !playerIsOnTitleScreen() && dComIfGp_getPlayer(0) != nullptr;
+}
+
+void log_stage_changes() {
+    static std::string last;
+    const char* stage = dComIfGp_getStartStageName();
+    if (stage != nullptr && last != stage) {
+        last = stage;
+        ap_log(fmt::format("stage -> {}", last));
+    }
 }
 
 void scan_locations() {
@@ -1064,6 +1096,15 @@ ModResult build_status_tab(ModContext* ctx, UiWindowHandle, UiElementHandle left
     b.label = "Reconnect";
     b.on_pressed = press_reconnect;
     svc_mng.ui->pane_add_control(ctx, left, &b, nullptr);
+    UiControlDesc goal = UI_CONTROL_DESC_INIT;
+    goal.kind = UI_CONTROL_BUTTON;
+    goal.label = "Send goal complete";
+    goal.help_rml = "Tells the server you finished the game, in case it wasn't detected.";
+    goal.on_pressed = [](ModContext*, void*) { complete_goal("manual"); };
+    goal.is_disabled = [](ModContext*, void*) {
+        return g_state.goal || g_client.state() != State::Connected;
+    };
+    svc_mng.ui->pane_add_control(ctx, left, &goal, nullptr);
     UiControlDesc b2 = UI_CONTROL_DESC_INIT;
     b2.kind = UI_CONTROL_BUTTON;
     b2.label = "Disconnect";
@@ -1151,6 +1192,7 @@ ModResult activate() {
 
     if (mods::hook::add_post<ApDitemSetMtx>(post_ditem_set_mtx) != MOD_OK ||
         mods::hook::add_post<ApItemSetBaseMtx>(post_item_set_base_mtx) != MOD_OK ||
+        mods::hook::add_post<ApGanondorf>(post_ganondorf_execute) != MOD_OK ||
         mods::hook::add_pre<ApChangeScene>(pre_change_scene) != MOD_OK)
     {
         mods::log::error("archipelago: failed to install hooks");
@@ -1178,6 +1220,7 @@ void deactivate() {
     mods::hook::uninstall<ApDitemSetMtx>();
     mods::hook::uninstall<ApItemSetBaseMtx>();
     mods::hook::uninstall<ApChangeScene>();
+    mods::hook::uninstall<ApGanondorf>();
     if (g_menuTab != 0) {
         svc_mng.ui->unregister_menu_tab(svc_mng.mod_ctx, g_menuTab);
         g_menuTab = 0;
@@ -1205,6 +1248,7 @@ void tick() {
         } else {
             g_reconnectFrames = 0;
         }
+        log_stage_changes();
         scan_locations();
         flush_checks();
         deliver_items();

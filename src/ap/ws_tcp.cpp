@@ -65,10 +65,12 @@ std::string frame(uint8_t opcode, const std::string& payload) {
 
 }  // namespace
 
-bool TcpWebSocket::connect(const std::string& host, uint16_t port, const std::string& path) {
+bool TcpWebSocket::connect(
+    const std::string& host, uint16_t port, const std::string& path, bool secure) {
     close();
     mHost = host;
     mPath = path.empty() ? "/" : path;
+    mSecure = secure;
     mRx.clear();
     mFragment.clear();
     mEvents.clear();
@@ -88,12 +90,12 @@ void TcpWebSocket::close() {
     if (mHandle != 0) {
         if (mState == State::Open) {
             const std::string payload{"\x03\xe8", 2};  // 1000 normal closure
-            const std::string closeFrame = frame(0x8, payload);
-            svc_net->send(mod_ctx, mHandle, closeFrame.data(), closeFrame.size());
+            out_send(frame(0x8, payload));
         }
         svc_net->close(mod_ctx, mHandle);
         mHandle = 0;
     }
+    mTls.reset();
     mState = State::Idle;
     mRx.clear();
     mFragment.clear();
@@ -104,16 +106,49 @@ void TcpWebSocket::fail(std::string reason) {
         svc_net->close(mod_ctx, mHandle);
         mHandle = 0;
     }
+    mTls.reset();
     mState = State::Idle;
     mEvents.push_back({EventType::Closed, {}, std::move(reason)});
+}
+
+bool TcpWebSocket::raw_send(const char* data, size_t size) {
+    return mHandle != 0 && svc_net->send(mod_ctx, mHandle, data, size) == MOD_OK;
+}
+
+// Everything the protocol writes goes out through here, so TLS is the only difference
+// between a ws:// and a wss:// connection.
+bool TcpWebSocket::out_send(const std::string& bytes) {
+    if (mSecure) {
+        return mTls.write(bytes.data(), bytes.size());
+    }
+    return raw_send(bytes.data(), bytes.size());
+}
+
+bool TcpWebSocket::send_upgrade() {
+    uint8_t keyBytes[16];
+    for (int i = 0; i < 16; i += 4) {
+        const uint32_t v = random_u32();
+        std::memcpy(keyBytes + i, &v, 4);
+    }
+    const std::string key = base64(keyBytes, sizeof(keyBytes));
+    const std::string request = fmt::format(
+        "GET {} HTTP/1.1\r\nHost: {}\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n"
+        "Sec-WebSocket-Key: {}\r\nSec-WebSocket-Version: 13\r\n"
+        "User-Agent: Dusklight-Archipelago\r\n\r\n",
+        mPath, mHost, key);
+    if (!out_send(request)) {
+        fail("could not send the WebSocket handshake");
+        return false;
+    }
+    mState = State::Handshake;
+    return true;
 }
 
 bool TcpWebSocket::send_text(const std::string& text) {
     if (mState != State::Open || mHandle == 0) {
         return false;
     }
-    const std::string out = frame(0x1, text);
-    return svc_net->send(mod_ctx, mHandle, out.data(), out.size()) == MOD_OK;
+    return out_send(frame(0x1, text));
 }
 
 void TcpWebSocket::consume_handshake() {
@@ -195,11 +230,9 @@ bool TcpWebSocket::consume_frames() {
         case 0x8:  // close
             fail("server closed the connection");
             return false;
-        case 0x9: {  // ping -> pong
-            const std::string pong = frame(0xA, payload);
-            svc_net->send(mod_ctx, mHandle, pong.data(), pong.size());
+        case 0x9:  // ping -> pong
+            out_send(frame(0xA, payload));
             break;
-        }
         default:
             break;  // pong and reserved opcodes
         }
@@ -214,32 +247,44 @@ bool TcpWebSocket::poll(Event& out) {
             continue;
         }
         switch (ev.type) {
-        case NET_EVENT_CONNECTED: {
-            uint8_t keyBytes[16];
-            for (int i = 0; i < 16; i += 4) {
-                const uint32_t v = random_u32();
-                std::memcpy(keyBytes + i, &v, 4);
-            }
-            const std::string key = base64(keyBytes, sizeof(keyBytes));
-            const std::string request = fmt::format(
-                "GET {} HTTP/1.1\r\nHost: {}\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n"
-                "Sec-WebSocket-Key: {}\r\nSec-WebSocket-Version: 13\r\n"
-                "User-Agent: Dusklight-Archipelago\r\n\r\n",
-                mPath, mHost, key);
-            if (svc_net->send(mod_ctx, mHandle, request.data(), request.size()) != MOD_OK) {
-                fail("could not send the WebSocket handshake");
+        case NET_EVENT_CONNECTED:
+            if (mSecure) {
+                // TLS first; the HTTP upgrade goes out once that handshake finishes.
+                if (!mTls.start(mHost,
+                        [this](const char* data, size_t size) { return raw_send(data, size); })) {
+                    fail(mTls.error());
+                    break;
+                }
+                mState = State::Tls;
+                if (mTls.handshake_done()) {
+                    send_upgrade();
+                }
                 break;
             }
-            mState = State::Handshake;
+            send_upgrade();
             break;
-        }
         case NET_EVENT_STREAM_DATA:
-            mRx.append(reinterpret_cast<const char*>(ev.data.data()), ev.data.size());
+            if (mSecure) {
+                mTls.feed(reinterpret_cast<const char*>(ev.data.data()), ev.data.size());
+                if (!mTls.pump()) {
+                    fail(mTls.error());
+                    break;
+                }
+                if (mState == State::Tls && mTls.handshake_done() && !send_upgrade()) {
+                    break;
+                }
+                mRx += mTls.take_plaintext();
+            } else {
+                mRx.append(reinterpret_cast<const char*>(ev.data.data()), ev.data.size());
+            }
             if (mState == State::Handshake) {
                 consume_handshake();
             }
             if (mState == State::Open && !consume_frames()) {
                 break;
+            }
+            if (mSecure && mTls.closed_by_peer() && mRx.empty()) {
+                fail("the server closed the connection");
             }
             break;
         case NET_EVENT_CLOSED:

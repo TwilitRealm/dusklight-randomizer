@@ -1,7 +1,7 @@
 #pragma once
 
-// Minimal Archipelago network protocol client over the host's WebSocketService.
-// Runs entirely on the game thread: call poll() once per frame.
+// Minimal Archipelago network protocol client over the mod's own WebSocket client
+// (see ws_tcp.hpp). Runs entirely on the game thread: call poll() once per frame.
 
 #include "ws_tcp.hpp"
 
@@ -79,9 +79,7 @@ private:
     std::string mLastError;
     std::vector<std::string> mUrls;
     size_t mUrlIndex = 0;
-    uint64_t mHandle = 0;
-    bool mUseTcp = false;   // ws:// goes through our own client; wss:// through the host
-    TcpWebSocket mTcp;
+    TcpWebSocket mSocket;
     int mSlot = -1;
     std::string mSeedName;
     std::vector<std::string> mPlayerNames;

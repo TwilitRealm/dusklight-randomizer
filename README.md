@@ -41,10 +41,18 @@ given while away arrive when you load the save.
 
 ### Servers and encryption
 
-Plain `ws://` servers — including Archipelago's hosted rooms and any server you run yourself —
-use this mod's own WebSocket client and work fully. `wss://` (TLS) currently falls back to
-Dusklight's built-in WebSocket support, which only delivers the first message a client sends,
-so checks would never reach the server. Use the plain address for now.
+Both `ws://` and `wss://` work. The mod speaks WebSocket itself over a plain TCP socket, and
+wraps that in its own TLS for `wss://`, so nothing depends on the host's WebSocket support.
+
+Type the room address the way Archipelago gives it to you (`archipelago.gg:12345`). Rooms are
+served either encrypted or plain, never both, so the mod tries the likely one first — TLS for
+a remote server, plain for `localhost` — and falls back to the other if that is refused. You
+can force one by typing the scheme yourself: `wss://archipelago.gg:12345`.
+
+Server certificates are checked against a list of root authorities built into the mod, so a
+room with an expired, self-signed or mismatched certificate is refused rather than silently
+trusted. If you run your own server with a self-signed certificate, connect to it over plain
+`ws://` instead.
 
 ## Presets
 
@@ -93,6 +101,15 @@ logic in Python, so its locations, items and rules stay in step with the mod. Re
 `tools/ap_gen_test.cpp` builds an `ap_gen_test` executable that rebuilds a seed from a saved
 `slot_data.json` exactly like the mod does, which is the quickest way to check generation
 changes without launching the game.
+
+`tools/tls_test.cpp` builds a `tls_test` executable that drives the mod's TLS client
+(`src/ap/tls.cpp`) over ordinary sockets against real servers, checking both that valid
+certificates are accepted and that expired, self-signed, untrusted and mismatched ones are
+refused. Run it with no arguments for the default suite.
+
+The trusted roots in `src/ap/ca_bundle.pem` come from
+[curl.se/docs/caextract.html](https://curl.se/docs/caextract.html) (Mozilla's list). Replace
+that file to refresh them; nothing else needs to change.
 
 ## Credits
 

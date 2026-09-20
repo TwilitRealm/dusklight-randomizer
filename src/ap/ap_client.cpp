@@ -1,7 +1,6 @@
 #include "ap_client.hpp"
 
 #include <mods/svc/log.hpp>
-#include <mods/svc/websocket.hpp>
 
 #include <memory>
 #include <random>
@@ -9,8 +8,6 @@
 
 namespace ap {
 namespace {
-
-std::unique_ptr<mods::ws::Connection> s_conn;
 
 // Names resolved from GetDataPackage, per game.
 std::unordered_map<std::string, std::unordered_map<int64_t, std::string>> s_itemNames;
@@ -65,13 +62,14 @@ void Client::connect(const ConnectInfo& info) {
         if (server.find(':') == std::string::npos) {
             server += ":38281";
         }
-        // Plain ws:// is only allowed to loopback by the host; everything else must be TLS
-        // (archipelago.gg serves wss).
-        // Plain ws:// first: it uses our own WebSocket client, which can keep sending for
-        // the whole session. wss:// falls back to the host service (TLS, but send-limited).
-        mUrls.push_back("ws://" + server);
-        if (!is_local_host(server)) {
+        // Rooms are served either plain or TLS on the same port, never both, so try the
+        // likelier one first: hosted rooms are TLS, a server you run yourself usually is not.
+        if (is_local_host(server)) {
+            mUrls.push_back("ws://" + server);
             mUrls.push_back("wss://" + server);
+        } else {
+            mUrls.push_back("wss://" + server);
+            mUrls.push_back("ws://" + server);
         }
     }
     open(mUrls[0]);
@@ -79,49 +77,26 @@ void Client::connect(const ConnectInfo& info) {
 
 void Client::open(const std::string& url) {
     mods::log::info("archipelago: connecting to {}", url);
-    mUseTcp = url.starts_with("ws://");
-    if (mUseTcp) {
-        std::string rest = url.substr(5);
-        std::string path = "/";
-        const auto slash = rest.find('/');
-        if (slash != std::string::npos) {
-            path = rest.substr(slash);
-            rest = rest.substr(0, slash);
-        }
-        uint16_t port = 38281;
-        const auto colon = rest.rfind(':');
-        const auto bracket = rest.rfind(']');
-        if (colon != std::string::npos && (bracket == std::string::npos || bracket < colon)) {
-            port = static_cast<uint16_t>(std::strtoul(rest.c_str() + colon + 1, nullptr, 10));
-            rest = rest.substr(0, colon);
-        }
-        mHandle = 0;
-        mState = mTcp.connect(rest, port, path) ? State::Connecting : State::Disconnected;
-        return;
+    const bool secure = url.starts_with("wss://");
+    std::string rest = url.substr(secure ? 6 : 5);
+    std::string path = "/";
+    const auto slash = rest.find('/');
+    if (slash != std::string::npos) {
+        path = rest.substr(slash);
+        rest = rest.substr(0, slash);
     }
-    mods::ws::Options opts;
-    opts.url = url;
-    opts.connectTimeoutMs = 8000;
-    opts.keepaliveIntervalMs = 20000;
-    opts.maxMessageBytes = 16u * 1024u * 1024u;  // data packages can be large
-    s_conn = std::make_unique<mods::ws::Connection>(mods::ws::connect(opts));
-    if (!*s_conn) {
-        mState = State::Disconnected;
-        mLastError = "could not open connection to " + url;
-        s_conn.reset();
-        return;
+    uint16_t port = 38281;
+    const auto colon = rest.rfind(':');
+    const auto bracket = rest.rfind(']');
+    if (colon != std::string::npos && (bracket == std::string::npos || bracket < colon)) {
+        port = static_cast<uint16_t>(std::strtoul(rest.c_str() + colon + 1, nullptr, 10));
+        rest = rest.substr(0, colon);
     }
-    mHandle = s_conn->handle();
-    mState = State::Connecting;
+    mState = mSocket.connect(rest, port, path, secure) ? State::Connecting : State::Disconnected;
 }
 
 void Client::disconnect() {
-    mTcp.close();
-    if (s_conn) {
-        s_conn->close(1000, "bye");
-        s_conn.reset();
-    }
-    mHandle = 0;
+    mSocket.close();
     if (mState != State::Refused) {
         mState = State::Disconnected;
     }
@@ -129,18 +104,8 @@ void Client::disconnect() {
 
 void Client::send(const json& packets) {
     const std::string text = packets.dump(-1, ' ', false, json::error_handler_t::replace);
-    if (mUseTcp) {
-        if (!mTcp.send_text(text)) {
-            mods::log::error("archipelago: send failed for {} bytes", text.size());
-        }
-        return;
-    }
-    if (!s_conn || !*s_conn) {
-        return;
-    }
-    const ModResult r = s_conn->send_text(text);
-    if (r != MOD_OK) {
-        mods::log::error("archipelago: send failed ({}) for {} bytes", static_cast<int>(r), text.size());
+    if (!mSocket.send_text(text)) {
+        mods::log::error("archipelago: send failed for {} bytes", text.size());
     }
 }
 
@@ -183,44 +148,18 @@ void Client::on_closed(std::string reason) {
 }
 
 void Client::poll() {
-    if (mUseTcp) {
-        TcpWebSocket::Event tev;
-        while (mTcp.poll(tev)) {
-            switch (tev.type) {
-            case TcpWebSocket::EventType::Open:
-                on_open();
-                break;
-            case TcpWebSocket::EventType::Message:
-                on_message(tev.text);
-                break;
-            case TcpWebSocket::EventType::Closed:
-                on_closed(tev.error);
-                break;
-            default:
-                break;
-            }
-        }
-        return;
-    }
-
-    mods::ws::Event ev;
-    while (mods::ws::poll(ev)) {
-        if (ev.handle != mHandle) {
-            continue;
-        }
+    TcpWebSocket::Event ev;
+    while (mSocket.poll(ev)) {
         switch (ev.type) {
-        case WEBSOCKET_EVENT_OPEN:
+        case TcpWebSocket::EventType::Open:
             on_open();
             break;
-        case WEBSOCKET_EVENT_MESSAGE:
-            on_message({reinterpret_cast<const char*>(ev.data.data()), ev.data.size()});
+        case TcpWebSocket::EventType::Message:
+            on_message(ev.text);
             break;
-        case WEBSOCKET_EVENT_CLOSED: {
-            s_conn.reset();
-            mHandle = 0;
-            on_closed(std::string(ev.message.empty() ? ev.closeReason : ev.message));
+        case TcpWebSocket::EventType::Closed:
+            on_closed(ev.error);
             break;
-        }
         default:
             break;
         }
@@ -274,11 +213,7 @@ void Client::handle(const json& p) {
         }
         mLastError = "refused: " + (errs.empty() ? std::string("unknown") : errs);
         mState = State::Refused;
-        if (s_conn) {
-            s_conn->close(1000, "refused");
-            s_conn.reset();
-        }
-        mHandle = 0;
+        mSocket.close();
         if (onDisconnected) {
             onDisconnected(mLastError);
         }

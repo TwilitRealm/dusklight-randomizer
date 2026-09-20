@@ -52,7 +52,22 @@ FetchContent_Declare(
         DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 
-FetchContent_MakeAvailable(yaml-cpp base64pp battery-embed nlohmann_json)
+# TLS for the Archipelago client (wss:// rooms). Statically linked into the mod so the
+# bundle stays self-contained on every platform; see src/ap/tls.cpp.
+message(STATUS "randomizer: Fetching mbedtls")
+set(ENABLE_PROGRAMS OFF CACHE BOOL "" FORCE)
+set(ENABLE_TESTING OFF CACHE BOOL "" FORCE)
+set(MBEDTLS_FATAL_WARNINGS OFF CACHE BOOL "" FORCE)
+set(USE_STATIC_MBEDTLS_LIBRARY ON CACHE BOOL "" FORCE)
+set(USE_SHARED_MBEDTLS_LIBRARY OFF CACHE BOOL "" FORCE)
+FetchContent_Declare(
+        mbedtls
+        URL https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-3.6.7/mbedtls-3.6.7.tar.bz2
+        URL_HASH SHA256=a7e8bcbec0e6f761b4af24f25677626b35f762f68eef79c08677a363212d11f6
+        DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+)
+
+FetchContent_MakeAvailable(yaml-cpp base64pp battery-embed nlohmann_json mbedtls)
 
 set(RANDOMIZER_GENERATOR_SOURCES
         generator/logic/area.cpp
@@ -107,6 +122,7 @@ set(RANDOMIZER_SOURCES
         src/ui/ui.cpp
         src/ui/tracker.cpp
         src/ap/ap_client.cpp
+        src/ap/tls.cpp
         src/ap/ws_tcp.cpp
         src/ap/ap_mode.cpp
 )
@@ -126,6 +142,9 @@ foreach (RANDOMIZER_FILE IN LISTS RANDOMIZER_DATA)
     endif ()
     b_embed(randomizer_embeds "${RANDOMIZER_FILE}")
 endforeach ()
+
+# Root certificates for TLS, embedded so nothing has to ship next to the mod.
+b_embed(randomizer_embeds "src/ap/ca_bundle.pem")
 
 # Versioning
 set(RANDOMIZER_VERSION "1.0.4")
@@ -180,7 +199,7 @@ add_mod(archipelago
     BUNDLE
 )
 
-target_link_libraries(archipelago PRIVATE yaml-cpp::yaml-cpp base64pp randomizer_embeds nlohmann_json::nlohmann_json)
+target_link_libraries(archipelago PRIVATE yaml-cpp::yaml-cpp base64pp randomizer_embeds nlohmann_json::nlohmann_json MbedTLS::mbedtls)
 
 string(LENGTH "${CMAKE_CURRENT_SOURCE_DIR}/" RANDOMIZER_SOURCE_PATH_SIZE)
 target_compile_definitions(archipelago PRIVATE
@@ -230,3 +249,11 @@ target_compile_definitions(ap_gen_test PRIVATE
         SOURCE_PATH_SIZE=${RANDOMIZER_SOURCE_PATH_SIZE}
         RANDO_SAVE_PATH="${CMAKE_BINARY_DIR}/randomizer/"
         RANDOMIZER_ONLY)
+
+# Offline test: drive the TLS client over ordinary sockets, against real servers.
+add_executable(tls_test ${CMAKE_CURRENT_SOURCE_DIR}/tools/tls_test.cpp ${CMAKE_CURRENT_SOURCE_DIR}/src/ap/tls.cpp)
+target_link_libraries(tls_test PRIVATE randomizer_embeds MbedTLS::mbedtls)
+target_include_directories(tls_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+if (WIN32)
+    target_link_libraries(tls_test PRIVATE ws2_32)
+endif ()

@@ -1,0 +1,44 @@
+# Twilight Princess (Dusklight) — Medium preset
+#
+# The standard multiworld experience: the prologue is skipped but the twilights are not, keys
+# move between dungeons, and NPC gifts and golden bugs join the pool. Around 455 checks.
+name: Player{number}
+description: Twilight Princess (Dusklight) - Medium
+game: Twilight Princess (Dusklight)
+
+Twilight Princess (Dusklight):
+  skip_prologue: true
+  skip_midnas_desperate_hour: true
+  faron_twilight_cleared: true
+  eldin_twilight_cleared: false
+  lanayru_twilight_cleared: false
+  skip_minor_cutscenes: true
+  skip_major_cutscenes: false
+  unlock_map_regions: true
+
+  open_door_of_time: true
+  goron_mines_entrance: no_wrestling
+  city_does_not_require_filled_skybook: false
+
+  small_keys: any_dungeon
+  big_keys: any_dungeon
+  maps_and_compasses: start_with
+  dungeon_rewards_can_be_anywhere: false
+
+  golden_bugs: true
+  sky_characters: false
+  gifts_from_npcs: true
+  shop_items: false
+  hidden_skills: true
+  hidden_rupees: false
+  freestanding_rupees: false
+  poe_souls: overworld
+
+  item_scarcity: vanilla
+  trap_item_frequency: few
+  hyrule_barrier_requirements: dungeons
+  hyrule_barrier_dungeons: 4
+  hyrule_castle_big_key_requirements: none
+  palace_of_twilight_requirements: mirror_shards
+  temple_of_time_sword_requirement: none
+  logic_increase_wallet_capacity: true

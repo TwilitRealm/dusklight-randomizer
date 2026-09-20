@@ -1,0 +1,51 @@
+# Twilight Princess (Dusklight) — Extreme preset
+#
+# Everything Hard does, plus a minimal item pool, one-hit kills, bonks that hurt, traps
+# everywhere, and a castle that wants all eight dungeons and every poe soul. Expect a very long
+# and very punishing multiworld. Around 570 checks.
+name: Player{number}
+description: Twilight Princess (Dusklight) - Extreme
+game: Twilight Princess (Dusklight)
+
+Twilight Princess (Dusklight):
+  skip_prologue: false
+  skip_midnas_desperate_hour: false
+  faron_twilight_cleared: false
+  eldin_twilight_cleared: false
+  lanayru_twilight_cleared: false
+  skip_minor_cutscenes: false
+  skip_major_cutscenes: false
+  unlock_map_regions: false
+
+  small_keys: anywhere
+  big_keys: anywhere
+  maps_and_compasses: anywhere
+  dungeon_rewards_can_be_anywhere: true
+  small_keys_on_bosses: true
+
+  golden_bugs: true
+  sky_characters: true
+  gifts_from_npcs: true
+  shop_items: true
+  hidden_skills: true
+  hidden_rupees: true
+  freestanding_rupees: true
+  poe_souls: all
+
+  item_scarcity: minimal
+  trap_item_frequency: mayhem
+  hyrule_barrier_requirements: dungeons
+  hyrule_barrier_dungeons: 8
+  hyrule_castle_big_key_requirements: poe_souls
+  hyrule_castle_big_key_poe_souls: 60
+  palace_of_twilight_requirements: vanilla
+  temple_of_time_sword_requirement: light_sword
+  goron_mines_entrance: closed
+  mirror_chamber_access: closed
+  faron_woods_logic: closed
+  logic_transform_anywhere: false
+  logic_increase_wallet_capacity: false
+  logic_damage_multiplier: ohko
+  bonks_do_damage: true
+  back_slice_as_sword: false
+  ball_and_chain_webs: false

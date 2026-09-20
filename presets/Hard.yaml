@@ -1,0 +1,46 @@
+# Twilight Princess (Dusklight) — Hard preset
+#
+# A long multiworld: nothing is skipped, everything is shuffled including shops, sky characters
+# and every poe, keys can be anywhere, and the castle needs most of the dungeons. Around 570 checks, and
+# expect to be sent a long way for them.
+name: Player{number}
+description: Twilight Princess (Dusklight) - Hard
+game: Twilight Princess (Dusklight)
+
+Twilight Princess (Dusklight):
+  skip_prologue: true
+  skip_midnas_desperate_hour: false
+  faron_twilight_cleared: false
+  eldin_twilight_cleared: false
+  lanayru_twilight_cleared: false
+  skip_minor_cutscenes: true
+  skip_major_cutscenes: false
+  unlock_map_regions: false
+
+  small_keys: anywhere
+  big_keys: anywhere
+  maps_and_compasses: anywhere
+  dungeon_rewards_can_be_anywhere: true
+  small_keys_on_bosses: true
+
+  golden_bugs: true
+  sky_characters: true
+  gifts_from_npcs: true
+  shop_items: true
+  hidden_skills: true
+  hidden_rupees: true
+  freestanding_rupees: true
+  poe_souls: all
+
+  item_scarcity: vanilla
+  trap_item_frequency: many
+  hyrule_barrier_requirements: dungeons
+  hyrule_barrier_dungeons: 7
+  hyrule_castle_big_key_requirements: fused_shadows
+  hyrule_castle_big_key_fused_shadows: 3
+  palace_of_twilight_requirements: vanilla
+  temple_of_time_sword_requirement: master_sword
+  goron_mines_entrance: closed
+  logic_transform_anywhere: false
+  logic_increase_wallet_capacity: false
+  logic_damage_multiplier: double

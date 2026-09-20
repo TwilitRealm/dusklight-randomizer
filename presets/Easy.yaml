@@ -1,0 +1,57 @@
+# Twilight Princess (Dusklight) — Easy preset
+#
+# A short, forgiving multiworld: the prologue and Midna's Desperate Hour are done for you, the
+# three twilights are cleared, dungeon items stay in their own dungeons, and only chests and
+# freestanding items are shuffled. Around 320 checks.
+name: Player{number}
+description: Twilight Princess (Dusklight) - Easy
+game: Twilight Princess (Dusklight)
+
+Twilight Princess (Dusklight):
+  # Get straight into the game
+  skip_prologue: true
+  skip_midnas_desperate_hour: true
+  faron_twilight_cleared: true
+  eldin_twilight_cleared: true
+  lanayru_twilight_cleared: true
+  skip_minor_cutscenes: true
+  skip_major_cutscenes: true
+  unlock_map_regions: true
+  skip_bridge_donation: true
+
+  # Shortcuts through the more tedious requirements
+  open_door_of_time: true
+  active_goron_mines_magnets: true
+  lower_hyrule_castle_chandelier: true
+  goron_mines_entrance: open
+  arbiters_does_not_require_bulblin_camp: true
+  snowpeak_does_not_require_reekfish_scent: true
+  sacred_grove_does_not_require_skull_kid: true
+  city_does_not_require_filled_skybook: true
+  lakebed_does_not_require_water_bombs: true
+
+  # Dungeon items stay where you can find them
+  small_keys: own_dungeon
+  big_keys: own_dungeon
+  maps_and_compasses: start_with
+  dungeon_rewards_can_be_anywhere: false
+
+  # Only the obvious checks are shuffled
+  golden_bugs: false
+  sky_characters: false
+  gifts_from_npcs: false
+  shop_items: false
+  hidden_skills: false
+  hidden_rupees: false
+  freestanding_rupees: false
+  poe_souls: vanilla
+
+  # Generous pool, no traps, castle opens early
+  item_scarcity: plentiful
+  trap_item_frequency: none
+  hyrule_barrier_requirements: open
+  hyrule_castle_big_key_requirements: none
+  palace_of_twilight_requirements: open
+  temple_of_time_sword_requirement: none
+  logic_increase_wallet_capacity: true
+  logic_damage_multiplier: vanilla

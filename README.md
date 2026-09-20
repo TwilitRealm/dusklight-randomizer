@@ -46,6 +46,19 @@ use this mod's own WebSocket client and work fully. `wss://` (TLS) currently fal
 Dusklight's built-in WebSocket support, which only delivers the first message a client sends,
 so checks would never reach the server. Use the plain address for now.
 
+## Presets
+
+`presets/` holds four ready-made YAMLs, verified to generate and to rebuild in-game:
+
+| Preset | Checks | What it is |
+| --- | --- | --- |
+| Easy | ~320 | Prologue, Midna's Desperate Hour and all three twilights done; dungeon items stay in their dungeon; only chests and freestanding items shuffled; plentiful pool, no traps, castle open. |
+| Medium | ~455 | Prologue skipped, twilights mostly intact, keys move between dungeons, golden bugs, NPC gifts and hidden skills shuffled, a few traps, castle wants four dungeons. |
+| Hard | ~570 | Nothing skipped, everything shuffled including shops, sky characters and every poe, keys anywhere, many traps, double damage, castle wants seven dungeons. |
+| Extreme | ~570 | Hard plus a minimal pool, one-hit kills, bonks that hurt, traps everywhere, and a castle that wants all eight dungeons and all 60 poe souls. |
+
+Copy one into your Archipelago `Players` folder and set `name:` to your slot name.
+
 ## Options
 
 The YAML options are generated from the randomizer's own settings, so they match the names in

@@ -124,8 +124,19 @@ jobs:
           path: combined/*.dusk
           if-no-files-found: error
 
+      - name: Build apworld
+        run: python3 tools/build_apworld.py --out combined/tp_dusklight.apworld
+
+      - name: Upload apworld
+        uses: actions/upload-artifact@v7
+        with:
+          name: apworld
+          path: combined/*.apworld
+          if-no-files-found: error
+
       - name: Attach to release
         if: startsWith(github.ref, 'refs/tags/')
         env:
           GH_TOKEN: ${{github.token}}
-        run: gh release create "$GITHUB_REF_NAME" combined/*.dusk --verify-tag --generate-notes
+        run: |
+          gh release create "$GITHUB_REF_NAME"             combined/*.dusk combined/*.apworld presets/*.yaml             --verify-tag --generate-notes

@@ -29,7 +29,8 @@ it connects.
    room password if there is one, then press **Connect and start**.
 3. The seed is built from the server, and you continue to name entry.
 
-Use the plain server address (for example `archipelago.gg:12345`), not a `wss://` one.
+Enter the address exactly as Archipelago gives it to you (for example `archipelago.gg:12345`).
+Encrypted and unencrypted rooms both work; the mod picks whichever the room uses.
 
 Loading the save later reconnects on its own. The **Archipelago** tab in the menu bar (F1)
 shows the connection status and lets you change the server if the room moved.

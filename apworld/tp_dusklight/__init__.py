@@ -254,14 +254,22 @@ class TPWorld(World):
         forms_cache: dict[str, logic.AreaForms] = {}
 
         def access_rule(accesses: list[tuple[data.AreaData, str]]) -> tuple[Region, logic.Rule]:
+            """Where to put the location, and the rule that guards it.
+
+            A location or event can be defined in several areas (Coro Lantern exists both in
+            Prologue Woods and in Faron Woods). AP only considers a location reachable when its
+            own region is, so anything with more than one access lives in Menu and checks each
+            area's reachability in its rule instead.
+            """
+            multi = len(accesses) > 1
+            home = menu if multi else hubs[accesses[0][0].name]
             parts: list[logic.Rule] = []
-            home = hubs[accesses[0][0].name]
-            for i, (a, req) in enumerate(accesses):
+            for a, req in accesses:
                 forms = forms_cache.get(a.name)
                 if forms is None:
                     forms = forms_cache[a.name] = area_forms(a)
                 r = comp.compile_str(req, forms)
-                if i > 0 and r is not False:
+                if multi and r is not False:
                     hub = hubs[a.name]
                     r = comp.all_of([lambda state, h=hub: h.can_reach(state), r])
                 parts.append(r)

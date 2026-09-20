@@ -32,6 +32,7 @@
 #include <atomic>
 #include <cstring>
 #include <filesystem>
+#include <chrono>
 #include <cstdio>
 #include <fstream>
 #include <mutex>
@@ -94,6 +95,7 @@ bool g_haveSlot = false;
 std::string g_slotSeed;
 std::unordered_map<std::string, int64_t> g_locationIds;       // location name -> AP id
 std::unordered_map<std::string, std::string> g_apItemText;    // location name -> get text
+std::unordered_map<std::string, std::string> g_expected;      // location name -> item AP expects
 std::unordered_map<std::string, std::vector<std::string>> g_checkToLocations;
 
 struct ScanLoc {
@@ -157,8 +159,13 @@ void ap_log(const std::string& line) {
     if (svc_mng.host->data_dir(svc_mng.mod_ctx, &dir) != MOD_OK || dir == nullptr) {
         return;
     }
+    const auto now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    std::tm tm{};
+    localtime_s(&tm, &now);
+    const std::string stamped = fmt::format("{:02}:{:02}:{:02} {}", tm.tm_hour, tm.tm_min,
+        tm.tm_sec, line);
     if (std::FILE* f = std::fopen((std::filesystem::path(dir) / "ap_debug.log").string().c_str(), "a")) {
-        std::fputs(line.c_str(), f);
+        std::fputs(stamped.c_str(), f);
         std::fputc('\n', f);
         std::fclose(f);
     }
@@ -354,7 +361,11 @@ bool load_slot_data(const json& slotData, std::string& err) {
     for (const auto& [name, id] : slotData.value("location_ids", json::object()).items()) {
         g_locationIds[name] = id.get<int64_t>();
     }
+    g_expected.clear();
     for (const auto& [loc, v] : slotData.value("placements", json::object()).items()) {
+        g_expected[loc] = v.is_object() ? fmt::format("{} ({})", v.value("name", "?"),
+                                              v.value("player", "?"))
+                                        : v.get<std::string>();
         if (v.is_object()) {
             const std::string who = v.value("player", "someone");
             g_apItemText[loc] = fmt::format("You found {}'s\n{}!", who, v.value("name", "item"));
@@ -572,16 +583,25 @@ void report_locations(const std::vector<std::string>& locs) {
 }
 
 void observe_give(ModContext*, const ItemGiveInfo* info, void*) {
-    ap_log(fmt::format("give item=0x{:02X} origin={} check='{}'", info->item, info->origin,
-        info->check_name != nullptr ? info->check_name : "(none)"));
+    std::string where = "(none)";
+    std::string expected = "-";
+    if (info->check_name != nullptr) {
+        where = info->check_name;
+        const auto locs = locations_for_check(info->check_name);
+        if (!locs.empty()) {
+            where += " -> " + locs.front();
+            if (const auto e = g_expected.find(locs.front()); e != g_expected.end()) {
+                expected = e->second;
+            }
+        }
+    }
+    ap_log(fmt::format("give item=0x{:02X} ({}) origin={} check='{}' ap_expects='{}'", info->item,
+        item_name(info->item), info->origin, where, expected));
     if (info->check_name != nullptr) {
         const auto locs = locations_for_check(info->check_name);
         report_locations(locs);
         if (info->item == kApItem && !locs.empty()) {
-            if (const auto it = g_apItemText.find(locs.front()); it != g_apItemText.end()) {
-                g_armedText = it->second;
-                g_armedFrames = 900;
-            }
+            g_lastResolvedApLocation = locs.front();
         }
         return;
     }
@@ -603,6 +623,9 @@ bool ap_item_text(ModContext*, const MessageOverrideContext*, MessageTextData* o
     buf.push_back(0);
     out->text = buf.data();
     out->text_size = buf.size();
+    // Consume it: the next Archipelago item re-arms with its own text, and a real Foolish
+    // Item (which shares this message) must not inherit it.
+    g_armedFrames = 0;
     return true;
 }
 
@@ -1203,15 +1226,19 @@ void on_get_item_demo(void* link) {
         }
         return;
     }
-    if (g_armedFrames <= 0 && !g_lastResolvedApLocation.empty()) {
+    // Always re-arm from the check being collected right now; the placeholder item has no
+    // message of its own, so it must never fall back to whatever was shown last.
+    g_armedText.clear();
+    if (!g_lastResolvedApLocation.empty()) {
         if (const auto it = g_apItemText.find(g_lastResolvedApLocation); it != g_apItemText.end()) {
             g_armedText = it->second;
-            g_armedFrames = 900;
         }
     }
-    if (g_armedFrames > 0) {
-        alink->field_0x32cc = kApItemDonorMessage;
+    if (g_armedText.empty()) {
+        g_armedText = "You found another player's item!";
     }
+    g_armedFrames = 600;
+    alink->field_0x32cc = kApItemDonorMessage;
 }
 
 }  // namespace ap

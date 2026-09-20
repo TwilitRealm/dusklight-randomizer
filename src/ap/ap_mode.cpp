@@ -162,7 +162,11 @@ void ap_log(const std::string& line) {
     }
     const auto now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     std::tm tm{};
+#ifdef _WIN32
     localtime_s(&tm, &now);
+#else
+    localtime_r(&now, &tm);
+#endif
     const std::string stamped = fmt::format("{:02}:{:02}:{:02} {}", tm.tm_hour, tm.tm_min,
         tm.tm_sec, line);
     if (std::FILE* f = std::fopen((std::filesystem::path(dir) / "ap_debug.log").string().c_str(), "a")) {

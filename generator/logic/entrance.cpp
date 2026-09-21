@@ -391,4 +391,11 @@ namespace randomizer::logic::entrance
         SetPointNo(node["Spawn"].as<int16_t>());
         SetLayerNo(node["State"].as<int8_t>());
     }
+
+    void Entrance::SetOoccooInfo(const YAML::Node& node) {
+        this->_ooccoo._stageId = node["Stage"].as<uint8_t>();
+        this->_ooccoo._roomNo = node["Room"].as<int8_t>();
+        this->_ooccoo._layerNo = node["State"].as<int8_t>();
+        this->_ooccoo._pointNo = node["Spawn"].as<int16_t>();
+    }
 } // namespace randomizer::logic::entrance

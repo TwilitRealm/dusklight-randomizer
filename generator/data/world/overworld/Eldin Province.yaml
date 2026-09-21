@@ -579,7 +579,7 @@
     Eldin Field Grotto Platform: Spinner
     Eldin Field Outside Hidden Village: Ilia_Memory_Quest >= Charm or 'Can_Show_Ilia_Wooden_Statue'
     Lanayru Field: Nothing
-    Eldin Field North of Bridge: Nothing
+    Eldin Field North of Bridge: Can_Smash
 
 - Name: Eldin Field Grotto Platform
   Map Sector: Eldin Province

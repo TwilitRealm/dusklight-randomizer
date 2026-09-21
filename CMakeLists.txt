@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 23)
 if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
     # Fetch dusklight if we are invoking this as the root CMakeLists.txt
     if (NOT DUSKLIGHT_VERSION)
-        set(DUSKLIGHT_VERSION "v2.0.0")
+        set(DUSKLIGHT_VERSION "v2.0.1")
     endif ()
     include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/FetchDusklight.cmake")
     option(DUSK_MOD_USE_FULL_TREE "Use full build instead of the minimal mod SDK" OFF)

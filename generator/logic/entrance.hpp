@@ -159,7 +159,10 @@ namespace randomizer::logic::entrance
         int8_t GetRoomNo() const { return _roomNo; }
         int8_t GetLayerNo() const { return _layerNo; }
         int16_t GetPointNo() const { return _pointNo; }
+        const auto& GetOoccoo() const { return _ooccoo; }
+        bool HasOoccoo() const {return _ooccoo._stageId != 0xFF;}
         void SetGameInfo(const YAML::Node& node);
+        void SetOoccooInfo(const YAML::Node& node);
         void SetCoupledEntrances(const std::vector<int16_t>& entrances) { _coupledEntrances = entrances; }
         const std::vector<int16_t>& GetCoupledEntrances() const { return _coupledEntrances; }
         void SetFollowerEntrances(const YAML::Node& followerList);
@@ -180,6 +183,13 @@ namespace randomizer::logic::entrance
         int8_t _roomNo = -1;
         int8_t _layerNo = -1;
         int16_t _pointNo = -1;
+
+        struct {
+            uint8_t _stageId = 0xFF;
+            int8_t _roomNo = -1;
+            int8_t _layerNo = -1;
+            int16_t _pointNo = -1;
+        } _ooccoo;
 
         /**
          * @brief The local requirement for this entrance assuming we have access to its parent area.

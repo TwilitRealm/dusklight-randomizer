@@ -119,6 +119,7 @@ namespace randomizer::logic::item_pool
         {"Ordon Spring Portal", 1},
         {"South Faron Portal", 1},
         {"North Faron Portal", 1},
+        {"Sacred Grove Portal", 1},
         {"Kakariko Gorge Portal", 1},
         {"Kakariko Village Portal", 1},
         {"Death Mountain Portal", 1},

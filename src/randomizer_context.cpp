@@ -1728,6 +1728,21 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
                 RandomizerContext::EntranceOverride coupled = {.stageId = entrance->GetStageId(), .roomNo = entrance->GetRoomNo(), .mapLayer = entrance->GetLayerNo(), .pointNo = point};
                 randoData.mEntranceOverrides[coupled] = replaces;
             }
+
+            // Set Ooccoo overrides
+            if (entrance->GetReplaces()->IsPrimary() && entrance->GetReplaces()->HasOoccoo()) {
+                const auto& ooccooData = entrance->GetReplaces()->GetOoccoo();
+                RandomizerContext::EntranceOverride ooccooForward = {.stageId = ooccooData._stageId, .roomNo = ooccooData._roomNo, .mapLayer = ooccooData._layerNo, .pointNo = ooccooData._pointNo};
+                RandomizerContext::EntranceOverride ooccooReplaces = {.stageId = entrance->GetReverse()->GetStageId(),
+                    .roomNo = entrance->GetReverse()->GetRoomNo(), .mapLayer = entrance->GetReverse()->GetLayerNo(),
+                    .pointNo = entrance->GetReverse()->GetPointNo()};
+                if (entrance->GetReverse()->HasOoccoo()) {
+                    const auto& reverseOoccooData = entrance->GetReverse()->GetOoccoo();
+                    ooccooReplaces = {.stageId = reverseOoccooData._stageId, .roomNo = reverseOoccooData._roomNo, .mapLayer = reverseOoccooData._layerNo, .pointNo = reverseOoccooData._pointNo};
+                }
+
+                randoData.mEntranceOverrides[ooccooForward] = ooccooReplaces;
+            }
         }
     }
 

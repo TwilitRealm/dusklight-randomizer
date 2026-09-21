@@ -139,7 +139,7 @@ bool resolve_check(ModContext*, const ItemCheckInfo* info, ItemCheckResolution* 
         return lookup_override(ctx.mTreasureChestOverrides, key->key, info, outResult);
     }
     if (auto key = parse_derived(info->name, ITEM_CHECK_FREESTANDING_PREFIX)) {
-        if (key->stage_id == Ook) {
+        if (key->stage_id == Ook && info->vanilla_item == dItemNo_BOOMERANG_e) {
             if (auto it = ctx.mItemLocations.find("Forest Temple Gale Boomerang");
                 it != ctx.mItemLocations.end()) {
                 return set_resolution(info, outResult,

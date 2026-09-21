@@ -89,12 +89,13 @@ namespace randomizer::logic::entrance_shuffle
                 forwardEntrance->SetFollowerEntrances(forwardEntry["Follower Entrances"]);
             }
 
+            Entrance* returnEntrance = nullptr;
             if (entranceDataNode["Return"])
             {
                 auto& returnEntry = entranceDataNode["Return"];
                 YAMLVerifyFields(returnEntry, "Connection", "Stage", "Room", "Spawn", "Spawn Type", "Parameters", "State");
 
-                auto returnEntrance = world->GetEntrance(returnEntry["Connection"].as<std::string>());
+                returnEntrance = world->GetEntrance(returnEntry["Connection"].as<std::string>());
                 returnEntrance->SetType(type);
                 returnEntrance->SetGameInfo(returnEntry);
                 returnEntrance->SetID(world->GetNewEntranceID());
@@ -116,6 +117,14 @@ namespace randomizer::logic::entrance_shuffle
                     }
                     coupledEntrances.at(tag).push_back(forwardEntrance);
                     coupledEntrances.at(tag).push_back(returnEntrance);
+                }
+            }
+
+            if (entranceDataNode["Ooccoo"]) {
+                auto& ooccooEntry = entranceDataNode["Ooccoo"];
+                forwardEntrance->SetOoccooInfo(ooccooEntry);
+                if (returnEntrance) {
+                    returnEntrance->SetOoccooInfo(ooccooEntry);
                 }
             }
         }

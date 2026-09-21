@@ -3019,6 +3019,33 @@ F_SP121:
         - 6
         - 14
 
+    # Move spawn from Eldin Lantern Cave in front of boulder
+    - action: patch
+      name: Link
+      parameters: 0xFF00503F
+      position:
+        x: -8474.4833984375
+        y: -6700
+        z: 67249.46875
+      angle:
+        x: 0x0000
+        y: 0x893F
+        z: 0x000F
+      set id: 0xFFFF
+      patch:
+        # Change spawn to not be in front of rock
+        position:
+          x: -8700.0
+          y: -6695.0
+          z: 66200.0
+      layers:
+        - 0
+        - 6
+        - 9
+        - 10
+        - 13
+        - 14
+
   # Room 6 - Faron Field
   6:
     # Male Beetle

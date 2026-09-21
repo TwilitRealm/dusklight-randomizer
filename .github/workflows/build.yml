@@ -141,4 +141,8 @@ jobs:
         env:
           GH_TOKEN: ${{github.token}}
         run: |
-          gh release create "$GITHUB_REF_NAME"             combined/*.dusk combined/*.apworld presets/*.yaml             --verify-tag --generate-notes
+          # .github/release-notes.md always opens with the install guide; update its
+          # "What's new" section as part of every version bump.
+          gh release create "$GITHUB_REF_NAME" \
+            combined/*.dusk combined/*.apworld presets/*.yaml \
+            --verify-tag --title "$GITHUB_REF_NAME" --notes-file .github/release-notes.md

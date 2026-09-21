@@ -1,6 +1,7 @@
 #include "ap_mode.hpp"
 
 #include "ap_client.hpp"
+#include "text_safe.hpp"
 
 #include "../../generator/randomizer.hpp"
 #include "../../generator/utility/yaml.hpp"
@@ -204,8 +205,9 @@ std::string rml_escape(std::string_view in) {
 
 void toast(const std::string& title, const std::string& body, const char* type = nullptr,
     uint32_t ms = 0) {
-    const std::string t = rml_escape(title);
-    const std::string b = rml_escape(body);
+    // Server chat and refusal messages land here, so bound what we are willing to render.
+    const std::string t = rml_escape(message_safe(title, 80));
+    const std::string b = rml_escape(message_safe(body, 400));
     UiToastDesc desc{sizeof(UiToastDesc)};
     desc.type = type;
     desc.title_rml = t.c_str();
@@ -372,8 +374,15 @@ bool load_slot_data(const json& slotData, std::string& err) {
                                               v.value("player", "?"))
                                         : v.get<std::string>();
         if (v.is_object()) {
-            const std::string who = v.value("player", "someone");
-            g_apItemText[loc] = fmt::format("You found {}'s\n{}!", who, v.value("name", "item"));
+            std::string who = message_safe(v.value("player", "someone"), 40);
+            std::string what = message_safe(v.value("name", "item"), 60);
+            if (who.empty()) {
+                who = "someone";
+            }
+            if (what.empty()) {
+                what = "an item";
+            }
+            g_apItemText[loc] = fmt::format("You found {}'s\n{}!", who, what);
         }
     }
     g_slotSeed = slotData.value("seed", "");
@@ -623,8 +632,11 @@ bool ap_item_text(ModContext*, const MessageOverrideContext*, MessageTextData* o
     if (g_armedFrames <= 0 || g_armedText.empty()) {
         return false;
     }
+    // Sanitized again at the sink: whatever the source, the renderer only ever sees printable
+    // text of a sane length.
+    const std::string text = message_safe(g_armedText, 160);
     thread_local std::vector<uint8_t> buf;
-    buf.assign(g_armedText.begin(), g_armedText.end());
+    buf.assign(text.begin(), text.end());
     buf.push_back(0);
     out->text = buf.data();
     out->text_size = buf.size();

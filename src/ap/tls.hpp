@@ -17,6 +17,11 @@
 
 namespace ap {
 
+// Cryptographically strong random bytes, from the same entropy source TLS uses. Game thread
+// only. Returns false if the platform gave us no entropy, in which case the caller decides
+// whether it can live with a weaker source.
+bool secure_random(void* out, size_t size);
+
 class TlsStream {
 public:
     // Sends ciphertext towards the peer. Returning false fails the connection.

@@ -44,6 +44,21 @@ std::string describe(int code) {
 
 }  // namespace
 
+bool secure_random(void* out, size_t size) {
+    static mbedtls_entropy_context entropy;
+    static mbedtls_ctr_drbg_context drbg;
+    static const bool ready = [] {
+        static constexpr char kPersonalization[] = "dusklight-archipelago-rng";
+        mbedtls_entropy_init(&entropy);
+        mbedtls_ctr_drbg_init(&drbg);
+        return mbedtls_ctr_drbg_seed(&drbg, mbedtls_entropy_func, &entropy,
+                   reinterpret_cast<const unsigned char*>(kPersonalization),
+                   sizeof(kPersonalization) - 1) == 0;
+    }();
+    return ready &&
+           mbedtls_ctr_drbg_random(&drbg, static_cast<unsigned char*>(out), size) == 0;
+}
+
 struct TlsStream::Impl {
     mbedtls_ssl_context ssl;
     mbedtls_ssl_config conf;
@@ -182,6 +197,15 @@ void TlsStream::reset() {
 }
 
 void TlsStream::feed(const char* data, size_t size) {
+    // A TLS record is at most ~16 KB and pump() drains every complete one, so this only trips
+    // if the peer is streaming bytes that will never become a record. Refuse rather than grow.
+    static constexpr size_t kMaxPending = 1024 * 1024;
+    if (mInbox.size() + size > kMaxPending) {
+        mFailed = true;
+        mError = "the server sent more data than TLS could make sense of";
+        mInbox.clear();
+        return;
+    }
     mInbox.append(data, size);
 }
 

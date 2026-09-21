@@ -30,10 +30,24 @@ std::string base64(const uint8_t* data, size_t size) {
     return out;
 }
 
-uint32_t random_u32() {
+// RFC 6455 wants masking keys the peer cannot predict, because a predictable mask lets a
+// malicious intermediary steer what an HTTP cache in between sees. The TLS module's CSPRNG
+// is right there; std::mt19937 is only a fallback for a platform that gives us no entropy.
+void random_bytes(void* out, size_t size) {
+    if (secure_random(out, size)) {
+        return;
+    }
     static std::mt19937 rng{std::random_device{}()};
-    return rng();
+    auto* bytes = static_cast<uint8_t*>(out);
+    for (size_t i = 0; i < size; ++i) {
+        bytes[i] = static_cast<uint8_t>(rng());
+    }
 }
+
+// A message is not allowed to grow past this, whether it arrives in one frame or a thousand
+// continuation frames; an HTTP upgrade response has a much smaller budget.
+constexpr size_t kMaxMessageBytes = 64ull * 1024 * 1024;
+constexpr size_t kMaxHandshakeBytes = 64 * 1024;
 
 std::string frame(uint8_t opcode, const std::string& payload) {
     std::string out;
@@ -52,8 +66,7 @@ std::string frame(uint8_t opcode, const std::string& payload) {
         }
     }
     uint8_t mask[4];
-    const uint32_t key = random_u32();
-    std::memcpy(mask, &key, 4);
+    random_bytes(mask, sizeof(mask));
     out.append(reinterpret_cast<const char*>(mask), 4);
     const size_t start = out.size();
     out.append(payload);
@@ -126,10 +139,7 @@ bool TcpWebSocket::out_send(const std::string& bytes) {
 
 bool TcpWebSocket::send_upgrade() {
     uint8_t keyBytes[16];
-    for (int i = 0; i < 16; i += 4) {
-        const uint32_t v = random_u32();
-        std::memcpy(keyBytes + i, &v, 4);
-    }
+    random_bytes(keyBytes, sizeof(keyBytes));
     const std::string key = base64(keyBytes, sizeof(keyBytes));
     const std::string request = fmt::format(
         "GET {} HTTP/1.1\r\nHost: {}\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n"
@@ -154,6 +164,9 @@ bool TcpWebSocket::send_text(const std::string& text) {
 void TcpWebSocket::consume_handshake() {
     const auto end = mRx.find("\r\n\r\n");
     if (end == std::string::npos) {
+        if (mRx.size() > kMaxHandshakeBytes) {
+            fail("the server sent an oversized handshake response");
+        }
         return;
     }
     const std::string head = mRx.substr(0, end);
@@ -194,8 +207,8 @@ bool TcpWebSocket::consume_frames() {
         if (masked) {
             offset += 4;  // servers must not mask, but tolerate it
         }
-        if (len > 64ull * 1024 * 1024) {
-            fail("server sent an oversized frame");
+        if (len > kMaxMessageBytes) {
+            fail("the server sent an oversized frame");
             return false;
         }
         if (mRx.size() < offset + len) {
@@ -214,6 +227,10 @@ bool TcpWebSocket::consume_frames() {
         case 0x0:  // continuation
         case 0x1:  // text
         case 0x2:  // binary
+            if (mFragment.size() + payload.size() > kMaxMessageBytes) {
+                fail("the server sent an oversized message");
+                return false;
+            }
             if (opcode != 0x0) {
                 mFragmentOpcode = opcode;
                 mFragment = std::move(payload);

@@ -1,4 +1,5 @@
-// Host-side test for the mod's TLS client (src/ap/tls.cpp).
+// Host-side test for the mod's defenses against a hostile Archipelago server: the TLS
+// client (src/ap/tls.cpp) and the text sanitizer (src/ap/text_safe.hpp).
 //
 // TlsStream never touches a socket itself, so it can be driven over ordinary blocking
 // sockets here, against real servers, without launching the game. Run with no arguments
@@ -10,6 +11,7 @@
 //
 // Exits non-zero if any case did not behave as expected.
 
+#include "ap/text_safe.hpp"
 #include "ap/tls.hpp"
 
 #include <cstdio>
@@ -166,6 +168,40 @@ bool run(const Case& item) {
     return false;
 }
 
+// The other half of what protects us from a hostile room: everything the server says goes
+// through message_safe() before it reaches the game's message renderer or a toast.
+bool check_text_safety() {
+    struct Check {
+        const char* what;
+        std::string input;
+        size_t cap;
+        std::string expected;
+    };
+    const std::vector<Check> checks{
+        {"plain text survives", "Link's Sword", 64, "Link's Sword"},
+        {"newlines survive", "a\nb", 64, "a\nb"},
+        {"tag escapes are dropped", "a\x1A\x05qqqqb", 64, "aqqqqb"},
+        {"nulls are dropped", std::string("a\0b", 3), 64, "ab"},
+        // Split literals: a hex escape swallows every hex digit that follows it.
+        {"control bytes are dropped", "a\x01\x02\x7F" "b", 64, "ab"},
+        {"length is capped", std::string(500, 'x'), 16, std::string(16, 'x')},
+        {"utf-8 is not cut in half", "aaa\xC3\xA9", 4, "aaa"},
+    };
+
+    bool ok = true;
+    for (const Check& check : checks) {
+        const std::string got = ap::message_safe(check.input, check.cap);
+        std::printf("%-32s ", check.what);
+        if (got == check.expected) {
+            std::printf("PASS\n");
+        } else {
+            std::printf("FAIL  got %zu bytes, expected %zu\n", got.size(), check.expected.size());
+            ok = false;
+        }
+    }
+    return ok;
+}
+
 Case parse(const std::string& text) {
     Case item;
     std::string address = text;
@@ -208,14 +244,15 @@ int main(int argc, char** argv) {
         };
     }
 
-    int failures = 0;
+    int failures = check_text_safety() ? 0 : 1;
+    std::printf("\n");
     for (const Case& item : cases) {
         if (!run(item)) {
             ++failures;
         }
     }
-    std::printf("\n%d/%zu cases behaved as expected\n", static_cast<int>(cases.size()) - failures,
-        cases.size());
+    std::printf("\n%s\n",
+        failures == 0 ? "everything behaved as expected" : "SOMETHING FAILED");
 
 #ifdef _WIN32
     WSACleanup();

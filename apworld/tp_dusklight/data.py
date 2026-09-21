@@ -222,7 +222,11 @@ def areas() -> dict[str, AreaData]:
 
 
 def data_version() -> int:
-    """Fingerprint of the vendored data, sent to the mod so it can refuse a mismatched build."""
+    """Fingerprint of the vendored data, sent to the mod in slot_data.
+
+    The mod does not check it yet: an old mod paired with a newer apworld will build a seed
+    with its own older logic instead of refusing. Update both together.
+    """
     crc = 0
     for path in ("items.yaml", "locations.yaml", "macros.yaml", "settings_list.yaml", *WORLD_FILES):
         crc = zlib.crc32((pkgutil.get_data(__name__, "data/" + path) or b"").replace(b"\r", b""), crc)

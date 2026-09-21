@@ -40,6 +40,7 @@
 #include "d/actor/d_a_obj_item.h"
 #include "d/actor/d_a_obj_life_container.h"
 #include "d/actor/d_a_obj_master_sword.h"
+#include "d/actor/d_a_obj_lv4digsand.h"
 #include "d/actor/d_a_obj_swBallC.h"
 #include "d/actor/d_a_obj_zra_rock.h"
 #include "d/actor/d_a_shop_item.h"
@@ -220,6 +221,8 @@ DEFINE_HOOK_SYMBOL("dComIfGs_getCollectSmell", u8(), getCollectSmell);
 DEFINE_HOOK(&dEvt_control_c::skipper, dEvt_control_c__skipper);
 
 DEFINE_HOOK(&daObjMasterSword_c::executeWait, daObjMasterSword_c__executeWait);
+
+DEFINE_HOOK(&daObjL4DigSand_c::Execute, daObjL4DigSand_c__execute);
 
 namespace randomizer::ui {
 dialogSelectModeState g_dialogSelectModeState = SelectReady;
@@ -3432,6 +3435,19 @@ void hookPostMasterSwordExecuteWait(ModContext*, void* args, void* retval, void*
     }
 }
 
+HookAction hookPreL4DigSandExecute(ModContext*, void* args, void* retval, void*) {
+    auto objL4DigSand = mods::arg<daObjL4DigSand_c*>(args, 0);
+    auto pparam_0 = mods::arg<Mtx**>(args, 1);
+    if (daPy_py_c::checkNowWolf()) {
+        objL4DigSand->attention_info.flags = fopAc_AttnFlag_ETC_e;
+        objL4DigSand->action();
+        *pparam_0 = &(objL4DigSand->mBgMtx);
+        objL4DigSand->setBaseMtx();
+        *static_cast<int*>(retval) = 1;
+        return HOOK_SKIP_ORIGINAL;
+    }
+    return HOOK_CONTINUE;
+}
 }
 
 ModResult initialize() {
@@ -3606,6 +3622,8 @@ ModResult initialize() {
 
     ADD_HOOK_POST(daObjMasterSword_c__executeWait, hookPostMasterSwordExecuteWait);
 
+    ADD_HOOK_PRE(daObjL4DigSand_c__execute, hookPreL4DigSandExecute);
+
     return MOD_OK;
 }
 
@@ -3748,6 +3766,7 @@ ModResult uninstall() {
     mods::hook::uninstall<dEvt_control_c__skipper>(svc_hook);
 
     mods::hook::uninstall<daObjMasterSword_c__executeWait>(svc_hook);
+    mods::hook::uninstall<daObjL4DigSand_c__execute>(svc_hook);
 
     return MOD_OK;
 }

@@ -810,6 +810,32 @@ F_SP108:
         - 9
         - 14
 
+    # Add the Midna Hint for the Coro Window midna jump to all layers
+    # (normally it's just on the twilight layer)
+    - action: add
+      name: Mhint
+      parameters: 0x3FFFFFFF
+      position:
+        x: -12494.08984375
+        y: 270.837921142578
+        z: -12351.1181640625
+      angle:
+        x: 0x16FF
+        y: 0xFF00
+        z: 0x07D9
+      set id: 0xFFFF
+      scale:
+        x: 24
+        y: 10
+        z: 24
+      layers:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 5
+        - 9
+
     # Add Coro actor to twilight layer
     - action: add
       name: Kkri
@@ -947,6 +973,7 @@ F_SP111:
         - 0
         - 2
         - 3
+        - 4
 
     # Golden Wolf in Kakariko Graveyard
     - action: patch
@@ -968,6 +995,7 @@ F_SP111:
       layers:
         - 2
         - 3
+        - 4
 
     # Add hint sign behind zora grave
     - action: add
@@ -987,6 +1015,7 @@ F_SP111:
         - 0
         - 2
         - 3
+        - 4
         - 14
     
     # Add entrance coming from lake hylia (entrance ID 5000)
@@ -1006,6 +1035,7 @@ F_SP111:
         - 0
         - 2
         - 3
+        - 4
         - 14
 
 # Zora's Domain

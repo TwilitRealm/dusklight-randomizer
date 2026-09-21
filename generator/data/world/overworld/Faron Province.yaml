@@ -20,8 +20,8 @@
     Coro Lantern: Nothing
     Coro Gate Key: Nothing
     Coro Bottle: "'Can_Farm_Rupees'"
-    Faron Woods Owl Statue Sky Character: Restored_Dominion_Rod
-    Faron Woods Owl Statue Chest: Restored_Dominion_Rod and Can_Midna_Jump
+    Faron Woods Owl Statue Sky Character: Can_Smash and Restored_Dominion_Rod
+    Faron Woods Owl Statue Chest: Can_Smash and Restored_Dominion_Rod and Can_Midna_Jump
     South Faron Cave Chest: Can_Pass_Faron_Woods_Coro_Gate
     Faron Mist Cave Open Chest: Can_Pass_Faron_Woods_Coro_Gate and Lantern # Not requiring lantern could lock this check out after completing the prologue
     Faron Mist Cave Lantern Chest: Can_Pass_Faron_Woods_Coro_Gate and Lantern
@@ -280,8 +280,9 @@
   Exits:
     Lost Woods: Nothing
     # In North Faron Woods, when you are near the Lost Woods entrance,
-    # you can save-warp to the main part of North Faron Woods.
-    North Faron Woods: Nothing
+    # you can save-warp to the main part of North Faron Woods. But this
+    # isn't very intuitive.
+    # North Faron Woods: Nothing
 
 
 # SACRED GROVE

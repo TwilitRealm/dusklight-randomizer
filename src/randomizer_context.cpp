@@ -1049,6 +1049,15 @@ void randomizer_returnToSpawn(bool tryOverride) {
         dComIfGs_offEventBit(MIDNAS_DESPERATE_HOUR_STARTED);
     }
 
+    // If the player returned to spawn from the sewer sequence, unset flags necessary to start the sequence
+    // again
+    if (dComIfGs_isEventBit(ENTERED_ORDON_SPRING_DAY_3) && !dComIfGs_isEventBit(FINISHED_SEWERS)) {
+        dComIfGs_offEventBit(ENTERED_ORDON_SPRING_DAY_3);
+        dComIfGs_offEventBit(WATCHED_CUTSCENE_AFTER_BEING_CAPTURED_IN_FARON_TWILIGHT);
+        dComIfGs_offStageSwitch(0, 0x68); // King Bulblin cs
+        dComIfGs_offStageSwitch(1, 0x1B); // Wake up in jail cutscene
+    }
+
     // Turn the player back into Link if they are currently wolf
     dComIfGs_setTransformStatus(TF_STATUS_HUMAN);
 

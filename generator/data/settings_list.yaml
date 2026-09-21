@@ -656,3 +656,9 @@
   Options:
     - "Off": "Ball and Chain will not be required to break webs."
     - "On": "Ball and Chain may be required to break webs."
+
+- Name: Clawshot Without Vision
+  Default Option: "Off"
+  Options:
+    - "Off": "Clawshot will not be required to pull item outside of vision."
+    - "On": "Clawshot may be required to pull item outside of vision."

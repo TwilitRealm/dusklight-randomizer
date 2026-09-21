@@ -1214,6 +1214,7 @@ ModResult buildSeedOptionsTab(ModContext* ctx, UiWindowHandle, UiElementHandle l
     add_section(leftPane, "Tricks");
     add_select_setting(leftPane, "Back Slice as Sword");
     add_select_setting(leftPane, "Ball and Chain Webs");
+    add_select_setting(leftPane, "Clawshot Without Vision");
 
     return MOD_OK;
 }

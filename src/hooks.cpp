@@ -228,46 +228,11 @@ DEFINE_HOOK(&daObjMasterSword_c::executeWait, daObjMasterSword_c__executeWait);
 DEFINE_HOOK_SYMBOL("daWindStone_c::chkEveOccur", bool(daWindStone_c*), daWindStone_c__chkEveOccur);
 
 namespace randomizer::ui {
-dialogSelectModeState g_dialogSelectModeState = SelectReady;
+GameModeNewSaveState *g_dialogSelectModeState = nullptr;
 }
 
 namespace randomizer::hooks {
 namespace {
-HookAction hookPreDataSelect(ModContext*, void* args, void* retval, void* userdata) {
-    ui::g_dialogSelectModeState = ui::SelectReady;
-    ui::g_file_select_window_ctx.is_proceed = false;
-    return HOOK_CONTINUE;
-}
-
-HookAction hookPreSelectDataNameMove(ModContext*, void* args, void* retval, void* userdata) {
-    dFile_select_c* i_this = mods::arg<dFile_select_c*>(args, 0);
-
-    // if coming from "start randomizer" button, let transition occur as normal
-    if (ui::g_file_select_window_ctx.is_proceed) {
-        return HOOK_CONTINUE;
-    }
-
-    bool isHeaderTxtChange = i_this->headerTxtChangeAnm();
-    bool isFileRecScale = i_this->fileRecScaleAnm2();
-    bool isModoruTxtDisp = i_this->modoruTxtDispAnm();
-
-    if (ui::g_dialogSelectModeState == ui::SelectReady && isHeaderTxtChange == true && isFileRecScale == true && isModoruTxtDisp == true) {
-        ui::g_dialogSelectModeState = ui::SelectWait;
-
-        ModResult rt;
-        if (session::isArchipelagoMode())
-            rt = ui::buildArchipelagoGateMenu(i_this);
-        else
-            rt = ui::buildFileSelectGateMenu(i_this);
-
-        if (rt != MOD_OK) {
-            mods::log::error("Failed to build menu");
-            return HOOK_CONTINUE;
-        }
-    }
-
-    return HOOK_SKIP_ORIGINAL;
-}
 
 void hookPostSetSaveData(ModContext* ctx, void* args, void* retval, void* userdata) {
     dFile_info_c* i_this = mods::arg<dFile_info_c*>(args, 0);
@@ -3491,9 +3456,6 @@ ModResult initialize() {
         mods::log::error("Failed to add replace-hook for " #originalFn); \
         return MOD_ERROR;                                                \
     }
-
-    ADD_HOOK_PRE(dFile_select_c__selectDataNameMove, hookPreSelectDataNameMove);
-    ADD_HOOK_PRE(dFile_select_c__dataSelect, hookPreDataSelect);
 
     ADD_HOOK_POST(dFile_info_c__setSaveData, hookPostSetSaveData);
 

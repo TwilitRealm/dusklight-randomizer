@@ -1891,7 +1891,7 @@ ModResult buildPlayTab(ModContext* ctx, UiWindowHandle, UiElementHandle leftPane
         desc.help_rml = "";
         desc.on_pressed = [](ModContext*, void* userdata) {
             // set flag to move to name screen after window close
-            g_file_select_window_ctx.is_proceed = true;
+            *g_dialogSelectModeState = GAME_MODE_STATE_PROCEED;
             session::svc_mng.ui->window_close(session::svc_mng.mod_ctx, *static_cast<UiWindowHandle*>(userdata));
             mDoAud_seStartMenu(Z2SE_SY_NEW_FILE);
         };
@@ -2010,7 +2010,7 @@ ModResult buildArchipelagoGateMenu(dFile_select_c* fileSelect) {
     return session::svc_mng.ui->window_push(session::svc_mng.mod_ctx, &desc, &g_file_select_window_ctx.window_handle);
 }
 
-ModResult buildFileSelectGateMenu(dFile_select_c* fileSelect) {
+ModResult buildFileSelectGateMenu() {
     UiTabDesc tabs[6]{};
 
     tabs[0].struct_size = sizeof(UiTabDesc);
@@ -2043,20 +2043,10 @@ ModResult buildFileSelectGateMenu(dFile_select_c* fileSelect) {
     UiWindowDesc desc = UI_WINDOW_DESC_INIT;
     desc.tabs = tabs;
     desc.tab_count = 6;
-    desc.user_data = fileSelect;
     desc.on_closed = [](ModContext*, UiWindowHandle, void* userdata) {
-        dFile_select_c* i_this = static_cast<dFile_select_c*>(userdata);
-
-        // if closing the window through backing out, return to file select
-        if (!g_file_select_window_ctx.is_proceed)  {
-            i_this->headerTxtSet(0x43, 1, 0);
-            i_this->fileRecScaleAnmInitSet2(0.0f, 1.0f);
-            i_this->nameMoveAnmInitSet(0xd29, 0xd1f);
-            i_this->modoruTxtDispAnmInit(0);
-            i_this->mDataSelProc = dFile_select_c::DATASELPROC_NAME_TO_DATA_SELECT_MOVE;
+        if (*g_dialogSelectModeState == GAME_MODE_STATE_PENDING) {
+            *g_dialogSelectModeState = GAME_MODE_STATE_RETURN;
         }
-
-        g_dialogSelectModeState = SelectReady;
     };
 
     return session::svc_mng.ui->window_push(session::svc_mng.mod_ctx, &desc, &g_file_select_window_ctx.window_handle);

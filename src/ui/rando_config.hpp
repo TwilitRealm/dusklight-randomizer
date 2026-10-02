@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include <mods/api.h>
+
+#include "mods/svc/game_mode.h"
 #include "mods/svc/ui.h"
 
 // Forward declaration
@@ -18,11 +20,10 @@ enum dialogSelectModeState : uint8_t {
     SelectReady,
     SelectWait,
 };
-extern dialogSelectModeState g_dialogSelectModeState;
+extern GameModeNewSaveState *g_dialogSelectModeState;
 
 struct FileSelectGateWindowCtx {
     UiWindowHandle window_handle{};
-    bool is_proceed{false};
 };
 extern FileSelectGateWindowCtx g_file_select_window_ctx;
 
@@ -36,6 +37,6 @@ void PastePermalinkFromClipboard();
 
 ModResult buildMenuTab();
 ModResult removeMenuTab();
-ModResult buildFileSelectGateMenu(dFile_select_c*);
+ModResult buildFileSelectGateMenu();
 ModResult buildArchipelagoGateMenu(dFile_select_c*);
 }

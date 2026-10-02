@@ -2,8 +2,10 @@
 
 #include <queue>
 
+#include "paths.hpp"
 #include "session.hpp"
 #include "../generator/utility/random.hpp"
+#include "archi/ap_settings_convert.hpp"
 #include "JSystem/JStudio/JStudio/ctb.h"
 #include "mods/svc/log.hpp"
 #include "mods/svc/websocket.hpp"
@@ -126,9 +128,21 @@ void parseRoomInfo(RoomInfo* info) {
         .uuid = fmt::format("{}_{}", slotName, static_cast<int>(0xFFFF * utility::random::RandomDouble())),
         .version = {0,6,7},
         .items_handling = ItemHandlingFlags::Self | ItemHandlingFlags::OtherWorlds | ItemHandlingFlags::StartingInv,
-        .slot_data = false
+        .slot_data = true
     };
     queuePacket(connectPacket, "Connect");
+}
+
+void parseConnected(nlohmann::json& data) {
+    auto slotData = data["slot_data"];
+    mods::log::debug("Slot Data: {}", slotData.dump());
+
+    seedgen::config::Config testConfig;
+    testConfig.SetSeed(slotData["SeedID"].get<std::string>());
+    createConfigFromArchiSettings(testConfig, slotData["Settings"]);
+
+    testConfig.WriteToFile(paths::GetRandomizerPath() / "archi" / "settings.yaml",
+                                      paths::GetRandomizerPath() / "archi" / "preferences.yaml");
 }
 
 void parseServerJson(nlohmann::json* data) {
@@ -166,6 +180,7 @@ void parseServerJson(nlohmann::json* data) {
             case ServerPacket::DataPackage:
                 break;
             case ServerPacket::Connected:
+                parseConnected(archiPacket);
                 break;
             case ServerPacket::ConnectionRefused:
                 // break;

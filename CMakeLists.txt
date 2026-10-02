@@ -105,6 +105,7 @@ set(RANDOMIZER_SOURCES
         src/ui/rando_config.cpp
         src/ui/ui.cpp
         src/ui/tracker.cpp
+        src/archi/ap_settings_convert.cpp
 )
 
 # Embed the generator's YAML data into the mod library. Paths are relative to this

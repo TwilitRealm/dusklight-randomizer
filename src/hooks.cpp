@@ -65,9 +65,6 @@
 #include "f_op/f_op_overlap_mng.h"
 #include "m_Do/m_Do_Reset.h"
 
-DEFINE_HOOK(&dFile_select_c::selectDataNameMove, dFile_select_c__selectDataNameMove);
-DEFINE_HOOK(&dFile_select_c::dataSelect, dFile_select_c__dataSelect);
-
 DEFINE_HOOK(&dFile_info_c::setSaveData, dFile_info_c__setSaveData);
 
 DEFINE_HOOK(&Z2SceneMgr::setSceneName, Z2SceneMgr__setSceneName);
@@ -3615,9 +3612,6 @@ ModResult initialize() {
 
 ModResult uninstall() {
     auto svc_hook = session::svc_mng.hook;
-
-    mods::hook::uninstall<dFile_select_c__selectDataNameMove>(svc_hook);
-    mods::hook::uninstall<dFile_select_c__dataSelect>(svc_hook);
 
     mods::hook::uninstall<dFile_info_c__setSaveData>(svc_hook);
 

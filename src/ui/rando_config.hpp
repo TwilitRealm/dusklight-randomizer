@@ -38,5 +38,5 @@ void PastePermalinkFromClipboard();
 ModResult buildMenuTab();
 ModResult removeMenuTab();
 ModResult buildFileSelectGateMenu();
-ModResult buildArchipelagoGateMenu(dFile_select_c*);
+ModResult buildArchipelagoGateMenu();
 }

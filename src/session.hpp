@@ -16,6 +16,8 @@
 
 #include <string>
 
+#include "mods/svc/websocket.h"
+
 namespace randomizer::session {
 struct ServiceManager {
     ModContext* mod_ctx;
@@ -33,13 +35,18 @@ struct ServiceManager {
     const GameModeService* game_mode;
     const TextureService* texture;
     const FileService* file;
+    const WebSocketService* websocket;
 };
 
 extern ServiceManager svc_mng;
 extern std::string g_pending_seed_hash;
 extern bool g_seedActivated;
 
+bool isArchipelagoMode();
+
 ModResult initialize(const ServiceManager& services);
+ModResult connect();
+
 void update();
 void shutdown();
 

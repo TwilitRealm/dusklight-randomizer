@@ -88,6 +88,7 @@ set(RANDOMIZER_GENERATOR_SOURCES
 )
 
 set(RANDOMIZER_SOURCES
+        src/archipelago.cpp
         src/draw.cpp
         src/flags.cpp
         src/messages.cpp
@@ -174,7 +175,7 @@ add_mod(randomizer
     BUNDLE
 )
 
-target_link_libraries(randomizer PRIVATE yaml-cpp::yaml-cpp base64pp randomizer_embeds)
+target_link_libraries(randomizer PRIVATE yaml-cpp::yaml-cpp nlohmann_json::nlohmann_json base64pp randomizer_embeds)
 
 string(LENGTH "${CMAKE_CURRENT_SOURCE_DIR}/" RANDOMIZER_SOURCE_PATH_SIZE)
 target_compile_definitions(randomizer PRIVATE

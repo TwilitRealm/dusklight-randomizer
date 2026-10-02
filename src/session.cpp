@@ -27,6 +27,8 @@
 #include <string_view>
 #include <thread>
 
+#include "archipelago.hpp"
+
 namespace randomizer::session {
 ServiceManager svc_mng;
 std::string g_pending_seed_hash{};
@@ -39,10 +41,30 @@ std::vector<StageActorHandle> s_stage_edits{};
 
 constexpr const char* kSeedHashBlobName = "seed_hash";
 
+constexpr const char* kArchiServerBlobName = "archi_ip";
+constexpr const char* kArchiSlotBlobName = "archi_slot";
+constexpr const char* kArchiPassBlobName = "archi_pass";
+
 struct DerivedKey {
     int stage_id;
     u16 key;
 };
+
+static ModResult get_string_from_save(const char* blobName, std::string& out_str) {
+    size_t size = 0;
+    if (svc_mng.save->get_blob(mod_ctx, blobName, nullptr, &size) != MOD_OK || size == 0) {
+        mods::log::error("{} not found!", blobName);
+        return MOD_ERROR;
+    }
+
+    out_str = std::string(size, '\0');
+    if (svc_mng.save->get_blob(mod_ctx, blobName, out_str.data(), &size) != MOD_OK) {
+        mods::log::error("failed to get {}!", blobName);
+        return MOD_ERROR;
+    }
+
+    return MOD_OK;
+}
 
 std::optional<int> parse_stage_check(const char* name, std::string_view prefix) {
     if (std::strncmp(name, prefix.data(), prefix.size()) != 0) {
@@ -230,6 +252,12 @@ bool activateSeed(const char* hash) {
     return true;
 }
 
+bool isArchipelagoMode() {
+    bool result = false;
+    svc_mng.game_mode->is_active(svc_mng.mod_ctx, "archipelago", &result);
+    return result;
+}
+
 void deactivateSeed() {
     if (s_check_resolver != 0) {
         svc_mng.item->clear_check_resolver(mod_ctx, s_check_resolver);
@@ -385,7 +413,7 @@ void registerStageEdits() {
     }
 }
 
-ModResult onNewSave(void*, ModError*) {
+ModResult onNewRandoSave(void*, ModError*) {
     const std::string hash = g_pending_seed_hash;
     if (hash.empty())
         return MOD_ERROR;
@@ -401,25 +429,77 @@ ModResult onNewSave(void*, ModError*) {
     return MOD_OK;
 }
 
-ModResult onSaveLoaded(void*, ModError*) {
-    size_t size = 0;
-    if (svc_mng.save->get_blob(mod_ctx, kSeedHashBlobName, nullptr, &size) != MOD_OK || size == 0) {
-        mods::log::error("seed_hash not found!");
-        deactivateSeed();
+ModResult onNewArchiSave(void*, ModError*) {
+    const std::string ip = archi::getServerIp();
+    if (ip.empty())
         return MOD_ERROR;
-    }
 
-    std::string hash(size, '\0');
-    if (svc_mng.save->get_blob(mod_ctx, kSeedHashBlobName, hash.data(), &size) != MOD_OK) {
-        mods::log::error("failed to get seed_hash!");
-        deactivateSeed();
+    const std::string slotName = archi::getSlotName();
+    if (slotName.empty())
         return MOD_ERROR;
+
+    const std::string pass = archi::getSlotPass();
+
+    // deactivateSeed();
+    // if (!activateSeed(hash.c_str()))
+    //     return MOD_ERROR;
+
+    svc_mng.save->set_blob(svc_mng.mod_ctx, kArchiServerBlobName, ip.data(), ip.size());
+    svc_mng.save->set_blob(svc_mng.mod_ctx, kArchiPassBlobName, pass.data(), pass.size());
+    svc_mng.save->set_blob(svc_mng.mod_ctx, kArchiSlotBlobName, slotName.data(), slotName.size());
+
+    setAncientDocumentNum(0);
+    setupRandomizerFile();
+    saveAncientDocumentNum();
+    return MOD_OK;
+}
+
+ModResult onRandoSaveLoaded(void*, ModError*) {
+    std::string hash;
+    if (auto result = get_string_from_save(kSeedHashBlobName, hash); result != MOD_OK) {
+        deactivateSeed();
+        return result;
     }
 
     if (randomizer_GetContext().mHash != hash) {
         deactivateSeed();
         activateSeed(hash.c_str());
     }
+
+    loadAncientDocumentNum();
+    return MOD_OK;
+}
+
+ModResult onArchiSaveLoaded(void*, ModError*) {
+    std::string ip;
+    if (auto result = get_string_from_save(kArchiServerBlobName, ip); result != MOD_OK) {
+        deactivateSeed();
+        return result;
+    }
+    archi::setServerIp(ip);
+
+    std::string slot;
+    if (auto result = get_string_from_save(kArchiSlotBlobName, slot); result != MOD_OK) {
+        deactivateSeed();
+        return result;
+    }
+    archi::setSlotName(slot);
+
+    std::string pass; // if we dont have a saved password, no need to set it
+    if (auto result = get_string_from_save(kArchiPassBlobName, pass); result == MOD_OK) {
+        archi::setSlotPass(pass);
+    }
+
+    // TODO: init is called here when a save is loaded, which means if a connection isn't successful, the Gamemode will error out and close
+    if (auto result = archi::init(); result != MOD_OK) {
+        mods::log::error("Saved archipelago data is invalid, unable to load save.");
+        return result;
+    }
+
+    // if (randomizer_GetContext().mHash != hash) {
+    //     deactivateSeed();
+    //     activateSeed(hash.c_str());
+    // }
 
     loadAncientDocumentNum();
     return MOD_OK;
@@ -461,7 +541,13 @@ ModResult onGameModeActivated(void*, ModError* error) {
         return mods::set_error(error, result, "failed to initialize save observation");
     }
 
-    result = svc_mng.texture->register_file(mod_ctx, "res/tex1_608x100_0c1c70378fb8cb46_6.png", &logoTexHandle);
+    const char* logo_path;
+    if (isArchipelagoMode())
+        logo_path = "res/archi/tex1_608x100_0c1c70378fb8cb46_6.png";
+    else
+        logo_path = "res/tex1_608x100_0c1c70378fb8cb46_6.png";
+
+    result = svc_mng.texture->register_file(mod_ctx, logo_path, &logoTexHandle);
     if (result != MOD_OK) {
         return mods::set_error(error, result, "failed to register texture replacement");
     }
@@ -487,6 +573,17 @@ void shutdown() {
     svc_mng.texture->unregister(mod_ctx, logoTexHandle);
 }
 
+ModResult connect() {
+    ModResult result = archi::init();
+    if (result != MOD_OK) {
+        mods::log::error("failed to initialize archipelago");
+        return MOD_ERROR;
+    }
+
+    mods::log::info("randomizer game mode activated");
+    return MOD_OK;
+}
+
 ModResult onGameModeDeactivated(void*, ModError*) {
     shutdown();
 
@@ -497,6 +594,7 @@ ModResult onGameModeDeactivated(void*, ModError*) {
 ModResult onGameModeUpdate(void*, ModError*) {
     ui::update();
     session::update();
+    archi::update();
     return MOD_OK;
 }
 
@@ -508,7 +606,7 @@ ModResult initialize(const ServiceManager& services) {
         return result;
     }
 
-    constexpr GameModeDesc gameModeDesc{
+    const GameModeDesc randoModeDesc = {
         .struct_size = sizeof(GameModeDesc),
         .game_mode_id = "randomizer",
         .full_name = "Randomizer",
@@ -516,11 +614,28 @@ ModResult initialize(const ServiceManager& services) {
         .user_data = nullptr,
         .on_activated = onGameModeActivated,
         .on_deactivated = onGameModeDeactivated,
-        .on_save_loaded = onSaveLoaded,
-        .on_new_save = onNewSave,
+        .on_save_loaded = onRandoSaveLoaded,
+        .on_new_save = onNewRandoSave,
         .on_tick = onGameModeUpdate,
     };
-    result = svc_game_mode->register_game_mode(mod_ctx, &gameModeDesc);
+    result = svc_game_mode->register_game_mode(mod_ctx, &randoModeDesc);
+    if (result != MOD_OK) {
+        return result;
+    }
+
+    const GameModeDesc archiModeDesc = {
+        .struct_size = sizeof(GameModeDesc),
+        .game_mode_id = "archipelago",
+        .full_name = "Archipelago",
+        .save_name = "archipelago",
+        .user_data = nullptr,
+        .on_activated = onGameModeActivated,
+        .on_deactivated = onGameModeDeactivated,
+        .on_save_loaded = onArchiSaveLoaded,
+        .on_new_save = onNewArchiSave,
+        .on_tick = onGameModeUpdate,
+    };
+    result = svc_mng.game_mode->register_game_mode(mod_ctx, &archiModeDesc);
     if (result != MOD_OK) {
         return result;
     }

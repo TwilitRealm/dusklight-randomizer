@@ -1,5 +1,6 @@
 #include "mods/service.hpp"
 #include "mods/svc/log.h"
+#include "mods/svc/websocket.h"
 
 #include "item.hpp"
 #include "session.hpp"
@@ -19,6 +20,7 @@ IMPORT_SERVICE(MessageService, svc_message);
 IMPORT_SERVICE(GameModeService, svc_game_mode);
 IMPORT_SERVICE(TextureService, svc_texture);
 IMPORT_SERVICE(FileService, svc_file);
+IMPORT_SERVICE(WebSocketService, svc_websocket);
 
 extern "C" {
 
@@ -39,6 +41,7 @@ MOD_EXPORT ModResult mod_initialize(ModError* error) {
         svc_game_mode,
         svc_texture,
         svc_file,
+        svc_websocket
     });
     if (result != MOD_OK) {
         return mods::set_error(error, result, "failed to initialize session");

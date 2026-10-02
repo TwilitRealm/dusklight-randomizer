@@ -22,6 +22,7 @@
 #include <thread>
 #include <unordered_set>
 
+#include "../archipelago.hpp"
 #include "d/d_file_select.h"
 
 namespace randomizer::ui {
@@ -1925,6 +1926,88 @@ ModResult buildMenuTab() {
 
 ModResult removeMenuTab() {
     return session::svc_mng.ui->unregister_menu_tab(session::svc_mng.mod_ctx, g_menu_tab);
+}
+
+// archipelago tab
+ModResult buildArchipelagoTab(ModContext* ctx, UiWindowHandle, UiElementHandle leftPane,
+    UiElementHandle rightPane, void*, ModError*) {
+    add_string_input(leftPane, "Server IP",
+        "Set the IP used to connect to the archipelago lobby.", 32,
+        [](ModContext*, void*, UiControlValue* out_value) {
+            static char buffer[32];
+            strncpy(buffer, archi::getServerIp().c_str(), 31);
+            out_value->string_value = buffer;
+        },
+        [](ModContext* ctx, void* user_data, const UiControlValue* value) {
+            archi::setServerIp(value->string_value);
+        });
+
+    add_string_input(leftPane, "Slot Name",
+        "The name of the slot used for this archipelago game.", 32,
+        [](ModContext*, void*, UiControlValue* out_value) {
+            static char buffer[32];
+            strncpy(buffer, archi::getSlotName().c_str(), 31);
+            out_value->string_value = buffer;
+        },
+        [](ModContext* ctx, void* user_data, const UiControlValue* value) {
+            archi::setSlotName(value->string_value);
+        });
+
+    add_string_input(leftPane, "Lobby Password",
+        "Password used to connect to a password protected archipelago lobby. (optional)", 32,
+        [](ModContext*, void*, UiControlValue* out_value) {
+            static char buffer[32];
+            strncpy(buffer, archi::getSlotPass().c_str(), 31);
+            out_value->string_value = buffer;
+        },
+        [](ModContext* ctx, void* user_data, const UiControlValue* value) {
+            archi::setSlotPass(value->string_value);
+        });
+
+    add_button(leftPane, "Connect",
+        "Connect to Archipelago lobby using provided IP, port, username, and (optionally) password.",
+        [](ModContext* ctx, void* user_data) {
+            if (session::connect() == MOD_OK) {
+                // set flag to move to name screen after window close
+                g_file_select_window_ctx.is_proceed = true;
+                session::svc_mng.ui->window_close(session::svc_mng.mod_ctx,
+                    *static_cast<UiWindowHandle*>(user_data));
+                mDoAud_seStartMenu(Z2SE_SY_NEW_FILE);
+            }
+        }, nullptr, &g_file_select_window_ctx.window_handle);
+
+    return MOD_OK;
+}
+
+ModResult buildArchipelagoGateMenu(dFile_select_c* fileSelect) {
+    UiTabDesc tabs[] = {
+        {
+            .struct_size = sizeof(UiTabDesc),
+            .title = "Connection",
+            .build = buildArchipelagoTab,
+        }
+    };
+
+    UiWindowDesc desc = UI_WINDOW_DESC_INIT;
+    desc.tabs = tabs;
+    desc.tab_count = std::size(tabs);
+    desc.user_data = fileSelect;
+    desc.on_closed = [](ModContext*, UiWindowHandle, void* userdata) {
+        dFile_select_c* i_this = static_cast<dFile_select_c*>(userdata);
+
+        // if closing the window through backing out, return to file select
+        if (!g_file_select_window_ctx.is_proceed)  {
+            i_this->headerTxtSet(0x43, 1, 0);
+            i_this->fileRecScaleAnmInitSet2(0.0f, 1.0f);
+            i_this->nameMoveAnmInitSet(0xd29, 0xd1f);
+            i_this->modoruTxtDispAnmInit(0);
+            i_this->mDataSelProc = dFile_select_c::DATASELPROC_NAME_TO_DATA_SELECT_MOVE;
+        }
+
+        g_dialogSelectModeState = SelectReady;
+    };
+
+    return session::svc_mng.ui->window_push(session::svc_mng.mod_ctx, &desc, &g_file_select_window_ctx.window_handle);
 }
 
 ModResult buildFileSelectGateMenu(dFile_select_c* fileSelect) {

@@ -254,7 +254,12 @@ HookAction hookPreSelectDataNameMove(ModContext*, void* args, void* retval, void
     if (ui::g_dialogSelectModeState == ui::SelectReady && isHeaderTxtChange == true && isFileRecScale == true && isModoruTxtDisp == true) {
         ui::g_dialogSelectModeState = ui::SelectWait;
 
-        ModResult rt = ui::buildFileSelectGateMenu(i_this);
+        ModResult rt;
+        if (session::isArchipelagoMode())
+            rt = ui::buildArchipelagoGateMenu(i_this);
+        else
+            rt = ui::buildFileSelectGateMenu(i_this);
+
         if (rt != MOD_OK) {
             mods::log::error("Failed to build menu");
             return HOOK_CONTINUE;

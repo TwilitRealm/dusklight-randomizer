@@ -150,6 +150,54 @@ namespace randomizer::logic::hints {
                     continue;
                 }
 
+                // In no logic, set items as path to bosses that are impossible to defeat without them
+                // If plentiful item scarcity is on, then none of this applies because there's duplicates
+                // of each listed item
+                if (world->Setting("Logic Rules") == "No Logic" && world->Setting("Item Scarcity") != "Plentiful") {
+                    std::map<location::Location*, std::set<std::string>> noLogicPathItems = {
+                        {
+                            world->GetLocation("Defeat Ganondorf"),
+                            {
+                                "Shadow Crystal",
+                                "Gale Boomerang",
+                                "Progressive Clawshot",
+                                "Spinner",
+                                "Hyrule Castle Big Key",
+                            }
+                        },
+                        {world->GetLocation("Arbiters Grounds Dungeon Reward"),
+                            {
+                                "Spinner",
+                            }
+                        },
+                        {world->GetLocation("Snowpeak Ruins Dungeon Reward"),
+                            {
+                                "Ball and Chain"
+                            }
+                        },
+                        {world->GetLocation("City in the Sky Dungeon Reward"),
+                            {
+                                "Progressive Clawshot"
+                           }
+                        },
+                        {world->GetLocation("Palace of Twilight Zant Heart Container"),
+                            {
+                                "Ball and Chain",
+                                "Gale Boomerang",
+                           }
+                        }
+                    };
+
+                    for (auto& [goalLocation, items] : noLogicPathItems) {
+                        for (auto& itemName : items) {
+                            if (itemAtLocation->GetName() == itemName) {
+                                goalLocation->AddPathLocation(potentialPathLocation);
+                            }
+                        }
+                    }
+                    continue;
+                }
+
                 // Take the item away from the location
                 potentialPathLocation->RemoveCurrentItem();
 
@@ -226,16 +274,21 @@ namespace randomizer::logic::hints {
             logicallyRequiredItems.push_back(pathLocation->GetCurrentItem());
         }
 
-        // Perform an importance search to see which locations are reachable without using this item in any way
-        auto worlds = &location->GetWorld()->GetRandomizer()->GetWorlds();
-        auto importanceSearch = search::Search::LocationImportance(worlds, location, logicallyRequiredItems);
-        importanceSearch.SearchWorlds();
+        // Perform an importance search to see which locations are reachable without
+        // using this item in any way. Don't do this in no logic, as every location is
+        // considered reachable in no logic so we'd end up subtracting out all our
+        // chain locations.
+        if (location->GetWorld()->Setting("Logic Rules") != "No Logic") {
+            auto worlds = &location->GetWorld()->GetRandomizer()->GetWorlds();
+            auto importanceSearch = search::Search::LocationImportance(worlds, location, logicallyRequiredItems);
+            importanceSearch.SearchWorlds();
 
-        // Any locations that we found can be subtracted out of our chain locations because the item at this location
-        // does not help reach them in any way.
-        std::erase_if(chainLocations, [&](location::Location* loc) {
-            return importanceSearch._visitedLocations.contains(loc);
-        });
+            // Any locations that we found can be subtracted out of our chain locations because the item at this location
+            // does not help reach them in any way.
+            std::erase_if(chainLocations, [&](location::Location* loc) {
+                return importanceSearch._visitedLocations.contains(loc);
+            });
+        }
 
         // If any remaining chain locations are also currently being checked for their hint importance,
         // then we subtract them out. This will allow us to only check locations which aren't potentially
@@ -287,20 +340,32 @@ namespace randomizer::logic::hints {
                     }
                 }
 
-                // Set importance for locations that we can easily calculate as required or not
-                // required right now.
+                auto currentItem = location->GetCurrentItem();
 
+                // Set importance for locations that we can easily calculate right now
+
+                // Locations which are on the path to Ganondorf are always required
+                if (ganondorfPathLocations.contains(location) || location == defeatGanondorf) {
+                    location->SetImportance(location::Importance::REQUIRED);
+                }
+                // For no logic, set all major items as possibly required except poe souls if
+                // they're not required for any access options, and golden bugs. We'll calculate
+                // the importance for these locations later.
+                else if (world->Setting("Logic Rules") == "No Logic" && currentItem->IsMajor()) {
+                    bool poeSoulAccessOption = world->Setting("Hyrule Barrier Requirements") == "Poe Souls" ||
+                        world->Setting("Hyrule Castle Big Key Requirements") == "Poe Souls";
+                    if ((currentItem->GetName() != "Poe Soul" || poeSoulAccessOption) && !currentItem->IsGoldenBug()) {
+                        location->SetImportance(location::Importance::POSSIBLY_REQUIRED);
+                    }
+                }
                 // Locations which contain barren items, or whose chain locations
                 // all contain barren items are not required
-                if (!location->GetCurrentItem()->IsMajor() || std::ranges::none_of(
-                   location->GetCurrentItem()->GetChainLocations(), [](location::Location* loc) {
+                else if (!currentItem->IsMajor() || std::ranges::none_of(
+                   currentItem->GetChainLocations(), [](location::Location* loc) {
                        return loc->GetCurrentItem()->IsMajor();
                    }
                 )) {
                     location->SetImportance(location::Importance::NOT_REQUIRED);
-                // Locations which are on the path to Ganondorf are always required
-                } else if (ganondorfPathLocations.contains(location) || location == defeatGanondorf) {
-                    location->SetImportance(location::Importance::REQUIRED);
                 }
             }
 

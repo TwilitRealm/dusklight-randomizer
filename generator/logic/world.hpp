@@ -92,6 +92,7 @@ namespace randomizer::logic::world
         void PerformPostEntranceShuffleTasks();
         void AssignAreaProperties();
         void AssignGoalLocations();
+        void SetChainLocations();
 
         /**
          * @brief Forbid items from being in certain locations depending on settings

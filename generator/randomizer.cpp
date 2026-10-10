@@ -146,17 +146,13 @@ namespace randomizer
         // This is used for calculating hint importance.
         UPDATE_PROGRESS_PERCENT(20.0);
         UPDATE_STATUS_MESSAGE("Flattening... (This sometimes takes a bit)");
-        FlattenSearch search = FlattenSearch(this->_worlds.at(0).get());
+        FlattenSearch search = FlattenSearch(this->GetWorld());
         search.doSearch();
 
         UPDATE_PROGRESS_PERCENT(50.0);
         // Set chain locations once the flatten search is done
         for (auto& world : this->_worlds) {
-            for (auto& location : world->GetAllLocations()) {
-                for (auto& item : location->GetComputedRequirement().getItems(world.get())) {
-                    item->AddChainLocation(location);
-                }
-            }
+            world->SetChainLocations();
         }
 
         UPDATE_PROGRESS_PERCENT(60.0);

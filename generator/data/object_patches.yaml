@@ -2928,6 +2928,33 @@ F_SP121:
       layers:
         - 0xFF
 
+    # Female Phasmid again (for some reason it's positioned differently on layer 8)
+    - action: patch
+      name: I_Nan
+      parameters: 0x00001F10
+      position:
+        x: 34686.921875
+        y: 960
+        z: -37549.08984375
+      angle:
+        x: 0xC000
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      patch:
+        # Turn this bug into a htPiece actor with collectible flag 0x96
+        name: htPiece
+        parameters: 0x00FF96C9
+        # Match its position/angle with the female phasmid on other layers
+        position:
+          x: 39919.859375
+          y: 1415.41796875
+          z: -40367.38671875
+        angle:
+          y: 0x58E3
+      layers:
+        - 8
+
     # Yellow Rupee under BoE Boulder 1
     - action: patch
       name: item

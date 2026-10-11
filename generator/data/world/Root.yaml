@@ -99,8 +99,8 @@
     Upper Zoras River Warp Portal: Upper_Zoras_River_Portal and (Unlock_Map_Regions == On or 'Lanayru_Province_Map_Sector')
     Zoras Domain Warp Portal: Zoras_Domain_Portal and (Unlock_Map_Regions == On or 'Lanayru_Province_Map_Sector')
     Snowpeak Warp Portal: Snowpeak_Portal and (Unlock_Map_Regions == On or 'Snowpeak_Province_Map_Sector')
-    Gerudo Desert Warp Portal: Gerudo_Desert_Portal and 'Desert_Province_Map_Sector'
-    Mirror Chamber Warp Portal: Mirror_Chamber_Portal and 'Desert_Province_Map_Sector'
+    Gerudo Desert Warp Portal: Gerudo_Desert_Portal and (Unlock_Map_Regions == On or 'Desert_Province_Map_Sector')
+    Mirror Chamber Warp Portal: Mirror_Chamber_Portal and (Unlock_Map_Regions == On or 'Desert_Province_Map_Sector')
 
 - Name: Ordon Spring Warp Portal
   Exits:

@@ -1915,6 +1915,128 @@ F_SP114:
       layers:
         - 0xFF
 
+    # Add the shadow beast fight stuff to layer 3. This is the layer
+    # of snowpeak mountain after defeating Blizzeta. If Boss ER is
+    # enabled, then defeating Blizzeta can happen before the player
+    # gets here. Putting the fight on layer 3 allows players to
+    # still get the portal afterward.
+
+    # Shadow Beast 1
+    - action: add
+      name: E_s1
+      parameters: 0x15FF0F00
+      position:
+        x: -11947.96
+        y: 900
+        z: -9894.218
+      angle:
+        x: 0x0000
+        y: 0x1F49
+        z: 0x0005
+      set id: 0xFFFF
+      layers:
+        - 3
+
+    # Shadow Beast 2
+    - action: add
+      name: E_s1
+      parameters: 0x15FF0F00
+      position:
+        x: -11721.61
+        y: 931.9651
+        z: -9218.199
+      angle:
+        x: 0x0000
+        y: 0x471C
+        z: 0x0005
+      set id: 0xFFFF
+      layers:
+        - 3
+
+    # Shadow Beast 3
+    - action: add
+      name: E_s1
+      parameters: 0x15FF0F00
+      position:
+        x: -10647.21
+        y: 934.497
+        z: -11272.17
+      angle:
+        x: 0x0000
+        y: 0x1F49
+        z: 0x0005
+      set id: 0xFFFF
+      layers:
+        - 3
+
+    # Warp portal that drops the shadow beasts
+    - action: add
+      name: E_wap
+      parameters: 0x15FFFF01
+      position:
+        x: -11424.13
+        y: 6779.82
+        z: -9670.633
+      angle:
+        x: 0x0000
+        y: 0xC000
+        z: 0x0000
+      set id: 0xFFFF
+      layers:
+        - 3
+
+    # Shadow Beast fight enclosure wall
+    - action: add
+      name: Obj_tp
+      parameters: 0xE001FFFF
+      position:
+        x: -11418.44
+        y: 11999.99
+        z: -9671.435
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0xFF15
+      set id: 0xFFFF
+      layers:
+        - 3
+
+    # Shadow Beast fight enclosure wall
+    - action: add
+      name: Obj_tp
+      parameters: 0xE005FFFF
+      position:
+        x: -10071.48
+        y: 12673.47
+        z: -9671.435
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0xFF15
+      set id: 0xFFFF
+      layers:
+        - 3
+
+    # Switch Area which activates the fight enclosure
+    - action: add
+      name: SwAreaC
+      parameters: 0xFF1CFFE0
+      position:
+        x: -12311.04
+        y: -400.4968
+        z: -9172.878
+      angle:
+        x: 0x0FFF
+        y: 0xC2D9
+        z: 0x0000
+      set id: 0xFFFF
+      scale:
+        x: 10
+        y: 20
+        z: 10
+      layers:
+        - 3
+
 # Lake Hylia
 F_SP115:
   # Room 0 - Main Lake
@@ -2345,6 +2467,67 @@ F_SP116:
       layers:
         - 0xFF
 
+    # Add scene change and cam areas to twilight layers
+    - action: add
+      name: scnChg
+      parameters: 0xFF31000C
+      position:
+        x: -0.537171006202698
+        y: 960.926696777344
+        z: 4435.2109375
+      angle:
+        x: 0x0FFF
+        y: 0x0000
+        z: 0x0FFF
+      set id: 0xFFFF
+      scale:
+        x: 50
+        y: 50
+        z: 50
+      layers:
+        - 13
+        - 14
+
+    - action: add
+      name: CamArea
+      parameters: 0x0403FF1F
+      position:
+        x: 8.53365802764893
+        y: 998.896606445313
+        z: 3361.44775390625
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x00FF
+      set id: 0xFFFF
+      scale:
+        x: 20
+        y: 5
+        z: 10
+      layers:
+        - 13
+        - 14
+
+    - action: add
+      name: CamArea
+      parameters: 0x0603E000
+      position:
+        x: -23.2665386199951
+        y: 986.443176269531
+        z: 4416.48193359375
+      angle:
+        x: 0x0000
+        y: 0x0000
+        z: 0x00FF
+      set id: 0xFFFF
+      scale:
+        x: 10
+        y: 10
+        z: 15
+      layers:
+        - 13
+        - 14
+
   # Room 1 - North Castle Town
   1:
     # Golden Wolf in North Castle Town
@@ -2531,7 +2714,7 @@ F_SP118:
   # Room 1 - Bulblin Camp
   1:
     # Small Key Actor
-    - action: patch
+    - action: delete
       name: Obj_key
       parameters: 0xFFFFFFFF
       position:
@@ -2543,15 +2726,8 @@ F_SP118:
         y: 0x0000
         z: 0x0000
       set id: 0xFFFF
-      patch:
-        # Turn this small key into the rando check
-        name: htPiece
-        parameters: 0x00FF9AD7
-        position:
-          x: 4000
-          z: -3500
       layers:
-        - 0
+        - 0xFF
 
     # Spawn in the item for the Bulblin Guard Key on
     # the layer where the camp is already beaten
@@ -2568,9 +2744,7 @@ F_SP118:
         z: 0x0000
       set id: 0xFFFF
       layers:
-        - 1
-        - 2
-        - 3
+        - 0xFF
 
     # Chest in front of bulblin camp
     - action: patch
@@ -2753,6 +2927,33 @@ F_SP121:
         parameters: 0x00FF96C9
       layers:
         - 0xFF
+
+    # Female Phasmid again (for some reason it's positioned differently on layer 8)
+    - action: patch
+      name: I_Nan
+      parameters: 0x00001F10
+      position:
+        x: 34686.921875
+        y: 960
+        z: -37549.08984375
+      angle:
+        x: 0xC000
+        y: 0x0000
+        z: 0x0000
+      set id: 0xFFFF
+      patch:
+        # Turn this bug into a htPiece actor with collectible flag 0x96
+        name: htPiece
+        parameters: 0x00FF96C9
+        # Match its position/angle with the female phasmid on other layers
+        position:
+          x: 39919.859375
+          y: 1415.41796875
+          z: -40367.38671875
+        angle:
+          y: 0x58E3
+      layers:
+        - 8
 
     # Yellow Rupee under BoE Boulder 1
     - action: patch

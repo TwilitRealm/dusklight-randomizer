@@ -809,7 +809,12 @@ namespace randomizer::logic::requirement
                 parentArea->GetTwilightCompletedMacroIndex() == connectedArea->GetTwilightCompletedMacroIndex()))
         {
             // LOG_TO_DEBUG("Added Twilight");
-            parentAreaFormTime |= FormTime::TWILIGHT_HUMAN | FormTime::TWILIGHT_WOLF;
+            if (parentAreaFormTime & FormTime::HUMAN) {
+                parentAreaFormTime |= FormTime::TWILIGHT_HUMAN;
+            }
+            if (parentAreaFormTime & FormTime::WOLF) {
+                parentAreaFormTime |= FormTime::TWILIGHT_WOLF;
+            }
             potentialExitFormTimes |= FormTime::TWILIGHT_HUMAN | FormTime::TWILIGHT_WOLF;
         }
 

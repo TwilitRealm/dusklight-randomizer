@@ -833,6 +833,32 @@ namespace randomizer::logic::world
         }
     }
 
+    void World::SetChainLocations() {
+        // For no logic, we'll manually set chain locations for poe souls and golden bugs
+        if (Setting("Logic Rules") == "No Logic") {
+            const auto poes60reward = GetLocation("Jovani 60 Poe Soul Reward");
+            const auto poes20reward = GetLocation("Jovani 20 Poe Soul Reward");
+            const auto poeSoul = GetItem("Poe Soul");
+            poeSoul->AddChainLocation(poes60reward);
+            poeSoul->AddChainLocation(poes20reward);
+
+            for (auto& item : this->_itemTable | std::views::values) {
+                if (item->IsGoldenBug()) {
+                    auto agithaReward = GetLocation("Agitha " + item->GetName() + " Reward");
+                    item->AddChainLocation(agithaReward);
+                }
+            }
+            return;
+        }
+
+        // Otherwise determine chain locations by the items listed in a location's computed requirement
+        for (auto& location : GetAllLocations()) {
+            for (auto& item : location->GetComputedRequirement().getItems(this)) {
+                item->AddChainLocation(location);
+            }
+        }
+    }
+
     void World::SetForbiddenItems()
     {
         // Prevent small keys from appearing on bosses if the setting is on

@@ -5,19 +5,16 @@
 namespace randomizer::archi {
 
 struct SettingsNameConvert {
-    static constexpr std::string kDefaultYes = "On";
-    static constexpr std::string kDefaultNo = "Off";
-
     std::string apName;
     std::string dusklightName;
     std::vector<std::pair<std::string, std::string>> optionsConvert;
 
-    const std::string& tryGetOptionConvert(const std::string& option) const {
+    std::string tryGetOptionConvert(const std::string& option) const {
         if (optionsConvert.empty()) {
             if (option == "Yes")
-                return kDefaultYes;
+                return "On";
             if (option == "No")
-                return kDefaultNo;
+                return "Off";
             return option;
         }
 
@@ -41,7 +38,7 @@ static auto sArchiSettingToDusklight = std::to_array<SettingsNameConvert>({
     {"Faron Twilight Cleared", "Faron Twilight Cleared"},
     {"Eldin Twilight Cleared", "Eldin Twilight Cleared"},
     {"Lanayru Twilight Cleared", "Lanayru Twilight Cleared"},
-    {"Skip MDH", "Skip Midna's Desparate Hour"},
+    {"Skip MDH", "Skip Midna's Desperate Hour"},
     {"Open Map", "Unlock Map Regions"},
     {"Increase Wallet", "Logic Increase Wallet Capacity"},
     {"Transform Anywhere", "Logic Transform Anywhere"},
@@ -99,19 +96,24 @@ const SettingsNameConvert& GetAPSettingNameConvert(const std::string& apSettingN
 
 void createConfigFromArchiSettings(seedgen::config::Config& config,
     const nlohmann::json& apSettingsJson) {
-    auto& settings = config.GetSettings();
+    auto& settings_map = config.GetSettings().GetMap();
 
+    auto items = apSettingsJson.items();
     // update settings using ap config
-    for (auto& [apSettingName, apSettingValueJson] : apSettingsJson.items()) {
+    for (auto& [apSettingName, apSettingValueJson] : items) {
         auto apSettingValue = apSettingValueJson.get<std::string>();
 
         const auto& settingConvert = GetAPSettingNameConvert(apSettingName);
 
         if (!settingConvert.apName.empty()) {
-            auto& setting = settings.GetMap().at(settingConvert.dusklightName);
+            if (!settings_map.contains(settingConvert.dusklightName)) {
+                mods::log::error("Invalid name for Dusklight Setting: {}", settingConvert.dusklightName);
+                continue;
+            }
+            auto& setting = settings_map.at(settingConvert.dusklightName);
             setting.SetCurrentOption(settingConvert.tryGetOptionConvert(apSettingValue));
         } else if (apSettingName == "Castle Requirements") {
-            auto& setting = settings.GetMap().at("Hyrule Barrier Requirements");
+            auto& setting = settings_map.at("Hyrule Barrier Requirements");
 
             // ap assumes max mirror shards/fused shadows/dungeons, so update those settings as well
 
@@ -121,17 +123,17 @@ void createConfigFromArchiSettings(seedgen::config::Config& config,
                 setting.SetCurrentOption("Vanilla");
             else if(apSettingValue == "Fused Shadows") {
                 setting.SetCurrentOption("Fused Shadows");
-                settings.GetMap().at("Hyrule Barrier Fused Shadows").SetCurrentOption("3");
+                settings_map.at("Hyrule Barrier Fused Shadows").SetCurrentOption("3");
             }else if(apSettingValue == "Mirror Shards") {
                 setting.SetCurrentOption("Mirror Shards");
-                settings.GetMap().at("Hyrule Barrier Mirror Shards").SetCurrentOption("4");
+                settings_map.at("Hyrule Barrier Mirror Shards").SetCurrentOption("4");
             }else if(apSettingValue == "All Dungeons") {
                 setting.SetCurrentOption("Dungeons");
-                settings.GetMap().at("Hyrule Barrier Dungeons").SetCurrentOption("8");
+                settings_map.at("Hyrule Barrier Dungeons").SetCurrentOption("8");
             }
         }else if (apSettingName == "Temple of Time Entrance Requirements") {
-            auto& setting = settings.GetMap().at("Sacred Grove Does Not Require Skull Kid");
-            auto& setting2 = settings.GetMap().at("Temple of Time Sword Requirement");
+            auto& setting = settings_map.at("Sacred Grove Does Not Require Skull Kid");
+            auto& setting2 = settings_map.at("Temple of Time Sword Requirement");
 
             if(apSettingValue == "Closed") {
                 setting.SetCurrentOption("Off");

@@ -11,30 +11,37 @@
 - Name: Green Rupee
   Importance: Junk
   Id: 0x01
+  APItemId: 0
 
 - Name: Blue Rupee
   Importance: Junk
   Id: 0x02
+  APItemId: 1
 
 - Name: Yellow Rupee
   Importance: Junk
   Id: 0x03
+  APItemId: 2
 
 - Name: Red Rupee
   Importance: Junk
   Id: 0x04
+  APItemId: 3
 
 - Name: Purple Rupee
   Importance: Junk
   Id: 0x05
+  APItemId: 4
 
 - Name: Orange Rupee
   Importance: Junk
   Id: 0x06
+  APItemId: 5
 
 - Name: Silver Rupee
   Importance: Junk
   Id: 0x07
+  APItemId: 6
 
 #- Name: Unused (Gives text about combining bombs)
 #  Importance:
@@ -47,30 +54,37 @@
 - Name: Bombs 5
   Importance: Junk
   Id: 0x0A
+  APItemId: 8
 
 - Name: Bombs 10
   Importance: Junk
   Id: 0x0B
+  APItemId: 9
 
 - Name: Bombs 20
   Importance: Junk
   Id: 0x0C
+  APItemId: 10
 
 - Name: Bombs 30
   Importance: Junk
   Id: 0x0D
+  APItemId: 11
 
 - Name: Arrows 10
   Importance: Junk
   Id: 0x0E
+  APItemId: 12
 
 - Name: Arrows 20
   Importance: Junk
   Id: 0x0F
+  APItemId: 13
 
 - Name: Arrows 30
   Importance: Junk
   Id: 0x10
+  APItemId: 14
 
 #- Name: Arrows 1
 #  Importance: Junk
@@ -79,46 +93,57 @@
 - Name: Seeds 50
   Importance: Junk
   Id: 0x12
+  APItemId: 15
 
 - Name: Foolish Item # Custom Rando Item
   Importance: Junk
   Id: 0x13
+  APItemId: 131
 
 - Name: Ordon Spring Portal # Custom Rando item
   Importance: Major
   Id: 0x14
+  APItemId: -1
 
 - Name: South Faron Portal # Custom Rando Item
   Importance: Major
   Id: 0x15
+  APItemId: -1
 
 - Name: Water Bombs 5
   Importance: Junk
   Id: 0x16
+  APItemId: 17
 
 - Name: Water Bombs 10
   Importance: Junk
   Id: 0x17
+  APItemId: 18
 
 - Name: Water Bombs 15
   Importance: Junk
   Id: 0x18
+  APItemId: 19
 
 #- Name: Water Bombs 3
 #  Importance: Junk
 #  Id: 0x19
+#  APItemId: 16
 
 - Name: Bomblings 5
   Importance: Junk
   Id: 0x1A
+  APItemId: 21
 
 - Name: Bomblings 10
   Importance: Junk
   Id: 0x1B
+  APItemId: 22
 
 #- Name: Bomblings 3
 #  Importance: Junk
 #  Id: 0x1C
+#  APItemId: 20
 #
 #- Name: Bomblings 1
 #  Importance: Junk
@@ -139,10 +164,12 @@
 - Name: Piece of Heart
   Importance: Junk
   Id: 0x21
+  APItemId: 23
 
 - Name: Heart Container
   Importance: Junk
   Id: 0x22
+  APItemId: 24
 
 #- Name: Dungeon Map
 #  Importance: Junk
@@ -175,14 +202,17 @@
 - Name: Ordon Shield
   Importance: Major
   Id: 0x2A
+  APItemId: 26
 
 - Name: Wooden Shield
   Importance: Junk
   Id: 0x2B
+  APItemId: 26
 
 - Name: Hylian Shield
   Importance: Major
   Id: 0x2C
+  APItemId: 27
 
 #- Name: Ooccoo's Note
 #  Importance: Junk
@@ -199,14 +229,17 @@
 - Name: Magic Armor
   Importance: Major
   Id: 0x30
+  APItemId: 28
 
 - Name: Zora Armor
   Importance: Major
   Id: 0x31
+  APItemId: 29
 
 - Name: Shadow Crystal
   Importance: Major
   Id: 0x32
+  APItemId: 30
 
 #- Name: Ooccoo Dungeon
 #  Importance: Junk
@@ -219,6 +252,7 @@
 - Name: Progressive Wallet # Also Large Wallet
   Importance: Major
   Id: 0x35
+  APItemId: 31
 
 #- Name: Giant Wallet
 #  Importance: Major
@@ -235,18 +269,22 @@
 - Name: Upper Zoras River Portal
   Importance: Major
   Id: 0x39
+  APItemId: -1
 
 - Name: Castle Town Portal
   Importance: Major
   Id: 0x3A
+  APItemId: -1
 
 - Name: Gerudo Desert Portal
   Importance: Major
   Id: 0x3B
+  APItemId: -1
 
 - Name: North Faron Portal
   Importance: Major
   Id: 0x3C
+  APItemId: -1
 
 #- Name: Coral Earring
 #  Importance: Major
@@ -255,38 +293,47 @@
 - Name: Hawkeye
   Importance: Minor
   Id: 0x3E
+  APItemId: 32
 
 - Name: Progressive Sword # Also Wooden Sword
   Importance: Major
   Id: 0x3F
+  APItemId: 25
 
 - Name: Gale Boomerang
   Importance: Major
   Id: 0x40
+  APItemId: 33
 
 - Name: Spinner
   Importance: Major
   Id: 0x41
+  APItemId: 34
 
 - Name: Ball and Chain
   Importance: Major
   Id: 0x42
+  APItemId: 35
 
 - Name: Progressive Bow
   Importance: Major
   Id: 0x43
+  APItemId: 36
 
 - Name: Progressive Clawshot
   Importance: Major
   Id: 0x44
+  APItemId: 37
 
 - Name: Iron Boots
   Importance: Major
   Id: 0x45
+  APItemId: 38
 
 - Name: Progressive Dominion Rod
   Importance: Major
   Id: 0x46
+  APItemId: 39
 
 #- Name: Double Clawshots
 #  Importance: Major
@@ -295,6 +342,7 @@
 - Name: Lantern
   Importance: Major
   Id: 0x48
+  APItemId: 40
 
 #- Name: Master Sword with Light
 #  Importance: Major
@@ -303,10 +351,12 @@
 - Name: Progressive Fishing Rod
   Importance: Major
   Id: 0x4A
+  APItemId: 41
 
 - Name: Slingshot
   Importance: Major
   Id: 0x4B
+  APItemId: 44
 
 #- Name: Dominion Rod Uncharged
 #  Importance: Major
@@ -315,18 +365,22 @@
 - Name: Kakariko Gorge Portal
   Importance: Major
   Id: 0x4D
+  APItemId: -1
 
 - Name: Kakariko Village Portal
   Importance: Major
   Id: 0x4E
+  APItemId: -1
 
 - Name: Giant Bomb Bag
   Importance: Minor
   Id: 0x4F
+  APItemId: 133
 
 - Name: Bomb Bag
   Importance: Major
   Id: 0x50
+  APItemId: 45
 
 #- Name: Also Bomb Bag (different text)
 #  Importance: Major
@@ -335,6 +389,7 @@
 - Name: Death Mountain Portal
   Importance: Major
   Id: 0x52
+  APItemId: -1
 
 #- Name: Light Arrow
 #  Importance: Major
@@ -355,6 +410,7 @@
 - Name: Zoras Domain Portal
   Importance: Major
   Id: 0x57
+  APItemId: -1
 
 #- Name: Fising Rod Lure
 #  Importance: Junk
@@ -391,10 +447,12 @@
 - Name: Empty Bottle
   Importance: Major
   Id: 0x60
+  APItemId: 46
 
 - Name: Red Potion Shop
   Importance: Junk
   Id: 0x61
+  APItemId: -1
 
 #- Name: Green Potion Shop
 #  Importance: Junk
@@ -403,6 +461,7 @@
 - Name: Blue Potion Shop
   Importance: Junk
   Id: 0x63
+  APItemId: -1
 
 #- Name: Milk
 #  Importance: Junk
@@ -411,10 +470,12 @@
 - Name: Bottle with Half Milk
   Importance: Major
   Id: 0x65
+  APItemId: 47
 
 - Name: Lantern Oil Shop
   Importance: Junk
   Id: 0x66
+  APItemId: -1
 
 #- Name: Water
 #  Importance: Junk
@@ -467,6 +528,7 @@
 - Name: Fairy Tears
   Importance: Junk
   Id: 0x73
+  APItemId: -1
 
 #- Name: Worm
 #  Importance: Junk
@@ -475,6 +537,7 @@
 - Name: Bottle with Great Fairies Tears
   Importance: Major
   Id: 0x75
+  APItemId: 49
 
 #- Name: Bee Larva Scooped
 #  Importance: Junk
@@ -519,133 +582,161 @@
 - Name: Renados Letter
   Importance: Major
   Id: 0x80
+  APItemId: -1
 
 - Name: Invoice
   Importance: Major
   Id: 0x81
+  APItemId: -1
 
 - Name: Wooden Statue
   Importance: Major
   Id: 0x82
+  APItemId: -1
 
 - Name: Ilias Charm
   Importance: Major
   Id: 0x83
+  APItemId: -1
 
 - Name: Horse Call
   Importance: Minor
   Id: 0x84
+  APItemId: 53
 
 - Name: Forest Temple Small Key
   Importance: Major
   Id: 0x85
   Dungeon Small Key: Forest Temple
+  APItemId: 54
 
 - Name: Goron Mines Small Key
   Importance: Major
   Id: 0x86
   Dungeon Small Key: Goron Mines
+  APItemId: 55
 
 - Name: Lakebed Temple Small Key
   Importance: Major
   Id: 0x87
   Dungeon Small Key: Lakebed Temple
+  APItemId: 56
 
 - Name: Arbiters Grounds Small Key
   Importance: Major
   Id: 0x88
   Dungeon Small Key: Arbiters Grounds
+  APItemId: 57
 
 - Name: Snowpeak Ruins Small Key
   Importance: Major
   Id: 0x89
   Dungeon Small Key: Snowpeak Ruins
+  APItemId: 58
 
 - Name: Temple of Time Small Key
   Importance: Major
   Id: 0x8A
   Dungeon Small Key: Temple of Time
+  APItemId: 59
 
 - Name: City in the Sky Small Key
   Importance: Major
   Id: 0x8B
   Dungeon Small Key: City in the Sky
+  APItemId: 60
 
 - Name: Palace of Twilight Small Key
   Importance: Major
   Id: 0x8C
   Dungeon Small Key: Palace of Twilight
+  APItemId: 61
 
 - Name: Hyrule Castle Small Key
   Importance: Major
   Id: 0x8D
   Dungeon Small Key: Hyrule Castle
+  APItemId: 62
 
 - Name: Gerudo Desert Bulblin Camp Key
   Importance: Major
   Id: 0x8E
+  APItemId: 66
 
 - Name: Lake Hylia Portal
   Importance: Major
   Id: 0x8F
+  APItemId: -1
 
 - Name: Aurus Memo
   Importance: Major
   Id: 0x90
+  APItemId: 67
 
 - Name: Asheis Sketch
   Importance: Major
   Id: 0x91
+  APItemId: 68
 
 - Name: Forest Temple Big Key
   Importance: Major
   Id: 0x92
   Dungeon Big Key: Forest Temple
+  APItemId: 69
 
 - Name: Lakebed Temple Big Key
   Importance: Major
   Id: 0x93
   Dungeon Big Key: Lakebed Temple
+  APItemId: 70
 
 - Name: Arbiters Grounds Big Key
   Importance: Major
   Id: 0x94
   Dungeon Big Key: Arbiters Grounds
+  APItemId: 72
 
 - Name: Temple of Time Big Key
   Importance: Major
   Id: 0x95
   Dungeon Big Key: Temple of Time
+  APItemId: 74
 
 - Name: City in the Sky Big Key
   Importance: Major
   Id: 0x96
   Dungeon Big Key: City in the Sky
+  APItemId: 75
 
 - Name: Palace of Twilight Big Key
   Importance: Major
   Id: 0x97
   Dungeon Big Key: Palace of Twilight
+  APItemId: 76
 
 - Name: Hyrule Castle Big Key
   Importance: Major
   Id: 0x98
   Dungeon Big Key: Hyrule Castle
+  APItemId: 77
 
 - Name: Forest Temple Compass
   Importance: Junk
   Id: 0x99
   Dungeon Compass: Forest Temple
+  APItemId: 78
 
 - Name: Goron Mines Compass
   Importance: Junk
   Id: 0x9A
   Dungeon Compass: Goron Mines
+  APItemId: 79
 
 - Name: Lakebed Temple Compass
   Importance: Junk
   Id: 0x9B
   Dungeon Compass: Lakebed Temple
+  APItemId: 80
 
 #- Name: Lantern Yellow Chu Chu
 #  Importance: Junk
@@ -654,6 +745,7 @@
 - Name: Bottle with Lantern Oil
   Importance: Major
   Id: 0x9D
+  APItemId: 48
 
 #- Name: Bee Larva Shop
 #  Importance: Junk
@@ -686,6 +778,7 @@
 - Name: Progressive Mirror Shard
   Importance: Major
   Id: 0xA5
+  APItemId: 120
 
 #- Name: Mirror Piece 3
 #  Importance: Junk
@@ -699,39 +792,47 @@
   Importance: Junk
   Id: 0xA8
   Dungeon Compass: Arbiters Grounds
+  APItemId: 81
 
 - Name: Snowpeak Ruins Compass
   Importance: Junk
   Id: 0xA9
   Dungeon Compass: Snowpeak Ruins
+  APItemId: 82
 
 - Name: Temple of Time Compass
   Importance: Junk
   Id: 0xAA
   Dungeon Compass: Temple of Time
+  APItemId: 83
 
 - Name: City in the Sky Compass
   Importance: Junk
   Id: 0xAB
   Dungeon Compass: City in the Sky
+  APItemId: 84
 
 - Name: Palace of Twilight Compass
   Importance: Junk
   Id: 0xAC
   Dungeon Compass: Palace of Twilight
+  APItemId: 85
 
 - Name: Hyrule Castle Compass
   Importance: Junk
   Id: 0xAD
   Dungeon Compass: Hyrule Castle
+  APItemId: 86
 
 - Name: Mirror Chamber Portal
   Importance: Major
   Id: 0xAE
+  APItemId: -1
 
 - Name: Snowpeak Portal
   Importance: Major
   Id: 0xAF
+  APItemId: -1
 
 #- Name: Ilias Scent
 #  Importance: Junk
@@ -761,150 +862,185 @@
   Importance: Junk
   Id: 0xB6
   Dungeon Map: Forest Temple
+  APItemId: 87
 
 - Name: Goron Mines Dungeon Map
   Importance: Junk
   Id: 0xB7
   Dungeon Map: Goron Mines
+  APItemId: 88
 
 - Name: Lakebed Temple Dungeon Map
   Importance: Junk
   Id: 0xB8
   Dungeon Map: Lakebed Temple
+  APItemId: 89
 
 - Name: Arbiters Grounds Dungeon Map
   Importance: Junk
   Id: 0xB9
   Dungeon Map: Arbiters Grounds
+  APItemId: 90
 
 - Name: Snowpeak Ruins Dungeon Map
   Importance: Junk
   Id: 0xBA
   Dungeon Map: Snowpeak Ruins
+  APItemId: 91
 
 - Name: Temple of Time Dungeon Map
   Importance: Junk
   Id: 0xBB
   Dungeon Map: Temple of Time
+  APItemId: 92
 
 - Name: City in the Sky Dungeon Map
   Importance: Junk
   Id: 0xBC
   Dungeon Map: City in the Sky
+  APItemId: 93
 
 - Name: Palace of Twilight Dungeon Map
   Importance: Junk
   Id: 0xBD
   Dungeon Map: Palace of Twilight
+  APItemId: 94
 
 - Name: Hyrule Castle Dungeon Map
   Importance: Junk
   Id: 0xBE
   Dungeon Compass: Hyrule Castle
+  APItemId: 95
 
 - Name: Sacred Grove Portal
   Importance: Major
   Id: 0xBF
+  APItemId: -1
 
 - Name: Male Beetle
   Importance: Major
   Id: 0xC0
+  APItemId: 96
 
 - Name: Female Beetle
   Importance: Major
   Id: 0xC1
+  APItemId: 97
 
 - Name: Male Butterfly
   Importance: Major
   Id: 0xC2
+  APItemId: 98
 
 - Name: Female Butterfly
   Importance: Major
   Id: 0xC3
+  APItemId: 99
 
 - Name: Male Stag Beetle
   Importance: Major
   Id: 0xC4
+  APItemId: 100
 
 - Name: Female Stag Beetle
   Importance: Major
   Id: 0xC5
+  APItemId: 101
 
 - Name: Male Grasshopper
   Importance: Major
   Id: 0xC6
+  APItemId: 102
 
 - Name: Female Grasshopper
   Importance: Major
   Id: 0xC7
+  APItemId: 103
 
 - Name: Male Phasmid
   Importance: Major
   Id: 0xC8
+  APItemId: 104
 
 - Name: Female Phasmid
   Importance: Major
   Id: 0xC9
+  APItemId: 105
 
 - Name: Male Pill Bug
   Importance: Major
   Id: 0xCA
+  APItemId: 106
 
 - Name: Female Pill Bug
   Importance: Major
   Id: 0xCB
+  APItemId: 107
 
 - Name: Male Mantis
   Importance: Major
   Id: 0xCC
+  APItemId: 108
 
 - Name: Female Mantis
   Importance: Major
   Id: 0xCD
+  APItemId: 109
 
 - Name: Male Ladybug
   Importance: Major
   Id: 0xCE
+  APItemId: 110
 
 - Name: Female Ladybug
   Importance: Major
   Id: 0xCF
+  APItemId: 111
 
 - Name: Male Snail
   Importance: Major
   Id: 0xD0
+  APItemId: 112
 
 - Name: Female Snail
   Importance: Major
   Id: 0xD1
+  APItemId: 113
 
 - Name: Male Dragonfly
   Importance: Major
   Id: 0xD2
+  APItemId: 114
 
 - Name: Female Dragonfly
   Importance: Major
   Id: 0xD3
+  APItemId: 115
 
 - Name: Male Ant
   Importance: Major
   Id: 0xD4
+  APItemId: 116
 
 - Name: Female Ant
   Importance: Major
   Id: 0xD5
+  APItemId: 117
 
 - Name: Male Dayfly
   Importance: Major
   Id: 0xD6
+  APItemId: 118
 
 - Name: Female Dayfly
   Importance: Major
   Id: 0xD7
+  APItemId: 119
 
 - Name: Progressive Fused Shadow
   Importance: Major
   Id: 0xD8
+  APItemId: 121
 
 #- Name: Fused Shadow 2
 #  Importance: Junk
@@ -918,9 +1054,10 @@
 #  Importance: Junk
 #  Id: 0xDB
 
-#- Name: Unused
-#  Importance: Junk
-#  Id: 0xDC
+- Name: Archipelago Item
+  Importance: Minor
+  Id: 0xDC
+  APItemId: -1
 
 #- Name: Unused
 #  Importance: Junk
@@ -937,10 +1074,12 @@
 - Name: Poe Soul
   Importance: Major
   Id: 0xE0
+  APItemId: 124
 
 - Name: Progressive Hidden Skill # Also Ending Blow
   Importance: Major
   Id: 0xE1
+  APItemId: 122
 
 #- Name: Shield Attack
 #  Importance: Major
@@ -969,10 +1108,12 @@
 - Name: Bridge of Eldin Portal
   Importance: Major
   Id: 0xE8
+  APItemId: -1
 
 - Name: Progressive Sky Book
   Importance: Major
   Id: 0xE9
+  APItemId: 123
 
 #- Name: Partially Filled Sky Book
 #  Importance: Major
@@ -989,10 +1130,12 @@
 - Name: Purple Rupee Links House
   Importance: Junk
   Id: 0xED
+  APItemId: 7
 
 - Name: North Faron Woods Gate Key
   Importance: Major
   Id: 0xEE
+  APItemId: 63
 
 #- Name: Blue Fire
 #  Importance: Major
@@ -1013,19 +1156,23 @@
 - Name: Gate Keys
   Importance: Major
   Id: 0xF3
+  APItemId: 65
 
 - Name: Ordon Pumpkin
   Importance: Major
   Id: 0xF4
+  APItemId: 129
 
 - Name: Ordon Cheese
   Importance: Major
   Id: 0xF5
+  APItemId: 130
 
 - Name: Snowpeak Ruins Bedroom Key
   Importance: Major
   Id: 0xF6
   Dungeon Big Key: Snowpeak Ruins
+  APItemId: 73
 
 #- Name: Surfboard (Unused)
 #  Importance: Major
@@ -1039,6 +1186,7 @@
   Importance: Major
   Id: 0xF9
   Dungeon Big Key: Goron Mines
+  APItemId: 71
 
 #- Name: Got Lantern Back
 #  Importance: Major
@@ -1059,6 +1207,7 @@
 - Name: Faron Woods Coro Key
   Importance: Major
   Id: 0xFE
+  APItemId: 64
 
 #- Name: Invalid
 #  Importance: Major

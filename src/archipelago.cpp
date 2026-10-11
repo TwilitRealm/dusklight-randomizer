@@ -145,6 +145,10 @@ void parseConnected(nlohmann::json& data) {
                                       paths::GetRandomizerPath() / "archi" / "preferences.yaml");
 }
 
+void parseDataPackage(nlohmann::json& data) {
+
+}
+
 void parseServerJson(nlohmann::json* data) {
     if (data->is_array()) {
         for (auto archiPacket : *data) {
@@ -178,6 +182,7 @@ void parseServerJson(nlohmann::json* data) {
             case ServerPacket::ReceivedItems:
                 break;
             case ServerPacket::DataPackage:
+                parseDataPackage(archiPacket);
                 break;
             case ServerPacket::Connected:
                 parseConnected(archiPacket);

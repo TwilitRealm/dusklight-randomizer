@@ -44,5 +44,6 @@ private:
 };
 
 void GenerateAllHints(world::WorldPool& worldPool);
+void GenerateAPHints(world::WorldPool& worlds);
 
 }

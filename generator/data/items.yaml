@@ -1055,7 +1055,7 @@
 #  Id: 0xDB
 
 - Name: Archipelago Item
-  Importance: Minor
+  Importance: Major
   Id: 0xDC
   APItemId: -1
 

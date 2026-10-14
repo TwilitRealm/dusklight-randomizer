@@ -187,6 +187,10 @@
   Group: 0
   Message Id: 320
 
+- Name: Archipelago Item Get Item Text
+  Group: 0
+  Message Id: 321
+
 - Name: Poe Soul Get Item Text
   Group: 0
   Message Id: 325

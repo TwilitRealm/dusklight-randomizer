@@ -11,6 +11,7 @@
 #include "mods/svc/websocket.hpp"
 
 #include "nlohmann/json.hpp"
+#include "ui/rando_seed_generation.hpp"
 
 namespace randomizer::archi {
 static mods::ws::Connection connection;
@@ -19,6 +20,7 @@ static std::queue<nlohmann::json> jsonQueue;
 static std::string serverIp;
 static std::string slotName;
 static std::string slotPass;
+static std::string seedId;
 
 // NetworkVersion, NetworkItem, and NetworkPlayer all use "class" in their json-ified fields,
 // which means we cannot use nlohmann's macros for serialization.
@@ -136,13 +138,21 @@ void parseRoomInfo(RoomInfo* info) {
 void parseConnected(nlohmann::json& data) {
     auto slotData = data["slot_data"];
     mods::log::debug("Slot Data: {}", slotData.dump());
+    auto seedHash = slotData["SeedID"].get<std::string>();
+    auto seedDataPath = paths::GetRandomizerSeedsPath("archi") / seedHash / "seed.dat";
+    setSeedId(seedHash);
+    if (!std::filesystem::exists(seedDataPath)) {
+        seedgen::config::Config testConfig;
+        testConfig.SetSeed(slotData["SeedID"].get<std::string>());
+        createConfigFromArchiSettings(testConfig, slotData["Settings"]);
 
-    seedgen::config::Config testConfig;
-    testConfig.SetSeed(slotData["SeedID"].get<std::string>());
-    createConfigFromArchiSettings(testConfig, slotData["Settings"]);
+        testConfig.WriteToFile(paths::GetRandomizerPath("archi" ) /  "settings.yaml",
+                                          paths::GetRandomizerPath("archi") / "preferences.yaml");
 
-    testConfig.WriteToFile(paths::GetRandomizerPath() / "archi" / "settings.yaml",
-                                      paths::GetRandomizerPath() / "archi" / "preferences.yaml");
+        // TODO: Fill in world data for generator
+        auto apData = WorldData{};
+        ui::GenerateRandomizerSeed(Type::AP, apData);
+    }
 }
 
 void parseDataPackage(nlohmann::json& data) {
@@ -267,5 +277,8 @@ std::string getSlotName() { return slotName; }
 
 void setSlotPass(const std::string& name) { slotPass = name; }
 std::string getSlotPass() { return slotPass; }
+
+void setSeedId(const std::string& id) { seedId = id; }
+std::string getSeedId() { return seedId; }
 
 } // randomizer::archi

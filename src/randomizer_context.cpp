@@ -123,6 +123,7 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
 
     YAML::Node out{};
     out["formatVersion"] = FORMAT_VERSION;
+    out["mArchipelago"] = mArchipelago;
 
     for (const auto& [setting, option] : this->mSettings) {
         out["mSettings"][setting] = option;
@@ -473,7 +474,7 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
     UiToastDesc desc = UI_TOAST_DESC_INIT;
     desc.type = "success";
     desc.title_rml = "Randomizer";
-    std::string body_text = fmt::format("Loaded Randomizer Seed {}", this->mHash);
+    std::string body_text = fmt::format("Loaded {} Seed {}", this->mArchipelago ? "AP" : "Randomizer", this->mHash);
     desc.body_rml = body_text.c_str();
     desc.duration_ms = 3000;
     randomizer::session::svc_mng.ui->push_toast(randomizer::session::svc_mng.mod_ctx, &desc);
@@ -482,7 +483,12 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
 }
 
 std::filesystem::path RandomizerContext::GetSeedDataPath() const {
-    return ::randomizer::paths::GetRandomizerSeedsPath() / this->mHash / "seed.dat";
+    auto seedPath = randomizer::paths::GetRandomizerSeedsPath(this->mArchipelago ? "archi" : "") / this->mHash;
+    if (this->mArchipelago && !std::filesystem::exists(seedPath)) {
+        std::filesystem::create_directories(seedPath);
+    }
+
+    return seedPath / "seed.dat";
 }
 
 int RandomizerContext::SettingToEnum(const std::string& settingName) {
@@ -1188,6 +1194,10 @@ void parseObjPatchData(stage_tgsc_data_class& object, const YAML::Node& patchNod
 RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
     RandomizerContext randoData{};
 
+    if (world->GetRandomizer()->GetType() == randomizer::Type::AP) {
+        randoData.mArchipelago = true;
+    }
+
     // Settings we need to check ingame
     for (const auto& [setting, info] : *randomizer::seedgen::settings::GetAllSettingsInfo()) {
         if (info->NeedInGame()) {
@@ -1863,8 +1873,14 @@ static void DeleteFailedGenerationFiles(randomizer::Randomizer& rando) {
     }
 }
 
-bool GenerateAndWriteSeed() {
-    auto r = randomizer::Randomizer{::randomizer::paths::GetRandomizerPath()};
+bool GenerateAndWriteSeed(randomizer::Type type, const randomizer::archi::WorldData& apData) {
+
+    auto outputPath = randomizer::paths::GetRandomizerPath();
+    if (type == randomizer::Type::AP) {
+        outputPath = randomizer::paths::GetRandomizerPath("archi");
+    }
+
+    auto r = randomizer::Randomizer(type, outputPath, apData);
 
     auto generationResult = r.Generate();
     if (generationResult.has_value()) {

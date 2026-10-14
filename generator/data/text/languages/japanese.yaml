@@ -1183,6 +1183,14 @@ Progressive Fused Shadow:
 #      Cryptic:
 #        Text:
 
+Archipelago Item:
+  Standard:
+    Text: Archipelago Item
+  Pretty:
+    Text: an {Archipelago Item}
+  Cryptic:
+    Text: an {item for another world}
+
 Poe Soul:
   Standard:
     Text: Poe Soul
@@ -7477,6 +7485,11 @@ Mirror Shard 1 Get Item Text:
       <fast>一つ目の<red>陰りの鏡のかけら<white>を手に入れた！
       <orange>砂<white>で覆われている・・・
 
+Archipelago Item Get Item Text:
+  Standard:
+    Text: |-
+      <fast>You got an <red>Archipelago Item<white>!
+
 Poe Soul Get Item Text:
   Standard:
     Text: |-
@@ -7578,6 +7591,11 @@ Slingshot Shop After Purchase Text Template:
   Standard:
     Text: |-
       What are you doing buying <Item Pretty Name>, you naughty thing? You're too old for toys! Will you at least let the kids play with it?
+
+Links House Sign:
+  Standard:
+    Text: |-
+      <player name>'s House
 
 Barnes Special Offer Text Template:
   Standard:

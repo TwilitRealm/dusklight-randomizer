@@ -130,4 +130,6 @@ std::string getSlotName();
 void setSlotPass(const std::string& name);
 std::string getSlotPass();
 
+void setSeedId(const std::string& id);
+std::string getSeedId();
 } // randomizer::archi

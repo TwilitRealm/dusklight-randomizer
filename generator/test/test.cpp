@@ -19,7 +19,7 @@ int main()
             std::cout << "Testing " << testName << std::endl;
 
             try {
-                randomizer::Randomizer r{RANDO_SAVE_PATH};
+                randomizer::Randomizer r{randomizer::Type::DEFAULT, RANDO_SAVE_PATH};
                 r.GenerateWorlds();
             }
             catch(const std::exception& e) {

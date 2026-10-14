@@ -228,9 +228,10 @@ void observe_give(ModContext*, const ItemGiveInfo* info, void*) {
     }
 }
 
-bool activateSeed(const char* hash) {
+bool activateSeed(const char* hash, bool archipelago = false) {
     auto& ctx = randomizer_GetContext();
     ctx = RandomizerContext();
+    ctx.mArchipelago = archipelago;
     if (auto err = ctx.LoadFromHash(hash); err.has_value() || ctx.mHash.empty()) {
         mods::log::error("failed to load seed {}", hash);
         return false;
@@ -440,13 +441,15 @@ ModResult onNewArchiSave(void*, ModError*) {
 
     const std::string pass = archi::getSlotPass();
 
-    // deactivateSeed();
-    // if (!activateSeed(hash.c_str()))
-    //     return MOD_ERROR;
+    auto hash = archi::getSeedId();
+    deactivateSeed();
+    if (!activateSeed(hash.c_str(), true))
+        return MOD_ERROR;
 
     svc_mng.save->set_blob(svc_mng.mod_ctx, kArchiServerBlobName, ip.data(), ip.size());
     svc_mng.save->set_blob(svc_mng.mod_ctx, kArchiPassBlobName, pass.data(), pass.size());
     svc_mng.save->set_blob(svc_mng.mod_ctx, kArchiSlotBlobName, slotName.data(), slotName.size());
+    svc_mng.save->set_blob(svc_mng.mod_ctx, kSeedHashBlobName, hash.data(), hash.size());
 
     setAncientDocumentNum(0);
     setupRandomizerFile();
@@ -496,10 +499,16 @@ ModResult onArchiSaveLoaded(void*, ModError*) {
         return result;
     }
 
-    // if (randomizer_GetContext().mHash != hash) {
-    //     deactivateSeed();
-    //     activateSeed(hash.c_str());
-    // }
+    std::string hash;
+    if (auto result = get_string_from_save(kSeedHashBlobName, hash); result != MOD_OK) {
+        deactivateSeed();
+        return result;
+    }
+
+    if (randomizer_GetContext().mHash != hash) {
+        deactivateSeed();
+        activateSeed(hash.c_str(), true);
+    }
 
     loadAncientDocumentNum();
     return MOD_OK;

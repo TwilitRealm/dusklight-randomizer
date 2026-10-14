@@ -96,6 +96,7 @@ namespace randomizer::logic::world
             // Required Fields
             auto id = itemNode["Id"].as<int>();
             auto name = itemNode["Name"].as<std::string>();
+            auto apId = itemNode["APItemId"].as<int>(-1);
             auto importanceStr = itemNode["Importance"].as<std::string>();
             auto importance = item::ImportanceFromStr(importanceStr);
             if (importance == item::Importance::INVALID)
@@ -114,7 +115,7 @@ namespace randomizer::logic::world
             auto dungeonMap = itemNode["Dungeon Map"].as<std::string>("");
 
             // Make the item and insert it into the item table
-            auto item = std::make_unique<item::Item>(id, name, this, importance, gameWinningItem,
+            auto item = std::make_unique<item::Item>(id, name, apId, this, importance, gameWinningItem,
                 dungeonSmallKey != "", dungeonBigKey != "", dungeonCompass != "", dungeonMap != "");
 
             this->_itemTable.try_emplace(name, std::move(item));
@@ -688,6 +689,29 @@ namespace randomizer::logic::world
                 {
                     throw std::runtime_error("Plandomizer item placements do not work! Reason:\n" + verifyLogicError.value());
                 }
+            }
+        }
+    }
+
+    void World::PlaceAPItems() {
+        if (GetRandomizer()->GetType() != Type::AP) {
+            return;
+        }
+
+        // Create map of APid -> item
+        std::map<int, item::Item*> apItems{};
+        for (auto& item : this->_itemTable | std::views::values) {
+            apItems.emplace(item->GetAPID(), item.get());
+        }
+
+        const auto& apItemPlacements = GetRandomizer()->GetAPData().itemPlacements;
+        for (auto& location : this->_locationTable | std::views::values) {
+            auto apLocationId = location->GetMetadata()["APLocationId"].as<int>(-1);
+            if (apItemPlacements.contains(apLocationId)) {
+                auto apItemId = apItemPlacements.at(apLocationId);
+                location->SetCurrentItem(apItems[apItemId]);
+            } else {
+                location->SetCurrentItem(location->GetOriginalItem());
             }
         }
     }

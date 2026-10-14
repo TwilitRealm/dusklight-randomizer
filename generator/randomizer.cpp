@@ -35,7 +35,12 @@ namespace randomizer
     {
         try
         {
-            GenerateWorlds();
+            switch (this->_type) {
+            case Type::DEFAULT:
+                GenerateWorlds();
+            case Type::AP:
+                GenerateAPWorld();
+            }
         }
         catch(const std::exception& e)
         {
@@ -83,6 +88,26 @@ namespace randomizer
         search.doSearch();
     }
 #endif
+
+    void Randomizer::GenerateAPWorld() {
+        utility::platform::Log("Generating AP World");
+        this->_config.LoadFromFile(GetConfigPath(), GetPrefPath());
+        seedgen::config::SeedRNG(this->_config, true, false);
+        auto hash = this->_config.GetSeed();
+        this->_config.SetHash(hash);
+        utility::platform::Log(std::string("Hash: ") + hash);
+
+        std::unique_ptr<logic::world::World> world = std::make_unique<logic::world::World>(1, this);
+        world->SetSettings(this->_config.GetSettingsList().front());
+        world->Build();
+        this->_worlds.emplace_back(std::move(world));
+
+        // TODO: Set shuffled entrances as determined by AP
+
+        this->GetWorld()->PlaceAPItems();
+        logic::hints::GenerateAPHints(this->_worlds);
+    }
+
     void Randomizer::GenerateWorlds()
     {
         utility::time::ScopedTimer<"Seed generation took ", std::chrono::milliseconds> timer;

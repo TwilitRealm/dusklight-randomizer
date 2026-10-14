@@ -82,6 +82,7 @@ namespace randomizer::logic::world
         void PerformPreEntranceShuffleTasks();
         void PlaceVanillaItems();
         void PlacePlandomizerItems();
+        void PlaceAPItems();
         void SetNonProgressLocations();
         void SetTrackerNonProgressLocations();
 

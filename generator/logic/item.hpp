@@ -27,17 +27,19 @@ namespace randomizer::logic::item
     {
        public:
         Item() = default;
-        Item(const int& id,
+        Item(int id,
              const std::string& name,
+             int apId,
              world::World* world,
-             const Importance& importance,
-             const bool& gameWinningItem,
-             const bool& dungeonSmallKey,
-             const bool& bigKey,
-             const bool& compass,
-             const bool& dungeonMap);
+             Importance importance,
+             bool gameWinningItem,
+             bool dungeonSmallKey,
+             bool bigKey,
+             bool compass,
+             bool dungeonMap);
 
         int GetID() const;
+        int GetAPID() const;
         std::string GetName() const;
         world::World* GetWorld() const;
         Importance GetImportance() const;
@@ -63,6 +65,7 @@ namespace randomizer::logic::item
 
        private:
         int _id = -1;
+        int _apId = -1;
         std::string _name;
         world::World* _world = nullptr;
         Importance _importance = INVALID;

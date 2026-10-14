@@ -1323,4 +1323,9 @@ namespace randomizer::logic::hints {
         GenerateItemTextReplacements(worlds);
         GenerateMidnaHintsText(worlds);
     }
+
+    void GenerateAPHints(world::WorldPool& worlds) {
+        GenerateAgithaSignHint(worlds);
+        GenerateItemTextReplacements(worlds);
+    }
 }

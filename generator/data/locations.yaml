@@ -14,6 +14,7 @@
     Chest:
       - Stage: 65
         Tbox Id: 4
+    APLocationId: 464
 
 - Name: Links Basement Chest
   Original Item: Purple Rupee Links House
@@ -25,6 +26,7 @@
     Chest:
       - Stage: 65
         Tbox Id: 1
+    APLocationId: 456
 
 - Name: Uli Cradle Delivery
   Original Item: Progressive Fishing Rod
@@ -36,6 +38,7 @@
     Name Lookup:
       - Uli Cradle Delivery
     Event Flag: 0x0301
+    APLocationId: 463
 
 - Name: Ordon Cat Rescue
   Original Item: Bottle with Half Milk
@@ -47,6 +50,7 @@
     Name Lookup:
       - Ordon Cat Rescue
     Event Flag: 0x1408
+    APLocationId: 457
 
 - Name: Sera Shop Slingshot
   Original Item: Slingshot
@@ -61,6 +65,7 @@
     Name Lookup:
       - Sera Shop Slingshot
     Event Flag: 0x4902
+    APLocationId: 462
 
 - Name: Ordon Shield
   Original Item: Ordon Shield
@@ -73,6 +78,7 @@
     Switch Flag:
       Stage: 65
       Flag: 0x1A
+    APLocationId: 459
 
 - Name: Ordon Sword
   Original Item: Progressive Sword
@@ -85,6 +91,7 @@
     Switch Flag:
       Stage: 65
       Flag: 0x18
+    APLocationId: 461
 
 - Name: Wrestling With Bo
   Original Item: Iron Boots
@@ -96,6 +103,7 @@
     Chest:
       - Stage: 65
         Tbox Id: 2
+    APLocationId: 465
 
 - Name: Ordon Bo Cliff Rupee
   Original Item: Yellow Rupee
@@ -107,6 +115,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x80
+    APLocationId: -1
 
 - Name: Ordon Bo Roof Rupee
   Original Item: Yellow Rupee
@@ -118,6 +127,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x8B
+    APLocationId: -1
 
 - Name: Ordon Bo Window Rupee 1
   Original Item: Green Rupee
@@ -129,6 +139,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x8A
+    APLocationId: -1
 
 - Name: Ordon Bo Window Rupee 2
   Original Item: Green Rupee
@@ -140,6 +151,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x86
+    APLocationId: -1
 
 - Name: Ordon Hidden Rusl House Rupee
   Original Item: Orange Rupee
@@ -151,6 +163,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x88
+    APLocationId: -1
 
 - Name: Ordon Rupee In Grass By Bo
   Original Item: Green Rupee
@@ -162,6 +175,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x96
+    APLocationId: -1
 
 - Name: Ordon Rupee In River 1
   Original Item: Green Rupee
@@ -173,6 +187,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x95
+    APLocationId: -1
 
 - Name: Ordon Rupee In River 2
   Original Item: Green Rupee
@@ -184,6 +199,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x91
+    APLocationId: -1
 
 - Name: Ordon Rupee Under Bridge
   Original Item: Green Rupee
@@ -195,6 +211,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x82
+    APLocationId: -1
 
 - Name: Ordon Rupee Under Tall Tree 1
   Original Item: Green Rupee
@@ -206,6 +223,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x87
+    APLocationId: -1
 
 - Name: Ordon Rupee Under Tall Tree 2
   Original Item: Green Rupee
@@ -217,6 +235,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x85
+    APLocationId: -1
 
 - Name: Ordon Rusl House Roof Rupee 1
   Original Item: Yellow Rupee
@@ -228,6 +247,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x84
+    APLocationId: -1
 
 - Name: Ordon Rusl House Roof Rupee 2
   Original Item: Yellow Rupee
@@ -239,6 +259,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x81
+    APLocationId: -1
 
 - Name: Ordon Shield House Ledge Grass Rupee
   Original Item: Purple Rupee
@@ -250,6 +271,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x94
+    APLocationId: -1
 
 - Name: Ordon Tree Long Branch Rupee
   Original Item: Yellow Rupee
@@ -261,6 +283,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x97
+    APLocationId: -1
 
 - Name: Ordon Tree Short Branch Rupee
   Original Item: Blue Rupee
@@ -272,6 +295,7 @@
     Freestanding Item:
       - Stage: 43
         Flag: 0x89
+    APLocationId: -1
 
 - Name: Herding Goats Reward
   Original Item: Piece of Heart
@@ -283,6 +307,7 @@
     Name Lookup:
       - Herding Goats Reward
     Event Flag: 0x4240
+    APLocationId: 455
 
 - Name: Ordon Ranch Grotto Lantern Chest
   Original Item: Purple Rupee
@@ -295,16 +320,17 @@
     Chest:
       - Stage: 35
         Tbox Id: 7
+    APLocationId: 458
 
 - Name: Ordon Spring Golden Wolf
   Original Item: Progressive Hidden Skill
   Categories:
     - Overworld
-    -
     - Ordona Province
   Metadata:
     Golden Wolf:
       - Flag: 0x3C08
+    APLocationId: 460
 
 - Name: Ordon Spring Warp Portal
   Original Item: Ordon Spring Portal
@@ -326,6 +352,7 @@
     Twilit Insect:
       - Stage: 45
         Flag: 0x1
+    APLocationId: -1
 
 - Name: South Faron Woods Twilit Insect in Tunnel 2
   Original Item: Faron Twilight Tear
@@ -336,6 +363,7 @@
     Twilit Insect:
       - Stage: 45
         Flag: 0x6
+    APLocationId: -1
 
 - Name: Faron Woods Coros House Interior Twilit Insect 1
   Original Item: Faron Twilight Tear
@@ -346,6 +374,7 @@
     Twilit Insect:
       - Stage: 67
         Flag: 0x9
+    APLocationId: -1
 
 - Name: Faron Woods Coros House Interior Twilit Insect 2
   Original Item: Faron Twilight Tear
@@ -356,6 +385,7 @@
     Twilit Insect:
       - Stage: 67
         Flag: 0x4
+    APLocationId: -1
 
 - Name: South Faron Woods Coros House Exterior Twilit Insect
   Original Item: Faron Twilight Tear
@@ -366,6 +396,7 @@
     Twilit Insect:
       - Stage: 45
         Flag: 0x0
+    APLocationId: -1
 
 - Name: South Faron Woods Twilit Insect Behind Gate 1
   Original Item: Faron Twilight Tear
@@ -376,6 +407,7 @@
     Twilit Insect:
       - Stage: 45
         Flag: 0xB
+    APLocationId: -1
 
 - Name: South Faron Woods Twilit Insect Behind Gate 2
   Original Item: Faron Twilight Tear
@@ -386,6 +418,7 @@
     Twilit Insect:
       - Stage: 45
         Flag: 0x5
+    APLocationId: -1
 
 - Name: Faron Mist Twilit Insect on Wall 1
   Original Item: Faron Twilight Tear
@@ -396,6 +429,7 @@
     Twilit Insect:
       - Stage: 45
         Flag: 0x12
+    APLocationId: -1
 
 - Name: Faron Mist Twilit Insect on Wall 2
   Original Item: Faron Twilight Tear
@@ -406,6 +440,7 @@
     Twilit Insect:
       - Stage: 45
         Flag: 0x11
+    APLocationId: -1
 
 - Name: Faron Mist Twilit Insect on Center Stump 1
   Original Item: Faron Twilight Tear
@@ -416,6 +451,7 @@
     Twilit Insect:
       - Stage: 45
         Flag: 0xE
+    APLocationId: -1
 
 - Name: Faron Mist Twilit Insect on Center Stump 2
   Original Item: Faron Twilight Tear
@@ -426,6 +462,7 @@
     Twilit Insect:
       - Stage: 45
         Flag: 0xD
+    APLocationId: -1
 
 - Name: Faron Mist Twilit Insect on Center Stump 3
   Original Item: Faron Twilight Tear
@@ -436,6 +473,7 @@
     Twilit Insect:
       - Stage: 45
         Flag: 0xC
+    APLocationId: -1
 
 - Name: Faron Mist Burrowing Twilit Insect 1
   Original Item: Faron Twilight Tear
@@ -446,6 +484,7 @@
     Twilit Insect:
       - Stage: 45
         Flag: 0x17
+    APLocationId: -1
 
 - Name: Faron Mist Burrowing Twilit Insect 2
   Original Item: Faron Twilight Tear
@@ -456,6 +495,7 @@
     Twilit Insect:
       - Stage: 45
         Flag: 0x8
+    APLocationId: -1
 
 - Name: North Faron Woods Twilit Insect 1
   Original Item: Faron Twilight Tear
@@ -467,6 +507,7 @@
     Twilit Insect:
       - Stage: 45
         Flag: 0x15
+    APLocationId: -1
 
 - Name: North Faron Woods Twilit Insect 2
   Original Item: Faron Twilight Tear
@@ -478,6 +519,7 @@
     Twilit Insect:
       - Stage: 45
         Flag: 0x14
+    APLocationId: -1
 
 - Name: South Faron Warp Portal
   Original Item: South Faron Portal
@@ -525,6 +567,7 @@
     Name Lookup:
       - Coro Bottle
     Event Flag: 0x1A08
+    APLocationId: 266
 
 - Name: Faron Woods Coro Boulder Rupee 1
   Original Item: Green Rupee
@@ -536,6 +579,7 @@
     Freestanding Item:
       - Stage: 45
         Flag: 0x80
+    APLocationId: -1
 
 - Name: Faron Woods Coro Boulder Rupee 2
   Original Item: Green Rupee
@@ -547,6 +591,7 @@
     Freestanding Item:
       - Stage: 45
         Flag: 0x81
+    APLocationId: -1
 
 - Name: Faron Woods Coro Boulder Rupee 3
   Original Item: Blue Rupee
@@ -558,6 +603,7 @@
     Freestanding Item:
       - Stage: 45
         Flag: 0x82
+    APLocationId: -1
 
 - Name: Faron Woods Coro Boulder Rupee 4
   Original Item: Yellow Rupee
@@ -569,6 +615,7 @@
     Freestanding Item:
       - Stage: 45
         Flag: 0x83
+    APLocationId: -1
 
 - Name: South Faron Cave Chest
   Original Item: Yellow Rupee
@@ -580,6 +627,7 @@
     Chest:
       - Stage: 40
         Tbox Id: 31
+    APLocationId: 297
 
 - Name: Faron Mist South Chest
   Original Item: Purple Rupee
@@ -591,6 +639,7 @@
     Chest:
       - Stage: 45
         Tbox Id: 29
+    APLocationId: 279
 
 - Name: Faron Mist Stump Chest
   Original Item: Red Rupee
@@ -602,6 +651,7 @@
     Chest:
       - Stage: 45
         Tbox Id: 28
+    APLocationId: 280
 
 - Name: Faron Mist North Chest
   Original Item: Yellow Rupee
@@ -613,6 +663,7 @@
     Chest:
       - Stage: 45
         Tbox Id: 27
+    APLocationId: 277
 
 - Name: Faron Mist Poe
   Original Item: Poe Soul
@@ -624,6 +675,7 @@
     Poe:
       - Stage: 45
         Flag: 0x5D
+    APLocationId: 278
 
 - Name: Faron Mist Cave Open Chest
   Original Item: North Faron Woods Gate Key
@@ -636,6 +688,7 @@
     Chest:
       - Stage: 45
         Tbox Id: 24
+    APLocationId: 276
 
 - Name: Faron Mist Cave Lantern Chest
   Original Item: Piece of Heart
@@ -647,6 +700,7 @@
     Chest:
       - Stage: 45
         Tbox Id: 26
+    APLocationId: 275
 
 - Name: North Faron Warp Portal
   Original Item: North Faron Portal
@@ -665,6 +719,7 @@
   Metadata:
     Golden Wolf:
       - Flag: 0x3C10
+    APLocationId: 281
 
 - Name: North Faron Woods Deku Baba Chest
   Original Item: Yellow Rupee
@@ -676,6 +731,7 @@
     Chest:
       - Stage: 45
         Tbox Id: 63
+    APLocationId: 287
 
 - Name: Faron Woods Owl Statue Sky Character
   Original Item: Progressive Sky Book
@@ -687,6 +743,7 @@
       - Stage: 45
         Room: 8
     Event Flag: 0x6080
+    APLocationId: 283
 
 - Name: Faron Woods Owl Statue Chest
   Original Item: Piece of Heart
@@ -698,6 +755,7 @@
     Chest:
       - Stage: 45
         Tbox Id: 30
+    APLocationId: 282
 
 - Name: Faron Field Bridge Chest
   Original Item: Orange Rupee
@@ -709,6 +767,7 @@
     Chest:
       - Stage: 56
         Tbox Id: 6
+    APLocationId: 267
 
 # HD Only
 # - Name: Faron Field Corner Grotto Main Chest
@@ -727,6 +786,7 @@
     Chest:
       - Stage: 36
         Tbox Id: 11
+    APLocationId: 268
 
 - Name: Faron Field Corner Grotto Rear Chest
   Original Item: Yellow Rupee
@@ -738,6 +798,7 @@
     Chest:
       - Stage: 36
         Tbox Id: 13
+    APLocationId: 269
 
 - Name: Faron Field Corner Grotto Right Chest
   Original Item: Red Rupee
@@ -749,6 +810,7 @@
     Chest:
       - Stage: 36
         Tbox Id: 12
+    APLocationId: 270
 
 - Name: Faron Field Female Beetle
   Original Item: Female Beetle
@@ -761,6 +823,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x9E
+    APLocationId: 271
 
 - Name: Faron Field Male Beetle
   Original Item: Male Beetle
@@ -773,6 +836,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x9F
+    APLocationId: 272
 
 - Name: Faron Field Poe
   Original Item: Poe Soul
@@ -784,6 +848,7 @@
     Poe:
       - Stage: 56
         Flag: 0x39
+    APLocationId: 273
 
 - Name: Faron Field Tree Heart Piece
   Original Item: Piece of Heart
@@ -795,6 +860,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x81
+    APLocationId: 274
 
 - Name: Lost Woods Boulder Poe
   Original Item: Poe Soul
@@ -806,6 +872,7 @@
     Poe:
       - Stage: 54
         Flag: 0x10
+    APLocationId: 284
 
 - Name: Lost Woods Lantern Chest
   Original Item: Bombs 30
@@ -817,6 +884,7 @@
     Chest:
       - Stage: 54
         Tbox Id: 3
+    APLocationId: 285
 
 - Name: Lost Woods Waterfall Poe
   Original Item: Poe Soul
@@ -828,6 +896,7 @@
     Poe:
       - Stage: 54
         Flag: 0x11
+    APLocationId: 286
 
 - Name: Sacred Grove Baba Serpent Grotto Chest
   Original Item: Piece of Heart
@@ -839,6 +908,7 @@
     Chest:
       - Stage: 36
         Tbox Id: 3
+    APLocationId: 288
 
 - Name: Sacred Grove Spinner Chest
   Original Item: Orange Rupee
@@ -851,6 +921,7 @@
     Chest:
       - Stage: 54
         Tbox Id: 2
+    APLocationId: 295
 
 - Name: Sacred Grove Warp Portal
   Original Item: Sacred Grove Portal
@@ -871,6 +942,7 @@
     Name Lookup:
       - Sacred Grove Pedestal Master Sword
     Event Flag: 0x2120
+    APLocationId: 293
 
 - Name: Sacred Grove Pedestal Shadow Crystal
   Original Item: Shadow Crystal
@@ -882,6 +954,7 @@
     Name Lookup:
       - Sacred Grove Pedestal Shadow Crystal
     Event Flag: 0x2120
+    APLocationId: 294
 
 - Name: Sacred Grove Master Sword Poe
   Original Item: Poe Soul
@@ -893,6 +966,7 @@
     Poe:
       - Stage: 54
         Flag: 0x0F
+    APLocationId: 291
 
 - Name: Sacred Grove Female Snail
   Original Item: Female Snail
@@ -905,6 +979,7 @@
     Freestanding Item:
       - Stage: 54
         Flag: 0x98
+    APLocationId: 289
 
 - Name: Sacred Grove Male Snail
   Original Item: Male Snail
@@ -917,6 +992,7 @@
     Freestanding Item:
       - Stage: 54
         Flag: 0x99
+    APLocationId: 290
 
 - Name: Sacred Grove Past Owl Statue Chest
   Original Item: Piece of Heart
@@ -928,6 +1004,7 @@
     Chest:
       - Stage: 54
         Tbox Id: 1
+    APLocationId: 292
 
 - Name: Sacred Grove Temple of Time Owl Statue Poe
   Original Item: Poe Soul
@@ -939,6 +1016,7 @@
     Poe:
       - Stage: 54
         Flag: 0x1E
+    APLocationId: 296
 
 # ELDIN PROVINCE
 
@@ -951,6 +1029,7 @@
     Twilit Insect:
       - Stage: 75
         Flag: 0x2
+    APLocationId: -1
 
 - Name: Sanctuary Basement Twilit Insect 2
   Original Item: Eldin Twilight Tear
@@ -961,6 +1040,7 @@
     Twilit Insect:
       - Stage: 75
         Flag: 0x3
+    APLocationId: -1
 
 - Name: Sanctuary Basement Twilit Insect 3
   Original Item: Eldin Twilight Tear
@@ -971,6 +1051,7 @@
     Twilit Insect:
       - Stage: 75
         Flag: 0xC
+    APLocationId: -1
 
 - Name: Kakariko Graveyard Twilit Insect
   Original Item: Eldin Twilight Tear
@@ -981,6 +1062,7 @@
     Twilit Insect:
       - Stage: 48
         Flag: 0x6
+    APLocationId: -1
 
 - Name: Kakariko Malo Mart Twilit Insect
   Original Item: Eldin Twilight Tear
@@ -991,6 +1073,7 @@
     Twilit Insect:
       - Stage: 68
         Flag: 0x9
+    APLocationId: -1
 
 - Name: Kakariko Inn Pipe Twilit Insect
   Original Item: Eldin Twilight Tear
@@ -1001,6 +1084,7 @@
     Twilit Insect:
       - Stage: 68
         Flag: 0x8
+    APLocationId: -1
 
 - Name: Kakariko Inn Bedroom Twilit Insect
   Original Item: Eldin Twilight Tear
@@ -1011,6 +1095,7 @@
     Twilit Insect:
       - Stage: 68
         Flag: 0x0
+    APLocationId: -1
 
 - Name: Kakariko Bug House Twilit Insect
   Original Item: Eldin Twilight Tear
@@ -1021,6 +1106,7 @@
     Twilit Insect:
       - Stage: 68
         Flag: 0x1
+    APLocationId: -1
 
 - Name: Barnes Bomb Shop Twilit Insect
   Original Item: Eldin Twilight Tear
@@ -1031,6 +1117,7 @@
     Twilit Insect:
       - Stage: 68
         Flag: 0x7
+    APLocationId: -1
 
 - Name: Kakariko Destroyed Building Twilit Insect 1
   Original Item: Eldin Twilight Tear
@@ -1041,6 +1128,7 @@
     Twilit Insect:
       - Stage: 46
         Flag: 0x4
+    APLocationId: -1
 
 - Name: Kakariko Destroyed Building Twilit Insect 2
   Original Item: Eldin Twilight Tear
@@ -1051,6 +1139,7 @@
     Twilit Insect:
       - Stage: 46
         Flag: 0x5
+    APLocationId: -1
 
 - Name: Kakariko Destroyed Building Twilit Insect 3
   Original Item: Eldin Twilight Tear
@@ -1061,6 +1150,7 @@
     Twilit Insect:
       - Stage: 46
         Flag: 0xB
+    APLocationId: -1
 
 - Name: Kakariko Watchtower Twilit Insect
   Original Item: Eldin Twilight Tear
@@ -1071,6 +1161,7 @@
     Twilit Insect:
       - Stage: 68
         Flag: 0xA
+    APLocationId: -1
 
 - Name: Death Mountain Trail Twilit Insect Near Howling Stone
   Original Item: Eldin Twilight Tear
@@ -1081,6 +1172,7 @@
     Twilit Insect:
       - Stage: 47
         Flag: 0xF
+    APLocationId: -1
 
 - Name: Death Mountain Trail Twilit Insect on Wall
   Original Item: Eldin Twilight Tear
@@ -1091,6 +1183,7 @@
     Twilit Insect:
       - Stage: 47
         Flag: 0xE
+    APLocationId: -1
 
 - Name: Death Mountain Trail Twilit Insect in Hot Spring
   Original Item: Eldin Twilight Tear
@@ -1101,6 +1194,7 @@
     Twilit Insect:
       - Stage: 47
         Flag: 0x10
+    APLocationId: -1
 
 - Name: Kakariko Gorge Warp Portal
   Original Item: Kakariko Gorge Portal
@@ -1122,6 +1216,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x94
+    APLocationId: 241
 
 - Name: Kakariko Gorge Male Pill Bug
   Original Item: Male Pill Bug
@@ -1134,6 +1229,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x95
+    APLocationId: 242
 
 - Name: Kakariko Gorge Owl Statue Chest
   Original Item: Orange Rupee
@@ -1146,6 +1242,7 @@
     Chest:
       - Stage: 56
         Tbox Id: 4
+    APLocationId: 243
 
 - Name: Kakariko Gorge Owl Statue Sky Character
   Original Item: Progressive Sky Book
@@ -1157,6 +1254,7 @@
       - Stage: 56
         Room: 3
     Event Flag: 0x6020
+    APLocationId: 244
 
 - Name: Kakariko Gorge Owl Statue Boulder Rupee
   Original Item: Yellow Rupee
@@ -1168,6 +1266,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x8D
+    APLocationId: -1
 
 - Name: Kakariko Gorge Poe
   Original Item: Poe Soul
@@ -1179,6 +1278,7 @@
     Poe:
       - Stage: 56
         Flag: 0x3A
+    APLocationId: 245
 
 - Name: Kakariko Gorge Spire Heart Piece
   Original Item: Piece of Heart
@@ -1190,6 +1290,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x82
+    APLocationId: 246
 
 - Name: Kakariko Gorge Double Clawshot Chest
   Original Item: Piece of Heart
@@ -1201,6 +1302,7 @@
     Chest:
       - Stage: 56
         Tbox Id: 5
+    APLocationId: 240
 
 - Name: Kakariko Gorge Spire Boulder Rupee
   Original Item: Yellow Rupee
@@ -1212,6 +1314,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x8E
+    APLocationId: -1
 
 - Name: Eldin Lantern Cave First Chest
   Original Item: Red Rupee
@@ -1224,6 +1327,7 @@
     Chest:
       - Stage: 32
         Tbox Id: 61
+    APLocationId: 229
 
 - Name: Eldin Lantern Cave Second Chest
   Original Item: Purple Rupee
@@ -1235,6 +1339,7 @@
     Chest:
       - Stage: 32
         Tbox Id: 63
+    APLocationId: 232
 
 - Name: Eldin Lantern Cave Lantern Chest
   Original Item: Piece of Heart
@@ -1246,6 +1351,7 @@
     Chest:
       - Stage: 32
         Tbox Id: 62
+    APLocationId: 230
 
 - Name: Eldin Lantern Cave Poe
   Original Item: Poe Soul
@@ -1257,6 +1363,7 @@
     Poe:
       - Stage: 32
         Flag: 0x60
+    APLocationId: 231
 
 - Name: Kakariko Village Warp Portal
   Original Item: Kakariko Village Portal
@@ -1277,6 +1384,7 @@
     Chest:
       - Stage: 46
         Tbox Id: 21
+    APLocationId: 233
 
 - Name: Eldin Spring Underwater Boulder Rupee
   Original Item: Orange Rupee
@@ -1288,6 +1396,7 @@
     Freestanding Item:
       - Stage: 46
         Flag: 0x8D
+    APLocationId: -1
 
 - Name: Kakariko Village Bomb Rock Spire Heart Piece
   Original Item: Piece of Heart
@@ -1299,6 +1408,7 @@
     Freestanding Item:
       - Stage: 46
         Flag: 0x8C
+    APLocationId: 253
 
 - Name: Kakariko Village Bell Rupee
   Original Item: Silver Rupee
@@ -1310,6 +1420,7 @@
     Freestanding Item:
       - Stage: 46
         Flag: 0x8A
+    APLocationId: -1
 
 - Name: Kakariko Village Hot Spring Ledge Box Rupee
   Original Item: Yellow Rupee
@@ -1321,6 +1432,7 @@
     Freestanding Item:
       - Stage: 46
         Flag: 0x87
+    APLocationId: -1
 
 - Name: Kakariko Village Spring Shortcut Box Rupee 1
   Original Item: Blue Rupee
@@ -1332,6 +1444,7 @@
     Freestanding Item:
       - Stage: 46
         Flag: 0x88
+    APLocationId: -1
 
 - Name: Kakariko Village Spring Shortcut Box Rupee 2
   Original Item: Yellow Rupee
@@ -1343,6 +1456,7 @@
     Freestanding Item:
       - Stage: 46
         Flag: 0x89
+    APLocationId: -1
 
 - Name: Kakariko Village Malo Mart Hawkeye
   Original Item: Hawkeye
@@ -1360,6 +1474,7 @@
     Switch Flag:
       Stage: 68
       Flag: 0x33
+    APLocationId: 256
 
 - Name: Kakariko Village Malo Mart Hylian Shield
   Original Item: Hylian Shield
@@ -1377,6 +1492,7 @@
     Switch Flag:
       Stage: 68
       Flag: 0x39
+    APLocationId: 257
 
 - Name: Kakariko Village Malo Mart Red Potion
   Original Item: Red Potion Shop
@@ -1394,6 +1510,7 @@
     Switch Flag:
       Stage: 68
       Flag: 0x4
+    APLocationId: 258
 
 - Name: Kakariko Village Malo Mart Wooden Shield
   Original Item: Wooden Shield
@@ -1411,6 +1528,7 @@
     Switch Flag:
       Stage: 68
       Flag: 0x5
+    APLocationId: 259
 
 - Name: Kakariko Inn Chest
   Original Item: Red Rupee
@@ -1422,6 +1540,7 @@
     Chest:
       - Stage: 68
         Tbox Id: 23
+    APLocationId: 252
 
 - Name: Kakariko Village Female Ant
   Original Item: Female Ant
@@ -1434,6 +1553,7 @@
     Freestanding Item:
       - Stage: 68
         Flag: 0x90
+    APLocationId: 255
 
 - Name: Kakariko Village Ant House Ledge Box Rupee
   Original Item: Red Rupee
@@ -1445,6 +1565,7 @@
     Freestanding Item:
       - Stage: 46
         Flag: 0x85
+    APLocationId: -1
 
 - Name: Barnes Bomb Bag
   Original Item: Bomb Bag
@@ -1459,6 +1580,7 @@
         Room: 1
         Item: 0x50
     Event Flag: 0x0908
+    APLocationId: 212
 
 - Name: Kakariko Village Bomb Shop Poe
   Original Item: Poe Soul
@@ -1470,6 +1592,7 @@
     Poe:
       - Stage: 46
         Flag: 0x5E
+    APLocationId: 254
 
 - Name: Kakariko Village Watchtower Poe
   Original Item: Poe Soul
@@ -1481,6 +1604,7 @@
     Poe:
       - Stage: 46
         Flag: 0x5F
+    APLocationId: 260
 
 - Name: Kakariko Watchtower Alcove Chest
   Original Item: Orange Rupee
@@ -1492,6 +1616,7 @@
     Chest:
       - Stage: 46
         Tbox Id: 20
+    APLocationId: 261
 
 - Name: Kakariko Watchtower Chest
   Original Item: Purple Rupee
@@ -1503,6 +1628,7 @@
     Chest:
       - Stage: 68
         Tbox Id: 17
+    APLocationId: 262
 
 - Name: Talo Sharpshooting
   Original Item: Piece of Heart
@@ -1516,6 +1642,7 @@
     Name Lookup:
       - Talo Sharpshooting
     Event Flag: 0x0920
+    APLocationId: 265
 
 - Name: Renados Letter
   Original Item: Renados Letter
@@ -1528,6 +1655,7 @@
     Name Lookup:
       - Renados Letter
     Event Flag: 0x0F80
+    APLocationId: -1
 
 - Name: Ilia Memory Reward
   Original Item: Horse Call
@@ -1540,6 +1668,7 @@
     Name Lookup:
       - Ilia Memory Reward
     Event Flag: 0x5E04
+    APLocationId: -1
 
 - Name: Shad Dominion Rod
   Original Item: Progressive Dominion Rod
@@ -1552,7 +1681,8 @@
     Name Lookup:
       - Shad Dominion Rod
     Event Flag: 0x6308
-    
+    APLocationId: -1
+
 - Name: Rutelas Blessing
   Original Item: Zora Armor
   Categories:
@@ -1564,6 +1694,7 @@
     Name Lookup:
       - Rutelas Blessing
     Event Flag: 0x0804
+    APLocationId: 263
 
 - Name: Gift From Ralis
   Original Item: Progressive Fishing Rod
@@ -1576,6 +1707,7 @@
     Name Lookup:
       - Gift From Ralis
     Event Flag: 0x3B80
+    APLocationId: 237
 
 - Name: Kakariko Graveyard Lantern Chest
   Original Item: Purple Rupee
@@ -1587,6 +1719,7 @@
     Chest:
       - Stage: 48
         Tbox Id: 24
+    APLocationId: 249
 
 - Name: Kakariko Graveyard Male Ant
   Original Item: Male Ant
@@ -1599,6 +1732,7 @@
     Freestanding Item:
       - Stage: 48
         Flag: 0x91
+    APLocationId: 250
 
 - Name: Kakariko Graveyard Underwater Boulder Rupee
   Original Item: Red Rupee
@@ -1610,6 +1744,7 @@
     Freestanding Item:
       - Stage: 48
         Flag: 0x8E
+    APLocationId: -1
 
 - Name: Kakariko Graveyard Golden Wolf
   Original Item: Progressive Hidden Skill
@@ -1619,6 +1754,7 @@
   Metadata:
     Golden Wolf:
       - Flag: 0x3D80
+    APLocationId: 247
 
 - Name: Kakariko Graveyard Open Poe
   Original Item: Poe Soul
@@ -1630,6 +1766,7 @@
     Poe:
       - Stage: 48
         Flag: 0x58
+    APLocationId: 251
 
 - Name: Kakariko Graveyard Grave Poe
   Original Item: Poe Soul
@@ -1641,6 +1778,7 @@
     Poe:
       - Stage: 48
         Flag: 0x57
+    APLocationId: 248
 
 - Name: Death Mountain Warp Portal
   Original Item: Death Mountain Portal
@@ -1661,6 +1799,7 @@
     Chest:
       - Stage: 47
         Tbox Id: 22
+    APLocationId: 218
 
 - Name: Death Mountain Volcano Ledge Rupee 1
   Original Item: Yellow Rupee
@@ -1672,6 +1811,7 @@
     Freestanding Item:
       - Stage: 47
         Flag: 0x81
+    APLocationId: -1
 
 - Name: Death Mountain Volcano Ledge Rupee 2
   Original Item: Yellow Rupee
@@ -1683,6 +1823,7 @@
     Freestanding Item:
       - Stage: 47
         Flag: 0x82
+    APLocationId: -1
 
 - Name: Death Mountain Volcano Ledge Rupee 3
   Original Item: Yellow Rupee
@@ -1694,6 +1835,7 @@
     Freestanding Item:
       - Stage: 47
         Flag: 0x83
+    APLocationId: -1
 
 - Name: Death Mountain Volcano Pipe Ledge Rock Rupee
   Original Item: Yellow Rupee
@@ -1705,6 +1847,7 @@
     Freestanding Item:
       - Stage: 47
         Flag: 0x80
+    APLocationId: -1
 
 - Name: Death Mountain Trail Poe
   Original Item: Poe Soul
@@ -1716,6 +1859,7 @@
     Poe:
       - Stage: 47
         Flag: 0x59
+    APLocationId: 219
 
 - Name: Eldin Field Bomb Rock Chest
   Original Item: Piece of Heart
@@ -1727,6 +1871,7 @@
     Chest:
       - Stage: 56
         Tbox Id: 2
+    APLocationId: 220
 
 - Name: Eldin Field Bomskit Grotto Lantern Chest
   Original Item: Purple Rupee
@@ -1739,6 +1884,7 @@
     Chest:
       - Stage: 35
         Tbox Id: 6
+    APLocationId: 221
 
 - Name: Eldin Field Bomskit Grotto Left Chest
   Original Item: Purple Rupee
@@ -1750,6 +1896,7 @@
     Chest:
       - Stage: 35
         Tbox Id: 10
+    APLocationId: 222
 
 - Name: Eldin Field Female Grasshopper
   Original Item: Female Grasshopper
@@ -1762,6 +1909,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x98
+    APLocationId: 223
 
 - Name: Eldin Field Male Grasshopper
   Original Item: Male Grasshopper
@@ -1774,6 +1922,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x99
+    APLocationId: 224
 
 - Name: Goron Springwater Rush
   Original Item: Piece of Heart
@@ -1788,6 +1937,7 @@
         Flag: 0x80
     Name Lookup:
         - Goron Springwater Rush
+    APLocationId: 238
 
 - Name: Eldin Field Water Bomb Fish Grotto Chest
   Original Item: Purple Rupee
@@ -1800,6 +1950,7 @@
     Chest:
       - Stage: 39
         Tbox Id: 16
+    APLocationId: 228
 
 - Name: Bridge of Eldin Warp Portal
   Original Item: Bridge of Eldin Portal
@@ -1821,6 +1972,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x96
+    APLocationId: 213
 
 - Name: Bridge of Eldin Male Phasmid
   Original Item: Male Phasmid
@@ -1833,6 +1985,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x97
+    APLocationId: 214
 
 - Name: Bridge of Eldin Owl Statue Chest
   Original Item: Piece of Heart
@@ -1844,6 +1997,7 @@
     Chest:
       - Stage: 56
         Tbox Id: 3
+    APLocationId: 215
 
 - Name: Bridge of Eldin Owl Statue Sky Character
   Original Item: Progressive Sky Book
@@ -1855,6 +2009,7 @@
       - Stage: 56
         Room: 0
     Event Flag: 0x6010
+    APLocationId: 216
 
 - Name: Bridge of Eldin Boulder Rupee
   Original Item: Red Rupee
@@ -1866,6 +2021,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x8F
+    APLocationId: -1
 
 - Name: Eldin Stockcave Upper Chest
   Original Item: Red Rupee
@@ -1877,6 +2033,7 @@
     Chest:
       - Stage: 34
         Tbox Id: 63
+    APLocationId: 236
 
 - Name: Eldin Stockcave Lantern Chest
   Original Item: Orange Rupee
@@ -1889,6 +2046,7 @@
     Chest:
       - Stage: 34
         Tbox Id: 61
+    APLocationId: 234
 
 - Name: Eldin Stockcave Lowest Chest
   Original Item: Piece of Heart
@@ -1900,6 +2058,7 @@
     Chest:
       - Stage: 34
         Tbox Id: 62
+    APLocationId: 235
 
 - Name: Eldin Field Stalfos Grotto Left Small Chest
   Original Item: Bombs 5
@@ -1911,6 +2070,7 @@
     Chest:
       - Stage: 36
         Tbox Id: 18
+    APLocationId: 225
 
 - Name: Eldin Field Stalfos Grotto Right Small Chest
   Original Item: Bombs 5
@@ -1922,6 +2082,7 @@
     Chest:
       - Stage: 36
         Tbox Id: 17
+    APLocationId: 226
 
 - Name: Eldin Field Stalfos Grotto Stalfos Chest
   Original Item: Piece of Heart
@@ -1933,6 +2094,7 @@
     Chest:
       - Stage: 36
         Tbox Id: 2
+    APLocationId: 227
 
 - Name: Skybook From Impaz
   Original Item: Progressive Sky Book
@@ -1946,6 +2108,7 @@
     Name Lookup:
       - Skybook From Impaz
     Event Flag: 0x5F80
+    APLocationId: 264
 
 - Name: Cats Hide and Seek Minigame
   Original Item: Piece of Heart
@@ -1958,6 +2121,7 @@
     Freestanding Item:
       - Stage: 63
         Flag: 0x8B
+    APLocationId: 217
 
 - Name: Hidden Village Poe
   Original Item: Poe Soul
@@ -1969,6 +2133,7 @@
     Poe:
       - Stage: 63
         Flag: 0x40
+    APLocationId: 239
 
 - Name: Ilia Charm
   Original Item: Ilias Charm
@@ -1981,6 +2146,7 @@
     Name Lookup:
       - Ilia Charm
     Event Flag: 0x2280
+    APLocationId: -1
 
 # LANAYRU PROVINCE
 
@@ -1993,6 +2159,7 @@
     Twilit Insect:
       - Stage: 53
         Flag: 0x2C
+    APLocationId: -1
 
 - Name: Lake Hylia Twilit Insect Between Bridges
   Original Item: Lanayru Twilight Tear
@@ -2003,6 +2170,7 @@
     Twilit Insect:
       - Stage: 52
         Flag: 0x2F
+    APLocationId: -1
 
 - Name: Lake Hylia Burrowing Twilit Insect
   Original Item: Lanayru Twilight Tear
@@ -2013,6 +2181,7 @@
     Twilit Insect:
       - Stage: 52
         Flag: 0x30
+    APLocationId: -1
 
 - Name: Lake Hylia Twilit Insect Behind Cannon
   Original Item: Lanayru Twilight Tear
@@ -2023,6 +2192,7 @@
     Twilit Insect:
       - Stage: 52
         Flag: 0x32
+    APLocationId: -1
 
 - Name: Lake Hylia Twilit Insect on Docks
   Original Item: Lanayru Twilight Tear
@@ -2033,6 +2203,7 @@
     Twilit Insect:
       - Stage: 52
         Flag: 0x31
+    APLocationId: -1
 
 - Name: Lake Hylia Twilit Bloat
   Original Item: Lanayru Twilight Tear
@@ -2043,6 +2214,7 @@
     Twilit Insect:
       - Stage: 52
         Flag: 0x35
+    APLocationId: -1
 
 - Name: Zoras River Twilit Insect 1
   Original Item: Lanayru Twilight Tear
@@ -2053,6 +2225,7 @@
     Twilit Insect:
       - Stage: 49
         Flag: 0x3D
+    APLocationId: -1
 
 - Name: Zoras River Twilit Insect 2
   Original Item: Lanayru Twilight Tear
@@ -2063,6 +2236,7 @@
     Twilit Insect:
       - Stage: 49
         Flag: 0x36
+    APLocationId: -1
 
 - Name: Zoras River Twilit Insect 3
   Original Item: Lanayru Twilight Tear
@@ -2073,6 +2247,7 @@
     Twilit Insect:
       - Stage: 49
         Flag: 0x3A
+    APLocationId: -1
 
 - Name: Zoras River Twilit Insect 4
   Original Item: Lanayru Twilight Tear
@@ -2083,6 +2258,7 @@
     Twilit Insect:
       - Stage: 49
         Flag: 0x39
+    APLocationId: -1
 
 - Name: Upper Zoras River Twilit Insect
   Original Item: Lanayru Twilight Tear
@@ -2093,6 +2269,7 @@
     Twilit Insect:
       - Stage: 61
         Flag: 0x37
+    APLocationId: -1
 
 - Name: Zoras Domain Twilit Insect near Lilypads 1
   Original Item: Lanayru Twilight Tear
@@ -2103,6 +2280,7 @@
     Twilit Insect:
       - Stage: 50
         Flag: 0x3B
+    APLocationId: -1
 
 - Name: Zoras Domain Twilit Insect near Lilypads 2
   Original Item: Lanayru Twilight Tear
@@ -2113,6 +2291,7 @@
     Twilit Insect:
       - Stage: 50
         Flag: 0x2E
+    APLocationId: -1
 
 - Name: Zoras Domain Burrowing Twilit Insect
   Original Item: Lanayru Twilight Tear
@@ -2123,6 +2302,7 @@
     Twilit Insect:
       - Stage: 50
         Flag: 0x2D
+    APLocationId: -1
 
 - Name: Zoras Domain Twilit Insect on West Ledge
   Original Item: Lanayru Twilight Tear
@@ -2133,6 +2313,7 @@
     Twilit Insect:
       - Stage: 50
         Flag: 0x3C
+    APLocationId: -1
 
 - Name: Zoras Domain Throne Room Twilit Insect
   Original Item: Lanayru Twilight Tear
@@ -2144,6 +2325,7 @@
     Twilit Insect:
       - Stage: 50
         Flag: 0x3E
+    APLocationId: -1
 
 - Name: Lanayru Field Behind Gate Underwater Chest
   Original Item: Orange Rupee
@@ -2156,6 +2338,7 @@
     Chest:
       - Stage: 56
         Tbox Id: 7
+    APLocationId: 411
 
 - Name: Lanayru Field North Underwater Boulder Rupee
   Original Item: Yellow Rupee
@@ -2167,6 +2350,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x87
+    APLocationId: -1
 
 - Name: Lanayru Field South Underwater Boulder Rupee
   Original Item: Yellow Rupee
@@ -2178,6 +2362,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x86
+    APLocationId: -1
 
 - Name: Lanayru Field Tree Boulder Rupee
   Original Item: Purple Rupee
@@ -2189,6 +2374,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x88
+    APLocationId: -1
 
 - Name: Lanayru Field Bridge Poe
   Original Item: Poe Soul
@@ -2200,6 +2386,7 @@
     Poe:
       - Stage: 56
         Flag: 0x33
+    APLocationId: 412
 
 - Name: Lanayru Field Female Stag Beetle
   Original Item: Female Stag Beetle
@@ -2212,6 +2399,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x9A
+    APLocationId: 413
 
 - Name: Lanayru Field Male Stag Beetle
   Original Item: Male Stag Beetle
@@ -2224,6 +2412,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x9B
+    APLocationId: 414
 
 # HD Only location
 # - Name: Lanayru Field Chu Grotto Chest
@@ -2245,6 +2434,7 @@
     Poe:
       - Stage: 35
         Flag: 0x0B
+    APLocationId: 415
 
 - Name: Lanayru Field Poe Grotto Right Poe
   Original Item: Poe Soul
@@ -2256,6 +2446,7 @@
     Poe:
       - Stage: 35
         Flag: 0x0A
+    APLocationId: 416
 
 - Name: Lanayru Field Skulltula Grotto Chest
   Original Item: Orange Rupee
@@ -2268,6 +2459,7 @@
     Chest:
       - Stage: 38
         Tbox Id: 19
+    APLocationId: 417
 
 - Name: Lanayru Ice Block Puzzle Cave Chest
   Original Item: Piece of Heart
@@ -2280,6 +2472,7 @@
     Chest:
       - Stage: 30
         Tbox Id: 0
+    APLocationId: 419
 
 - Name: Lanayru Field Spinner Track Chest
   Original Item: Piece of Heart
@@ -2291,6 +2484,7 @@
     Chest:
       - Stage: 56
         Tbox Id: 8
+    APLocationId: 418
 
 - Name: Lanayru Field North Spinner Track Boulder Rupee
   Original Item: Yellow Rupee
@@ -2302,6 +2496,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x89
+    APLocationId: -1
 
 - Name: Lanayru Field South Spinner Track Boulder Rupee
   Original Item: Yellow Rupee
@@ -2313,6 +2508,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x8A
+    APLocationId: -1
 
 - Name: Castle Town Warp Portal
   Original Item: Castle Town Portal
@@ -2334,6 +2530,7 @@
     Freestanding Item:
       - Stage: 57
         Flag: 0x9C
+    APLocationId: 443
 
 - Name: West Hyrule Field Male Butterfly
   Original Item: Male Butterfly
@@ -2346,6 +2543,7 @@
     Freestanding Item:
       - Stage: 57
         Flag: 0x9D
+    APLocationId: 446
 
 - Name: West Hyrule Field Northern Boulder Rupee
   Original Item: Yellow Rupee
@@ -2357,6 +2555,7 @@
     Freestanding Item:
       - Stage: 57
         Flag: 0x84
+    APLocationId: -1
 
 - Name: West Hyrule Field Southern Boulder Rupee
   Original Item: Yellow Rupee
@@ -2368,6 +2567,7 @@
     Freestanding Item:
       - Stage: 57
         Flag: 0x85
+    APLocationId: -1
 
 - Name: West Hyrule Field Helmasaur Grotto Chest
   Original Item: Orange Rupee
@@ -2380,6 +2580,7 @@
     Chest:
       - Stage: 35
         Tbox Id: 0
+    APLocationId: 445
 
 - Name: West Hyrule Field Golden Wolf
   Original Item: Progressive Hidden Skill
@@ -2389,6 +2590,7 @@
   Metadata:
     Golden Wolf:
       - Flag: 0x3C04
+    APLocationId: 444
 
 - Name: Hyrule Field Amphitheater Owl Statue Chest
   Original Item: Orange Rupee
@@ -2400,6 +2602,7 @@
     Chest:
       - Stage: 57
         Tbox Id: 11
+    APLocationId: 370
 
 - Name: Hyrule Field Amphitheater Owl Statue Sky Character
   Original Item: Progressive Sky Book
@@ -2413,6 +2616,7 @@
     Switch Flag:
       Stage: 57
       Flag: 0x57
+    APLocationId: 371
 
 - Name: Hyrule Field Amphitheater Poe
   Original Item: Poe Soul
@@ -2424,6 +2628,7 @@
     Poe:
       - Stage: 57
         Flag: 0x49
+    APLocationId: 372
 
 - Name: Charlo Donation Blessing
   Original Item: Piece of Heart
@@ -2437,6 +2642,7 @@
     Name Lookup:
       - Charlo Donation Blessing
     Event Flag: 0x2480
+    APLocationId: 359
 
 - Name: STAR Prize 1
   Original Item: Progressive Bow
@@ -2449,6 +2655,7 @@
     Name Lookup:
       - STAR Prize 1
     Event Flag: 0x2308
+    APLocationId: 439
 
 - Name: STAR Prize 2
   Original Item: Progressive Bow
@@ -2461,6 +2668,7 @@
     Name Lookup:
       - STAR Prize 2
     Event Flag: 0x2301
+    APLocationId: 440
 
 - Name: Castle Town Goron Shop Red Potion
   Original Item: Red Potion Shop
@@ -2477,6 +2685,7 @@
     Name Lookup:
       - Castle Town Goron Shop Red Potion
     Event Flag: 0x6340
+    APLocationId: -1
 
 - Name: Castle Town Goron Shop Lantern Oil
   Original Item: Lantern Oil Shop
@@ -2493,6 +2702,7 @@
     Name Lookup:
       - Castle Town Goron Shop Lantern Oil
     Event Flag: 0x6320
+    APLocationId: -1
 
 - Name: Castle Town Goron Shop Hylian Shield
   Original Item: Hylian Shield
@@ -2509,6 +2719,7 @@
     Name Lookup:
       - Castle Town Goron Shop Hylian Shield
     Event Flag: 0x6380
+    APLocationId: -1
 
 - Name: Castle Town Goron Shop Arrow Refill
   Original Item: Arrows 30
@@ -2525,6 +2736,7 @@
     Name Lookup:
       - Castle Town Goron Shop Arrow Refill
     Event Flag: 0x6310
+    APLocationId: -1
 
 - Name: Castle Town Malo Mart Magic Armor
   Original Item: Magic Armor
@@ -2542,6 +2754,7 @@
     Switch Flag:
       Stage: 73
       Flag: 0x2B
+    APLocationId: 358
 
 # HD Only location
 # - Name: Castle Town Malo Mart Stamp
@@ -2562,6 +2775,7 @@
   Metadata:
     Golden Wolf:
       - Flag: 0x3D40
+    APLocationId: 427
 
 - Name: Doctors Office Balcony Chest
   Original Item: Red Rupee
@@ -2573,6 +2787,7 @@
     Chest:
       - Stage: 53
         Tbox Id: 1
+    APLocationId: 360
 
 - Name: East Castle Town Bridge Poe
   Original Item: Poe Soul
@@ -2584,6 +2799,7 @@
     Poe:
       - Stage: 57
         Flag: 0x47
+    APLocationId: 361
 
 - Name: Jovani 20 Poe Soul Reward
   Original Item: Bottle with Great Fairies Tears
@@ -2597,6 +2813,7 @@
     Name Lookup:
       - Jovani 20 Poe Soul Reward
     Event Flag: 0x5510
+    APLocationId: 376
 
 - Name: Jovani 60 Poe Soul Reward
   Original Item: Silver Rupee
@@ -2611,6 +2828,7 @@
     Name Lookup:
       - Jovani 60 Poe Soul Reward
     Event Flag: 0x3820
+    APLocationId: 377
 
 # HD Only Location
 # - Name: Gengle 60 Poe Soul Reward
@@ -2632,6 +2850,7 @@
     Poe:
       - Stage: 73
         Flag: 0x1E
+    APLocationId: 378
 
 - Name: Telma Invoice
   Original Item: Invoice
@@ -2644,6 +2863,7 @@
     Name Lookup:
       - Telma Invoice
     Event Flag: 0x2180
+    APLocationId: -1
 
 - Name: Agitha Male Beetle Reward
   Original Item: Orange Rupee
@@ -2655,6 +2875,7 @@
     Bug Reward:
       - Item Id: 0xC0
     Event Flag: 0x3110
+    APLocationId: 346
 
 - Name: Agitha Female Beetle Reward
   Original Item: Purple Rupee
@@ -2666,6 +2887,7 @@
     Bug Reward:
       - Item Id: 0xC1
     Event Flag: 0x3108
+    APLocationId: 334
 
 - Name: Agitha Male Butterfly Reward
   Original Item: Orange Rupee
@@ -2677,6 +2899,7 @@
     Bug Reward:
       - Item Id: 0xC2
     Event Flag: 0x3104
+    APLocationId: 347
 
 - Name: Agitha Female Butterfly Reward
   Original Item: Purple Rupee
@@ -2688,6 +2911,7 @@
     Bug Reward:
       - Item Id: 0xC3
     Event Flag: 0x3102
+    APLocationId: 335
 
 - Name: Agitha Male Stag Beetle Reward
   Original Item: Purple Rupee
@@ -2699,6 +2923,7 @@
     Bug Reward:
       - Item Id: 0xC4
     Event Flag: 0x3101
+    APLocationId: 356
 
 - Name: Agitha Female Stag Beetle Reward
   Original Item: Orange Rupee
@@ -2710,6 +2935,7 @@
     Bug Reward:
       - Item Id: 0xC5
     Event Flag: 0x3280
+    APLocationId: 344
 
 - Name: Agitha Male Grasshopper Reward
   Original Item: Progressive Wallet
@@ -2721,6 +2947,7 @@
     Bug Reward:
       - Item Id: 0xC6
     Event Flag: 0x3240
+    APLocationId: 350
 
 - Name: Agitha Female Grasshopper Reward
   Original Item: Orange Rupee
@@ -2732,6 +2959,7 @@
     Bug Reward:
       - Item Id: 0xC7
     Event Flag: 0x3220
+    APLocationId: 338
 
 - Name: Agitha Male Phasmid Reward
   Original Item: Progressive Wallet
@@ -2743,6 +2971,7 @@
     Bug Reward:
       - Item Id: 0xC8
     Event Flag: 0x3210
+    APLocationId: 353
 
 - Name: Agitha Female Phasmid Reward
   Original Item: Orange Rupee
@@ -2754,6 +2983,7 @@
     Bug Reward:
       - Item Id: 0xC9
     Event Flag: 0x3208
+    APLocationId: 341
 
 - Name: Agitha Male Pill Bug Reward
   Original Item: Orange Rupee
@@ -2765,6 +2995,7 @@
     Bug Reward:
       - Item Id: 0xCA
     Event Flag: 0x3204
+    APLocationId: 354
 
 - Name: Agitha Female Pill Bug Reward
   Original Item: Purple Rupee
@@ -2776,6 +3007,7 @@
     Bug Reward:
       - Item Id: 0xCB
     Event Flag: 0x3202
+    APLocationId: 342
 
 - Name: Agitha Male Mantis Reward
   Original Item: Purple Rupee
@@ -2787,6 +3019,7 @@
     Bug Reward:
       - Item Id: 0xCC
     Event Flag: 0x3201
+    APLocationId: 352
 
 - Name: Agitha Female Mantis Reward
   Original Item: Orange Rupee
@@ -2798,6 +3031,7 @@
     Bug Reward:
       - Item Id: 0xCD
     Event Flag: 0x3380
+    APLocationId: 340
 
 - Name: Agitha Male Ladybug Reward
   Original Item: Purple Rupee
@@ -2809,6 +3043,7 @@
     Bug Reward:
       - Item Id: 0xCE
     Event Flag: 0x3340
+    APLocationId: 351
 
 - Name: Agitha Female Ladybug Reward
   Original Item: Orange Rupee
@@ -2820,6 +3055,7 @@
     Bug Reward:
       - Item Id: 0xCF
     Event Flag: 0x3320
+    APLocationId: 339
 
 - Name: Agitha Male Snail Reward
   Original Item: Purple Rupee
@@ -2831,6 +3067,7 @@
     Bug Reward:
       - Item Id: 0xD0
     Event Flag: 0x3310
+    APLocationId: 355
 
 - Name: Agitha Female Snail Reward
   Original Item: Purple Rupee
@@ -2842,6 +3079,7 @@
     Bug Reward:
       - Item Id: 0xD1
     Event Flag: 0x3308
+    APLocationId: 343
 
 - Name: Agitha Male Dragonfly Reward
   Original Item: Purple Rupee
@@ -2853,6 +3091,7 @@
     Bug Reward:
       - Item Id: 0xD2
     Event Flag: 0x3304
+    APLocationId: 349
 
 - Name: Agitha Female Dragonfly Reward
   Original Item: Orange Rupee
@@ -2864,6 +3103,7 @@
     Bug Reward:
       - Item Id: 0xD3
     Event Flag: 0x3302
+    APLocationId: 337
 
 - Name: Agitha Male Ant Reward
   Original Item: Orange Rupee
@@ -2875,6 +3115,7 @@
     Bug Reward:
       - Item Id: 0xD4
     Event Flag: 0x3301
+    APLocationId: 345
 
 - Name: Agitha Female Ant Reward
   Original Item: Purple Rupee
@@ -2886,6 +3127,7 @@
     Bug Reward:
       - Item Id: 0xD5
     Event Flag: 0x3480
+    APLocationId: 333
 
 - Name: Agitha Male Dayfly Reward
   Original Item: Purple Rupee
@@ -2897,6 +3139,7 @@
     Bug Reward:
       - Item Id: 0xD6
     Event Flag: 0x3440
+    APLocationId: 348
 
 - Name: Agitha Female Dayfly Reward
   Original Item: Orange Rupee
@@ -2908,6 +3151,7 @@
     Bug Reward:
       - Item Id: 0xD7
     Event Flag: 0x3420
+    APLocationId: 336
 
 # HD Only Location
 # - Name: Agitha 12 Golden Bugs Reward
@@ -2930,6 +3174,7 @@
     Chest:
       - Stage: 57
         Tbox Id: 12
+    APLocationId: 437
 
 - Name: Outside South Castle Town Fountain Chest
   Original Item: Orange Rupee
@@ -2942,6 +3187,7 @@
     Chest:
       - Stage: 57
         Tbox Id: 14
+    APLocationId: 432
 
 - Name: Outside South Castle Town Male Ladybug
   Original Item: Male Ladybug
@@ -2954,6 +3200,7 @@
     Freestanding Item:
       - Stage: 57
         Flag: 0x91
+    APLocationId: 434
 
 - Name: Outside South Castle Town Female Ladybug
   Original Item: Female Ladybug
@@ -2966,6 +3213,7 @@
     Freestanding Item:
       - Stage: 57
         Flag: 0x90
+    APLocationId: 431
 
 - Name: Outside South Castle Town Poe
   Original Item: Poe Soul
@@ -2977,6 +3225,7 @@
     Poe:
       - Stage: 57
         Flag: 0x30
+    APLocationId: 435
 
 - Name: Outside South Castle Town Tektite Grotto Chest
   Original Item: Orange Rupee
@@ -2988,6 +3237,7 @@
     Chest:
       - Stage: 39
         Tbox Id: 1
+    APLocationId: 436
 
 - Name: Outside South Castle Town Golden Wolf
   Original Item: Progressive Hidden Skill
@@ -2997,6 +3247,7 @@
   Metadata:
     Golden Wolf:
       - Flag: 0x3C02
+    APLocationId: 433
 
 - Name: Outside South Castle Town Double Clawshot Chasm Chest
   Original Item: Orange Rupee
@@ -3009,6 +3260,7 @@
     Chest:
       - Stage: 57
         Tbox Id: 13
+    APLocationId: 430
 
 - Name: Outside South Castle Town Boulder Rupee
   Original Item: Yellow Rupee
@@ -3020,6 +3272,7 @@
     Freestanding Item:
       - Stage: 57
         Flag: 0x83
+    APLocationId: -1
 
 - Name: Wooden Statue
   Original Item: Wooden Statue
@@ -3032,6 +3285,7 @@
     Name Lookup:
       - Wooden Statue
     Event Flag: 0x2204
+    APLocationId: -1
 
 - Name: Lake Hylia Bridge Owl Statue Chest
   Original Item: Orange Rupee
@@ -3043,6 +3297,7 @@
     Chest:
       - Stage: 56
         Tbox Id: 15
+    APLocationId: 385
 
 - Name: Lake Hylia Bridge Owl Statue Sky Character
   Original Item: Progressive Sky Book
@@ -3054,6 +3309,7 @@
       - Stage: 56
         Room: 13
     Event Flag: 0x6008
+    APLocationId: 386
 
 - Name: Lake Hylia Bridge Owl Statue Boulder Rupee
   Original Item: Blue Rupee
@@ -3065,6 +3321,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x8B
+    APLocationId: -1
 
 - Name: Lake Hylia Bridge Vines Chest
   Original Item: Orange Rupee
@@ -3076,6 +3333,7 @@
     Chest:
       - Stage: 56
         Tbox Id: 10
+    APLocationId: 387
 
 - Name: Lake Hylia Bridge Female Mantis
   Original Item: Female Mantis
@@ -3088,6 +3346,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x92
+    APLocationId: 383
 
 - Name: Lake Hylia Bridge Male Mantis
   Original Item: Male Mantis
@@ -3100,6 +3359,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x93
+    APLocationId: 384
 
 - Name: Lake Hylia Bridge Cliff Chest
   Original Item: Purple Rupee
@@ -3111,6 +3371,7 @@
     Chest:
       - Stage: 56
         Tbox Id: 9
+    APLocationId: 381
 
 - Name: Lake Hylia Bridge Cliff Poe
   Original Item: Poe Soul
@@ -3122,6 +3383,7 @@
     Poe:
       - Stage: 56
         Flag: 0x3B
+    APLocationId: 382
 
 - Name: Lake Hylia Bridge Bubble Grotto Chest
   Original Item: Orange Rupee
@@ -3134,6 +3396,7 @@
     Chest:
       - Stage: 38
         Tbox Id: 4
+    APLocationId: 380
 
 - Name: Lake Hylia Bridge Faron Boulder Rupee
   Original Item: Yellow Rupee
@@ -3145,6 +3408,7 @@
     Freestanding Item:
       - Stage: 56
         Flag: 0x8C
+    APLocationId: -1
 
 - Name: Lake Hylia Warp Portal
   Original Item: Lake Hylia Portal
@@ -3166,6 +3430,7 @@
     Name Lookup:
       - Auru Gift To Fyer
     Event Flag: 0x2520
+    APLocationId: 357
 
 - Name: Lake Hylia Tower Poe
   Original Item: Poe Soul
@@ -3177,6 +3442,7 @@
     Poe:
       - Stage: 52
         Flag: 0x4C
+    APLocationId: 390
 
 - Name: Lake Hylia Water Toadpoli Grotto Chest
   Original Item: Orange Rupee
@@ -3189,6 +3455,7 @@
     Chest:
       - Stage: 39
         Tbox Id: 5
+    APLocationId: 392
 
 - Name: Lake Lantern Cave First Chest
   Original Item: Bomblings 5
@@ -3200,6 +3467,7 @@
     Chest:
       - Stage: 33
         Tbox Id: 1
+    APLocationId: 398
 
 - Name: Lake Lantern Cave Second Chest
   Original Item: Yellow Rupee
@@ -3211,6 +3479,7 @@
     Chest:
       - Stage: 33
         Tbox Id: 2
+    APLocationId: 403
 
 - Name: Lake Lantern Cave Third Chest
   Original Item: Red Rupee
@@ -3222,6 +3491,7 @@
     Chest:
       - Stage: 33
         Tbox Id: 6
+    APLocationId: 408
 
 - Name: Lake Lantern Cave Fourth Chest
   Original Item: Arrows 10
@@ -3233,6 +3503,7 @@
     Chest:
       - Stage: 33
         Tbox Id: 0
+    APLocationId: 401
 
 - Name: Lake Lantern Cave Fifth Chest
   Original Item: Red Rupee
@@ -3245,6 +3516,7 @@
     Chest:
       - Stage: 33
         Tbox Id: 7
+    APLocationId: 396
 
 - Name: Lake Lantern Cave Sixth Chest
   Original Item: Orange Rupee
@@ -3256,6 +3528,7 @@
     Chest:
       - Stage: 33
         Tbox Id: 8
+    APLocationId: 406
 
 - Name: Lake Lantern Cave Seventh Chest
   Original Item: Bomblings 5
@@ -3267,6 +3540,7 @@
     Chest:
       - Stage: 33
         Tbox Id: 14
+    APLocationId: 405
 
 - Name: Lake Lantern Cave Eighth Chest
   Original Item: Red Rupee
@@ -3278,6 +3552,7 @@
     Chest:
       - Stage: 33
         Tbox Id: 10
+    APLocationId: 393
 
 - Name: Lake Lantern Cave Ninth Chest
   Original Item: Arrows 10
@@ -3289,6 +3564,7 @@
     Chest:
       - Stage: 33
         Tbox Id: 9
+    APLocationId: 402
 
 - Name: Lake Lantern Cave Tenth Chest
   Original Item: Purple Rupee
@@ -3300,6 +3576,7 @@
     Chest:
       - Stage: 33
         Tbox Id: 5
+    APLocationId: 407
 
 - Name: Lake Lantern Cave Eleventh Chest
   Original Item: Bomblings 10
@@ -3311,6 +3588,7 @@
     Chest:
       - Stage: 33
         Tbox Id: 4
+    APLocationId: 394
 
 - Name: Lake Lantern Cave Twelfth Chest
   Original Item: Purple Rupee
@@ -3322,6 +3600,7 @@
     Chest:
       - Stage: 33
         Tbox Id: 11
+    APLocationId: 410
 
 - Name: Lake Lantern Cave Thirteenth Chest
   Original Item: Seeds 50
@@ -3333,6 +3612,7 @@
     Chest:
       - Stage: 33
         Tbox Id: 12
+    APLocationId: 409
 
 - Name: Lake Lantern Cave Fourteenth Chest
   Original Item: Orange Rupee
@@ -3345,6 +3625,7 @@
     Chest:
       - Stage: 33
         Tbox Id: 13
+    APLocationId: 400
 
 - Name: Lake Lantern Cave End Lantern Chest
   Original Item: Piece of Heart
@@ -3356,6 +3637,7 @@
     Chest:
       - Stage: 33
         Tbox Id: 3
+    APLocationId: 395
 
 - Name: Lake Lantern Cave First Poe
   Original Item: Poe Soul
@@ -3367,6 +3649,7 @@
     Poe:
       - Stage: 33
         Flag: 0x5E
+    APLocationId: 399
 
 - Name: Lake Lantern Cave Second Poe
   Original Item: Poe Soul
@@ -3378,6 +3661,7 @@
     Poe:
       - Stage: 33
         Flag: 0x5D
+    APLocationId: 404
 
 - Name: Lake Lantern Cave Final Poe
   Original Item: Poe Soul
@@ -3389,6 +3673,7 @@
     Poe:
       - Stage: 33
         Flag: 0x5F
+    APLocationId: 397
 
 - Name: Lake Hylia Underwater Chest
   Original Item: Orange Rupee
@@ -3401,6 +3686,7 @@
     Chest:
       - Stage: 52
         Tbox Id: 5
+    APLocationId: 391
 
 - Name: Lake Hylia Left Underwater Boulder Rupee
   Original Item: Green Rupee
@@ -3412,6 +3698,7 @@
     Freestanding Item:
       - Stage: 52
         Flag: 0x9A
+    APLocationId: -1
 
 - Name: Lake Hylia Left Underwater Pillar Rupee
   Original Item: Yellow Rupee
@@ -3423,6 +3710,7 @@
     Freestanding Item:
       - Stage: 52
         Flag: 0x81
+    APLocationId: -1
 
 - Name: Lake Hylia Right Underwater Boulder Rupee
   Original Item: Green Rupee
@@ -3434,6 +3722,7 @@
     Freestanding Item:
       - Stage: 52
         Flag: 0x9B
+    APLocationId: -1
 
 - Name: Lake Hylia Right Underwater Pillar Rupee
   Original Item: Yellow Rupee
@@ -3445,6 +3734,7 @@
     Freestanding Item:
       - Stage: 52
         Flag: 0x80
+    APLocationId: -1
 
 - Name: Lake Hylia Alcove Poe
   Original Item: Poe Soul
@@ -3456,6 +3746,7 @@
     Poe:
       - Stage: 52
         Flag: 0x46
+    APLocationId: 379
 
 - Name: Flight By Fowl Top Platform Reward
   Original Item: Orange Rupee
@@ -3467,6 +3758,7 @@
     Chest:
       - Stage: 52
         Tbox Id: 25
+    APLocationId: 369
 
 - Name: Flight By Fowl Second Platform Chest
   Original Item: Piece of Heart
@@ -3478,6 +3770,7 @@
     Chest:
       - Stage: 52
         Tbox Id: 0
+    APLocationId: 367
 
 - Name: Flight By Fowl Third Platform Chest
   Original Item: Purple Rupee
@@ -3490,6 +3783,7 @@
     Chest:
       - Stage: 52
         Tbox Id: 2
+    APLocationId: 368
 
 - Name: Flight By Fowl Fourth Platform Chest
   Original Item: Red Rupee
@@ -3501,6 +3795,7 @@
     Chest:
       - Stage: 52
         Tbox Id: 8
+    APLocationId: 365
 
 - Name: Flight By Fowl Fifth Platform Chest
   Original Item: Yellow Rupee
@@ -3512,6 +3807,7 @@
     Chest:
       - Stage: 52
         Tbox Id: 7
+    APLocationId: 364
 
 - Name: Isle of Riches Poe
   Original Item: Poe Soul
@@ -3523,6 +3819,7 @@
     Poe:
       - Stage: 52
         Flag: 0x47
+    APLocationId: 373
 
 - Name: Flight By Fowl Ledge Poe
   Original Item: Poe Soul
@@ -3534,6 +3831,7 @@
     Poe:
       - Stage: 52
         Flag: 0x4D
+    APLocationId: 366
 
 - Name: Lake Hylia Shell Blade Grotto Chest
   Original Item: Orange Rupee
@@ -3545,6 +3843,7 @@
     Chest:
       - Stage: 39
         Tbox Id: 21
+    APLocationId: 389
 
 - Name: Lake Hylia Dock Poe
   Original Item: Poe Soul
@@ -3556,6 +3855,7 @@
     Poe:
       - Stage: 52
         Flag: 0x4B
+    APLocationId: 388
 
 - Name: Outside Lanayru Spring Left Statue Chest
   Original Item: Purple Rupee
@@ -3567,6 +3867,7 @@
     Chest:
       - Stage: 52
         Tbox Id: 1
+    APLocationId: 428
 
 - Name: Outside Lanayru Spring Right Statue Chest
   Original Item: Orange Rupee
@@ -3578,6 +3879,7 @@
     Chest:
       - Stage: 52
         Tbox Id: 6
+    APLocationId: 429
 
 - Name: Lanayru Spring Back Room Lantern Chest
   Original Item: Piece of Heart
@@ -3589,6 +3891,7 @@
     Chest:
       - Stage: 52
         Tbox Id: 29
+    APLocationId: 420
 
 - Name: Lanayru Spring Back Room Left Chest
   Original Item: Bombs 5
@@ -3600,6 +3903,7 @@
     Chest:
       - Stage: 52
         Tbox Id: 28
+    APLocationId: 421
 
 - Name: Lanayru Spring Back Room Right Chest
   Original Item: Blue Rupee
@@ -3611,6 +3915,7 @@
     Chest:
       - Stage: 52
         Tbox Id: 27
+    APLocationId: 422
 
 - Name: Lanayru Spring East Double Clawshot Chest
   Original Item: Orange Rupee
@@ -3622,6 +3927,7 @@
     Chest:
       - Stage: 52
         Tbox Id: 4
+    APLocationId: 423
 
 - Name: Lanayru Spring West Double Clawshot Chest
   Original Item: Orange Rupee
@@ -3633,6 +3939,7 @@
     Chest:
       - Stage: 52
         Tbox Id: 3
+    APLocationId: 426
 
 - Name: Lanayru Spring Underwater Left Chest
   Original Item: Blue Rupee
@@ -3644,6 +3951,7 @@
     Chest:
       - Tbox Id: 12
         Stage: 52
+    APLocationId: 424
 
 - Name: Lanayru Spring Underwater Right Chest
   Original Item: Yellow Rupee
@@ -3655,6 +3963,7 @@
     Chest:
       - Stage: 52
         Tbox Id: 10
+    APLocationId: 425
 
 - Name: Lanayru Spring Lower Underwater Boulder Rupee
   Original Item: Red Rupee
@@ -3666,6 +3975,7 @@
     Freestanding Item:
       - Stage: 52
         Flag: 0x8F
+    APLocationId: -1
 
 - Name: Lanayru Spring Upper Underwater Boulder Rupee
   Original Item: Red Rupee
@@ -3677,6 +3987,7 @@
     Freestanding Item:
       - Stage: 52
         Flag: 0x90
+    APLocationId: -1
 
 - Name: Plumm Fruit Balloon Minigame
   Original Item: Piece of Heart
@@ -3690,6 +4001,7 @@
     Name Lookup:
       - Plumm Fruit Balloon Minigame
     Event Flag: 0x2380
+    APLocationId: 438
 
 - Name: Upper Zoras River Warp Portal
   Original Item: Upper Zoras River Portal
@@ -3711,6 +4023,7 @@
     Freestanding Item:
       - Stage: 61
         Flag: 0x9E
+    APLocationId: 441
 
 - Name: Upper Zoras River Central Underwater Boulder Rupee
   Original Item: Blue Rupee
@@ -3722,6 +4035,7 @@
     Freestanding Item:
       - Stage: 61
         Flag: 0x91
+    APLocationId: -1
 
 - Name: Upper Zoras River East Underwater Boulder Rupee
   Original Item: Yellow Rupee
@@ -3733,6 +4047,7 @@
     Freestanding Item:
       - Stage: 61
         Flag: 0x93
+    APLocationId: -1
 
 - Name: Upper Zoras River Ledge Boulder Rupee
   Original Item: Blue Rupee
@@ -3744,6 +4059,7 @@
     Freestanding Item:
       - Stage: 61
         Flag: 0x94
+    APLocationId: -1
 
 - Name: Upper Zoras River West Underwater Boulder Rupee
   Original Item: Blue Rupee
@@ -3755,6 +4071,7 @@
     Freestanding Item:
       - Stage: 61
         Flag: 0x92
+    APLocationId: -1
 
 - Name: Upper Zoras River Poe
   Original Item: Poe Soul
@@ -3766,6 +4083,7 @@
     Poe:
       - Stage: 61
         Flag: 0x48
+    APLocationId: 442
 
 - Name: Iza Helping Hand
   Original Item: Bomb Bag
@@ -3779,6 +4097,7 @@
     Name Lookup:
       - Iza Helping Hand
     Event Flag: 0x0B01
+    APLocationId: 374
 
 - Name: Iza Raging Rapids Minigame
   Original Item: Giant Bomb Bag
@@ -3792,6 +4111,7 @@
     Name Lookup:
       - Iza Raging Rapids Minigame
     Event Flag: 0x5908
+    APLocationId: 375
 
 - Name: Fishing Hole Bottle
   Original Item: Empty Bottle
@@ -3804,6 +4124,7 @@
     Name Lookup:
       - Fishing Hole Bottle
     Event Flag: 0x3908
+    APLocationId: 362
 
 - Name: Fishing Hole Heart Piece
   Original Item: Piece of Heart
@@ -3820,7 +4141,7 @@
     # Or picked up with the fishing rod during fishing
     Name Lookup:
       - Fishing Hole Heart Piece
-
+    APLocationId: 363
 
 - Name: Zoras Domain Warp Portal
   Original Item: Zoras Domain Portal
@@ -3842,6 +4163,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x9F
+    APLocationId: 451
 
 - Name: Zoras Domain Mother and Child Isle Poe
   Original Item: Poe Soul
@@ -3853,6 +4175,7 @@
     Poe:
       - Stage: 50
         Flag: 0x4A
+    APLocationId: 452
 
 - Name: Zoras Domain Chest Behind Waterfall
   Original Item: Red Rupee
@@ -3864,6 +4187,7 @@
     Chest:
       - Stage: 50
         Tbox Id: 26
+    APLocationId: 447
 
 - Name: Zoras Domain Chest By Mother and Child Isles
   Original Item: Yellow Rupee
@@ -3875,6 +4199,7 @@
     Chest:
       - Stage: 50
         Tbox Id: 30
+    APLocationId: 448
 
 - Name: Zoras Domain Waterfall Poe
   Original Item: Poe Soul
@@ -3886,6 +4211,7 @@
     Poe:
       - Stage: 50
         Flag: 0x49
+    APLocationId: 454
 
 - Name: Zoras Domain Behind Waterfall Rupee
   Original Item: Blue Rupee
@@ -3897,6 +4223,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x96
+    APLocationId: -1
 
 - Name: Zoras Domain Central Underwater Boulder Rupee
   Original Item: Red Rupee
@@ -3908,6 +4235,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x8E
+    APLocationId: -1
 
 - Name: Zoras Domain North Underwater Boulder Rupee
   Original Item: Red Rupee
@@ -3919,6 +4247,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x8D
+    APLocationId: -1
 
 - Name: Zoras Domain Shortcut Ledge Rupee
   Original Item: Yellow Rupee
@@ -3930,6 +4259,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x84
+    APLocationId: -1
 
 - Name: Zoras Domain Shortcut Lower Boulder Rupee
   Original Item: Blue Rupee
@@ -3941,6 +4271,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x8C
+    APLocationId: -1
 
 - Name: Zoras Domain Shortcut Upper Boulder Rupee
   Original Item: Green Rupee
@@ -3952,6 +4283,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x8B
+    APLocationId: -1
 
 
 - Name: Zoras Domain Top Ledge Rupee
@@ -3964,6 +4296,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x83
+    APLocationId: -1
 
 - Name: Zoras Domain Vine Ledge Rupee
   Original Item: Blue Rupee
@@ -3975,6 +4308,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x97
+    APLocationId: -1
 
 - Name: Zoras Domain Waterfall Ledge Rupee
   Original Item: Blue Rupee
@@ -3986,6 +4320,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x95
+    APLocationId: -1
 
 - Name: Zoras Domain Extinguish All Torches Chest
   Original Item: Purple Rupee
@@ -3997,6 +4332,7 @@
     Chest:
       - Stage: 50
         Tbox Id: 20
+    APLocationId: 449
 
 - Name: Zoras Domain Light All Torches Chest
   Original Item: Purple Rupee
@@ -4008,6 +4344,7 @@
     Chest:
       - Stage: 50
         Tbox Id: 19
+    APLocationId: 450
 
 - Name: Zoras Domain Underwater Goron
   Original Item: Bomb Bag
@@ -4020,6 +4357,7 @@
     Name Lookup:
       - Zoras Domain Underwater Goron
     Event Flag: 0x3D10
+    APLocationId: 453
 
 - Name: Zoras Domain Throne East Gate Underwater Rupee
   Original Item: Yellow Rupee
@@ -4031,6 +4369,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x8A
+    APLocationId: -1
 
 - Name: Zoras Domain Throne East Underwater Rupee
   Original Item: Yellow Rupee
@@ -4042,6 +4381,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x86
+    APLocationId: -1
 
 - Name: Zoras Domain Throne Northwest Underwater Rupee
   Original Item: Yellow Rupee
@@ -4053,6 +4393,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x87
+    APLocationId: -1
 
 - Name: Zoras Domain Throne South Underwater Rupee
   Original Item: Yellow Rupee
@@ -4064,6 +4405,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x88
+    APLocationId: -1
 
 - Name: Zoras Domain Throne West Gate Underwater Rupee
   Original Item: Blue Rupee
@@ -4075,6 +4417,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x89
+    APLocationId: -1
 
 - Name: Zoras Domain Throne West Underwater Rupee
   Original Item: Yellow Rupee
@@ -4086,6 +4429,7 @@
     Freestanding Item:
       - Stage: 50
         Flag: 0x85
+    APLocationId: -1
 
 # SNOWPEAK PROVINCE
 
@@ -4109,6 +4453,7 @@
     Name Lookup:
       - Ashei Sketch
     Event Flag: 0x2940
+    APLocationId: 466
 
 - Name: Snowpeak Blizzard Poe
   Original Item: Poe Soul
@@ -4120,6 +4465,7 @@
     Poe:
       - Stage: 51
         Flag: 0x7D
+    APLocationId: 469
 
 - Name: Snowpeak Above Freezard Grotto Poe
   Original Item: Poe Soul
@@ -4131,6 +4477,7 @@
     Poe:
       - Stage: 51
         Flag: 0x7C
+    APLocationId: 468
 
 - Name: Snowpeak Poe Among Trees
   Original Item: Poe Soul
@@ -4142,6 +4489,7 @@
     Poe:
       - Stage: 51
         Flag: 0x7B
+    APLocationId: 474
 
 - Name: Snowpeak Freezard Grotto Chest
   Original Item: Orange Rupee
@@ -4153,6 +4501,7 @@
     Chest:
       - Stage: 38
         Tbox Id: 15
+    APLocationId: 472
 
 - Name: Snowpeak Cave Ice Lantern Chest
   Original Item: Orange Rupee
@@ -4164,6 +4513,7 @@
     Chest:
       - Stage: 51
         Tbox Id: 0
+    APLocationId: 470
 
 - Name: Snowpeak Cave Ice Poe
   Original Item: Poe Soul
@@ -4175,6 +4525,7 @@
     Poe:
       - Stage: 51
         Flag: 0x7F
+    APLocationId: 471
 
 - Name: Snowpeak Icy Summit Poe
   Original Item: Poe Soul
@@ -4186,6 +4537,7 @@
     Poe:
       - Stage: 51
         Flag: 0x7E
+    APLocationId: 473
 
 - Name: Snowboard Racing Prize
   Original Item: Piece of Heart
@@ -4199,6 +4551,7 @@
     Name Lookup:
       - Snowboard Racing Prize
     Event Flag: 0x3B10
+    APLocationId: 467
 
 - Name: Snowboarding Bridge Ledge Bottom Rupee
   Original Item: Green Rupee
@@ -4210,6 +4563,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x84
+    APLocationId: -1
 
 - Name: Snowboarding Bridge Ledge Middle Rupee
   Original Item: Green Rupee
@@ -4221,6 +4575,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x83
+    APLocationId: -1
 
 - Name: Snowboarding Bridge Ledge Upper Rupee
   Original Item: Green Rupee
@@ -4232,6 +4587,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x82
+    APLocationId: -1
 
 - Name: Snowboarding Shortcut Rupee 1
   Original Item: Green Rupee
@@ -4243,6 +4599,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x88
+    APLocationId: -1
 
 - Name: Snowboarding Shortcut Rupee 2
   Original Item: Green Rupee
@@ -4254,6 +4611,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x89
+    APLocationId: -1
 
 - Name: Snowboarding Shortcut Rupee 3
   Original Item: Green Rupee
@@ -4265,6 +4623,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x8A
+    APLocationId: -1
 
 - Name: Snowboarding Shortcut Rupee 4
   Original Item: Red Rupee
@@ -4276,6 +4635,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x8B
+    APLocationId: -1
 
 - Name: Snowboarding Shortcut Rupee 5
   Original Item: Green Rupee
@@ -4287,6 +4647,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x8C
+    APLocationId: -1
 
 - Name: Snowboarding Shortcut Rupee 6
   Original Item: Green Rupee
@@ -4298,6 +4659,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x8D
+    APLocationId: -1
 
 - Name: Snowboarding Shortcut Rupee 7
   Original Item: Green Rupee
@@ -4309,6 +4671,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x8E
+    APLocationId: -1
 
 - Name: Snowboarding Shortcut Rupee 8
   Original Item: Green Rupee
@@ -4320,6 +4683,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x8F
+    APLocationId: -1
 
 - Name: Snowboarding Shortcut Rupee 9
   Original Item: Green Rupee
@@ -4331,6 +4695,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x90
+    APLocationId: -1
 
 - Name: Snowboarding Shortcut Rupee 10
   Original Item: Green Rupee
@@ -4342,6 +4707,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x91
+    APLocationId: -1
 
 - Name: Snowboarding Shortcut Rupee 11
   Original Item: Green Rupee
@@ -4353,6 +4719,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x92
+    APLocationId: -1
 
 - Name: Snowboarding Snowy Tree Top Rupee 1
   Original Item: Blue Rupee
@@ -4364,6 +4731,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x85
+    APLocationId: -1
 
 - Name: Snowboarding Snowy Tree Top Rupee 2
   Original Item: Red Rupee
@@ -4375,6 +4743,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x86
+    APLocationId: -1
 
 - Name: Snowboarding Snowy Tree Top Rupee 3
   Original Item: Purple Rupee
@@ -4386,6 +4755,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x87
+    APLocationId: -1
 
 - Name: Snowboarding Top Left Rupee
   Original Item: Green Rupee
@@ -4397,6 +4767,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x80
+    APLocationId: -1
 
 - Name: Snowboarding Top Right Rupee
   Original Item: Green Rupee
@@ -4408,6 +4779,7 @@
     Freestanding Item:
       - Stage: 51
         Flag: 0x81
+    APLocationId: -1
 
 # DESERT PROVINCE
 
@@ -4430,6 +4802,7 @@
     Poe:
       - Stage: 59
         Flag: 0x5C
+    APLocationId: 311
 
 - Name: Gerudo Desert Skulltula Grotto Chest
   Original Item: Orange Rupee
@@ -4441,6 +4814,7 @@
     Chest:
       - Stage: 38
         Tbox Id: 8
+    APLocationId: 327
 
 - Name: Gerudo Desert Peahat Ledge Chest
   Original Item: Red Rupee
@@ -4452,6 +4826,7 @@
     Chest:
       - Stage: 59
         Tbox Id: 11
+    APLocationId: 322
 
 - Name: Gerudo Desert East Canyon Chest
   Original Item: Red Rupee
@@ -4463,6 +4838,7 @@
     Chest:
       - Stage: 59
         Tbox Id: 6
+    APLocationId: 310
 
 - Name: Gerudo Desert South Chest Behind Wooden Gates
   Original Item: Orange Rupee
@@ -4474,6 +4850,7 @@
     Chest:
       - Stage: 59
         Tbox Id: 0
+    APLocationId: 328
 
 - Name: Gerudo Desert Lone Small Chest
   Original Item: Arrows 10
@@ -4485,6 +4862,7 @@
     Chest:
       - Stage: 59
         Tbox Id: 5
+    APLocationId: 314
 
 - Name: Gerudo Desert Male Dayfly
   Original Item: Male Dayfly
@@ -4497,6 +4875,7 @@
     Freestanding Item:
       - Stage: 59
         Flag: 0x99
+    APLocationId: 315
 
 - Name: Gerudo Desert Female Dayfly
   Original Item: Female Dayfly
@@ -4509,6 +4888,7 @@
     Freestanding Item:
       - Stage: 59
         Flag: 0x98
+    APLocationId: 312
 
 - Name: Gerudo Desert Owl Statue Chest
   Original Item: Orange Rupee
@@ -4520,6 +4900,7 @@
     Chest:
       - Stage: 59
         Tbox Id: 1
+    APLocationId: 320
 
 - Name: Gerudo Desert Owl Statue Sky Character
   Original Item: Progressive Sky Book
@@ -4531,6 +4912,7 @@
       - Stage: 59
         Room: 0
     Event Flag: 0x6040
+    APLocationId: 321
 
 - Name: Gerudo Desert Poe Above Cave of Ordeals
   Original Item: Poe Soul
@@ -4542,6 +4924,7 @@
     Poe:
       - Stage: 59
         Flag: 0x5D
+    APLocationId: 323
 
 - Name: Gerudo Desert West Canyon Chest
   Original Item: Purple Rupee
@@ -4554,6 +4937,7 @@
     Chest:
       - Stage: 59
         Tbox Id: 7
+    APLocationId: 329
 
 - Name: Gerudo Desert North Peahat Poe
   Original Item: Poe Soul
@@ -4565,6 +4949,7 @@
     Poe:
       - Stage: 59
         Flag: 0x5B
+    APLocationId: 316
 
 - Name: Gerudo Desert Rock Grotto First Poe
   Original Item: Poe Soul
@@ -4576,6 +4961,7 @@
     Poe:
       - Stage: 37
         Flag: 0x0F
+    APLocationId: 324
 
 - Name: Gerudo Desert Rock Grotto Second Poe
   Original Item: Poe Soul
@@ -4587,6 +4973,7 @@
     Poe:
       - Stage: 37
         Flag: 0x10
+    APLocationId: 326
 
 - Name: Gerudo Desert Rock Grotto Lantern Chest
   Original Item: Orange Rupee
@@ -4599,6 +4986,7 @@
     Chest:
       - Stage: 37
         Tbox Id: 14
+    APLocationId: 325
 
 - Name: Gerudo Desert Campfire East Chest
   Original Item: Purple Rupee
@@ -4610,6 +4998,7 @@
     Chest:
       - Stage: 59
         Tbox Id: 9
+    APLocationId: 307
 
 - Name: Gerudo Desert Campfire North Chest
   Original Item: Red Rupee
@@ -4621,6 +5010,7 @@
     Chest:
       - Stage: 59
         Tbox Id: 8
+    APLocationId: 308
 
 - Name: Gerudo Desert Campfire West Chest
   Original Item: Arrows 10
@@ -4632,6 +5022,7 @@
     Chest:
       - Stage: 59
         Tbox Id: 10
+    APLocationId: 309
 
 - Name: Gerudo Desert Northeast Chest Behind Gates
   Original Item: Red Rupee
@@ -4643,6 +5034,7 @@
     Chest:
       - Stage: 59
         Tbox Id: 2
+    APLocationId: 318
 
 - Name: Gerudo Desert Northwest Chest Behind Gates
   Original Item: Red Rupee
@@ -4654,6 +5046,7 @@
     Chest:
       - Stage: 59
         Tbox Id: 3
+    APLocationId: 319
 
 - Name: Gerudo Desert North Small Chest Before Bulblin Camp
   Original Item: Arrows 10
@@ -4665,6 +5058,7 @@
     Chest:
       - Stage: 59
         Tbox Id: 13
+    APLocationId: 317
 
 - Name: Gerudo Desert Golden Wolf
   Original Item: Progressive Hidden Skill
@@ -4674,6 +5068,7 @@
   Metadata:
     Golden Wolf:
       - Flag: 0x3C01
+    APLocationId: 313
 
 - Name: Outside Bulblin Camp Poe
   Original Item: Poe Soul
@@ -4685,6 +5080,7 @@
     Poe:
       - Stage: 59
         Flag: 0x33
+    APLocationId: 332
 
 - Name: Bulblin Camp First Chest Under Tower At Entrance
   Original Item: Arrows 20
@@ -4696,6 +5092,7 @@
     Chest:
       - Stage: 55
         Tbox Id: 31
+    APLocationId: 298
 
 # In vanilla this chest shares a flag with the other small chest
 # in the area. So we change this one to use a different flag
@@ -4709,6 +5106,7 @@
     Chest:
       - Stage: 55
         Tbox Id: 30
+    APLocationId: 301
 
 - Name: Bulblin Camp Roasted Boar
   Original Item: Piece of Heart
@@ -4720,6 +5118,7 @@
     Freestanding Item:
       - Stage: 55
         Flag: 0x9F
+    APLocationId: 300
 
 - Name: Bulblin Guard Key
   Original Item: Gerudo Desert Bulblin Camp Key
@@ -4732,6 +5131,7 @@
     Freestanding Item:
       - Stage: 55
         Flag: 0x9A
+    APLocationId: 302
 
 - Name: Bulblin Camp Poe
   Original Item: Poe Soul
@@ -4743,6 +5143,7 @@
     Poe:
       - Stage: 55
         Flag: 0x78
+    APLocationId: 299
 
 - Name: Outside Arbiters Grounds Lantern Chest
   Original Item: Purple Rupee
@@ -4754,6 +5155,7 @@
     Chest:
       - Stage: 55
         Tbox Id: 15
+    APLocationId: 330
 
 - Name: Outside Arbiters Grounds Poe
   Original Item: Poe Soul
@@ -4765,6 +5167,7 @@
     Poe:
       - Stage: 55
         Flag: 0x5A
+    APLocationId: 331
 
 # HD Only Location
 # - Name: Cave of Ordeals Floor 10 Chest
@@ -4811,6 +5214,7 @@
     Poe:
       - Stage: 31
         Flag: 0x45
+    APLocationId: 303
 
 - Name: Cave of Ordeals Floor 33 Poe
   Original Item: Poe Soul
@@ -4822,6 +5226,7 @@
     Poe:
       - Stage: 31
         Flag: 0x46
+    APLocationId: 304
 
 - Name: Cave of Ordeals Floor 44 Poe
   Original Item: Poe Soul
@@ -4833,6 +5238,7 @@
     Poe:
       - Stage: 31
         Flag: 0x47
+    APLocationId: 305
 
 - Name: Cave of Ordeals Great Fairy Reward
   Original Item: Fairy Tears
@@ -4846,6 +5252,7 @@
     Name Lookup:
       - Cave of Ordeals Great Fairy Reward
     Event Flag: 0x3E40
+    APLocationId: 306
 
 - Name: Mirror Chamber Warp Portal
   Original Item: Mirror Chamber Portal
@@ -4868,6 +5275,7 @@
     Chest:
       - Stage: 6
         Tbox Id: 7
+    APLocationId: 62
 
 - Name: Forest Temple Central Chest Hanging From Web
   Original Item: Forest Temple Compass
@@ -4881,6 +5289,7 @@
     Chest:
       - Stage: 6
         Tbox Id: 20
+    APLocationId: 56
 
 - Name: Forest Temple Central Chest Behind Stairs
   Original Item: Red Rupee
@@ -4892,6 +5301,7 @@
     Chest:
       - Stage: 6
         Tbox Id: 37
+    APLocationId: 55
 
 - Name: Forest Temple Central North Chest
   Original Item: Forest Temple Dungeon Map
@@ -4905,6 +5315,7 @@
     Chest:
       - Stage: 6
         Tbox Id: 39
+    APLocationId: 57
 
 - Name: Forest Temple West Deku Like Chest
   Original Item: Piece of Heart
@@ -4916,6 +5327,7 @@
     Chest:
       - Stage: 6
         Tbox Id: 31
+    APLocationId: 67
 
 - Name: Forest Temple Big Baba Key
   Original Item: Forest Temple Small Key
@@ -4928,6 +5340,7 @@
     Freestanding Item:
       - Stage: 6
         Flag: 0x6 # Technically a tbox id
+    APLocationId: 53
 
 - Name: Forest Temple Totem Pole Chest
   Original Item: Forest Temple Small Key
@@ -4940,6 +5353,7 @@
     Chest:
       - Stage: 6
         Tbox Id: 25
+    APLocationId: 66
 
 - Name: Forest Temple West Tile Worm Chest Behind Stairs
   Original Item: Piece of Heart
@@ -4951,6 +5365,7 @@
     Chest:
       - Stage: 6
         Tbox Id: 19
+    APLocationId: 68
 
 - Name: Forest Temple West Tile Worm Room Vines Chest
   Original Item: Red Rupee
@@ -4962,6 +5377,7 @@
     Chest:
       - Stage: 6
         Tbox Id: 24
+    APLocationId: 69
 
 - Name: Forest Temple Gale Boomerang
   Original Item: Gale Boomerang
@@ -4975,6 +5391,7 @@
     Item Flag:
       Stage: 8
       Flag: 0x9D
+    APLocationId: 63
 
 - Name: Forest Temple Big Key Chest
   Original Item: Forest Temple Big Key
@@ -4987,6 +5404,7 @@
     Chest:
       - Stage: 6
         Tbox Id: 38
+    APLocationId: 54
 
 - Name: Forest Temple East Water Cave Chest
   Original Item: Yellow Rupee
@@ -4999,6 +5417,7 @@
     Chest:
       - Stage: 6
         Tbox Id: 26
+    APLocationId: 61
 
 - Name: Forest Temple Second Monkey Under Bridge Chest
   Original Item: Yellow Rupee
@@ -5010,6 +5429,7 @@
     Chest:
       - Stage: 6
         Tbox Id: 9
+    APLocationId: 65
 
 - Name: Forest Temple Windless Bridge Chest
   Original Item: Forest Temple Small Key
@@ -5022,6 +5442,7 @@
     Chest:
       - Stage: 6
         Tbox Id: 4
+    APLocationId: 70
 
 - Name: Forest Temple East Tile Worm Chest
   Original Item: Red Rupee
@@ -5034,6 +5455,7 @@
     Chest:
       - Stage: 6
         Tbox Id: 1
+    APLocationId: 60
 
 - Name: Forest Temple North Deku Like Chest
   Original Item: Forest Temple Small Key
@@ -5046,6 +5468,7 @@
     Chest:
       - Stage: 6
         Tbox Id: 2
+    APLocationId: 64
 
 - Name: Forest Temple Diababa Heart Container
   Original Item: Heart Container
@@ -5058,6 +5481,7 @@
     Freestanding Item:
       - Stage: 7
         Flag: 0x9F
+    APLocationId: 58
 
 - Name: Forest Temple Dungeon Reward
   Original Item: Progressive Fused Shadow
@@ -5074,6 +5498,7 @@
     Item Flag:
       Stage: 7
       Flag: 0x9E
+    APLocationId: 59
 
 # GORON MINES
 
@@ -5087,6 +5512,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 27
+    APLocationId: 78
 
 - Name: Goron Mines Main Magnet Room Bottom Chest
   Original Item: Goron Mines Small Key
@@ -5099,6 +5525,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 11
+    APLocationId: 88
 
 - Name: Goron Mines Gor Amato Key Shard
   Original Item: Goron Mines Key Shard
@@ -5113,6 +5540,7 @@
     Name Lookup:
       - Goron Mines Gor Amato Key Shard
     Event Flag: 0x3008 # late
+    APLocationId: 81
 
 - Name: Goron Mines Gor Amato Chest
   Original Item: Goron Mines Dungeon Map
@@ -5126,6 +5554,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 17
+    APLocationId: 80
 
 - Name: Goron Mines Gor Amato Small Chest
   Original Item: Red Rupee
@@ -5137,6 +5566,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 24
+    APLocationId: 82
 
 - Name: Goron Mines Magnet Maze Chest
   Original Item: Piece of Heart
@@ -5148,6 +5578,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 20
+    APLocationId: 87
 
 - Name: Goron Mines Crystal Switch Room Underwater Chest
   Original Item: Goron Mines Small Key
@@ -5160,6 +5591,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 16
+    APLocationId: 75
 
 - Name: Goron Mines Crystal Switch Room Small Chest
   Original Item: Red Rupee
@@ -5171,6 +5603,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 28
+    APLocationId: 74
 
 - Name: Goron Mines After Crystal Switch Room Magnet Wall Chest
   Original Item: Piece of Heart
@@ -5182,6 +5615,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 9
+    APLocationId: 71
 
 - Name: Goron Mines Outside Beamos Chest
   Original Item: Goron Mines Small Key
@@ -5194,6 +5628,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 15
+    APLocationId: 90
 
 - Name: Goron Mines Outside Underwater Chest
   Original Item: Purple Rupee
@@ -5206,6 +5641,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 21
+    APLocationId: 92
 
 - Name: Goron Mines Outside Clawshot Chest
   Original Item: Purple Rupee
@@ -5218,6 +5654,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 14
+    APLocationId: 91
 
 - Name: Goron Mines Gor Ebizo Key Shard
   Original Item: Goron Mines Key Shard
@@ -5232,6 +5669,7 @@
     Name Lookup:
       - Goron Mines Gor Ebizo Key Shard
     Event Flag: 0x3702 # late
+    APLocationId: 84
 
 - Name: Goron Mines Gor Ebizo Chest
   Original Item: Yellow Rupee
@@ -5243,6 +5681,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 25
+    APLocationId: 83
 
 - Name: Goron Mines Chest Before Dangoro
   Original Item: Yellow Rupee
@@ -5254,6 +5693,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 13
+    APLocationId: 73
 
 - Name: Goron Mines Dangoro Chest
   Original Item: Progressive Bow
@@ -5265,6 +5705,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 6
+    APLocationId: 76
 
 - Name: Goron Mines Beamos Room Chest
   Original Item: Goron Mines Compass
@@ -5278,6 +5719,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 12
+    APLocationId: 72
 
 - Name: Goron Mines Gor Liggs Key Shard
   Original Item: Goron Mines Key Shard
@@ -5292,6 +5734,7 @@
     Name Lookup:
       - Goron Mines Gor Liggs Key Shard
     Event Flag: 0x3701 # late
+    APLocationId: 86
 
 - Name: Goron Mines Gor Liggs Chest
   Original Item: Purple Rupee
@@ -5303,6 +5746,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 26
+    APLocationId: 85
 
 - Name: Goron Mines Main Magnet Room Top Chest
   Original Item: Purple Rupee
@@ -5314,6 +5758,7 @@
     Chest:
       - Stage: 3
         Tbox Id: 30
+    APLocationId: 89
 
 - Name: Goron Mines Fyrus Heart Container
   Original Item: Heart Container
@@ -5326,6 +5771,7 @@
     Freestanding Item:
       - Stage: 4
         Flag: 0x9F
+    APLocationId: 79
 
 - Name: Goron Mines Dungeon Reward
   Original Item: Progressive Fused Shadow
@@ -5340,6 +5786,7 @@
     Name Lookup:
       - Goron Mines Dungeon Reward
     Event Flag: 0x0701
+    APLocationId: 77
 
 # LAKEBED TEMPLE
 
@@ -5353,6 +5800,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 28
+    APLocationId: 137
 
 - Name: Lakebed Temple Lobby Rear Chest
   Original Item: Water Bombs 10
@@ -5364,6 +5812,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 29
+    APLocationId: 138
 
 - Name: Lakebed Temple Stalactite Room Chest
   Original Item: Water Bombs 10
@@ -5375,6 +5824,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 3
+    APLocationId: 140
 
 - Name: Lakebed Temple Chandelier Chest
   Original Item: Piece of Heart
@@ -5386,6 +5836,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 5
+    APLocationId: 128
 
 - Name: Lakebed Temple Central Room Spire Chest
   Original Item: Red Rupee
@@ -5398,6 +5849,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 16
+    APLocationId: 127
 
 - Name: Lakebed Temple Central Room Chest
   Original Item: Lakebed Temple Dungeon Map
@@ -5411,6 +5863,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 17
+    APLocationId: 125
 
 - Name: Lakebed Temple Central Room Small Chest
   Original Item: Arrows 20
@@ -5422,6 +5875,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 1
+    APLocationId: 126
 
 - Name: Lakebed Temple East Lower Waterwheel Stalactite Chest
   Original Item: Lakebed Temple Small Key
@@ -5434,6 +5888,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 6
+    APLocationId: 132
 
 - Name: Lakebed Temple East Lower Waterwheel Bridge Chest
   Original Item: Piece of Heart
@@ -5445,6 +5900,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 8
+    APLocationId: 131
 
 - Name: Lakebed Temple East Second Floor Southeast Chest
   Original Item: Lakebed Temple Small Key
@@ -5457,6 +5913,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 10
+    APLocationId: 133
 
 - Name: Lakebed Temple East Second Floor Southwest Chest
   Original Item: Water Bombs 5
@@ -5468,6 +5925,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 24
+    APLocationId: 134
 
 - Name: Lakebed Temple East Water Supply Small Chest
   Original Item: Water Bombs 10
@@ -5479,6 +5937,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 27
+    APLocationId: 136
 
 - Name: Lakebed Temple East Water Supply Clawshot Chest
   Original Item: Purple Rupee
@@ -5491,6 +5950,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 11
+    APLocationId: 135
 
 - Name: Lakebed Temple Before Deku Toad Alcove Chest
   Original Item: Lakebed Temple Small Key
@@ -5503,6 +5963,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 2
+    APLocationId: 121
 
 - Name: Lakebed Temple Before Deku Toad Underwater Left Chest
   Original Item: Red Rupee
@@ -5514,6 +5975,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 15
+    APLocationId: 122
 
 - Name: Lakebed Temple Before Deku Toad Underwater Right Chest
   Original Item: Water Bombs 5
@@ -5525,6 +5987,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 14
+    APLocationId: 123
 
 - Name: Lakebed Temple Deku Toad Chest
   Original Item: Progressive Clawshot
@@ -5536,6 +5999,7 @@
     Chest:
       - Stage: 2
         Tbox Id: 0
+    APLocationId: 129
 
 - Name: Lakebed Temple West Lower Small Chest
   Original Item: Water Bombs 10
@@ -5547,6 +6011,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 30
+    APLocationId: 142
 
 - Name: Lakebed Temple West Second Floor Central Small Chest
   Original Item: Red Rupee
@@ -5558,6 +6023,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 19
+    APLocationId: 143
 
 - Name: Lakebed Temple West Second Floor Northeast Chest
   Original Item: Water Bombs 15
@@ -5569,6 +6035,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 13
+    APLocationId: 144
 
 - Name: Lakebed Temple West Second Floor Southeast Chest
   Original Item: Red Rupee
@@ -5580,6 +6047,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 7
+    APLocationId: 145
 
 - Name: Lakebed Temple West Second Floor Southwest Underwater Chest
   Original Item: Red Rupee
@@ -5591,6 +6059,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 25
+    APLocationId: 146
 
 - Name: Lakebed Temple West Water Supply Small Chest
   Original Item: Water Bombs 10
@@ -5602,6 +6071,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 21
+    APLocationId: 148
 
 - Name: Lakebed Temple West Water Supply Chest
   Original Item: Lakebed Temple Compass
@@ -5615,6 +6085,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 20
+    APLocationId: 147
 
 - Name: Lakebed Temple Underwater Maze Small Chest
   Original Item: Water Bombs 5
@@ -5626,6 +6097,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 18
+    APLocationId: 141
 
 - Name: Lakebed Temple Big Key Chest
   Original Item: Lakebed Temple Big Key
@@ -5638,6 +6110,7 @@
     Chest:
       - Stage: 0
         Tbox Id: 12
+    APLocationId: 124
 
 - Name: Lakebed Temple Morpheel Heart Container
   Original Item: Heart Container
@@ -5650,6 +6123,7 @@
     Freestanding Item:
       - Stage: 1
         Flag: 0x9F
+    APLocationId: 139
 
 - Name: Lakebed Temple Dungeon Reward
   Original Item: Progressive Fused Shadow
@@ -5664,6 +6138,7 @@
     Name Lookup:
       - Lakebed Temple Dungeon Reward
     Event Flag: 0x0904 # late
+    APLocationId: 130
 
 # ARBITERS GROUNDS
 
@@ -5677,6 +6152,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 23
+    APLocationId: 7
 
 - Name: Arbiters Grounds Torch Room Poe
   Original Item: Poe Soul
@@ -5688,6 +6164,7 @@
     Poe:
       - Stage: 24
         Flag: 0x1E
+    APLocationId: 18
 
 - Name: Arbiters Grounds Torch Room East Chest
   Original Item: Piece of Heart
@@ -5698,6 +6175,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 19
+    APLocationId: 17
 
 - Name: Arbiters Grounds Torch Room West Chest
   Original Item: Arbiters Grounds Dungeon Map
@@ -5710,6 +6188,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 18
+    APLocationId: 19
 
 - Name: Arbiters Grounds West Small Chest Behind Block
   Original Item: Red Rupee
@@ -5720,6 +6199,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 25
+    APLocationId: 22
 
 - Name: Arbiters Grounds East Lower Turnable Redead Chest
   Original Item: Arbiters Grounds Small Key
@@ -5731,6 +6211,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 6
+    APLocationId: 3
 
 - Name: Arbiters Grounds East Turning Room Poe
   Original Item: Poe Soul
@@ -5742,6 +6223,7 @@
     Poe:
       - Stage: 24
         Flag: 0x1F
+    APLocationId: 4
 
 - Name: Arbiters Grounds East Upper Turnable Chest
   Original Item: Arbiters Grounds Compass
@@ -5754,6 +6236,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 4
+    APLocationId: 5
 
 - Name: Arbiters Grounds East Upper Turnable Redead Chest
   Original Item: Arbiters Grounds Small Key
@@ -5765,6 +6248,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 5
+    APLocationId: 6
 
 - Name: Arbiters Grounds Hidden Wall Poe
   Original Item: Poe Soul
@@ -5776,6 +6260,7 @@
     Poe:
       - Stage: 24
         Flag: 0x20
+    APLocationId: 9
 
 - Name: Arbiters Grounds Ghoul Rat Room Chest
   Original Item: Arbiters Grounds Small Key
@@ -5787,6 +6272,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 21
+    APLocationId: 8
 
 - Name: Arbiters Grounds West Chandelier Chest
   Original Item: Red Rupee
@@ -5798,6 +6284,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 3
+    APLocationId: 20
 
 - Name: Arbiters Grounds West Stalfos Northeast Chest
   Original Item: Bombs 5
@@ -5808,6 +6295,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 16
+    APLocationId: 23
 
 - Name: Arbiters Grounds West Stalfos West Chest
   Original Item: Bombs 5
@@ -5818,6 +6306,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 17
+    APLocationId: 24
 
 - Name: Arbiters Grounds West Poe
   Original Item: Poe Soul
@@ -5829,6 +6318,7 @@
     Poe:
       - Stage: 24
         Flag: 0x21
+    APLocationId: 21
 
 - Name: Arbiters Grounds North Turning Room Chest
   Original Item: Arbiters Grounds Small Key
@@ -5840,6 +6330,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 24
+    APLocationId: 10
 
 - Name: Arbiters Grounds Death Sword Chest
   Original Item: Spinner
@@ -5851,6 +6342,7 @@
     Chest:
       - Stage: 26
         Tbox Id: 11
+    APLocationId: 1
 
 - Name: Arbiters Grounds Spinner Room First Small Chest
   Original Item: Bombs 10
@@ -5861,6 +6353,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 28
+    APLocationId: 11
 
 - Name: Arbiters Grounds Spinner Room Second Small Chest
   Original Item: Red Rupee
@@ -5871,6 +6364,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 27
+    APLocationId: 14
 
 - Name: Arbiters Grounds Spinner Room Lower Central Small Chest
   Original Item: Yellow Rupee
@@ -5881,6 +6375,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 29
+    APLocationId: 12
 
 - Name: Arbiters Grounds Spinner Room Stalfos Alcove Chest
   Original Item: Piece of Heart
@@ -5891,6 +6386,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 26
+    APLocationId: 15
 
 - Name: Arbiters Grounds Spinner Room Lower North Chest
   Original Item: Yellow Rupee
@@ -5902,6 +6398,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 30
+    APLocationId: 13
 
 - Name: Arbiters Grounds Big Key Chest
   Original Item: Arbiters Grounds Big Key
@@ -5913,6 +6410,7 @@
     Chest:
       - Stage: 24
         Tbox Id: 20
+    APLocationId: 0
 
 - Name: Arbiters Grounds Stallord Heart Container
   Original Item: Heart Container
@@ -5925,6 +6423,7 @@
     Freestanding Item:
       - Stage: 25
         Flag: 0x9F
+    APLocationId: 16
 
 - Name: Arbiters Grounds Dungeon Reward
   Original Item: Progressive Mirror Shard
@@ -5939,6 +6438,7 @@
     Item Flag:
       Stage: 25
       Flag: 0x9E
+    APLocationId: 2
 
 # SNOWPEAK RUINS
 
@@ -5953,6 +6453,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 23
+    APLocationId: 182
 
 - Name: Snowpeak Ruins Lobby East Armor Chest
   Original Item: Yellow Rupee
@@ -5964,6 +6465,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 22
+    APLocationId: 180
 
 - Name: Snowpeak Ruins Lobby Armor Poe
   Original Item: Poe Soul
@@ -5975,6 +6477,7 @@
     Poe:
       - Stage: 27
         Flag: 0x15
+    APLocationId: 178
 
 - Name: Snowpeak Ruins Lobby Poe
   Original Item: Poe Soul
@@ -5986,6 +6489,7 @@
     Poe:
       - Stage: 27
         Flag: 0x72
+    APLocationId: 181
 
 - Name: Snowpeak Ruins Lobby Chandelier Chest
   Original Item: Piece of Heart
@@ -5997,6 +6501,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 21
+    APLocationId: 179
 
 - Name: Snowpeak Ruins Mansion Map
   Original Item: Snowpeak Ruins Dungeon Map
@@ -6011,6 +6516,7 @@
     Name Lookup:
       - Snowpeak Ruins Mansion Map
     Event Flag: 0x0B10 # late
+    APLocationId: 183
 
 - Name: Snowpeak Ruins East Courtyard Chest
   Original Item: Snowpeak Ruins Small Key
@@ -6023,6 +6529,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 15
+    APLocationId: 176
 
 - Name: Snowpeak Ruins East Courtyard Buried Chest
   Original Item: Red Rupee
@@ -6034,6 +6541,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 14
+    APLocationId: 175
 
 - Name: Snowpeak Ruins Ordon Pumpkin Chest
   Original Item: Ordon Pumpkin
@@ -6048,6 +6556,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 10
+    APLocationId: 185
 
 - Name: Snowpeak Ruins Courtyard Central Chest
   Original Item: Bombs 5
@@ -6059,6 +6568,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 3
+    APLocationId: 173
 
 - Name: Snowpeak Ruins West Courtyard Buried Chest
   Original Item: Snowpeak Ruins Small Key
@@ -6071,6 +6581,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 13
+    APLocationId: 188
 
 - Name: Snowpeak Ruins West Cannon Room Central Chest
   Original Item: Red Rupee
@@ -6082,6 +6593,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 20
+    APLocationId: 186
 
 - Name: Snowpeak Ruins West Cannon Room Corner Chest
   Original Item: Bombs 5
@@ -6093,6 +6605,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 19
+    APLocationId: 187
 
 - Name: Snowpeak Ruins Wooden Beam Central Chest
   Original Item: Red Rupee
@@ -6105,6 +6618,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 1
+    APLocationId: 189
 
 - Name: Snowpeak Ruins Wooden Beam Chandelier Chest
   Original Item: Snowpeak Ruins Small Key
@@ -6117,6 +6631,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 7
+    APLocationId: 190
 
 - Name: Snowpeak Ruins Wooden Beam Northwest Chest
   Original Item: Snowpeak Ruins Compass
@@ -6130,6 +6645,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 2
+    APLocationId: 191
 
 - Name: Snowpeak Ruins Ball and Chain
   Original Item: Ball and Chain
@@ -6143,6 +6659,7 @@
     Switch Flag:
       Stage: 29
       Flag: 0x5F
+    APLocationId: 168
 
 - Name: Snowpeak Ruins Chest After Darkhammer
   Original Item: Ordon Cheese
@@ -6155,6 +6672,7 @@
     Chest:
       - Stage: 29
         Tbox Id: 6
+    APLocationId: 172
 
 - Name: Snowpeak Ruins Broken Floor Chest
   Original Item: Piece of Heart
@@ -6166,6 +6684,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 25
+    APLocationId: 170
 
 - Name: Snowpeak Ruins Ice Room Poe
   Original Item: Poe Soul
@@ -6177,6 +6696,7 @@
     Poe:
       - Stage: 27
         Flag: 0x7F
+    APLocationId: 177
 
 - Name: Snowpeak Ruins Northeast Chandelier Chest
   Original Item: Snowpeak Ruins Small Key
@@ -6189,6 +6709,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 18
+    APLocationId: 184
 
 - Name: Snowpeak Ruins Chapel Chest
   Original Item: Snowpeak Ruins Bedroom Key
@@ -6201,6 +6722,7 @@
     Chest:
       - Stage: 27
         Tbox Id: 11
+    APLocationId: 171
 
 - Name: Snowpeak Ruins Blizzeta Heart Container
   Original Item: Heart Container
@@ -6213,6 +6735,7 @@
     Freestanding Item:
       - Stage: 28
         Flag: 0x9F
+    APLocationId: 169
 
 - Name: Snowpeak Ruins Dungeon Reward
   Original Item: Progressive Mirror Shard
@@ -6227,6 +6750,7 @@
     Name Lookup:
       - Snowpeak Ruins Dungeon Reward
     Event Flag: 0x2008
+    APLocationId: 174
 
 - Name: Temple of Time Lobby Lantern Chest
   Original Item: Temple of Time Small Key
@@ -6239,6 +6763,7 @@
     Chest:
       - Stage: 9
         Tbox Id: 41
+    APLocationId: 205
 
 - Name: Temple of Time First Staircase Gohma Gate Chest
   Original Item: Arrows 30
@@ -6250,6 +6775,7 @@
     Chest:
       - Stage: 9
         Tbox Id: 2
+    APLocationId: 201
 
 - Name: Temple of Time First Staircase Window Chest
   Original Item: Red Rupee
@@ -6261,6 +6787,7 @@
     Chest:
       - Stage: 9
         Tbox Id: 45
+    APLocationId: 202
 
 - Name: Temple of Time First Staircase Armos Chest
   Original Item: Temple of Time Dungeon Map
@@ -6274,6 +6801,7 @@
     Chest:
       - Stage: 9
         Tbox Id: 1
+    APLocationId: 200
 
 - Name: Temple of Time Poe Behind Gate
   Original Item: Poe Soul
@@ -6285,6 +6813,7 @@
     Poe:
       - Stage: 9
         Flag: 0x19
+    APLocationId: 209
 
 - Name: Temple of Time Armos Antechamber East Chest
   Original Item: Temple of Time Small Key
@@ -6297,6 +6826,7 @@
     Chest:
       - Stage: 9
         Tbox Id: 4
+    APLocationId: 193
 
 - Name: Temple of Time Armos Antechamber North Chest
   Original Item: Red Rupee
@@ -6309,6 +6839,7 @@
     Chest:
       - Stage: 9
         Tbox Id: 46
+    APLocationId: 194
 
 - Name: Temple of Time Armos Antechamber Statue Chest
   Original Item: Piece of Heart
@@ -6320,6 +6851,7 @@
     Chest:
       - Stage: 9
         Tbox Id: 5
+    APLocationId: 195
 
 - Name: Temple of Time Moving Wall Beamos Room Chest
   Original Item: Temple of Time Compass
@@ -6333,6 +6865,7 @@
     Chest:
       - Stage: 9
         Tbox Id: 6
+    APLocationId: 206
 
 - Name: Temple of Time Moving Wall Dinalfos Room Chest
   Original Item: Piece of Heart
@@ -6344,6 +6877,7 @@
     Chest:
       - Stage: 9
         Tbox Id: 12
+    APLocationId: 207
 
 - Name: Temple of Time Scales Gohma Chest
   Original Item: Purple Rupee
@@ -6355,6 +6889,7 @@
     Chest:
       - Stage: 9
         Tbox Id: 44
+    APLocationId: 210
 
 - Name: Temple of Time Scales Upper Chest
   Original Item: Red Rupee
@@ -6367,6 +6902,7 @@
     Chest:
       - Stage: 9
         Tbox Id: 47
+    APLocationId: 211
 
 - Name: Temple of Time Poe Above Scales
   Original Item: Poe Soul
@@ -6378,6 +6914,7 @@
     Poe:
       - Stage: 9
         Flag: 0x18
+    APLocationId: 208
 
 - Name: Temple of Time Floor Switch Puzzle Room Upper Chest
   Original Item: Red Rupee
@@ -6389,6 +6926,7 @@
     Chest:
       - Stage: 9
         Tbox Id: 48
+    APLocationId: 203
 
 - Name: Temple of Time Big Key Chest
   Original Item: Temple of Time Big Key
@@ -6401,6 +6939,7 @@
     Chest:
       - Stage: 9
         Tbox Id: 8
+    APLocationId: 196
 
 - Name: Temple of Time Gilloutine Chest
   Original Item: Temple of Time Small Key
@@ -6413,6 +6952,7 @@
     Chest:
       - Stage: 9
         Tbox Id: 9
+    APLocationId: 204
 
 - Name: Temple of Time Chest Before Darknut
   Original Item: Purple Rupee
@@ -6424,6 +6964,7 @@
     Chest:
       - Stage: 9
         Tbox Id: 43
+    APLocationId: 197
 
 - Name: Temple of Time Darknut Chest
   Original Item: Progressive Dominion Rod
@@ -6435,6 +6976,7 @@
     Chest:
       - Stage: 11
         Tbox Id: 0
+    APLocationId: 198
 
 - Name: Temple of Time Armogohma Heart Container
   Original Item: Heart Container
@@ -6447,6 +6989,7 @@
     Freestanding Item:
       - Stage: 10
         Flag: 0x9F
+    APLocationId: 192
 
 - Name: Temple of Time Dungeon Reward
   Original Item: Progressive Mirror Shard
@@ -6463,6 +7006,7 @@
     Item Flag:
       Stage: 10
       Flag: 0x9E
+    APLocationId: 199
 
 # CITY IN THE SKY
 
@@ -6476,6 +7020,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 27
+    APLocationId: 43
 
 - Name: City in the Sky Underwater West Chest
   Original Item: Water Bombs 15
@@ -6487,6 +7032,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 3
+    APLocationId: 44
 
 - Name: City in the Sky West Wing First Chest
   Original Item: City in the Sky Small Key
@@ -6499,6 +7045,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 5
+    APLocationId: 50
 
 - Name: City in the Sky West Wing Baba Balcony Chest
   Original Item: Arrows 20
@@ -6510,6 +7057,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 21
+    APLocationId: 49
 
 - Name: City in the Sky West Wing Narrow Ledge Chest
   Original Item: Red Rupee
@@ -6522,6 +7070,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 22
+    APLocationId: 51
 
 - Name: City in the Sky West Wing Tile Worm Chest
   Original Item: Bombs 10
@@ -6533,6 +7082,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 20
+    APLocationId: 52
 
 - Name: City in the Sky Baba Tower Top Small Chest
   Original Item: Yellow Rupee
@@ -6544,6 +7094,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 7
+    APLocationId: 29
 
 - Name: City in the Sky Baba Tower Narrow Ledge Chest
   Original Item: Arrows 20
@@ -6555,6 +7106,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 23
+    APLocationId: 28
 
 - Name: City in the Sky Baba Tower Alcove Chest
   Original Item: Piece of Heart
@@ -6566,6 +7118,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 6
+    APLocationId: 27
 
 - Name: City in the Sky West Garden Corner Chest
   Original Item: Red Rupee
@@ -6577,6 +7130,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 15
+    APLocationId: 45
 
 - Name: City in the Sky West Garden Lone Island Chest
   Original Item: Purple Rupee
@@ -6589,6 +7143,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 25
+    APLocationId: 47
 
 - Name: City in the Sky Garden Island Poe
   Original Item: Poe Soul
@@ -6600,6 +7155,7 @@
     Poe:
       - Stage: 12
         Flag: 0x54
+    APLocationId: 41
 
 - Name: City in the Sky West Garden Lower Chest
   Original Item: Bombs 5
@@ -6611,6 +7167,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 11
+    APLocationId: 48
 
 - Name: City in the Sky West Garden Ledge Chest
   Original Item: Piece of Heart
@@ -6622,6 +7179,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 9
+    APLocationId: 46
 
 - Name: City in the Sky Central Outside Ledge Chest
   Original Item: Red Rupee
@@ -6633,6 +7191,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 24
+    APLocationId: 31
 
 - Name: City in the Sky Central Outside Poe Island Chest
   Original Item: Purple Rupee
@@ -6645,6 +7204,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 12
+    APLocationId: 32
 
 - Name: City in the Sky Poe Above Central Fan
   Original Item: Poe Soul
@@ -6656,6 +7216,7 @@
     Poe:
       - Stage: 12
         Flag: 0x55
+    APLocationId: 42
 
 - Name: City in the Sky Big Key Chest
   Original Item: City in the Sky Big Key
@@ -6668,6 +7229,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 13
+    APLocationId: 30
 
 - Name: City in the Sky Chest Below Big Key Chest
   Original Item: Red Rupee
@@ -6679,6 +7241,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 14
+    APLocationId: 34
 
 - Name: City in the Sky East First Wing Chest After Fans
   Original Item: City in the Sky Dungeon Map
@@ -6692,6 +7255,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 2
+    APLocationId: 36
 
 - Name: City in the Sky East Tile Worm Small Chest
   Original Item: Yellow Rupee
@@ -6703,6 +7267,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 19
+    APLocationId: 37
 
 - Name: City in the Sky East Wing After Dinalfos Alcove Chest
   Original Item: Red Rupee
@@ -6714,6 +7279,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 18
+    APLocationId: 38
 
 - Name: City in the Sky East Wing After Dinalfos Ledge Chest
   Original Item: Purple Rupee
@@ -6725,6 +7291,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 26
+    APLocationId: 39
 
 - Name: City in the Sky East Wing Lower Level Chest
   Original Item: City in the Sky Compass
@@ -6738,6 +7305,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 4
+    APLocationId: 40
 
 - Name: City in the Sky Aeralfos Chest
   Original Item: Progressive Clawshot
@@ -6750,6 +7318,7 @@
     Chest:
       - Stage: 14
         Tbox Id: 0
+    APLocationId: 25
 
 - Name: City in the Sky Chest Behind North Fan
   Original Item: Purple Rupee
@@ -6761,6 +7330,7 @@
     Chest:
       - Stage: 12
         Tbox Id: 17
+    APLocationId: 33
 
 - Name: City in the Sky Argorok Heart Container
   Original Item: Heart Container
@@ -6773,6 +7343,7 @@
     Freestanding Item:
       - Stage: 13
         Flag: 0x9F
+    APLocationId: 26
 
 - Name: City in the Sky Dungeon Reward
   Original Item: Progressive Mirror Shard
@@ -6787,6 +7358,7 @@
     Name Lookup:
       - City in the Sky Dungeon Reward
     Event Flag: 0x2002
+    APLocationId: 35
 
 # PALACE OF TWILIGHT
 
@@ -6800,6 +7372,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 4
+    APLocationId: 163
 
 - Name: Palace of Twilight West Wing Chest Behind Wall of Darkness
   Original Item: Piece of Heart
@@ -6810,6 +7383,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 30
+    APLocationId: 162
 
 - Name: Palace of Twilight West Wing Second Room Central Chest
   Original Item: Palace of Twilight Small Key
@@ -6821,6 +7395,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 5
+    APLocationId: 164
 
 - Name: Palace of Twilight West Wing Second Room Lower South Chest
   Original Item: Palace of Twilight Compass
@@ -6833,6 +7408,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 3
+    APLocationId: 165
 
 - Name: Palace of Twilight West Wing Second Room Southeast Chest
   Original Item: Orange Rupee
@@ -6844,6 +7420,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 25
+    APLocationId: 166
 
 - Name: Palace of Twilight East Wing First Room Zant Head Chest
   Original Item: Palace of Twilight Small Key
@@ -6855,6 +7432,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 6
+    APLocationId: 157
 
 - Name: Palace of Twilight East Wing First Room East Alcove Chest
   Original Item: Piece of Heart
@@ -6865,6 +7443,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 0
+    APLocationId: 154
 
 - Name: Palace of Twilight East Wing First Room North Small Chest
   Original Item: Purple Rupee
@@ -6875,6 +7454,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 36
+    APLocationId: 155
 
 - Name: Palace of Twilight East Wing First Room West Alcove Chest
   Original Item: Purple Rupee
@@ -6885,6 +7465,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 27
+    APLocationId: 156
 
 - Name: Palace of Twilight East Wing Second Room Northeast Chest
   Original Item: Purple Rupee
@@ -6895,6 +7476,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 28
+    APLocationId: 158
 
 - Name: Palace of Twilight East Wing Second Room Northwest Chest
   Original Item: Purple Rupee
@@ -6906,6 +7488,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 29
+    APLocationId: 159
 
 - Name: Palace of Twilight East Wing Second Room Southeast Chest
   Original Item: Palace of Twilight Small Key
@@ -6917,6 +7500,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 7
+    APLocationId: 160
 
 - Name: Palace of Twilight East Wing Second Room Southwest Chest
   Original Item: Palace of Twilight Dungeon Map
@@ -6929,6 +7513,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 33
+    APLocationId: 161
 
 - Name: Palace of Twilight Collect Both Sols
   Original Item: Progressive Sword
@@ -6941,6 +7526,7 @@
     Freestanding Item:
       - Stage: 15
         Flag: 0x81
+    APLocationId: 153
 
 - Name: Palace of Twilight Central First Room Chest
   Original Item: Palace of Twilight Small Key
@@ -6952,6 +7538,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 22
+    APLocationId: 150
 
 - Name: Palace of Twilight Central Outdoor Chest
   Original Item: Palace of Twilight Small Key
@@ -6963,6 +7550,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 24
+    APLocationId: 151
 
 - Name: Palace of Twilight Big Key Chest
   Original Item: Palace of Twilight Big Key
@@ -6974,6 +7562,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 23
+    APLocationId: 149
 
 - Name: Palace of Twilight Central Tower Chest
   Original Item: Palace of Twilight Small Key
@@ -6985,6 +7574,7 @@
     Chest:
       - Stage: 15
         Tbox Id: 26
+    APLocationId: 152
 
 - Name: Palace of Twilight Zant Heart Container
   Original Item: Heart Container
@@ -6998,6 +7588,7 @@
     Freestanding Item:
       - Stage: 16
         Flag: 0x80
+    APLocationId: 167
 
 # HYRULE CASTLE
 
@@ -7011,6 +7602,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 5
+    APLocationId: 119
 
 - Name: Hyrule Castle West Courtyard North Small Chest
   Original Item: Red Rupee
@@ -7022,6 +7614,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 9
+    APLocationId: 120
 
 - Name: Hyrule Castle King Bulblin Key
   Original Item: Hyrule Castle Small Key
@@ -7038,6 +7631,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 0x3
+    APLocationId: 100
 
 - Name: Hyrule Castle East Wing Boomerang Puzzle Chest
   Original Item: Hyrule Castle Dungeon Map
@@ -7051,6 +7645,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 4
+    APLocationId: 95
 
 - Name: Hyrule Castle East Wing Balcony Chest
   Original Item: Yellow Rupee
@@ -7063,6 +7658,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 11
+    APLocationId: 94
 
 - Name: Hyrule Castle Graveyard Grave Switch Room Back Left Chest
   Original Item: Red Rupee
@@ -7074,6 +7670,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 34
+    APLocationId: 96
 
 - Name: Hyrule Castle Graveyard Grave Switch Room Front Left Chest
   Original Item: Green Rupee
@@ -7085,6 +7682,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 33
+    APLocationId: 97
 
 - Name: Hyrule Castle Graveyard Grave Switch Room Right Chest
   Original Item: Orange Rupee
@@ -7096,6 +7694,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 30
+    APLocationId: 98
 
 - Name: Hyrule Castle Graveyard Owl Statue Chest
   Original Item: Hyrule Castle Small Key
@@ -7108,6 +7707,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 7
+    APLocationId: 99
 
 - Name: Hyrule Castle Main Hall Northeast Chest
   Original Item: Hyrule Castle Compass
@@ -7121,6 +7721,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 8
+    APLocationId: 102
 
 - Name: Hyrule Castle Main Hall Northwest Chest
   Original Item: Silver Rupee
@@ -7132,6 +7733,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 13
+    APLocationId: 103
 
 - Name: Hyrule Castle Main Hall Southwest Chest
   Original Item: Purple Rupee
@@ -7143,6 +7745,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 2
+    APLocationId: 104
 
 - Name: Hyrule Castle Lantern Staircase Chest
   Original Item: Purple Rupee
@@ -7154,6 +7757,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 25
+    APLocationId: 101
 
 - Name: Hyrule Castle Southeast Balcony Tower Chest
   Original Item: Hyrule Castle Small Key
@@ -7166,6 +7770,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 1
+    APLocationId: 105
 
 - Name: Hyrule Castle Big Key Chest
   Original Item: Hyrule Castle Big Key
@@ -7178,6 +7783,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 0
+    APLocationId: 93
 
 - Name: Hyrule Castle Treasure Room First Chest
   Original Item: Orange Rupee
@@ -7189,6 +7795,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 15
+    APLocationId: 109
 
 - Name: Hyrule Castle Treasure Room Second Chest
   Original Item: Seeds 50
@@ -7201,6 +7808,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 16
+    APLocationId: 113
 
 - Name: Hyrule Castle Treasure Room Third Chest
   Original Item: Silver Rupee
@@ -7212,6 +7820,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 17
+    APLocationId: 117
 
 - Name: Hyrule Castle Treasure Room Fourth Chest
   Original Item: Bomblings 10
@@ -7223,6 +7832,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 18
+    APLocationId: 111
 
 - Name: Hyrule Castle Treasure Room Fifth Chest
   Original Item: Purple Rupee
@@ -7234,6 +7844,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 19
+    APLocationId: 107
 
 - Name: Hyrule Castle Treasure Room First Small Chest
   Original Item: Arrows 30
@@ -7245,6 +7856,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 35
+    APLocationId: 110
 
 - Name: Hyrule Castle Treasure Room Second Small Chest
   Original Item: Green Rupee
@@ -7256,6 +7868,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 29
+    APLocationId: 114
 
 - Name: Hyrule Castle Treasure Room Third Small Chest
   Original Item: Bombs 20
@@ -7267,6 +7880,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 21
+    APLocationId: 118
 
 - Name: Hyrule Castle Treasure Room Fourth Small Chest
   Original Item: Arrows 20
@@ -7278,6 +7892,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 23
+    APLocationId: 112
 
 - Name: Hyrule Castle Treasure Room Fifth Small Chest
   Original Item: Water Bombs 15
@@ -7289,6 +7904,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 22
+    APLocationId: 108
 
 - Name: Hyrule Castle Treasure Room Sixth Small Chest
   Original Item: Red Rupee
@@ -7300,6 +7916,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 26
+    APLocationId: 116
 
 - Name: Hyrule Castle Treasure Room Seventh Small Chest
   Original Item: Yellow Rupee
@@ -7311,6 +7928,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 27
+    APLocationId: 115
 
 - Name: Hyrule Castle Treasure Room Eighth Small Chest
   Original Item: Blue Rupee
@@ -7322,6 +7940,7 @@
     Chest:
       - Stage: 20
         Tbox Id: 28
+    APLocationId: 106
 
 - Name: Defeat Ganondorf
   Original Item: Game Beatable

@@ -3,6 +3,8 @@
 
 #include <dolphin/types.h>
 
+#include "../generator/randomizer_type.hpp"
+
 #include <array>
 #include <filesystem>
 #include <iomanip>
@@ -13,6 +15,8 @@
 #include <string_view>
 #include <unordered_map>
 #include <vector>
+
+#include "archi/ap_data.hpp"
 
 /*
  * Class holding all the information necessary for playing
@@ -28,6 +32,7 @@ public:
 
     RandomizerContext() = default;
 
+    bool mArchipelago{false};
     bool mCreatingSave{false};
     u32 mSeedID{0};
     std::string mHash{""};
@@ -321,6 +326,6 @@ u32 getStageObjCRC32(u8* data, size_t size);
  * Generates a seed and writes the necessary seed files to the players seed directory
  * Returns true if generation was successful, false otherwise.
  */
-bool GenerateAndWriteSeed();
+bool GenerateAndWriteSeed(randomizer::Type type, const randomizer::archi::WorldData& apData);
 
 #endif  // DUSK_RANDOMIZER_CONTEXT_HPP

@@ -1931,6 +1931,10 @@ ModResult removeMenuTab() {
 // archipelago tab
 ModResult buildArchipelagoTab(ModContext* ctx, UiWindowHandle, UiElementHandle leftPane,
     UiElementHandle rightPane, void*, ModError*) {
+
+    // Create AP subfolder
+    std::filesystem::create_directories(paths::GetRandomizerPath("archi"));
+
     add_string_input(leftPane, "Server IP",
         "Set the IP used to connect to the archipelago lobby.", 32,
         [](ModContext*, void*, UiControlValue* out_value) {

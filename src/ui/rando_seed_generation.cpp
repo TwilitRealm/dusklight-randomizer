@@ -39,8 +39,8 @@ void OnDialogActionOK(ModContext* ctx, UiDialogHandle dialogHandle, void*) {
     session::svc_mng.ui->dialog_close(ctx, dialogHandle);
 }
 
-static void StartSeedGeneration() {
-    if (GenerateAndWriteSeed()) {
+static void StartSeedGeneration(Type type, archi::WorldData apData) {
+    if (GenerateAndWriteSeed(type, apData)) {
         seedGenStatus.store(SeedGenerateStatus::Success);
     } else {
         seedGenStatus.store(SeedGenerateStatus::Error);
@@ -92,7 +92,7 @@ static ModResult buildDialog() {
     return MOD_OK;
 }
 
-void GenerateRandomizerSeed() {
+void GenerateRandomizerSeed(Type type /*= "DEFAULT"*/, const archi::WorldData& apData /*= archi::WorldData{}*/) {
     if (seedGenStatus.load() != SeedGenerateStatus::Ready) {
         return;
     }
@@ -102,7 +102,7 @@ void GenerateRandomizerSeed() {
 
     // Start generation thread
     seedGenStatus.store(SeedGenerateStatus::Generating);
-    std::thread rando_gen_thread(StartSeedGeneration);
+    std::thread rando_gen_thread(StartSeedGeneration, type, apData);
     rando_gen_thread.detach();
     seedGenProgressValueTarget.store(0.f);
 }

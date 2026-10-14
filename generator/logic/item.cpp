@@ -21,17 +21,19 @@ namespace randomizer::logic::item
         return importances.at(str);
     }
 
-    Item::Item(const int& id,
+    Item::Item(int id,
                const std::string& name,
+               int apId,
                world::World* world,
-               const Importance& importance,
-               const bool& gameWinningItem,
-               const bool& dungeonSmallKey,
-               const bool& bigKey,
-               const bool& compass,
-               const bool& dungeonMap):
+               Importance importance,
+               bool gameWinningItem,
+               bool dungeonSmallKey,
+               bool bigKey,
+               bool compass,
+               bool dungeonMap):
         _id(id),
         _name(name),
+        _apId(apId),
         _world(world),
         _importance(importance),
         _gameWinningItem(gameWinningItem),
@@ -68,6 +70,10 @@ namespace randomizer::logic::item
     int Item::GetID() const
     {
         return this->_id;
+    }
+
+    int Item::GetAPID() const {
+        return this->_apId;
     }
 
     std::string Item::GetName() const
@@ -189,5 +195,5 @@ namespace randomizer::logic::item
     }
 
     std::unique_ptr<Item> Nothing =
-        std::make_unique<Item>(-1, "Nothing", nullptr, Importance::JUNK, false, false, false, false, false);
+        std::make_unique<Item>(-1, "Nothing", -1, nullptr, Importance::JUNK, false, false, false, false, false);
 } // namespace randomizer::logic::item

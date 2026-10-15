@@ -180,6 +180,10 @@ namespace randomizer::logic::location
         return this->_importance;
     }
 
+    int Location::GetAPLocationID() const {
+        return GetMetadata()["APLocationId"].as<int>(-1);
+    }
+
     const std::set<std::string>& GetAllRandomizerLocationNames() {
         static std::set<std::string> locationNames{};
 

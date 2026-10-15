@@ -53,4 +53,7 @@ void shutdown();
 void deactivateSeed();
 void setupRandomizerFile();
 void registerStageEdits();
+
+void reportError(const std::string_view& msg);
+
 }

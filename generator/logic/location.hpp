@@ -71,6 +71,7 @@ namespace randomizer::logic::location
         std::vector<Location*>& GetPathLocations();
         void SetImportance(Importance importance);
         Importance GetImportance() const;
+        int GetAPLocationID() const;
 
         /**
          *  @brief Checks to see if the location has all the passed in categories. If a passed in category was never registered,

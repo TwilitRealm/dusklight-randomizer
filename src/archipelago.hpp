@@ -62,6 +62,8 @@ enum class ClientPacket {
     SetNotify
 };
 
+// AP protocol structs
+
 struct NetworkVersion {
     int major;
     int minor;
@@ -118,8 +120,10 @@ struct GameData {
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(GameData, item_name_to_id, location_name_to_id, data_checksum)
 
 ModResult init();
-
 void update();
+ModResult shutdown();
+
+void sendLocationChecked(int locationId);
 
 void setServerIp(const std::string& ip);
 std::string getServerIp();

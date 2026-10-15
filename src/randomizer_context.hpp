@@ -48,6 +48,7 @@ public:
         int itemId{0xFF};
         int stage{0xFF};
         u16 flag{0xFFFF};
+        int apId{-1};
     };
 
     std::unordered_map<u16, u8> mTreasureChestOverrides{};
@@ -59,6 +60,7 @@ public:
     std::unordered_map<u32, u8> mShopOverrides{};
     std::unordered_map<u16, u16> mTwilitInsectOverrides{};  // Just used in tracker for now
     std::unordered_map<std::string, itemLocationData> mItemLocations{};
+    std::unordered_map<std::string, u16> mOverrideIdToAPLocation;
 
     u8 mStartHour{0};
     u8 mMapBits{};

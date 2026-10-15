@@ -14,13 +14,31 @@
 #include "ui/rando_seed_generation.hpp"
 
 namespace randomizer::archi {
+static constexpr int ARCHI_ITEM_OFFSET = 2320000;
+
+// TODO: move all of this into a context struct instead of statics galore
+
 static mods::ws::Connection connection;
+static std::string curConnectionSession;
 static RoomInfo roomInfo;
+static int slotId = -1;
 static std::queue<nlohmann::json> jsonQueue;
-static std::string serverIp;
-static std::string slotName;
+// temp assignments while debugging
+static std::string serverIp = "localhost:38281";
+static std::string slotName = "Crafty";
 static std::string slotPass;
 static std::string seedId;
+static auto apWorldData = WorldData{};
+static bool hasCreatedContext = false;
+
+void clearSessionInfo() {
+    apWorldData.itemPlacements.clear();
+
+    // drain queue without parsing
+    while (!jsonQueue.empty())
+        jsonQueue.pop();
+    hasCreatedContext = false;
+}
 
 // NetworkVersion, NetworkItem, and NetworkPlayer all use "class" in their json-ified fields,
 // which means we cannot use nlohmann's macros for serialization.
@@ -81,6 +99,16 @@ void queuePacket(const T& packet, const std::string_view& cmdName) {
     queueJsonPacket(data);
 }
 
+void queueLocationScouts(const std::vector<int>& apLocationIds) {
+    const auto& tempRef = apLocationIds;
+
+    queueJsonPacket({
+        {"cmd", "LocationScouts"},
+        {"locations", tempRef},
+        {"create_as_hint", false}
+    });
+}
+
 static ServerPacket getServerCommandEnumByName(const std::string& name) {
     static std::unordered_map<std::string, ServerPacket> entries = {
         {"RoomInfo", ServerPacket::RoomInfo},
@@ -106,18 +134,6 @@ static ServerPacket getServerCommandEnumByName(const std::string& name) {
 }
 
 void parseRoomInfo(RoomInfo* info) {
-    mods::log::info("Room Version: {}.{}.{}", info->version.major, info->version.minor, info->version.build);
-    mods::log::info("Generator Version: {}.{}.{}", info->generator_version.major, info->generator_version.minor, info->generator_version.build);
-    mods::log::info("Tag Count: {}", info->tags.size());
-    mods::log::info("Requires Password: {}", info->password);
-    mods::log::info("Permission Count: {}", info->permissions.size());
-    mods::log::info("Hint Cost: {}", info->hint_cost);
-    mods::log::info("Available Points: {}", info->location_check_points);
-    mods::log::info("Games Size: {}", info->games.size());
-    mods::log::info("Game Hashes Size: {}", info->datapackage_checksums.size());
-    mods::log::info("Seed Name: {}", info->seed_name);
-    mods::log::info("Server Time: {}", info->time);
-
     queueJsonPacket({
         {"cmd", "GetDataPackage"},
         {"games", roomInfo.games}
@@ -132,12 +148,15 @@ void parseRoomInfo(RoomInfo* info) {
         .items_handling = ItemHandlingFlags::Self | ItemHandlingFlags::OtherWorlds | ItemHandlingFlags::StartingInv,
         .slot_data = true
     };
+
     queuePacket(connectPacket, "Connect");
 }
 
 void parseConnected(nlohmann::json& data) {
     auto slotData = data["slot_data"];
-    mods::log::debug("Slot Data: {}", slotData.dump());
+    slotId = data["slot"];
+
+    // create seed config data with connection info
     auto seedHash = slotData["SeedID"].get<std::string>();
     auto seedDataPath = paths::GetRandomizerSeedsPath("archi") / seedHash / "seed.dat";
     setSeedId(seedHash);
@@ -148,15 +167,33 @@ void parseConnected(nlohmann::json& data) {
 
         testConfig.WriteToFile(paths::GetRandomizerPath("archi" ) /  "settings.yaml",
                                           paths::GetRandomizerPath("archi") / "preferences.yaml");
-
-        // TODO: Fill in world data for generator
-        auto apData = WorldData{};
-        ui::GenerateRandomizerSeed(Type::AP, apData);
+    }else {
+        hasCreatedContext = true;
     }
 }
 
 void parseDataPackage(nlohmann::json& data) {
+    auto& locationToId = data["data"]["games"]["Twilight Princess"]["location_name_to_id"];
+    std::vector<int> apLocationIds;
 
+    for (const auto& [loc_name, id] : locationToId.items())
+        apLocationIds.push_back(id.get<int>());
+
+    queueLocationScouts(apLocationIds);
+}
+
+void parseLocationInfo(nlohmann::json& data) {
+    for (const auto& item : data["locations"].get<std::vector<NetworkItem>>()) {
+        int convertedID = item.item - ARCHI_ITEM_OFFSET;
+
+        // TEMP until we have our own apworld that doesn't have these items (or they are added to the generator)
+        if (convertedID == 16) // convert Water Bombs (3) to Water Bombs 5
+            convertedID = 0x16;
+        else if (convertedID == 20)
+            convertedID = 0x1A; // convert Bomblings (3) to Bomblings 5
+
+        apWorldData.itemPlacements[item.location - ARCHI_ITEM_OFFSET] = convertedID;
+    }
 }
 
 void parseServerJson(nlohmann::json* data) {
@@ -200,7 +237,8 @@ void parseServerJson(nlohmann::json* data) {
             case ServerPacket::ConnectionRefused:
                 // break;
             case ServerPacket::LocationInfo:
-                // break;
+                parseLocationInfo(archiPacket);
+                break;
             case ServerPacket::RoomUpdate:
                 // break;
             case ServerPacket::Bounced:
@@ -229,6 +267,18 @@ ModResult init() {
         url = fmt::format("wss://{}", serverIp);
     }
 
+    auto sessionStr = fmt::format("{}_{}", url, slotName); // include slot name with url, so rooms with multiple TP games will work fine.
+    if (!curConnectionSession.empty()) {
+        if (sessionStr == curConnectionSession) {
+            mods::log::debug("Session already active, no need to reconnect.");
+            return MOD_OK;
+        }else {
+            // end previous connection before re-connecting to new socket
+            shutdown();
+        }
+    }
+    curConnectionSession = sessionStr;
+
     connection = mods::ws::connect({.url = url});
 
     if (connection) {
@@ -250,7 +300,7 @@ void update() {
         }
 
         std::string outText = rootSendJson.dump();
-        mods::log::debug("Sending JSON: {}", outText);
+        // mods::log::debug("Sending JSON: {}", outText);
         auto result = connection.send_text(outText);
         if (result != MOD_OK) {
             mods::log::warn("Failed to send json data to server.");
@@ -265,8 +315,31 @@ void update() {
             parseServerJson(&json);
         } else if (event.type == WEBSOCKET_EVENT_CLOSED) {
             mods::log::info("Websocket closed!");
+            hasCreatedContext = false;
+            // TODO: attempt to handle a reconnection
+            session::reportError("Archipelago connection terminated. Returning to main menu.");
         }
     }
+
+    if (!hasCreatedContext && !apWorldData.itemPlacements.empty()) {
+        ui::GenerateRandomizerSeed(Type::AP, apWorldData);
+        hasCreatedContext = true;
+    }
+}
+
+ModResult shutdown() {
+    mods::log::info("Ending archipelago connection.");
+    clearSessionInfo();
+    return connection.close();
+}
+
+void sendLocationChecked(int locationId) {
+    queueJsonPacket({
+        {"cmd", "LocationChecks"},
+        {"locations", {
+            ARCHI_ITEM_OFFSET + locationId
+        }}
+    });
 }
 
 void setServerIp(const std::string& ip) { serverIp = ip; }

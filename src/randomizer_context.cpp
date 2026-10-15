@@ -164,11 +164,14 @@ std::optional<std::string> RandomizerContext::WriteToFile() {
 
     out["mTwilitInsectOverrides"] = mTwilitInsectOverrides;
 
+    out["mOverrideIdToAPLocation"] = mOverrideIdToAPLocation;
+
     for (const auto& [name, data] : this->mItemLocations) {
         auto node = out["mItemLocations"][name];
         node["itemId"] = data.itemId;
         node["stage"] = data.stage;
         node["flag"] = data.flag;
+        node["apId"] = data.apId;
     }
 
     out["mStartHour"] = static_cast<u16>(this->mStartHour);
@@ -362,11 +365,18 @@ std::optional<std::string> RandomizerContext::LoadFromHash(const std::string& ha
         this->mTwilitInsectOverrides[key] = itemId;
     }
 
+    for (const auto& overrideNode : in["mOverrideIdToAPLocation"]) {
+        std::string key = overrideNode.first.as<std::string>();
+        u16 locationId = overrideNode.second.as<u16>();
+        this->mOverrideIdToAPLocation[key] = locationId;
+    }
+
     // Helper function for getting the item data out of a YAML node
     auto retrieveItemData = [](auto& itemData, const YAML::Node& node) {
         itemData.itemId = node["itemId"].as<int>();
         itemData.stage = node["stage"].as<int>();
         itemData.flag = node["flag"].as<u16>();
+        itemData.apId = node["apId"].as<u16>(-1);
     };
 
     // Items we call by location name
@@ -1198,6 +1208,19 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
         randoData.mArchipelago = true;
     }
 
+    auto setOverrideIDApLocation = [&randoData](const std::string_view& overrideName, int locationId, u16 key) {
+        if (locationId == -1) {
+            return;
+        }
+
+        std::string fullKey = fmt::format("{}_{}", overrideName, key);
+        if (randoData.mOverrideIdToAPLocation.contains(fullKey)) {
+            mods::log::error("duplicate key found!");
+        }
+
+        randoData.mOverrideIdToAPLocation[fullKey] = locationId;
+    };
+
     // Settings we need to check ingame
     for (const auto& [setting, info] : *randomizer::seedgen::settings::GetAllSettingsInfo()) {
         if (info->NeedInGame()) {
@@ -1223,6 +1246,7 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
     // Set data for all locations
     for (const auto& location : world->GetAllLocations()) {
         const auto& metaData = location->GetMetadata();
+        const auto apLocationId = location->GetAPLocationID();
 
         // Chest Overrides
         // Keyed by u16 of 0xFF00 (stage index) and 0x00FF (tbox id)
@@ -1233,6 +1257,8 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
                 u8 itemId = location->GetCurrentItem()->GetID();
                 u16 key = (stage << 8) | tboxId;
                 randoData.mTreasureChestOverrides[key] = itemId;
+
+                setOverrideIDApLocation("Chest", apLocationId, key);
             }
         }
 
@@ -1245,6 +1271,8 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
                 u8 itemId = location->GetCurrentItem()->GetID();
                 u16 key = (stage << 8) | flag;
                 randoData.mPoeOverrides[key] = itemId;
+
+                setOverrideIDApLocation("Poe", apLocationId, key);
             }
         }
 
@@ -1257,6 +1285,8 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
                 u8 itemId = location->GetCurrentItem()->GetID();
                 u16 key = (stage << 8) | flag;
                 randoData.mFreestandingItemOverrides[key] = itemId;
+
+                setOverrideIDApLocation("Freestanding", apLocationId, key);
             }
         }
 
@@ -1267,6 +1297,8 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
                 u8 bugItemId = bugRewardNode["Item Id"].as<u8>();
                 u8 itemId = location->GetCurrentItem()->GetID();
                 randoData.mBugRewardOverrides[bugItemId] = itemId;
+
+                setOverrideIDApLocation("Bug", apLocationId, bugItemId);
             }
         }
 
@@ -1279,6 +1311,8 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
                 u8 itemId = location->GetCurrentItem()->GetID();
                 u16 key = (stageIdx << 8) | roomNo;
                 randoData.mSkyCharacterOverrides[key] = itemId;
+
+                setOverrideIDApLocation("Sky", apLocationId, key);
             }
         }
 
@@ -1289,6 +1323,8 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
                 u16 flag = goldenWolfNode["Flag"].as<u16>();
                 u8 itemId = location->GetCurrentItem()->GetID();
                 randoData.mGoldenWolfOverrides[flag] = itemId;
+
+                setOverrideIDApLocation("Wolf", apLocationId, flag);
             }
         }
 
@@ -1301,6 +1337,8 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
                 u8 originalItem = shopNode["Item"].as<u8>();
                 u32 key = (stage << 16) | (room << 8) | originalItem;
                 randoData.mShopOverrides[key] = location->GetCurrentItem()->GetID();
+
+                setOverrideIDApLocation("Shop", apLocationId, key);
             }
         }
 
@@ -1336,6 +1374,7 @@ RandomizerContext WriteSeedData(randomizer::logic::world::World* world) {
                 const int itemId = location->GetCurrentItem()->GetID();
                 randoData.mItemLocations[locationName].itemId = itemId;
                 getNodeFlags(randoData.mItemLocations[locationName], metaData);
+                randoData.mItemLocations[locationName].apId = apLocationId;
             }
         }
     }

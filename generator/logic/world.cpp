@@ -709,7 +709,12 @@ namespace randomizer::logic::world
             auto apLocationId = location->GetMetadata()["APLocationId"].as<int>(-1);
             if (apItemPlacements.contains(apLocationId)) {
                 auto apItemId = apItemPlacements.at(apLocationId);
-                location->SetCurrentItem(apItems[apItemId]);
+                auto item = apItems[apItemId];
+                if (item != nullptr) {
+                    location->SetCurrentItem(item);
+                }else {
+                    LOG_TO_ERROR("Missing Item ID: " + std::to_string(apItemId));
+                }
             } else {
                 location->SetCurrentItem(location->GetOriginalItem());
             }

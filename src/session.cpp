@@ -153,6 +153,63 @@ bool lookup_override(
     return set_resolution(info, outResult, static_cast<uint8_t>(verifyProgressiveItem(it->second)));
 }
 
+int get_ap_location(const ItemGiveInfo* info) {
+    auto& ctx = randomizer_GetContext();
+
+    auto getApLocationByOverrideId = [&ctx](const std::string_view& overrideName, u16 key) -> u16 {
+        std::string fullKey = fmt::format("{}_{}", overrideName, key);
+
+        if (!ctx.mOverrideIdToAPLocation.contains(fullKey)) {
+            mods::log::error("Missing location in context!");
+            return -1;
+        }
+
+        return ctx.mOverrideIdToAPLocation[fullKey];
+    };
+
+    if (auto it = ctx.mItemLocations.find(info->check_name); it != ctx.mItemLocations.end()) {
+        return it->second.apId;
+    }
+
+    if (auto key = parse_derived(info->check_name, ITEM_CHECK_CHEST_PREFIX)) {
+        return getApLocationByOverrideId("Chest", key->key);
+    }
+    if (auto key = parse_derived(info->check_name, ITEM_CHECK_FREESTANDING_PREFIX)) {
+        if (key->stage_id == Ook) {
+            if (auto it = ctx.mItemLocations.find("Forest Temple Gale Boomerang");
+                it != ctx.mItemLocations.end()) {
+                return it->second.apId;
+            }
+            return -1;
+        }
+        return getApLocationByOverrideId("Freestanding", key->key);
+    }
+    if (auto flag = parse_flag_check(info->check_name, ITEM_CHECK_GOLDEN_WOLF_PREFIX)) {
+        return getApLocationByOverrideId("Wolf", *flag);
+    }
+    if (auto key = parse_derived(info->check_name, ITEM_CHECK_POE_PREFIX)) {
+        return getApLocationByOverrideId("Poe", key->key);
+    }
+    if (auto stageId = parse_stage_check(info->check_name, ITEM_CHECK_BOSS_PREFIX)) {
+        const u16 key = static_cast<u16>((*stageId << 8) | 0x9F);
+        return getApLocationByOverrideId("Freestanding", key);
+    }
+    if (auto key = parse_shop_check(info->check_name, ITEM_CHECK_SHOP_PREFIX)) {
+        return getApLocationByOverrideId("Shop", *key);
+    }
+    if (auto key = parse_derived(info->check_name, ITEM_CHECK_SKY_PREFIX)) {
+        return getApLocationByOverrideId("Sky", key->key);
+    }
+
+    constexpr std::string_view bugPrefix{ITEM_CHECK_BUG_PREFIX};
+    if (std::strncmp(info->check_name, bugPrefix.data(), bugPrefix.size()) == 0) {
+        const u8 insect = static_cast<u8>(std::atoi(info->check_name + bugPrefix.size()));
+        return getApLocationByOverrideId("Bug", insect);
+    }
+
+    return -1;
+}
+
 bool resolve_check(ModContext*, const ItemCheckInfo* info, ItemCheckResolution* outResult, void*) {
     auto& ctx = randomizer_GetContext();
 
@@ -228,6 +285,19 @@ void observe_give(ModContext*, const ItemGiveInfo* info, void*) {
     }
 }
 
+void ap_observe_give(ModContext* ctx, const ItemGiveInfo* info, void* user_data) {
+    // send data to archi server
+    int locationId = get_ap_location(info);
+    if (locationId != -1) {
+        archi::sendLocationChecked(locationId);
+    }else {
+        mods::log::warn("AP does not have a location for item: {}", info->check_name);
+    }
+
+    // run base observe_give after
+    observe_give(ctx, info, user_data);
+}
+
 bool activateSeed(const char* hash, bool archipelago = false) {
     auto& ctx = randomizer_GetContext();
     ctx = RandomizerContext();
@@ -245,7 +315,12 @@ bool activateSeed(const char* hash, bool archipelago = false) {
     item::apply_item_data_tables();
 
     svc_mng.item->set_check_resolver(mod_ctx, nullptr, resolve_check, nullptr, &s_check_resolver);
-    svc_mng.item->observe_gives(mod_ctx, observe_give, nullptr, &s_check_observer);
+
+    if (archipelago) {
+        svc_mng.item->observe_gives(mod_ctx, ap_observe_give, nullptr, &s_check_observer);
+    }else {
+        svc_mng.item->observe_gives(mod_ctx, observe_give, nullptr, &s_check_observer);
+    }
 
     registerStageEdits();
     mods::log::info("activated seed {}", ctx.mHash);
@@ -412,6 +487,10 @@ void registerStageEdits() {
             }
         }
     }
+}
+
+void reportError(const std::string_view& msg) {
+    svc_mng.host->fail(svc_mng.mod_ctx, MOD_ERROR, msg.data());
 }
 
 ModResult onNewRandoSave(void*, ModError*) {
@@ -598,6 +677,7 @@ ModResult onNewArchiSaveSelect(void* user_data, GameModeNewSaveState* state, Mod
 
 void shutdown() {
     deactivateSeed();
+    archi::shutdown();
     hooks::uninstall();
     ui::shutdown();
     svc_mng.save->unobserve_saves(mod_ctx, s_save_observer);
@@ -611,7 +691,7 @@ ModResult connect() {
         return MOD_ERROR;
     }
 
-    mods::log::info("randomizer game mode activated");
+    mods::log::info("archipelago connected");
     return MOD_OK;
 }
 

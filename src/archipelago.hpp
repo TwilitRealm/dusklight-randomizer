@@ -119,9 +119,16 @@ struct GameData {
 };
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(GameData, item_name_to_id, location_name_to_id, data_checksum)
 
+struct ReceivedItems {
+    int index;
+    std::vector<NetworkItem> items;
+};
+
 ModResult init();
 void update();
 ModResult shutdown();
+
+void loadItemIdsFromDb();
 
 void sendLocationChecked(int locationId);
 
@@ -136,4 +143,9 @@ std::string getSlotPass();
 
 void setSeedId(const std::string& id);
 std::string getSeedId();
+
+void setReceivedIndex(int index);
+int getReceivedIndex();
+
+void setSeedActive(bool state);
 } // randomizer::archi

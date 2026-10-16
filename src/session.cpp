@@ -44,6 +44,7 @@ constexpr const char* kSeedHashBlobName = "seed_hash";
 constexpr const char* kArchiServerBlobName = "archi_ip";
 constexpr const char* kArchiSlotBlobName = "archi_slot";
 constexpr const char* kArchiPassBlobName = "archi_pass";
+constexpr const char* kArchiReceivedSlotBlobName = "last_received_idx";
 
 struct DerivedKey {
     int stage_id;
@@ -64,6 +65,17 @@ static ModResult get_string_from_save(const char* blobName, std::string& out_str
     }
 
     return MOD_OK;
+}
+
+template <typename T>
+static ModResult set_save_blob(const std::string_view& blob_name, T value) {
+    return svc_mng.save->set_blob(svc_mng.mod_ctx, blob_name.data(), (void*)&value, sizeof(T));
+}
+
+template <typename T>
+static ModResult get_save_blob(const std::string_view& blob_name, T& out_value) {
+    size_t size = sizeof(T);
+    return svc_mng.save->get_blob(mod_ctx, blob_name.data(), &out_value, &size);
 }
 
 std::optional<int> parse_stage_check(const char* name, std::string_view prefix) {
@@ -286,6 +298,11 @@ void observe_give(ModContext*, const ItemGiveInfo* info, void*) {
 }
 
 void ap_observe_give(ModContext* ctx, const ItemGiveInfo* info, void* user_data) {
+    if (info->check_name == nullptr || info->origin == ITEM_GIVE_ORIGIN_QUEUE || info->origin == ITEM_GIVE_ORIGIN_QUEUE_SILENT) {
+        // item was given by archipelago
+        return;
+    }
+
     // send data to archi server
     int locationId = get_ap_location(info);
     if (locationId != -1) {
@@ -318,6 +335,7 @@ bool activateSeed(const char* hash, bool archipelago = false) {
 
     if (archipelago) {
         svc_mng.item->observe_gives(mod_ctx, ap_observe_give, nullptr, &s_check_observer);
+        archi::setSeedActive(true);
     }else {
         svc_mng.item->observe_gives(mod_ctx, observe_give, nullptr, &s_check_observer);
     }
@@ -349,6 +367,10 @@ void deactivateSeed() {
         svc_mng.stage->remove_actor_edit(mod_ctx, handle);
     }
     s_stage_edits.clear();
+
+    if (randomizer_GetContext().mArchipelago) {
+        archi::setSeedActive(false);
+    }
 
     messages::deactivate();
     item::restore_item_data_tables();
@@ -529,6 +551,7 @@ ModResult onNewArchiSave(void*, ModError*) {
     svc_mng.save->set_blob(svc_mng.mod_ctx, kArchiPassBlobName, pass.data(), pass.size());
     svc_mng.save->set_blob(svc_mng.mod_ctx, kArchiSlotBlobName, slotName.data(), slotName.size());
     svc_mng.save->set_blob(svc_mng.mod_ctx, kSeedHashBlobName, hash.data(), hash.size());
+    set_save_blob(kArchiReceivedSlotBlobName, -1);
 
     setAncientDocumentNum(0);
     setupRandomizerFile();
@@ -572,6 +595,11 @@ ModResult onArchiSaveLoaded(void*, ModError*) {
         archi::setSlotPass(pass);
     }
 
+    int receivedIdx = -1;
+    if (auto result = get_save_blob<int>(kArchiReceivedSlotBlobName, receivedIdx); result == MOD_OK) {
+        archi::setReceivedIndex(receivedIdx);
+    }
+
     // TODO: init is called here when a save is loaded, which means if a connection isn't successful, the Gamemode will error out and close
     if (auto result = archi::init(); result != MOD_OK) {
         mods::log::error("Saved archipelago data is invalid, unable to load save.");
@@ -597,6 +625,9 @@ void onSaveWritten(ModContext*, uint32_t, void*) {
     const std::string hash = randomizer_GetContext().mHash;
     svc_mng.save->set_blob(svc_mng.mod_ctx, kSeedHashBlobName, hash.data(), hash.size());
     saveAncientDocumentNum();
+
+    if (isArchipelagoMode())
+        set_save_blob(kArchiReceivedSlotBlobName, archi::getReceivedIndex());
 }
 
 void preLoadRandomizerData() {
@@ -608,6 +639,9 @@ void preLoadRandomizerData() {
 
     // Load the excluded locations catalog for the excluded locations menu
     ui::load_excluded_locations();
+
+    if (isArchipelagoMode())
+        archi::loadItemIdsFromDb();
 }
 
 TextureReplacementHandle logoTexHandle{};

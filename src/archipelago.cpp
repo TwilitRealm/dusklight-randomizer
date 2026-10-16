@@ -5,6 +5,7 @@
 #include "paths.hpp"
 #include "session.hpp"
 #include "../generator/utility/random.hpp"
+#include "../generator/utility/yaml.hpp"
 #include "archi/ap_settings_convert.hpp"
 #include "JSystem/JStudio/JStudio/ctb.h"
 #include "mods/svc/log.hpp"
@@ -22,7 +23,11 @@ static mods::ws::Connection connection;
 static std::string curConnectionSession;
 static RoomInfo roomInfo;
 static int slotId = -1;
+static int receivedIndex = -1;
+static int receivedItemQueueStartIndex = -1;
 static std::queue<nlohmann::json> jsonQueue;
+static std::queue<ReceivedItems> serverItemQueue;
+static std::map<int, int> apItemIdToGameId;
 // temp assignments while debugging
 static std::string serverIp = "localhost:38281";
 static std::string slotName = "Crafty";
@@ -30,13 +35,18 @@ static std::string slotPass;
 static std::string seedId;
 static auto apWorldData = WorldData{};
 static bool hasCreatedContext = false;
+static bool isSaveActive = false;
 
-void clearSessionInfo() {
+static void clearSessionInfo() {
     apWorldData.itemPlacements.clear();
 
-    // drain queue without parsing
+    // drain queues without parsing
     while (!jsonQueue.empty())
         jsonQueue.pop();
+
+    while (!serverItemQueue.empty())
+        serverItemQueue.pop();
+
     hasCreatedContext = false;
 }
 
@@ -196,6 +206,37 @@ void parseLocationInfo(nlohmann::json& data) {
     }
 }
 
+void parseReceivedItems(const ReceivedItems& data) {
+    // if save isn't active, we need to store received items in our own queue until mod api can handle item gives
+    if (!isSaveActive) {
+        serverItemQueue.emplace(data.index, data.items);
+        return;
+    }
+
+    if (receivedIndex >= data.index) {
+        // no need to parse items already previously parsed
+        return;
+    }
+
+    bool isSkipNotify = false; // TODO: make use of this somehow
+
+    for (const auto& item : data.items) {
+        if (item.player != slotId)
+            continue;
+
+        int convertedID = apItemIdToGameId[item.item - ARCHI_ITEM_OFFSET];
+        auto flags = isSkipNotify ? ITEM_GIVE_SILENT : 0;
+
+        // TODO: we need to be able to get check_name from locationId, so that the check observer can set obtain flags if needed
+        auto result = session::svc_mng.item->give_item(session::svc_mng.mod_ctx, nullptr, convertedID, flags);
+        if (result != MOD_OK) {
+            mods::log::warn("Failed to give item: {}", convertedID);
+        }
+    }
+
+    setReceivedIndex(data.index);
+}
+
 void parseServerJson(nlohmann::json* data) {
     if (data->is_array()) {
         for (auto archiPacket : *data) {
@@ -226,8 +267,12 @@ void parseServerJson(nlohmann::json* data) {
                 session::svc_mng.ui->push_toast(session::svc_mng.mod_ctx, &desc);
                 break;
             }
-            case ServerPacket::ReceivedItems:
+            case ServerPacket::ReceivedItems: {
+                int newIdx = archiPacket["index"].get<int>();
+                const auto& itemList = archiPacket["items"].get<std::vector<NetworkItem>>();
+                parseReceivedItems({.index = newIdx, .items = itemList});
                 break;
+            }
             case ServerPacket::DataPackage:
                 parseDataPackage(archiPacket);
                 break;
@@ -325,12 +370,33 @@ void update() {
         ui::GenerateRandomizerSeed(Type::AP, apWorldData);
         hasCreatedContext = true;
     }
+
+    if (!serverItemQueue.empty() && isSaveActive) {
+        while (!serverItemQueue.empty()) {
+            auto& receivedItems = serverItemQueue.front();
+            parseReceivedItems(receivedItems);
+            serverItemQueue.pop();
+        }
+    }
 }
 
 ModResult shutdown() {
     mods::log::info("Ending archipelago connection.");
     clearSessionInfo();
     return connection.close();
+}
+
+void loadItemIdsFromDb() {
+    auto itemDataTree = LOAD_EMBED_YAML(RANDO_DATA_PATH "items.yaml");
+    for (const auto& itemNode : itemDataTree) {
+        auto idNode = itemNode["APItemId"];
+        if (!idNode)
+            continue;
+
+        auto itemId = itemNode["Id"].as<int>();
+        auto apItemId = idNode.as<int>();
+        apItemIdToGameId[apItemId] = itemId;
+    }
 }
 
 void sendLocationChecked(int locationId) {
@@ -353,5 +419,12 @@ std::string getSlotPass() { return slotPass; }
 
 void setSeedId(const std::string& id) { seedId = id; }
 std::string getSeedId() { return seedId; }
+
+void setReceivedIndex(int index) {
+    receivedIndex = index;
+}
+int getReceivedIndex() { return receivedIndex; }
+
+void setSeedActive(bool state) { isSaveActive = state; }
 
 } // randomizer::archi

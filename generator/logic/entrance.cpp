@@ -150,8 +150,10 @@ namespace randomizer::logic::entrance
 
     void Entrance::GeneralizeName()
     {
-        utility::str::Erase(this->_originalName, " North", " South", " East", " West", " Right", " Left");
-        utility::str::Erase(this->_alias, " North", " South", " East", " West", " Right", " Left");
+        utility::str::Erase(this->_originalName, " (Center)", " (East)", " (West)", " (Underwater)",
+                  " (On Land)", " (Swimming)", " North", " South", " East", " West", " Right", " Left");
+        utility::str::Erase(this->_alias, " (Center)", " (East)", " (West)", " (Underwater)",
+                  " (On Land)", " (Swimming)", " North", " South", " East", " West", " Right", " Left");
     }
 
     area::Area* Entrance::GetParentArea() const

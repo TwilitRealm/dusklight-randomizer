@@ -1323,8 +1323,8 @@
 - Type: Interior
   Entrance Couple Tag: Ordon Bos House
   Forward:
-    Connection: Ordon Bos House Left Door Exterior -> Ordon Bos House Left Door Interior
-    Alias: Ordon Village -> Ordon Bos House Left Door
+    Connection: Ordon Bos House North Door Exterior -> Ordon Bos House North Door Interior
+    Alias: Ordon Village -> Ordon Bos House North Door
     Stage: 65
     Room: 0
     Spawn: 1
@@ -1332,8 +1332,8 @@
     Parameters: "F09F"
     State: -1
   Return:
-    Connection: Ordon Bos House Left Door Interior -> Ordon Bos House Left Door Exterior
-    Alias: Ordon Bos House Left Door -> Ordon Village
+    Connection: Ordon Bos House North Door Interior -> Ordon Bos House North Door Exterior
+    Alias: Ordon Bos House North Door -> Ordon Village
     Stage: 43
     Room: 0
     Spawn: 11
@@ -1344,8 +1344,8 @@
 - Type: Interior
   Entrance Couple Tag: Ordon Bos House
   Forward:
-    Connection: Ordon Bos House Right Door Exterior -> Ordon Bos House Right Door Interior
-    Alias: Ordon Village -> Ordon Bos House Right Door
+    Connection: Ordon Bos House South Door Exterior -> Ordon Bos House South Door Interior
+    Alias: Ordon Village -> Ordon Bos House South Door
     Stage: 65
     Room: 0
     Spawn: 0
@@ -1353,8 +1353,8 @@
     Parameters: "F09F"
     State: -1
   Return:
-    Connection: Ordon Bos House Right Door Interior -> Ordon Bos House Right Door Exterior
-    Alias: Ordon Bos House Right Door -> Ordon Village
+    Connection: Ordon Bos House South Door Interior -> Ordon Bos House South Door Exterior
+    Alias: Ordon Bos House South Door -> Ordon Village
     Stage: 43
     Room: 0
     Spawn: 4
@@ -1528,7 +1528,7 @@
   Entrance Couple Tag: Elde Inn
   Forward:
     Connection: Elde Inn North Door Exterior -> Elde Inn North Door Interior
-    Alias: Kakariko Village -> Edle Inn North Door
+    Alias: Kakariko Village -> Elde Inn North Door
     Stage: 68
     Room: 2
     Spawn: 2
@@ -1825,7 +1825,7 @@
     Alias: Castle Town Center -> Castle Town Goron House West Door
     Stage: 73
     Room: 4
-    Spawn: 0
+    Spawn: 2
     Spawn Type: "B0"
     Parameters: "F09F"
     State: -1
@@ -1834,7 +1834,7 @@
     Alias: Castle Town Goron House West Door -> Castle Town Center
     Stage: 53
     Room: 0
-    Spawn: 14
+    Spawn: 16
     Spawn Type: "00"
     Parameters: "F01F"
     State: -1
@@ -1846,7 +1846,7 @@
     Alias: Castle Town Center -> Castle Town Goron House East Door
     Stage: 73
     Room: 4
-    Spawn: 2
+    Spawn: 0
     Spawn Type: "A0"
     Parameters: "F09F"
     State: -1
@@ -1855,7 +1855,7 @@
     Alias: Castle Town Goron House East Door -> Castle Town Center
     Stage: 53
     Room: 0
-    Spawn: 16
+    Spawn: 14
     Spawn Type: "00"
     Parameters: "F01F"
     State: -1
@@ -1885,7 +1885,7 @@
     Alias: Castle Town East -> Castle Town Doctors Office West Door
     Stage: 73
     Room: 2
-    Spawn: 1
+    Spawn: 0
     Spawn Type: "A0"
     Parameters: "F09F"
     State: -1
@@ -1894,7 +1894,7 @@
     Alias: Castle Town Doctors Office West Door -> Castle Town East
     Stage: 53
     Room: 4
-    Spawn: 4
+    Spawn: 3
     Spawn Type: "A0"
     Parameters: "F09F"
     State: -1
@@ -1906,7 +1906,7 @@
     Alias: Castle Town East -> Castle Town Doctors Office East Door
     Stage: 73
     Room: 2
-    Spawn: 0
+    Spawn: 1
     Spawn Type: "B0"
     Parameters: "F01F"
     State: -1
@@ -1915,7 +1915,7 @@
     Alias: Castle Town Doctors Office East Door -> Castle Town East
     Stage: 53
     Room: 4
-    Spawn: 3
+    Spawn: 4
     Spawn Type: "B0"
     Parameters: "F09F"
     State: -1
@@ -2656,7 +2656,7 @@
   Entrance Couple Tag: Zoras Domain From Upper Zoras River
   Forward:
     Connection: Upper Zoras River To Zoras Domain (Swimming) -> Zoras Domain To Upper Zoras River (Swimming)
-    Alias: Upper Zoras River -> Zoras Domain
+    Alias: Upper Zoras River -> Zoras Domain (Swimming)
     Stage: 50
     Room: 1
     Spawn: 11
@@ -2665,7 +2665,7 @@
     State: -1
   Return:
     Connection: Zoras Domain To Upper Zoras River (Swimming) -> Upper Zoras River To Zoras Domain (Swimming)
-    Alias: Zoras Domain -> Upper Zoras River
+    Alias: Zoras Domain -> Upper Zoras River (Swimming)
     Stage: 61
     Room: 0
     Spawn: 6
@@ -2677,7 +2677,7 @@
   Entrance Couple Tag: Zoras Domain From Upper Zoras River
   Forward:
     Connection: Upper Zoras River To Zoras Domain (Underwater) -> Zoras Domain To Upper Zoras River (Underwater)
-    Alias: Upper Zoras River -> Zoras Domain
+    Alias: Upper Zoras River -> Zoras Domain (Underwater)
     Stage: 50
     Room: 1
     Spawn: 12
@@ -2686,7 +2686,7 @@
     State: -1
   Return:
     Connection: Zoras Domain To Upper Zoras River (Underwater) -> Upper Zoras River To Zoras Domain (Underwater)
-    Alias: Zoras Domain -> Upper Zoras River
+    Alias: Zoras Domain -> Upper Zoras River (Underwater)
     Stage: 61
     Room: 0
     Spawn: 8
@@ -2698,7 +2698,7 @@
   Entrance Couple Tag: Zoras Domain From Upper Zoras River
   Forward:
     Connection: Upper Zoras River To Zoras Domain (On Land) -> Zoras Domain To Upper Zoras River (On Land)
-    Alias: Upper Zoras River -> Zoras Domain
+    Alias: Upper Zoras River -> Zoras Domain (On Land)
     Stage: 50
     Room: 1
     Spawn: 10
@@ -2707,7 +2707,7 @@
     State: -1
   Return:
     Connection: Zoras Domain To Upper Zoras River (On Land) -> Upper Zoras River To Zoras Domain (On Land)
-    Alias: Zoras Domain -> Upper Zoras River
+    Alias: Zoras Domain -> Upper Zoras River (On Land)
     Stage: 61
     Room: 0
     Spawn: 7
@@ -2719,7 +2719,7 @@
   Entrance Couple Tag: Zoras Domain Throne Room
   Forward:
     Connection: Zoras Domain Top of Waterfall Underwater -> Zoras Throne Room Underwater
-    Alias: Zoras Domain -> Zoras Throne Room
+    Alias: Zoras Domain -> Zoras Throne Room (Underwater)
     Stage: 50
     Room: 0
     Spawn: 7
@@ -2728,7 +2728,7 @@
     State: -1
   Return:
     Connection: Zoras Throne Room Underwater -> Zoras Domain Top of Waterfall Underwater
-    Alias: Zoras Throne Room -> Zoras Domain
+    Alias: Zoras Throne Room -> Zoras Domain (Underwater)
     Stage: 50
     Room: 1
     Spawn: 9
@@ -2740,7 +2740,7 @@
   Entrance Couple Tag: Zoras Domain Throne Room
   Forward:
     Connection: Zoras Domain Top of Waterfall West -> Zoras Throne Room West
-    Alias: Zoras Domain -> Zoras Throne Room
+    Alias: Zoras Domain -> Zoras Throne Room (West)
     Stage: 50
     Room: 0
     Spawn: 1
@@ -2749,7 +2749,7 @@
     State: -1
   Return:
     Connection: Zoras Throne Room West -> Zoras Domain Top of Waterfall West
-    Alias: Zoras Throne Room -> Zoras Domain
+    Alias: Zoras Throne Room -> Zoras Domain (West)
     Stage: 50
     Room: 1
     Spawn: 0
@@ -2761,7 +2761,7 @@
   Entrance Couple Tag: Zoras Domain Throne Room
   Forward:
     Connection: Zoras Domain Top of Waterfall East -> Zoras Throne Room East
-    Alias: Zoras Domain -> Zoras Throne Room
+    Alias: Zoras Domain -> Zoras Throne Room (East)
     Stage: 50
     Room: 0
     Spawn: 4
@@ -2770,7 +2770,7 @@
     State: -1
   Return:
     Connection: Zoras Throne Room East -> Zoras Domain Top of Waterfall East
-    Alias: Zoras Throne Room -> Zoras Domain
+    Alias: Zoras Throne Room -> Zoras Domain (East)
     Stage: 50
     Room: 1
     Spawn: 4
@@ -2782,7 +2782,7 @@
   Entrance Couple Tag: Zoras Domain Throne Room
   Forward:
     Connection: Zoras Domain Top of Waterfall Center -> Zoras Throne Room Center
-    Alias: Zoras Domain -> Zoras Throne Room
+    Alias: Zoras Domain -> Zoras Throne Room (Center)
     Stage: 50
     Room: 0
     Spawn: 3
@@ -2791,7 +2791,7 @@
     State: -1
   Return:
     Connection: Zoras Throne Room Center -> Zoras Domain Top of Waterfall Center
-    Alias: Zoras Throne Room -> Zoras Domain
+    Alias: Zoras Throne Room -> Zoras Domain (Center)
     Stage: 50
     Room: 1
     Spawn: 8

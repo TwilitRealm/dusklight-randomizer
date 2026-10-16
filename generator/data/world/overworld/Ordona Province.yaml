@@ -78,8 +78,8 @@
     Ordon Shield House: Day and Can_Open_Doors
     Ordon Shield House Upper Ledge: Impossible # To satisfy Entrance Rando
     Ordon Fados House: Day and Can_Open_Doors
-    Ordon Bos House Left Door Exterior: Nothing
-    Ordon Bos House Right Door Exterior: Nothing
+    Ordon Bos House North Door Exterior: Nothing
+    Ordon Bos House South Door Exterior: Nothing
     Ordon Ranch Village Pathway: Nothing
     Outside Links House: Nothing
 
@@ -114,28 +114,28 @@
   Exits:
     Ordon Village: Can_Open_Doors
 
-- Name: Ordon Bos House Left Door Exterior
+- Name: Ordon Bos House North Door Exterior
   Can Transform: Never
   Exits:
-    Ordon Bos House Left Door Interior: Can_Open_Doors
+    Ordon Bos House North Door Interior: Can_Open_Doors
     Ordon Village: Nothing
 
-- Name: Ordon Bos House Right Door Exterior
+- Name: Ordon Bos House South Door Exterior
   Can Transform: Never
   Exits:
-    Ordon Bos House Right Door Interior: Can_Open_Doors
+    Ordon Bos House South Door Interior: Can_Open_Doors
     Ordon Village: Nothing
 
-- Name: Ordon Bos House Left Door Interior
+- Name: Ordon Bos House North Door Interior
   Can Transform: Never
   Exits:
-    Ordon Bos House Left Door Exterior: Can_Open_Doors
+    Ordon Bos House North Door Exterior: Can_Open_Doors
     Ordon Bos House: Nothing
 
-- Name: Ordon Bos House Right Door Interior
+- Name: Ordon Bos House South Door Interior
   Can Transform: Never
   Exits:
-    Ordon Bos House Right Door Exterior: Can_Open_Doors
+    Ordon Bos House South Door Exterior: Can_Open_Doors
     Ordon Bos House: Nothing
 
 - Name: Ordon Bos House
@@ -143,8 +143,8 @@
   Locations:
     Wrestling With Bo: Human_Link
   Exits:
-    Ordon Bos House Right Door Interior: Nothing
-    Ordon Bos House Left Door Interior: Nothing
+    Ordon Bos House South Door Interior: Nothing
+    Ordon Bos House North Door Interior: Nothing
 
 # ORDON RANCH
 

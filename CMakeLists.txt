@@ -25,6 +25,19 @@ set(YAML_CPP_BUILD_CONTRIB OFF CACHE BOOL "" FORCE)
 set(YAML_BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
 set(B_PRODUCTION_MODE ON)
 
+if (NOT TARGET nlohmann_json::nlohmann_json)
+    find_package(nlohmann_json 3 CONFIG QUIET GLOBAL)
+    if (NOT nlohmann_json_FOUND)
+        include(FetchContent)
+        FetchContent_Declare(nlohmann_json
+                URL https://github.com/nlohmann/json/releases/download/v3.12.0/json.tar.xz
+                URL_HASH SHA256=42f6e95cad6ec532fd372391373363b62a14af6d771056dbfc86160e6dfff7aa
+                DOWNLOAD_EXTRACT_TIMESTAMP FALSE
+        )
+        FetchContent_MakeAvailable(nlohmann_json)
+    endif ()
+endif ()
+
 message(STATUS "randomizer: Fetching yaml-cpp")
 FetchContent_Declare(
         yaml-cpp

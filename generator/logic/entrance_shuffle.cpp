@@ -484,7 +484,7 @@ namespace randomizer::logic::entrance_shuffle
 
             if (utility::container::ElementInContainer(entrancePool, entranceToConnect))
             {
-                bool validTargetFound = false;
+                Entrance* connectedTarget = nullptr;
                 for (auto& target : targetPool)
                 {
                     // If we've found the proper target
@@ -499,7 +499,7 @@ namespace randomizer::logic::entrance_shuffle
                             {
                                 ValidateWorld(world, entranceToConnect, itemPool);
                             }
-                            validTargetFound = true;
+                            connectedTarget = target;
                             ConfirmReplacement(entranceToConnect, target);
                         }
                         catch(const EntranceShuffleError& e)
@@ -508,7 +508,7 @@ namespace randomizer::logic::entrance_shuffle
                                                      entranceToConnect->GetOriginalName() + " to " + target->GetOriginalName() +
                                                      " Reason:\n" + e.what());
                         }
-                        if (validTargetFound)
+                        if (connectedTarget)
                         {
                             break;
                         }
@@ -516,10 +516,10 @@ namespace randomizer::logic::entrance_shuffle
                 }
 
                 // If we found our target, delete the entrance and its now connected target from their respective pools
-                if (validTargetFound)
+                if (connectedTarget)
                 {
                     utility::container::Erase(entrancePool, entranceToConnect);
-                    utility::container::Erase(targetPool, targetToConnect->GetAssumed());
+                    utility::container::Erase(targetPool, connectedTarget);
                 }
                 // Otherwise, the target is invalid
                 else

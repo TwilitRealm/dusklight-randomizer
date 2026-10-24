@@ -960,7 +960,17 @@ void randomizer_checkAndOverrideEntranceData(const char*& stageName, s8& roomNo,
         // If this is our starting spawn, also set it as our return place for saving
         if (override.stageId == getStageID("F_SP103") && override.roomNo == 1 && override.pointNo == 1) {
             auto& returnPlace = dComIfGs_getSaveData()->mPlayer.getPlayerReturnPlace();
-            returnPlace.set(stageName, roomNo, pointNo);
+            // Custom spawn points > 255 can't fit into the return place's 8-bit status. Use a different
+            // spawn point for these
+            if (pointNo >= 5000) {
+                if (getStageID(stageName) == Kakariko_Graveyard) {
+                    returnPlace.set(stageName, roomNo, 2);
+                } else {
+                    returnPlace.set(stageName, roomNo, 0);
+                }
+            } else {
+                returnPlace.set(stageName, roomNo, pointNo);
+            }
         }
 
         // mods::log::info("New Stage:{}, {}, {}, {}",stageName,roomNo,pointNo,mapLayer);

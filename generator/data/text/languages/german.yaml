@@ -7535,7 +7535,7 @@ Mirror Shard 1 Get Item Text:
 Archipelago Item Get Item Text:
   Standard:
     Text: |-
-      <fast>You got an <red>Archipelago Item<white>!
+      <fast>Du hast <red>{}<white> für <yellow>{}<white> erhalten!
 
 Poe Soul Get Item Text:
   Standard:

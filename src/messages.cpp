@@ -25,12 +25,15 @@
 #include <utility>
 #include <vector>
 
+#include "archipelago.hpp"
+
 namespace randomizer::messages {
 namespace {
 
 constexpr uint16_t kMessageGroupCount = 9;
 constexpr uint32_t kPoeSoulGetMessage = 325;
 constexpr uint32_t kSkyCharacterGetMessage = 335;
+constexpr uint32_t kArchipelagoItemGetMessage = 321;
 
 using MessageIdMaps = std::array<std::unordered_map<std::string, MessageId>, kMessageGroupCount>;
 using NodeIdMaps = std::array<std::unordered_map<std::string, uint16_t>, kMessageGroupCount>;
@@ -176,21 +179,32 @@ bool formatted_override(
         return false;
     }
 
-    uint32_t value = 0;
+    std::string textFormatted;
     // Message resolution runs before the acquisition updates these counters.
     switch (key) {
     case kPoeSoulGetMessage:
-        value = dComIfGs_getPohSpiritNum() + 1;
+        textFormatted = fmt::format(fmt::runtime(textIt->second), dComIfGs_getPohSpiritNum() + 1);
         break;
     case kSkyCharacterGetMessage:
-        value = getAncientDocumentNum() + 1;
+        textFormatted = fmt::format(fmt::runtime(textIt->second), getAncientDocumentNum() + 1);
         break;
+    case kArchipelagoItemGetMessage: {
+        bool swapOrder = language == MESSAGE_LANGUAGE_FRENCH || language == MESSAGE_LANGUAGE_GERMAN || language == MESSAGE_LANGUAGE_JAPANESE;
+
+        auto itemText = archi::getCurrentLocationItemGetMessage();
+        if (swapOrder) {
+            textFormatted = fmt::format(fmt::runtime(textIt->second), itemText.second, itemText.first);
+        }else {
+            textFormatted = fmt::format(fmt::runtime(textIt->second), itemText.first, itemText.second);
+        }
+        break;
+    }
     default:
         return false;
     }
 
     thread_local std::vector<uint8_t> formatted;
-    formatted = encoded_text(fmt::format(fmt::runtime(textIt->second), value));
+    formatted = encoded_text(textFormatted);
     outText->text = formatted.data();
     outText->text_size = formatted.size();
     return true;
@@ -205,7 +219,7 @@ ModResult register_native_overrides(const RandomizerContext& context) {
             const uint16_t group = key >> 16;
             const uint16_t messageId = static_cast<uint16_t>(key);
             mods::flow::MessageOverride message;
-            if (key == kPoeSoulGetMessage || key == kSkyCharacterGetMessage) {
+            if (key == kPoeSoulGetMessage || key == kSkyCharacterGetMessage || key == kArchipelagoItemGetMessage) {
                 message = mods::flow::override_message_fn(group, messageId,
                     static_cast<MessageLanguage>(language), formatted_override);
             } else {

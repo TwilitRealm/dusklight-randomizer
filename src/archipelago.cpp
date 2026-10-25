@@ -556,6 +556,13 @@ void sendLocationChecked(int locationId) {
     });
 }
 
+std::pair<std::string, std::string> getCurrentLocationItemGetMessage() {
+    std::string tempPlayerName = "CraftyOOT";
+    std::string tempItemName = "Ice Trap";
+
+    return std::make_pair(tempPlayerName, tempItemName);
+}
+
 void setServerIp(const std::string& ip) { serverIp = ip; }
 std::string getServerIp() { return serverIp; }
 

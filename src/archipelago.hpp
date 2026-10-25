@@ -132,6 +132,8 @@ void loadItemIdsFromDb();
 
 void sendLocationChecked(int locationId);
 
+std::pair<std::string, std::string> getCurrentLocationItemGetMessage();
+
 void setServerIp(const std::string& ip);
 std::string getServerIp();
 

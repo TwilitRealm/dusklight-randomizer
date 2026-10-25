@@ -892,3 +892,73 @@ int getCurrentLanguage() {
 
     return dComIfGs_getPalLanguage();
 }
+
+// save functions
+
+inline void onSaveTbox(int i_stageNo, int i_no) {
+    g_dComIfG_gameInfo.info.getSavedata().getSave(i_stageNo).getBit().onTbox(i_no);
+}
+
+inline void offSaveTbox(int i_stageNo, int i_no) {
+    g_dComIfG_gameInfo.info.getSavedata().getSave(i_stageNo).getBit().offTbox(i_no);
+}
+
+inline void onSaveItem(int i_no) {
+    g_dComIfG_gameInfo.info.getMemory().getBit().onItem(i_no);
+}
+
+inline void offSaveItem(int i_no) {
+    g_dComIfG_gameInfo.info.getMemory().getBit().offItem(i_no);
+}
+
+inline void offItem(int i_no, int i_roomNo) {
+    if (i_no == -1 || i_no == 255) {
+        return;
+    }
+
+    auto& info = g_dComIfG_gameInfo.info;
+
+    if (i_no < dSv_info_c::MEMORY_ITEM) {
+        info.mDan.offItem(i_no);
+    } else if (i_no < (dSv_info_c::MEMORY_ITEM + dSv_info_c::DAN_ITEM)) {
+        info.mMemory.getBit().offItem(i_no - dSv_info_c::MEMORY_ITEM);
+    } else {
+        int zoneNo = dComIfGp_roomControl_getZoneNo(i_roomNo);
+
+        if (i_no < (dSv_info_c::MEMORY_ITEM + dSv_info_c::DAN_ITEM + dSv_info_c::ZONE_ITEM)) {
+            info.mZone[zoneNo].getBit().offItem(i_no - (dSv_info_c::MEMORY_ITEM + dSv_info_c::DAN_ITEM));
+        } else {
+            info.mZone[zoneNo].getBit().offOneItem(i_no - (dSv_info_c::MEMORY_ITEM + dSv_info_c::DAN_ITEM + dSv_info_c::ZONE_ITEM));
+        }
+    }
+}
+
+void save_onStageTbox(int i_stageNo, int i_no) {
+    if (dComIfGp_getStageStagInfo() && i_stageNo == dStage_stagInfo_GetSaveTbl(dComIfGp_getStageStagInfo())) {
+        dComIfGs_onTbox(i_no);
+    } else {
+        onSaveTbox(i_stageNo, i_no);
+    }
+}
+void save_offStageTbox(int i_stageNo, int i_no) {
+    if (dComIfGp_getStageStagInfo() && i_stageNo == dStage_stagInfo_GetSaveTbl(dComIfGp_getStageStagInfo())) {
+        dComIfGs_offTbox(i_no);
+    } else {
+        offSaveTbox(i_stageNo, i_no);
+    }
+}
+void save_onStageItem(int i_stageNo, int i_no) {
+    if (dComIfGp_getStageStagInfo() && i_stageNo == dStage_stagInfo_GetSaveTbl(dComIfGp_getStageStagInfo())) {
+        dComIfGs_onItem(i_no, -1);
+    } else {
+        onSaveItem(i_no);
+    }
+}
+void save_offStageItem(int i_stageNo, int i_no) {
+    if (dComIfGp_getStageStagInfo() && i_stageNo == dStage_stagInfo_GetSaveTbl(dComIfGp_getStageStagInfo())) {
+        // Need to subtract 0x80 (MEMORY_ITEM constant in d_save.cpp) because the above function does it
+        offItem(i_stageNo, i_no - 0x80);
+    } else {
+        offSaveItem(i_no);
+    }
+}

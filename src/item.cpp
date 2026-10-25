@@ -1,5 +1,6 @@
 #include "item.hpp"
 
+#include "archipelago.hpp"
 #include "d/d_com_inf_game.h"
 #include "d/d_item.h"
 #include "d/d_item_data.h"

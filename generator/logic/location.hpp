@@ -40,6 +40,8 @@ namespace randomizer::logic::location
                  const std::string& hintPriority,
                  const YAML::Node& metadata);
 
+        Location(const Location& other) = default;
+
         int GetID() const;
         std::string GetName() const;
         world::World* GetWorld() const;

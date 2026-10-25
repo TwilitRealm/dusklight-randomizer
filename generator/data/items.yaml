@@ -1057,7 +1057,7 @@
 - Name: Archipelago Item
   Importance: Major
   Id: 0xDC
-  APItemId: -1
+  APItemId: 0xDC
 
 #- Name: Unused
 #  Importance: Junk

@@ -72,3 +72,8 @@ bool tracker_isStageItem(int stage, int flag);
 
 const char* getYesNoText(bool flag);
 int getCurrentLanguage();
+
+void save_onStageTbox(int i_stageNo, int i_no);
+void save_offStageTbox(int i_stageNo, int i_no);
+void save_onStageItem(int i_stageNo, int i_no);
+void save_offStageItem(int i_stageNo, int i_no);

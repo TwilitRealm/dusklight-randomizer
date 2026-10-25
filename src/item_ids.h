@@ -223,7 +223,7 @@ enum {
     /* 0xD9 */ dItemNo_Randomizer_FUSED_SHADOW_2_e,
     /* 0xDA */ dItemNo_Randomizer_FUSED_SHADOW_3_e,
     /* 0xDB */ dItemNo_Randomizer_MIRROR_PIECE_1_e,
-    /* 0xDC */ dItemNo_Randomizer_NOENTRY_220_e,
+    /* 0xDC */ dItemNo_Randomizer_ARCHIPELAGO_ITEM_e,
     /* 0xDD */ dItemNo_Randomizer_NOENTRY_221_e,
     /* 0xDE */ dItemNo_Randomizer_NOENTRY_222_e,
     /* 0xDF */ dItemNo_Randomizer_NOENTRY_223_e,

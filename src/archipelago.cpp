@@ -2,11 +2,15 @@
 
 #include <queue>
 
+#include "item_ids.h"
 #include "paths.hpp"
 #include "session.hpp"
+#include "tools.h"
 #include "../generator/utility/random.hpp"
 #include "../generator/utility/yaml.hpp"
+#include "../generator/logic/location.hpp"
 #include "archi/ap_settings_convert.hpp"
+#include "d/d_com_inf_game.h"
 #include "JSystem/JStudio/JStudio/ctb.h"
 #include "mods/svc/log.hpp"
 #include "mods/svc/websocket.hpp"
@@ -28,9 +32,11 @@ static int receivedItemQueueStartIndex = -1;
 static std::queue<nlohmann::json> jsonQueue;
 static std::queue<ReceivedItems> serverItemQueue;
 static std::map<int, int> apItemIdToGameId;
+static std::map<int, logic::location::Location> apLocationIdToGameLocation;
+static std::set<int> sentItemLocations;
 // temp assignments while debugging
 static std::string serverIp = "localhost:38281";
-static std::string slotName = "Crafty";
+static std::string slotName = "CraftyTP";
 static std::string slotPass;
 static std::string seedId;
 static auto apWorldData = WorldData{};
@@ -143,6 +149,81 @@ static ServerPacket getServerCommandEnumByName(const std::string& name) {
     throw std::runtime_error("unknown command type");
 }
 
+static void setLocationCollected(logic::location::Location* location, bool collect) {
+    auto& locationMeta = location->GetMetadata();
+
+    if (auto& chestNode = locationMeta["Chest"]) {
+        auto tboxId = chestNode[0]["Tbox Id"].as<u8>();
+        auto stageId = getStageSaveId(chestNode[0]["Stage"].as<u8>());
+        if (collect)
+            save_onStageTbox(stageId, tboxId);
+        else
+            save_offStageTbox(stageId, tboxId);
+    }
+    if (auto& poeNode = locationMeta["Poe"]) {
+        auto flag = poeNode[0]["Flag"].as<u8>();
+        auto stageId = getStageSaveId(poeNode[0]["Stage"].as<u8>());
+        if (collect)
+            dComIfGs_onStageSwitch(stageId, flag);
+        else
+            dComIfGs_offStageSwitch(stageId, flag);
+    }
+    if (auto& freeStandingItemNode = locationMeta["Freestanding Item"]) {
+        auto flag = freeStandingItemNode[0]["Flag"].as<u8>();
+        auto stageId = getStageSaveId(freeStandingItemNode[0]["Stage"].as<u8>());
+        // big baba uses tbox, hardcode this edge case
+        if (location->GetName() == "Forest Temple Big Baba Key") {
+            if (collect)
+                save_onStageTbox(stageId, flag);
+            else
+                save_offStageTbox(stageId, flag);
+        }else {
+            if (collect)
+                save_onStageItem(stageId, flag);
+            else
+                save_offStageItem(stageId, flag);
+        }
+    }
+    if (auto& eventFlagNode = locationMeta["Event Flag"]) {
+        auto flag = eventFlagNode.as<u16>();
+        if (collect)
+            dComIfGs_onEventBit(flag);
+        else
+            dComIfGs_offEventBit(flag);
+    }
+    if (auto& wolfNode = locationMeta["Golden Wolf"]) {
+        auto flag = wolfNode[0]["Flag"].as<u16>();
+        if (collect)
+            dComIfGs_onEventBit(flag);
+        else
+            dComIfGs_offEventBit(flag);
+    }
+    if (auto& switchFlagNode = locationMeta["Switch Flag"]) {
+        auto flag = switchFlagNode["Flag"].as<u8>();
+        auto stageId = getStageSaveId(switchFlagNode["Stage"].as<u8>());
+        if (collect)
+            dComIfGs_onStageSwitch(stageId, flag);
+        else
+            dComIfGs_offStageSwitch(stageId, flag);
+    }
+    if (auto& itemFlagNode = locationMeta["Item Flag"]) {
+        auto flag = itemFlagNode["Flag"].as<u8>();
+        auto stageId = getStageSaveId(itemFlagNode["Stage"].as<u8>());
+        if (collect)
+            save_onStageItem(stageId, flag);
+        else
+            save_offStageItem(stageId, flag);
+    }
+    if (auto& twilitInsectNode = locationMeta["Twilit Insect"]) {
+        auto flag = twilitInsectNode[0]["Flag"].as<u8>();
+        auto stageId = getStageSaveId(twilitInsectNode[0]["Stage"].as<u8>());
+        if (collect)
+            save_onStageTbox(stageId, flag);
+        else
+            save_offStageTbox(stageId, flag);
+    }
+}
+
 void parseRoomInfo(RoomInfo* info) {
     queueJsonPacket({
         {"cmd", "GetDataPackage"},
@@ -194,6 +275,12 @@ void parseDataPackage(nlohmann::json& data) {
 
 void parseLocationInfo(nlohmann::json& data) {
     for (const auto& item : data["locations"].get<std::vector<NetworkItem>>()) {
+        if (item.player != slotId) { // off world item
+            apWorldData.itemPlacements[item.location - ARCHI_ITEM_OFFSET] = dItemNo_Randomizer_ARCHIPELAGO_ITEM_e;
+            // TODO: figure out a good way to store off world item ids somewhere so we can display names on item get
+            continue;
+        }
+
         int convertedID = item.item - ARCHI_ITEM_OFFSET;
 
         // TEMP until we have our own apworld that doesn't have these items (or they are added to the generator)
@@ -221,13 +308,30 @@ void parseReceivedItems(const ReceivedItems& data) {
     bool isSkipNotify = false; // TODO: make use of this somehow
 
     for (const auto& item : data.items) {
-        if (item.player != slotId)
-            continue;
-
         int convertedID = apItemIdToGameId[item.item - ARCHI_ITEM_OFFSET];
+        int convertedLocation = item.location - ARCHI_ITEM_OFFSET;
         auto flags = isSkipNotify ? ITEM_GIVE_SILENT : 0;
 
-        // TODO: we need to be able to get check_name from locationId, so that the check observer can set obtain flags if needed
+        if (item.player == slotId) {
+            // ignore items that were just sent by the client
+            if (sentItemLocations.contains(convertedLocation)) {
+                sentItemLocations.erase(convertedLocation);
+                continue;
+            }
+            if (apLocationIdToGameLocation.contains(convertedLocation)) {
+                auto& location = apLocationIdToGameLocation.at(convertedLocation);
+
+                if (isLocationObtained(&location))
+                    continue;
+                setLocationCollected(&location, true); // if location hasnt been set as collected, set its flags so we can avoid duplicating items on the client
+
+                // sanity check (remove for release)
+                if (!isLocationObtained(&location)) {
+                    session::reportError(fmt::format("Attempt to set {} as collected failed.", location.GetName()));
+                }
+            }
+        }
+
         auto result = session::svc_mng.item->give_item(session::svc_mng.mod_ctx, nullptr, convertedID, flags);
         if (result != MOD_OK) {
             mods::log::warn("Failed to give item: {}", convertedID);
@@ -397,9 +501,53 @@ void loadItemIdsFromDb() {
         auto apItemId = idNode.as<int>();
         apItemIdToGameId[apItemId] = itemId;
     }
+
+    auto locationDataTree = LOAD_EMBED_YAML(RANDO_DATA_PATH "locations.yaml");
+
+    for (const auto& locationNode : locationDataTree) {
+        auto metadata = locationNode["Metadata"];
+        auto name = locationNode["Name"].as<std::string>();
+
+        bool excludedCategory = false;
+        for (const auto& categoryNode : locationNode["Categories"]) {
+            auto category = categoryNode.as<std::string>();
+
+            if (category == "Hint Sign" || category == "Warp Portal") {
+                excludedCategory = true;
+                break;
+            }
+        }
+        if (excludedCategory)
+            continue;
+
+        if (metadata["Twilit Insect"].IsDefined()) {
+            continue;
+        }
+
+        int apLocationId = metadata["APLocationId"].as<int>(-1);
+
+        if (apLocationId == -1) {
+            mods::log::warn("Location {} Missing APLocationID.", name);
+            continue;
+        }
+
+        apLocationIdToGameLocation.emplace(apLocationId, logic::location::Location(
+            apLocationId,
+            name,
+            {},
+            nullptr,
+            logic::item::Nothing.get(),
+            false,
+            "",
+            "",
+            metadata
+        ));
+    }
 }
 
 void sendLocationChecked(int locationId) {
+    sentItemLocations.emplace(locationId);
+
     queueJsonPacket({
         {"cmd", "LocationChecks"},
         {"locations", {
@@ -412,7 +560,7 @@ void setServerIp(const std::string& ip) { serverIp = ip; }
 std::string getServerIp() { return serverIp; }
 
 void setSlotName(const std::string& name) { slotName = name; }
-std::string getSlotName() { return slotName; }
+std::string& getSlotName() { return slotName; }
 
 void setSlotPass(const std::string& name) { slotPass = name; }
 std::string getSlotPass() { return slotPass; }

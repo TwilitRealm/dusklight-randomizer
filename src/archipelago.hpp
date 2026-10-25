@@ -136,7 +136,7 @@ void setServerIp(const std::string& ip);
 std::string getServerIp();
 
 void setSlotName(const std::string& name);
-std::string getSlotName();
+std::string& getSlotName();
 
 void setSlotPass(const std::string& name);
 std::string getSlotPass();

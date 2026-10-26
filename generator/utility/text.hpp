@@ -152,4 +152,7 @@ namespace randomizer {
     Text makeTextListing(std::vector<Text> texts);
 
     int findFirstNonMessageCodeIndex(const std::string& str);
+
+    Text& addNewTextEntry(const std::string& name, const std::string& text, Text::Type type = Text::STANDARD, Text::Language language = Text::ENGLISH);
+    Text& addNewTextEntry(const std::string& name, const std::string& text, Text::Gender gender, Text::Plurality plurality, Text::Type type /*= Text::STANDARD*/, Text::Language language /*= Text::ENGLISH*/);
 }; // namespace Text

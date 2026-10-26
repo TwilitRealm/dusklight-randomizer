@@ -287,6 +287,13 @@ static std::pair<std::string, std::string> getItemNameFromSlot(int slotId, int i
     return {"Someone", "Something"};
 }
 
+static void fillApDataOffWorldItemNames() {
+    auto& temp = locationOffWorldData;
+    for (const auto& [location_id, entry] : locationOffWorldData) {
+        apWorldData.offworldItemNames[location_id] = getItemNameFromSlot(entry.slotId, entry.itemId).second;
+    }
+}
+
 void parseRoomInfo(RoomInfo* info) {
     queueJsonPacket({
         {"cmd", "GetDataPackage"},
@@ -557,6 +564,9 @@ void update() {
     }
 
     if (!hasCreatedContext && !apWorldData.itemPlacements.empty()) {
+        // we should have all the info needed by this point to fill out apWorldData.offworldItemNames
+        fillApDataOffWorldItemNames();
+
         ui::GenerateRandomizerSeed(Type::AP, apWorldData);
         hasCreatedContext = true;
     }

@@ -697,6 +697,7 @@ namespace randomizer::logic::world
         if (GetRandomizer()->GetType() != Type::AP) {
             return;
         }
+        const int archipelagoItemID = 0xDC;
 
         // Create map of APid -> item
         std::map<int, item::Item*> apItems{};
@@ -704,11 +705,47 @@ namespace randomizer::logic::world
             apItems.emplace(item->GetAPID(), item.get());
         }
 
-        const auto& apItemPlacements = GetRandomizer()->GetAPData().itemPlacements;
+        const auto& apData = GetRandomizer()->GetAPData();
+
+
+        // Create new Items from off world item names
+        std::map<int, item::Item*> offWorldApItems{};
+        for (auto& [apLocationId, item_name] : apData.offworldItemNames) {
+            // don't create duplicates if possible
+
+            // TODO: if an item from another game shares the same name as something here (eg. Purple Rupee in oot),
+            // this will end up setting the location as an actual purple rupee.
+            auto itemIt = this->_itemTable.find(item_name);
+            if (itemIt == this->_itemTable.end()) {
+                auto item = std::make_unique<item::Item>(archipelagoItemID, item_name, -1, this, item::Importance::MINOR,
+                false, false, false, false, false);
+                auto [newItemIter, emplace_result] = this->_itemTable.try_emplace(item_name, std::move(item));
+                if (emplace_result) {
+                    itemIt = newItemIter;
+                    addNewTextEntry(item_name, item_name);
+                }else {
+                    LOG_TO_ERROR("Unable to place Off-World Item: " + item_name);
+                }
+            }
+
+            offWorldApItems.emplace(apLocationId, itemIt->second.get());
+        }
+
         for (auto& location : this->_locationTable | std::views::values) {
             auto apLocationId = location->GetMetadata()["APLocationId"].as<int>(-1);
-            if (apItemPlacements.contains(apLocationId)) {
-                auto apItemId = apItemPlacements.at(apLocationId);
+
+            if (apData.itemPlacements.contains(apLocationId)) {
+                auto apItemId = apData.itemPlacements.at(apLocationId);
+
+                // if the item at this location is an archipelago item (ID is 0xDC), use its off world item instead of the regular archipelago item.
+                if (apItemId == archipelagoItemID) {
+                    if (auto itemIt = offWorldApItems.find(apLocationId); itemIt != offWorldApItems.end()) {
+                        auto item = itemIt->second;
+                        location->SetCurrentItem(item);
+                        continue;
+                    }
+                }
+
                 auto item = apItems[apItemId];
                 if (item != nullptr) {
                     location->SetCurrentItem(item);

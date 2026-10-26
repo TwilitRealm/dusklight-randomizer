@@ -21,6 +21,7 @@ IMPORT_SERVICE(GameModeService, svc_game_mode);
 IMPORT_SERVICE(TextureService, svc_texture);
 IMPORT_SERVICE(FileService, svc_file);
 IMPORT_SERVICE(WebSocketService, svc_websocket);
+IMPORT_SERVICE(OverlayService, svc_overlay);
 
 extern "C" {
 
@@ -41,7 +42,8 @@ MOD_EXPORT ModResult mod_initialize(ModError* error) {
         svc_game_mode,
         svc_texture,
         svc_file,
-        svc_websocket
+        svc_websocket,
+        svc_overlay
     });
     if (result != MOD_OK) {
         return mods::set_error(error, result, "failed to initialize session");

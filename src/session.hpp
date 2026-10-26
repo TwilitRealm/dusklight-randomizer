@@ -16,6 +16,7 @@
 
 #include <string>
 
+#include "mods/svc/overlay.h"
 #include "mods/svc/websocket.h"
 
 namespace randomizer::session {
@@ -36,6 +37,7 @@ struct ServiceManager {
     const TextureService* texture;
     const FileService* file;
     const WebSocketService* websocket;
+    const OverlayService* overlay;
 };
 
 extern ServiceManager svc_mng;

@@ -764,6 +764,7 @@ ModResult onGameModeUpdate(void*, ModError*) {
     return MOD_OK;
 }
 
+OverlayHandle archiModelHandle = 0;
 ModResult initialize(const ServiceManager& services) {
     svc_mng = services;
 
@@ -815,6 +816,9 @@ ModResult initialize(const ServiceManager& services) {
             nullptr);
     };
     result = svc_ui->register_mods_panel(mod_ctx, &panelDesc);
+
+    result = svc_mng.overlay->add_file(svc_mng.mod_ctx, "/res/Object/ArchiItem.arc", "res/Object/ArchiItem.arc", &archiModelHandle);
+
     return result;
 }
 

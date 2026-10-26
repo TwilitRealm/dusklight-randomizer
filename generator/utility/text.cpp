@@ -564,20 +564,18 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
             }
         }
     }
-
+    static TextDatabase textDatabase{};
     const TextDatabase& getTextDatabase() {
-        static TextDatabase tb{};
-
         // Use a mutex here so that we can load up the text database on a separate thread if desired
         static std::mutex textDbMutex;
         std::lock_guard lock{textDbMutex};
 
         // If database is empty, load it up
-        if (tb.empty()) {
-            LoadTextData(tb);
+        if (textDatabase.empty()) {
+            LoadTextData(textDatabase);
         }
 
-        return tb;
+        return textDatabase;
     }
 
     bool textObjectExists(const std::string& name) {
@@ -898,4 +896,29 @@ const auto kSilverMessageCode = text_color_code(0xBFBFBFFF);
 
         return index;
     }
+
+    Text& addNewTextEntry(const std::string& name,
+                        const std::string& text,
+                        Text::Type type /*= Text::STANDARD*/,
+                        Text::Language language /*= Text::ENGLISH*/) {
+        auto& textObj = textDatabase[name][type];
+        auto& entry = textObj.mEntries[language];
+        entry.str = language != Text::JAPANESE ? UTF8ToCP1252(text) : UTF8ToShiftJIS(text);
+        return textObj;
+    }
+
+    Text& addNewTextEntry(const std::string& name,
+                        const std::string& text,
+                        Text::Gender gender,
+                        Text::Plurality plurality,
+                        Text::Type type /*= Text::STANDARD*/,
+                        Text::Language language /*= Text::ENGLISH*/) {
+        auto& textObj = textDatabase[name][type];
+        auto& entry = textObj.mEntries[language];
+        entry.str = language != Text::JAPANESE ? UTF8ToCP1252(text) : UTF8ToShiftJIS(text);
+        entry.gender = gender;
+        entry.plurality = plurality;
+        return textObj;
+    }
+
 }; // namespace Text

@@ -782,6 +782,7 @@ const std::map<u8, const char*> kCustomItemImages = {
     {dItemNo_Randomizer_MIRROR_PIECE_2_e, "mirror_shard_2.bti"},
     {dItemNo_Randomizer_MIRROR_PIECE_3_e, "mirror_shard_3.bti"},
     {dItemNo_Randomizer_MIRROR_PIECE_4_e, "mirror_shard_4.bti"},
+    {dItemNo_Randomizer_ARCHIPELAGO_ITEM_e, "archi_icon.bti"},
 };
 
 void hookPostReadItemTexture(ModContext*, void* args, void*, void*) {

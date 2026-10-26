@@ -37,6 +37,7 @@ bool g_seedActivated = false;
 SaveObserverHandle s_save_observer{};
 ItemCheckHandle s_check_resolver{};
 ItemGiveHandle s_check_observer{};
+ItemGiveHandle s_commit_observer{};
 std::vector<StageActorHandle> s_stage_edits{};
 
 constexpr const char* kSeedHashBlobName = "seed_hash";
@@ -168,12 +169,12 @@ bool lookup_override(
 int get_ap_location(const ItemGiveInfo* info) {
     auto& ctx = randomizer_GetContext();
 
-    auto getApLocationByOverrideId = [&ctx](const std::string_view& overrideName, u16 key) -> u16 {
+    auto getApLocationByOverrideId = [&ctx](const std::string_view& overrideName, u16 key) -> int {
         std::string fullKey = fmt::format("{}_{}", overrideName, key);
 
         if (!ctx.mOverrideIdToAPLocation.contains(fullKey)) {
-            mods::log::error("Missing location in context!");
-            return -1;
+            mods::log::trace("Missing location in context! Key: {}", fullKey);
+            return -1; // location most likely isn't one we need to care about
         }
 
         return ctx.mOverrideIdToAPLocation[fullKey];
@@ -308,11 +309,25 @@ void ap_observe_give(ModContext* ctx, const ItemGiveInfo* info, void* user_data)
     if (locationId != -1) {
         archi::sendLocationChecked(locationId);
     }else {
-        mods::log::warn("AP does not have a location for item: {}", info->check_name);
+        mods::log::trace("AP does not have a location for item: {}", info->check_name);
     }
 
     // run base observe_give after
     observe_give(ctx, info, user_data);
+}
+
+void ap_observe_commit(ModContext* ctx, const ItemGiveInfo* info, void* user_data) {
+    if (info->check_name == nullptr)
+        return;
+
+    int locationId = get_ap_location(info);
+
+    if (locationId != -1) {
+        archi::setCurrentCommitedLocation(locationId);
+    }else {
+        mods::log::trace("AP does not have a location for item: {}", info->check_name);
+    }
+
 }
 
 bool activateSeed(const char* hash, bool archipelago = false) {
@@ -335,6 +350,7 @@ bool activateSeed(const char* hash, bool archipelago = false) {
 
     if (archipelago) {
         svc_mng.item->observe_gives(mod_ctx, ap_observe_give, nullptr, &s_check_observer);
+        svc_mng.item->observe_item_commit(mod_ctx, ap_observe_commit, nullptr, &s_commit_observer);
         archi::setSeedActive(true);
     }else {
         svc_mng.item->observe_gives(mod_ctx, observe_give, nullptr, &s_check_observer);
@@ -361,6 +377,11 @@ void deactivateSeed() {
     if (s_check_observer != 0) {
         svc_mng.item->unobserve_gives(mod_ctx, s_check_observer);
         s_check_observer = 0;
+    }
+
+    if (s_commit_observer != 0) {
+        svc_mng.item->unobserve_item_commit(mod_ctx, s_commit_observer);
+        s_commit_observer = 0;
     }
 
     for (auto handle : s_stage_edits) {

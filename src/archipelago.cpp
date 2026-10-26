@@ -21,6 +21,21 @@
 namespace randomizer::archi {
 static constexpr int ARCHI_ITEM_OFFSET = 2320000;
 
+struct GameDataPackage {
+    std::string checksum;
+    std::map<int, std::string> slotItemIdToName;
+};
+
+struct LocationDataOffWorld {
+    int slotId;
+    int itemId;
+};
+
+struct RoomSlotData {
+    std::string slotName;
+    std::string slotGame;
+};
+
 // TODO: move all of this into a context struct instead of statics galore
 
 static mods::ws::Connection connection;
@@ -28,11 +43,13 @@ static std::string curConnectionSession;
 static RoomInfo roomInfo;
 static int slotId = -1;
 static int receivedIndex = -1;
-static int receivedItemQueueStartIndex = -1;
 static std::queue<nlohmann::json> jsonQueue;
 static std::queue<ReceivedItems> serverItemQueue;
+static std::unordered_map<std::string, GameDataPackage> allGameData;
 static std::map<int, int> apItemIdToGameId;
 static std::map<int, logic::location::Location> apLocationIdToGameLocation;
+static std::map<int, LocationDataOffWorld> locationOffWorldData;
+static std::map<int, RoomSlotData> allSlotData;
 static std::set<int> sentItemLocations;
 // temp assignments while debugging
 static std::string serverIp = "localhost:38281";
@@ -42,6 +59,7 @@ static std::string seedId;
 static auto apWorldData = WorldData{};
 static bool hasCreatedContext = false;
 static bool isSaveActive = false;
+static int currentCommitedLoc = -1;
 
 static void clearSessionInfo() {
     apWorldData.itemPlacements.clear();
@@ -101,6 +119,21 @@ inline void from_json(const nlohmann::json& nlohmann_json_j, NetworkPlayer& play
     nlohmann_json_j.at("slot").get_to(player.slot);
     nlohmann_json_j.at("alias").get_to(player.alias);
     nlohmann_json_j.at("name").get_to(player.name);
+}
+inline void to_json(nlohmann::json& nlohmann_json_j, const NetworkSlot& player) {
+    nlohmann_json_j = {
+        {"name", player.name},
+        {"game", player.game},
+        {"type", player.type},
+        {"group_members", player.group_members},
+        {"class", "NetworkSlot"}
+    };
+}
+inline void from_json(const nlohmann::json& nlohmann_json_j, NetworkSlot& player) {
+    nlohmann_json_j.at("name").get_to(player.name);
+    nlohmann_json_j.at("game").get_to(player.game);
+    nlohmann_json_j.at("type").get_to(player.type);
+    nlohmann_json_j.at("group_members").get_to(player.group_members);
 }
 
 void queueJsonPacket(const nlohmann::json& data) {
@@ -224,6 +257,36 @@ static void setLocationCollected(logic::location::Location* location, bool colle
     }
 }
 
+static std::string getSlotName(int slotId) {
+    if (allSlotData.contains(slotId)) {
+        auto& slotData = allSlotData.at(slotId);
+        return slotData.slotName;
+    }
+    return "";
+}
+
+static std::string getSlotGame(int slotId) {
+    if (allSlotData.contains(slotId)) {
+        auto& slotData = allSlotData.at(slotId);
+        return slotData.slotGame;
+    }
+    return "";
+}
+
+static std::pair<std::string, std::string> getItemNameFromSlot(int slotId, int itemId) {
+    if (allSlotData.contains(slotId)) {
+        auto& slotData = allSlotData.at(slotId);
+
+        if (allGameData.contains(slotData.slotGame)) {
+            auto& gameData = allGameData[slotData.slotGame];
+            if (gameData.slotItemIdToName.contains(itemId))
+                return {slotData.slotName, gameData.slotItemIdToName[itemId]};
+        }
+        return {slotData.slotName, "Something"};
+    }
+    return {"Someone", "Something"};
+}
+
 void parseRoomInfo(RoomInfo* info) {
     queueJsonPacket({
         {"cmd", "GetDataPackage"},
@@ -247,6 +310,15 @@ void parseConnected(nlohmann::json& data) {
     auto slotData = data["slot_data"];
     slotId = data["slot"];
 
+    for (const auto& [slot_id, network_slot] : data["slot_info"].items()) {
+        allSlotData[std::stoi(slot_id)] = {
+            .slotName = network_slot["name"],
+            .slotGame = network_slot["game"],
+        };
+    }
+
+    auto& test = allSlotData;
+
     // create seed config data with connection info
     auto seedHash = slotData["SeedID"].get<std::string>();
     auto seedDataPath = paths::GetRandomizerSeedsPath("archi") / seedHash / "seed.dat";
@@ -264,11 +336,25 @@ void parseConnected(nlohmann::json& data) {
 }
 
 void parseDataPackage(nlohmann::json& data) {
+    mods::log::info("Data Package: {}", data.dump());
+
+    // TODO: cache data package checksum in seed data folder (RoomInfo sends data package checksums so we can check there)
+
     auto& locationToId = data["data"]["games"]["Twilight Princess"]["location_name_to_id"];
     std::vector<int> apLocationIds;
 
     for (const auto& [loc_name, id] : locationToId.items())
         apLocationIds.push_back(id.get<int>());
+
+    for (const auto& [game_name, gameData] : data["data"]["games"].items()) {
+        if (game_name == "Twilight Princess")
+            continue;
+
+        GameDataPackage& dataPackage = allGameData[game_name];
+        for (const auto& [item_name, id] : gameData["item_name_to_id"].items()) {
+            dataPackage.slotItemIdToName[id.get<int>()] = item_name;
+        }
+    }
 
     queueLocationScouts(apLocationIds);
 }
@@ -277,7 +363,7 @@ void parseLocationInfo(nlohmann::json& data) {
     for (const auto& item : data["locations"].get<std::vector<NetworkItem>>()) {
         if (item.player != slotId) { // off world item
             apWorldData.itemPlacements[item.location - ARCHI_ITEM_OFFSET] = dItemNo_Randomizer_ARCHIPELAGO_ITEM_e;
-            // TODO: figure out a good way to store off world item ids somewhere so we can display names on item get
+            locationOffWorldData[item.location - ARCHI_ITEM_OFFSET] = {.slotId = item.player, .itemId = item.item};
             continue;
         }
 
@@ -556,11 +642,22 @@ void sendLocationChecked(int locationId) {
     });
 }
 
-std::pair<std::string, std::string> getCurrentLocationItemGetMessage() {
-    std::string tempPlayerName = "CraftyOOT";
-    std::string tempItemName = "Ice Trap";
+void setCurrentCommitedLocation(int locationId) {
+    if (currentCommitedLoc != -1 && currentCommitedLoc != locationId) {
+        mods::log::warn("Commited Location {} being overwritten to {}", currentCommitedLoc, locationId);
+    }
 
-    return std::make_pair(tempPlayerName, tempItemName);
+    currentCommitedLoc = locationId;
+}
+
+std::pair<std::string, std::string> getCurrentLocationItemGetMessage() {
+    if (currentCommitedLoc != -1 && locationOffWorldData.contains(currentCommitedLoc)) {
+        auto& locationData = locationOffWorldData[currentCommitedLoc];
+        currentCommitedLoc = -1;
+
+        return getItemNameFromSlot(locationData.slotId, locationData.itemId);
+    }
+    return {"Someone", "Something"};
 }
 
 void setServerIp(const std::string& ip) { serverIp = ip; }

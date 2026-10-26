@@ -83,7 +83,13 @@ struct NetworkPlayer {
     std::string alias;
     std::string name;
 };
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(NetworkPlayer, team, slot, alias, name)
+
+struct NetworkSlot {
+    std::string name;
+    std::string game;
+    int type;
+    std::vector<int> group_members;
+};
 
 struct RoomInfo {
     NetworkVersion version;
@@ -131,6 +137,8 @@ ModResult shutdown();
 void loadItemIdsFromDb();
 
 void sendLocationChecked(int locationId);
+
+void setCurrentCommitedLocation(int locationId);
 
 std::pair<std::string, std::string> getCurrentLocationItemGetMessage();
 

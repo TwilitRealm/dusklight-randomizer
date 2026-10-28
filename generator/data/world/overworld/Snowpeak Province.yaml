@@ -7,7 +7,7 @@
     Ashei Sketch: Can_Talk_to_Humans
     Snowpeak Hint Sign: Nothing
   Exits:
-    Snowpeak Climb Upper: Snowpeak_Does_Not_Require_Reekfish_Scent == On or 'Reekfish_Scent'
+    Snowpeak Climb Upper: Can_Use_Senses and (Snowpeak_Does_Not_Require_Reekfish_Scent == On or 'Reekfish_Scent')
     Zoras Domain: Nothing
 
 - Name: Snowpeak Climb Upper
@@ -15,8 +15,6 @@
   Region: Snowpeak Mountain
   Can Warp: True
   Can Change Time: True
-  Events:
-    Howl at Snowpeak Mountain Howling Stone: Can_Howl
   Locations:
     Snowpeak Above Freezard Grotto Poe: Can_Use_Senses
     Snowpeak Blizzard Poe: Can_Use_Senses
@@ -24,8 +22,19 @@
   Exits:
     Snowpeak Ice Keese Grotto: Can_Dig
     Snowpeak Freezard Grotto: Can_Dig
-    Snowpeak Summit Cave: Can_Dig
+    Snowpeak Climb Peak: Wolf_Link # Bonking the snow down requires wolf link
     Snowpeak Climb Lower: Nothing
+
+- Name: Snowpeak Climb Peak
+  Map Sector: Snowpeak Province
+  Region: Snowpeak Mountain
+  Can Warp: True
+  Can Change Time: True
+  Events:
+    Howl at Snowpeak Mountain Howling Stone: Can_Howl
+  Exits:
+    Snowpeak Summit Cave: Can_Dig
+    Snowpeak Climb Upper: Can_Defeat_Keese and Can_Defeat_White_Wolfos
 
 - Name: Snowpeak Ice Keese Grotto
   Exits:
@@ -47,7 +56,7 @@
     Snowpeak Cave Ice Poe: Ball_and_Chain and Can_Use_Senses
   Exits:
     Snowpeak Summit Upper: Can_Climb_Vines
-    Snowpeak Climb Upper: Can_Dig
+    Snowpeak Climb Peak: Can_Dig
 
 - Name: Snowpeak Summit Upper
   Map Sector: Snowpeak Province

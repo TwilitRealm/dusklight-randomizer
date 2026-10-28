@@ -2821,7 +2821,7 @@
 
 - Type: Overworld
   Forward:
-    Connection: Snowpeak Climb Upper -> Snowpeak Summit Cave
+    Connection: Snowpeak Climb Peak -> Snowpeak Summit Cave
     Alias: Snowpeak Climb -> Snowpeak Summit Cave
     Stage: 51
     Room: 2
@@ -2830,7 +2830,7 @@
     Parameters: "F01F"
     State: -1
   Return:
-    Connection: Snowpeak Summit Cave -> Snowpeak Climb Upper
+    Connection: Snowpeak Summit Cave -> Snowpeak Climb Peak
     Alias: Snowpeak Summit Cave -> Snowpeak Climb
     Stage: 51
     Room: 0
